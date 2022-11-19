@@ -22,6 +22,7 @@ telescope.setup {
       theme = "dropdown",
       -- disables netrw and use telescope-file-browser in its place
       hijack_netrw = true,
+      initial_mode = 'normal',
       mappings = {
         -- your custom insert mode mappings
         ["i"] = {
@@ -29,6 +30,7 @@ telescope.setup {
         },
         ["n"] = {
           -- your custom normal mode mappings
+          ["q"] = actions.close,
           ["N"] = fb_actions.create,
           ["h"] = fb_actions.goto_parent_dir,
           ["/"] = function()
