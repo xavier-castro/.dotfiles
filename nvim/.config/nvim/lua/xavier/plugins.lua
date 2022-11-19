@@ -8,10 +8,7 @@ vim.cmd [[packadd packer.nvim]]
 
 packer.startup(function(use)
   use 'wbthomason/packer.nvim'
-  use {
-    'svrana/neosolarized.nvim',
-    requires = { 'tjdevries/colorbuddy.nvim' }
-  }
+  use { 'svrana/neosolarized.nvim', requires = { 'tjdevries/colorbuddy.nvim' } }
   use 'nvim-lualine/lualine.nvim' -- Statusline
   use 'nvim-lua/plenary.nvim' -- Common utilities
   use 'onsails/lspkind-nvim' -- vscode-like pictograms
@@ -22,13 +19,26 @@ packer.startup(function(use)
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
-
   use 'glepnir/lspsaga.nvim' -- LSP UIs
-  use 'L3MON4D3/LuaSnip'
   use {
+    "tpope/vim-fugitive", cmd = { "Git", "GBrowse", "Gdiffsplit", "Gvdiffsplit" },
+    requires = { "tpope/vim-rhubarb" },
+  }
+  use { "tpope/vim-surround", event = "InsertEnter" }
+  use { "L3MON4D3/LuaSnip",
+    wants = { "friendly-snippets", "vim-snippets" },
+    --config = function()
+    --   require("snip.init").setup()
+    --   end
+  }
+  use "rafamadriz/friendly-snippets"
+  use "honza/vim-snippets"
+  use({
     'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end,
-  }
+  })
+  use 'ThePrimeagen/harpoon'
+  use 'ThePrimeagen/refactoring.nvim'
   use 'kyazdani42/nvim-web-devicons' -- File icons
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
@@ -42,7 +52,6 @@ packer.startup(function(use)
     run = function() vim.fn["mkdp#util#install"]() end,
   })
   use 'akinsho/nvim-bufferline.lua'
-
   use 'lewis6991/gitsigns.nvim'
   use 'dinhhuy258/git.nvim' -- For git blame & browse
 end)

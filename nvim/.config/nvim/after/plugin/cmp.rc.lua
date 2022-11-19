@@ -2,6 +2,7 @@ local status, cmp = pcall(require, "cmp")
 if (not status) then return end
 local lspkind = require 'lspkind'
 
+
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -26,6 +27,13 @@ cmp.setup({
     format = lspkind.cmp_format({ with_text = false, maxwidth = 50 })
   }
 })
+
+local keymap = vim.api.nvim_set_keymap
+local opts = { noremap = true, silent = true }
+keymap("i", "<c-j>", "<cmd>lua require'luasnip'.jump(1)<CR>", opts)
+keymap("s", "<c-j>", "<cmd>lua require'luasnip'.jump(1)<CR>", opts)
+keymap("i", "<c-k>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)
+keymap("s", "<c-k>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)
 
 vim.cmd [[
   set completeopt=menuone,noinsert,noselect
