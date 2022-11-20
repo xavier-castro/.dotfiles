@@ -66,6 +66,18 @@ protocol.CompletionItemKind = {
 
 -- Set up completion using nvim_cmp with LSP source
 local capabilities = require('cmp_nvim_lsp').default_capabilities()
+local schema = require 'schemastore'
+
+
+nvim_lsp.jsonls.setup {
+  capabilities = capabilities,
+  settings = {
+    json = {
+      schemas = schema,
+      validate = { enable = true }
+    }
+  }
+}
 
 nvim_lsp.flow.setup {
   on_attach = on_attach,
