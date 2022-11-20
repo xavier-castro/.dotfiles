@@ -43,6 +43,7 @@ telescope.setup {
 }
 
 telescope.load_extension("file_browser")
+telescope.load_extension("harpoon")
 
 vim.keymap.set('n', ';f',
   function()
@@ -60,7 +61,7 @@ end)
 vim.keymap.set('n', '\\\\', function()
   builtin.buffers()
 end)
-vim.keymap.set('n', ';t', function()
+vim.keymap.set('n', ';h', function()
   builtin.help_tags()
 end)
 vim.keymap.set('n', ';;', function()
