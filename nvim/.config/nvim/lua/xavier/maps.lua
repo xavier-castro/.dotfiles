@@ -11,6 +11,8 @@ vim.g.maplocalleader = " "
 Remap.nnoremap("<leader>h", ":nohl<cr>")
 Remap.inoremap("jk", "<esc>")
 Remap.nnoremap("<leader>s", ":set wrap!<cr>")
+Remap.nnoremap("<C-r>", "gd[{V%::s/<C-R>///gc<left><left><left>") -- local replace
+Remap.nnoremap("<C-R>", "gD:%s/<C-R>///gc<left><left><left>") -- global replace
 
 -- Harpoon
 Remap.nnoremap("mm", "<cmd>lua require('harpoon.mark').add_file()<cr>")
