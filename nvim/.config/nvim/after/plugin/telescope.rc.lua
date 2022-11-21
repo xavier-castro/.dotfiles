@@ -47,6 +47,44 @@ telescope.setup {
       },
     },
   },
+  live_grep = {
+    theme = "dropdown",
+  },
+  grep_string = {
+    theme = "dropdown",
+  },
+  find_files = {
+    theme = "dropdown",
+    previewer = false,
+  },
+  buffers = {
+    theme = "dropdown",
+    previewer = false,
+    initial_mode = "normal",
+  },
+  planets = {
+    show_pluto = true,
+    show_moon = true,
+  },
+  colorscheme = {
+    -- enable_preview = true,
+  },
+  lsp_references = {
+    theme = "dropdown",
+    initial_mode = "normal",
+  },
+  lsp_definitions = {
+    theme = "dropdown",
+    initial_mode = "normal",
+  },
+  lsp_declarations = {
+    theme = "dropdown",
+    initial_mode = "normal",
+  },
+  lsp_implementations = {
+    theme = "dropdown",
+    initial_mode = "normal",
+  },
 }
 
 telescope.load_extension('fzy_native')
@@ -67,7 +105,19 @@ end)
 vim.keymap.set('n', ';o', function()
   builtin.oldfiles()
 end)
-vim.keymap.set('n', '\\\\', function()
+vim.keymap.set('n', '\\', function()
+  telescope.extensions.file_browser.file_browser({
+    path = "%:p:h",
+    cwd = telescope_buffer_dir(),
+    respect_gitignore = false,
+    hidden = true,
+    grouped = true,
+    previewer = false,
+    initial_mode = "normal",
+    layout_config = { height = 40 }
+  })
+end)
+vim.keymap.set('n', ';b', function()
   builtin.buffers()
 end)
 vim.keymap.set('n', ';h', function()

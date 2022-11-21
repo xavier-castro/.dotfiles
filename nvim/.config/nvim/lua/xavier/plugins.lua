@@ -33,6 +33,7 @@ packer.startup(function(use)
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-fzy-native.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
+  use "goolord/alpha-nvim"
   use 'windwp/nvim-autopairs'
   use 'windwp/nvim-ts-autotag'
   use 'b0o/schemastore.nvim'
@@ -77,4 +78,8 @@ packer.startup(function(use)
   use "lvimuser/lsp-inlayhints.nvim"
   use('simrat39/inlay-hints.nvim')
   use 'lewis6991/impatient.nvim'
+  use "lukas-reineke/indent-blankline.nvim"
+  use "nvim-treesitter/nvim-treesitter-textobjects"
+  use "nvim-treesitter/playground"
+  use "ahmedkhalf/project.nvim"
 end)
