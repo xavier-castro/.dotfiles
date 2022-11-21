@@ -1,3 +1,4 @@
 .DS_Store
 personal/*
+fish/.config/fish/functions/*
 
