@@ -2,7 +2,6 @@ local status, cmp = pcall(require, "cmp")
 if (not status) then return end
 local lspkind = require 'lspkind'
 
-vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 
 cmp.setup({
   snippet = {
@@ -28,8 +27,7 @@ cmp.setup({
     { name = 'buffer' },
   }),
   formatting = {
-    format = lspkind.cmp_format({ maxwidth = 50, mode = "symbol", preset = "codicons",
-      symbol_map = { Copilot = " " } })
+    format = lspkind.cmp_format({ maxwidth = 50, mode = "symbol", preset = "codicons" }),
   },
   sorting = {
     priority_weight = 2,

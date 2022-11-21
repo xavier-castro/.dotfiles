@@ -42,6 +42,22 @@ lspkind.init({
     Struct = "פּ",
     Event = "",
     Operator = "",
-    TypeParameter = ""
+    TypeParameter = "",
+    CmpItemKindCopilot = "",
+    Copilot = "",
   },
+
+  before = function(entry, vim_item)
+    if entry.source.name == "cmp_tabnine" then
+      vim_item.kind = ""
+      vim_item.kind_hl_group = "CmpItemKindTabnine"
+    end
+    if entry.source.name == "copilot" then
+      vim_item.kind = ""
+      vim_item.kind_hl_group = "CmpItemKindCopilot"
+    end
+    return vim_item
+  end
 })
+
+vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })

@@ -1,4 +1,7 @@
+local Remap = require("xavier.keymap")
 local keymap = vim.keymap
+
+Remap.inoremap("jk", "<esc>")
 
 keymap.set('n', 'x', '"_x')
 
