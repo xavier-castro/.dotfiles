@@ -29,6 +29,7 @@ packer.startup(function(use)
   use 'ThePrimeagen/refactoring.nvim'
   use 'kyazdani42/nvim-web-devicons' -- File icons
   use 'nvim-telescope/telescope.nvim'
+  use 'nvim-telescope/telescope-fzy-native.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
   use 'windwp/nvim-autopairs'
   use 'windwp/nvim-ts-autotag'
@@ -43,4 +44,20 @@ packer.startup(function(use)
   use 'tpope/vim-fugitive'
   use 'b0o/schemastore.nvim'
   use 'dinhhuy258/git.nvim' -- For git blame & browse
+  use {
+    "zbirenbaum/copilot.lua",
+    event = { "VimEnter" },
+    config = function()
+      vim.defer_fn(function()
+        require "xavier.copilot"
+      end, 100)
+    end,
+  }
+  use {
+    "zbirenbaum/copilot-cmp",
+    after = { "copilot.lua" },
+    config = function()
+      require("copilot_cmp").setup()
+    end
+  }
 end)
