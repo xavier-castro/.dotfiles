@@ -42,7 +42,6 @@ packer.startup(function(use)
   use 'lewis6991/gitsigns.nvim'
   use 'tpope/vim-surround'
   use 'tpope/vim-fugitive'
-  use 'b0o/schemastore.nvim'
   use 'dinhhuy258/git.nvim' -- For git blame & browse
   use {
     "zbirenbaum/copilot.lua",
@@ -60,4 +59,5 @@ packer.startup(function(use)
       require("copilot_cmp").setup()
     end
   }
+  use { 'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp' }
 end)

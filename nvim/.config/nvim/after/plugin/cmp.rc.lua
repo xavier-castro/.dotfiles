@@ -2,6 +2,21 @@ local status, cmp = pcall(require, "cmp")
 if (not status) then return end
 local lspkind = require 'lspkind'
 
+local buffer_fts = {
+  "markdown",
+  "toml",
+  "yaml",
+  "json",
+}
+
+local function contains(t, value)
+  for _, v in pairs(t) do
+    if v == value then
+      return true
+    end
+  end
+  return false
+end
 
 cmp.setup({
   snippet = {
@@ -22,9 +37,18 @@ cmp.setup({
   sources = cmp.config.sources({
     { name = "copilot", group_index = 2 },
     { name = "nvim_lsp", group_index = 2 },
+    { name = "cmp_tabnine", group_index = 2 },
     { name = "path", group_index = 2 },
     { name = "luasnip", group_index = 2 },
-    { name = 'buffer' },
+    {
+      name = "buffer",
+      group_index = 2,
+      filter = function(_, ctx)
+        if not contains(buffer_fts, ctx.prev_context.filetype) then
+          return true
+        end
+      end,
+    },
   }),
   formatting = {
     format = lspkind.cmp_format({ maxwidth = 50, mode = "symbol", preset = "codicons" }),
