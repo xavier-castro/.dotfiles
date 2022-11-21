@@ -10,8 +10,7 @@ vim.g.maplocalleader = " "
 -- Personal settings
 Remap.nnoremap("<leader>h", ":nohl<cr>")
 Remap.inoremap("jk", "<esc>")
-Remap.nnoremap("<leader>s", ":set wrap<cr>")
-Remap.nnoremap("<leader>w", ":set nowrap<cr>")
+Remap.nnoremap("<leader>s", ":set wrap!<cr>")
 
 -- Harpoon
 Remap.nnoremap("mm", "<cmd>lua require('harpoon.mark').add_file()<cr>")
