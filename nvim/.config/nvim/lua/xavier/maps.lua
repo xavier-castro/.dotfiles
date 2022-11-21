@@ -17,6 +17,8 @@ Remap.nnoremap(";m", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>")
 
 -- New tab
 keymap.set('n', 'te', ':tabedit')
+Remap.nnoremap("tt", "<C-w>T") -- Create new tab off current window
+
 -- Split window
 keymap.set('n', 'ss', ':split<Return><C-w>w')
 keymap.set('n', 'sv', ':vsplit<Return><C-w>w')
@@ -26,9 +28,11 @@ keymap.set('', 'sk', '<C-w>k')
 keymap.set('', 'sj', '<C-w>j')
 keymap.set('', 'sl', '<C-w>l')
 keymap.set('', 'sq', '<C-w>q')
-
 -- Resize window
 keymap.set('n', '<C-w><left>', '<C-w><')
 keymap.set('n', '<C-w><right>', '<C-w>>')
 keymap.set('n', '<C-w><up>', '<C-w>+')
 keymap.set('n', '<C-w><down>', '<C-w>-')
+Remap.nnoremap("s==", "<C-w>|") -- Maximizes window size horizontally
+Remap.nnoremap("s--", "<C-w>_") -- Maximizes window size vertically
+Remap.nnoremap("s=", "<C-w>=") -- Equally sizes window

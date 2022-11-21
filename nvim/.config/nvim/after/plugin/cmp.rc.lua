@@ -34,7 +34,7 @@ cmp.setup({
     ['<C-e>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
-      select = false,
+      select = true,
     }),
     ['<Tab>'] = function(fallback)
       if cmp.visible() then
@@ -136,7 +136,7 @@ cmp.setup({
     },
   },
   window = {
-    documentation = false,
+    documentation = true,
     -- documentation = {
     --   border = "rounded",
     --   winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
