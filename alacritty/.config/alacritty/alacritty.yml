@@ -12,6 +12,7 @@
 # You can verify this by checking for the presence of `smso` and `sitm` in
 # `infocmp xterm-256color`.
 # TERM: xterm-256color-italic
+TERM: xterm-256color
 window:
   # Window dimensions (changes require restart)
   #
@@ -26,8 +27,8 @@ window:
   # Blank space added around the window in pixels. This padding is not scaled by
   # DPI and the specified value is always added at both opposing sides.
   padding:
-    x: 4
-    y: 4
+    x: 6
+    y: 6
 
   # Spread additional padding evenly around the terminal content.
   dynamic_padding: false
@@ -112,7 +113,7 @@ font:
   #
   # This is a global setting and will require a log out or restart to take
   # effect.
-  AppleFontSmoothing: true
+  # AppleFontSmoothing: true
 
 # When true, bold text is drawn using the bright variant of colors.
 draw_bold_text_with_bright_colors: true
