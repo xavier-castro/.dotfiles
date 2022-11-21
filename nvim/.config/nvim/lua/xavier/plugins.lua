@@ -26,6 +26,7 @@ packer.startup(function(use)
   use({ 'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end })
   use "p00f/nvim-ts-rainbow"
+  use "JoosepAlviste/nvim-ts-context-commentstring"
   use 'ThePrimeagen/harpoon'
   use 'ThePrimeagen/refactoring.nvim'
   use 'kyazdani42/nvim-web-devicons' -- File icons
@@ -62,4 +63,18 @@ packer.startup(function(use)
     end
   }
   use { 'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp' }
+  use "j-hui/fidget.nvim"
+  use { "akinsho/toggleterm.nvim", tag = '*', config = function()
+    require("toggleterm").setup()
+  end }
+  use {
+    'numToStr/Comment.nvim',
+    config = function()
+      require('Comment').setup()
+    end
+  }
+  use "folke/todo-comments.nvim"
+  use "lvimuser/lsp-inlayhints.nvim"
+  use('simrat39/inlay-hints.nvim')
+  use 'lewis6991/impatient.nvim'
 end)

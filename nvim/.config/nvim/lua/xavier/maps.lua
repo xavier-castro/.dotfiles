@@ -1,5 +1,11 @@
 local Remap = require("xavier.keymap")
 local keymap = vim.keymap
+local opts = { noremap = true, silent = true }
+
+--Remap space as leader key
+vim.api.nvim_set_keymap("n", "<Space>", "", opts)
+vim.g.mapleader = " "
+vim.g.maplocalleader = " "
 
 Remap.nnoremap("<Space>h", ":nohl<cr>")
 Remap.inoremap("jk", "<esc>")
@@ -10,12 +16,6 @@ keymap.set('n', 'x', '"_x')
 keymap.set('n', '+', '<C-a>')
 keymap.set('n', '-', '<C-x>')
 
--- Delete a word backwards
-keymap.set('n', 'dw', 'vb"_d')
-
--- Select all
-keymap.set('n', '<C-a>', 'gg<S-v>G')
-
 -- Save with root permission (not working for now)
 --vim.api.nvim_create_user_command('W', 'w !sudo tee > /dev/null %', {})
 
@@ -25,7 +25,6 @@ keymap.set('n', 'te', ':tabedit')
 keymap.set('n', 'ss', ':split<Return><C-w>w')
 keymap.set('n', 'sv', ':vsplit<Return><C-w>w')
 -- Move window
-keymap.set('n', '<Space>', '<C-w>w')
 keymap.set('', 'sh', '<C-w>h')
 keymap.set('', 'sk', '<C-w>k')
 keymap.set('', 'sj', '<C-w>j')
