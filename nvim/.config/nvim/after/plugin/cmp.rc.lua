@@ -59,7 +59,7 @@ cmp.setup({
     {
       name = "copilot",
       -- keyword_length = 0,
-      max_item_count = 1,
+      -- max_item_count = 1,
       trigger_characters = {
         {
           ".",
@@ -89,24 +89,22 @@ cmp.setup({
     },
     {
       name = "nvim_lsp",
-      max_item_count = 3,
       filter = function(entry, ctx)
-        local kind = require("cmp.types.lsp").CompletionItemKind[entry:get_kind()]
-        if kind == "Snippet" and ctx.prev_context.filetype == "java" then
-          return true
-        end
-
-        if kind == "Text" then
-          return true
-        end
+        --   local kind = require("cmp.types.lsp").CompletionItemKind[entry:get_kind()]
+        --   if kind == "Snippet" and ctx.prev_context.filetype == "java" then
+        --     return true
+        --   end
+        --
+        --   if kind == "Text" then
+        --     return true
+        --   end
       end,
       group_index = 2,
     },
-    { name = "nvim_lua", max_item_count = 5, group_index = 2 },
+    { name = "nvim_lua", group_index = 2 },
     { name = "luasnip", group_index = 2 },
     {
       name = "buffer",
-      max_item_count = 3,
       group_index = 2,
       filter = function(entry, ctx)
         if not contains(buffer_fts, ctx.prev_context.filetype) then
@@ -114,9 +112,8 @@ cmp.setup({
         end
       end,
     },
-    { name = "cmp_tabnine", max_item_count = 2, group_index = 2 },
+    { name = "cmp_tabnine", group_index = 2 },
     { name = "path", group_index = 2 },
-    { name = "emoji", group_index = 2 },
   },
   formatting = {
     format = lspkind.cmp_format({ maxwidth = 50, mode = "symbol", preset = "codicons" }),
@@ -141,13 +138,6 @@ cmp.setup({
     --   border = "rounded",
     --   winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
     -- },
-    completion = {
-      border = "rounded",
-      winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
-    },
-  },
-  experimental = {
-    ghost_text = true,
   },
 })
 

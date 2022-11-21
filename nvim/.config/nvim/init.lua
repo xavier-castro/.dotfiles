@@ -10,6 +10,7 @@ local is_win = has "win32"
 if is_mac then
   require('impatient').enable_profile()
   require('xavier.macos')
+  require('snip.init')
 end
 if is_win then
   require('impatient').enable_profile()
