@@ -8,8 +8,9 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Personal settings
-Remap.nnoremap("<Space>h", ":nohl<cr>")
+Remap.nnoremap("<leader>h", ":nohl<cr>")
 Remap.inoremap("jk", "<esc>")
+
 -- Harpoon
 Remap.nnoremap("mm", "<cmd>lua require('harpoon.mark').add_file()<cr>")
 Remap.nnoremap(";m", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>")
@@ -24,6 +25,7 @@ keymap.set('', 'sh', '<C-w>h')
 keymap.set('', 'sk', '<C-w>k')
 keymap.set('', 'sj', '<C-w>j')
 keymap.set('', 'sl', '<C-w>l')
+keymap.set('', 'sq', '<C-w>q')
 
 -- Resize window
 keymap.set('n', '<C-w><left>', '<C-w><')

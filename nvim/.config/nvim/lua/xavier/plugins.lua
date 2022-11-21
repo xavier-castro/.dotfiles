@@ -63,7 +63,11 @@ packer.startup(function(use)
     "zbirenbaum/copilot-cmp",
     after = { "copilot.lua" },
     config = function()
-      require("copilot_cmp").setup()
+      require("copilot_cmp").setup({
+        formatters = {
+          insert_text = require("copilot_cmp.format").remove_existing
+        }
+      })
     end
   }
   use { "tzachar/cmp-tabnine", commit = "1a8fd2795e4317fd564da269cc64a2fa17ee854e",
@@ -78,4 +82,5 @@ packer.startup(function(use)
       require('Comment').setup()
     end
   }
+  use "lukas-reineke/indent-blankline.nvim"
 end)
