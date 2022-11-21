@@ -1,5 +1,4 @@
 --vim.lsp.set_log_level("debug")
-local ih = require('inlay-hints')
 local status, nvim_lsp = pcall(require, "lspconfig")
 if (not status) then return end
 
@@ -88,34 +87,8 @@ nvim_lsp.tsserver.setup {
   filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
   cmd = { "typescript-language-server", "--stdio" },
   capabilities = capabilities,
-  on_attach = function(c, b)
-    ih.on_attach(c, b)
-  end,
-  settings = {
-    javascript = {
-      inlayHints = {
-        includeInlayEnumMemberValueHints = true,
-        includeInlayFunctionLikeReturnTypeHints = true,
-        includeInlayFunctionParameterTypeHints = true,
-        includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-        includeInlayPropertyDeclarationTypeHints = true,
-        includeInlayVariableTypeHints = true,
-      },
-    },
-    typescript = {
-      inlayHints = {
-        includeInlayEnumMemberValueHints = true,
-        includeInlayFunctionLikeReturnTypeHints = true,
-        includeInlayFunctionParameterTypeHints = true,
-        includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-        includeInlayParameterNameHintsWhenArgumentMatchesName = true,
-        includeInlayPropertyDeclarationTypeHints = true,
-        includeInlayVariableTypeHints = true,
-      },
-    },
-  },
-}
+  on_attach = on_attach
+  }
 
 nvim_lsp.sourcekit.setup {
   on_attach = on_attach,
@@ -165,7 +138,7 @@ nvim_lsp.astro.setup {
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
   underline = true,
-  update_in_insert = false,
+  update_in_insert = true,
   virtual_text = { spacing = 4, prefix = "●" },
   severity_sort = true,
 }

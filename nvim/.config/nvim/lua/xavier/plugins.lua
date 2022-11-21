@@ -8,6 +8,7 @@ vim.cmd [[packadd packer.nvim]]
 
 packer.startup(function(use)
   use 'wbthomason/packer.nvim'
+  use 'lewis6991/impatient.nvim'
   use { 'svrana/neosolarized.nvim', requires = { 'tjdevries/colorbuddy.nvim' } }
   use 'nvim-lualine/lualine.nvim' -- Statusline
   use 'nvim-lua/plenary.nvim' -- Common utilities
@@ -27,12 +28,15 @@ packer.startup(function(use)
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end })
   use "p00f/nvim-ts-rainbow"
   use "JoosepAlviste/nvim-ts-context-commentstring"
+  use "nvim-treesitter/nvim-treesitter-textobjects"
+  use "nvim-treesitter/playground"
   use 'ThePrimeagen/harpoon'
   use 'ThePrimeagen/refactoring.nvim'
   use 'kyazdani42/nvim-web-devicons' -- File icons
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-fzy-native.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
+  use "ahmedkhalf/project.nvim"
   use "goolord/alpha-nvim"
   use 'windwp/nvim-autopairs'
   use 'windwp/nvim-ts-autotag'
@@ -63,7 +67,8 @@ packer.startup(function(use)
       require("copilot_cmp").setup()
     end
   }
-  use { 'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp' }
+  use { "tzachar/cmp-tabnine", commit = "1a8fd2795e4317fd564da269cc64a2fa17ee854e",
+    run = "./install.sh" }
   use "j-hui/fidget.nvim"
   use { "akinsho/toggleterm.nvim", tag = '*', config = function()
     require("toggleterm").setup()
@@ -74,12 +79,4 @@ packer.startup(function(use)
       require('Comment').setup()
     end
   }
-  use "folke/todo-comments.nvim"
-  use "lvimuser/lsp-inlayhints.nvim"
-  use('simrat39/inlay-hints.nvim')
-  use 'lewis6991/impatient.nvim'
-  use "lukas-reineke/indent-blankline.nvim"
-  use "nvim-treesitter/nvim-treesitter-textobjects"
-  use "nvim-treesitter/playground"
-  use "ahmedkhalf/project.nvim"
 end)
