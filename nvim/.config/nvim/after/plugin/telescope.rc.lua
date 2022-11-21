@@ -11,6 +11,7 @@ local fb_actions = require "telescope".extensions.file_browser.actions
 
 telescope.setup {
   defaults = {
+    initial_mode = "normal",
     mappings = {
       n = {
         ["q"] = actions.close
@@ -18,6 +19,12 @@ telescope.setup {
     },
   },
   extensions = {
+    extensions = {
+      fzy_native = {
+        override_generic_sorter = false,
+        override_file_sorter = true,
+      }
+    },
     file_browser = {
       theme = "dropdown",
       -- disables netrw and use telescope-file-browser in its place
@@ -42,6 +49,7 @@ telescope.setup {
   },
 }
 
+telescope.load_extension('fzy_native')
 telescope.load_extension("file_browser")
 telescope.load_extension("harpoon")
 
@@ -49,7 +57,8 @@ vim.keymap.set('n', ';f',
   function()
     builtin.find_files({
       no_ignore = false,
-      hidden = true
+      hidden = true,
+      initial_mode = 'normal',
     })
   end)
 vim.keymap.set('n', ';r', function()

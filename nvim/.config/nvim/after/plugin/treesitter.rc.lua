@@ -2,6 +2,11 @@ local status, ts = pcall(require, "nvim-treesitter.configs")
 if (not status) then return end
 
 ts.setup {
+  rainbow = {
+    enable = true,
+    extended_mode = true,
+    max_file_lines = 1000,
+  },
   highlight = {
     enable = true,
     disable = {},
@@ -13,7 +18,7 @@ ts.setup {
   ensure_installed = {
     "tsx",
     "toml",
-    "fish",
+    "bash",
     "php",
     "json",
     "yaml",

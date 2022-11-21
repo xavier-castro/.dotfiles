@@ -25,6 +25,7 @@ packer.startup(function(use)
   use "honza/vim-snippets"
   use({ 'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end })
+  use "p00f/nvim-ts-rainbow"
   use 'ThePrimeagen/harpoon'
   use 'ThePrimeagen/refactoring.nvim'
   use 'kyazdani42/nvim-web-devicons' -- File icons
