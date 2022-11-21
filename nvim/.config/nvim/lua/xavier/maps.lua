@@ -7,17 +7,12 @@ vim.api.nvim_set_keymap("n", "<Space>", "", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
+-- Personal settings
 Remap.nnoremap("<Space>h", ":nohl<cr>")
 Remap.inoremap("jk", "<esc>")
-
-keymap.set('n', 'x', '"_x')
-
--- Increment/decrement
-keymap.set('n', '+', '<C-a>')
-keymap.set('n', '-', '<C-x>')
-
--- Save with root permission (not working for now)
---vim.api.nvim_create_user_command('W', 'w !sudo tee > /dev/null %', {})
+-- Harpoon
+Remap.nnoremap("mm", "<cmd>lua require('harpoon.mark').add_file()<cr>")
+Remap.nnoremap(";m", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>")
 
 -- New tab
 keymap.set('n', 'te', ':tabedit')

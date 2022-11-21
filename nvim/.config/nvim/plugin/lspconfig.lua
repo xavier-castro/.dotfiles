@@ -88,7 +88,7 @@ nvim_lsp.tsserver.setup {
   cmd = { "typescript-language-server", "--stdio" },
   capabilities = capabilities,
   on_attach = on_attach
-  }
+}
 
 nvim_lsp.sourcekit.setup {
   on_attach = on_attach,
@@ -103,9 +103,6 @@ nvim_lsp.sumneko_lua.setup {
   end,
   settings = {
     Lua = {
-      hint = {
-        enable = true,
-      },
       diagnostics = {
         -- Get the language server to recognize the `vim` global
         globals = { 'vim' },
@@ -137,12 +134,11 @@ nvim_lsp.astro.setup {
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
-  underline = true,
-  update_in_insert = true,
+  underline = false,
+  update_in_insert = false,
   virtual_text = { spacing = 4, prefix = "●" },
   severity_sort = true,
-}
-)
+})
 
 -- Diagnostic symbols in the sign column (gutter)
 local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }

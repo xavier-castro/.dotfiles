@@ -1,4 +1,5 @@
 local status, cmp = pcall(require, "cmp")
+local luasnip = require "luasnip"
 if (not status) then return end
 local lspkind = require 'lspkind'
 
@@ -8,6 +9,11 @@ local buffer_fts = {
   "yaml",
   "json",
 }
+
+local check_backspace = function()
+  local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+  return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match "%s" == nil
+end
 
 local function contains(t, value)
   for _, v in pairs(t) do
@@ -27,38 +33,116 @@ cmp.setup({
   mapping = cmp.mapping.preset.insert({
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
+    ["<C-k>"] = cmp.mapping(cmp.mapping.select_prev_item(), { "i", "c" }),
+    ["<C-j>"] = cmp.mapping(cmp.mapping.select_next_item(), { "i", "c" }),
     ['<C-Space>'] = cmp.mapping.complete(),
     ['<C-e>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
       select = true
     }),
+    ["<Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_next_item()
+      elseif luasnip.jumpable(1) then
+        luasnip.jump(1)
+      elseif luasnip.expand_or_jumpable() then
+        luasnip.expand_or_jump()
+      elseif luasnip.expandable() then
+        luasnip.expand()
+      elseif check_backspace() then
+        -- cmp.complete()
+        fallback()
+      else
+        fallback()
+      end
+    end, {
+      "i",
+      "s",
+    }),
+    ["<S-Tab>"] = cmp.mapping(function(fallback)
+      if cmp.visible() then
+        cmp.select_prev_item()
+      elseif luasnip.jumpable(-1) then
+        luasnip.jump(-1)
+      else
+        fallback()
+      end
+    end, {
+      "i",
+      "s",
+    }),
   }),
-  sources = cmp.config.sources({
-    { name = "copilot", group_index = 2 },
-    { name = "nvim_lsp", group_index = 2 },
-    { name = "cmp_tabnine", group_index = 2 },
-    { name = "path", group_index = 2 },
+  sources = {
+    {
+      name = "copilot",
+      -- keyword_length = 0,
+      max_item_count = 1,
+      trigger_characters = {
+        {
+          ".",
+          ":",
+          "(",
+          "'",
+          '"',
+          "[",
+          ",",
+          "#",
+          "*",
+          "@",
+          "|",
+          "=",
+          "-",
+          "{",
+          "/",
+          "\\",
+          "+",
+          "?",
+          " ",
+          -- "\t",
+          -- "\n",
+        },
+      },
+      group_index = 2,
+    },
+    {
+      name = "nvim_lsp",
+      max_item_count = 3,
+      filter = function(entry, ctx)
+        local kind = require("cmp.types.lsp").CompletionItemKind[entry:get_kind()]
+        if kind == "Snippet" and ctx.prev_context.filetype == "java" then
+          return true
+        end
+
+        if kind == "Text" then
+          return true
+        end
+      end,
+      group_index = 2,
+    },
+    { name = "nvim_lua", max_item_count = 5, group_index = 2 },
     { name = "luasnip", group_index = 2 },
     {
       name = "buffer",
+      max_item_count = 3,
       group_index = 2,
-      filter = function(_, ctx)
+      filter = function(entry, ctx)
         if not contains(buffer_fts, ctx.prev_context.filetype) then
           return true
         end
       end,
     },
-  }),
+    { name = "cmp_tabnine", max_item_count = 2, group_index = 2 },
+    { name = "path", group_index = 2 },
+    { name = "emoji", group_index = 2 },
+  },
   formatting = {
     format = lspkind.cmp_format({ maxwidth = 50, mode = "symbol", preset = "codicons" }),
   },
   sorting = {
     priority_weight = 2,
     comparators = {
-      -- Below is the default comparitor list and order for nvim-cmp
       cmp.config.compare.offset,
-      -- cmp.config.compare.scopes, --this is commented in nvim-cmp too
       cmp.config.compare.exact,
       cmp.config.compare.score,
       cmp.config.compare.recently_used,
@@ -98,13 +182,6 @@ cmp.setup.cmdline(':', {
   })
 })
 
-
-local keymap = vim.api.nvim_set_keymap
-local opts = { noremap = true, silent = true }
-keymap("i", "<c-j>", "<cmd>lua require'luasnip'.jump(1)<CR>", opts)
-keymap("s", "<c-j>", "<cmd>lua require'luasnip'.jump(1)<CR>", opts)
-keymap("i", "<c-k>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)
-keymap("s", "<c-k>", "<cmd>lua require'luasnip'.jump(-1)<CR>", opts)
 
 vim.cmd [[
   set completeopt=menuone,noinsert,noselect
