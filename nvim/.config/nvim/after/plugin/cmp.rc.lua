@@ -58,8 +58,6 @@ cmp.setup({
   sources = {
     {
       name = "copilot",
-      -- keyword_length = 0,
-      -- max_item_count = 1,
       trigger_characters = {
         {
           ".",
@@ -90,14 +88,14 @@ cmp.setup({
     {
       name = "nvim_lsp",
       filter = function(entry, ctx)
-        --   local kind = require("cmp.types.lsp").CompletionItemKind[entry:get_kind()]
-        --   if kind == "Snippet" and ctx.prev_context.filetype == "java" then
-        --     return true
-        --   end
-        --
-        --   if kind == "Text" then
-        --     return true
-        --   end
+        local kind = require("cmp.types.lsp").CompletionItemKind[entry:get_kind()]
+        if kind == "Snippet" and ctx.prev_context.filetype == "java" then
+          return true
+        end
+
+        if kind == "Text" then
+          return true
+        end
       end,
       group_index = 2,
     },
@@ -112,7 +110,6 @@ cmp.setup({
         end
       end,
     },
-    { name = "cmp_tabnine", group_index = 2 },
     { name = "path", group_index = 2 },
   },
   formatting = {
@@ -139,33 +136,6 @@ cmp.setup({
     --   winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
     -- },
   },
-})
-
--- Set configuration for specific filetype.
-cmp.setup.filetype('gitcommit', {
-  sources = cmp.config.sources({
-    { name = 'cmp_git' }, -- You can specify the `cmp_git` source if you were installed it.
-  }, {
-    { name = 'buffer' },
-  })
-})
-
--- Use buffer source for `/` and `?` (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline({ '/', '?' }, {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = {
-    { name = 'buffer' }
-  }
-})
-
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(':', {
-  mapping = cmp.mapping.preset.cmdline(),
-  sources = cmp.config.sources({
-    { name = 'path' }
-  }, {
-    { name = 'cmdline' }
-  })
 })
 
 

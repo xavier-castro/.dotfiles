@@ -9,7 +9,7 @@ vim.cmd [[packadd packer.nvim]]
 packer.startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'lewis6991/impatient.nvim'
-  use { 'svrana/neosolarized.nvim', requires = { 'tjdevries/colorbuddy.nvim' } }
+  use { 'craftzdog/neosolarized.nvim', requires = { 'tjdevries/colorbuddy.nvim' } }
   use 'nvim-lualine/lualine.nvim' -- Statusline
   use 'nvim-lua/plenary.nvim' -- Common utilities
   use 'onsails/lspkind-nvim' -- vscode-like pictograms
@@ -43,9 +43,7 @@ packer.startup(function(use)
   use 'b0o/schemastore.nvim'
   use 'abecodes/tabout.nvim'
   use 'norcalli/nvim-colorizer.lua'
-  use 'Pocco81/true-zen.nvim'
   use 'MunifTanjim/prettier.nvim'
-  use({ "iamcco/markdown-preview.nvim", run = function() vim.fn["mkdp#util#install"]() end })
   use 'akinsho/nvim-bufferline.lua'
   use 'lewis6991/gitsigns.nvim'
   use 'tpope/vim-surround'
@@ -71,8 +69,6 @@ packer.startup(function(use)
       })
     end
   }
-  use { "tzachar/cmp-tabnine", commit = "1a8fd2795e4317fd564da269cc64a2fa17ee854e",
-    run = "./install.sh" }
   use "j-hui/fidget.nvim"
   use { "akinsho/toggleterm.nvim", tag = '*', config = function()
     require("toggleterm").setup()
@@ -93,4 +89,7 @@ packer.startup(function(use)
       require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
     end
   }
+  use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
+    setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+  use('p00f/nvim-ts-rainbow')
 end)
