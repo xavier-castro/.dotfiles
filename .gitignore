@@ -1,4 +1,5 @@
 .DS_Store
 personal/*
 fish/.config/fish/functions/*
+fish/.config/fish/completions/*
 
