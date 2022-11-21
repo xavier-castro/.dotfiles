@@ -26,7 +26,6 @@ packer.startup(function(use)
   use "honza/vim-snippets"
   use({ 'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end })
-  use "p00f/nvim-ts-rainbow"
   use "JoosepAlviste/nvim-ts-context-commentstring"
   use "nvim-treesitter/nvim-treesitter-textobjects"
   use "nvim-treesitter/playground"
