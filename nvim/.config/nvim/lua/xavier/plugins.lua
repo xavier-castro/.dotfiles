@@ -43,7 +43,7 @@ packer.startup(function(use)
   use 'b0o/schemastore.nvim'
   use 'abecodes/tabout.nvim'
   use 'norcalli/nvim-colorizer.lua'
-  use 'folke/zen-mode.nvim'
+  use 'Pocco81/true-zen.nvim'
   use 'MunifTanjim/prettier.nvim'
   use({ "iamcco/markdown-preview.nvim", run = function() vim.fn["mkdp#util#install"]() end })
   use 'akinsho/nvim-bufferline.lua'
@@ -85,4 +85,12 @@ packer.startup(function(use)
   }
   use "lukas-reineke/indent-blankline.nvim"
   use "simrat39/symbols-outline.nvim"
+  use {
+    'phaazon/hop.nvim',
+    branch = 'v2', -- optional but strongly recommended
+    config = function()
+      -- you can configure Hop the way you like here; see :h hop-config
+      require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' }
+    end
+  }
 end)
