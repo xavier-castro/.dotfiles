@@ -33,6 +33,7 @@ packer.startup(function(use)
   use 'nvim-telescope/telescope-file-browser.nvim'
   use 'windwp/nvim-autopairs'
   use 'windwp/nvim-ts-autotag'
+  use 'b0o/schemastore.nvim'
   use 'abecodes/tabout.nvim'
   use 'norcalli/nvim-colorizer.lua'
   use 'folke/zen-mode.nvim'
