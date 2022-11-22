@@ -8,7 +8,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Personal settings
-Remap.nnoremap("lf", "<cmd>Prettier<cr>")
+Remap.nnoremap("<leader>lf", "<cmd>Prettier<cr>")
 Remap.nnoremap("<leader>h", ":nohl<cr>")
 Remap.inoremap("jk", "<esc>")
 Remap.nnoremap("<leader>s", ":set wrap!<cr>")
