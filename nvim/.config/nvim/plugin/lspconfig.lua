@@ -25,6 +25,11 @@ local on_attach = function(client, bufnr)
   --local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
   --buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
+  if client.name == "tailwindcss" then
+    require('telescope').load_extension('tailiscope')
+    vim.keymap.set("n", ";tw", "<cmd>Telescope tailiscope<cr>")
+  end
+
   -- Mappings.
   local opts = { noremap = true, silent = true }
 

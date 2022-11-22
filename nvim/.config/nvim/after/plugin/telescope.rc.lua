@@ -144,6 +144,7 @@ telescope.setup {
 telescope.load_extension('fzy_native')
 telescope.load_extension("file_browser")
 telescope.load_extension("harpoon")
+telescope.load_extension('tailiscope')
 
 vim.keymap.set('n', ';x', function()
   trouble.open_with_trouble()

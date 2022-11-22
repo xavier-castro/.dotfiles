@@ -1,5 +1,4 @@
 require('xavier.base')
-require('impatient').enable_profile()
 require('xavier.highlights')
 require('xavier.maps')
 require('xavier.plugins')
