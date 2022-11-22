@@ -10,6 +10,7 @@ local lsp_formatting = function(bufnr)
     end,
     bufnr = bufnr,
   })
+  "<cmd>Prettier<cr>"
 end
 
 null_ls.setup {

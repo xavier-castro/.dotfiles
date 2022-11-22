@@ -1,5 +1,6 @@
 vim.cmd("autocmd!")
 vim.cmd [[set iskeyword+=-]]
+vim.opt.clipboard = "unnamedplus"
 vim.scriptencoding = 'utf-8'
 vim.opt.encoding = 'utf-8'
 vim.opt.fileencoding = 'utf-8'

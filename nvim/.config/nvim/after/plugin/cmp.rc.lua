@@ -56,35 +56,8 @@ cmp.setup({
     end,
   }),
   sources = {
-    {
-      name = "copilot",
-      trigger_characters = {
-        {
-          ".",
-          ":",
-          "(",
-          "'",
-          '"',
-          "[",
-          ",",
-          "#",
-          "*",
-          "@",
-          "|",
-          "=",
-          "-",
-          "{",
-          "/",
-          "\\",
-          "+",
-          "?",
-          " ",
-          -- "\t",
-          -- "\n",
-        },
-      },
-      group_index = 2,
-    },
+    { name = "copilot", group_index = 2 },
+    { name = "cmp_tabnine" },
     {
       name = "nvim_lsp",
       filter = function(entry, ctx)

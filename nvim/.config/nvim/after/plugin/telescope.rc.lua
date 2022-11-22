@@ -8,6 +8,7 @@ local function telescope_buffer_dir()
 end
 
 local fb_actions = require "telescope".extensions.file_browser.actions
+local trouble = require("trouble.providers.telescope")
 
 telescope.setup {
   defaults = {
@@ -143,6 +144,10 @@ telescope.setup {
 telescope.load_extension('fzy_native')
 telescope.load_extension("file_browser")
 telescope.load_extension("harpoon")
+
+vim.keymap.set('n', ';x', function()
+  trouble.open_with_trouble()
+end)
 
 vim.keymap.set('n', ';f',
   function()
