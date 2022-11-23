@@ -91,6 +91,7 @@ packer.startup(function(use)
   -- NAVIGATION RELATED END --
 
   -- UI QOL RELATED START --
+  use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' } -- git client
   use 'nvim-lualine/lualine.nvim' -- Statusline
   use "RRethy/vim-illuminate"
   use 'norcalli/nvim-colorizer.lua'

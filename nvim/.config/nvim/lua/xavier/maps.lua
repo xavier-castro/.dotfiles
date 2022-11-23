@@ -2,12 +2,13 @@ local Remap = require("xavier.keymap")
 local keymap = vim.keymap
 local opts = { noremap = true, silent = true }
 
---Remap space as leader key
+--Remap space a; leader key
 vim.api.nvim_set_keymap("n", "<Space>", "", opts)
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Personal settings
+Remap.nnoremap(";s", "<cmd>SymbolsOutline<cr>")
 Remap.nnoremap("<leader>lf", "<cmd>Prettier<cr>")
 Remap.nnoremap("<leader>h", ":nohl<cr>")
 Remap.inoremap("jk", "<esc>")
