@@ -1,5 +1,7 @@
 # README
 
+STILL IN PROGRESS!!!!!
+
 ## Credit and Inspiration
 
 First and foremost I want to give a shout out to the following people. Without diving into their settings as inspiration I would still be figuring out how to add completions to my neovim.
@@ -15,3 +17,9 @@ Currently my rolemodel for developing apps. LOVE his clean theme and almost all 
 ### [ThePrimeagen](https://github.com/ThePrimeagen)
 
 The man who opened my eyes in the first place with how powerful vim is and showed me the light that it is possible to switch from VSCode to terminal and still be top tier without going crazy(ok maybe a little crazy). Love this guy!
+
+## Preview
+
+![Terminal Example](./assets/terminal_example.png)
+![Neovim Opening](./assets/neovim_opening.png)
+![Editing Example](./assets/copilot_example.gif)
