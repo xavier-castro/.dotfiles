@@ -1,5 +1,19 @@
 # README
 
+## TOC
+
+<!-- vim-markdown-toc GFM -->
+
+- [TOFIX](#tofix)
+- [TODO](#todo)
+- [Preview](#preview)
+- [Credit and Inspiration](#credit-and-inspiration)
+  - [ChristianChiarulli AKA chris@machine](#christianchiarulli-aka-chrismachine)
+  - [Craftzdog](#craftzdog)
+  - [ThePrimeagen](#theprimeagen)
+
+<!-- vim-markdown-toc -->
+
 STILL IN PROGRESS!!!!!
 
 ## TOFIX
@@ -15,6 +29,12 @@ STILL IN PROGRESS!!!!!
 - [] Create 'bones' branch with a lot less extensions
 - [] List out keybinds I'm using 24/7 so its easier for a fresh-installer to jump in
 
+## Preview
+
+![Terminal Example](./assets/terminal_example.png)
+![Neovim Opening](./assets/neovim_opening.png)
+![Editing Example](./assets/copilot_example.gif)
+
 ## Credit and Inspiration
 
 First and foremost I want to give a shout out to the following people. Without diving into their settings as inspiration I would still be scratching my head on how to even add an extension let alone a clean setup.
@@ -27,6 +47,7 @@ His nvim dotfiles and youtube videos helped me so much with getting my feet wet 
 
 - [Youtube](https://www.youtube.com/@chrisatmachine)
 - [Website](https://www.chrisatmachine.com/)
+- [Nvim settings I frequently went to](https://github.com/ChristianChiarulli/nvim/tree/master/lua/user)
 
 ### [Craftzdog](https://github.com/craftzdog)
 
@@ -41,9 +62,3 @@ Currently my rolemodel for developing apps. LOVE his clean theme and almost all 
 The man who opened my eyes in the first place with how powerful vim is and showed me the light that it is possible to switch from VSCode to terminal and still be top tier without going crazy (ok maybe a little crazy). Love this guy!
 
 - [Youtube](https://www.youtube.com/c/theprimeagen)
-
-## Preview
-
-![Terminal Example](./assets/terminal_example.png)
-![Neovim Opening](./assets/neovim_opening.png)
-![Editing Example](./assets/copilot_example.gif)

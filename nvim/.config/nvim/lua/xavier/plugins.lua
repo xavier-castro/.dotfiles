@@ -101,5 +101,8 @@ packer.startup(function(use)
   use { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end }
   use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
     setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+  use 'preservim/vim-markdown'
+  use 'godlygeek/tabular'
+  use 'mzlogin/vim-markdown-toc'
   -- UI QUOL RELATED END --
 end)
