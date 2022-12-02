@@ -158,7 +158,5 @@ Resource list of all the design tools to make your projects cleaner
 [stars-url]: https://github.com/xavier-castro/.dotfiles/stargazers
 [issues-shield]: https://img.shields.io/github/issues/xavier-castro/.dotfiles.svg?style=for-the-badge
 [issues-url]: https://github.com/xavier-castro/.dotfiles/issues
-[license-shield]: https://img.shields.io/github/license/xavier-castro/.dotfiles.svg?style=for-the-badge
-[license-url]: https://github.com/xavier-castro/.dotfiles/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/xavier-castro-9b2a01153
