@@ -83,15 +83,6 @@ packer.startup(function(use)
   use { 'phaazon/hop.nvim', branch = 'v2',
     config = function() require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' } end }
   use "simrat39/symbols-outline.nvim"
-  use {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v2.x",
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim",
-    }
-  }
   -- NAVIGATION RELATED END --
 
   -- UI QOL RELATED START --
