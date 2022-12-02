@@ -1,31 +1,9 @@
 local icons = require("xavier.icons")
 
-local function getTelescopeOpts(state, path)
-  return {
-    cwd = path,
-    search_dirs = { path },
-    attach_mappings = function(prompt_bufnr, map)
-      local actions = require "telescope.actions"
-      actions.select_default:replace(function()
-        actions.close(prompt_bufnr)
-        local action_state = require "telescope.actions.state"
-        local selection = action_state.get_selected_entry()
-        local filename = selection.filename
-        if (filename == nil) then
-          filename = selection[1]
-        end
-        -- any way to open the file without triggering auto-close event of neo-tree?
-        require("neo-tree.sources.filesystem").navigate(state, state.path, filename)
-      end)
-      return true
-    end
-  }
-end
-
 require("neo-tree").setup({
   source_selector = {
     winbar = true,
-    statusline = false,
+    statusline = true,
   },
   close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
   popup_border_style = "rounded",
@@ -68,7 +46,7 @@ require("neo-tree").setup({
       highlight = "NeoTreeFileIcon"
     },
     modified = {
-      symbol = "[+]",
+      symbol = icons.git.Diff,
       highlight = "NeoTreeModified",
     },
     name = {
@@ -94,7 +72,7 @@ require("neo-tree").setup({
   },
   window = {
     position = "left",
-    width = 40,
+    width = 35,
     mapping_options = {
       noremap = true,
       nowait = true,
@@ -103,8 +81,6 @@ require("neo-tree").setup({
       ["e"] = function() vim.api.nvim_exec("Neotree focus filesystem left", true) end,
       ["b"] = function() vim.api.nvim_exec("Neotree focus buffers left", true) end,
       ["g"] = function() vim.api.nvim_exec("Neotree focus git_status left", true) end,
-      ["tf"] = "telescope_find",
-      ["tg"] = "telescope_grep",
       ["o"] = "system_open",
       ["<space>"] = {
         "toggle_node",
@@ -156,10 +132,32 @@ require("neo-tree").setup({
   },
   nesting_rules = {},
   filesystem = {
+    components = {
+      harpoon_index = function(config, node, state)
+        local Marked = require("harpoon.mark")
+        local path = node:get_id()
+        local succuss, index = pcall(Marked.get_index_of, path)
+        if succuss and index and index > 0 then
+          return {
+            text = string.format(" ⥤ %d", index), -- <-- Add your favorite harpoon like arrow here
+            highlight = config.highlight or "NeoTreeDirectoryIcon",
+          }
+        else
+          return {}
+        end
+      end
+    },
+    renderers = {
+      file = {
+        { "icon" },
+        { "name", use_git_status_colors = true },
+        { "harpoon_index" }, --> This is what actually adds the component in where you want it
+        { "diagnostics" },
+        { "git_status", highlight = "NeoTreeDimText" },
+      }
+    },
     window = {
       mappings = {
-        ["tf"] = "telescope_find",
-        ["tg"] = "telescope_grep",
         ["<bs>"] = "navigate_up",
         ["."] = "set_root",
         ["H"] = "toggle_hidden",
@@ -173,22 +171,12 @@ require("neo-tree").setup({
       },
     },
     commands = {
-      telescope_find = function(state)
-        local node = state.tree:get_node()
-        local path = node:get_id()
-        require('telescope.builtin').find_files(getTelescopeOpts(state, path))
-      end,
-      telescope_grep = function(state)
-        local node = state.tree:get_node()
-        local path = node:get_id()
-        require('telescope.builtin').live_grep(getTelescopeOpts(state, path))
-      end,
       system_open = function(state)
         local node = state.tree:get_node()
         local path = node:get_id()
         -- macOs: open file in default application in the background.
         -- Probably you need to adapt the Linux recipe for manage path with spaces. I don't have a mac to try.
-        vim.api.nvim_command("silent !open -g " .. path)
+        vim.api.nvim_command("silent !open " .. path)
         -- Linux: open file in default application
         vim.api.nvim_command(string.format("silent !xdg-open '%s'", path))
       end,
@@ -199,17 +187,17 @@ require("neo-tree").setup({
       hide_gitignored = false,
       hide_hidden = true, -- only works on Windows for hidden files/directories
       hide_by_name = {
-        -- "node_modules"
+        "node_modules"
       },
       hide_by_pattern = { -- uses glob style patterns
         --"*.meta",
         --"*/src/*/tsconfig.json",
       },
       always_show = { -- remains visible even if other settings would normally hide it
-        --".gitignored",
+        ".gitignored",
       },
       never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
-        --".DS_Store",
+        ".DS_Store",
         --"thumbs.db"
       },
       never_show_by_pattern = { -- uses glob style patterns

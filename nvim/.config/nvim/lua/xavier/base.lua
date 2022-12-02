@@ -81,5 +81,13 @@ vim.api.nvim_create_autocmd({ "BufEnter" }, {
   end,
 })
 
+vim.cmd [[
+augroup remember_folds
+  autocmd!
+  au BufWinLeave ?* mkview 1
+  au BufWinEnter ?* silent! loadview 1
+augroup END
+]]
+
 -- Add asterisks in block comments
 vim.opt.formatoptions:append { 'r' }

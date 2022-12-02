@@ -1,6 +1,6 @@
 local status, lspkind = pcall(require, "lspkind")
 if (not status) then return end
-local icons = require("xavier.icons")
+-- local icons = require("xavier.icons")
 
 lspkind.init({
   -- enables text annotations
@@ -45,12 +45,13 @@ lspkind.init({
     Operator = "",
     TypeParameter = "",
     CmpItemKindCopilot = "",
+    CmpItemKindTabnine = "",
     Copilot = "",
   },
 
   before = function(entry, vim_item)
     if entry.source.name == "cmp_tabnine" then
-      vim_item.kind = icons.misc.robot
+      vim_item.kind = ""
       vim_item.kind_hl_group = "CmpItemKindTabnine"
     end
     if entry.source.name == "copilot" then
