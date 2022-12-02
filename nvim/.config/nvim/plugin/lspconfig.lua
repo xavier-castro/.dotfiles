@@ -1,4 +1,3 @@
---vim.lsp.set_log_level("debug")
 local status, nvim_lsp = pcall(require, "lspconfig")
 if (not status) then return end
 
@@ -18,6 +17,7 @@ end
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
+---@diagnostic disable-next-line: unused-local
 local on_attach = function(client, bufnr)
   local function buf_set_keymap(...) vim.api.nvim_buf_set_keymap(bufnr, ...) end
 
@@ -27,6 +27,7 @@ local on_attach = function(client, bufnr)
 
   -- if client.name == "tailwindcss" then
   -- end
+  -- require('lsp_signature').on_attach()
 
   -- Mappings.
   local opts = { noremap = true, silent = true }
@@ -129,6 +130,60 @@ nvim_lsp.cssls.setup {
   on_attach = on_attach,
   capabilities = capabilities
 }
+
+nvim_lsp.pyright.setup {
+  capabilities = capabilities,
+  ---@diagnostic disable-next-line: unused-local
+  on_attach = function(client, bufnr)
+    client.server_capabilities.hover = false
+    client.server_capabilities.definition = false
+    client.server_capabilities.signature_help = false
+  end,
+  settings = {
+    python = {
+      analysis = {
+        useLibraryCodeForTypes = true,
+        diagnosticSeverityOverrides = {
+          reportGeneralTypeIssues = "none",
+          reportOptionalMemberAccess = "none",
+          reportOptionalSubscript = "none",
+          reportPrivateImportUsage = "none",
+        },
+        autoImportCompletions = false,
+      },
+      linting = { pylintEnabled = false }
+    }
+  },
+}
+
+nvim_lsp.pylsp.setup {
+  capabilities = capabilities,
+  ---@diagnostic disable-next-line: unused-local
+  on_attach = function(client, bufnr)
+    client.server_capabilities.rename = false
+    client.server_capabilities.completion = false
+  end,
+  settings = {
+    pylsp = {
+      builtin = {
+        installExtraArgs = { 'flake8', 'pycodestyle', 'pydocstyle', 'pyflakes', 'pylint', 'yapf' },
+      },
+      plugins = {
+        jedi_completion = { enabled = false },
+        rope_completion = { enabled = false },
+        flake8 = { enabled = false },
+        pyflakes = { enabled = false },
+        pycodestyle = {
+          ignore = { 'E226', 'E266', 'E302', 'E303', 'E304', 'E305', 'E402', 'C0103', 'W0104', 'W0621', 'W391', 'W503',
+            'W504' },
+          maxLineLength = 99,
+        },
+      },
+    },
+  },
+}
+
+
 
 nvim_lsp.astro.setup {
   on_attach = on_attach,
