@@ -1,36 +1,63 @@
-local status, bufferline = pcall(require, "bufferline")
-if (not status) then return end
-
-bufferline.setup({
+require("bufferline").setup({
   options = {
-    mode = "tabs",
-    separator_style = 'slant',
-    always_show_bufferline = false,
-    show_buffer_close_icons = false,
+    buffer_close_icon = "",
+    close_command = "Bdelete %d",
+    close_icon = "",
+    indicator = {
+      style = "icon",
+      icon = "",
+    },
+    left_trunc_marker = "",
+    modified_icon = "●",
+    offsets = { { filetype = "NvimTree", text = "EXPLORER", text_align = "center" } },
+    right_mouse_command = "Bdelete! %d",
+    right_trunc_marker = "",
     show_close_icon = false,
-    color_icons = true
+    show_tab_indicators = true,
   },
   highlights = {
-    separator = {
-      fg = '#073642',
-      bg = '#002b36',
-    },
-    separator_selected = {
-      fg = '#073642',
+    fill = {
+      fg = { attribute = "fg", highlight = "Normal" },
+      bg = { attribute = "bg", highlight = "StatusLineNC" },
     },
     background = {
-      fg = '#657b83',
-      bg = '#002b36'
+      fg = { attribute = "fg", highlight = "Normal" },
+      bg = { attribute = "bg", highlight = "StatusLine" },
+    },
+    buffer_visible = {
+      underline = true,
+      fg = { attribute = "fg", highlight = "Normal" },
+      bg = { attribute = "bg", highlight = "Normal" },
     },
     buffer_selected = {
-      fg = '#fdf6e3',
-      bold = true,
+      underline = true,
+      fg = { attribute = "fg", highlight = "Normal" },
+      bg = { attribute = "bg", highlight = "Normal" },
     },
-    fill = {
-      bg = '#073642'
-    }
+    separator = {
+      fg = { attribute = "bg", highlight = "Normal" },
+      bg = { attribute = "bg", highlight = "StatusLine" },
+    },
+    separator_selected = {
+      fg = { attribute = "fg", highlight = "Special" },
+      bg = { attribute = "bg", highlight = "Normal" },
+    },
+    separator_visible = {
+      fg = { attribute = "fg", highlight = "Normal" },
+      bg = { attribute = "bg", highlight = "StatusLineNC" },
+    },
+    close_button = {
+      fg = { attribute = "fg", highlight = "Normal" },
+      bg = { attribute = "bg", highlight = "StatusLine" },
+    },
+    close_button_selected = {
+      fg = { attribute = "fg", highlight = "normal" },
+      bg = { attribute = "bg", highlight = "normal" },
+    },
+    close_button_visible = {
+      fg = { attribute = "fg", highlight = "normal" },
+      bg = { attribute = "bg", highlight = "normal" },
+    },
   },
 })
 
-vim.keymap.set('n', '<Tab>', '<Cmd>BufferLineCycleNext<CR>', {})
-vim.keymap.set('n', '<S-Tab>', '<Cmd>BufferLineCyclePrev<CR>', {})

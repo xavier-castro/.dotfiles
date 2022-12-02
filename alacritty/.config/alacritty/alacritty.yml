@@ -62,49 +62,93 @@ scrolling:
   faux_multiplier: 3
   auto_scroll: false
 
-# Font configuration (changes require restart)
 font:
-  # The normal (roman) font face to use.
-  # Style can be specified to pick a specific face.
+  size: 11
   normal:
-    family: FiraCode Nerd Font Mono
-    style: Retina
+    family: FiraCode Nerd Font
+    style: Regular
   bold:
-    family: FiraCode Nerd Font Mono
-    style: Medium
+    family: FiraCode Nerd Font
   italic:
-    family: FiraCode Nerd Font Mono
-    style: "Light Italic"
-  size: 13.0
+    family: FiraCode Nerd Font
 
-  # Offset is the extra space around each character. offset.y can be thought of
-  # as modifying the linespacing, and offset.x as modifying the letter spacing.
-  offset:
-    x: 0
-    y: 0
+window.opacity: 1
 
-  # Glyph offset determines the locations of the glyphs within their cells with
-  # the default being at the bottom. Increase the x offset to move the glyph to
-  # the right, increase the y offset to move the glyph upward.
-  glyph_offset:
-    x: 0
-    y: 0
+schemes:
+  codelight: &light
+    primary:
+      background: "#ffffff"
+      foreground: "#1e1e1e"
 
-  # Thin stroke font rendering (macOS only)
-  #
-  # Thin strokes are suitable for retina displays, but for non-retina you
-  # probably want this set to false.
-  #
-  # macOS >= 10.14.x:
-  #
-  # If the font quality on non-retina display looks bad then set
-  # `use_thin_strokes` to `true` and enable font smoothing by running the
-  # following command:
-  #   `defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO`
-  #
-  # This is a global setting and will require a log out or restart to take
-  # effect.
-  AppleFontSmoothing: true
+    cursor:
+      text: "#d4d4d4"
+      cursor: "#d4d4d4"
+
+    normal:
+      black: "#1e1e1e"
+      red: "#c72e0f"
+      green: "#009000"
+      yellow: "#795e25"
+      blue: "#007acc"
+      magenta: "#af00db"
+      cyan: "#56b6c2"
+      white: "#d4d4d4"
+
+    bright:
+      black: "#1e1e1e"
+      red: "#c72e0f"
+      green: "#009000"
+      yellow: "#795e25"
+      blue: "#007acc"
+      magenta: "#af00db"
+      cyan: "#56b6c2"
+      white: "#d4d4d4"
+
+  codedark: &dark
+    primary:
+      background: "#1e1e1e"
+      foreground: "#d4d4d4"
+
+    cursor:
+      text: "#d4d4d4"
+      cursor: "#d4d4d4"
+
+    normal:
+      black: "#1e1e1e"
+      red: "#f44747"
+      green: "#608b4e"
+      yellow: "#dcdcaa"
+      blue: "#569cd6"
+      magenta: "#c678dd"
+      cyan: "#56b6c2"
+      white: "#d4d4d4"
+
+    bright:
+      black: "#545454"
+      red: "#f44747"
+      green: "#608b4e"
+      yellow: "#dcdcaa"
+      blue: "#569cd6"
+      magenta: "#c678dd"
+      cyan: "#56b6c2"
+      white: "#d4d4d4"
+
+colors: *dark
+# Font configuration (changes require restart)
+# Thin stroke font rendering (macOS only)
+#
+# Thin strokes are suitable for retina displays, but for non-retina you
+# probably want this set to false.
+#
+# macOS >= 10.14.x:
+#
+# If the font quality on non-retina display looks bad then set
+# `use_thin_strokes` to `true` and enable font smoothing by running the
+# following command:
+#   `defaults write -g CGFontRenderingFontSmoothingDisabled -bool NO`
+#
+# This is a global setting and will require a log out or restart to take
+# effect.
 
 # When true, bold text is drawn using the bright variant of colors.
 draw_bold_text_with_bright_colors: true
@@ -112,25 +156,6 @@ draw_bold_text_with_bright_colors: true
 # Use custom cursor colors. If true, display the cursor in the cursor.foreground
 # and cursor.background colors, otherwise invert the colors of the cursor.
 custom_cursor_colors: false
-
-# Colors (Doom One)
-colors:
-  primary:
-    background: "#1D1D1D"
-    foreground: "0xbbc2cf"
-  normal:
-    black: "0x282c34"
-    red: "0xff6c6b"
-    green: "0x98be65"
-    yellow: "0xecbe7b"
-    blue: "0x51afef"
-    magenta: "0xc678dd"
-    cyan: "0x46d9ff"
-    white: "0xbbc2cf" # primary:
-bell:
-  animation: EaseOutExpo
-  color: "0xffffff"
-  duration: 0
 
 key_bindings:
   - { key: A, mods: Alt, chars: "\x1ba" }

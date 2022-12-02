@@ -21,6 +21,7 @@ Remap.inoremap("jk", "<esc>")
 Remap.nnoremap("<leader>tw", ":set wrap!<cr>")
 Remap.nnoremap("<leader>ng", "<cmd>Neogit<cr>")
 Remap.nnoremap("\\", "<cmd>NeoTreeFloatToggle<cr>")
+Remap.nnoremap("<leader>vsc", ":colorscheme vscode<cr>")
 -- Harpoon
 Remap.nnoremap("mm", "<cmd>lua require('harpoon.mark').add_file()<cr>")
 Remap.nnoremap(";m", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>")

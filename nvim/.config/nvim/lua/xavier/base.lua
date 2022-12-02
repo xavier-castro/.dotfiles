@@ -113,5 +113,6 @@ augroup remember_folds
 augroup END
 ]]
 
+
 -- Add asterisks in block comments
 -- vim.opt.formatoptions:append { 'r' }
