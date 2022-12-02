@@ -23,7 +23,7 @@ Remap.nnoremap(";m", "<cmd>Telescope harpoon marks<cr>")
 
 -- New tab
 keymap.set('n', 'te', ':tabedit')
-Remap.nnoremap("tt", "<C-w>T") -- Create new tab off current window
+Remap.nnoremap("tt", ':tabnew<cr>') -- Create new tab off current window
 Remap.nnoremap("Q", ":tabclose<cr>")
 
 -- Split window
