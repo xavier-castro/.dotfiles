@@ -155,18 +155,18 @@ vim.keymap.set('n', ';f',
 vim.keymap.set('n', ';o', function()
   builtin.oldfiles()
 end)
-vim.keymap.set('n', '\\', function()
-  telescope.extensions.file_browser.file_browser({
-    path = "%:p:h",
-    cwd = telescope_buffer_dir(),
-    respect_gitignore = false,
-    hidden = true,
-    grouped = true,
-    previewer = false,
-    initial_mode = "normal",
-    layout_config = { height = 40 }
-  })
-end)
+-- vim.keymap.set('n', '\\', function()
+--   telescope.extensions.file_browser.file_browser({
+--     path = "%:p:h",
+--     cwd = telescope_buffer_dir(),
+--     respect_gitignore = false,
+--     hidden = true,
+--     grouped = true,
+--     previewer = false,
+--     initial_mode = "normal",
+--     layout_config = { height = 40 }
+--   })
+-- end)
 vim.keymap.set('n', ';b', function()
   builtin.buffers()
 end)
