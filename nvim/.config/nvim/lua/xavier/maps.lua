@@ -13,6 +13,9 @@ Remap.nnoremap("<leader>lf", "<cmd>Prettier<cr>")
 Remap.nnoremap("<leader>h", ":nohl<cr>")
 Remap.inoremap("jk", "<esc>")
 Remap.nnoremap("<leader>s", ":set wrap!<cr>")
+-- Neotree
+Remap.nnoremap("<leader>\\t", "<cmd>Neotree dir=%:p:h:h<cr>")
+Remap.nnoremap("<leader>\\b", "<cmd>Neotree buffers<cr>")
 -- Harpoon
 Remap.nnoremap("mm", "<cmd>lua require('harpoon.mark').add_file()<cr>")
 Remap.nnoremap(";m", "<cmd>Telescope harpoon marks<cr>")
@@ -20,6 +23,7 @@ Remap.nnoremap(";m", "<cmd>Telescope harpoon marks<cr>")
 -- New tab
 keymap.set('n', 'te', ':tabedit')
 Remap.nnoremap("tt", "<C-w>T") -- Create new tab off current window
+Remap.nnoremap("Q", ":tabclose")
 
 -- Split window
 keymap.set('n', 'ss', ':split<Return><C-w>w')
