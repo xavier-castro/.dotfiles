@@ -13,6 +13,9 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Personal settings
+-- Buffer speed
+Remap.nnoremap("<s-l>", ":bn<cr>")
+Remap.nnoremap("<s-h>", ":bprevious<cr>")
 Remap.nnoremap("<cr>", ":noh<cr><cr>")
 Remap.nnoremap(";s", "<cmd>SymbolsOutline<cr>")
 Remap.nnoremap("<leader>lp", "<cmd>Prettier<cr>")

@@ -16,6 +16,7 @@ vim.opt.fileencoding = 'utf-8'
 vim.opt.smartcase = true
 vim.opt.pumheight = 10
 vim.wo.number = true
+vim.wo.relativenumber = true
 vim.o.numberwidth = 4
 vim.o.signcolumn = "yes"
 vim.opt.title = true
