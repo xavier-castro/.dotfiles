@@ -75,6 +75,7 @@ packer.startup(function(use)
   -- TREESITTER END --
 
   -- NAVIGATION RELATED START --
+  use 'Konfekt/FastFold'
   use 'ThePrimeagen/harpoon'
   use 'ThePrimeagen/refactoring.nvim'
   use 'nvim-telescope/telescope.nvim'
