@@ -48,32 +48,29 @@
 <details>
   <summary>Table of Contents</summary>
   <ol>
-    <!-- <li> -->
-    <!--   <a href="#about-the-project">About The Project</a> -->
-    <!--   <ul> -->
-    <!--     <li><a href="#built-with">Built With</a></li> -->
-    <!--   </ul> -->
-    <!-- </li> -->
     <li><a href="#demo">Demo</a></li>
-    <!--   <a href="#getting-started">Getting Started</a> -->
-    <!--   <ul> -->
-    <!--     <li><a href="#prerequisites">Prerequisites</a></li> -->
-    <!--     <li><a href="#installation">Installation</a></li> -->
-    <!--   </ul> -->
-    <!-- </li> -->
-    <li><a href="#roadmap">Roadmap</a></li>
-    <!-- <li><a href="#contributing">Contributing</a></li> -->
-    <!-- <li><a href="#license">License</a></li> -->
-    <!-- <li><a href="#contact">Contact</a></li> -->
+    <li>
+     <a href="#roadmap">Roadmap</a>
+     <ul>
+      <li><a href="#todo">Todo</a></li>
+     </ul>
+    </li>
     <li>
       <a href="#acknowledgments">Acknowledgments</a>
+      <ul>
+      <a href="#people">People</a>
       <ul>
         <li><a href="#chrisatmachine">ChrisAtMachine</a></li>
         <li><a href="#craftzdog">Craftzdog</a></li>
         <li><a href="#theprimeagen">The Primeagen</a></li>
       </ul>
+      </ul>
+      <ul>
+        <a href="#links">Links</a>
+        <ul>
+        </ul>
+      </ul>
     </li>
-
   </ol>
 </details>
 
@@ -89,13 +86,10 @@
 
 ## Roadmap
 
+### Todo
+
 - [ ] Add keybinds cheatsheet
 - [ ] Fix intellisense
-- [ ] List all useful software and resources you used to make this project happen
-  - [ ] [Shields](https://shields.io/)
-  - [ ] [This readme](https://raw.githubusercontent.com/othneildrew/Best-README-Template/master/BLANK_README.md)
-  - [ ] [Awesome design tools](https://github.com/goabstract/Awesome-Design-Tools/blob/master/README.md)
-  - [ ] [Logo maker](https://www.freelogodesign.org/)
 
 See the [open issues](https://github.com/xavier-castro/.dotfiles/issues) for a full list of proposed features (and known issues).
 
@@ -103,13 +97,13 @@ See the [open issues](https://github.com/xavier-castro/.dotfiles/issues) for a f
 
 ## Acknowledgments
 
+### People
+
 First and foremost I want to give a shout out to the following people. Without diving into their settings as inspiration I would still be scratching my head on how to even add an extension let alone a clean setup.
 
 I have shamelessly copy-pasted a lot of the following peoples settings and tweaked it for my needs.
 
-### [ChristianChiarulli AKA chris@machine](https://github.com/ChristianChiarulli)
-
-<a name="chrisatmachine"></a>
+#### [ChristianChiarulli AKA chris@machine](https://github.com/ChristianChiarulli)<a name="chrisatmachine"></a>
 
 His nvim dotfiles and youtube videos helped me so much with getting my feet wet with a custom neovim configuration.
 
@@ -117,9 +111,7 @@ His nvim dotfiles and youtube videos helped me so much with getting my feet wet 
 - [Website](https://www.chrisatmachine.com/)
 - [Nvim settings I frequently went to](https://github.com/ChristianChiarulli/nvim/tree/master/lua/user)
 
-### [Craftzdog](https://github.com/craftzdog)
-
-<a name="craftzdog"></a>
+#### [Craftzdog](https://github.com/craftzdog) <a name="craftzdog"></a>
 
 Currently my rolemodel for developing apps. LOVE his clean theme and almost all his youtube videos. PLEASE check out his website, blog, guide, etc if you really want to be inspired as an independent developer who uses neovim! His [blog](https://dev.to/craftzdog/a-productive-command-line-git-workflow-for-indie-app-developers-k7d) helped me a lot with a cleaner git workflow.
 
@@ -127,13 +119,33 @@ Currently my rolemodel for developing apps. LOVE his clean theme and almost all 
 - [Dev.to blog](https://dev.to/craftzdog)
 - [Personal Website](https://www.craftz.dog/)
 
-### [ThePrimeagen](https://github.com/ThePrimeagen)
-
-<a name="theprimeagen"></a>
+#### [ThePrimeagen](https://github.com/ThePrimeagen) <a name="theprimeagen"></a>
 
 The man who opened my eyes in the first place with how powerful vim is and showed me the light that it is possible to switch from VSCode to terminal and still be top tier without going crazy (ok maybe a little crazy). Love this guy!
 
 - [Youtube](https://www.youtube.com/c/theprimeagen)
+
+### Links
+
+#### [Shields](https://shields.io/)
+
+Provides the cool banner icons you see at the very top.
+
+#### [This readme](https://raw.githubusercontent.com/othneildrew/Best-README-Template/master/BLANK_README.md)
+
+README template I adopted
+
+#### [Logo maker](https://www.freelogodesign.org/)
+
+Used to make the top logo of xc development (I know its blurry)
+
+#### [Awesome neovim](https://github.com/rockerBOO/awesome-neovim)
+
+Resource list of all neovim plugins to get an idea
+
+#### [Awesome design tools](https://github.com/goabstract/Awesome-Design-Tools/blob/master/README.md)
+
+Resource list of all the design tools to make your projects cleaner
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 

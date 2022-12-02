@@ -15,7 +15,7 @@ Remap.nnoremap("<leader>h", ":nohl<cr>")
 Remap.inoremap("jk", "<esc>")
 Remap.nnoremap("<leader>tw", ":set wrap!<cr>")
 -- Neotree
-Remap.nnoremap("\\", "<cmd>NeoTreeFocusToggle<cr>")
+Remap.nnoremap("\\", "<cmd>NeoTreeFloatToggle<cr>")
 Remap.nnoremap("<leader>\\", "<cmd>Neotree buffers<cr>")
 -- Harpoon
 Remap.nnoremap("mm", "<cmd>lua require('harpoon.mark').add_file()<cr>")
