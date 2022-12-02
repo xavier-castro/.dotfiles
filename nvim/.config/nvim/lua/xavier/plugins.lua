@@ -83,6 +83,7 @@ packer.startup(function(use)
   -- NAVIGATION RELATED END --
 
   -- UI QOL RELATED START --
+  use { 'folke/zen-mode.nvim', config = function() require("zen-mode").setup() end }
   use {
     "nvim-neo-tree/neo-tree.nvim",
     branch = "v2.x",

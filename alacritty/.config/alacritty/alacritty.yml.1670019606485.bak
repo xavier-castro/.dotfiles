@@ -136,32 +136,32 @@ schemes:
       white: "#d4d4d4"
 
 colors:
-  name: Deafened
-  author: ""
+  name: Codeschool (light)
+  author: Chris Kempson
   primary:
-    background: "#000000"
-    foreground: "#ffffff"
+    background: "#b5d8f6"
+    foreground: "#2a343a"
   cursor:
-    text: "#000000"
-    cursor: "#ffffff"
+    text: "#b5d8f6"
+    cursor: "#2a343a"
   normal:
-    black: "#3d3e3d"
-    red: "#755a5b"
-    green: "#68755a"
-    yellow: "#756e5a"
-    blue: "#5b6976"
-    magenta: "#755b76"
-    cyan: "#465457"
-    white: "#ccccc6"
+    black: "#232c31"
+    red: "#2a5491"
+    green: "#237986"
+    yellow: "#a03b1e"
+    blue: "#484d79"
+    magenta: "#c59820"
+    cyan: "#b02f30"
+    white: "#9ea7a6"
   bright:
-    black: "#5a5b5c"
-    red: "#a37679"
-    green: "#87a376"
-    yellow: "#a39b76"
-    blue: "#758ba3"
-    magenta: "#9f76a3"
-    cyan: "#899ca1"
-    white: "#f8f8f2"
+    black: "#3f4944"
+    red: "#2a5491"
+    green: "#237986"
+    yellow: "#a03b1e"
+    blue: "#484d79"
+    magenta: "#c59820"
+    cyan: "#b02f30"
+    white: "#b5d8f6"
 # Font configuration (changes require restart)
 # Thin stroke font rendering (macOS only)
 #
@@ -376,4 +376,4 @@ shell:
     - -l
     - -c
     - "tmux attach || tmux"
-theme: Deafened
+theme: Codeschool.light

@@ -136,32 +136,36 @@ schemes:
       white: "#d4d4d4"
 
 colors:
-  name: Deafened
-  author: ""
+  # Default colors
   primary:
-    background: "#000000"
-    foreground: "#ffffff"
-  cursor:
-    text: "#000000"
-    cursor: "#ffffff"
+    background: '0xffffff'
+    foreground: '0x4d5566'
+
+  # Normal colors
   normal:
-    black: "#3d3e3d"
-    red: "#755a5b"
-    green: "#68755a"
-    yellow: "#756e5a"
-    blue: "#5b6976"
-    magenta: "#755b76"
-    cyan: "#465457"
-    white: "#ccccc6"
+    black: '0x24292e'
+    red: '0xd73a49'
+    green: '0x22863a'
+    yellow: '0xb08800'
+    blue: '0x0366d6'
+    magenta: '0x6f42c1'
+    cyan: '0x1b7c83'
+    white: '0x4d5566'
+
+  # Bright colors
   bright:
-    black: "#5a5b5c"
-    red: "#a37679"
-    green: "#87a376"
-    yellow: "#a39b76"
-    blue: "#758ba3"
-    magenta: "#9f76a3"
-    cyan: "#899ca1"
-    white: "#f8f8f2"
+    black: '0x586069'
+    red: '0xcb2431'
+    green: '0x28a745'
+    yellow: '0xdbab09'
+    blue: '0x2188ff'
+    magenta: '0x8a63d2'
+    cyan: '0x1b7c83'
+    white: '0x4d5566'
+
+  indexed_colors:
+    - { index: 16, color: '0xd18616' }
+    - { index: 17, color: '0xcb2431' }
 # Font configuration (changes require restart)
 # Thin stroke font rendering (macOS only)
 #
@@ -376,4 +380,4 @@ shell:
     - -l
     - -c
     - "tmux attach || tmux"
-theme: Deafened
+theme: github_light_default

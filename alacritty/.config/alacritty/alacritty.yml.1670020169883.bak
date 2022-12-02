@@ -136,32 +136,32 @@ schemes:
       white: "#d4d4d4"
 
 colors:
-  name: Deafened
-  author: ""
+  name: 3024 (dark)
+  author: Chris Kempson
   primary:
-    background: "#000000"
-    foreground: "#ffffff"
+    background: "#090300"
+    foreground: "#a5a2a2"
   cursor:
-    text: "#000000"
-    cursor: "#ffffff"
+    text: "#090300"
+    cursor: "#a5a2a2"
   normal:
-    black: "#3d3e3d"
-    red: "#755a5b"
-    green: "#68755a"
-    yellow: "#756e5a"
-    blue: "#5b6976"
-    magenta: "#755b76"
-    cyan: "#465457"
-    white: "#ccccc6"
+    black: "#090300"
+    red: "#db2d20"
+    green: "#01a252"
+    yellow: "#fded02"
+    blue: "#01a0e4"
+    magenta: "#a16a94"
+    cyan: "#b5e4f4"
+    white: "#a5a2a2"
   bright:
-    black: "#5a5b5c"
-    red: "#a37679"
-    green: "#87a376"
-    yellow: "#a39b76"
-    blue: "#758ba3"
-    magenta: "#9f76a3"
-    cyan: "#899ca1"
-    white: "#f8f8f2"
+    black: "#5c5855"
+    red: "#db2d20"
+    green: "#01a252"
+    yellow: "#fded02"
+    blue: "#01a0e4"
+    magenta: "#a16a94"
+    cyan: "#b5e4f4"
+    white: "#f7f7f7"
 # Font configuration (changes require restart)
 # Thin stroke font rendering (macOS only)
 #
@@ -376,4 +376,4 @@ shell:
     - -l
     - -c
     - "tmux attach || tmux"
-theme: Deafened
+theme: 3024.dark

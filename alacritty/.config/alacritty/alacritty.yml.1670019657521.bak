@@ -136,32 +136,37 @@ schemes:
       white: "#d4d4d4"
 
 colors:
-  name: Deafened
-  author: ""
-  primary:
-    background: "#000000"
-    foreground: "#ffffff"
   cursor:
-    text: "#000000"
-    cursor: "#ffffff"
+    text: '#fefff2'
+    cursor: '#f0cc09'
+
+  selection:
+    text: '#b5b5b5'
+    background: '#18354f'
+
+  primary:
+    background: '#132738'
+    foreground: '#ffffff'
+
   normal:
-    black: "#3d3e3d"
-    red: "#755a5b"
-    green: "#68755a"
-    yellow: "#756e5a"
-    blue: "#5b6976"
-    magenta: "#755b76"
-    cyan: "#465457"
-    white: "#ccccc6"
+    black: '#000000'
+    red: '#ff0000'
+    green: '#38de21'
+    yellow: '#ffe50a'
+    blue: '#1460d2'
+    magenta: '#ff005d'
+    cyan: '#00bbbb'
+    white: '#bbbbbb'
+
   bright:
-    black: "#5a5b5c"
-    red: "#a37679"
-    green: "#87a376"
-    yellow: "#a39b76"
-    blue: "#758ba3"
-    magenta: "#9f76a3"
-    cyan: "#899ca1"
-    white: "#f8f8f2"
+    black: '#555555'
+    red: '#f40e17'
+    green: '#3bd01d'
+    yellow: '#edc809'
+    blue: '#5555ff'
+    magenta: '#ff55ff'
+    cyan: '#6ae3fa'
+    white: '#ffffff'
 # Font configuration (changes require restart)
 # Thin stroke font rendering (macOS only)
 #
@@ -376,4 +381,4 @@ shell:
     - -l
     - -c
     - "tmux attach || tmux"
-theme: Deafened
+theme: Cobalt-2

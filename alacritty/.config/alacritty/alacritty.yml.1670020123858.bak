@@ -136,32 +136,32 @@ schemes:
       white: "#d4d4d4"
 
 colors:
-  name: Deafened
-  author: ""
+  name: Ocean (light)
+  author: Chris Kempson
   primary:
-    background: "#000000"
-    foreground: "#ffffff"
+    background: "#eff1f5"
+    foreground: "#4f5b66"
   cursor:
-    text: "#000000"
-    cursor: "#ffffff"
+    text: "#eff1f5"
+    cursor: "#4f5b66"
   normal:
-    black: "#3d3e3d"
-    red: "#755a5b"
-    green: "#68755a"
-    yellow: "#756e5a"
-    blue: "#5b6976"
-    magenta: "#755b76"
-    cyan: "#465457"
-    white: "#ccccc6"
+    black: "#2b303b"
+    red: "#bf616a"
+    green: "#a3be8c"
+    yellow: "#ebcb8b"
+    blue: "#8fa1b3"
+    magenta: "#b48ead"
+    cyan: "#96b5b4"
+    white: "#c0c5ce"
   bright:
-    black: "#5a5b5c"
-    red: "#a37679"
-    green: "#87a376"
-    yellow: "#a39b76"
-    blue: "#758ba3"
-    magenta: "#9f76a3"
-    cyan: "#899ca1"
-    white: "#f8f8f2"
+    black: "#65737e"
+    red: "#bf616a"
+    green: "#a3be8c"
+    yellow: "#ebcb8b"
+    blue: "#8fa1b3"
+    magenta: "#b48ead"
+    cyan: "#96b5b4"
+    white: "#eff1f5"
 # Font configuration (changes require restart)
 # Thin stroke font rendering (macOS only)
 #
@@ -376,4 +376,4 @@ shell:
     - -l
     - -c
     - "tmux attach || tmux"
-theme: Deafened
+theme: Ocean.light
