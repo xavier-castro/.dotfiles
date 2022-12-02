@@ -55,6 +55,7 @@ packer.startup(function(use)
   use { "L3MON4D3/LuaSnip", wants = { "friendly-snippets", "vim-snippets" } }
   use "rafamadriz/friendly-snippets"
   use "honza/vim-snippets"
+  use { 'saadparwaiz1/cmp_luasnip' }
   -- SNIPPETS END --
 
   -- TREESITTER START --

@@ -1,12 +1,25 @@
 local status, cmp = pcall(require, "cmp")
-if (not status) then return end
+if (not status) then
+  return
+end
 local lspkind = require 'lspkind'
+
+require("luasnip.loaders.from_vscode").lazy_load()
+require("luasnip.loaders.from_snipmate").lazy_load()
+require("luasnip").filetype_extend("javascript", { "javascriptreact" })
+require('luasnip').filetype_extend("javascript", { "html" })
+require("luasnip").filetype_extend("typescript", { "typescriptreact" })
+
+-- Load custom typescript snippets
+require("luasnip.loaders.from_vscode").lazy_load {
+  paths = { "./snippets/typescript" }
+}
 
 cmp.setup({
   snippet = {
     expand = function(args)
       require('luasnip').lsp_expand(args.body)
-    end,
+    end
   },
   mapping = cmp.mapping.preset.insert({
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
@@ -16,15 +29,22 @@ cmp.setup({
     ['<CR>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
       select = true
-    }),
+    })
   }),
-  sources = cmp.config.sources({
-    { name = 'copilot' },
-    { name = 'nvim_lsp' },
-    { name = 'buffer' },
-  }),
+  sources = cmp.config.sources({ {
+    name = 'copilot'
+  }, {
+    name = "luasnip"
+  }, {
+    name = 'nvim_lsp'
+  }, {
+    name = 'buffer'
+  } }),
   formatting = {
-    format = lspkind.cmp_format({ with_text = false, maxwidth = 50 })
+    format = lspkind.cmp_format({
+      with_text = false,
+      maxwidth = 50
+    })
   }
 })
 
