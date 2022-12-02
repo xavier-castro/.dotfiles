@@ -1,7 +1,5 @@
 <!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 
-<a name="readme-top"></a>
-
 # README
 
 <!-- PROJECT SHIELDS -->
@@ -41,7 +39,7 @@
   </p>
 </div>
 
-## Table of Contents
+## Table of Contents <a name="readme-top"></a>
 
 <!-- TABLE OF CONTENTS -->
 <details>

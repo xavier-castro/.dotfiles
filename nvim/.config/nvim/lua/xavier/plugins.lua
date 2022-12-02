@@ -13,6 +13,7 @@ packer.startup(function(use)
   use 'lewis6991/impatient.nvim'
   use 'kyazdani42/nvim-web-devicons' -- File icons
   use { 'craftzdog/neosolarized.nvim', requires = { 'tjdevries/colorbuddy.nvim' } }
+  use 'Mofiqul/vscode.nvim'
   use 'MunifTanjim/prettier.nvim'
   -- CORE END --
 
