@@ -8,18 +8,18 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Personal settings
-Remap.nnoremap("<leader>ti", "<cmd>IndentBlanklineToggle<cr>")
+-- Remap.nnoremap("<leader>ti", "<cmd>IndentBlanklineToggle<cr>")
 Remap.nnoremap(";s", "<cmd>SymbolsOutline<cr>")
 Remap.nnoremap("<leader>lf", "<cmd>Prettier<cr>")
 Remap.nnoremap("<leader>h", ":nohl<cr>")
 Remap.inoremap("jk", "<esc>")
-Remap.nnoremap("<leader>s", ":set wrap!<cr>")
+Remap.nnoremap("<leader>tw", ":set wrap!<cr>")
 -- Neotree
-Remap.nnoremap("<leader>\\t", "<cmd>NeoTreeFocusToggle<cr>")
-Remap.nnoremap("<leader>\\b", "<cmd>Neotree buffers<cr>")
+Remap.nnoremap("\\", "<cmd>NeoTreeFocusToggle<cr>")
 -- Harpoon
 Remap.nnoremap("mm", "<cmd>lua require('harpoon.mark').add_file()<cr>")
-Remap.nnoremap(";m", "<cmd>Telescope harpoon marks<cr>")
+Remap.nnoremap(";m", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>")
+Remap.nnoremap(";t", "<cmd>lua require('harpoon.term').gotoTerminal(1)<cr>")
 
 -- New tab
 keymap.set('n', 'te', ':tabedit')

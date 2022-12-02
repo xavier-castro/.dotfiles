@@ -61,7 +61,6 @@ packer.startup(function(use)
   -- SNIPPETS END --
 
   -- TREESITTER START --
-  use('p00f/nvim-ts-rainbow')
   use({ 'nvim-treesitter/nvim-treesitter',
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end })
   use "JoosepAlviste/nvim-ts-context-commentstring"
@@ -70,17 +69,14 @@ packer.startup(function(use)
   use 'windwp/nvim-autopairs'
   use 'windwp/nvim-ts-autotag'
   use 'andymass/vim-matchup'
-  use "lukas-reineke/indent-blankline.nvim"
   -- TREESITTER END --
 
   -- NAVIGATION RELATED START --
-  use 'Konfekt/FastFold'
   use 'ThePrimeagen/harpoon'
   use 'ThePrimeagen/refactoring.nvim'
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-fzy-native.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
-  use("danielvolchek/tailiscope-nvim") -- Tailwind docs in telescope
   use "ahmedkhalf/project.nvim"
   use "goolord/alpha-nvim"
   use 'abecodes/tabout.nvim'
@@ -109,8 +105,5 @@ packer.startup(function(use)
   use { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end }
   use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
     setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
-  use 'preservim/vim-markdown'
-  use 'godlygeek/tabular'
-  use 'mzlogin/vim-markdown-toc'
   -- UI QUOL RELATED END --
 end)
