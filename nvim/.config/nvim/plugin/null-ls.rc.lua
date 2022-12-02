@@ -12,7 +12,7 @@ local lsp_formatting = function(bufnr)
   })
 end
 
-null_ls.setup {
+null_ls.setup({
   sources = {
     null_ls.builtins.formatting.markdownlint,
     null_ls.builtins.formatting.black,
@@ -35,6 +35,7 @@ null_ls.setup {
     end
   end
 }
+)
 
 vim.api.nvim_create_user_command(
   'DisableLspFormatting',

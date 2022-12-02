@@ -3,7 +3,7 @@ local icons = require("xavier.icons")
 require("neo-tree").setup({
   source_selector = {
     winbar = true,
-    statusline = true,
+    statusline = false,
   },
   close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
   popup_border_style = "rounded",
