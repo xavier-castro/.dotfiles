@@ -8,6 +8,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Personal settings
+Remap.nnoremap("<leader>ti", "<cmd>IndentBlanklineToggle<cr>")
 Remap.nnoremap(";s", "<cmd>SymbolsOutline<cr>")
 Remap.nnoremap("<leader>lf", "<cmd>Prettier<cr>")
 Remap.nnoremap("<leader>h", ":nohl<cr>")

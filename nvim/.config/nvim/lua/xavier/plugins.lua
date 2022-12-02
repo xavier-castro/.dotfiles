@@ -42,7 +42,6 @@ packer.startup(function(use)
       })
     end
   }
-  use { 'tzachar/cmp-tabnine', run = './install.sh', requires = 'hrsh7th/nvim-cmp' }
   -- CMP END --
 
   -- LSP START --

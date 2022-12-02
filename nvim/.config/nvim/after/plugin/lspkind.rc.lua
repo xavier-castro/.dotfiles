@@ -49,17 +49,6 @@ lspkind.init({
   },
 
   before = function(entry, vim_item)
-    if entry.source.name == "cmp_tabnine" then
-      local detail = (entry.completion_item.data or {}).detail
-      vim_item.kind = ""
-      if detail and detail:find('.*%%.*') then
-        vim_item.kind = vim_item.kind .. ' ' .. detail
-      end
-
-      if (entry.completion_item.data or {}).multiline then
-        vim_item.kind = vim_item.kind .. ' ' .. '[ML]'
-      end
-    end
     if entry.source.name == "copilot" then
       vim_item.kind = ""
       vim_item.kind_hl_group = "CmpItemKindCopilot"
@@ -72,7 +61,6 @@ lspkind.init({
       nvim_lua = "",
       luasnip = "",
       buffer = "",
-      cmp_tabnine = "",
       path = "",
     })[entry.source.name]
     return vim_item
@@ -80,4 +68,3 @@ lspkind.init({
 })
 
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
-vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
