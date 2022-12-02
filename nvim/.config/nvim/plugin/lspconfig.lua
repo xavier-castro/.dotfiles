@@ -25,11 +25,6 @@ local on_attach = function(client, bufnr)
   --local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
   --buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
 
-  -- if client.name == "tailwindcss" then
-  -- end
-  -- require('lsp_signature').on_attach()
-
-  -- Mappings.
   local opts = { noremap = true, silent = true }
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
@@ -37,6 +32,8 @@ local on_attach = function(client, bufnr)
   --buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
   --buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  -- vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
+
 end
 
 protocol.CompletionItemKind = {
@@ -99,6 +96,24 @@ nvim_lsp.sourcekit.setup {
   capabilities = capabilities,
 }
 
+nvim_lsp.efm.setup {
+  on_attach = on_attach,
+  flags = {
+    debounce_text_changes = 150,
+  },
+  init_options = { documentFormatting = true },
+  filetypes = { "python" },
+  settings = {
+    rootMarkers = { ".git/" },
+    languages = {
+      python = {
+        { formatCommand = "black --quiet -", formatStdin = true }
+      }
+    }
+  }
+}
+
+
 nvim_lsp.sumneko_lua.setup {
   capabilities = capabilities,
   on_attach = function(client, bufnr)
@@ -136,8 +151,9 @@ nvim_lsp.pyright.setup {
   ---@diagnostic disable-next-line: unused-local
   on_attach = function(client, bufnr)
     client.server_capabilities.hover = false
-    client.server_capabilities.definition = false
-    client.server_capabilities.signature_help = false
+    client.server_capabilities.definition = true
+    client.server_capabilities.signature_help = true
+    client.server_capabilities.document_formatting = false
   end,
   settings = {
     python = {
@@ -149,7 +165,7 @@ nvim_lsp.pyright.setup {
           reportOptionalSubscript = "none",
           reportPrivateImportUsage = "none",
         },
-        autoImportCompletions = false,
+        autoImportCompletions = true,
       },
       linting = { pylintEnabled = false }
     }
@@ -161,7 +177,8 @@ nvim_lsp.pylsp.setup {
   ---@diagnostic disable-next-line: unused-local
   on_attach = function(client, bufnr)
     client.server_capabilities.rename = false
-    client.server_capabilities.completion = false
+    client.server_capabilities.completion = true
+    client.server_capabilities.document_formatting = false
   end,
   settings = {
     pylsp = {
@@ -171,7 +188,7 @@ nvim_lsp.pylsp.setup {
       plugins = {
         jedi_completion = { enabled = false },
         rope_completion = { enabled = false },
-        flake8 = { enabled = false },
+        flake8 = { enabled = true },
         pyflakes = { enabled = false },
         pycodestyle = {
           ignore = { 'E226', 'E266', 'E302', 'E303', 'E304', 'E305', 'E402', 'C0103', 'W0104', 'W0621', 'W391', 'W503',
