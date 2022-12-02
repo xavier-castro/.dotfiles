@@ -5,8 +5,9 @@ vim.opt.winblend = 15
 vim.opt.wildoptions = 'pum'
 vim.opt.pumblend = 5
 vim.opt.background = 'dark'
+vim.cmd [[highlight clear highlight Normal]]
 -- Highlights end
-vim.cmd("autocmd!")
+-- vim.cmd("autocmd!")
 vim.cmd [[set iskeyword+=-]]
 vim.opt.clipboard = "unnamedplus"
 vim.scriptencoding = 'utf-8'
@@ -77,6 +78,30 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
   callback = function()
     vim.opt_local.wrap = true
     vim.opt_local.spell = true
+  end,
+})
+
+
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+  pattern = {
+    "Jaq",
+    "qf",
+    "help",
+    "man",
+    "lspinfo",
+    "spectre_panel",
+    "lir",
+    "DressingSelect",
+    "tsplayground",
+    "Markdown",
+  },
+  callback = function()
+    vim.cmd [[
+      nnoremap <silent> <buffer> q :close<CR> 
+      nnoremap <silent> <buffer> <esc> :close<CR> 
+      set nobuflisted 
+    ]]
   end,
 })
 

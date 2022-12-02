@@ -31,8 +31,9 @@ local on_attach = function(client, bufnr)
   buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.declaration()<CR>', opts)
   --buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
   buf_set_keymap('n', 'gi', '<cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  --buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
+  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
   -- vim.api.nvim_command [[autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()]]
+  enable_format_on_save(client, bufnr)
 
 end
 
@@ -177,7 +178,7 @@ nvim_lsp.pylsp.setup {
   ---@diagnostic disable-next-line: unused-local
   on_attach = function(client, bufnr)
     client.server_capabilities.rename = false
-    client.server_capabilities.completion = true
+    client.server_capabilities.completion = false
     client.server_capabilities.document_formatting = false
   end,
   settings = {
@@ -188,11 +189,11 @@ nvim_lsp.pylsp.setup {
       plugins = {
         jedi_completion = { enabled = false },
         rope_completion = { enabled = false },
-        flake8 = { enabled = true },
+        flake8 = { enabled = false },
         pyflakes = { enabled = false },
         pycodestyle = {
           ignore = { 'E226', 'E266', 'E302', 'E303', 'E304', 'E305', 'E402', 'C0103', 'W0104', 'W0621', 'W391', 'W503',
-            'W504' },
+            'W504', 'E501' },
           maxLineLength = 99,
         },
       },

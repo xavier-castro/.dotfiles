@@ -10,10 +10,8 @@ packer.startup(function(use)
   -- CORE START --
   use 'wbthomason/packer.nvim'
   use 'nvim-lua/plenary.nvim' -- Common utilities
-  use 'lewis6991/impatient.nvim'
   use 'kyazdani42/nvim-web-devicons' -- File icons
   use { 'craftzdog/neosolarized.nvim', requires = { 'tjdevries/colorbuddy.nvim' } }
-  use 'Mofiqul/vscode.nvim'
   use 'MunifTanjim/prettier.nvim'
   -- CORE END --
 
@@ -67,7 +65,6 @@ packer.startup(function(use)
     run = function() require('nvim-treesitter.install').update({ with_sync = true }) end })
   use "JoosepAlviste/nvim-ts-context-commentstring"
   use "nvim-treesitter/nvim-treesitter-textobjects"
-  use "nvim-treesitter/playground"
   use 'windwp/nvim-autopairs'
   use 'windwp/nvim-ts-autotag'
   use 'andymass/vim-matchup'
@@ -75,7 +72,6 @@ packer.startup(function(use)
 
   -- NAVIGATION RELATED START --
   use 'ThePrimeagen/harpoon'
-  use 'ThePrimeagen/refactoring.nvim'
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-fzy-native.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
@@ -88,6 +84,7 @@ packer.startup(function(use)
   -- NAVIGATION RELATED END --
 
   -- UI QOL RELATED START --
+  use 'lewis6991/satellite.nvim'
   use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' } -- git client
   use 'nvim-lualine/lualine.nvim' -- Statusline
   use "RRethy/vim-illuminate"
