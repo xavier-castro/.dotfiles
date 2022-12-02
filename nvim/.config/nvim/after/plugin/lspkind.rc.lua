@@ -64,8 +64,8 @@ lspkind.init({
       vim_item.kind = ""
       vim_item.kind_hl_group = "CmpItemKindCopilot"
     end
-    local maxwidth = 80
-    vim_item.abbr = string.sub(vim_item.abbr, 1, maxwidth)
+    -- local maxwidth = 80
+    -- vim_item.abbr = string.sub(vim_item.abbr, 1, maxwidth)
 
     vim_item.menu = ({
       nvim_lsp = "",
