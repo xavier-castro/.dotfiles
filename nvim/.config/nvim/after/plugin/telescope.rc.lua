@@ -81,16 +81,15 @@ telescope.setup {
     },
     file_browser = {
       theme = "dropdown",
-      -- disables netrw and use telescope-file-browser in its place
       hijack_netrw = true,
       initial_mode = 'normal',
       mappings = {
-        -- your custom insert mode mappings
         ["i"] = {
           ["<C-w>"] = function() vim.cmd('normal vbd') end,
         },
         ["n"] = {
           -- your custom normal mode mappings
+          ['<C-w>'] = fb_actions.goto_cwd,
           ["q"] = actions.close,
           ["N"] = fb_actions.create,
           ["h"] = fb_actions.goto_parent_dir,
@@ -145,10 +144,6 @@ telescope.load_extension('fzy_native')
 telescope.load_extension("file_browser")
 telescope.load_extension("harpoon")
 
-vim.keymap.set('n', ';x', function()
-  trouble.open_with_trouble()
-end)
-
 vim.keymap.set('n', ';f',
   function()
     builtin.find_files({
@@ -157,9 +152,6 @@ vim.keymap.set('n', ';f',
       initial_mode = 'insert',
     })
   end)
-vim.keymap.set('n', ';r', function()
-  builtin.live_grep()
-end)
 vim.keymap.set('n', ';o', function()
   builtin.oldfiles()
 end)
@@ -181,10 +173,16 @@ end)
 vim.keymap.set('n', ';h', function()
   builtin.help_tags()
 end)
+vim.keymap.set('n', ';t', function()
+  builtin.marks()
+end)
+vim.keymap.set('n', ';r', function()
+  builtin.registers()
+end)
 vim.keymap.set('n', ';;', function()
   builtin.resume()
 end)
-vim.keymap.set('n', ';e', function()
+vim.keymap.set('n', ';d', function()
   builtin.diagnostics()
 end)
 vim.keymap.set("n", "sf", function()
