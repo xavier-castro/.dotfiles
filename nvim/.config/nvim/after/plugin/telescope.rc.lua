@@ -8,7 +8,6 @@ local function telescope_buffer_dir()
 end
 
 local fb_actions = require "telescope".extensions.file_browser.actions
-local trouble = require("trouble.providers.telescope")
 
 telescope.setup {
   defaults = {

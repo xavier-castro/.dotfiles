@@ -1,7 +1,5 @@
 -- MORE KEYMAPS ARE FOUND IN THE FOLLOWING FILES:
 -- telescope.lua
--- trouble.lua
--- lspsaga.lua
 -- cmp.lua
 
 local Remap = require("xavier.keymap")
@@ -22,7 +20,7 @@ Remap.nnoremap("<leader>h", ":nohl<cr>")
 Remap.inoremap("jk", "<esc>")
 Remap.nnoremap("<leader>tw", ":set wrap!<cr>")
 Remap.nnoremap("<leader>ng", "<cmd>Neogit<cr>")
-Remap.nnoremap("\\", "<cmd>NvimTreeToggle<cr>")
+Remap.nnoremap("\\", "<cmd>NeoTreeFloatToggle<cr>")
 -- Harpoon
 Remap.nnoremap("mm", "<cmd>lua require('harpoon.mark').add_file()<cr>")
 Remap.nnoremap(";m", "<cmd>lua require('harpoon.ui').toggle_quick_menu()<cr>")

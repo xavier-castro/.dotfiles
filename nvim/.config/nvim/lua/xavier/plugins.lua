@@ -49,9 +49,6 @@ packer.startup(function(use)
   use 'jose-elias-alvarez/null-ls.nvim'
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
-  use 'glepnir/lspsaga.nvim' -- LSP UIs
-  use "folke/trouble.nvim"
-  use 'ray-x/lsp_signature.nvim' -- LSP signature
   -- LSP END --
 
   -- SNIPPETS START --
