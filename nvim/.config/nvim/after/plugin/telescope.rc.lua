@@ -161,7 +161,11 @@ vim.keymap.set('n', ';f',
     })
   end)
 vim.keymap.set('n', ';o', function()
-  builtin.oldfiles()
+  builtin.oldfiles(
+    {
+      previewer = false,
+    }
+  )
 end)
 vim.keymap.set('n', '\\', function()
   telescope.extensions.file_browser.file_browser({
@@ -182,13 +186,12 @@ vim.keymap.set('n', ';b', function()
   })
 end)
 vim.keymap.set('n', ';h', function()
-  builtin.help_tags()
+  builtin.help_tags({
+    initial_mode = "insert",
+  })
 end)
 vim.keymap.set('n', ';;', function()
   builtin.marks()
-end)
-vim.keymap.set('n', ';r', function()
-  builtin.registers()
 end)
 -- vim.keymap.set('n', ';;', function()
 --   builtin.resume()

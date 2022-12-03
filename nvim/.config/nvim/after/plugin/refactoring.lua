@@ -1,7 +1,7 @@
 require('refactoring').setup({
   prompt_func_return_type = {
-    go = false,
-    java = false,
+    go = true,
+    java = true,
 
     cpp = false,
     c = false,
@@ -10,8 +10,8 @@ require('refactoring').setup({
     cxx = false,
   },
   prompt_func_param_type = {
-    go = false,
-    java = false,
+    go = true,
+    java = true,
 
     cpp = false,
     c = false,
