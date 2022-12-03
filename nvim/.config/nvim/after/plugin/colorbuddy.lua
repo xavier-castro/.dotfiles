@@ -1,5 +1,4 @@
-local n = require('vscode')
-
+---@diagnostic disable-next-line: lowercase-global
 if not opts then opts = {} end
 
 local cb = require('colorbuddy.init')
@@ -25,7 +24,6 @@ Color.new('violet', '#6c71c4')
 Color.new('blue', '#268bd2')
 Color.new('cyan', '#2aa198')
 Color.new('green', '#719e07')
-Color.new("fuckyou", '#C397BC')
 
 Color.new('bg', colors.base03)
 Group.new('Error', colors.red)
@@ -95,7 +93,7 @@ Group.new('Cursor', colors.base03, colors.base0, styles.NONE)
 Group.link('lCursor', groups.Cursor)
 Group.link('TermCursor', groups.Cursor)
 Group.new('TermCursorNC', colors.base03, colors.base01)
-Group.new('MatchParen', colors.none, colors.base03, styles.NONE)
+Group.new('MatchParen', colors.magenta, colors.none, styles.NONE)
 
 Color.new('black', '#000000')
 Group.new('CursorLine', colors.none, colors.base03, styles.NONE, colors.base1)

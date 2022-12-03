@@ -20,7 +20,6 @@ Remap.nnoremap("<s-h>", ":bprevious<cr>")
 Remap.nnoremap("<cr>", ":noh<cr><cr>")
 Remap.nnoremap(";s", "<cmd>SymbolsOutline<cr>")
 Remap.nnoremap("<leader>lp", "<cmd>Prettier<cr>")
-Remap.nnoremap("<leader>lf", "<cmd>lua vim.lsp.buf.format{ async = 'true' }<cr>")
 Remap.nnoremap("<leader>h", ":nohl<cr>")
 Remap.inoremap("jk", "<esc>")
 Remap.nnoremap("<leader>tw", ":set wrap!<cr>")
@@ -68,6 +67,6 @@ keymap.set('n', '<C-w><left>', '<C-w><')
 keymap.set('n', '<C-w><right>', '<C-w>>')
 keymap.set('n', '<C-w><up>', '<C-w>+')
 keymap.set('n', '<C-w><down>', '<C-w>-')
-Remap.nnoremap("s==", "<C-w>|") -- Maximizes window size horizontally
-Remap.nnoremap("s--", "<C-w>_") -- Maximizes window size vertically
+Remap.nnoremap("s|", "<C-w>|") -- Maximizes window size horizontally
+Remap.nnoremap("s_", "<C-w>_") -- Maximizes window size vertically
 Remap.nnoremap("s=", "<C-w>=") -- Equally sizes window
