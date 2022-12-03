@@ -7,8 +7,8 @@ end -- test
 local gruvbox_colors = {
   fg     = '#ebdbb2',
   fg2    = '#a89984',
-  bg     = '#282828',
-  bg2    = '#3c3836',
+  bg     = '#3c3836',
+  bg2    = '#1d293b',
   black  = '#282828',
   red    = '#fb4934',
   green  = '#b8bb26',
@@ -83,7 +83,7 @@ elseif theme == "minimal" then
 elseif theme == "kanagawa" then
   colors = kanagawa_colors
 else
-  colors = tokyodark_colors
+  colors = gruvbox_colors
 end
 
 local THEME = {
