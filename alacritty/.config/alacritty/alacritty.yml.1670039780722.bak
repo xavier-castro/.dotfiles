@@ -138,34 +138,30 @@ schemes:
 colors:
   # Default colors
   primary:
-    background: '0x22272e'
-    foreground: '0x768390'
+    background: '#282828'
+    foreground: '#eeeeee'
 
   # Normal colors
   normal:
-    black: '0x22272e'
-    red: '0xff938a'
-    green: '0x6bc46d'
-    yellow: '0xc69026'
-    blue: '0x6cb6ff'
-    magenta: '0xb083f0'
-    cyan: '0x56d4dd'
-    white: '0x768390'
+    black: '#282828'
+    red: '#f43753'
+    green: '#c9d05c'
+    yellow: '#ffc24b'
+    blue: '#b3deef'
+    magenta: '#d3b987'
+    cyan: '#73cef4'
+    white: '#eeeeee'
 
   # Bright colors
   bright:
-    black: '0x636e7b'
-    red: '0xff938a'
-    green: '0x6bc46d'
-    yellow: '0xdaaa3f'
-    blue: '0x6cb6ff'
-    magenta: '0xdcbdfb'
-    cyan: '0x56d4dd'
-    white: '0x768390'
-
-  indexed_colors:
-    - { index: 16, color: '0xd18616' }
-    - { index: 17, color: '0xff938a' }
+    black: '#4c4c4c'
+    red: '#f43753'
+    green: '#c9d05c'
+    yellow: '#ffc24b'
+    blue: '#b3deef'
+    magenta: '#d3b987'
+    cyan: '#73cef4'
+    white: '#feffff'
 # Font configuration (changes require restart)
 # Thin stroke font rendering (macOS only)
 #
@@ -380,4 +376,4 @@ shell:
     - -l
     - -c
     - "tmux attach || tmux"
-theme: github_dimmed
+theme: Tender
