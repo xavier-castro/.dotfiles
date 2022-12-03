@@ -51,8 +51,6 @@ vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
 vim.opt.swapfile = false
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-vim.opt.undofile = true
 
 -- Turn off paste mode when leaving insert
 vim.api.nvim_create_autocmd("InsertLeave", {
@@ -118,45 +116,21 @@ augroup remember_folds
 augroup END
 ]]
 
-local function get_listed_buffers()
-  local buffers = {}
-  local len = 0
-  for buffer = 1, vim.fn.bufnr('$') do
-    if vim.fn.buflisted(buffer) == 1 then
-      len = len + 1
-      buffers[len] = buffer
-    end
-  end
-
-  return buffers
-end
-
-vim.api.nvim_create_augroup('alpha_on_empty', { clear = true })
-vim.api.nvim_create_autocmd('User', {
-  pattern = 'BDeletePre',
-  group = 'alpha_on_empty',
+vim.api.nvim_create_augroup("alpha_on_empty", { clear = true })
+vim.api.nvim_create_autocmd("User", {
+  pattern = "BDeletePost*",
+  group = "alpha_on_empty",
   callback = function(event)
-    local found_non_empty_buffer = false
-    local buffers = get_listed_buffers()
+    local fallback_name = vim.api.nvim_buf_get_name(event.buf)
+    local fallback_ft = vim.api.nvim_buf_get_option(event.buf, "filetype")
+    local fallback_on_empty = fallback_name == "" and fallback_ft == ""
 
-    for _, bufnr in ipairs(buffers) do
-      if not found_non_empty_buffer then
-        local name = vim.api.nvim_buf_get_name(bufnr)
-        local ft = vim.api.nvim_buf_get_option(bufnr, 'filetype')
-
-        if bufnr ~= event.buf and name ~= '' and ft ~= 'Alpha' then
-          found_non_empty_buffer = true
-        end
-      end
-    end
-
-    if not found_non_empty_buffer then
-      require 'neo-tree'.close_all()
-      vim.cmd [[:Alpha]]
+    if fallback_on_empty then
+      vim.cmd("Alpha")
+      vim.cmd(event.buf .. "bwipeout")
     end
   end,
 })
-
 
 -- Add asterisks in block comments
 -- vim.opt.formatoptions:append { 'r' }
