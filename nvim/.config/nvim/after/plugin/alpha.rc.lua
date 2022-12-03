@@ -1,3 +1,5 @@
+local icons = require("xavier.icons")
+
 local status_ok, alpha = pcall(require, "alpha")
 if not status_ok then
   return
@@ -10,8 +12,6 @@ local function button(sc, txt, keybind, keybind_opts)
   b.opts.hl_shortcut = "Macro"
   return b
 end
-
-local icons = require "xavier.icons"
 
 dashboard.section.header.val = {
   [[                               __                ]],

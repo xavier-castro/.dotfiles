@@ -26,7 +26,9 @@ Remap.nnoremap("<leader>tw", ":set wrap!<cr>")
 Remap.nnoremap("<leader>ng", "<cmd>Neogit<cr>")
 Remap.nnoremap("<leader>vscd", ":lua require('vscode').change_style('dark')<cr> :lua vim.o.background='dark'<cr>")
 Remap.nnoremap("<leader>vscl", ":lua require('vscode').change_style('light')<cr> :lua vim.o.background='light'<cr>")
-Remap.nnoremap("<F5>", "<cmd>Telescope commands<cr>")
+Remap.nnoremap("<F5>", "<cmd>Telescope commands mode='insert'<cr>")
+Remap.inoremap("<M-w>", "<ESC>:w<cr>a") -- Saves file in insert mode and returns back to insert mode
+
 -- Harpoon
 Remap.nnoremap("mm", "<cmd>lua require('harpoon.mark').add_file()<cr>")
 Remap.nnoremap(";m", "<cmd>Telescope harpoon marks<cr>")

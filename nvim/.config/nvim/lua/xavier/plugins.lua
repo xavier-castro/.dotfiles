@@ -1,8 +1,47 @@
+local fn = vim.fn
+
+-- Automatically install packer
+local install_path = fn.stdpath "data" .. "/site/pack/packer/start/packer.nvim"
+---@diagnostic disable-next-line: missing-parameter
+if fn.empty(fn.glob(install_path)) > 0 then
+  PACKER_BOOTSTRAP = fn.system {
+    "git",
+    "clone",
+    "--depth",
+    "1",
+    "https://github.com/wbthomason/packer.nvim",
+    install_path,
+  }
+  print "Installing packer close and reopen Neovim..."
+  vim.cmd [[packadd packer.nvim]]
+end
+
+-- Autocommand that reloads neovim whenever you save the plugins.lua file
+vim.cmd [[
+  augroup packer_user_config
+    autocmd!
+    autocmd BufWritePost plugins.lua source <afile> | PackerSync
+  augroup end
+]]
+
 local status, packer = pcall(require, "packer")
 if (not status) then
   print("Packer is not installed")
   return
 end
+
+-- Have packer use a popup window
+packer.init {
+  -- snapshot = "july-24",
+  snapshot_path = fn.stdpath "config" .. "/snapshots",
+  max_jobs = 50,
+  display = {
+    open_fn = function()
+      return require("packer.util").float { border = "rounded" }
+    end,
+    prompt_border = "rounded", -- Border style of prompt popups.
+  },
+}
 
 vim.cmd [[packadd packer.nvim]]
 
@@ -31,8 +70,12 @@ packer.startup(function(use)
   -- CORE END --
 
   -- CMP START --
+  use "hrsh7th/cmp-path" -- path completions
+  use "hrsh7th/cmp-cmdline" -- cmdline completions
+  use "hrsh7th/cmp-nvim-lsp"
+  use "hrsh7th/cmp-emoji"
+  use "hrsh7th/cmp-nvim-lua"
   use 'hrsh7th/cmp-buffer' -- nvim-cmp source for buffer words
-  use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
   use 'hrsh7th/nvim-cmp' -- Completion
   use 'b0o/schemastore.nvim'
   use {
@@ -55,6 +98,8 @@ packer.startup(function(use)
       })
     end
   }
+  use { "tzachar/cmp-tabnine", commit = "1a8fd2795e4317fd564da269cc64a2fa17ee854e",
+    run = "./install.sh" }
   -- CMP END --
 
   -- LSP START --
@@ -78,20 +123,17 @@ packer.startup(function(use)
   use "JoosepAlviste/nvim-ts-context-commentstring"
   use "nvim-treesitter/nvim-treesitter-textobjects"
   use 'nvim-treesitter/nvim-treesitter-context'
+  use "nvim-treesitter/playground"
   use 'windwp/nvim-autopairs'
   use 'windwp/nvim-ts-autotag'
   use 'andymass/vim-matchup'
   -- TREESITTER END --
 
   -- NAVIGATION RELATED START --
+  use "MattesGroeger/vim-bookmarks"
+  use "tom-anders/telescope-vim-bookmarks.nvim"
   use 'ThePrimeagen/harpoon'
-  use {
-    "ThePrimeagen/refactoring.nvim",
-    requires = {
-      { "nvim-lua/plenary.nvim" },
-      { "nvim-treesitter/nvim-treesitter" }
-    }
-  }
+  use 'ThePrimeagen/refactoring.nvim'
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-fzy-native.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
@@ -99,9 +141,12 @@ packer.startup(function(use)
   use "goolord/alpha-nvim"
   use 'abecodes/tabout.nvim'
   use "simrat39/symbols-outline.nvim"
+  use 'famiu/bufdelete.nvim'
   -- NAVIGATION RELATED END --
 
   -- UI QOL RELATED START --
+  use "akinsho/toggleterm.nvim"
+  use "mickael-menu/zk-nvim"
   use 'lewis6991/satellite.nvim'
   use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' } -- git client
   use "RRethy/vim-illuminate"

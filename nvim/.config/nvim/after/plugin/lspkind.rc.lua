@@ -1,23 +1,10 @@
 local status, lspkind = pcall(require, "lspkind")
 if (not status) then return end
--- local icons = require("xavier.icons")
+local icons = require("xavier.icons")
 
 lspkind.init({
-  -- enables text annotations
-  --
-  -- default: true
   mode = 'symbol',
-
-  -- default symbol map
-  -- can be either 'default' (requires nerd-fonts font) or
-  -- 'codicons' for codicon preset (requires vscode-codicons font)
-  --
-  -- default: 'default'
   preset = 'codicons',
-
-  -- override preset symbols
-  --
-  -- default: {}
   symbol_map = {
     Text = "",
     Method = "",
@@ -44,13 +31,13 @@ lspkind.init({
     Event = "",
     Operator = "",
     TypeParameter = "",
-    CmpItemKindCopilot = "",
-    Copilot = "",
+    CmpItemKindCopilot = icons.ui.Bug,
+    Copilot = icons.ui.Bug,
   },
 
   before = function(entry, vim_item)
     if entry.source.name == "copilot" then
-      vim_item.kind = ""
+      vim_item.kind = icons.ui.Bug
       vim_item.kind_hl_group = "CmpItemKindCopilot"
     end
 

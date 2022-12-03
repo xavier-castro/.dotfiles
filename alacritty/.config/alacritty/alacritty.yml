@@ -11,8 +11,9 @@
 # Note that some xterm terminfo databases don't declare support for italics.
 # You can verify this by checking for the presence of `smso` and `sitm` in
 # `infocmp xterm-256color`.
-# TERM: xterm-256color-italic
-TERM: xterm-256color
+TERM: xterm-256color-italic
+# TERM: xterm-256color
+alt_send_esc: false
 window:
   # Window dimensions (changes require restart)
   #
@@ -59,20 +60,20 @@ window:
 scrolling:
   history: 5000
   multiplier: 3
-  faux_multiplier: 3
+  faux_multiplier: 2
   auto_scroll: false
 
 font:
   size: 13
   normal:
-    family: SauceCodePro Nerd Font
-    style: Regular
+    family: OperatorMono Nerd Font
+    style: Medium
   bold:
-    family: SauceCodePro Nerd Font
+    family: OperatorMono Nerd Font
+    style: Medium
   italic:
-    family: SauceCodePro Nerd Font
-
-window.opacity: 1
+    family: OperatorMono Nerd Font
+    style: "Medium Italic"
 
 schemes:
   codelight: &light
@@ -180,13 +181,14 @@ colors:
 # This is a global setting and will require a log out or restart to take
 # effect.
 # When true, bold text is drawn using the bright variant of colors.
-draw_bold_text_with_bright_colors: true
+# draw_bold_text_with_bright_colors: true
 
 # Use custom cursor colors. If true, display the cursor in the cursor.foreground
 # and cursor.background colors, otherwise invert the colors of the cursor.
 custom_cursor_colors: false
 
 key_bindings:
+  # So alacritty knows I am pressing alt
   - { key: A, mods: Alt, chars: "\ea" }
   - { key: B, mods: Alt, chars: "\eb" }
   - { key: C, mods: Alt, chars: "\ec" }
@@ -213,6 +215,7 @@ key_bindings:
   - { key: X, mods: Alt, chars: "\ex" }
   - { key: Y, mods: Alt, chars: "\ey" }
   - { key: Z, mods: Alt, chars: "\ez" }
+  # Capitalized letters now
   - { key: A, mods: Alt|Shift, chars: "\eA" }
   - { key: B, mods: Alt|Shift, chars: "\eB" }
   - { key: C, mods: Alt|Shift, chars: "\eC" }
@@ -239,6 +242,7 @@ key_bindings:
   - { key: X, mods: Alt|Shift, chars: "\eX" }
   - { key: Y, mods: Alt|Shift, chars: "\eY" }
   - { key: Z, mods: Alt|Shift, chars: "\eZ" }
+  # Alt and number row
   - { key: Key1, mods: Alt, chars: "\e1" }
   - { key: Key2, mods: Alt, chars: "\e2" }
   - { key: Key3, mods: Alt, chars: "\e3" }
@@ -250,31 +254,98 @@ key_bindings:
   - { key: Key9, mods: Alt, chars: "\e9" }
   - { key: Key0, mods: Alt, chars: "\e0" }
   - { key: Space, mods: Control, chars: "\0" }
-  # Ctrl + Space
   - { key: Grave, mods: Alt, chars: "\e`" }
-  # Alt + `
   - { key: Grave, mods: Alt|Shift, chars: "\e~" }
-  # Alt + ~
   - { key: Period, mods: Alt, chars: "\e." }
-  # Alt + .
   - { key: Key8, mods: Alt|Shift, chars: "\e*" }
-  # Alt + *
   - { key: Key3, mods: Alt|Shift, chars: "\e#" }
-  # Alt + #
   - { key: Period, mods: Alt|Shift, chars: "\e>" }
-  # Alt + >
   - { key: Comma, mods: Alt|Shift, chars: "\e<" }
-  # Alt + <
   - { key: Minus, mods: Alt|Shift, chars: "\e_" }
-  # Alt + _
   - { key: Key5, mods: Alt|Shift, chars: "\e%" }
-  # Alt + %
   - { key: Key6, mods: Alt|Shift, chars: "\e^" }
-  # Alt + ^
   - { key: Backslash, mods: Alt, chars: "\e\\" }
-  # Alt + \
   - { key: Backslash, mods: Alt|Shift, chars: "\e|" }
-  # Alt + |mouse:
+
+  # My binds that i am tinkering
+  - { key: Return, mods: Alt, chars: "\eReturn" } # Alt+Enter
+
+  # Vi Mode
+  - { key: Space, mods: Shift|Control, mode: ~Search, action: ToggleViMode }
+  - {
+      key: Space,
+      mods: Shift|Control,
+      mode: Vi|~Search,
+      action: ScrollToBottom,
+    }
+  - { key: Escape, mode: Vi|~Search, action: ClearSelection }
+  - { key: I, mode: Vi|~Search, action: ToggleViMode }
+  - { key: I, mode: Vi|~Search, action: ScrollToBottom }
+  - { key: C, mods: Control, mode: Vi|~Search, action: ToggleViMode }
+  - { key: Y, mods: Control, mode: Vi|~Search, action: ScrollLineUp }
+  - { key: E, mods: Control, mode: Vi|~Search, action: ScrollLineDown }
+  - { key: G, mode: Vi|~Search, action: ScrollToTop }
+  - { key: G, mods: Shift, mode: Vi|~Search, action: ScrollToBottom }
+  - { key: B, mods: Control, mode: Vi|~Search, action: ScrollPageUp }
+  - { key: F, mods: Control, mode: Vi|~Search, action: ScrollPageDown }
+  - { key: U, mods: Control, mode: Vi|~Search, action: ScrollHalfPageUp }
+  - { key: D, mods: Control, mode: Vi|~Search, action: ScrollHalfPageDown }
+  - { key: Y, mode: Vi|~Search, action: Copy }
+  - { key: Y, mode: Vi|~Search, action: ClearSelection }
+  - { key: Copy, mode: Vi|~Search, action: ClearSelection }
+  - { key: V, mode: Vi|~Search, action: ToggleNormalSelection }
+  - { key: V, mods: Shift, mode: Vi|~Search, action: ToggleLineSelection }
+  - { key: V, mods: Control, mode: Vi|~Search, action: ToggleBlockSelection }
+  - { key: V, mods: Alt, mode: Vi|~Search, action: ToggleSemanticSelection }
+  - { key: Return, mode: Vi|~Search, action: Open }
+  - { key: Z, mode: Vi|~Search, action: CenterAroundViCursor }
+  - { key: K, mode: Vi|~Search, action: Up }
+  - { key: J, mode: Vi|~Search, action: Down }
+  - { key: H, mode: Vi|~Search, action: Left }
+  - { key: L, mode: Vi|~Search, action: Right }
+  - { key: Up, mode: Vi|~Search, action: Up }
+  - { key: Down, mode: Vi|~Search, action: Down }
+  - { key: Left, mode: Vi|~Search, action: Left }
+  - { key: Right, mode: Vi|~Search, action: Right }
+  - { key: Key0, mode: Vi|~Search, action: First }
+  - { key: Key4, mods: Shift, mode: Vi|~Search, action: Last }
+  - { key: Key6, mods: Shift, mode: Vi|~Search, action: FirstOccupied }
+  - { key: H, mods: Shift, mode: Vi|~Search, action: High }
+  - { key: M, mods: Shift, mode: Vi|~Search, action: Middle }
+  - { key: L, mods: Shift, mode: Vi|~Search, action: Low }
+  - { key: B, mode: Vi|~Search, action: SemanticLeft }
+  - { key: W, mode: Vi|~Search, action: SemanticRight }
+  - { key: E, mode: Vi|~Search, action: SemanticRightEnd }
+  - { key: B, mods: Shift, mode: Vi|~Search, action: WordLeft }
+  - { key: W, mods: Shift, mode: Vi|~Search, action: WordRight }
+  - { key: E, mods: Shift, mode: Vi|~Search, action: WordRightEnd }
+  - { key: Key5, mods: Shift, mode: Vi|~Search, action: Bracket }
+  - { key: Slash, mode: Vi|~Search, action: SearchForward }
+  - { key: Slash, mods: Shift, mode: Vi|~Search, action: SearchBackward }
+  - { key: N, mode: Vi|~Search, action: SearchNext }
+  - { key: N, mods: Shift, mode: Vi|~Search, action: SearchPrevious }
+
+  # MacOS only
+  - { key: K, mods: Command, mode: ~Vi|~Search, chars: "\x0c" }
+  - { key: K, mods: Command, mode: ~Vi|~Search, action: ClearHistory }
+  - { key: Key0, mods: Command, action: ResetFontSize }
+  - { key: Equals, mods: Command, action: IncreaseFontSize }
+  - { key: Plus, mods: Command, action: IncreaseFontSize }
+  - { key: NumpadAdd, mods: Command, action: IncreaseFontSize }
+  - { key: Minus, mods: Command, action: DecreaseFontSize }
+  - { key: NumpadSubtract, mods: Command, action: DecreaseFontSize }
+  - { key: V, mods: Command, action: Paste }
+  - { key: C, mods: Command, action: Copy }
+  - { key: C, mods: Command, mode: Vi|~Search, action: ClearSelection }
+  - { key: H, mods: Command, action: Hide }
+  - { key: H, mods: Command|Alt, action: HideOtherApplications }
+  - { key: M, mods: Command, action: Minimize }
+  - { key: Q, mods: Command, action: Quit }
+  - { key: W, mods: Command, action: Quit }
+  - { key: N, mods: Command, action: SpawnNewInstance }
+  - { key: F, mods: Command|Control, action: ToggleFullscreen }
+  - { key: F, mods: Command, mode: ~Search, action: SearchForward }
+  - { key: B, mods: Command, mode: ~Search, action: SearchBackward }
 
 double_click: { threshold: 300 }
 triple_click: { threshold: 300 }
