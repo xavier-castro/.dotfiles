@@ -127,51 +127,27 @@ nvim_lsp.efm.setup {
 }
 
 
--- nvim_lsp.sumneko_lua.setup {
---   capabilities = capabilities,
---   on_attach = function(client, bufnr)
---     on_attach(client, bufnr)
---     enable_format_on_save(client, bufnr)
---   end,
---   settings = {
---     Lua = {
---       diagnostics = {
---         -- Get the language server to recognize the `vim` global
---         globals = { 'vim' },
---       },
---
---       workspace = {
---         -- Make the server aware of Neovim runtime files
---         library = vim.api.nvim_get_runtime_file("", true),
---         checkThirdParty = false
---       },
---     },
---   },
--- }
-
-nvim_lsp.sumneko_lua.setup(({
+nvim_lsp.sumneko_lua.setup {
+  capabilities = capabilities,
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
+    enable_format_on_save(client, bufnr)
+  end,
   settings = {
     Lua = {
-      runtime = {
-        -- Tell the language server which version of Lua you're using (most likely LuaJIT in the case of Neovim)
-        version = "LuaJIT",
-        -- Setup your lua path
-        path = vim.split(package.path, ";"),
-      },
       diagnostics = {
         -- Get the language server to recognize the `vim` global
-        globals = { "vim" },
+        globals = { 'vim' },
       },
+
       workspace = {
         -- Make the server aware of Neovim runtime files
-        library = {
-          [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-          [vim.fn.expand("$VIMRUNTIME/lua/vim/lsp")] = true,
-        },
+        library = vim.api.nvim_get_runtime_file("", true),
+        checkThirdParty = false
       },
     },
   },
-}))
+}
 
 nvim_lsp.tailwindcss.setup {
   on_attach = on_attach,
@@ -247,7 +223,7 @@ nvim_lsp.astro.setup {
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   vim.lsp.diagnostic.on_publish_diagnostics, {
   underline = true,
-  update_in_insert = true,
+  update_in_insert = false,
   virtual_text = { spacing = 4, prefix = "●" },
   severity_sort = true,
 })

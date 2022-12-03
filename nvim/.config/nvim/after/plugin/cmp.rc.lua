@@ -49,17 +49,13 @@ cmp.setup({
         fallback()
       end
     end, { "i", "s" }),
-
   }),
-  sources = cmp.config.sources({ {
-    name = 'copilot', max_item_count = 1,
-  }, {
-    name = "luasnip", max_item_count = 3,
-  }, {
-    name = 'nvim_lsp', max_item_count = 5,
-  }, {
-    name = 'buffer', max_item_count = 5,
-  } }),
+  sources = cmp.config.sources(
+    { name = 'nvim_lsp' },
+    { name = "luasnip" },
+    { name = "copilot" },
+    { name = "buffer" }
+  ),
   formatting = {
     format = lspkind.cmp_format({
       with_text = false,
