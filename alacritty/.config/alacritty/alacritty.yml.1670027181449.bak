@@ -136,32 +136,32 @@ schemes:
       white: "#d4d4d4"
 
 colors:
-  # Default colors
+  name: Atelierheath (light)
+  author: Chris Kempson
   primary:
-    background: '#282828'
-    foreground: '#eeeeee'
-
-  # Normal colors
+    background: "#f7f3f7"
+    foreground: "#695d69"
+  cursor:
+    text: "#f7f3f7"
+    cursor: "#695d69"
   normal:
-    black: '#282828'
-    red: '#f43753'
-    green: '#c9d05c'
-    yellow: '#ffc24b'
-    blue: '#b3deef'
-    magenta: '#d3b987'
-    cyan: '#73cef4'
-    white: '#eeeeee'
-
-  # Bright colors
+    black: "#1b181b"
+    red: "#ca402b"
+    green: "#379a37"
+    yellow: "#bb8a35"
+    blue: "#516aec"
+    magenta: "#7b59c0"
+    cyan: "#159393"
+    white: "#ab9bab"
   bright:
-    black: '#4c4c4c'
-    red: '#f43753'
-    green: '#c9d05c'
-    yellow: '#ffc24b'
-    blue: '#b3deef'
-    magenta: '#d3b987'
-    cyan: '#73cef4'
-    white: '#feffff'
+    black: "#776977"
+    red: "#ca402b"
+    green: "#379a37"
+    yellow: "#bb8a35"
+    blue: "#516aec"
+    magenta: "#7b59c0"
+    cyan: "#159393"
+    white: "#f7f3f7"
 # Font configuration (changes require restart)
 # Thin stroke font rendering (macOS only)
 #
@@ -376,4 +376,4 @@ shell:
     - -l
     - -c
     - "tmux attach || tmux"
-theme: Tender
+theme: Atelierheath.light

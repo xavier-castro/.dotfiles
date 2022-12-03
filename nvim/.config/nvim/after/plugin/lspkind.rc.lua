@@ -55,8 +55,9 @@ lspkind.init({
     end
 
     vim_item.menu = ({
-      nvim_lsp = "",
+      copilot = "",
       luasnip = "",
+      nvim_lsp = "",
       nvim_lua = "",
       buffer = "",
       path = "",

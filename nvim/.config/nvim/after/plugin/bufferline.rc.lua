@@ -1,58 +1,43 @@
-require("bufferline").setup({
+local status, bufferline = pcall(require, "bufferline")
+if not status then
+  print("ERROR bufferline")
+  return
+end
+
+bufferline.setup({
   options = {
-    buffer_close_icon = "",
-    close_command = "bdelete",
-    close_icon = "",
-    left_trunc_marker = "",
+    indicator = {
+      left = "▎",
+      right = "▎",
+    },
     modified_icon = "●",
-    offsets = { { filetype = "NvimTree", text = "EXPLORER", text_align = "center" } },
-    right_mouse_command = "bdelete",
-    right_trunc_marker = "",
+    buffer_close_icon = "",
+    close_icon = "",
+    left_trunc_marker = "",
+    right_trunc_marker = "",
+    numbers = "ordinal",
+    max_name_length = 15,
+    max_prefix_length = 6,
+    diagnostics = "nvim_lsp",
+    show_buffer_icons = true,
+    show_buffer_close_icons = false,
     show_close_icon = false,
-    show_tab_indicators = true,
-  },
-  highlights = {
-    fill = {
-      fg = { attribute = "fg", highlight = "Normal" },
-      bg = { attribute = "bg", highlight = "StatusLineNC" },
-    },
-    background = {
-      fg = { attribute = "fg", highlight = "Normal" },
-      bg = { attribute = "bg", highlight = "StatusLine" },
-    },
-    buffer_visible = {
-      underline = true,
-      fg = { attribute = "fg", highlight = "Normal" },
-      bg = { attribute = "bg", highlight = "Normal" },
-    },
-    buffer_selected = {
-      underline = true,
-      fg = { attribute = "fg", highlight = "Normal" },
-      bg = { attribute = "bg", highlight = "Normal" },
-    },
-    separator = {
-      fg = { attribute = "bg", highlight = "Normal" },
-      bg = { attribute = "bg", highlight = "StatusLine" },
-    },
-    separator_selected = {
-      fg = { attribute = "fg", highlight = "Special" },
-      bg = { attribute = "bg", highlight = "Normal" },
-    },
-    separator_visible = {
-      fg = { attribute = "fg", highlight = "Normal" },
-      bg = { attribute = "bg", highlight = "StatusLineNC" },
-    },
-    close_button = {
-      fg = { attribute = "fg", highlight = "Normal" },
-      bg = { attribute = "bg", highlight = "StatusLine" },
-    },
-    close_button_selected = {
-      fg = { attribute = "fg", highlight = "normal" },
-      bg = { attribute = "bg", highlight = "normal" },
-    },
-    close_button_visible = {
-      fg = { attribute = "fg", highlight = "normal" },
-      bg = { attribute = "bg", highlight = "normal" },
-    },
+    persist_buffer_sort = true,
+    enforce_regular_tabs = true,
+    diagnostics_indicator = function(count, level)
+      local icon = level:match("error") and "" or ""
+      return icon .. count
+    end,
   },
 })
+
+local nnoremap = require("xavier.keymap").nnoremap
+
+for i = 1, 9 do
+  nnoremap("<leader>" .. i, function()
+    require("bufferline").go_to_buffer(i, true)
+  end)
+end
+nnoremap("<leader>" .. 0, function()
+  require("bufferline").go_to_buffer(-1, true)
+end)

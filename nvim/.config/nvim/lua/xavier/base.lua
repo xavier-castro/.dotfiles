@@ -7,7 +7,7 @@ vim.opt.pumblend = 5
 vim.opt.background = 'dark'
 vim.cmd [[highlight clear highlight Normal]]
 -- Highlights end
--- vim.cmd("autocmd!")
+vim.cmd("autocmd!")
 vim.cmd [[set iskeyword+=-]]
 vim.opt.clipboard = "unnamedplus"
 vim.scriptencoding = 'utf-8'
@@ -29,7 +29,7 @@ vim.opt.cmdheight = 1
 vim.opt.expandtab = true
 vim.opt.scrolloff = 10
 vim.opt.sidescrolloff = 10
-vim.opt.updatetime = 100 -- faster completion
+vim.opt.updatetime = 400 -- faster completion
 vim.opt.laststatus = 3
 vim.opt.shell = 'fish'
 vim.opt.backupskip = { '/tmp/*', '/private/tmp/*' }
@@ -81,8 +81,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     vim.opt_local.spell = true
   end,
 })
-
-
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
   pattern = {

@@ -11,8 +11,34 @@ packer.startup(function(use)
   use 'wbthomason/packer.nvim'
   use 'nvim-lua/plenary.nvim' -- Common utilities
   use 'kyazdani42/nvim-web-devicons' -- File icons
-  use { 'craftzdog/neosolarized.nvim', requires = { 'tjdevries/colorbuddy.nvim' } }
-  use "Mofiqul/vscode.nvim"
+  use 'akinsho/nvim-bufferline.lua'
+  use { "Mofiqul/vscode.nvim", config = function()
+    vim.o.background = 'dark'
+    local c = require('vscode.colors')
+    require('vscode').setup({
+      -- Enable transparent background
+      transparent = true,
+
+      -- Enable italic comment
+      italic_comments = true,
+
+      -- Disable nvim-tree background color
+      disable_nvimtree_bg = true,
+
+      -- Override colors (see ./lua/vscode/colors.lua)
+      color_overrides = {
+        -- vscLineNumber = '#FFFFFF',
+      },
+
+      -- Override highlight groups (see ./lua/vscode/theme.lua)
+      group_overrides = {
+        -- this supports the same val table as vim.api.nvim_set_hl
+        -- use colors from this colorscheme by requiring vscode.colors!
+        Cursor = { fg = c.vscDarkBlue, bg = c.vscLightGreen, bold = true },
+      },
+    })
+  end }
+  -- use { 'craftzdog/neosolarized.nvim', requires = { 'tjdevries/colorbuddy.nvim' } }
   use 'MunifTanjim/prettier.nvim'
   -- CORE END --
 
@@ -21,7 +47,6 @@ packer.startup(function(use)
   use 'hrsh7th/cmp-nvim-lsp' -- nvim-cmp source for neovim's built-in LSP
   use 'hrsh7th/nvim-cmp' -- Completion
   use 'b0o/schemastore.nvim'
-  use 'akinsho/nvim-bufferline.lua'
   use {
     "zbirenbaum/copilot.lua",
     event = { "VimEnter" },
@@ -77,47 +102,12 @@ packer.startup(function(use)
   use "ahmedkhalf/project.nvim"
   use "goolord/alpha-nvim"
   use 'abecodes/tabout.nvim'
-  use { 'phaazon/hop.nvim', branch = 'v2',
-    config = function() require 'hop'.setup { keys = 'etovxqpdygfblzhckisuran' } end }
   use "simrat39/symbols-outline.nvim"
   -- NAVIGATION RELATED END --
 
   -- UI QOL RELATED START --
-  use { 'folke/zen-mode.nvim', config = function() require("zen-mode").setup() end }
-  use {
-    "nvim-neo-tree/neo-tree.nvim",
-    branch = "v2.x",
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
-      "MunifTanjim/nui.nvim",
-      {
-        -- only needed if you want to use the commands with "_with_window_picker" suffix
-        's1n7ax/nvim-window-picker',
-        tag = "v1.*",
-        config = function()
-          require 'window-picker'.setup({
-            autoselect_one = true,
-            include_current = false,
-            filter_rules = {
-              -- filter using buffer options
-              bo = {
-                -- if the file type is one of following, the window will be ignored
-                filetype = { 'neo-tree', "neo-tree-popup", "notify" },
-
-                -- if the buffer type is one of following, the window will be ignored
-                buftype = { 'terminal', "quickfix" },
-              },
-            },
-            other_win_hl_color = '#e35e4f',
-          })
-        end,
-      }
-    }
-  }
   use 'lewis6991/satellite.nvim'
   use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' } -- git client
-  use 'nvim-lualine/lualine.nvim' -- Statusline
   use "RRethy/vim-illuminate"
   use 'norcalli/nvim-colorizer.lua'
   use 'lewis6991/gitsigns.nvim'
@@ -126,5 +116,16 @@ packer.startup(function(use)
   use { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end }
   use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
     setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
+  use {
+    'rmagatti/auto-session',
+    config = function()
+      require("auto-session").setup {
+        log_level = "error",
+        auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
+      }
+    end
+  }
+  use 'nvim-lualine/lualine.nvim' -- Statusline
+
   -- UI QUOL RELATED END --
 end)
