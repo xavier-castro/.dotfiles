@@ -167,7 +167,10 @@ vim.keymap.set('n', '\\', function()
   })
 end)
 vim.keymap.set('n', ';b', function()
-  builtin.buffers()
+  builtin.buffers({
+    previewer = false,
+    initial_mode = "insert",
+  })
 end)
 vim.keymap.set('n', ';h', function()
   builtin.help_tags()
