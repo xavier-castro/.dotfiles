@@ -26,10 +26,8 @@ dashboard.section.buttons.val = {
   button("e", icons.ui.NewFile .. " New file", ":ene <BAR> startinsert <CR>"),
   button("p", icons.git.Repo .. " Find project",
     ":lua require('telescope').extensions.projects.projects() hidden=true<CR>"),
-  button("r", icons.ui.History .. " Recent files", ":Telescope oldfiles <CR>"),
-  button("t", icons.ui.List .. " Find text", ":Telescope live_grep <CR>"),
-  button("c", icons.ui.Gear .. " Config", ":e ~/.dotfiles/nvim/.config/nvim/init.lua <CR>"),
-  button("u", icons.ui.CloudDownload .. " Update", ":PackerSync<CR>"),
+  button("o", icons.ui.History .. " Old files", ":Telescope oldfiles <CR>"),
+  button("c", icons.ui.Gear .. " Config", ":e ~/.dotfiles/nvim/.config/nvim/after/plugin/cmp.rc.lua<CR>"),
   button("q", icons.ui.SignOut .. " Quit", ":qa<CR>"),
 }
 local function footer()

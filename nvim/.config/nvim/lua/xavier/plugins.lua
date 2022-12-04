@@ -53,18 +53,13 @@ packer.startup(function(use)
   use 'tjdevries/colorbuddy.nvim'
   use { "Mofiqul/vscode.nvim", config = function()
     vim.o.background = 'dark'
-    local c = require('vscode.colors')
     require('vscode').setup({
       transparent = true,
       italic_comments = true,
       disable_nvimtree_bg = true,
       color_overrides = {},
-      group_overrides = {
-        Cursor = { fg = c.vscDarkBlue, bg = c.vscLightGreen, bold = true },
-      },
     })
   end }
-  -- use { 'craftzdog/neosolarized.nvim', requires = { 'tjdevries/colorbuddy.nvim' } }
   use 'MunifTanjim/prettier.nvim'
   -- CORE END --
 
@@ -143,7 +138,6 @@ packer.startup(function(use)
 
   -- UI QOL RELATED START --
   use "akinsho/toggleterm.nvim"
-  use 'lewis6991/satellite.nvim'
   use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' } -- git client
   use "RRethy/vim-illuminate"
   use 'norcalli/nvim-colorizer.lua'

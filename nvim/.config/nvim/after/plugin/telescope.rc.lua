@@ -7,7 +7,6 @@ local function telescope_buffer_dir()
 end
 
 local fb_actions = require "telescope".extensions.file_browser.actions
-
 telescope.setup {
   defaults = {
     path_display = { "smart" },
@@ -21,9 +20,6 @@ telescope.setup {
       "%.sqlite3",
       "%.ipynb",
       "node_modules/*",
-      -- "%.jpg",
-      -- "%.jpeg",
-      -- "%.png",
       "%.svg",
       "%.otf",
       "%.ttf",
@@ -171,7 +167,7 @@ vim.keymap.set('n', ';o', function()
 end)
 vim.keymap.set('n', '\\', function()
   telescope.extensions.file_browser.file_browser({
-    -- path = "%:p:h",
+    path = "%:p:h",
     cwd = telescope_buffer_dir(),
     respect_gitignore = false,
     hidden = true,

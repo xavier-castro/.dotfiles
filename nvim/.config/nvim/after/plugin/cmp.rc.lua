@@ -15,8 +15,6 @@ require("luasnip.loaders.from_vscode").lazy_load {
   paths = { "./snippets/typescript" }
 }
 
-local compare = require "cmp.config.compare"
-
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -33,10 +31,6 @@ cmp.setup({
       behavior = cmp.ConfirmBehavior.Replace,
       select = true
     }),
-    ["<S-CR>"] = cmp.mapping {
-      i = cmp.mapping.abort(),
-      c = cmp.mapping.close(),
-    },
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -75,28 +69,9 @@ cmp.setup({
       maxwidth = 50
     })
   },
-  sorting = {
-    priority_weight = 2,
-    comparators = {
-      compare.offset,
-      compare.exact,
-      -- compare.scopes,
-      compare.score,
-      compare.recently_used,
-      compare.locality,
-      -- compare.kind,
-      compare.sort_text,
-      compare.length,
-      compare.order,
-    },
-  },
 })
 
 vim.cmd [[
   set completeopt=menuone,noinsert,noselect
   highlight! default link CmpItemKind CmpItemMenuDefault
 ]]
-
--- " Use <Tab> and <S-Tab> to navigate through popup menu
--- inoremap <expr> <Tab>   pumvisible() ? "\<C-n>" : "\<Tab>"
--- inoremap <expr> <S-Tab> pumvisible() ? "\<C-p>" : "\<S-Tab>"
