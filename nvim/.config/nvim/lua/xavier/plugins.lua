@@ -122,6 +122,7 @@ packer.startup(function(use)
   use "JoosepAlviste/nvim-ts-context-commentstring"
   use "nvim-treesitter/nvim-treesitter-textobjects"
   use 'nvim-treesitter/nvim-treesitter-context'
+  use 'p00f/nvim-ts-rainbow'
   use "nvim-treesitter/playground"
   use 'windwp/nvim-autopairs'
   use 'windwp/nvim-ts-autotag'
@@ -129,11 +130,7 @@ packer.startup(function(use)
   -- TREESITTER END --
 
   -- NAVIGATION RELATED START --
-  use "MattesGroeger/vim-bookmarks"
   use 'ThePrimeagen/harpoon'
-  use 'ThePrimeagen/refactoring.nvim'
-  use "tom-anders/telescope-vim-bookmarks.nvim"
-  use 'nvim-telescope/telescope-media-files.nvim'
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-fzy-native.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
@@ -145,8 +142,6 @@ packer.startup(function(use)
   -- NAVIGATION RELATED END --
 
   -- UI QOL RELATED START --
-  use 'stevearc/dressing.nvim'
-  use 'levouh/tint.nvim'
   use "akinsho/toggleterm.nvim"
   use 'lewis6991/satellite.nvim'
   use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' } -- git client

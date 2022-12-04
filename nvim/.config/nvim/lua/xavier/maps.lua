@@ -14,7 +14,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Personal settings
--- Buffer speed
+Remap.nnoremap("<leader>tsh", "<cmd>TSHighlightCapturesUnderCursor<cr>")
+Remap.nnoremap("<leader>tsp", "<cmd>TSPlaygroundToggle<cr>")
 Remap.nnoremap("<leader>sv", ":source $MYVIMRC<cr>")
 Remap.nnoremap("<s-l>", ":bn<cr>")
 Remap.nnoremap("<s-h>", ":bprevious<cr>")
@@ -24,18 +25,12 @@ Remap.nnoremap("<leader>lp", "<cmd>Prettier<cr>")
 Remap.nnoremap("<leader>h", ":nohl<cr>")
 Remap.inoremap("jk", "<esc>")
 Remap.nnoremap("<leader>tw", ":set wrap!<cr>")
-Remap.nnoremap("<leader>ng", "Neogit kind=split<cr>")
+Remap.nnoremap("<leader>ng", "<cmd>Neogit kind=split<cr>")
 Remap.nnoremap("<leader>vscd", ":lua require('vscode').change_style('dark')<cr> :lua vim.o.background='dark'<cr>")
 Remap.nnoremap("<leader>vscl", ":lua require('vscode').change_style('light')<cr> :lua vim.o.background='light'<cr>")
 Remap.nnoremap("<F5>", "<cmd>Telescope commands<cr>")
 Remap.inoremap("<M-w>", "<ESC>:w<cr>a") -- Saves file in insert mode and returns back to insert mode
--- Bookmarks here
-Remap.nnoremap(";ta", ":Telescope vim_bookmarks all<cr>")
-Remap.nnoremap(";tt", ":Telescope vim_bookmarks current_file<cr>")
-Remap.nnoremap("<leader>mm", ":BookmarkSave<cr>")
-
--- Harpoon
-Remap.nnoremap("<leader>ha", "<cmd>lua require('harpoon.mark').add_file()<cr>")
+Remap.nnoremap("mm", "<cmd>lua require('harpoon.mark').add_file()<cr>")
 Remap.nnoremap(";m", "<cmd>Telescope harpoon marks initial='insert'<cr>")
 Remap.nnoremap("<leader>nw", "<cmd>lua require('harpoon.tmux').gotoTerminal(1)<cr>")
 -- New tab

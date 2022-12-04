@@ -18,7 +18,6 @@ vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 vim.cmd [[highlight clear highlight Normal]]
--- Highlights end
 vim.cmd("autocmd!")
 vim.cmd [[set iskeyword+=-]]
 vim.opt.clipboard = "unnamedplus"

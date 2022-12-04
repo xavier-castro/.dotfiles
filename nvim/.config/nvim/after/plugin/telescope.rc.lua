@@ -1,22 +1,10 @@
 local status, telescope = pcall(require, "telescope")
 if (not status) then return end
 local actions = require('telescope.actions')
-local bookmark_actions = require('telescope').extensions.vim_bookmarks.actions
 local builtin = require("telescope.builtin")
-local icons = require("xavier.icons")
-
 local function telescope_buffer_dir()
   return vim.fn.expand('%:p:h')
 end
-
-telescope.load_extension "media_files"
-require('telescope').extensions.vim_bookmarks.all {
-  attach_mappings = function(_, map)
-    map('n', 'dd', bookmark_actions.delete_selected_or_at_cursor)
-
-    return true
-  end
-}
 
 local fb_actions = require "telescope".extensions.file_browser.actions
 
@@ -96,10 +84,6 @@ telescope.setup {
     },
   },
   extensions = {
-    media_files = {
-      filetypes = { "png", "webp", "jpg", "jpeg" },
-      find_cmd = "rg" -- find command (defaults to `fd`)
-    },
     fzy_native = {
       override_generic_sorter = true,
       override_file_sorter = true,
@@ -165,19 +149,9 @@ telescope.setup {
   },
 }
 
-require("telescope").load_extension("refactoring")
-require('telescope').load_extension('vim_bookmarks')
 telescope.load_extension('fzy_native')
 telescope.load_extension("file_browser")
 telescope.load_extension("harpoon")
-
--- remap to open the Telescope refactoring menu in visual mode
-vim.api.nvim_set_keymap(
-  "v",
-  "<leader>rr",
-  "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
-  { noremap = true }
-)
 
 vim.keymap.set('n', ';f',
   function()

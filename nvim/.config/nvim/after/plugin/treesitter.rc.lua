@@ -7,7 +7,6 @@ ts.setup {
     enable = true,
     disable = {},
     additional_vim_regex_highlighting = false,
-
   },
   indent = {
     enable = true,
@@ -24,6 +23,22 @@ ts.setup {
   sync_install = false,
   autotag = {
     enable = true,
+  },
+  rainbow = {
+    enable = true,
+    extended_mode = false,
+    colors = {
+      -- "#68a0b0",
+      -- "#946EaD",
+      -- "#c7aA6D",
+      "Gold",
+      "Orchid",
+      "DodgerBlue",
+      -- "Cornsilk",
+      -- "Salmon",
+      -- "LawnGreen",
+    },
+    disable = { "html" },
   },
   autopairs = {
     enable = true,
