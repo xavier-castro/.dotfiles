@@ -131,9 +131,10 @@ packer.startup(function(use)
 
   -- NAVIGATION RELATED START --
   use "MattesGroeger/vim-bookmarks"
-  use "tom-anders/telescope-vim-bookmarks.nvim"
   use 'ThePrimeagen/harpoon'
   use 'ThePrimeagen/refactoring.nvim'
+  use "tom-anders/telescope-vim-bookmarks.nvim"
+  use 'nvim-telescope/telescope-media-files.nvim'
   use 'nvim-telescope/telescope.nvim'
   use 'nvim-telescope/telescope-fzy-native.nvim'
   use 'nvim-telescope/telescope-file-browser.nvim'
@@ -145,8 +146,9 @@ packer.startup(function(use)
   -- NAVIGATION RELATED END --
 
   -- UI QOL RELATED START --
+  use 'stevearc/dressing.nvim'
+  use 'levouh/tint.nvim'
   use "akinsho/toggleterm.nvim"
-  use "mickael-menu/zk-nvim"
   use 'lewis6991/satellite.nvim'
   use { 'TimUntersberger/neogit', requires = 'nvim-lua/plenary.nvim' } -- git client
   use "RRethy/vim-illuminate"
@@ -167,6 +169,5 @@ packer.startup(function(use)
     end
   }
   use 'nvim-lualine/lualine.nvim' -- Statusline
-
   -- UI QUOL RELATED END --
 end)

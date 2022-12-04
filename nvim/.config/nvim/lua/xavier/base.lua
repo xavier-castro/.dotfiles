@@ -1,4 +1,13 @@
 -- Highlights start
+-- fold settings
+vim.wo.foldmethod = "expr"
+vim.wo.foldexpr = "nvim_treesitter#foldexpr()"
+vim.wo.foldtext =
+[[substitute(getline(v:foldstart),'\\t',repeat('\ ',&tabstop),'g').'...'.trim(getline(v:foldend)) ]]
+vim.wo.fillchars = "fold:\\"
+vim.wo.foldnestmax = 3
+vim.wo.foldminlines = 1
+-- fold settings end
 vim.opt.cursorline = true
 vim.opt.termguicolors = true
 vim.opt.winblend = 15
@@ -32,7 +41,7 @@ vim.opt.expandtab = true
 vim.opt.sidescrolloff = 10
 vim.opt.updatetime = 50 -- faster completion
 vim.opt.laststatus = 3
-vim.opt.colorcolumn = "80"
+-- vim.opt.colorcolumn = "80"
 vim.opt.shell = 'fish'
 vim.opt.backupskip = { '/tmp/*', '/private/tmp/*' }
 vim.opt.inccommand = 'split'
@@ -98,6 +107,7 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
     "DressingSelect",
     "tsplayground",
     "Markdown",
+    "Neogit",
   },
   callback = function()
     vim.cmd [[

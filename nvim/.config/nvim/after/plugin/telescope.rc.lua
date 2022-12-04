@@ -1,16 +1,30 @@
 local status, telescope = pcall(require, "telescope")
 if (not status) then return end
 local actions = require('telescope.actions')
+local bookmark_actions = require('telescope').extensions.vim_bookmarks.actions
 local builtin = require("telescope.builtin")
+local icons = require("xavier.icons")
 
 local function telescope_buffer_dir()
   return vim.fn.expand('%:p:h')
 end
 
+telescope.load_extension "media_files"
+require('telescope').extensions.vim_bookmarks.all {
+  attach_mappings = function(_, map)
+    map('n', 'dd', bookmark_actions.delete_selected_or_at_cursor)
+
+    return true
+  end
+}
+
 local fb_actions = require "telescope".extensions.file_browser.actions
 
 telescope.setup {
   defaults = {
+    prompt_prefix = icons.ui.Telescope .. " ",
+    selection_caret = "  ",
+    path_display = { "smart" },
     file_ignore_patterns = {
       ".git/",
       "target/",
@@ -66,17 +80,33 @@ telescope.setup {
     },
     initial_mode = "normal",
     mappings = {
+      i = {
+        ["<CR>"] = actions.select_default,
+        ["<C-s>"] = actions.select_horizontal,
+        ["<C-v>"] = actions.select_vertical,
+        ["<C-t>"] = actions.select_tab,
+
+        ["<c-d>"] = require("telescope.actions").delete_buffer,
+      },
       n = {
+        ["<esc>"] = actions.close,
+        ["<CR>"] = actions.select_default,
+        ["<C-x>"] = actions.select_horizontal,
+        ["<C-v>"] = actions.select_vertical,
         ["q"] = actions.close
       },
     },
   },
   extensions = {
-    extensions = {
-      fzy_native = {
-        override_generic_sorter = false,
-        override_file_sorter = true,
-      }
+    media_files = {
+      -- filetypes whitelist
+      -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
+      filetypes = { "png", "webp", "jpg", "jpeg" },
+      find_cmd = "rg" -- find command (defaults to `fd`)
+    },
+    fzy_native = {
+      override_generic_sorter = true,
+      override_file_sorter = true,
     },
     file_browser = {
       theme = "dropdown",
@@ -140,6 +170,7 @@ telescope.setup {
 }
 
 require("telescope").load_extension("refactoring")
+require('telescope').load_extension('vim_bookmarks')
 telescope.load_extension('fzy_native')
 telescope.load_extension("file_browser")
 telescope.load_extension("harpoon")
@@ -164,12 +195,13 @@ vim.keymap.set('n', ';o', function()
   builtin.oldfiles(
     {
       previewer = false,
+      initial_mode = 'insert',
     }
   )
 end)
 vim.keymap.set('n', '\\', function()
   telescope.extensions.file_browser.file_browser({
-    path = "%:p:h",
+    -- path = "%:p:h",
     cwd = telescope_buffer_dir(),
     respect_gitignore = false,
     hidden = true,
@@ -193,9 +225,6 @@ end)
 vim.keymap.set('n', ';;', function()
   builtin.marks()
 end)
--- vim.keymap.set('n', ';;', function()
---   builtin.resume()
--- end)
 vim.keymap.set('n', ';d', function()
   builtin.diagnostics()
 end)
@@ -207,7 +236,7 @@ vim.keymap.set("n", "sf", function()
     hidden = true,
     grouped = true,
     previewer = false,
-    initial_mode = "normal",
+    initial_mode = "insert",
     layout_config = { height = 40 }
   })
 end)

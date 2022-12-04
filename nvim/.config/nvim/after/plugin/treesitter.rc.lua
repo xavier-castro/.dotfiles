@@ -1,11 +1,6 @@
 local status, ts = pcall(require, "nvim-treesitter.configs")
 if (not status) then return end
 
-vim.cmd [[
-set foldmethod=expr
-set foldexpr=nvim_treesitter#foldexpr()
-]]
-
 ts.setup {
   auto_install = true,
   highlight = {
@@ -28,6 +23,9 @@ ts.setup {
   ensure_installed = "all",
   sync_install = false,
   autotag = {
+    enable = true,
+  },
+  autopairs = {
     enable = true,
   },
   textobjects = {

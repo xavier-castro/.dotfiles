@@ -23,21 +23,27 @@ Remap.nnoremap("<leader>lp", "<cmd>Prettier<cr>")
 Remap.nnoremap("<leader>h", ":nohl<cr>")
 Remap.inoremap("jk", "<esc>")
 Remap.nnoremap("<leader>tw", ":set wrap!<cr>")
-Remap.nnoremap("<leader>ng", "<cmd>Neogit<cr>")
+Remap.nnoremap("<leader>ng", "Neogit kind=split<cr>")
 Remap.nnoremap("<leader>vscd", ":lua require('vscode').change_style('dark')<cr> :lua vim.o.background='dark'<cr>")
 Remap.nnoremap("<leader>vscl", ":lua require('vscode').change_style('light')<cr> :lua vim.o.background='light'<cr>")
 Remap.nnoremap("<F5>", "<cmd>Telescope commands<cr>")
 Remap.inoremap("<M-w>", "<ESC>:w<cr>a") -- Saves file in insert mode and returns back to insert mode
+-- Bookmarks here
+Remap.nnoremap(";ta", ":Telescope vim_bookmarks all<cr>")
+Remap.nnoremap(";tt", ":Telescope vim_bookmarks current_file<cr>")
+Remap.nnoremap("<leader>mm", ":BookmarkSave<cr>")
 
 -- Harpoon
-Remap.nnoremap("mm", "<cmd>lua require('harpoon.mark').add_file()<cr>")
-Remap.nnoremap(";m", "<cmd>Telescope harpoon marks<cr>")
-Remap.nnoremap(";t", "<cmd>lua require('harpoon.tmux').gotoTerminal(1)<cr>")
+Remap.nnoremap("<leader>ha", "<cmd>lua require('harpoon.mark').add_file()<cr>")
+Remap.nnoremap(";m", "<cmd>Telescope harpoon marks initial='insert'<cr>")
+Remap.nnoremap("<leader>nw", "<cmd>lua require('harpoon.tmux').gotoTerminal(1)<cr>")
 -- New tab
 keymap.set('n', 'te', ':tabedit') -- another way to create a new tab
 Remap.nnoremap("tl", ":tabs<cr>") -- List tabs
+Remap.nnoremap("tn", ":tabn<cr>")
+Remap.nnoremap("tp", ":tabp<cr>")
 Remap.nnoremap("tt", ':tabnew<cr>') -- Create new tab off current window
-Remap.nnoremap("Q", ":Bdelete!<cr>")
+Remap.nnoremap("Q", ":Bdelete<cr>")
 -- Better window navigation
 keymap.set("n", "<m-h>", "<C-w>h", opts)
 keymap.set("n", "<m-j>", "<C-w>j", opts)

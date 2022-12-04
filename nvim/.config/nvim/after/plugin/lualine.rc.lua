@@ -4,6 +4,18 @@ local function window()
   return vim.api.nvim_win_get_number(0)
 end -- test
 
+local solarized_dark_colors = {
+  fg = '#839496',
+  fg2 = '#93a1a1',
+  bg = '#002b36',
+  bg2 = '#073642',
+  black = '#073642',
+  red = '#dc322f',
+  green = '#719e07',
+  blue = '#268bd2',
+  yellow = '#b58900',
+}
+
 local gruvbox_colors = {
   fg     = '#ebdbb2',
   fg2    = '#a89984',
@@ -83,7 +95,7 @@ elseif theme == "minimal" then
 elseif theme == "kanagawa" then
   colors = kanagawa_colors
 else
-  colors = gruvbox_colors
+  colors = solarized_dark_colors
 end
 
 local THEME = {
@@ -113,14 +125,9 @@ local config = {
         'NvimTree',
         'alpha'
       },
-      winbar = {
-        'NvimTree',
-        'alpha'
-      },
-      NvimTree = {},
     },
     ignore_focus = {},
-    always_divide_middle = true,
+    always_divide_middle = false,
     globalstatus = true,
     refresh = {
       statusline = 1000,
@@ -138,32 +145,32 @@ local config = {
     lualine_z = { 'os.date("%H:%M")' },
   },
   tabline = {},
-  winbar = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {
-      {
-        'filename',
-        separator = { left = ' ', right = ' ' },
-      }
-    },
-    lualine_z = {},
-  },
-  inactive_winbar = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {
-      {
-        'filename',
-        separator = { left = ' ', right = ' ' },
-      }
-    },
-    lualine_z = {},
-  },
+  -- winbar = {
+  --   lualine_a = {},
+  --   lualine_b = {},
+  --   lualine_c = {},
+  --   lualine_x = {},
+  --   lualine_y = {
+  --     {
+  --       'filename',
+  --       separator = { left = ' ', right = ' ' },
+  --     }
+  --   },
+  --   lualine_z = {},
+  -- },
+  -- inactive_winbar = {
+  --   lualine_a = {},
+  --   lualine_b = {},
+  --   lualine_c = {},
+  --   lualine_x = {},
+  --   lualine_y = {
+  --     {
+  --       'filename',
+  --       separator = { left = ' ', right = ' ' },
+  --     }
+  --   },
+  --   lualine_z = {},
+  -- },
   extensions = {}
 }
 

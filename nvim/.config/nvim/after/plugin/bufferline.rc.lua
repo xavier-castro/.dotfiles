@@ -5,11 +5,19 @@ if not status then
 end
 
 bufferline.setup({
+  highlights = {
+    buffer_selected = {
+      fg = { attribute = "fg", highlight = "Normal" },
+      bg = { attribute = "bg", highlight = "Normal" },
+    },
+  },
+
   options = {
     indicator = {
       left = "▎",
       right = "▎",
     },
+    tab_size = 20,
     modified_icon = "●",
     buffer_close_icon = "",
     close_icon = "",

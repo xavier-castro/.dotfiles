@@ -1,5 +1,5 @@
 require('satellite').setup {
-  current_only = false,
+  current_only = true,
   winblend = 0,
   zindex = 40,
   excluded_filetypes = {},
@@ -16,7 +16,7 @@ require('satellite').setup {
     },
     marks = {
       enable = true,
-      show_builtins = false, -- shows the builtin marks like [ ] < >
+      show_builtins = true, -- shows the builtin marks like [ ] < >
     },
   },
 }
