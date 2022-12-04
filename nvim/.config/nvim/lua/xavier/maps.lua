@@ -15,6 +15,7 @@ vim.g.maplocalleader = " "
 
 -- Personal settings
 -- Buffer speed
+Remap.nnoremap("<leader>sv", ":source $MYVIMRC<cr>")
 Remap.nnoremap("<s-l>", ":bn<cr>")
 Remap.nnoremap("<s-h>", ":bprevious<cr>")
 Remap.nnoremap("<cr>", ":noh<cr><cr>")

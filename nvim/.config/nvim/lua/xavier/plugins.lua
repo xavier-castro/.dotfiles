@@ -30,9 +30,7 @@ if (not status) then
   return
 end
 
--- Have packer use a popup window
 packer.init {
-  -- snapshot = "july-24",
   snapshot_path = fn.stdpath "config" .. "/snapshots",
   max_jobs = 50,
   display = {
@@ -53,20 +51,20 @@ packer.startup(function(use)
   use 'kyazdani42/nvim-web-devicons' -- File icons
   use 'akinsho/nvim-bufferline.lua'
   use 'tjdevries/colorbuddy.nvim'
-  -- use { "Mofiqul/vscode.nvim", config = function()
-  --   vim.o.background = 'dark'
-  --   local c = require('vscode.colors')
-  --   require('vscode').setup({
-  --     transparent = true,
-  --     italic_comments = true,
-  --     disable_nvimtree_bg = true,
-  --     color_overrides = {},
-  --     group_overrides = {
-  --       Cursor = { fg = c.vscDarkBlue, bg = c.vscLightGreen, bold = true },
-  --     },
-  --   })
-  -- end }
-  use { 'craftzdog/neosolarized.nvim', requires = { 'tjdevries/colorbuddy.nvim' } }
+  use { "Mofiqul/vscode.nvim", config = function()
+    vim.o.background = 'dark'
+    local c = require('vscode.colors')
+    require('vscode').setup({
+      transparent = true,
+      italic_comments = true,
+      disable_nvimtree_bg = true,
+      color_overrides = {},
+      group_overrides = {
+        Cursor = { fg = c.vscDarkBlue, bg = c.vscLightGreen, bold = true },
+      },
+    })
+  end }
+  -- use { 'craftzdog/neosolarized.nvim', requires = { 'tjdevries/colorbuddy.nvim' } }
   use 'MunifTanjim/prettier.nvim'
   -- CORE END --
 

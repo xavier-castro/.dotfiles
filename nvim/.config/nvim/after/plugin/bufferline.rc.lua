@@ -5,13 +5,6 @@ if not status then
 end
 
 bufferline.setup({
-  highlights = {
-    buffer_selected = {
-      fg = { attribute = "fg", highlight = "Normal" },
-      bg = { attribute = "bg", highlight = "Normal" },
-    },
-  },
-
   options = {
     indicator = {
       left = "▎",
@@ -30,12 +23,12 @@ bufferline.setup({
     show_buffer_icons = true,
     show_buffer_close_icons = false,
     show_close_icon = false,
-    persist_buffer_sort = true,
+    persist_buffer_sort = false,
     enforce_regular_tabs = true,
-    diagnostics_indicator = function(count, level)
-      local icon = level:match("error") and "" or ""
-      return icon .. count
-    end,
+    -- diagnostics_indicator = function(count, level)
+    --   local icon = level:match("error") and "" or ""
+    --   return icon .. count
+    -- end,
   },
 })
 

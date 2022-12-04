@@ -147,8 +147,20 @@ nvim_lsp.sumneko_lua.setup {
 
 nvim_lsp.tailwindcss.setup {
   on_attach = on_attach,
-  capabilities = capabilities
+  capabilities = capabilities,
+  classAttributes = { "class", "className", "classList", "ngClass" },
+  lint = {
+    cssConflict = "warning",
+    invalidApply = "error",
+    invalidConfigPath = "error",
+    invalidScreen = "error",
+    invalidTailwindDirective = "error",
+    invalidVariant = "error",
+    recommendedVariantOrder = "warning"
+  },
+  validate = true
 }
+
 
 nvim_lsp.cssls.setup {
   on_attach = on_attach,
