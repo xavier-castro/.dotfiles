@@ -40,17 +40,25 @@ lspkind.init({
       vim_item.kind = icons.ui.Bug
       vim_item.kind_hl_group = "CmpItemKindCopilot"
     end
+    if entry.source.name == "cmp_tabnine" then
+      vim_item.kind = lspkind.symbol_map.Event
+      vim_item.kind_hl_group = "CmpItemKindTabNine"
+    end
+
 
     vim_item.menu = ({
-      nvim_lsp = "",
-      nvim_lua = "",
-      luasnip = "",
-      buffer = "",
-      path = "",
+      nvim_lsp = "[LSP]",
+      copilot = "[CP]",
+      cmp_tabnine = "[TN]",
+      nvim_lua = "[LUA]",
+      luasnip = "[SNIP]",
+      buffer = "[BUF]",
+      path = "[PATH]",
       emoji = "",
     })[entry.source.name]
     return vim_item
   end
 })
 
+vim.api.nvim_set_hl(0, "CmpItemKindTabNine", { fg = "#6638f0" })
 vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })

@@ -47,25 +47,26 @@ vim.cmd [[packadd packer.nvim]]
 
 packer.startup(function(use)
   -- CORE START --
+  use "lewis6991/impatient.nvim"
   use 'wbthomason/packer.nvim'
   use 'nvim-lua/plenary.nvim' -- Common utilities
   use 'kyazdani42/nvim-web-devicons' -- File icons
   use 'akinsho/nvim-bufferline.lua'
   use 'tjdevries/colorbuddy.nvim'
-  use { "Mofiqul/vscode.nvim", config = function()
-    vim.o.background = 'dark'
-    local c = require('vscode.colors')
-    require('vscode').setup({
-      transparent = true,
-      italic_comments = true,
-      disable_nvimtree_bg = true,
-      color_overrides = {},
-      group_overrides = {
-        Cursor = { fg = c.vscDarkBlue, bg = c.vscLightGreen, bold = true },
-      },
-    })
-  end }
-  -- use { 'craftzdog/neosolarized.nvim', requires = { 'tjdevries/colorbuddy.nvim' } }
+  -- use { "Mofiqul/vscode.nvim", config = function()
+  --   vim.o.background = 'dark'
+  --   local c = require('vscode.colors')
+  --   require('vscode').setup({
+  --     transparent = true,
+  --     italic_comments = true,
+  --     disable_nvimtree_bg = true,
+  --     color_overrides = {},
+  --     group_overrides = {
+  --       Cursor = { fg = c.vscDarkBlue, bg = c.vscLightGreen, bold = true },
+  --     },
+  --   })
+  -- end }
+  use { 'craftzdog/neosolarized.nvim', requires = { 'tjdevries/colorbuddy.nvim' } }
   use 'MunifTanjim/prettier.nvim'
   -- CORE END --
 

@@ -15,6 +15,8 @@ require("luasnip.loaders.from_vscode").lazy_load {
   paths = { "./snippets/typescript" }
 }
 
+local compare = require "cmp.config.compare"
+
 cmp.setup({
   snippet = {
     expand = function(args)
@@ -25,12 +27,16 @@ cmp.setup({
     ['<C-d>'] = cmp.mapping.scroll_docs(-4),
     ['<C-f>'] = cmp.mapping.scroll_docs(4),
     ['<C-Space>'] = cmp.mapping.complete(),
-    ['<C-<CR>>'] = cmp.mapping.close(),
+    ['<C-CR>'] = cmp.mapping.close(),
     ['<C-e>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
       select = true
     }),
+    ["<S-CR>"] = cmp.mapping {
+      i = cmp.mapping.abort(),
+      c = cmp.mapping.close(),
+    },
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
         cmp.select_next_item()
@@ -53,22 +59,37 @@ cmp.setup({
   }),
   sources = cmp.config.sources(
     {
-      { name = "copilot" },
-      { name = 'nvim_lsp' },
-      { name = 'nvim_lua' },
-      { name = "luasnip" },
-      { name = "buffer" },
-      { name = "cmp_tabnine" },
-      { name = 'path' },
+      { name = "copilot", group_index = 2 },
+      { name = 'nvim_lsp', group_index = 2 },
+      { name = 'nvim_lua', group_index = 2 },
+      { name = "luasnip", group_index = 2 },
+      { name = "buffer", group_index = 2 },
+      { name = "cmp_tabnine", group_index = 2 },
+      { name = 'path', group_index = 2 },
       { name = "emoji", group_index = 2 },
     }
   ),
   formatting = {
     format = lspkind.cmp_format({
-      with_text = false,
+      with_text = true,
       maxwidth = 50
     })
-  }
+  },
+  sorting = {
+    priority_weight = 2,
+    comparators = {
+      compare.offset,
+      compare.exact,
+      -- compare.scopes,
+      compare.score,
+      compare.recently_used,
+      compare.locality,
+      -- compare.kind,
+      compare.sort_text,
+      compare.length,
+      compare.order,
+    },
+  },
 })
 
 vim.cmd [[

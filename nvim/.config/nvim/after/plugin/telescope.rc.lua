@@ -22,8 +22,6 @@ local fb_actions = require "telescope".extensions.file_browser.actions
 
 telescope.setup {
   defaults = {
-    prompt_prefix = icons.ui.Telescope .. " ",
-    selection_caret = "  ",
     path_display = { "smart" },
     file_ignore_patterns = {
       ".git/",
@@ -99,8 +97,6 @@ telescope.setup {
   },
   extensions = {
     media_files = {
-      -- filetypes whitelist
-      -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
       filetypes = { "png", "webp", "jpg", "jpeg" },
       find_cmd = "rg" -- find command (defaults to `fd`)
     },
@@ -142,14 +138,14 @@ telescope.setup {
   buffers = {
     theme = "dropdown",
     previewer = false,
-    initial_mode = "normal",
+    initial_mode = "insert",
   },
   planets = {
     show_pluto = true,
     show_moon = true,
   },
   colorscheme = {
-    -- enable_preview = true,
+    enable_preview = true,
   },
   lsp_references = {
     theme = "dropdown",
