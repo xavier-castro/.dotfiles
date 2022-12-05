@@ -145,32 +145,32 @@ local config = {
     lualine_z = { 'os.date("%H:%M")' },
   },
   tabline = {},
-  -- winbar = {
-  --   lualine_a = {},
-  --   lualine_b = {},
-  --   lualine_c = {},
-  --   lualine_x = {},
-  --   lualine_y = {
-  --     {
-  --       'filename',
-  --       separator = { left = ' ', right = ' ' },
-  --     }
-  --   },
-  --   lualine_z = {},
-  -- },
-  -- inactive_winbar = {
-  --   lualine_a = {},
-  --   lualine_b = {},
-  --   lualine_c = {},
-  --   lualine_x = {},
-  --   lualine_y = {
-  --     {
-  --       'filename',
-  --       separator = { left = ' ', right = ' ' },
-  --     }
-  --   },
-  --   lualine_z = {},
-  -- },
+  winbar = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {
+      {
+        'filename',
+        separator = { left = ' ', right = ' ' },
+      }
+    },
+    lualine_z = {},
+  },
+  inactive_winbar = {
+    lualine_a = {},
+    lualine_b = {},
+    lualine_c = {},
+    lualine_x = {},
+    lualine_y = {
+      {
+        'filename',
+        separator = { left = ' ', right = ' ' },
+      }
+    },
+    lualine_z = {},
+  },
   extensions = {}
 }
 

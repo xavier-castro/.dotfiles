@@ -97,6 +97,7 @@ packer.startup(function(use)
   -- CMP END --
 
   -- LSP START --
+  use 'glepnir/lspsaga.nvim'
   use 'onsails/lspkind-nvim' -- vscode-like pictograms
   use 'neovim/nvim-lspconfig' -- LSP
   use 'jose-elias-alvarez/null-ls.nvim'
@@ -143,6 +144,7 @@ packer.startup(function(use)
   use 'norcalli/nvim-colorizer.lua'
   use 'lewis6991/gitsigns.nvim'
   use 'tpope/vim-surround'
+  use 'tpope/vim-fugitive'
   use "j-hui/fidget.nvim"
   use { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end }
   use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",

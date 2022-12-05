@@ -36,7 +36,7 @@ Remap.nnoremap("tl", ":tabs<cr>") -- List tabs
 Remap.nnoremap("tn", ":tabn<cr>")
 Remap.nnoremap("tp", ":tabp<cr>")
 Remap.nnoremap("tt", ':tabnew<cr>') -- Create new tab off current window
-Remap.nnoremap("Q", ":Bdelete<cr>")
+Remap.nnoremap("Q", ":tabclose<cr>")
 -- Better window navigation
 keymap.set("n", "<m-h>", "<C-w>h", opts)
 keymap.set("n", "<m-j>", "<C-w>j", opts)

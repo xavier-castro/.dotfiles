@@ -140,6 +140,3 @@ vim.api.nvim_create_autocmd("User", {
     end
   end,
 })
-
--- Add asterisks in block comments
--- vim.opt.formatoptions:append { 'r' }
