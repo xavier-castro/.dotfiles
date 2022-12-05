@@ -10,7 +10,7 @@ ts.setup {
   },
   indent = {
     enable = true,
-    disable = {},
+    disable = { "python" },
   },
   context_commentstring = {
     enable = true,
