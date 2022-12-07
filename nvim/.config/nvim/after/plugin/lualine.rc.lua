@@ -1,8 +1,4 @@
 local theme = vim.g.colors_name
-local lualine = require('lualine')
-local function window()
-  return vim.api.nvim_win_get_number(0)
-end -- test
 
 local solarized_dark_colors = {
   fg = '#839496',
@@ -140,37 +136,37 @@ local config = {
     lualine_a = { 'mode' },
     lualine_b = {}, --{ 'branch', 'diff', 'diagnostics', }
     lualine_c = { 'filename' },
-    lualine_x = { require('auto-session-library').current_session_name, },
+    -- lualine_x = { require('auto-session-library').current_session_name, },
     lualine_y = { 'fileformat', 'filetype', },
     lualine_z = { 'os.date("%H:%M")' },
   },
   tabline = {},
-  winbar = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {
-      {
-        'filename',
-        separator = { left = ' ', right = ' ' },
-      }
-    },
-    lualine_z = {},
-  },
-  inactive_winbar = {
-    lualine_a = {},
-    lualine_b = {},
-    lualine_c = {},
-    lualine_x = {},
-    lualine_y = {
-      {
-        'filename',
-        separator = { left = ' ', right = ' ' },
-      }
-    },
-    lualine_z = {},
-  },
+  -- winbar = {
+  --   lualine_a = {},
+  --   lualine_b = {},
+  --   lualine_c = {},
+  --   lualine_x = {},
+  --   lualine_y = {
+  --     {
+  --       'filename',
+  --       separator = { left = ' ', right = ' ' },
+  --     }
+  --   },
+  --   lualine_z = {},
+  -- },
+  -- inactive_winbar = {
+  --   lualine_a = {},
+  --   lualine_b = {},
+  --   lualine_c = {},
+  --   lualine_x = {},
+  --   lualine_y = {
+  --     {
+  --       'filename',
+  --       separator = { left = ' ', right = ' ' },
+  --     }
+  --   },
+  --   lualine_z = {},
+  -- },
   extensions = {}
 }
 
@@ -179,9 +175,9 @@ local function ins_b(component)
   table.insert(config.sections.lualine_b, component)
 end
 
-local function ins_x(component)
-  table.insert(config.sections.lualine_x, component)
-end
+-- local function ins_x(component)
+--   table.insert(config.sections.lualine_x, component)
+-- end
 
 ins_b {
   'branch',
@@ -206,25 +202,25 @@ ins_b {
   },
 }
 
-ins_x {
-  -- Lsp server name .
-  function()
-    local msg = 'No Active Lsp'
-    local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
-    local clients = vim.lsp.get_active_clients()
-    if next(clients) == nil then
-      return msg
-    end
-    for _, client in ipairs(clients) do
-      local filetypes = client.config.filetypes
-      if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
-        return client.name
-      end
-    end
-    return msg
-  end,
-  icon = ' LSP:',
-  color = { fg = colors.fg2, gui = 'bold' },
-}
+-- ins_x {
+--   -- Lsp server name .
+--   function()
+--     local msg = 'No Active Lsp'
+--     local buf_ft = vim.api.nvim_buf_get_option(0, 'filetype')
+--     local clients = vim.lsp.get_active_clients()
+--     if next(clients) == nil then
+--       return msg
+--     end
+--     for _, client in ipairs(clients) do
+--       local filetypes = client.config.filetypes
+--       if filetypes and vim.fn.index(filetypes, buf_ft) ~= -1 then
+--         return client.name
+--       end
+--     end
+--     return msg
+--   end,
+--   icon = ' LSP:',
+--   color = { fg = colors.fg2, gui = 'bold' },
+-- }
 
 require('lualine').setup(config)

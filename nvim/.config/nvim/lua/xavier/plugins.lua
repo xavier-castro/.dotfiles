@@ -149,15 +149,6 @@ packer.startup(function(use)
   use { 'numToStr/Comment.nvim', config = function() require('Comment').setup() end }
   use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install",
     setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, })
-  use {
-    'rmagatti/auto-session',
-    config = function()
-      require("auto-session").setup {
-        log_level = "error",
-        auto_session_suppress_dirs = { "~/", "~/Projects", "~/Downloads", "/" },
-      }
-    end
-  }
   use 'nvim-lualine/lualine.nvim' -- Statusline
   -- UI QUOL RELATED END --
 end)
