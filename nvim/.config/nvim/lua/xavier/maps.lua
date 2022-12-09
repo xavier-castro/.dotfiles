@@ -30,40 +30,31 @@ Remap.inoremap("<M-w>", "<ESC>:w<cr>a") -- Saves file in insert mode and returns
 Remap.nnoremap("mm", "<cmd>lua require('harpoon.mark').add_file()<cr>")
 Remap.nnoremap(";m", "<cmd>Telescope harpoon marks initial='insert'<cr>")
 Remap.nnoremap("<leader>nw", "<cmd>lua require('harpoon.tmux').gotoTerminal(1)<cr>")
--- New tab
 keymap.set('n', 'te', ':tabedit') -- another way to create a new tab
 Remap.nnoremap("tl", ":tabs<cr>") -- List tabs
 Remap.nnoremap("tn", ":tabn<cr>")
 Remap.nnoremap("tp", ":tabp<cr>")
 Remap.nnoremap("tt", ':tabnew<cr>') -- Create new tab off current window
 Remap.nnoremap("Q", ":tabclose<cr>")
--- Better window navigation
 keymap.set("n", "<m-h>", "<C-w>h", opts)
 keymap.set("n", "<m-j>", "<C-w>j", opts)
 keymap.set("n", "<m-k>", "<C-w>k", opts)
 keymap.set("n", "<m-l>", "<C-w>l", opts)
 keymap.set("n", "<m-tab>", "<c-6>", opts)
--- Tabs --
 keymap.set("n", "<m-t>", ":tabnew %<cr>", opts)
 keymap.set("n", "<m-y>", ":tabclose<cr>", opts)
 keymap.set("n", "<m-\\>", ":tabonly<cr>", opts)
-
--- Resize with arrows
 keymap.set("n", "<C-Up>", ":resize -2<CR>", opts)
 keymap.set("n", "<C-Down>", ":resize +2<CR>", opts)
 keymap.set("n", "<C-Left>", ":vertical resize -2<CR>", opts)
 keymap.set("n", "<C-Right>", ":vertical resize +2<CR>", opts)
-
--- Split window
 keymap.set('n', 'ss', ':split<Return><C-w>w')
 keymap.set('n', 'sv', ':vsplit<Return><C-w>w')
--- Move window
 keymap.set('', 'sh', '<C-w>h')
 keymap.set('', 'sk', '<C-w>k')
 keymap.set('', 'sj', '<C-w>j')
 keymap.set('', 'sl', '<C-w>l')
 keymap.set('', 'sq', '<C-w>q')
--- Resize window
 keymap.set('n', '<C-w><left>', '<C-w><')
 keymap.set('n', '<C-w><right>', '<C-w>>')
 keymap.set('n', '<C-w><up>', '<C-w>+')
