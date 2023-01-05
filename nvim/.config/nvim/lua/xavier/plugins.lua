@@ -63,6 +63,19 @@ packer.startup(function(use)
   use 'MunifTanjim/prettier.nvim'
   -- CORE END --
 
+  -- Neural Link Chat GPT --
+  -- https://github.com/dense-analysis/neural
+  use({
+    'dense-analysis/neural',
+    config = function()
+      require 'xavier.neural'
+    end,
+    requires = {
+      'MunifTanjim/nui.nvim',
+      'ElPiloto/significant.nvim',
+    }
+  })
+
   -- CMP START --
   use "hrsh7th/cmp-path" -- path completions
   use "hrsh7th/cmp-cmdline" -- cmdline completions

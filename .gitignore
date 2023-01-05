@@ -1,3 +1,4 @@
 .DS_Store
 personal/*
+nvim/.config/nvim/lua/xavier/neural.lua
 

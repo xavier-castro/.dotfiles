@@ -222,6 +222,17 @@ _G.packer_plugins = {
     path = "/Users/xavier/.local/share/nvim/site/pack/packer/start/neogit",
     url = "https://github.com/TimUntersberger/neogit"
   },
+  neural = {
+    config = { "\27LJ\2\n-\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\18xavier.neural\frequire\0" },
+    loaded = true,
+    path = "/Users/xavier/.local/share/nvim/site/pack/packer/start/neural",
+    url = "https://github.com/dense-analysis/neural"
+  },
+  ["nui.nvim"] = {
+    loaded = true,
+    path = "/Users/xavier/.local/share/nvim/site/pack/packer/start/nui.nvim",
+    url = "https://github.com/MunifTanjim/nui.nvim"
+  },
   ["null-ls.nvim"] = {
     loaded = true,
     path = "/Users/xavier/.local/share/nvim/site/pack/packer/start/null-ls.nvim",
@@ -317,6 +328,11 @@ _G.packer_plugins = {
     path = "/Users/xavier/.local/share/nvim/site/pack/packer/start/schemastore.nvim",
     url = "https://github.com/b0o/schemastore.nvim"
   },
+  ["significant.nvim"] = {
+    loaded = true,
+    path = "/Users/xavier/.local/share/nvim/site/pack/packer/start/significant.nvim",
+    url = "https://github.com/ElPiloto/significant.nvim"
+  },
   ["symbols-outline.nvim"] = {
     loaded = true,
     path = "/Users/xavier/.local/share/nvim/site/pack/packer/start/symbols-outline.nvim",
@@ -389,6 +405,10 @@ time([[Setup for markdown-preview.nvim]], false)
 time([[Config for Comment.nvim]], true)
 try_loadstring("\27LJ\2\n5\0\0\3\0\3\0\0066\0\0\0'\2\1\0B\0\2\0029\0\2\0B\0\1\1K\0\1\0\nsetup\fComment\frequire\0", "config", "Comment.nvim")
 time([[Config for Comment.nvim]], false)
+-- Config for: neural
+time([[Config for neural]], true)
+try_loadstring("\27LJ\2\n-\0\0\3\0\2\0\0046\0\0\0'\2\1\0B\0\2\1K\0\1\0\18xavier.neural\frequire\0", "config", "neural")
+time([[Config for neural]], false)
 -- Config for: vscode.nvim
 time([[Config for vscode.nvim]], true)
 try_loadstring("\27LJ\2\n¬\1\0\0\4\0\t\0\r6\0\0\0009\0\1\0'\1\3\0=\1\2\0006\0\4\0'\2\5\0B\0\2\0029\0\6\0005\2\a\0004\3\0\0=\3\b\2B\0\2\1K\0\1\0\20color_overrides\1\0\3\24disable_nvimtree_bg\2\20italic_comments\2\16transparent\2\nsetup\vvscode\frequire\tdark\15background\6o\bvim\0", "config", "vscode.nvim")
