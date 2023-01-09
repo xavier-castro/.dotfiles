@@ -25,7 +25,7 @@ Remap.nnoremap("<cr>", ":noh<cr><cr>")
 Remap.nnoremap(";s", "<cmd>SymbolsOutline<cr>")
 Remap.nnoremap("<leader>lp", "<cmd>Prettier<cr>")
 Remap.nnoremap("<leader>h", ":nohl<cr>")
-Remap.inoremap("jk", "<esc>")
+-- Remap.inoremap("jk", "<esc>")
 Remap.nnoremap("<leader>tw", ":set wrap!<cr>")
 Remap.nnoremap("<F5>", "<cmd>Telescope commands<cr>")
 Remap.inoremap("<M-w>", "<ESC>:w<cr>a") -- Saves file in insert mode and returns back to insert mode

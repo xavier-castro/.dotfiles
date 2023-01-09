@@ -28,7 +28,7 @@ cmp.setup({
     ['<C-e>'] = cmp.mapping.close(),
     ['<CR>'] = cmp.mapping.confirm({
       behavior = cmp.ConfirmBehavior.Replace,
-      select = true
+      select = false
     }),
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
@@ -53,11 +53,11 @@ cmp.setup({
   sources = cmp.config.sources(
     {
       { name = 'nvim_lsp', group_index = 2 },
-      { name = "copilot", group_index = 3 },
+      { name = "copilot", group_index = 2 },
       { name = "luasnip", group_index = 2 },
       { name = 'nvim_lua', group_index = 2 },
       { name = "buffer", group_index = 2 },
-      { name = "cmp_tabnine", group_index = 3 },
+      { name = "cmp_tabnine", group_index = 2 },
       { name = 'path', group_index = 2 },
       { name = "emoji", group_index = 2 },
     }
