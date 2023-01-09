@@ -14,6 +14,8 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Personal settings
+-- Nvim-tree
+Remap.nnoremap(";\\", ":NvimTreeToggle<cr>")
 Remap.nnoremap("<leader>tsh", "<cmd>TSHighlightCapturesUnderCursor<cr>")
 Remap.nnoremap("<leader>tsp", "<cmd>TSPlaygroundToggle<cr>")
 Remap.nnoremap("<leader>sv", ":source $MYVIMRC<cr>")

@@ -61,6 +61,13 @@ packer.startup(function(use)
     })
   end }
   use 'MunifTanjim/prettier.nvim'
+  use {
+    'nvim-tree/nvim-tree.lua',
+    requires = {
+      'nvim-tree/nvim-web-devicons', -- optional, for file icons
+    },
+    tag = 'nightly' -- optional, updated every week. (see issue #1193)
+  }
   -- CORE END --
 
   -- Neural Link Chat GPT --
