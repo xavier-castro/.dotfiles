@@ -20,6 +20,7 @@ return {
 		vim.keymap.set("n", "<leader>cn", "<cmd>Lspsaga diagnostic_jump_next<CR>")
 		vim.keymap.set("n", "<leader>cp", "<cmd>Lspsaga diagnostic_jump_prev<CR>")
 		vim.keymap.set("n", "<m-d>", "<cmd>Lspsaga term_toggle<CR>")
+    vim.keymap.set("n", "<leader>o", "<cmd>Lspsaga outline<cr>")
 	end,
 	dependencies = {
 		{ "nvim-tree/nvim-web-devicons" },

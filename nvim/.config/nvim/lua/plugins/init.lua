@@ -32,6 +32,25 @@ return {
 		{ "tpope/vim-surround" },
 		{ "tpope/vim-commentary" },
 		{
+			"shatur/neovim-session-manager",
+			config = function()
+				local Path = require("plenary.path")
+
+				require("session_manager").setup({
+					sessions_dir = Path:new(vim.fn.stdpath("data"), "sessions"),
+					path_replacer = "__",
+					colon_replacer = "++",
+					auto_session_enable_last_session = false,
+					auto_session_root_dir = vim.fn.stdpath("data") .. "/sessions/",
+           autoload_mode = require('session_manager.config').AutoloadMode.LastSession,
+					auto_session_enabled = true,
+					auto_save_enabled = true,
+					auto_restore_enabled = true,
+					auto_session_suppress_dirs = nil,
+				})
+			end,
+		},
+		{
 			"zbirenbaum/copilot.lua",
 			config = function()
 				require("copilot").setup({

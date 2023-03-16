@@ -24,6 +24,7 @@
   "mason-null-ls.nvim": { "branch": "main", "commit": "4070ec7c543b67df16143ee206e436d24bb9c01b" },
   "mason.nvim": { "branch": "main", "commit": "de9ce244e27b0144959cb6cee1fc584bb00ccae4" },
   "neosolarized.nvim": { "branch": "main", "commit": "bfdbbf1f9b02bd06648df6bdc7f3ec0b153cc69e" },
+  "neovim-session-manager": { "branch": "master", "commit": "e7a2cbf56b5fd3a223f2774b535499fc62eca6ef" },
   "no-clown-fiesta.nvim": { "branch": "master", "commit": "0ebfe3c4d1b2ebae2eaccdf846819e193d62fb60" },
   "nui.nvim": { "branch": "main", "commit": "0dc148c6ec06577fcf06cbab3b7dac96d48ba6be" },
   "null-ls.nvim": { "branch": "main", "commit": "2fcc10637b325e656d45a760901e1e05170e36c9" },
