@@ -8,18 +8,10 @@ return {
 			})
 		end,
 	},
-	{
-		"goolord/alpha-nvim",
-		requires = { "nvim-tree/nvim-web-devicons" },
-		config = function()
-			require("alpha").setup(require("alpha.themes.startify").config)
-		end,
-	},
 	{ "nvim-tree/nvim-web-devicons" },
 	{ "nvim-treesitter/nvim-treesitter-context" },
 	"nvim-treesitter/playground",
 	{ "folke/zen-mode.nvim" },
-	{ "folke/trouble.nvim" },
 	{ "ThePrimeagen/refactoring.nvim" },
 	{ "mbbill/undotree" },
 	{
@@ -28,119 +20,99 @@ return {
 			require("gitsigns").setup({})
 		end,
 	},
+	{ "tpope/vim-surround" },
+	{ "tpope/vim-commentary" },
 	{
-		{ "tpope/vim-surround" },
-		{ "tpope/vim-commentary" },
-		{
-			"shatur/neovim-session-manager",
-			config = function()
-				local Path = require("plenary.path")
-
-				require("session_manager").setup({
-					sessions_dir = Path:new(vim.fn.stdpath("data"), "sessions"),
-					path_replacer = "__",
-					colon_replacer = "++",
-					auto_session_enable_last_session = false,
-					auto_session_root_dir = vim.fn.stdpath("data") .. "/sessions/",
-           autoload_mode = require('session_manager.config').AutoloadMode.LastSession,
-					auto_session_enabled = true,
-					auto_save_enabled = true,
-					auto_restore_enabled = true,
-					auto_session_suppress_dirs = nil,
-				})
-			end,
-		},
-		{
-			"zbirenbaum/copilot.lua",
-			config = function()
-				require("copilot").setup({
-					panel = {
-						enabled = true,
-						auto_refresh = true,
-						keymap = {
-							jump_prev = "[[",
-							jump_next = "]]",
-							accept = "<CR>",
-							refresh = "gr",
-							open = "<M-l>",
-						},
+		"zbirenbaum/copilot.lua",
+		config = function()
+			require("copilot").setup({
+				panel = {
+					enabled = true,
+					auto_refresh = true,
+					keymap = {
+						jump_prev = "[[",
+						jump_next = "]]",
+						accept = "<CR>",
+						refresh = "gr",
+						open = "<M-l>",
 					},
-					suggestion = {
-						enabled = true,
-						auto_trigger = true,
-						debounce = 75,
-						keymap = {
-							accept = "<M-r>",
-							next = "<M->>",
-							prev = "<M-<>",
-							dismiss = "<C-]>",
-						},
-					},
-					filetypes = {
-						yaml = false,
-						markdown = false,
-						help = false,
-						gitcommit = false,
-						gitrebase = false,
-						hgcommit = false,
-						svn = false,
-						cvs = false,
-						["."] = false,
-					},
-					copilot_node_command = "node", -- Node version must be < 18
-					server_opts_overrides = {},
-				})
-			end,
-			keys = {
-				{
-					"n",
-					"<leader>cpat",
-					":Copilot suggestion toggle_auto_trigger<cr>",
-					desc = { "Toggle Auto Trigger" },
 				},
-				{
-					"n,i",
-					"<M-l>",
-					":Copilot panel<cr>",
-					desc = { "Toggle Copilot panel" },
+				suggestion = {
+					enabled = true,
+					auto_trigger = true,
+					debounce = 75,
+					keymap = {
+						accept = "<M-r>",
+						next = "<M->>",
+						prev = "<M-<>",
+						dismiss = "<C-]>",
+					},
 				},
+				filetypes = {
+					yaml = false,
+					markdown = false,
+					help = false,
+					gitcommit = false,
+					gitrebase = false,
+					hgcommit = false,
+					svn = false,
+					cvs = false,
+					["."] = false,
+				},
+				copilot_node_command = "node", -- Node version must be < 18
+				server_opts_overrides = {},
+			})
+		end,
+		keys = {
+			{
+				"n",
+				"<leader>cpat",
+				":Copilot suggestion toggle_auto_trigger<cr>",
+				desc = { "Toggle Auto Trigger" },
+			},
+			{
+				"n,i",
+				"<M-l>",
+				":Copilot panel<cr>",
+				desc = { "Toggle Copilot panel" },
 			},
 			event = { "VimEnter" },
 		},
-		{
-			"thmsmlr/gpt.nvim",
-			config = function()
-				require("gpt").setup({
-					api_key = os.getenv("OPENAI_API_KEY"),
-				})
+	},
 
-				opts = { silent = true, noremap = true }
-				vim.keymap.set("v", "<C-g>r", require("gpt").replace, {
-					silent = true,
-					noremap = true,
-					desc = "[G]pt [R]ewrite",
-				})
-				vim.keymap.set("v", "<C-g>p", require("gpt").visual_prompt, {
-					silent = false,
-					noremap = true,
-					desc = "[G]pt [P]rompt",
-				})
-				vim.keymap.set("n", "<C-g>p", require("gpt").prompt, {
-					silent = true,
-					noremap = true,
-					desc = "[G]pt [P]rompt",
-				})
-				vim.keymap.set("n", "<C-g>c", require("gpt").cancel, {
-					silent = true,
-					noremap = true,
-					desc = "[G]pt [C]ancel",
-				})
-				vim.keymap.set("i", "<C-g>p", require("gpt").prompt, {
-					silent = true,
-					noremap = true,
-					desc = "[G]pt [P]rompt",
-				})
-			end,
-		},
+	{
+		"thmsmlr/gpt.nvim",
+		config = function()
+			require("gpt").setup({
+				api_key = os.getenv("OPENAI_API_KEY"),
+			})
+
+			opts = { silent = true, noremap = true }
+			vim.keymap.set("v", "<C-g>r", require("gpt").replace, {
+				silent = true,
+				noremap = true,
+				desc = "[G]pt [R]ewrite",
+			})
+			vim.keymap.set("v", "<C-g>p", require("gpt").visual_prompt, {
+				silent = false,
+				noremap = true,
+				desc = "[G]pt [P]rompt",
+			})
+			vim.keymap.set("n", "<C-g>p", require("gpt").prompt, {
+				silent = true,
+				noremap = true,
+				desc = "[G]pt [P]rompt",
+			})
+			vim.keymap.set("n", "<C-g>c", require("gpt").cancel, {
+				silent = true,
+				noremap = true,
+				desc = "[G]pt [C]ancel",
+			})
+			vim.keymap.set("i", "<C-g>p", require("gpt").prompt, {
+				silent = true,
+				noremap = true,
+				desc = "[G]pt [P]rompt",
+			})
+		end,
 	},
 }

@@ -30,19 +30,8 @@ return {
 		config = function()
 			local lspkind = require("lspkind")
 			lspkind.init({
-				-- enables text annotations
-				--
-				-- default: true
 				mode = "symbol",
-				-- default symbol map
-				-- can be either 'default' (requires nerd-fonts font) or
-				-- 'codicons' for codicon preset (requires vscode-codicons font)
-				--
-				-- default: 'default'
 				preset = "codicons",
-				-- override preset symbols
-				--
-				-- default: {}
 				symbol_map = {
 					Text = "",
 					Method = "",
@@ -94,7 +83,6 @@ return {
 			end
 
 			local cmp = require("cmp")
-
 			cmp.setup({
 				snippet = {
 					expand = function(args)
@@ -130,9 +118,6 @@ return {
   set completeopt=menuone,noinsert,noselect
   highlight! default link CmpItemKind CmpItemMenuDefault
 ]])
-
-			lsp.set_preferences({ sign_icons = {} })
-
 			---@diagnostic disable-next-line: unused-local
 			lsp.on_attach(function(client, bufnr)
 				local opts = { buffer = bufnr, remap = false }

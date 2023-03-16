@@ -9,10 +9,6 @@ return {
 			local actions = require("telescope.actions")
 			local fb_actions = require("telescope").extensions.file_browser.actions
 
-			local function telescope_buffer_dir()
-				return vim.fn.expand("%:p:h")
-			end
-
 			-- load refactoring Telescope extension
 			require("telescope").load_extension("refactoring")
 
@@ -56,21 +52,14 @@ return {
 					},
 				},
 			})
-		end
+		end,
 	},
-    { "ThePrimeagen/harpoon", config = function() require("harpoon").setup() 
-    local mark = require("harpoon.mark")
-local ui = require("harpoon.ui")
-
-vim.keymap.set("n", "<leader>a", mark.add_file)
-vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
-
-vim.keymap.set("n", "<C-h>", function() ui.nav_file(1) end)
-vim.keymap.set("n", "<C-t>", function() ui.nav_file(2) end)
-vim.keymap.set("n", "<C-n>", function() ui.nav_file(3) end)
-vim.keymap.set("n", "<C-s>", function() ui.nav_file(4) end)
-
-    end },
+	{
+		"ThePrimeagen/harpoon",
+		config = function()
+			require("harpoon").setup()
+		end,
+	},
 	{ "nvim-telescope/telescope-file-browser.nvim" },
 	{ "ThePrimeagen/refactoring.nvim" },
 }
