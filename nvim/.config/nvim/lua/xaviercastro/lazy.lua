@@ -91,5 +91,14 @@ require("lazy").setup({
             "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim",
             "nvim-telescope/telescope.nvim"
         },
-    }
+    },
+    { "folke/zen-mode.nvim" },
+    { "folke/trouble.nvim", config = function ()
+       require("trouble").setup {
+           -- your configuration comes here
+           -- or leave it empty to use the default settings
+           -- refer to the configuration section below
+           icons = false,
+       }
+    end }
 }, opts)
