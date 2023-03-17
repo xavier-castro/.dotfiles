@@ -42,7 +42,7 @@ SETUVAR _fisher_patrickf1_2F_fzf_2E_fish_files:\x7e/\x2econfig/fish/functions/_f
 SETUVAR _fisher_plugins:jorgebucaran/fisher\x1epatrickf1/fzf\x2efish\x1eb4b4r07/enhancd\x1egazorby/fish\x2dabbreviation\x2dtips\x1ejorgebucaran/autopair\x2efish\x1emeaningful\x2dooo/sponge\x1ejoseluisq/gitnow\x402\x2e10\x2e0\x1ejethrokuan/z\x1ejorgebucaran/hydro
 SETUVAR _fisher_upgraded_to_4_4:\x1d
 SETUVAR _hydro_git_1028:main\u2022\x20
-SETUVAR _hydro_git_10393:dev\u2022\x20
+SETUVAR _hydro_git_10393:dev\x20
 SETUVAR _hydro_git_12418:main\u2022\x20
 SETUVAR _hydro_git_13176:main\u2022\x20
 SETUVAR _hydro_git_16038:main\u2022\x20
