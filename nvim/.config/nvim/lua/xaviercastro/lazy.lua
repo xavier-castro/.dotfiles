@@ -22,9 +22,7 @@ require("lazy").setup({
         'altermo/ultimate-autopair.nvim',
         event = { 'InsertEnter', 'CmdlineEnter' },
         config = function()
-            require('ultimate-autopair').setup({
-                --Config goes here
-            })
+            require('ultimate-autopair').setup({})
         end,
     },
     {
@@ -45,6 +43,7 @@ require("lazy").setup({
     { "ThePrimeagen/refactoring.nvim" },
     { 'mbbill/undotree' },
     { 'tpope/vim-fugitive' },
+    { 'tpope/vim-commentary' },
     { 'tpope/vim-surround' },
     {
         'VonHeikemen/lsp-zero.nvim',
@@ -54,6 +53,7 @@ require("lazy").setup({
             { 'neovim/nvim-lspconfig' },             -- Required
             { 'williamboman/mason.nvim' },           -- Optional
             { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+
             -- Autocompletion
             { 'hrsh7th/nvim-cmp' },                  -- Required
             { 'hrsh7th/cmp-nvim-lsp' },              -- Required
@@ -61,6 +61,7 @@ require("lazy").setup({
             { 'hrsh7th/cmp-path' },                  -- Optional
             { 'saadparwaiz1/cmp_luasnip' },          -- Optional
             { 'hrsh7th/cmp-nvim-lua' },              -- Optional
+
             -- Snippets
             { 'L3MON4D3/LuaSnip' },                  -- Required
             { 'rafamadriz/friendly-snippets' }       -- Optional
@@ -93,12 +94,16 @@ require("lazy").setup({
         },
     },
     { "folke/zen-mode.nvim" },
-    { "folke/trouble.nvim", config = function ()
-       require("trouble").setup {
-           -- your configuration comes here
-           -- or leave it empty to use the default settings
-           -- refer to the configuration section below
-           icons = false,
-       }
-    end }
+    {
+        "folke/trouble.nvim",
+        config = function()
+            require("trouble").setup {
+                -- your configuration comes here
+                -- or leave it empty to use the default settings
+                -- refer to the configuration section below
+                icons = false,
+            }
+        end
+    },
+    {"laytan/cloak.nvim"}
 }, opts)
