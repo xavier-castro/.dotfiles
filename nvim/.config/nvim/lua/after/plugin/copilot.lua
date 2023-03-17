@@ -1,6 +1,7 @@
 return {
 	{
 		"zbirenbaum/copilot.lua",
+		event = "VimEnter", -- On First notice it is already going
 		config = function()
 			require("copilot").setup({
 				panel = {
@@ -39,21 +40,10 @@ return {
 				copilot_node_command = "node", -- Node version must be < 18
 				server_opts_overrides = {},
 			})
+
+			vim.keymap.set("n", "<leader>cp", ":Copilot suggestion toggle_auto_trigger<cr>")
+			vim.keymap.set("n", "<leader>cc", ":ChatGPT<cr>")
+			vim.keymap.set("n", "<leader>cm", ":ChatGPTActAs<cr>")
 		end,
-		keys = {
-			{
-				"n",
-				"<leader>cpat",
-				":Copilot suggestion toggle_auto_trigger<cr>",
-				desc = { "Toggle Auto Trigger" },
-			},
-			{
-				"n,i",
-				"<M-l>",
-				":Copilot panel<cr>",
-				desc = { "Toggle Copilot panel" },
-			},
-			event = { "VimEnter" },
-		},
 	},
 }
