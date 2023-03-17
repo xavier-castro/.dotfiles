@@ -35,8 +35,8 @@ vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
 -- Turn off paste mode when leaving insert
 vim.api.nvim_create_autocmd("InsertLeave", {
-  pattern = '*',
-  command = "set nopaste"
+	pattern = '*',
+	command = "set nopaste"
 })
 
 -- Add asterisks in block comments
@@ -44,29 +44,29 @@ vim.opt.formatoptions:append { 'r' }
 
 -- Autocommands
 vim.api.nvim_create_autocmd({ "FileType" }, {
-  pattern = {
-    "Jaq",
-    "qf",
-    "help",
-    "man",
-    "lspinfo",
-    "spectre_panel",
-    "lir",
-    "DressingSelect",
-    "tsplayground",
-    "Markdown",
-    "Neogit",
-    "Trouble",
-    "trouble",
-    "SymbolsOutline",
-  },
-  callback = function()
-    vim.cmd([[
+	pattern = {
+		"Jaq",
+		"qf",
+		"help",
+		"man",
+		"lspinfo",
+		"spectre_panel",
+		"lir",
+		"DressingSelect",
+		"tsplayground",
+		"Markdown",
+		"Neogit",
+		"Trouble",
+		"trouble",
+		"SymbolsOutline",
+	},
+	callback = function()
+		vim.cmd([[
       nnoremap <silent> <buffer> q :close<CR>
       nnoremap <silent> <buffer> <esc> :close<CR>
       set nobuflisted
     ]])
-  end,
+	end,
 })
 
 -- Save folds

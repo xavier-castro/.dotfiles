@@ -1,3 +1,4 @@
+vim.opt.termguicolors = true
 require('craftzdog.base')
 require('craftzdog.highlights')
 require('craftzdog.maps')
@@ -9,11 +10,11 @@ local is_win = has "win32"
 local is_wsl = has "wsl"
 
 if is_mac then
-  require('craftzdog.macos')
+	require('craftzdog.macos')
 end
 if is_win then
-  require('craftzdog.windows')
+	require('craftzdog.windows')
 end
 if is_wsl then
-  require('craftzdog.wsl')
+	require('craftzdog.wsl')
 end

@@ -12,13 +12,13 @@ packer.startup(function(use)
     'svrana/neosolarized.nvim',
     requires = { 'tjdevries/colorbuddy.nvim' }
   }
-  use 'nvim-lualine/lualine.nvim'       -- Statusline
-  use 'nvim-lua/plenary.nvim'           -- Common utilities
-  use 'onsails/lspkind-nvim'            -- vscode-like pictograms
-  use 'hrsh7th/cmp-buffer'              -- nvim-cmp source for buffer words
-  use 'hrsh7th/cmp-nvim-lsp'            -- nvim-cmp source for neovim's built-in LSP
-  use 'hrsh7th/nvim-cmp'                -- Completion
-  use 'neovim/nvim-lspconfig'           -- LSP
+  use 'nvim-lualine/lualine.nvim'      -- Statusline
+  use 'nvim-lua/plenary.nvim'          -- Common utilities
+  use 'onsails/lspkind-nvim'           -- vscode-like pictograms
+  use 'hrsh7th/cmp-buffer'             -- nvim-cmp source for buffer words
+  use 'hrsh7th/cmp-nvim-lsp'           -- nvim-cmp source for neovim's built-in LSP
+  use 'hrsh7th/nvim-cmp'               -- Completion
+  use 'neovim/nvim-lspconfig'          -- LSP
   use 'jose-elias-alvarez/null-ls.nvim' -- Use Neovim as a language server to inject LSP diagnostics, code actions, and more via Lua
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
@@ -29,7 +29,7 @@ packer.startup(function(use)
   use("tpope/vim-fugitive")
   use("nvim-treesitter/nvim-treesitter-context");
   use("zbirenbaum/copilot.lua")
-  use { "jackMort/ChatGPT.nvim" }
+  use { "jackMort/ChatGPT.nvim", requires = { "MunifTanjim/nui.nvim" } }
   use 'glepnir/lspsaga.nvim' -- LSP UIs
   use 'L3MON4D3/LuaSnip'
   use {
