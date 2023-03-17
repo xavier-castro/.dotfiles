@@ -1,4 +1,5 @@
-require("xaviercastro.lazy")
-require("xaviercastro.maps")
 require("xaviercastro.set")
+require("xaviercastro.maps")
 require("xaviercastro.util")
+require("xaviercastro.lazy")
+
