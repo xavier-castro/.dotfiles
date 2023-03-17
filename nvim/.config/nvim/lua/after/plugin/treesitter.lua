@@ -14,6 +14,9 @@ return {
 					enable = true,
 					disable = {},
 				},
+				autotag = {
+					enable = true,
+				},
 				ensure_installed = {
 					"markdown",
 					"markdown_inline",
@@ -28,7 +31,7 @@ return {
 					"html",
 					"lua",
 				},
-				autotag = {
+				autopair = {
 					enable = true,
 				},
 			})

@@ -111,3 +111,13 @@ augroup remember_folds
 augroup END
 ]])
 
+
+
+function ColorMyPencils(color)
+	color = color
+	vim.cmd.colorscheme(neosolarized)
+	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+end
+
+ColorMyPencils(color)
