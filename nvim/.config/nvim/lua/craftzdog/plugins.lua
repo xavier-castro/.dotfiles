@@ -23,11 +23,13 @@ packer.startup(function(use)
   use 'williamboman/mason.nvim'
   use 'williamboman/mason-lspconfig.nvim'
   use("theprimeagen/harpoon")
+  use { "folke/trouble.nvim", config = function() require("trouble").setup {} end }
   use("theprimeagen/refactoring.nvim")
   use("mbbill/undotree")
   use("tpope/vim-fugitive")
   use("nvim-treesitter/nvim-treesitter-context");
-
+  use("zbirenbaum/copilot.lua")
+  use { "jackMort/ChatGPT.nvim" }
   use 'glepnir/lspsaga.nvim' -- LSP UIs
   use 'L3MON4D3/LuaSnip'
   use {
@@ -55,5 +57,4 @@ packer.startup(function(use)
 
   use 'lewis6991/gitsigns.nvim'
   use 'dinhhuy258/git.nvim' -- For git blame & browse
-  use("github/copilot.vim")
 end)
