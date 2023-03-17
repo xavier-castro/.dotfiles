@@ -89,9 +89,6 @@ return {
     @param key: The key to set the keymap for.
     @param command: The command to set the keymap to.
 ]]
-			vim.keymap.set("n", "<leader>cc", ":ChatGPT<cr>")
-			vim.keymap.set("n", "<leader>aaa", ":ChatGPTActAs<cr>")
-			vim.keymap.set("v", "<leader>ca", ":ChatGPTRun fix_bugs<cr>")
 		end,
 	},
 }

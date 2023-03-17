@@ -2,7 +2,11 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
-		dependencies = { { "windwp/nvim-ts-autotag" } },
+		dependencies = {
+			{ "windwp/nvim-ts-autotag" },
+			{ "nvim-treesitter/nvim-treesitter-context" },
+			{ "nvim-treesitter/playground" },
+		},
 		config = function()
 			local ts = require("nvim-treesitter.configs")
 			ts.setup({

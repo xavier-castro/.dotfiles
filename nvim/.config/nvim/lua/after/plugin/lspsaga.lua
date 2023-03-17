@@ -4,7 +4,8 @@ return {
 	config = function()
 		local saga = require("lspsaga")
 		saga.setup({
-			symbol_in_winbar = { false },
+			symbol_in_winbar = { false,
+    },
 		})
 		vim.keymap.set({ "n", "v" }, "<leader>ca", "<cmd>Lspsaga code_action<CR>")
 		vim.keymap.set("n", "gr", "<cmd>Lspsaga rename<CR>")
@@ -23,6 +24,5 @@ return {
 		vim.keymap.set("n", "<leader>o", "<cmd>Lspsaga outline<cr>")
 	end,
 	dependencies = {
-		{ "nvim-tree/nvim-web-devicons" },
 	},
 }

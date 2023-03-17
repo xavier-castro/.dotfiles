@@ -53,3 +53,6 @@ keymap.set("n", "dw", 'vb"_d')
 -- Select all
 keymap.set("n", "<C-a>", "gg<S-v>G")
 vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", { silent = true, noremap = true })
+vim.keymap.set("n", "<leader>cc", ":ChatGPT<cr>")
+vim.keymap.set("n", "<leader>aaa", ":ChatGPTActAs<cr>")
+vim.keymap.set("v", "<leader>ca", ":ChatGPTRun fix_bugs<cr>")
