@@ -42,6 +42,9 @@ telescope.setup {
 
 telescope.load_extension("file_browser")
 
+vim.keymap.set('n', '<c-p>', function()
+  builtin.git_files()
+end)
 vim.keymap.set('n', ';f',
   function()
     builtin.find_files({
@@ -58,13 +61,18 @@ end)
 vim.keymap.set('n', ';t', function()
   builtin.help_tags()
 end)
+vim.keymap.set('n', ';o', function()
+  builtin.oldfiles({
+    initial_mode = "normal",
+  })
+end)
 vim.keymap.set('n', ';;', function()
   builtin.resume()
 end)
 vim.keymap.set('n', ';e', function()
   builtin.diagnostics()
 end)
-vim.keymap.set("n", "sf", function()
+vim.keymap.set("n", "<leader><leader>", function()
   telescope.extensions.file_browser.file_browser({
     path = "%:p:h",
     cwd = telescope_buffer_dir(),
