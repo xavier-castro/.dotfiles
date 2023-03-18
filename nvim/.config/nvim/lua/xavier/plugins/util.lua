@@ -6,7 +6,7 @@ return {
     { "tpope/vim-repeat",            event = "VeryLazy" },
 
     -- Surround
-    { "tpope/vim-surround",          lazy = true },
+    { "tpope/vim-surround",          lazy = false },
 
     -- icons
     { "nvim-tree/nvim-web-devicons", lazy = true },
