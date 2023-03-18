@@ -2,6 +2,8 @@ return {
     {
         "folke/zen-mode.nvim",
         config = function()
+            local c = require("xavier.util.colors")
+
             vim.keymap.set("n", "<leader>zz", function()
                 require("zen-mode").setup {
                     window = {
@@ -13,7 +15,7 @@ return {
                 vim.wo.wrap = false
                 vim.wo.number = true
                 vim.wo.rnu = true
-                ColorMyPencils()
+                c.ColorMyPencil()
             end)
 
 
@@ -29,7 +31,7 @@ return {
                 vim.wo.number = false
                 vim.wo.rnu = false
                 vim.opt.colorcolumn = "0"
-                ColorMyPencils()
+                c.ColorMyPencils()
             end)
         end
     }

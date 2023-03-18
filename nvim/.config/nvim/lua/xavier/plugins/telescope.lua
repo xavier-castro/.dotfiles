@@ -1,4 +1,6 @@
 return {
+    -- Better fuzzy engine
+    { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
     -- File browser is what we use to navigate easier
     {
         "nvim-telescope/telescope-file-browser.nvim",
@@ -25,6 +27,13 @@ return {
                     },
                 },
                 extensions = {
+                    fzf = {
+                        fuzzy = true, -- false will only do exact matching
+                        override_generic_sorter = true, -- override the generic sorter
+                        override_file_sorter = true, -- override the file sorter
+                        case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+                        -- the default case_mode is "smart_case"
+                    },
                     file_browser = {
                         theme = "dropdown",
                         -- disables netrw and use telescope-file-browser in its place
@@ -46,7 +55,11 @@ return {
                     },
                 },
             }
+            -- Load extensions after setup so they work
             telescope.load_extension("file_browser")
+            telescope.load_extension("fzf")
+
+            -- Keybinds
             vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
             vim.keymap.set('n', '<C-p>', builtin.git_files, {})
             vim.keymap.set('n', '<leader>po', builtin.oldfiles, {})
