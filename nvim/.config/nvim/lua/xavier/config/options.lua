@@ -42,6 +42,8 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
         "man",
         "lspinfo",
         "spectre_panel",
+        "Fugitive",
+        "fugitive",
         "lir",
         "DressingSelect",
         "tsplayground",

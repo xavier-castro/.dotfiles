@@ -1,0 +1,1 @@
+require("xavier.config").load()

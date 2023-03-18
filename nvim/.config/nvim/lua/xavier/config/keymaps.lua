@@ -1,7 +1,6 @@
 ---@diagnostic disable: undefined-global
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
--- craftzdog handy window and tab navigation binding https://github.com/craftzdog/dotfiles-public/blob/master/.config/nvim/lua/craftzdog/maps.lua
 vim.keymap.set('n', 'x', '"_x')
 vim.keymap.set('n', '+', '<C-a>')
 vim.keymap.set('n', '-', '<C-x>')
@@ -21,6 +20,7 @@ vim.keymap.set('n', '<C-w><left>', '<C-w><')
 vim.keymap.set('n', '<C-w><right>', '<C-w>>')
 vim.keymap.set('n', '<C-w><up>', '<C-w>+')
 vim.keymap.set('n', '<C-w><down>', '<C-w>-')
+
 -- primeagen QOL
 -- Move around highlighted
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -38,7 +38,6 @@ vim.keymap.set("x", "<leader>p", "\"_dP") -- Your paste will be saved
 vim.keymap.set("n", "<leader>y", "\"+y")
 vim.keymap.set("v", "<leader>y", "\"+y")
 vim.keymap.set("n", "<leader>Y", "\"+Y")
-
 vim.keymap.set("n", "<leader>d", "\"_d")
 vim.keymap.set("v", "<leader>d", "\"_d")
 
@@ -54,14 +53,7 @@ vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
-
-vim.keymap.set("n", "<leader><leader>", function()
-    vim.cmd("so")
-end)
-
--- load refactoring Telescope extension
-require("telescope").load_extension("refactoring")
+-- vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- remap to open the Telescope refactoring menu in visual mode
 vim.api.nvim_set_keymap(
