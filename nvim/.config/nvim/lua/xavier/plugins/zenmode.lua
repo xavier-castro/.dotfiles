@@ -15,7 +15,7 @@ return {
                 vim.wo.wrap = false
                 vim.wo.number = true
                 vim.wo.rnu = true
-                c.ColorMyPencil()
+                c.ColorMyPencils()
             end)
 
 

@@ -44,19 +44,19 @@ return {
     },
 
     -- rosepine
-    { 'rose-pine/neovim', lazy = true, name = 'rose-pine' },
+    { 'rose-pine/neovim', lazy = false, name = 'rose-pine' },
 
     -- tokyonight
     {
         "folke/tokyonight.nvim",
-        lazy = true,
+        lazy = false,
         opts = { style = "moon" },
     },
 
     -- catppuccin
     {
         "catppuccin/nvim",
-        lazy = true,
+        lazy = false,
         name = "catppuccin",
     },
 }
