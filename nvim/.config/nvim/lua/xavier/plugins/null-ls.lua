@@ -13,22 +13,21 @@ return {
             ---@diagnostic disable-next-line: lowercase-global
             null_opts = lsp.build_options("null-ls", {})
 
-            null_ls.setup({
-                on_attach = function(client, bufnr)
-                    null_opts.on_attach(client, bufnr)
-
-                    --- your code goes here...
-                end,
-                sources = {
-                    require("typescript.extensions.null-ls.code-actions"),
-                },
-            })
-
+            require("mason").setup()
             require("mason-null-ls").setup({
-                ensure_installed = nil,
-                automatic_installation = true,
-                automatic_setup = false,
+                ensure_installed = {
+                    -- Opt to list sources here, when available in mason.
+                },
+                automatic_installation = false,
+                automatic_setup = true, -- Recommended, but optional
             })
+            require("null-ls").setup({
+                sources = {
+                    -- Anything not supported by mason.
+                    require("typescript.extensions.null-ls.code-actions"), }
+            })
+
+            require 'mason-null-ls'.setup_handlers() -- If `automatic_setup` is true.
         end,
         vim.api.nvim_create_user_command("DisableLspFormatting", function()
             vim.api.nvim_clear_autocmds({ group = augroup, buffer = 0 })
