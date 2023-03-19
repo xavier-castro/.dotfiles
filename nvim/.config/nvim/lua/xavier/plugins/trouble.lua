@@ -2,12 +2,9 @@ return {
     {
         "folke/trouble.nvim",
         config = function()
-            require("trouble").setup {
-                icons = false
-            }
+            require("trouble").setup({ icons = false })
             vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>",
-                { silent = true, noremap = true }
-            )
+                { silent = true, noremap = true })
         end
     }
 }

@@ -1,4 +1,5 @@
 return {
+    { "projekt0n/github-nvim-theme", lazy = false, opts = { transparent = true } },
     -- neoosolarized
     {
         "svrana/neosolarized.nvim",
@@ -58,10 +59,10 @@ return {
         name = "rose-pine",
         opts = { disable_background = true }
     }, -- tokyonight
-    { "folke/tokyonight.nvim", lazy = false, opts = { style = "moon" } },
+    { "folke/tokyonight.nvim",       lazy = false, opts = { style = "moon" } },
 
     -- catppuccin
-    { "catppuccin/nvim",       lazy = false, name = "catppuccin" }, {
+    { "catppuccin/nvim",             lazy = false, name = "catppuccin" }, {
     "no-clown-fiesta/no-clown-fiesta.nvim",
     lazy = false,
     opts = { transparent = false }

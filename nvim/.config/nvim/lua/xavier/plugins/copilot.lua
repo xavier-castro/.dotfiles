@@ -9,14 +9,11 @@ return {
                     layout = {
                         position = "bottom", -- | top | left | right
                         ratio = 0.2
-                    },
+                    }
                 },
                 suggestion = {
                     auto_trigger = true,
-                    keymap = {
-                        accept = "<M-r>",
-                        dismiss = "<M-e>",
-                    },
+                    keymap = { accept = "<M-r>", dismiss = "<M-e>" }
                 }
             })
         end
