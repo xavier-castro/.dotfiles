@@ -228,6 +228,11 @@ return {
 				vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 			end
 
+			vim.cmd([[
+          set completeopt=menuone,noinsert,noselect
+          highlight! default link CmpItemKind CmpItemMenuDefault
+]])
+
 			vim.diagnostic.config({
 				virtual_text = {
 					prefix = "●",

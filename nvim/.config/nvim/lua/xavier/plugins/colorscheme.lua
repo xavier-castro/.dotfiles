@@ -11,6 +11,7 @@ return {
 
 			n.setup({
 				comment_italics = true,
+                background_set = false,
 			})
 
 			local cb = require("colorbuddy.init")
@@ -26,6 +27,8 @@ return {
 			Group.new("CursorLine", colors.none, colors.base03, styles.NONE, colors.base1)
 			Group.new("CursorLineNr", colors.yellow, colors.black, styles.NONE, colors.base1)
 			Group.new("Visual", colors.none, colors.base03, styles.reverse)
+			-- Group.new("Comment", colors.base1, colors.NONE, styles.NONE)
+			Group.new("CopilotSuggestion", colors.yellow, colors.NONE, styles.NONE)
 
 			local cError = groups.Error.fg
 			local cInfo = groups.Information.fg
