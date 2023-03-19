@@ -58,13 +58,16 @@ return {
         name = "rose-pine",
         opts = {disable_background = true}
     }, -- tokyonight
-    {"folke/tokyonight.nvim", lazy = false, opts = {style = "moon"}},
-    {"projekt0n/github-nvim-theme", lazy = false, opts = {transparent = true}},
-    -- catppuccin
-    {"catppuccin/nvim", lazy = false, name = "catppuccin"}, {
+    {"folke/tokyonight.nvim", lazy = false, opts = {style = "moon"}}, {
+        "projekt0n/github-nvim-theme",
+        lazy = false,
+        config = function()
+            require("github-theme").setup({transparent = true})
+        end
+    }, {"catppuccin/nvim", lazy = false, name = "catppuccin"}, {
         "no-clown-fiesta/no-clown-fiesta.nvim",
         lazy = false,
-        opts = {transparent = false},
+        opts = {transparent = false}
     }, {"Mofiqul/vscode.nvim", lazy = false, name = "vscode"},
     {"olimorris/onedarkpro.nvim", lazy = false, name = "onedarkpro"}
 }
