@@ -18,7 +18,7 @@ return {
 
             ---@diagnostic disable-next-line: lowercase-global
             null_opts = lsp.build_options("null-ls", {})
-            require("mason").setup()
+            require("mason").setup({})
             require("mason-null-ls").setup({
                 ensure_installed = {
                     -- Opt to list sources here, when available in mason.
