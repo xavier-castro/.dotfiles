@@ -21,23 +21,11 @@ return {
 			-- MARK: Initial setup
 			local lsp = require("lsp-zero").preset("minimal")
 
-			-- MARK: This is where you add your default keybinds
-			-- lsp.on_attach(function(client, bufnr)
-			--     lsp.default_keymaps({ buffer = bufnr })
-			-- end)
-
-			-- MARK: This is where you configure your LSPs
-			-- require('lspconfig').lua_ls.setup(lsp.nvim_lua_ls())
-			-- require('lspconfig').tsserver.setup({})
-			-- require('lspconfig').tailwindcss.setup({})
-			-- require('lspconfig').remark_ls.setup({})
-
 			-- MARK: for-loop auto setting up LSP
 			require("mason").setup()
 			require("mason-lspconfig").setup({
 				ensure_installed = {
 					-- Replace these with whatever servers you want to install
-					"remark_ls",
 					"prismals",
 					"tsserver",
 					"lua_ls",
@@ -47,6 +35,36 @@ return {
 			local lsp_capabilities = require("cmp_nvim_lsp").default_capabilities()
 			local lsp_attach = function(client, bufnr)
 				lsp.default_keymaps({ buffer = bufnr })
+				vim.keymap.set("n", "gd", function()
+					vim.lsp.buf.definition()
+				end, opts)
+				vim.keymap.set("n", "K", function()
+					vim.lsp.buf.hover()
+				end, opts)
+				vim.keymap.set("n", "<leader>vws", function()
+					vim.lsp.buf.workspace_symbol()
+				end, opts)
+				vim.keymap.set("n", "<leader>vd", function()
+					vim.diagnostic.open_float()
+				end, opts)
+				vim.keymap.set("n", "[d", function()
+					vim.diagnostic.goto_next()
+				end, opts)
+				vim.keymap.set("n", "]d", function()
+					vim.diagnostic.goto_prev()
+				end, opts)
+				vim.keymap.set("n", "<leader>vca", function()
+					vim.lsp.buf.code_action()
+				end, opts)
+				vim.keymap.set("n", "<leader>vrr", function()
+					vim.lsp.buf.references()
+				end, opts)
+				vim.keymap.set("n", "<leader>vrn", function()
+					vim.lsp.buf.rename()
+				end, opts)
+				vim.keymap.set("i", "<C-h>", function()
+					vim.lsp.buf.signature_help()
+				end, opts)
 			end
 			local lspconfig = require("lspconfig")
 			local get_servers = require("mason-lspconfig").get_installed_servers
@@ -122,8 +140,8 @@ return {
 
 			-- MARK: AFTER `lsp.setup()` has been called you can now run null-ls
 			local null_ls = require("null-ls")
-			local bf = null_ls.builtins.formatting
-			local bd = null_ls.builtins.diagnostics
+			-- local bf = null_ls.builtins.formatting
+			-- local bd = null_ls.builtins.diagnostics
 			local ba = null_ls.builtins.code_actions
 			null_ls.setup({
 				on_attach = function(client, bufnr)
@@ -146,10 +164,6 @@ return {
 				end,
 				sources = {
 					--- Replace these with the tools you have installed
-					bf.prettier,
-					bf.prettierd,
-					bf.shfmt,
-					bf.stylua,
 					ba.refactoring,
 					require("typescript.extensions.null-ls.code-actions"),
 				},
@@ -159,7 +173,7 @@ return {
 			-- https://github.com/jay-babu/mason-null-ls.nvim#setup
 			require("mason-null-ls").setup({
 				ensure_installed = nil,
-				automatic_installation = false, -- You can still set this to `true`
+				automatic_installation = true, -- You can still set this to `true`
 				automatic_setup = true,
 			})
 

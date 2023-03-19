@@ -2,7 +2,7 @@ return {
 	-- neoosolarized
 	{
 		"svrana/neosolarized.nvim",
-		lazy = false,
+		lazy = true,
 		dependencies = { "tjdevries/colorbuddy.nvim" },
 		config = function()
 			local status, n = pcall(require, "neosolarized")
