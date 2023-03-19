@@ -1,5 +1,7 @@
 local M = {}
 
+vim.cmd[[colorscheme neosolarized]]
+
 function M.ColorMyPencils(color)
 	color = color or "neosolarized"
 	vim.cmd.colorscheme(color)

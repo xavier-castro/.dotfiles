@@ -150,7 +150,6 @@ return {
 					bf.prettierd,
 					bf.shfmt,
 					bf.stylua,
-					bd.eslint,
 					ba.refactoring,
 					require("typescript.extensions.null-ls.code-actions"),
 				},
