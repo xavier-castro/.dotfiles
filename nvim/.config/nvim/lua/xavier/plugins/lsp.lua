@@ -4,17 +4,17 @@ return {
         branch = "dev-v2",
         dependencies = {
             -- LSP Support
-            { "neovim/nvim-lspconfig" },           -- Required
-            { "williamboman/mason.nvim" },         -- Optional
-            { "williamboman/mason-lspconfig.nvim" }, -- Optional
+            {"neovim/nvim-lspconfig"}, -- Required
+            {"williamboman/mason.nvim"}, -- Optional
+            {"williamboman/mason-lspconfig.nvim"}, -- Optional
             -- Autocompletion
-            { "hrsh7th/nvim-cmp" },                -- Required
-            { "hrsh7th/cmp-nvim-lsp" },            -- Required
-            { "L3MON4D3/LuaSnip" },                -- Required
+            {"hrsh7th/nvim-cmp"}, -- Required
+            {"hrsh7th/cmp-nvim-lsp"}, -- Required
+            {"L3MON4D3/LuaSnip"}, -- Required
             -- XC Extras
-            { "jose-elias-alvarez/null-ls.nvim" },
-            { "jay-babu/mason-null-ls.nvim" },
-            { "jose-elias-alvarez/typescript.nvim" }, { "onsails/lspkind.nvim" }
+            {"jose-elias-alvarez/null-ls.nvim"},
+            {"jay-babu/mason-null-ls.nvim"},
+            {"jose-elias-alvarez/typescript.nvim"}, {"onsails/lspkind.nvim"}
         },
         config = function()
             -- MARK: Initial setup
@@ -42,7 +42,7 @@ return {
             local lsp_capabilities =
                 require("cmp_nvim_lsp").default_capabilities()
             local lsp_attach = function(client, bufnr)
-                lsp.default_keymaps({ buffer = bufnr })
+                lsp.default_keymaps({buffer = bufnr})
             end
             local lspconfig = require("lspconfig")
             local get_servers = require("mason-lspconfig").get_installed_servers
@@ -55,25 +55,65 @@ return {
             end
 
             -- MARK: Completion configuration
+            -- Helper Functions
+            local lspkind = require("lspkind")
+            local function formatForTailwindCSS(entry, vim_item)
+                if vim_item.kind == "Color" and
+                    entry.completion_item.documentation then
+                    local _, _, r, g, b = string.find(
+                                              entry.completion_item
+                                                  .documentation,
+                                              "^rgb%((%d+), (%d+), (%d+)")
+                    if r then
+                        local color = string.format("%02x", r) ..
+                                          string.format("%02x", g) ..
+                                          string.format("%02x", b)
+                        local group = "Tw_" .. color
+                        if vim.fn.hlID(group) < 1 then
+                            vim.api.nvim_set_hl(0, group, {fg = "#" .. color})
+                        end
+                        vim_item.kind = "●"
+                        vim_item.kind_hl_group = group
+                        return vim_item
+                    end
+                end
+                vim_item.kind = lspkind.symbolic(vim_item.kind) and
+                                    lspkind.symbolic(vim_item.kind) or
+                                    vim_item.kind
+                return vim_item
+            end
             local cmp = require("cmp")
             local cmp_action = require("lsp-zero").cmp_action()
             require("luasnip.loaders.from_vscode").lazy_load()
             cmp.setup({
-                sources = {
-                    { name = "path" }, { name = "nvim_lsp" }, { name = "nvim_lua" },
-                    { name = "luasnip" }, { name = "buffer", keyword_length = 3 }
+                snippet = {
+                    expand = function(args)
+                        require("luasnip").lsp_expand(args.body)
+                    end
                 },
-                mapping = {
+                mapping = cmp.mapping.preset.insert({
+                    -- ["<C-d>"] = cmp.mapping.scroll_docs(-4),
+                    -- ["<C-f>"] = cmp.mapping.scroll_docs(4),
+                    ["<C-Space>"] = cmp.mapping.complete(),
+                    ["<C-e>"] = cmp.mapping.close(),
                     ["<C-f>"] = cmp_action.luasnip_jump_forward(),
-                    ["<C-b>"] = cmp_action.luasnip_jump_backward()
+                    ["<C-b>"] = cmp_action.luasnip_jump_backward(),
+                    ["<CR>"] = cmp.mapping.confirm({
+                        behavior = cmp.ConfirmBehavior.Replace,
+                        select = true
+                    })
+                }),
+                sources = {
+                    {name = "path"}, {name = "nvim_lsp"}, {name = "nvim_lua"},
+                    {name = "luasnip"}, {name = "buffer", keyword_length = 3}
                 },
                 formatting = {
-                    fields = { "abbr", "kind", "menu" },
-                    format = require("lspkind").cmp_format({
-                        mode = "symbol",      -- show only symbol annotations
-                        maxwidth = 50,        -- prevent the popup from showing more than provided characters
-                        ellipsis_char =
-                        "..."                 -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
+                    format = lspkind.cmp_format({
+                        maxwidth = 50,
+                        before = function(entry, vim_item)
+                            vim_item = formatForTailwindCSS(entry, vim_item)
+                            return vim_item
+                        end
                     })
                 }
             })
@@ -84,6 +124,7 @@ return {
             -- MARK: AFTER `lsp.setup()` has been called you can now run null-ls
             local null_ls = require("null-ls")
             local bf = null_ls.builtins.formatting
+            local bd = null_ls.builtins.diagnostics
             null_ls.setup({
                 on_attach = function(client, bufnr)
                     local format_cmd = function(input)
@@ -101,8 +142,8 @@ return {
                         desc = "Format using null-ls"
                     })
 
-                    vim.keymap.set("n", "<leader>n", "<cmd>NullFormat!<cr>",
-                        { buffer = bufnr })
+                    vim.keymap.set("n", "<leader>f", "<cmd>NullFormat!<cr>",
+                                   {buffer = bufnr})
                 end,
                 sources = {
                     --- Replace these with the tools you have installed
@@ -121,6 +162,11 @@ return {
 
             -- Required when `automatic_setup` is true
             require("mason-null-ls").setup_handlers()
+
+            vim.cmd([[
+          set completeopt=menuone,noinsert,noselect
+          highlight! default link CmpItemKind CmpItemMenuDefault
+            ]])
         end
     }
 }
