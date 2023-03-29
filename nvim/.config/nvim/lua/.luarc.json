@@ -2,7 +2,8 @@
     "diagnostics.globals": [
         "vim",
         "è",
-        "augroup"
+        "augroup",
+        "opts"
     ],
     "runtime.unicodeName": true
 }
