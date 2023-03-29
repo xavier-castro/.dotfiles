@@ -1,9 +1,5 @@
 local M = {}
 
--- require("rose-pine").setup({
--- 	disable_background = true,
--- })
-
 function M.ColorMyPencils(color)
 	color = color or "neosolarized"
 	vim.cmd.colorscheme(color)
