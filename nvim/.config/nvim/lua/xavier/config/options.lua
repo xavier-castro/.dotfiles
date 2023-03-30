@@ -31,6 +31,7 @@ vim.opt.colorcolumn = "80"
 vim.opt.cursorline = true
 vim.opt.termguicolors = true
 vim.opt.wildoptions = "pum"
+vim.opt.pumheight = 10
 vim.opt.pumblend = 5
 vim.opt.background = "dark"
 
