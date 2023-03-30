@@ -92,5 +92,6 @@ return { {
                 highlight = true    -- Highlight the currently focused node
             }
         }
+        vim.keymap.set("n","<M-b>", "<cmd>Navbuddy<cr>")
     end
 } }
