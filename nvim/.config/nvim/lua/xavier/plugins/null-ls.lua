@@ -15,6 +15,7 @@ return {
 					b.completion.luasnip,
 					b.formatting.stylua,
 					b.formatting.prettierd,
+					b.code_actions.eslint,
 					b.formatting.prismaFmt,
 					b.formatting.rustywind,
 					b.formatting.deno_fmt.with({
