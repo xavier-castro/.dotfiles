@@ -95,6 +95,10 @@ return {
 					["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<C-e>"] = cmp.mapping.close(),
+                    ["<CR>"] = cmp.mapping.confirm({
+                        behavior = cmp.ConfirmBehavior.Replace,
+                        select = true,
+                    }),
 				},
 				formatting = {
 					fields = { "abbr", "kind", "menu" },
