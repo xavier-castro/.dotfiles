@@ -35,7 +35,7 @@ return {
                 lsp.default_keymaps({
                     buffer = bufnr,
                 })
-               local opts = { buffer = bufnr, remap = false }
+                local opts = { buffer = bufnr, remap = false }
 
                 vim.keymap.set("n", "<leader>nls", "<cmd>NullLsInfo<cr>", opts)
                 vim.keymap.set("n", "gd", function()

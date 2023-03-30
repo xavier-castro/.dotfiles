@@ -11,7 +11,7 @@ return { {
 
         navbuddy.setup {
             window = {
-                border = "single", -- "rounded", "double", "solid", "none"
+                border = "solid", -- "rounded", "double", "solid", "none"
                 -- or an array with eight chars building up the border in a clockwise fashion
                 -- starting with the top-left corner. eg: { "╔", "═" ,"╗", "║", "╝", "═", "╚", "║" }.
                 size = "60%",
