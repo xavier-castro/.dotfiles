@@ -3,7 +3,7 @@ local M = {}
 local defaults = {
     defaults = {
         keymaps = require("xavier.config.keymaps"),
-        options = require("xavier.config.options")
+        options = require("xavier.config.options"),
     }
 }
 

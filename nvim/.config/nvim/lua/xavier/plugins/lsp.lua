@@ -1,125 +1,110 @@
 return {
-    {
-        'VonHeikemen/lsp-zero.nvim',
-        branch = 'v1.x',
-        dependencies = {
-            -- LSP Support
-            { 'neovim/nvim-lspconfig' },
-            { 'williamboman/mason.nvim' },
-            { 'williamboman/mason-lspconfig.nvim' },
+	{
+		"VonHeikemen/lsp-zero.nvim",
+		branch = "v2.x",
+		dependencies = {
+			-- LSP Support
+			{ "neovim/nvim-lspconfig" }, -- Required
+			{
+				-- Optional
+				"williamboman/mason.nvim",
+				build = function()
+					pcall(vim.cmd, "MasonUpdate")
+				end,
+			},
+			{ "williamboman/mason-lspconfig.nvim" }, -- Optional
 
-            -- Autocompletion
-            { 'hrsh7th/nvim-cmp' },
-            { 'hrsh7th/cmp-buffer' },
-            { 'hrsh7th/cmp-path' },
-            { 'saadparwaiz1/cmp_luasnip' },
-            { 'hrsh7th/cmp-nvim-lsp' },
-            { 'hrsh7th/cmp-nvim-lua' },
+			-- Autocompletion
+			{ "hrsh7th/nvim-cmp" }, -- Required
+			{ "hrsh7th/cmp-nvim-lsp" }, -- Required
+			{ "L3MON4D3/LuaSnip" }, -- Required
+			{ "onsails/lspkind.nvim" },
+		},
+		config = function()
+			local lsp = require("lsp-zero").preset({
+				manage_nvim_cmp = {
+					set_sources = "recommended",
+					set_basic_mappings = true,
+					set_extra_mappings = false,
+					use_luasnip = true,
+					set_format = true,
+					documentation_window = true,
+				},
+			})
+			lsp.on_attach(function(client, bufnr)
+				lsp.default_keymaps({
+					buffer = bufnr,
+				})
+				local opts = { buffer = bufnr, remap = false }
 
-            -- Snippets
-            { 'L3MON4D3/LuaSnip' },
-            { 'rafamadriz/friendly-snippets' },
-        },
-        config = function()
-            local lsp = require("lsp-zero")
+				vim.keymap.set("n", "gd", function()
+					vim.lsp.buf.definition()
+				end, opts)
+				vim.keymap.set("n", "K", function()
+					vim.lsp.buf.hover()
+				end, opts)
+				vim.keymap.set("n", "<leader>vws", function()
+					vim.lsp.buf.workspace_symbol()
+				end, opts)
+				vim.keymap.set("n", "<leader>vd", function()
+					vim.diagnostic.open_float()
+				end, opts)
+				vim.keymap.set("n", "[d", function()
+					vim.diagnostic.goto_next()
+				end, opts)
+				vim.keymap.set("n", "]d", function()
+					vim.diagnostic.goto_prev()
+				end, opts)
+				vim.keymap.set("n", "<leader>vca", function()
+					vim.lsp.buf.code_action()
+				end, opts)
+				vim.keymap.set("n", "<leader>vrr", function()
+					vim.lsp.buf.references()
+				end, opts)
+				vim.keymap.set("n", "<leader>vrn", function()
+					vim.lsp.buf.rename()
+				end, opts)
+				vim.keymap.set("i", "<C-h>", function()
+					vim.lsp.buf.signature_help()
+				end, opts)
+				vim.keymap.set("n", "<M-.>", function()
+					vim.lsp.buf.code_action()
+				end, opts)
+				vim.keymap.set("i", "<M-.>", function()
+					vim.lsp.buf.code_action()
+				end, opts)
+			end)
 
-            lsp.preset("recommended")
+			-- (Optional) Configure lua language server for neovim
+			require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
+			lsp.setup()
 
-            lsp.ensure_installed({
-                "tsserver",
-                "tailwindcss",
-            })
-
-            -- Fix Undefined global 'vim'
-            lsp.configure("lua-language-server", {
-                settings = {
-                    Lua = {
-                        diagnostics = {
-                            globals = { "vim" },
-                        },
-                    },
-                },
-            })
-
-            local cmp = require("cmp")
-            local cmp_select = { behavior = cmp.SelectBehavior.Select }
-            local cmp_action = require('lsp-zero').cmp_action()
-            local cmp_mappings = lsp.defaults.cmp_mappings({
-                ["<C-Space>"] = cmp.mapping.complete(),
-                ["<C-e>"] = cmp.mapping.close(),
-                ["<C-f>"] = cmp_action.luasnip_jump_forward(),
-                ["<C-b>"] = cmp_action.luasnip_jump_backward(),
-                ["<CR>"] = cmp.mapping.confirm({
-                    behavior = cmp.ConfirmBehavior.Replace,
-                    select = true,
-                }),
-            })
-
-            cmp_mappings["<Tab>"] = nil
-            cmp_mappings["<S-Tab>"] = nil
-
-            lsp.setup_nvim_cmp({
-                mapping = cmp_mappings,
-            })
-
-            lsp.set_preferences({
-                suggest_lsp_servers = false,
-                sign_icons = {
-                    error = "E",
-                    warn = "W",
-                    hint = "H",
-                    info = "I",
-                },
-            })
-
-            lsp.on_attach(function(client, bufnr)
-                local opts = { buffer = bufnr, remap = false }
-
-                vim.keymap.set("n", "gd", function()
-                    vim.lsp.buf.definition()
-                end, opts)
-                vim.keymap.set("n", "K", function()
-                    vim.lsp.buf.hover()
-                end, opts)
-                vim.keymap.set("n", "<leader>vws", function()
-                    vim.lsp.buf.workspace_symbol()
-                end, opts)
-                vim.keymap.set("n", "<leader>vd", function()
-                    vim.diagnostic.open_float()
-                end, opts)
-                vim.keymap.set("n", "[d", function()
-                    vim.diagnostic.goto_next()
-                end, opts)
-                vim.keymap.set("n", "]d", function()
-                    vim.diagnostic.goto_prev()
-                end, opts)
-                vim.keymap.set("n", "<leader>vca", function()
-                    vim.lsp.buf.code_action()
-                end, opts)
-                vim.keymap.set("n", "<leader>vrr", function()
-                    vim.lsp.buf.references()
-                end, opts)
-                vim.keymap.set("n", "<leader>vrn", function()
-                    vim.lsp.buf.rename()
-                end, opts)
-                vim.keymap.set("i", "<C-h>", function()
-                    vim.lsp.buf.signature_help()
-                end, opts)
-                vim.keymap.set("n", "<M-.>", function()
-                    vim.lsp.buf.code_action()
-                end, opts)
-                vim.keymap.set("i", "<M-.>", function()
-                    vim.lsp.buf.code_action()
-                end, opts)
-            end)
-
-            lsp.setup()
-
-            vim.diagnostic.config({
-                virtual_text = true,
-            })
-        end
-    }
-
-
+			-- (Optional) Configure nvim-cmp
+			local cmp = require("cmp")
+			local cmp_action = require("lsp-zero").cmp_action()
+			require("luasnip.loaders.from_vscode").lazy_load()
+			cmp.setup({
+				sources = {
+					{ name = "nvim_lsp" },
+					{ name = "luasnip" },
+				},
+				mapping = {
+					["<M-f>"] = cmp_action.luasnip_jump_forward(),
+					["<M-b>"] = cmp_action.luasnip_jump_backward(),
+					["<Tab>"] = cmp_action.luasnip_supertab(),
+					["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
+					["<C-Space>"] = cmp.mapping.complete(),
+					["<C-e>"] = cmp.mapping.close(),
+				},
+				formatting = {
+					fields = { "abbr", "kind", "menu" },
+					format = require("lspkind").cmp_format({
+						mode = "symbol", -- show only symbol annotations
+						maxwidth = 50, -- prevent the popup from showing more than provided characters
+						ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead
+					}),
+				},
+			})
+		end,
+	},
 }
