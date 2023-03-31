@@ -82,6 +82,7 @@ return {
 			telescope.load_extension("file_browser")
 			telescope.load_extension("fzf")
 			require("telescope").load_extension("ui-select")
+			require("telescope").load_extension("harpoon")
 
 			-- Keybinds
 			vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
