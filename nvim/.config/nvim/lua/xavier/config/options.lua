@@ -6,9 +6,9 @@ vim.opt.nu = true
 vim.opt.relativenumber = true
 vim.opt.showmode = false
 
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 
 vim.opt.smartindent = true
@@ -26,13 +26,13 @@ vim.opt.incsearch = true
 vim.opt.scrolloff = 8
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
-vim.opt.updatetime = 50
+vim.opt.updatetime = 80
 vim.opt.colorcolumn = "80"
 vim.opt.cursorline = true
 vim.opt.termguicolors = true
 vim.opt.wildoptions = "pum"
-vim.opt.pumheight = 10
-vim.opt.pumblend = 5
+vim.opt.pumheight = 15
+vim.opt.pumblend = 2
 vim.opt.background = "dark"
 
 -- Testing

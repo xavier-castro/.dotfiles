@@ -53,7 +53,7 @@ return {
 				vim.keymap.set("n", "gp", "<Cmd>Lspsaga peek_definition<CR>", opts)
 				vim.keymap.set("n", "gr", "<Cmd>Lspsaga rename<CR>", opts)
 				vim.keymap.set("n", "<M-d>", "<cmd>Lspsaga term_toggle<cr>", opts)
-				vim.keymap.set("t", "<Esc>", "<C-\\><C-n><cmd>Lspsaga close_floaterm<cr>", opts)
+				vim.keymap.set("t", "<Esc>", "<C-\\><C-n>:q!<cr>", opts)
 
 				-- code action
 				local codeaction = require("lspsaga.codeaction")
