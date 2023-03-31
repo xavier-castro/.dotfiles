@@ -49,9 +49,6 @@ return { -- neoosolarized
 		"rose-pine/neovim",
 		lazy = false,
 		name = "rose-pine",
-		opts = {
-			disable_background = true,
-		},
 	},
 	{
 		"no-clown-fiesta/no-clown-fiesta.nvim",
