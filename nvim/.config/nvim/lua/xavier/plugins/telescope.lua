@@ -1,8 +1,9 @@
-return { -- Better fuzzy engine
+return {
+	{ "nvim-telescope/telescope-ui-select.nvim" },
 	{
 		"nvim-telescope/telescope-fzf-native.nvim",
 		build = "make",
-	}, -- File browser is what we use to navigate easier
+	},
 	{
 		"nvim-telescope/telescope-file-browser.nvim",
 		dependencies = { "nvim-telescope/telescope.nvim", "nvim-lua/plenary.nvim" },
@@ -28,6 +29,25 @@ return { -- Better fuzzy engine
 					},
 				},
 				extensions = {
+					["ui-select"] = {
+						require("telescope.themes").get_dropdown({
+							-- even more opts
+						}),
+
+						-- pseudo code / specification for writing custom displays, like the one
+						-- for "codeactions"
+						-- specific_opts = {
+						--   [kind] = {
+						--     make_indexed = function(items) -> indexed_items, width,
+						--     make_displayer = function(widths) -> displayer
+						--     make_display = function(displayer) -> function(e)
+						--     make_ordinal = function(e) -> string
+						--   },
+						--   -- for example to disable the custom builtin "codeactions" display
+						--      do the following
+						--   codeactions = false,
+						-- }
+					},
 					fzf = {
 						fuzzy = true, -- false will only do exact matching
 						override_generic_sorter = true, -- override the generic sorter
@@ -61,6 +81,7 @@ return { -- Better fuzzy engine
 			-- Load extensions after setup so they work
 			telescope.load_extension("file_browser")
 			telescope.load_extension("fzf")
+			require("telescope").load_extension("ui-select")
 
 			-- Keybinds
 			vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
