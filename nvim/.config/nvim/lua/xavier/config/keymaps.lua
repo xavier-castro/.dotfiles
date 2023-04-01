@@ -34,7 +34,7 @@ vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("n", "n", "nzzzv")
 vim.keymap.set("n", "N", "Nzzzv")
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>:bd!<cr>")
-
+vim.keymap.set("n", "<M-d>", "<cmd>ToggleTerm<cr>")
 vim.keymap.set("x", "<leader>p", '"_dP') -- Your paste will be saved
 vim.keymap.set("n", "<leader>f", ":lua vim.lsp.buf.formatting_sync(nil, 10000)<CR>")
 

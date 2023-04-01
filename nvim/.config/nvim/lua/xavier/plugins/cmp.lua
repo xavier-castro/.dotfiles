@@ -56,7 +56,7 @@ return {
 					}),
 				}),
 				sources = cmp.config.sources({
-					{ name = "nvim_lsp", priority = 10, keyword_length = 6, group_index = 1, max_item_count = 30 },
+					{ name = "nvim_lsp", priority = 10, keyword_length = 3, group_index = 1, max_item_count = 30 },
 					{ name = "nvim_lua" },
 					{ name = "luasnip" },
 					{ name = "buffer" },
