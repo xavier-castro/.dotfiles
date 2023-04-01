@@ -52,7 +52,6 @@ return {
 				vim.keymap.set("i", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 				vim.keymap.set("n", "gp", "<Cmd>Lspsaga peek_definition<CR>", opts)
 				vim.keymap.set("n", "gr", "<Cmd>Lspsaga rename<CR>", opts)
-				vim.keymap.set("n", "<M-d>", "<cmd>Lspsaga term_toggle<cr>", opts)
 				vim.keymap.set("t", "<Esc>", "<C-\\><C-n>:q!<cr>", opts)
 
 				-- code action
