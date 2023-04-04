@@ -48,6 +48,7 @@ return {
 				mapping = cmp.mapping.preset.insert({
 					["<M-d>"] = cmp.mapping.scroll_docs(-4),
 					["<M-f>"] = cmp.mapping.scroll_docs(4),
+
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<C-e>"] = cmp.mapping.close(),
 					["<CR>"] = cmp.mapping.confirm({
@@ -56,7 +57,7 @@ return {
 					}),
 				}),
 				sources = cmp.config.sources({
-					{ name = "nvim_lsp", priority = 10, keyword_length = 3, group_index = 1, max_item_count = 30 },
+					{ name = "nvim_lsp", priority = 10, keyword_length = 3, group_index = 1, max_item_count = 20 },
 					{ name = "nvim_lua" },
 					{ name = "luasnip" },
 					{ name = "buffer" },
@@ -64,7 +65,7 @@ return {
 				}),
 				performance = {
 					trigger_debounce = 500,
-					throttle = 550,
+					-- throttle = 550,
 					fetching_timeout = 80,
 				},
 				sorting = {

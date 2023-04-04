@@ -4,13 +4,6 @@ return {
 		event = "LspAttach",
 		config = function()
 			require("lspsaga").setup({
-				ui = {
-					winblend = 10,
-					border = "rounded",
-					colors = {
-						normal_bg = "0B2733",
-					},
-				},
 				lightbulb = {
 					enable = false,
 					enable_in_insert = true,
@@ -36,11 +29,9 @@ return {
 			vim.keymap.set("n", "K", "<Cmd>Lspsaga hover_doc<CR>", opts)
 			vim.keymap.set("n", "gd", "<Cmd>Lspsaga lsp_finder<CR>", opts)
 			vim.keymap.set("i", "<C-k>", "<Cmd>Lspsaga signature_help<CR>", opts)
-			-- vim.keymap.set("i", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 			vim.keymap.set("n", "gp", "<Cmd>Lspsaga peek_definition<CR>", opts)
 			vim.keymap.set("n", "gr", "<Cmd>Lspsaga rename<CR>", opts)
-			-- vim.keymap.set("n", "<M-d>", "<cmd>Lspsaga term_toggle<cr>", opts)
-			vim.keymap.set("t", "<Esc>", "<C-\\><C-n>:q!<cr>", opts)
+			vim.keymap.set("n", "gh", "<cmd>Lspsaga show_buf_diagnostics<cr>", opts)
 			vim.keymap.set("n", "<leader>nls", "<cmd>NullLsInfo<cr>", opts)
 
 			-- code action

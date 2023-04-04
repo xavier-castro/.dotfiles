@@ -49,23 +49,25 @@ return { -- neoosolarized
 		"rose-pine/neovim",
 		lazy = false,
 		name = "rose-pine",
+		opts = {
+			dim_nc_background = true,
+			disable_background = true,
+			disable_float_background = false,
+			disable_italics = true,
+		},
 	},
 	{
 		"no-clown-fiesta/no-clown-fiesta.nvim",
 		lazy = false,
-	},
-	{
-		"projekt0n/github-nvim-theme",
-		lazy = false,
-	},
-	{ "kaiuri/nvim-juliana", lazy = false },
-	{
-		"Mofiqul/vscode.nvim",
-		lazy = false,
-	},
-	{
-		"mhartington/oceanic-next",
-		lazy = false,
-		config = function() end,
+		opts = {
+			transparent = true, -- Enable this to disable the bg color
+			styles = {
+				comments = {},
+				keywords = {},
+				functions = {},
+				variables = {},
+				type = { bold = true },
+			},
+		},
 	},
 }

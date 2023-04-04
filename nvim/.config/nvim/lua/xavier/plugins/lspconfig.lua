@@ -101,6 +101,11 @@ return {
 				capabilities = capabilities,
 			})
 
+			nvim_lsp.pylsp.setup({
+				on_attach = on_attach,
+				capabilities = capabilities,
+			})
+
 			require("typescript").setup({
 				disable_commands = false, -- prevent the plugin from creating Vim commands
 				debug = false, -- enable debug logging for commands
@@ -113,6 +118,9 @@ return {
 						filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
 						cmd = { "typescript-language-server", "--stdio" },
 						capabilities = capabilities,
+						on_attach = function(client)
+							client.resolved_capabilities.document_formatting = false
+						end,
 					}),
 				},
 			})
