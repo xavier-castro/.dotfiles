@@ -47,7 +47,7 @@ return {
 					null_ls.builtins.formatting.prettier.with({
 						timeout = 10000,
 					}),
-					null_ls.builtins.formatting.rustywind,
+					-- null_ls.builtins.formatting.rustywind,
 					null_ls.builtins.formatting.rome,
 					require("null-ls").builtins.formatting.shfmt,
 				},
