@@ -18,7 +18,11 @@
                 "to": [
                   {
                     "key_code": "left_shift",
-                    "modifiers": ["left_command", "left_control", "left_option"]
+                    "modifiers": [
+                      "left_command",
+                      "left_control",
+                      "left_option"
+                    ]
                   }
                 ],
                 "to_if_alone": [
@@ -34,7 +38,9 @@
                 "from": {
                   "key_code": "tab",
                   "modifiers": {
-                    "mandatory": ["left_command"]
+                    "mandatory": [
+                      "left_command"
+                    ]
                   }
                 },
                 "to": [
@@ -104,15 +110,17 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -a 'Google Chrome.app'"
+                    "shell_command": "open -a 'ChatGPT.app'"
                   }
                 ],
-                "description": "Open -a 'Google Chrome.app'",
+                "description": "Open -a 'ChatGPT.app'",
                 "type": "basic",
                 "from": {
                   "key_code": "g",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -126,15 +134,41 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -a 'Cron.app'"
+                    "shell_command": "open -a 'Bing.app'"
                   }
                 ],
-                "description": "Open -a 'Cron.app'",
+                "description": "Open -a 'Bing.app'",
+                "type": "basic",
+                "from": {
+                  "key_code": "b",
+                  "modifiers": {
+                    "mandatory": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_o",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
+                    "shell_command": "open -a 'Visual Studio Code - Insiders.app'"
+                  }
+                ],
+                "description": "Open -a 'Visual Studio Code - Insiders.app'",
                 "type": "basic",
                 "from": {
                   "key_code": "c",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -156,7 +190,9 @@
                 "from": {
                   "key_code": "v",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -170,59 +206,17 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -a 'Discord.app'"
+                    "shell_command": "open -a 'Microsoft Edge.app'"
                   }
                 ],
-                "description": "Open -a 'Discord.app'",
-                "type": "basic",
-                "from": {
-                  "key_code": "d",
-                  "modifiers": {
-                    "mandatory": ["any"]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_o",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "to": [
-                  {
-                    "shell_command": "open -a 'Slack.app'"
-                  }
-                ],
-                "description": "Open -a 'Slack.app'",
-                "type": "basic",
-                "from": {
-                  "key_code": "s",
-                  "modifiers": {
-                    "mandatory": ["any"]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_o",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "to": [
-                  {
-                    "shell_command": "open -a 'Superhuman.app'"
-                  }
-                ],
-                "description": "Open -a 'Superhuman.app'",
+                "description": "Open -a 'Microsoft Edge.app'",
                 "type": "basic",
                 "from": {
                   "key_code": "e",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -244,7 +238,9 @@
                 "from": {
                   "key_code": "n",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -258,103 +254,17 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -a 'Terminal.app'"
+                    "shell_command": "open -a 'Fantastical.app'"
                   }
                 ],
-                "description": "Open -a 'Terminal.app'",
-                "type": "basic",
-                "from": {
-                  "key_code": "t",
-                  "modifiers": {
-                    "mandatory": ["any"]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_o",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "to": [
-                  {
-                    "shell_command": "open notion://notion.so/stellatehq/Max-Stoiber-CEO-90ea5326add5408f967278461f37c39b#29b31b030a5a4192b05f3883f7d47fe3"
-                  }
-                ],
-                "description": "Open notion://notion.so/stellatehq/Max-Stoiber-CEO-90ea5326add5408f967278461f37c39b#29b31b030a5a4192b05f3883f7d47fe3",
-                "type": "basic",
-                "from": {
-                  "key_code": "h",
-                  "modifiers": {
-                    "mandatory": ["any"]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_o",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "to": [
-                  {
-                    "shell_command": "open -a 'zoom.us.app'"
-                  }
-                ],
-                "description": "Open -a 'zoom.us.app'",
-                "type": "basic",
-                "from": {
-                  "key_code": "z",
-                  "modifiers": {
-                    "mandatory": ["any"]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_o",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "to": [
-                  {
-                    "shell_command": "open -a 'Muse.app'"
-                  }
-                ],
-                "description": "Open -a 'Muse.app'",
-                "type": "basic",
-                "from": {
-                  "key_code": "m",
-                  "modifiers": {
-                    "mandatory": ["any"]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_o",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "to": [
-                  {
-                    "shell_command": "open -a 'Figma.app'"
-                  }
-                ],
-                "description": "Open -a 'Figma.app'",
+                "description": "Open -a 'Fantastical.app'",
                 "type": "basic",
                 "from": {
                   "key_code": "f",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -368,15 +278,41 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -a 'Telegram.app'"
+                    "shell_command": "open -a 'WezTerm.app'"
                   }
                 ],
-                "description": "Open -a 'Telegram.app'",
+                "description": "Open -a 'WezTerm.app'",
                 "type": "basic",
                 "from": {
-                  "key_code": "r",
+                  "key_code": "w",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
+                  }
+                },
+                "conditions": [
+                  {
+                    "type": "variable_if",
+                    "name": "hyper_sublayer_o",
+                    "value": 1
+                  }
+                ]
+              },
+              {
+                "to": [
+                  {
+                    "shell_command": "open -a 'Todoist.app'"
+                  }
+                ],
+                "description": "Open -a 'Todoist.app'",
+                "type": "basic",
+                "from": {
+                  "key_code": "t",
+                  "modifiers": {
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -398,7 +334,9 @@
                 "from": {
                   "key_code": "i",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -420,73 +358,9 @@
                 "from": {
                   "key_code": "p",
                   "modifiers": {
-                    "mandatory": ["any"]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_o",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "to": [
-                  {
-                    "shell_command": "open -a 'iA Presenter.app'"
-                  }
-                ],
-                "description": "Open -a 'iA Presenter.app'",
-                "type": "basic",
-                "from": {
-                  "key_code": "a",
-                  "modifiers": {
-                    "mandatory": ["any"]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_o",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "to": [
-                  {
-                    "shell_command": "open https://web.whatsapp.com"
-                  }
-                ],
-                "description": "Open https://web.whatsapp.com",
-                "type": "basic",
-                "from": {
-                  "key_code": "w",
-                  "modifiers": {
-                    "mandatory": ["any"]
-                  }
-                },
-                "conditions": [
-                  {
-                    "type": "variable_if",
-                    "name": "hyper_sublayer_o",
-                    "value": 1
-                  }
-                ]
-              },
-              {
-                "to": [
-                  {
-                    "shell_command": "open Linear"
-                  }
-                ],
-                "description": "Open Linear",
-                "type": "basic",
-                "from": {
-                  "key_code": "l",
-                  "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -560,14 +434,18 @@
                 "to": [
                   {
                     "key_code": "h",
-                    "modifiers": ["right_command"]
+                    "modifiers": [
+                      "right_command"
+                    ]
                   }
                 ],
                 "type": "basic",
                 "from": {
                   "key_code": "semicolon",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -583,14 +461,19 @@
                 "to": [
                   {
                     "key_code": "left_arrow",
-                    "modifiers": ["right_option", "right_control"]
+                    "modifiers": [
+                      "right_option",
+                      "right_control"
+                    ]
                   }
                 ],
                 "type": "basic",
                 "from": {
                   "key_code": "y",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -606,14 +489,19 @@
                 "to": [
                   {
                     "key_code": "up_arrow",
-                    "modifiers": ["right_option", "right_command"]
+                    "modifiers": [
+                      "right_option",
+                      "right_command"
+                    ]
                   }
                 ],
                 "type": "basic",
                 "from": {
                   "key_code": "k",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -629,14 +517,19 @@
                 "to": [
                   {
                     "key_code": "down_arrow",
-                    "modifiers": ["right_option", "right_command"]
+                    "modifiers": [
+                      "right_option",
+                      "right_command"
+                    ]
                   }
                 ],
                 "type": "basic",
                 "from": {
                   "key_code": "j",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -652,14 +545,19 @@
                 "to": [
                   {
                     "key_code": "right_arrow",
-                    "modifiers": ["right_option", "right_control"]
+                    "modifiers": [
+                      "right_option",
+                      "right_control"
+                    ]
                   }
                 ],
                 "type": "basic",
                 "from": {
                   "key_code": "o",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -675,14 +573,19 @@
                 "to": [
                   {
                     "key_code": "left_arrow",
-                    "modifiers": ["right_option", "right_command"]
+                    "modifiers": [
+                      "right_option",
+                      "right_command"
+                    ]
                   }
                 ],
                 "type": "basic",
                 "from": {
                   "key_code": "h",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -698,14 +601,19 @@
                 "to": [
                   {
                     "key_code": "right_arrow",
-                    "modifiers": ["right_option", "right_command"]
+                    "modifiers": [
+                      "right_option",
+                      "right_command"
+                    ]
                   }
                 ],
                 "type": "basic",
                 "from": {
                   "key_code": "l",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -721,14 +629,19 @@
                 "to": [
                   {
                     "key_code": "f",
-                    "modifiers": ["right_option", "right_command"]
+                    "modifiers": [
+                      "right_option",
+                      "right_command"
+                    ]
                   }
                 ],
                 "type": "basic",
                 "from": {
                   "key_code": "f",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -744,14 +657,19 @@
                 "to": [
                   {
                     "key_code": "tab",
-                    "modifiers": ["right_control", "right_shift"]
+                    "modifiers": [
+                      "right_control",
+                      "right_shift"
+                    ]
                   }
                 ],
                 "type": "basic",
                 "from": {
                   "key_code": "u",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -767,14 +685,18 @@
                 "to": [
                   {
                     "key_code": "tab",
-                    "modifiers": ["right_control"]
+                    "modifiers": [
+                      "right_control"
+                    ]
                   }
                 ],
                 "type": "basic",
                 "from": {
                   "key_code": "i",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -790,14 +712,18 @@
                 "to": [
                   {
                     "key_code": "grave_accent_and_tilde",
-                    "modifiers": ["right_command"]
+                    "modifiers": [
+                      "right_command"
+                    ]
                   }
                 ],
                 "type": "basic",
                 "from": {
                   "key_code": "n",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -813,14 +739,18 @@
                 "to": [
                   {
                     "key_code": "open_bracket",
-                    "modifiers": ["right_command"]
+                    "modifiers": [
+                      "right_command"
+                    ]
                   }
                 ],
                 "type": "basic",
                 "from": {
                   "key_code": "b",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -836,14 +766,18 @@
                 "to": [
                   {
                     "key_code": "close_bracket",
-                    "modifiers": ["right_command"]
+                    "modifiers": [
+                      "right_command"
+                    ]
                   }
                 ],
                 "type": "basic",
                 "from": {
                   "key_code": "m",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -870,7 +804,9 @@
                 "from": {
                   "key_code": "d",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -949,7 +885,9 @@
                 "from": {
                   "key_code": "u",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -970,7 +908,9 @@
                 "from": {
                   "key_code": "j",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -991,7 +931,9 @@
                 "from": {
                   "key_code": "i",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -1012,7 +954,9 @@
                 "from": {
                   "key_code": "k",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -1027,14 +971,19 @@
                 "to": [
                   {
                     "key_code": "q",
-                    "modifiers": ["right_control", "right_command"]
+                    "modifiers": [
+                      "right_control",
+                      "right_command"
+                    ]
                   }
                 ],
                 "type": "basic",
                 "from": {
                   "key_code": "l",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -1055,7 +1004,9 @@
                 "from": {
                   "key_code": "p",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -1076,7 +1027,9 @@
                 "from": {
                   "key_code": "semicolon",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -1091,14 +1044,19 @@
                 "to": [
                   {
                     "key_code": "spacebar",
-                    "modifiers": ["right_control", "right_command"]
+                    "modifiers": [
+                      "right_control",
+                      "right_command"
+                    ]
                   }
                 ],
                 "type": "basic",
                 "from": {
                   "key_code": "e",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -1119,7 +1077,9 @@
                 "from": {
                   "key_code": "y",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -1140,7 +1100,9 @@
                 "from": {
                   "key_code": "h",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -1219,7 +1181,9 @@
                 "from": {
                   "key_code": "h",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -1240,7 +1204,9 @@
                 "from": {
                   "key_code": "j",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -1261,7 +1227,9 @@
                 "from": {
                   "key_code": "k",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -1282,7 +1250,9 @@
                 "from": {
                   "key_code": "l",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -1297,14 +1267,18 @@
                 "to": [
                   {
                     "key_code": "f",
-                    "modifiers": ["right_control"]
+                    "modifiers": [
+                      "right_control"
+                    ]
                   }
                 ],
                 "type": "basic",
                 "from": {
                   "key_code": "m",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -1319,14 +1293,18 @@
                 "to": [
                   {
                     "key_code": "j",
-                    "modifiers": ["right_control"]
+                    "modifiers": [
+                      "right_control"
+                    ]
                   }
                 ],
                 "type": "basic",
                 "from": {
                   "key_code": "s",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -1341,14 +1319,19 @@
                 "to": [
                   {
                     "key_code": "d",
-                    "modifiers": ["right_shift", "right_command"]
+                    "modifiers": [
+                      "right_shift",
+                      "right_command"
+                    ]
                   }
                 ],
                 "type": "basic",
                 "from": {
                   "key_code": "d",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -1427,7 +1410,9 @@
                 "from": {
                   "key_code": "p",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -1448,7 +1433,9 @@
                 "from": {
                   "key_code": "n",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [
@@ -1469,7 +1456,9 @@
                 "from": {
                   "key_code": "b",
                   "modifiers": {
-                    "mandatory": ["any"]
+                    "mandatory": [
+                      "any"
+                    ]
                   }
                 },
                 "conditions": [

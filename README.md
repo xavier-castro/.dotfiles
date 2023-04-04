@@ -1,14 +1,22 @@
-# .dotfiles
+# README
 
-## TODO
+## Credit and Inspirations
 
-### Aesthetic Reasons
+Without these people and their resources I would not have been able to even start with my dotfiles.
 
-- [] Make README
+- [ThePrimeagen](https://www.youtube.com/@ThePrimeagen)
+- [Craftzdog](https://www.youtube.com/channel/UC7yZ6keOGsvERMp2HaEbbXQ)
+- [Max Stoiber](https://www.youtube.com/@MaxStoiber)
 
-### Actual Functionality
+## Software Needed
 
-- [ ] Make go to next part of snippet keybind
-- [ ] Find better way to find and replace than current way
+This is the software you need for full functionality of my dotfiles
 
-My config settings I use for various things.
+- [Karabiner Elements](https://karabiner-elements.pqrs.org/)
+- [Rectangle Window Managmenet](https://rectangleapp.com/)
+
+## Features of my dotfiles
+
+### Neovim
+
+My neovim settings which I use to code and develop. I did not make my settings for the purpose of being able to read and understand from an outsiders POV. This will be a future update.
