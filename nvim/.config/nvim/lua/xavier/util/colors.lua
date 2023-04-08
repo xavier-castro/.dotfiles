@@ -1,6 +1,9 @@
 local M = {}
 -- Set colorscheme after options
-vim.cmd([[colorscheme rose-pine]])
+require("rose-pine").setup({
+	disable_background = true,
+	disable_italics = true,
+})
 
 function M.ColorMyPencils(color)
 	color = color or "rose-pine"
