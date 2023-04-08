@@ -1,5 +1,10 @@
 return { -- neoosolarized
 	{
+		"rose-pine/neovim",
+		lazy = false,
+		name = "rose-pine",
+	},
+	{
 		"svrana/neosolarized.nvim",
 		lazy = false,
 		dependencies = { "tjdevries/colorbuddy.nvim" },
@@ -45,29 +50,9 @@ return { -- neoosolarized
 			Group.new("HoverBorder", colors.yellow, colors.none, styles.NONE)
 		end,
 	}, -- rosepine
+
 	{
-		"rose-pine/neovim",
+		"projekt0n/github-nvim-theme",
 		lazy = false,
-		name = "rose-pine",
-		opts = {
-			dim_nc_background = true,
-			disable_background = true,
-			disable_float_background = false,
-			disable_italics = true,
-		},
-	},
-	{
-		"no-clown-fiesta/no-clown-fiesta.nvim",
-		lazy = false,
-		opts = {
-			transparent = true, -- Enable this to disable the bg color
-			styles = {
-				comments = {},
-				keywords = {},
-				functions = {},
-				variables = {},
-				type = { bold = true },
-			},
-		},
 	},
 }

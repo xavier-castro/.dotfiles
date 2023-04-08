@@ -19,7 +19,6 @@ return {
 					},
 				},
 			})
-			vim.keymap.set("n", "<leader>cpt", "<cmd>Copilot suggestion toggle_auto_trigger<CR>", { silent = true })
 		end,
 	},
 }

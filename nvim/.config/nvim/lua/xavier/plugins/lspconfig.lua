@@ -1,7 +1,7 @@
 return {
 	{
 		"neovim/nvim-lspconfig",
-		dependencies = { "hrsh7th/cmp-nvim-lsp" },
+		dependencies = { "hrsh7th/cmp-nvim-lsp", "princejoogie/tailwind-highlight.nvim" },
 		config = function()
 			local status, nvim_lsp = pcall(require, "lspconfig")
 			if not status then
@@ -163,8 +163,15 @@ return {
 				capabilities = capabilities,
 			})
 
+			local tw_highlight = require("tailwind-highlight")
 			nvim_lsp.tailwindcss.setup({
-				on_attach = on_attach,
+				on_attach = function(client, bufnr)
+					tw_highlight.setup(client, bufnr, {
+						single_column = false,
+						mode = "background",
+						debounce = 200,
+					})
+				end,
 				capabilities = capabilities,
 			})
 

@@ -23,15 +23,15 @@ vim.opt.undofile = true
 vim.opt.hlsearch = true
 vim.opt.incsearch = true
 
-vim.opt.scrolloff = 12
+vim.opt.scrolloff = 15
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
-vim.opt.updatetime = 80
+vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 vim.opt.cursorline = true
 vim.opt.termguicolors = true
 vim.opt.wildoptions = "pum"
-vim.opt.pumheight = 15
+vim.opt.pumheight = 10
 vim.opt.pumblend = 2
 vim.opt.background = "dark"
 
@@ -124,3 +124,6 @@ end
 
 -- if you only want these mappings for toggle term use term://*toggleterm#* instead
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+
+vim.cmd([["set foldmethod=indent foldlevelstart=2 foldnestmax=2"]])
+vim.keymap.set("n", "<leader>zf", ":let&l:fdl=indent('.')/&sw<cr>")

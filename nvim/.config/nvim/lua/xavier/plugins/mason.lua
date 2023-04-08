@@ -30,7 +30,7 @@ return {
 			local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 			local lsp_formatting = function(bufnr)
 				vim.lsp.buf.format({
-					timeout_ms = 10000,
+					timeout_ms = 4000,
 					filter = function(client)
 						return client.name == "null-ls"
 					end,
@@ -44,10 +44,8 @@ return {
 					null_ls.builtins.code_actions.refactoring,
 					require("typescript.extensions.null-ls.code-actions"),
 					null_ls.builtins.formatting.stylua,
-					null_ls.builtins.formatting.prettier,
-					-- null_ls.builtins.formatting.rustywind,
-					null_ls.builtins.formatting.rome,
-					require("null-ls").builtins.formatting.shfmt,
+					null_ls.builtins.formatting.prettierd,
+					null_ls.builtins.formatting.shfmt,
 				},
 				on_attach = function(client, bufnr)
 					if client.supports_method("textDocument/formatting") then

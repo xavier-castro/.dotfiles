@@ -1,8 +1,12 @@
 return {
 	{
+		"L3MON4D3/LuaSnip",
+		-- install jsregexp (optional!).
+		build = "make install_jsregexp",
+	},
+	{
 		"hrsh7th/nvim-cmp",
 		dependencies = {
-			"L3MON4D3/LuaSnip",
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-nvim-lsp",
@@ -13,6 +17,13 @@ return {
 			"rafamadriz/friendly-snippets",
 		},
 		config = function()
+			local luasnip = require("luasnip")
+
+			luasnip.config.set_config({
+				history = true,
+				updateevents = "TextChanged,TextChangedI",
+			})
+
 			local status, cmp = pcall(require, "cmp")
 			if not status then
 				return
@@ -38,7 +49,7 @@ return {
 
 			-- Lazyload luasnip vscode snippets
 			require("luasnip.loaders.from_vscode").lazy_load()
-
+			local luasnip = require("luasnip")
 			cmp.setup({
 				snippet = {
 					expand = function(args)
@@ -48,7 +59,6 @@ return {
 				mapping = cmp.mapping.preset.insert({
 					["<M-d>"] = cmp.mapping.scroll_docs(-4),
 					["<M-f>"] = cmp.mapping.scroll_docs(4),
-
 					["<C-Space>"] = cmp.mapping.complete(),
 					["<C-e>"] = cmp.mapping.close(),
 					["<CR>"] = cmp.mapping.confirm({
@@ -57,29 +67,29 @@ return {
 					}),
 				}),
 				sources = cmp.config.sources({
-					{ name = "nvim_lsp", priority = 10, keyword_length = 3, group_index = 1, max_item_count = 20 },
+					{ name = "nvim_lsp", priority = 10, keyword_length = 3, group_index = 1, max_item_count = 30 },
 					{ name = "nvim_lua" },
-					{ name = "luasnip" },
-					{ name = "buffer" },
+					{ name = "luasnip", max_item_count = 5 },
+					{ name = "buffer", max_item_count = 5 },
 					{ name = "path" },
 				}),
 				performance = {
 					trigger_debounce = 500,
-					-- throttle = 550,
+					throttle = 550,
 					fetching_timeout = 80,
 				},
-				sorting = {
-					comparators = {
-						cmp.config.compare.offset,
-						cmp.config.compare.exact,
-						cmp.config.compare.score,
-						require("cmp-under-comparator").under,
-						cmp.config.compare.kind,
-						cmp.config.compare.sort_text,
-						cmp.config.compare.length,
-						cmp.config.compare.order,
-					},
-				},
+				-- sorting = {
+				-- 	comparators = {
+				-- 		cmp.config.compare.offset,
+				-- 		cmp.config.compare.exact,
+				-- 		cmp.config.compare.score,
+				-- 		require("cmp-under-comparator").under,
+				-- 		cmp.config.compare.kind,
+				-- 		cmp.config.compare.sort_text,
+				-- 		cmp.config.compare.length,
+				-- 		cmp.config.compare.order,
+				-- 	},
+				-- },
 				formatting = {
 					format = lspkind.cmp_format({
 						maxwidth = 50,
@@ -106,6 +116,7 @@ return {
 					}),
 				}),
 			})
+
 			vim.cmd([[
   set completeopt=menuone,noinsert,noselect
   highlight! default link CmpItemKind CmpItemMenuDefault

@@ -70,6 +70,7 @@ return {
 								-- your custom normal mode mappings
 								["N"] = fb_actions.create,
 								["h"] = fb_actions.goto_parent_dir,
+								["M"] = fb_actions.move,
 								["/"] = function()
 									vim.cmd("startinsert")
 								end,
