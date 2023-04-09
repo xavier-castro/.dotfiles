@@ -1,38 +1,4 @@
-local vim = vim
-local api = vim.api
 local M = {}
--- function to create a list of commands and convert them to autocommands
--------- This function is taken from https://github.com/norcalli/nvim_utils
-function M.nvim_create_augroups(definitions)
-	for group_name, definition in pairs(definitions) do
-		api.nvim_command("augroup " .. group_name)
-		api.nvim_command("autocmd!")
-		for _, def in ipairs(definition) do
-			local command = table.concat(vim.tbl_flatten({ "autocmd", def }), " ")
-			api.nvim_command(command)
-		end
-		api.nvim_command("augroup END")
-	end
-end
-
-local autoCommands = {
-	-- other autocommands
-	open_folds = {
-		{ "BufReadPost,FileReadPost", "*", "normal zR" },
-	},
-}
-
-M.nvim_create_augroups(autoCommands)
-
-vim.cmd([[
-set viewoptions-=options
-augroup remember_folds
-    autocmd!
-    autocmd BufWinLeave *.* if &ft ~= 'help' then mkview end
-    autocmd BufWinEnter *.* if &ft ~= 'help' then silent! loadview end
-augroup END
-]])
-
 ---@param on_attach fun(client, buffer)
 function M.on_attach(on_attach)
 	vim.api.nvim_create_autocmd("LspAttach", {
@@ -53,37 +19,6 @@ function M.on_very_lazy(fn)
 		end,
 	})
 end
-
-vim.cmd([[
-" Dim inactive windows using 'colorcolumn' setting
-" This tends to slow down redrawing, but is very useful.
-" Based on https://groups.google.com/d/msg/vim_use/IJU-Vk-QLJE/xz4hjPjCRBUJ
-" XXX: this will only work with lines containing text (i.e. not '~')
-function! s:DimInactiveWindows()
-  for i in range(1, tabpagewinnr(tabpagenr(), '$'))
-    let l:range = ""
-    if i != winnr()
-      if &wrap
-        " HACK: when wrapping lines is enabled, we use the maximum number
-        " of columns getting highlighted. This might get calculated by
-        " looking for the longest visible line and using a multiple of
-        " winwidth().
-        let l:width=256 " max
-      else
-        let l:width=winwidth(i)
-      endif
-      let l:range = join(range(1, l:width), ',')
-    endif
-    call setwinvar(i, '&colorcolumn', l:range)
-  endfor
-endfunction
-augroup DimInactiveWindows
-  au!
-  au WinEnter * call s:DimInactiveWindows()
-  au WinEnter * set cursorline
-  au WinLeave * set nocursorline
-augroup END
-]])
 
 ---@param name string
 function M.opts(name)

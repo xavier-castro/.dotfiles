@@ -53,16 +53,16 @@ vim.keymap.set("n", "<leader>F", "<cmd>Telescope<cr>")
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>f", function()
-	vim.lsp.buf.format()
+    vim.lsp.buf.format()
 end)
 vim.keymap.set("i", "<c-j>", "<cmd>lua require'luasnip'.jump(1)<CR>")
 vim.keymap.set("s", "<c-j>", "<cmd>lua require'luasnip'.jump(1)<CR>")
 vim.keymap.set("i", "<c-k>", "<cmd>lua require'luasnip'.jump(-1)<CR>")
 vim.keymap.set("s", "<c-k>", "<cmd>lua require'luasnip'.jump(-1)<CR")
 vim.keymap.set(
-	"n",
-	"<leader>cpt",
-	"<cmd>Copilot suggestion toggle_auto_trigger<CR>:lua require('notify')('Copilot Toggled')<cr>"
+    "n",
+    "<leader>cpt",
+    "<cmd>Copilot suggestion toggle_auto_trigger<CR>:lua require('notify')('Copilot Toggled')<cr>"
 )
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
@@ -71,8 +71,10 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 -- remap to open the Telescope refactoring menu in visual mode
 vim.api.nvim_set_keymap(
-	"v",
-	"<leader>rr",
-	"<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
-	{ noremap = true }
+    "v",
+    "<leader>rr",
+    "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
+    { noremap = true }
 )
+-- Save and Write in Insert
+vim.keymap.set("i", "<M-s>", "<Esc>:w<CR>a")

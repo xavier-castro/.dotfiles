@@ -29,9 +29,4 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-
-
-vim.cmd[["set foldmethod=indent foldlevelstart=2 foldnestmax=2"]]
 vim.keymap.set("n", "<leader>zf", ":let&l:fdl=indent('.')/&sw<cr>")
