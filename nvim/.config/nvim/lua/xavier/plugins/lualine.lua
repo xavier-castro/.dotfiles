@@ -7,7 +7,7 @@ return {
                 require("lualine").setup({
                     options = {
                         icons_enabled = true,
-                        theme = "vscode",
+                        -- theme = "rose-pine",
                         section_separators = { left = "", right = "" },
                         component_separators = { left = "", right = "" },
                         disabled_filetypes = {},
@@ -54,7 +54,7 @@ return {
                         lualine_z = {},
                     },
                     tabline = {},
-                    extensions = { "fugitive" },
+                    extensions = { "fugitive", "quickfix", "lazy", "fzf", "man" },
                 })
             end,
         },
