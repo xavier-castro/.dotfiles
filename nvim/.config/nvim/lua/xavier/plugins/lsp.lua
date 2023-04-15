@@ -91,8 +91,8 @@ return {
 			-- NOTE: This has to be added AFTER `lsp.setup()`
 			local cmp = require("cmp")
 
-            -- MARK: Snippets
-            require('luasnip.loaders.from_vscode').lazy_load()
+			-- MARK: Snippets
+			require("luasnip.loaders.from_vscode").lazy_load()
 
 			cmp.setup({
 				snippet = {
@@ -101,7 +101,6 @@ return {
 					end,
 				},
 				sources = {
-					{ name = "codeium" },
 					{ name = "path" },
 					{ name = "nvim_lsp" },
 					{ name = "buffer", keyword_length = 3 },
@@ -116,13 +115,14 @@ return {
 						behavior = cmp.ConfirmBehavior.Replace,
 						select = true,
 					}),
+					["<Tab>"] = nil,
+					["<S-Tab>"] = nil,
 				}),
 				formatting = {
 					format = require("lspkind").cmp_format({
 						mode = "symbol",
 						maxwidth = 50,
 						ellipsis_char = "...",
-						symbol_map = { Codeium = "" },
 					}),
 				},
 			})

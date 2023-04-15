@@ -1,10 +1,9 @@
 local M = {}
 -- Set colorscheme after options
-require("rose-pine").setup({
-	disable_background = true,
-	disable_italics = true,
-})
--- vim.cmd[[colorscheme neosolarized]]
+-- require("rose-pine").setup({
+-- 	disable_background = true,
+-- 	disable_italics = true,
+-- })
 -- local c = require('vscode.colors').get_colors()
 -- require('vscode').setup({
 --     -- Alternatively set style in setup
@@ -30,8 +29,10 @@ require("rose-pine").setup({
 -- })
 -- require('vscode').load()
 
+vim.cmd[[colorscheme neosolarized]]
+
 function M.ColorMyPencils(color)
-	color = color or "rose-pine"
+	color = color or "neosolarized"
 	vim.cmd.colorscheme(color)
 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })

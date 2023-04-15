@@ -10,7 +10,7 @@ return {
 			bufferline.setup({
 				options = {
 					mode = "tabs",
-					style = "slant",
+					separator_style = "slant",
 					always_show_bufferline = false,
 					show_buffer_close_icons = false,
 					show_close_icon = false,
@@ -30,7 +30,6 @@ return {
 					},
 					buffer_selected = {
 						fg = "#fdf6e3",
-						bold = true,
 					},
 					fill = {
 						bg = "#073642",

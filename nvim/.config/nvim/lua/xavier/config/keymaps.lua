@@ -51,11 +51,6 @@ vim.keymap.set("i", "<c-j>", "<cmd>lua require'luasnip'.jump(1)<CR>")
 vim.keymap.set("s", "<c-j>", "<cmd>lua require'luasnip'.jump(1)<CR>")
 vim.keymap.set("i", "<c-k>", "<cmd>lua require'luasnip'.jump(-1)<CR>")
 vim.keymap.set("s", "<c-k>", "<cmd>lua require'luasnip'.jump(-1)<CR")
-vim.keymap.set(
-	"n",
-	"<leader>cpt",
-	"<cmd>Copilot suggestion toggle_auto_trigger<CR>:lua require('notify')('Copilot Toggled')<cr>"
-)
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
@@ -70,3 +65,4 @@ vim.api.nvim_set_keymap(
 )
 -- Save and Write in Insert
 vim.keymap.set("i", "<M-s>", "<Esc>:w<CR>a")
+-- Delete Marks
