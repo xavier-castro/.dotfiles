@@ -1,43 +1,41 @@
-vim.opt.guicursor = ""
-vim.opt.clipboard = "unnamedplus"
-vim.opt.nu = true
-vim.opt.relativenumber = true
-vim.opt.tabstop = 2
-vim.opt.softtabstop = 2
-vim.opt.shiftwidth = 2
-vim.opt.expandtab = true
+vim.cmd("autocmd!")
+vim.scriptencoding = "utf-8"
+vim.opt.encoding = "utf-8"
+vim.opt.fileencoding = "utf-8"
+vim.wo.number = true
+vim.opt.title = true
+vim.opt.autoindent = true
 vim.opt.smartindent = true
-vim.opt.wrap = false
-vim.opt.swapfile = false
+vim.opt.hlsearch = true
 vim.opt.backup = false
-vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
-vim.opt.undofile = true
-vim.opt.hlsearch = false
-vim.opt.incsearch = true
+vim.opt.showcmd = true
+vim.opt.cmdheight = 1
+vim.opt.laststatus = 2
+vim.opt.expandtab = true
+vim.opt.scrolloff = 10
+vim.opt.shell = "fish"
+vim.opt.backupskip = { "/tmp/*", "/private/tmp/*" }
+vim.opt.inccommand = "split"
+vim.opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
+vim.opt.smarttab = true
+vim.opt.breakindent = true
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.wrap = false -- No Wrap lines
+vim.opt.backspace = { "start", "eol", "indent" }
+vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
+vim.opt.wildignore:append({ "*/node_modules/*" })
+vim.opt.cursorline = true
 vim.opt.termguicolors = true
-vim.opt.scrolloff = 8
-vim.opt.signcolumn = "yes"
-vim.opt.isfname:append("@-@")
-vim.opt.updatetime = 50
-vim.opt.colorcolumn = "80"
+vim.opt.winblend = 0
+vim.opt.wildoptions = "pum"
+vim.opt.pumblend = 5
+vim.opt.background = "dark"
 
--- Autocommands
--- Make GitSigns transparent background
--- vim.cmd([[
---   augroup GitSignsHighlights
---     autocmd!
---     autocmd ColorScheme * highlight GitSignsAdd guibg=NONE
---     autocmd ColorScheme * highlight GitSignsChange guibg=NONE
---     autocmd ColorScheme * highlight GitSignsDelete guibg=NONE
---   augroup END
--- ]])
-
--- Make Neovim remember folds
+-- highlight yanked text for 200ms using the "Visual" highlight group
 vim.cmd([[
-augroup RememberFolds
-    autocmd!
-    au BufWinLeave ?* mkview 1
-    au BufWinEnter ?* silent! loadview 1
-augroup END
+  augroup highlight_yank
+  autocmd!
+  au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=100})
+  augroup END
 ]])
-
