@@ -139,10 +139,8 @@ return {
 					["<S-Tab>"] = nil,
 				}),
 				formatting = {
-					format = require("lspkind").cmp_format({
-						mode = "symbol",
+					format = lspkind.cmp_format({
 						maxwidth = 50,
-						ellipsis_char = "...",
 						before = function(entry, vim_item)
 							vim_item = formatForTailwindCSS(entry, vim_item)
 							return vim_item
