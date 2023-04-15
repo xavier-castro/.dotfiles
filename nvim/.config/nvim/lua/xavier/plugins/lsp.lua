@@ -104,6 +104,7 @@ return {
 					{ name = "path" },
 					{ name = "nvim_lsp" },
 					{ name = "buffer", keyword_length = 3 },
+					{ name = "codeium" },
 					{ name = "luasnip", keyword_length = 2 },
 				},
 				mapping = lsp.defaults.cmp_mappings({
