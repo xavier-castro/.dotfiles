@@ -109,14 +109,11 @@ return {
 				builtin.jumplist()
 			end)
 			vim.keymap.set("n", ";t", "<cmd>TodoTelescope keywords=TODO,FIX,MARK<cr>", {})
-			vim.keymap.set("n", ";;", function()
-				builtin.resume()
-			end)
 			vim.keymap.set("n", ";m", "<cmd>Telescope marks<cr>", {})
 			vim.keymap.set("n", ";e", function()
 				builtin.diagnostics()
 			end)
-			vim.keymap.set("n", ";f", function()
+			vim.keymap.set("n", ";;", function()
 				telescope.extensions.file_browser.file_browser({
 					path = "%:p:h",
 					cwd = telescope_buffer_dir(),

@@ -22,10 +22,10 @@ return { -- library used by other plugins
 
 			-- key-mappings
 			keymap("", "s", "<cmd>HopChar1<CR>", opts)
-			keymap("", "<leader>k", "<cmd>HopLineBC<CR>", opts)
-			keymap("", "<leader>j", "<cmd>HopLineAC<CR>", opts)
-			keymap("", "<leader><leader>k", "<cmd>HopWordBC<CR>", opts)
-			keymap("", "<leader><leader>j", "<cmd>HopWordAC<CR>", opts)
+			keymap("", "<leader>j", "<cmd>HopLineBC<CR>", opts)
+			keymap("", "<leader>k", "<cmd>HopLineAC<CR>", opts)
+			keymap("", "<leader><leader>j", "<cmd>HopWordBC<CR>", opts)
+			keymap("", "<leader><leader>k", "<cmd>HopWordAC<CR>", opts)
 
 			-- highlights
 			vim.api.nvim_exec(
