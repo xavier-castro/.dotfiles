@@ -4,4 +4,5 @@ return { -- neoosolarized
 		"svrana/neosolarized.nvim",
 		lazy = false,
 	},
+	{ "rebelot/kanagawa.nvim", lazy = false },
 }

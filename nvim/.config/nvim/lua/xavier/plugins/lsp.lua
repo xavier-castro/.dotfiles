@@ -143,11 +143,12 @@ return {
 						select = true,
 					}),
 					["<S-Tab>"] = nil,
-          ["<Tab>"] = nil,
+					["<Tab>"] = nil,
 				}),
 				formatting = {
 					format = lspkind.cmp_format({
 						maxwidth = 50,
+						symbol_map = { Codeium = "", Copilot = "" },
 						before = function(entry, vim_item)
 							vim_item = formatForTailwindCSS(entry, vim_item)
 							return vim_item

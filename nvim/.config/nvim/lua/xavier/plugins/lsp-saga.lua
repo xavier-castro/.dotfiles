@@ -9,6 +9,11 @@ return {
 			end
 
 			saga.setup({
+				preview = {
+					lines_above = 0,
+					lines_below = 10,
+				},
+				request_timeout = 8000,
 				ui = {
 					winblend = 10,
 					border = "rounded",
