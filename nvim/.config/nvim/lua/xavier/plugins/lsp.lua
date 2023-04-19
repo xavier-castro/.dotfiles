@@ -76,8 +76,8 @@ return {
 
 			lsp.on_attach(function(client, bufnr)
 				local opts = { buffer = bufnr, remap = false }
-				vim.keymap.set("n", "gd", function()
-					vim.lsp.buf.definition()
+				-- vim.keymap.set("n", "gd", function()
+				-- 	vim.lsp.buf.definition()
 				-- end, opts)
 				-- vim.keymap.set("n", "K", function()
 				-- 	vim.lsp.buf.hover()
@@ -106,9 +106,9 @@ return {
 				-- vim.keymap.set("n", "gr", function()
 				-- 	vim.lsp.buf.rename()
 				-- end, opts)
-				vim.keymap.set("i", "<C-h>", function()
-					vim.lsp.buf.signature_help()
-				end, opts)
+				-- vim.keymap.set("i", "<C-h>", function()
+				-- 	vim.lsp.buf.signature_help()
+				-- end, opts)
 				vim.keymap.set("n", "<leader>nls", "<cmd>NullLsInfo<cr>", opts)
 				vim.keymap.set("n", "<c-e>", "<cmd>Telescope diagnostics<cr>", opts)
 			end)
@@ -129,10 +129,8 @@ return {
 				},
 				sources = {
 					{ name = "path" },
-					{ name = "copilot", group_index = 2 },
 					{ name = "nvim_lsp" },
 					{ name = "buffer", keyword_length = 3 },
-					{ name = "codeium" },
 					{ name = "luasnip", keyword_length = 2 },
 				},
 				mapping = lsp.defaults.cmp_mappings({
@@ -144,42 +142,17 @@ return {
 						behavior = cmp.ConfirmBehavior.Replace,
 						select = true,
 					}),
-					["<Tab>"] = vim.schedule_wrap(function(fallback)
-						if cmp.visible() and has_words_before() then
-							cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
-						else
-							fallback()
-						end
-					end),
-					--[[ 	["<S-Tab>"] = nil, ]]
+					["<S-Tab>"] = nil,
+          ["<Tab>"] = nil,
 				}),
 				formatting = {
 					format = lspkind.cmp_format({
-						symbol_map = { Codeium = "", Copilot = "" },
 						maxwidth = 50,
 						before = function(entry, vim_item)
 							vim_item = formatForTailwindCSS(entry, vim_item)
 							return vim_item
 						end,
 					}),
-				},
-				sorting = {
-					priority_weight = 2,
-					comparators = {
-						require("copilot_cmp.comparators").prioritize,
-
-						-- Below is the default comparitor list and order for nvim-cmp
-						cmp.config.compare.offset,
-						-- cmp.config.compare.scopes, --this is commented in nvim-cmp too
-						cmp.config.compare.exact,
-						cmp.config.compare.score,
-						cmp.config.compare.recently_used,
-						cmp.config.compare.locality,
-						cmp.config.compare.kind,
-						cmp.config.compare.sort_text,
-						cmp.config.compare.length,
-						cmp.config.compare.order,
-					},
 				},
 			})
 
