@@ -12,7 +12,7 @@ return {
 					},
 				},
 				suggestion = {
-					auto_trigger = false,
+					auto_trigger = true,
 					keymap = {
 						accept = "<M-r>",
 						dismiss = "<M-e>",

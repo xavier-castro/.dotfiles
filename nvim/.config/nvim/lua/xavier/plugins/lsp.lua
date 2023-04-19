@@ -110,7 +110,7 @@ return {
 				-- 	vim.lsp.buf.signature_help()
 				-- end, opts)
 				vim.keymap.set("n", "<leader>nls", "<cmd>NullLsInfo<cr>", opts)
-				vim.keymap.set("n", "<c-e>", "<cmd>Telescope diagnostics<cr>", opts)
+				vim.keymap.set("n", ";d", "<cmd>Telescope diagnostics<cr>", opts)
 			end)
 
 			lsp.setup()

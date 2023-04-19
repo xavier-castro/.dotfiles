@@ -1,6 +1,7 @@
 return {
 	{
 		"glepnir/lspsaga.nvim",
+		event = "LspAttach",
 		config = function()
 			local status, saga = pcall(require, "lspsaga")
 			if not status then
@@ -26,7 +27,7 @@ return {
 
 			local opts = { noremap = true, silent = true }
 
-			vim.keymap.set("n", "gf", "<cmd>Lspsaga lsp_finder<CR>", opts)
+			vim.keymap.set("n", "gd", "<cmd>Lspsaga lsp_finder<CR>", opts)
 			vim.keymap.set("i", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 			vim.keymap.set("n", "K", "<Cmd>Lspsaga hover_doc<CR>", opts)
 			vim.keymap.set("n", "gl", "<Cmd>Lspsaga show_diagnostic<CR>", opts)
