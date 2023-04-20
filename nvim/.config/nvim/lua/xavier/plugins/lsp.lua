@@ -1,5 +1,42 @@
 return {
 	{
+		"MunifTanjim/prettier.nvim",
+		config = function()
+			local prettier = require("prettier")
+
+			prettier.setup({
+				bin = "prettierd", -- or `'prettierd'` (v0.23.3+)
+				filetypes = {
+					"css",
+					"graphql",
+					"html",
+					"javascript",
+					"javascriptreact",
+					"json",
+					"less",
+					"markdown",
+					"scss",
+					"typescript",
+					"typescriptreact",
+					"yaml",
+				},
+				["null-ls"] = {
+					condition = function()
+						return prettier.config_exists({
+							-- if `false`, skips checking `package.json` for `"prettier"` key
+							check_package_json = true,
+						})
+					end,
+					runtime_condition = function(params)
+						-- return false to skip running prettier
+						return true
+					end,
+					timeout = 10000,
+				},
+			})
+		end,
+	},
+	{
 		"VonHeikemen/lsp-zero.nvim",
 		branch = "v2.x",
 		dependencies = {
@@ -9,12 +46,14 @@ return {
 				-- Optional
 				"williamboman/mason.nvim",
 				build = function()
+					---@diagnostic disable-next-line: param-type-mismatch
 					pcall(vim.cmd, "MasonUpdate")
 				end,
 			},
 			{ "williamboman/mason-lspconfig.nvim" }, -- Optional
 			{ "jose-elias-alvarez/null-ls.nvim" },
 			{ "jose-elias-alvarez/typescript.nvim" },
+			{ "MunifTanjim/prettier.nvim" },
 			{ "onsails/lspkind.nvim" },
 
 			-- Autocompletion
@@ -30,14 +69,6 @@ return {
 		},
 		config = function()
 			local lspkind = require("lspkind")
-			local has_words_before = function()
-				if vim.api.nvim_buf_get_option(0, "buftype") == "prompt" then
-					return false
-				end
-				local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-				return col ~= 0
-					and vim.api.nvim_buf_get_text(0, line - 1, 0, line - 1, col, {})[1]:match("^%s*$") == nil
-			end
 			local function formatForTailwindCSS(entry, vim_item)
 				if vim_item.kind == "Color" and entry.completion_item.documentation then
 					local _, _, r, g, b = string.find(entry.completion_item.documentation, "^rgb%((%d+), (%d+), (%d+)")
@@ -65,7 +96,7 @@ return {
 			require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
 
 			lsp.set_preferences({
-				suggest_lsp_servers = false,
+				suggest_lsp_servers = true,
 				sign_icons = {
 					error = "E",
 					warn = "W",
@@ -74,7 +105,7 @@ return {
 				},
 			})
 
-			lsp.on_attach(function(client, bufnr)
+			lsp.on_attach(function(_, bufnr)
 				local opts = { buffer = bufnr, remap = false }
 				-- vim.keymap.set("n", "gd", function()
 				-- 	vim.lsp.buf.definition()
@@ -174,20 +205,80 @@ return {
 			})
 
 			local null_ls = require("null-ls")
+			local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
+
+			local lsp_formatting = function(bufnr)
+				vim.lsp.buf.format({
+					filter = function(client)
+						return client.name == "null-ls"
+					end,
+					bufnr = bufnr,
+				})
+			end
+
+			local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
+			local event = "BufWritePre" -- or "BufWritePost"
+			local async = event == "BufWritePost"
+
 			null_ls.setup({
 				sources = {
+					null_ls.builtins.formatting.prettierd.with({
+						timeout = 10000,
+					}),
+					null_ls.builtins.diagnostics.eslint_d.with({
+						diagnostics_format = "[eslint] #{m}\n(#{c})",
+					}),
+					null_ls.builtins.diagnostics.fish,
 					null_ls.builtins.code_actions.eslint_d,
 					null_ls.builtins.code_actions.refactoring,
 					require("typescript.extensions.null-ls.code-actions"),
 					null_ls.builtins.formatting.stylua,
-					null_ls.builtins.formatting.prettierd,
 					null_ls.builtins.formatting.shfmt,
 				},
+				on_attach = function(client, bufnr)
+					-- if client.supports_method("textDocument/formatting") then
+					-- 	vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
+					-- 	vim.api.nvim_create_autocmd("BufWritePre", {
+					-- 		group = augroup,
+					-- 		buffer = bufnr,
+					-- 		callback = function()
+					-- 			lsp_formatting(bufnr)
+					-- 		end,
+					-- 	})
+					-- end
+
+					if client.supports_method("textDocument/formatting") then
+						vim.keymap.set("n", "<Leader>ff", function()
+							vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
+						end, { buffer = bufnr, desc = "[lsp] format" })
+
+						-- format on save
+						vim.api.nvim_clear_autocmds({ buffer = bufnr, group = group })
+						vim.api.nvim_create_autocmd(event, {
+							buffer = bufnr,
+							group = group,
+							callback = function()
+								vim.lsp.buf.format({ bufnr = bufnr, async = async })
+							end,
+							desc = "[lsp] format on save",
+						})
+					end
+
+					if client.supports_method("textDocument/rangeFormatting") then
+						vim.keymap.set("x", "<Leader>ff", function()
+							vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
+						end, { buffer = bufnr, desc = "[lsp] format" })
+					end
+				end,
 			})
 			vim.diagnostic.config({
 				virtual_text = true,
 			})
 			vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
+
+			vim.api.nvim_create_user_command("DisableLspFormatting", function()
+				vim.api.nvim_clear_autocmds({ group = augroup, buffer = 0 })
+			end, { nargs = 0 })
 		end,
 	},
 }
