@@ -18,12 +18,18 @@ plugins=(
 # MARK: SOURCING
 source $ZSH/oh-my-zsh.sh
 
+source ~/.oh-my-zsh/custom/plugins/fzf-tab-completion/zsh/fzf-zsh-completion.sh
+bindkey '^I' fzf_completion
+
+source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
 # User configuration
 
 # MARK: PATH
 path+=("/usr/local/bin")
 path+=("/usr/local/bin/nvim/bin")
 path+=("$HOME/.local/scripts")
+path+=("/usr/local/opt/gawk/libexec/gnubin:$PATH")
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
