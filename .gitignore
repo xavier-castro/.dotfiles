@@ -1,7 +1,3 @@
-fish/.config/fish/functions/*
-fish/.config/fish/conf.d/*
-fish/.config/fish/completions/*
-fish/.config/fish/fish_variables/*
-fish/.config/fish/fish_variables
+fish/.config/fish/
 .DS_STORE
 .env
