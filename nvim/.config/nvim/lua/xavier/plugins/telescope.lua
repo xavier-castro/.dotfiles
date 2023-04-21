@@ -30,23 +30,7 @@ return {
 				},
 				extensions = {
 					["ui-select"] = {
-						require("telescope.themes").get_dropdown({
-							-- even more opts
-						}),
-
-						-- pseudo code / specification for writing custom displays, like the one
-						-- for "codeactions"
-						-- specific_opts = {
-						--   [kind] = {
-						--     make_indexed = function(items) -> indexed_items, width,
-						--     make_displayer = function(widths) -> displayer
-						--     make_display = function(displayer) -> function(e)
-						--     make_ordinal = function(e) -> string
-						--   },
-						--   -- for example to disable the custom builtin "codeactions" display
-						--      do the following
-						--   codeactions = false,
-						-- }
+						require("telescope.themes").get_dropdown({}),
 					},
 					fzf = {
 						fuzzy = true, -- false will only do exact matching
@@ -86,10 +70,9 @@ return {
 			require("telescope").load_extension("harpoon")
 
 			-- Keybinds
-
 			vim.keymap.set("n", "<leader>cs", "<cmd>Telescope colorscheme<cr>", {})
 			vim.keymap.set("n", "<C-p>", builtin.git_files, {})
-			vim.keymap.set("n", "<leader>po", builtin.oldfiles, {})
+			vim.keymap.set("n", ";o", builtin.oldfiles, {})
 			vim.keymap.set("n", ";f", function()
 				builtin.find_files({
 					no_ignore = false,
@@ -97,8 +80,16 @@ return {
 				})
 			end)
 			vim.keymap.set("n", ";r", function()
-				builtin.live_grep()
+				builtin.registers({
+					previewer = true,
+				})
 			end)
+			vim.keymap.set("n", ";g", function()
+				builtin.live_grep({
+					search_dirs = { vim.fn.expand("%:p:h") },
+				})
+			end)
+
 			vim.keymap.set("n", "\\\\", function()
 				builtin.buffers()
 			end)
@@ -110,9 +101,9 @@ return {
 			end)
 			vim.keymap.set("n", ";t", "<cmd>TodoTelescope keywords=TODO,FIX,MARK<cr>", {})
 			vim.keymap.set("n", ";m", "<cmd>Telescope marks<cr>", {})
-			vim.keymap.set("n", ";e", function()
-				builtin.diagnostics()
-			end)
+			vim.keymap.set("n", "<M-e>", "<cmd>Telescope harpoon marks<cr>", {})
+			vim.keymap.set("n", "<leader><leader>f", "<cmd>Telescope current_buffer_fuzzy_find<cr>", {})
+
 			vim.keymap.set("n", ";;", function()
 				telescope.extensions.file_browser.file_browser({
 					path = "%:p:h",
