@@ -1,35 +1,12 @@
-# If you come from bash you might have to change your $PATH.
-export PATH=$HOME/bin:/usr/local/bin:$PATH
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME="agnoster"
-
+# Fig pre block. Keep at the top of this file.
+[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # MARK: PLUGINS
-plugins=(
-  git
-  macos
-  colored-man-pages
-  fancy-ctrl-z
-  z
-  fzf
-  zsh-syntax-highlighting
-)
-
-# MARK: SOURCING
-source $ZSH/oh-my-zsh.sh
-
-source ~/.oh-my-zsh/custom/plugins/fzf-tab-completion/zsh/fzf-zsh-completion.sh
-bindkey '^I' fzf_completion
-
-source ~/.oh-my-zsh/custom/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-
-# User configuration
-
-# MARK: PATH
 path+=("/usr/local/bin")
 path+=("/usr/local/bin/nvim/bin")
 path+=("$HOME/.local/scripts")
-path+=("/usr/local/opt/gawk/libexec/gnubin:$PATH")
+path+=("/usr/local/opt/gawk/libexec/gnubin")
+path+=("/usr/local/opt/coreutils/libexec/gnubin")
+export PATH
 
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
@@ -46,3 +23,7 @@ alias vim="nvim"
 alias python="python3"
 alias pip="pip3"
 
+source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+
+# Fig post block. Keep at the bottom of this file.
+[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
