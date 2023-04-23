@@ -1,5 +1,4 @@
 # Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # MARK: PLUGINS
 path+=("/usr/local/bin")
 path+=("/usr/local/bin/nvim/bin")
@@ -8,6 +7,27 @@ path+=("/usr/local/opt/gawk/libexec/gnubin")
 path+=("/usr/local/opt/coreutils/libexec/gnubin")
 export PATH
 
+source ~/.zplug/init.zsh
+zplug "zsh-users/zsh-history-substring-search"
+zplug "Jxck/dotfiles", as:command, use:"bin/{histuniq,color}"
+zplug "zsh-users/zsh-syntax-highlighting", defer:2
+
+# Supports checking out a specific branch/tag/commit
+zplug "b4b4r07/enhancd", at:v1
+zplug "mollifier/anyframe", at:4c23cb60
+
+zplug "plugins/git",   from:oh-my-zsh
+#
+# Install plugins if there are plugins that have not been installed
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read -q; then
+        echo; zplug install
+    fi
+fi
+
+# Then, source plugins and add commands to $PATH
+zplug load --verbose
 # Preferred editor for local and remote sessions
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
@@ -23,7 +43,7 @@ alias vim="nvim"
 alias python="python3"
 alias pip="pip3"
 
-source "${ZDOTDIR:-$HOME}/.zprezto/init.zsh"
+export OPENAI_API_KEY=env
+export ZPLUG_HOME=/usr/local/opt/zplug
+source $ZPLUG_HOME/init.zsh
 
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"

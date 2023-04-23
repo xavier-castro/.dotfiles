@@ -1,8 +1,8 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "te", ":tabedit")
 vim.keymap.set("n", "<C-a>", "gg<S-v>G")
 vim.keymap.set("n", "te", ":tabedit<cr>")
 vim.keymap.set("n", "ss", ":split<Return><C-w>w")
+vim.keymap.set("n", "Ss", ":split<Return><C-6><C-w>w")
 vim.keymap.set("n", "sv", ":vsplit<Return><C-w>w")
 -- Move window
 vim.keymap.set("", "sh", "<C-w>h")
@@ -25,8 +25,6 @@ vim.keymap.set("n", "<Esc>", ":nohl<cr>")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("n", "J", "mzJ`z")
-vim.keymap.set("n", "<C-d>", "<C-d>zz")
-vim.keymap.set("n", "<C-u>", "<C-u>zz")
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>:bd!<cr>")
 vim.keymap.set("x", "<leader>p", '"_dP') -- Your paste will be saved
 

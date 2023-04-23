@@ -27,7 +27,7 @@ return {
 							check_package_json = true,
 						})
 					end,
-					runtime_condition = function(params)
+					runtime_condition = function()
 						-- return false to skip running prettier
 						return true
 					end,
@@ -59,8 +59,11 @@ return {
 			-- Autocompletion
 			{ "hrsh7th/nvim-cmp" }, -- Required
 			{ "hrsh7th/cmp-nvim-lsp" }, -- Required
-			{ "L3MON4D3/LuaSnip" }, -- Required
+			{
+				"L3MON4D3/LuaSnip",
+			}, -- Required
 			{ "rafamadriz/friendly-snippets" },
+			{ "honza/vim-snippets" },
 			{ "hrsh7th/cmp-buffer" },
 			{ "hrsh7th/cmp-path" },
 			{ "hrsh7th/cmp-cmdline" },
@@ -107,39 +110,7 @@ return {
 
 			lsp.on_attach(function(_, bufnr)
 				local opts = { buffer = bufnr, remap = false }
-				-- vim.keymap.set("n", "gd", function()
-				-- 	vim.lsp.buf.definition()
-				-- end, opts)
-				-- vim.keymap.set("n", "K", function()
-				-- 	vim.lsp.buf.hover()
-				-- end, opts)
-				-- vim.keymap.set("n", "<leader>vws", function()
-				-- 	vim.lsp.buf.workspace_symbol()
-				-- end, opts)
-				-- vim.keymap.set("n", "<leader>vd", function()
-				-- 	vim.diagnostic.open_float()
-				-- end, opts)
-				-- vim.keymap.set("n", "]d", function()
-				-- 	vim.diagnostic.goto_next()
-				-- end, opts)
-				-- vim.keymap.set("n", "[d", function()
-				-- 	vim.diagnostic.goto_prev()
-				-- end, opts)
-				-- vim.keymap.set("n", "<leader>vca", function()
-				-- 	vim.lsp.buf.code_action()
-				-- end, opts)
-				-- vim.keymap.set("n", "<M-.>", function()
-				-- 	vim.lsp.buf.code_action()
-				-- end, opts)
-				-- vim.keymap.set("n", "<leader>vrr", function()
-				-- 	vim.lsp.buf.references()
-				-- end, opts)
-				-- vim.keymap.set("n", "gr", function()
-				-- 	vim.lsp.buf.rename()
-				-- end, opts)
-				-- vim.keymap.set("i", "<C-h>", function()
-				-- 	vim.lsp.buf.signature_help()
-				-- end, opts)
+				vim.keymap.set("n", "<leader>nff", "<cmd>LspZeroFormat<cr>", opts)
 				vim.keymap.set("n", "<leader>nls", "<cmd>NullLsInfo<cr>", opts)
 				vim.keymap.set("n", ";d", "<cmd>Telescope diagnostics<cr>", opts)
 			end)
@@ -148,13 +119,8 @@ return {
 
 			-- NOTE: This has to be added AFTER `lsp.setup()`
 			local cmp = require("cmp")
-
 			-- MARK: Snippets
-			require("luasnip.loaders.from_snipmate").load({
-				path = { "~/.dotfiles/nvim/.config/nvim/lua/xavier/snippets/" },
-			}) -- Load snippets from my-snippets folder
-			-- You can also use lazy loading so you only get in memory snippets of languages you use
-			require("luasnip.loaders.from_vscode").lazy_load() -- You can pass { paths = "./my-snippets/"} as well
+			require("luasnip.loaders.from_vscode").lazy_load()
 
 			cmp.setup({
 				snippet = {
@@ -177,13 +143,34 @@ return {
 						behavior = cmp.ConfirmBehavior.Replace,
 						select = true,
 					}),
-					["<S-Tab>"] = nil,
-					["<Tab>"] = nil,
+					-- ["<Tab>"] = function(fallback)
+					-- 	if cmp.visible() then
+					-- 		cmp.select_next_item()
+					-- 	elseif require("luasnip").expand_or_jumpable() then
+					-- 		vim.fn.feedkeys(
+					-- 			vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true),
+					-- 			""
+					-- 		)
+					-- 	else
+					-- 		fallback()
+					-- 	end
+					-- end,
+					-- ["<S-Tab>"] = function(fallback)
+					-- 	if cmp.visible() then
+					-- 		cmp.select_prev_item()
+					-- 	elseif require("luasnip").jumpable(-1) then
+					-- 		vim.fn.feedkeys(
+					-- 			vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true),
+					-- 			""
+					-- 		)
+					-- 	else
+					-- 		fallback()
+					-- 	end
+					-- end,
 				}),
 				formatting = {
 					format = lspkind.cmp_format({
 						maxwidth = 50,
-						symbol_map = { Codeium = "", Copilot = "" },
 						before = function(entry, vim_item)
 							vim_item = formatForTailwindCSS(entry, vim_item)
 							return vim_item
@@ -210,16 +197,6 @@ return {
 
 			local null_ls = require("null-ls")
 			local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
-
-			local lsp_formatting = function(bufnr)
-				vim.lsp.buf.format({
-					filter = function(client)
-						return client.name == "null-ls"
-					end,
-					bufnr = bufnr,
-				})
-			end
-
 			local group = vim.api.nvim_create_augroup("lsp_format_on_save", { clear = false })
 			local event = "BufWritePre" -- or "BufWritePost"
 			local async = event == "BufWritePost"
@@ -229,27 +206,17 @@ return {
 					null_ls.builtins.formatting.prettierd.with({
 						timeout = 10000,
 					}),
-					-- null_ls.builtins.diagnostics.eslint_d.with({
-					--   diagnostics_format = "[eslint] #{m}\n(#{c})",
-					-- }),
-					null_ls.builtins.code_actions.eslint_d,
+					null_ls.builtins.diagnostics.eslint_d.with({
+						diagnostics_format = "[eslint] #{m}\n(#{c})",
+					}),
 					null_ls.builtins.code_actions.refactoring,
+					null_ls.builtins.formatting.black,
+					null_ls.builtins.formatting.isort,
 					require("typescript.extensions.null-ls.code-actions"),
 					null_ls.builtins.formatting.stylua,
 					null_ls.builtins.formatting.shfmt,
 				},
 				on_attach = function(client, bufnr)
-					-- if client.supports_method("textDocument/formatting") then
-					-- 	vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-					-- 	vim.api.nvim_create_autocmd("BufWritePre", {
-					-- 		group = augroup,
-					-- 		buffer = bufnr,
-					-- 		callback = function()
-					-- 			lsp_formatting(bufnr)
-					-- 		end,
-					-- 	})
-					-- end
-
 					if client.supports_method("textDocument/formatting") then
 						vim.keymap.set("n", "<Leader>ff", function()
 							vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
@@ -266,7 +233,6 @@ return {
 							desc = "[lsp] format on save",
 						})
 					end
-
 					if client.supports_method("textDocument/rangeFormatting") then
 						vim.keymap.set("x", "<Leader>ff", function()
 							vim.lsp.buf.format({ bufnr = vim.api.nvim_get_current_buf() })
@@ -277,7 +243,6 @@ return {
 			vim.diagnostic.config({
 				virtual_text = true,
 			})
-			vim.api.nvim_set_hl(0, "CmpItemKindCopilot", { fg = "#6CC644" })
 
 			vim.api.nvim_create_user_command("DisableLspFormatting", function()
 				vim.api.nvim_clear_autocmds({ group = augroup, buffer = 0 })
