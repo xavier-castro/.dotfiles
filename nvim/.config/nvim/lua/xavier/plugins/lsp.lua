@@ -1,4 +1,5 @@
 return {
+	{ "kevinhwang91/nvim-ufo", dependencies = "kevinhwang91/promise-async" },
 	{
 		"MunifTanjim/prettier.nvim",
 		config = function()
@@ -91,9 +92,17 @@ return {
 			end
 
 			local lsp = require("lsp-zero").preset({})
-			lsp.ensure_installed({
-				"tsserver",
-			})
+
+			vim.o.foldcolumn = "0"
+			vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+			vim.o.foldlevelstart = 99
+			vim.o.foldenable = true
+
+			-- Using ufo provider need remap `zR` and `zM`.
+			vim.keymap.set("n", "zR", require("ufo").openAllFolds)
+			vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
+
+			require("ufo").setup()
 
 			-- (Optional) Configure lua language server for neovim
 			require("lspconfig").lua_ls.setup(lsp.nvim_lua_ls())
@@ -115,7 +124,31 @@ return {
 				vim.keymap.set("n", ";d", "<cmd>Telescope diagnostics<cr>", opts)
 			end)
 
+			lsp.skip_server_setup({ "tsserver" })
+
+			lsp.set_server_config({
+				capabilities = {
+					textDocument = {
+						foldingRange = {
+							dynamicRegistration = false,
+							lineFoldingOnly = true,
+						},
+					},
+				},
+			})
+
 			lsp.setup()
+
+			require("typescript").setup({
+				server = {
+					on_attach = function(client, bufnr)
+						-- You can find more commands in the documentation:
+						-- https://github.com/jose-elias-alvarez/typescript.nvim#commands
+
+						vim.keymap.set("n", "<leader>ci", "<cmd>TypescriptAddMissingImports<cr>", { buffer = bufnr })
+					end,
+				},
+			})
 
 			-- NOTE: This has to be added AFTER `lsp.setup()`
 			local cmp = require("cmp")
