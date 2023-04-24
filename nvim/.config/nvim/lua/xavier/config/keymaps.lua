@@ -1,4 +1,7 @@
 vim.g.mapleader = " "
+-- Edit Snippets
+vim.keymap.set("n", ";s", ":lua require('luasnip.loaders').edit_snippet_files()<cr>")
+
 vim.keymap.set("n", "<C-a>", "gg<S-v>G")
 vim.keymap.set("n", "te", ":tabedit<cr>")
 vim.keymap.set("n", "ss", ":split<Return><C-w>w")

@@ -119,9 +119,9 @@ return {
 
 			-- NOTE: This has to be added AFTER `lsp.setup()`
 			local cmp = require("cmp")
+
 			-- MARK: Snippets
 			require("luasnip.loaders.from_vscode").lazy_load()
-
 			cmp.setup({
 				snippet = {
 					expand = function(args)
@@ -131,8 +131,8 @@ return {
 				sources = {
 					{ name = "path" },
 					{ name = "nvim_lsp" },
-					{ name = "buffer", keyword_length = 3 },
-					{ name = "luasnip", keyword_length = 2 },
+					{ name = "buffer" },
+					{ name = "luasnip" },
 				},
 				mapping = lsp.defaults.cmp_mappings({
 					["<M-d>"] = cmp.mapping.scroll_docs(-4),
@@ -143,30 +143,30 @@ return {
 						behavior = cmp.ConfirmBehavior.Replace,
 						select = true,
 					}),
-					-- ["<Tab>"] = function(fallback)
-					-- 	if cmp.visible() then
-					-- 		cmp.select_next_item()
-					-- 	elseif require("luasnip").expand_or_jumpable() then
-					-- 		vim.fn.feedkeys(
-					-- 			vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true),
-					-- 			""
-					-- 		)
-					-- 	else
-					-- 		fallback()
-					-- 	end
-					-- end,
-					-- ["<S-Tab>"] = function(fallback)
-					-- 	if cmp.visible() then
-					-- 		cmp.select_prev_item()
-					-- 	elseif require("luasnip").jumpable(-1) then
-					-- 		vim.fn.feedkeys(
-					-- 			vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true),
-					-- 			""
-					-- 		)
-					-- 	else
-					-- 		fallback()
-					-- 	end
-					-- end,
+					["<Tab>"] = function(fallback)
+						if cmp.visible() then
+							cmp.select_next_item()
+						elseif require("luasnip").expand_or_jumpable() then
+							vim.fn.feedkeys(
+								vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true),
+								""
+							)
+						else
+							fallback()
+						end
+					end,
+					["<S-Tab>"] = function(fallback)
+						if cmp.visible() then
+							cmp.select_prev_item()
+						elseif require("luasnip").jumpable(-1) then
+							vim.fn.feedkeys(
+								vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true),
+								""
+							)
+						else
+							fallback()
+						end
+					end,
 				}),
 				formatting = {
 					format = lspkind.cmp_format({
@@ -246,6 +246,22 @@ return {
 
 			vim.api.nvim_create_user_command("DisableLspFormatting", function()
 				vim.api.nvim_clear_autocmds({ group = augroup, buffer = 0 })
+			end, { nargs = 0 })
+
+			vim.api.nvim_create_user_command("LuaSnipEdit", function()
+				require("luasnip.loaders").edit_snippet_files({
+					extend = function(ft, paths)
+						if #paths == 0 then
+							return {
+								{
+									"$CONFIG/" .. ft .. ".snippets",
+									string.format("%s/%s.snippets", "../config/snippets", ft),
+								},
+							}
+						end
+						return {}
+					end,
+				})
 			end, { nargs = 0 })
 		end,
 	},
