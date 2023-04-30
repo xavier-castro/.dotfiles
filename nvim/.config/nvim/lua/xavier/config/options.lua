@@ -34,7 +34,7 @@ vim.opt.termguicolors = true
 vim.opt.winblend = 0
 vim.opt.wildoptions = "pum"
 vim.opt.pumblend = 5
--- vim.opt.shell = "fish"
+vim.opt.shell = "fish"
 vim.opt.background = "dark"
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")

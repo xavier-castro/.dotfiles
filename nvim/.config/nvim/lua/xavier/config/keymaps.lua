@@ -5,8 +5,9 @@ vim.keymap.set("n", ";s", ":lua require('luasnip.loaders').edit_snippet_files()<
 vim.keymap.set("n", "<C-a>", "gg<S-v>G")
 vim.keymap.set("n", "te", ":tabedit<cr>")
 vim.keymap.set("n", "ss", ":split<Return><C-w>w")
-vim.keymap.set("n", "Ss", ":split<Return><C-6><C-w>w")
+vim.keymap.set("n", "sS", ":split<Return><C-6><C-w>w")
 vim.keymap.set("n", "sv", ":vsplit<Return><C-w>w")
+vim.keymap.set("n", "sV", ":vsplit<Return><C-6><C-w>w")
 -- Move window
 vim.keymap.set("", "sh", "<C-w>h")
 vim.keymap.set("", "sqq", "<C-w>q")
@@ -59,4 +60,5 @@ vim.api.nvim_set_keymap(
 )
 -- Save and Write in Insert
 vim.keymap.set("i", "<c-s>", "<Esc>:w<CR>a")
+vim.keymap.set("n", "<c-s>", ":w<CR>")
 -- Delete Marks

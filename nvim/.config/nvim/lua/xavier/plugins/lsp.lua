@@ -70,6 +70,7 @@ return {
 			{ "hrsh7th/cmp-cmdline" },
 			{ "hrsh7th/cmp-nvim-lua" },
 			{ "saadparwaiz1/cmp_luasnip" },
+			{ "lukas-reineke/cmp-under-comparator" },
 		},
 		config = function()
 			local lspkind = require("lspkind")
@@ -146,6 +147,7 @@ return {
 						-- https://github.com/jose-elias-alvarez/typescript.nvim#commands
 
 						vim.keymap.set("n", "<leader>ci", "<cmd>TypescriptAddMissingImports<cr>", { buffer = bufnr })
+						vim.keymap.set("n", "<leader>cf", "<cmd>TypescriptFixAll<cr>", { buffer = bufnr })
 					end,
 				},
 			})
@@ -162,10 +164,10 @@ return {
 					end,
 				},
 				sources = {
-					{ name = "path" },
-					{ name = "nvim_lsp" },
-					{ name = "buffer" },
-					{ name = "luasnip" },
+					{ name = "luasnip", limit = 10 },
+					{ name = "path", limit = 5 },
+					{ name = "nvim_lsp", limit = 15 },
+					{ name = "buffer", limit = 10 },
 				},
 				mapping = lsp.defaults.cmp_mappings({
 					["<M-d>"] = cmp.mapping.scroll_docs(-4),
@@ -176,31 +178,22 @@ return {
 						behavior = cmp.ConfirmBehavior.Replace,
 						select = true,
 					}),
-					["<Tab>"] = function(fallback)
-						if cmp.visible() then
-							cmp.select_next_item()
-						elseif require("luasnip").expand_or_jumpable() then
-							vim.fn.feedkeys(
-								vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true),
-								""
-							)
-						else
-							fallback()
-						end
-					end,
-					["<S-Tab>"] = function(fallback)
-						if cmp.visible() then
-							cmp.select_prev_item()
-						elseif require("luasnip").jumpable(-1) then
-							vim.fn.feedkeys(
-								vim.api.nvim_replace_termcodes("<Plug>luasnip-jump-prev", true, true, true),
-								""
-							)
-						else
-							fallback()
-						end
-					end,
+					["<Tab>"] = nil,
+					["<S-Tab>"] = nil,
 				}),
+				sorting = {
+					comparators = {
+						cmp.config.compare.offset,
+						cmp.config.compare.exact,
+						cmp.config.compare.score,
+						cmp.config.compare.recently_used,
+						cmp.config.compare.locality,
+						cmp.config.compare.kind,
+						cmp.config.compare.sort_text,
+						cmp.config.compare.length,
+						cmp.config.compare.order,
+					},
+				},
 				formatting = {
 					format = lspkind.cmp_format({
 						maxwidth = 50,
@@ -273,10 +266,23 @@ return {
 					end
 				end,
 			})
-			vim.diagnostic.config({
-				virtual_text = true,
-			})
+			vim.lsp.handlers["textDocument/publishDiagnostics"] =
+				vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+					underline = true,
+					update_in_insert = false,
+					virtual_text = { spacing = 4, prefix = "●" },
+					severity_sort = true,
+				})
 
+			vim.diagnostic.config({
+				virtual_text = {
+					prefix = "●",
+				},
+				update_in_insert = true,
+				float = {
+					source = "always", -- Or "if_many"
+				},
+			})
 			vim.api.nvim_create_user_command("DisableLspFormatting", function()
 				vim.api.nvim_clear_autocmds({ group = augroup, buffer = 0 })
 			end, { nargs = 0 })
