@@ -124,7 +124,7 @@ return {
 
 			require("typescript").setup({
 				server = {
-					on_attach = function(client, bufnr)
+					on_attach = function(_, bufnr)
 						-- You can find more commands in the documentation:
 						-- https://github.com/jose-elias-alvarez/typescript.nvim#commands
 
@@ -245,11 +245,11 @@ return {
 						diagnostics_format = "[eslint] #{m}\n(#{c})",
 					}),
 					null_ls.builtins.code_actions.refactoring,
-					null_ls.builtins.formatting.black,
-					null_ls.builtins.formatting.isort,
 					require("typescript.extensions.null-ls.code-actions"),
 					null_ls.builtins.formatting.stylua,
 					null_ls.builtins.formatting.shfmt,
+					null_ls.builtins.formatting.isort,
+					null_ls.builtins.diagnostics.mypy,
 				},
 				on_attach = function(client, bufnr)
 					if client.supports_method("textDocument/formatting") then
