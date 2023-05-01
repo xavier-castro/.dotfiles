@@ -1,4 +1,12 @@
 if vim.g.vscode then
+    local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+    if not vim.loop.fs_stat(lazypath) then
+        vim.fn.system({"git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git",
+                       "--branch=stable", -- latest stable release
+        lazypath})
+    end
+    vim.opt.rtp:prepend(lazypath)
+
     vim.api.nvim_exec([[
     " THEME CHANGER
     function! SetCursorLineNrColorInsert(mode)
@@ -21,9 +29,71 @@ if vim.g.vscode then
         autocmd CursorHold * call VSCodeNotify('nvim-theme.normal')
     augroup END
 ]], false)
+    vim.api.nvim_exec([[
+    function! s:manageEditorSize(...)
+    let count = a:1
+    let to = a:2
+    for i in range(1, count ? count : 1)
+        call VSCodeNotify(to ==# 'increase' ? 'workbench.action.increaseViewSize' : 'workbench.action.decreaseViewSize')
+    endfor
+endfunction
+
+" Sample keybindings. Note these override default keybindings mentioned above.
+nnoremap <C-w>> <Cmd>call <SID>manageEditorSize(v:count, 'increase')<CR>
+xnoremap <C-w>> <Cmd>call <SID>manageEditorSize(v:count, 'increase')<CR>
+nnoremap <C-w>+ <Cmd>call <SID>manageEditorSize(v:count, 'increase')<CR>
+xnoremap <C-w>+ <Cmd>call <SID>manageEditorSize(v:count, 'increase')<CR>
+nnoremap <C-w>< <Cmd>call <SID>manageEditorSize(v:count, 'decrease')<CR>
+xnoremap <C-w>< <Cmd>call <SID>manageEditorSize(v:count, 'decrease')<CR>
+nnoremap <C-w>- <Cmd>call <SID>manageEditorSize(v:count, 'decrease')<CR>
+xnoremap <C-w>- <Cmd>call <SID>manageEditorSize(v:count, 'decrease')<CR>
+   ]], false)
 
     require("vscode.vscode-maps")
     require("vscode.vscode-options")
+    require("lazy").setup({{"tpope/vim-surround"}, {"tpope/vim-repeat"}, {
+        "tpope/vim-commentary",
+        config = function()
+            vim.api.nvim_exec([[
+                xmap gc  <Plug>VSCodeCommentary
+nmap gc  <Plug>VSCodeCommentary
+omap gc  <Plug>VSCodeCommentary
+nmap gcc <Plug>VSCodeCommentaryLine
+]], false)
+        end
+    }, {
+        'asvetliakov/vim-easymotion',
+        config = function()
+            vim.api.nvim_exec([[
+            map <Leader><Leader> <Plug>(easymotion-prefix)
+            ]], false)
+        end
+    }, {
+        "theprimeagen/harpoon",
+        dependencies = {"nvim-lua/plenary.nvim", "nvim-lua/popup.nvim"},
+        config = function()
+            local mark = require("harpoon.mark")
+            local ui = require("harpoon.ui")
+
+            vim.keymap.set("n", "<leader>a", mark.add_file)
+            vim.keymap.set("n", "<C-e>", ui.toggle_quick_menu)
+
+            vim.keymap.set("n", "<C-h>", function()
+                ui.nav_file(1)
+            end)
+            vim.keymap.set("n", "<C-j>", function()
+                ui.nav_file(2)
+            end)
+            vim.keymap.set("n", "<C-k>", function()
+                ui.nav_file(3)
+            end)
+            vim.keymap.set("n", "<C-l>", function()
+                ui.nav_file(4)
+            end)
+
+        end
+    }})
+
 else
     ---@diagnostic disable: undefined-global
     local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
