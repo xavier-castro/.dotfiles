@@ -146,6 +146,8 @@ return {
 						-- You can find more commands in the documentation:
 						-- https://github.com/jose-elias-alvarez/typescript.nvim#commands
 
+						vim.keymap.set("n", "<leader>cr", "<cmd>TypescriptRemoveUnused<cr>", { buffer = bufnr })
+						vim.keymap.set("n", "<leader>co", "<cmd>TypescriptOrganizeImports<cr>", { buffer = bufnr })
 						vim.keymap.set("n", "<leader>ci", "<cmd>TypescriptAddMissingImports<cr>", { buffer = bufnr })
 						vim.keymap.set("n", "<leader>cf", "<cmd>TypescriptFixAll<cr>", { buffer = bufnr })
 					end,
@@ -164,9 +166,9 @@ return {
 					end,
 				},
 				sources = {
+					{ name = "nvim_lsp", limit = 15 },
 					{ name = "luasnip", limit = 10 },
 					{ name = "path", limit = 5 },
-					{ name = "nvim_lsp", limit = 15 },
 					{ name = "buffer", limit = 10 },
 				},
 				mapping = lsp.defaults.cmp_mappings({
