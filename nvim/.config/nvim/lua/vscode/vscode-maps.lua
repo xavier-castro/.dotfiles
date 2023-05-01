@@ -14,4 +14,7 @@ vim.keymap.set("n", "<C-a>", "gg<S-v>G")
 vim.keymap.set("t", "<Esc>", "<C-\\><C-n>:bd!<cr>")
 vim.keymap.set("i", "<c-s>", "<Esc>:w<CR>a")
 vim.keymap.set("n", "<c-s>", ":w<CR>")
-
+vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+vim.keymap.set("n", "<Tab>", "<Cmd>call VSCodeNotify('workbench.action.nextEditor')<cr>", {})
+vim.keymap.set("n", "<S-Tab>", "<Cmd>call VSCodeNotify('workbench.action.previousEditor')<cr>", {})

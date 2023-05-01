@@ -1,9 +1,9 @@
 vim.opt.scrolloff = 999
 vim.opt.shell = "fish"
 vim.opt.background = "dark"
-vim.opt.signcolumn = "yes"
-vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
+vim.opt.inccommand = "split"
+vim.opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
 
 -- highlight yanked text for 200ms using the "Visual" highlight group
 vim.cmd([[
