@@ -52,12 +52,10 @@ vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 -- remap to open the Telescope refactoring menu in visual mode
-vim.api.nvim_set_keymap(
-	"v",
-	"<leader>rr",
-	"<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
-	{ noremap = true }
-)
+vim.api.nvim_set_keymap("v", "<leader>rr", "<Esc><cmd>lua require('telescope').extensions.refactoring.refactors()<CR>",
+    {
+        noremap = true
+    })
 -- Save and Write in Insert
 vim.keymap.set("i", "<c-s>", "<Esc>:w<CR>a")
 vim.keymap.set("n", "<c-s>", ":w<CR>")

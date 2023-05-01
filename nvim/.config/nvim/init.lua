@@ -1,7 +1,5 @@
 if vim.g.vscode then
-	-- VSCode extension
-	vim.api.nvim_exec(
-		[[
+    vim.api.nvim_exec([[
     " THEME CHANGER
     function! SetCursorLineNrColorInsert(mode)
         " Insert mode: blue
@@ -22,22 +20,18 @@ if vim.g.vscode then
         autocmd InsertLeave * call VSCodeNotify('nvim-theme.normal')
         autocmd CursorHold * call VSCodeNotify('nvim-theme.normal')
     augroup END
-]],
-		false
-	)
+]], false)
+
+    require("vscode.vscode-maps")
+    require("vscode.vscode-options")
 else
-	---@diagnostic disable: undefined-global
-	local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-	if not vim.loop.fs_stat(lazypath) then
-		vim.fn.system({
-			"git",
-			"clone",
-			"--filter=blob:none",
-			"https://github.com/folke/lazy.nvim.git",
-			"--branch=stable", -- latest stable release
-			lazypath,
-		})
-	end
-	vim.opt.rtp:prepend(lazypath)
-	require("lazy").setup("xavier.plugins", opts)
+    ---@diagnostic disable: undefined-global
+    local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+    if not vim.loop.fs_stat(lazypath) then
+        vim.fn.system({"git", "clone", "--filter=blob:none", "https://github.com/folke/lazy.nvim.git",
+                       "--branch=stable", -- latest stable release
+        lazypath})
+    end
+    vim.opt.rtp:prepend(lazypath)
+    require("lazy").setup("xavier.plugins", opts)
 end
