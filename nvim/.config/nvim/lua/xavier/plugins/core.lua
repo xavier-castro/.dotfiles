@@ -1,5 +1,6 @@
 require("xavier.config").init()
 return { -- library used by other plugins
+{"mg979/vim-visual-multi"},
 {
     "nvim-lua/plenary.nvim",
     lazy = true
