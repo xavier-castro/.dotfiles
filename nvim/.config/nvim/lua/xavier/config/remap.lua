@@ -1,7 +1,7 @@
 -- Edit Snippets
-vim.keymap.set("n", ";s", ":lua require('luasnip.loaders').edit_snippet_files()<cr>")
+vim.keymap.set("n", ";s",
+    ":lua require('luasnip.loaders').edit_snippet_files()<cr>")
 
-vim.keymap.set("n", "<C-a>", "gg<S-v>G")
 vim.keymap.set("n", "te", ":tabedit<cr>")
 vim.keymap.set("n", "ss", ":split<Return><C-w>w")
 vim.keymap.set("n", "sS", ":split<Return><C-6><C-w>w")
@@ -34,6 +34,8 @@ vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww ~/.dotfiles/bin/.local/scripts/tmux-sessionizer<CR>")
+vim.keymap.set("n", "<C-f>",
+    "<cmd>silent !tmux neww ~/.dotfiles/bin/.local/scripts/tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>ff", vim.lsp.buf.format)
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>s",
+    [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])

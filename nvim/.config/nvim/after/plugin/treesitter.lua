@@ -1,25 +1,15 @@
 (require("nvim-treesitter.configs")).setup({
-	ensure_installed = {
-		"vim",
-		"javascript",
-		"typescript",
-		"c",
-		"lua",
-		"rust",
-		"python"
-	},
-	sync_install = false,
-	auto_install = true,
-	highlight = {
-		enable = true,
-		additional_vim_regex_highlighting = false
-	},
-	autotag = {
-		enable = true
-	}
+    ensure_installed = {
+        "typescript", "javascript", "html", "tsx", "lua", "json", "rust", "css",
+        "scss", "ruby", "rasi", "dockerfile", "bash", "c_sharp", "graphql",
+        "vue", "svelte", "regex", "yaml", "go", "terraform", "vim", "markdown",
+        "markdown_inline", "regex"
+    },
+    sync_install = false,
+    auto_install = true,
+    highlight = {enable = true, additional_vim_regex_highlighting = false},
+    autotag = {enable = true}
 });
 local parser_config = (require("nvim-treesitter.parsers")).get_parser_configs();
-parser_config.tsx.filetype_to_parsername = {
-	"javascript",
-	"typescript.tsx"
-};
+parser_config.tsx.filetype_to_parsername = {"javascript", "typescript.tsx"};
+
