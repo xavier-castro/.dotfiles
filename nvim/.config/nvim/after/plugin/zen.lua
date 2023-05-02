@@ -1,28 +1,28 @@
-local c = require("after.plugin.neosolarized");
+local c = require("neosolarized");
 vim.keymap.set("n", "<leader>zz", function()
-	(require("zen-mode")).setup({
-		window = {
-			width = 90,
-			options = {}
-		}
-	});
-	(require("zen-mode")).toggle();
-	vim.wo.wrap = false;
-	vim.wo.number = true;
-	vim.wo.rnu = true;
-	c.ColorMyPencils();
+    (require("zen-mode")).setup({
+        window = {
+            width = 90,
+            options = {}
+        }
+    });
+    (require("zen-mode")).toggle();
+    vim.wo.wrap = false;
+    vim.wo.number = true;
+    vim.wo.rnu = true;
+    c.ColorMyPencils();
 end);
 vim.keymap.set("n", "<leader>zZ", function()
-	(require("zen-mode")).setup({
-		window = {
-			width = 80,
-			options = {}
-		}
-	});
-	(require("zen-mode")).toggle();
-	vim.wo.wrap = false;
-	vim.wo.number = false;
-	vim.wo.rnu = false;
-	vim.opt.colorcolumn = "0";
-	c.ColorMyPencils();
+    (require("zen-mode")).setup({
+        window = {
+            width = 80,
+            options = {}
+        }
+    });
+    (require("zen-mode")).toggle();
+    vim.wo.wrap = false;
+    vim.wo.number = false;
+    vim.wo.rnu = false;
+    vim.opt.colorcolumn = "0";
+    c.ColorMyPencils();
 end);

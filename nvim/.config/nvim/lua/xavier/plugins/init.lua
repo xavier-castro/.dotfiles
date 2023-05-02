@@ -52,6 +52,7 @@ return {
     {
         "nvim-telescope/telescope-file-browser.nvim",
         dependencies = {
+            { "sar/web-devicons.nvim" },
             { "nvim-telescope/telescope.nvim" },
             { "nvim-lua/plenary.nvim" },
             { "nvim-telescope/telescope-ui-select.nvim" },
@@ -102,12 +103,6 @@ return {
         "windwp/nvim-ts-autotag"
     },
     { "github/copilot.vim" },
-    {
-        "dpayne/CodeGPT.nvim",
-        dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" },
-        config =
-            require("codegpt.config")
-    },
     { "akinsho/nvim-toggleterm.lua" },
     {
         "levouh/tint.nvim",
