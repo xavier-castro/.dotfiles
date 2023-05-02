@@ -15,6 +15,15 @@ return {
     {
         "tpope/vim-fugitive"
     },
+    {
+        "lewis6991/gitsigns.nvim",
+        config = function()
+            require("gitsigns").setup()
+        end
+    },
+    {
+        'norcalli/nvim-colorizer.lua'
+    },
     { "kshenoy/vim-signature" },
     { 'unblevable/quick-scope' }, { "mg979/vim-visual-multi" },
     { 'justinmk/vim-sneak' },
@@ -41,25 +50,21 @@ return {
         "nvim-treesitter/nvim-treesitter-context"
     },
     {
-        "nvim-telescope/telescope-ui-select.nvim"
-    },
-    {
-        "nvim-telescope/telescope-fzf-native.nvim",
-        build = "make"
-    },
-    {
         "nvim-telescope/telescope-file-browser.nvim",
         dependencies = {
-            "nvim-telescope/telescope.nvim",
-            "nvim-lua/plenary.nvim"
+            { "nvim-telescope/telescope.nvim" },
+            { "nvim-lua/plenary.nvim" },
+            { "nvim-telescope/telescope-ui-select.nvim" },
+            {
+                "nvim-telescope/telescope-fzf-native.nvim",
+                build = "make"
+            },
+
         }
     },
-    {
-        "akinsho/nvim-bufferline.lua"
-    },
-    {
-        "nvim-lualine/lualine.nvim"
-    },
+    -- Bufferline + Lualine
+    { "akinsho/nvim-bufferline.lua" },
+    { "nvim-lualine/lualine.nvim" },
     {
         "onsails/lspkind-nvim"
     },
@@ -97,4 +102,17 @@ return {
         "windwp/nvim-ts-autotag"
     },
     { "github/copilot.vim" },
+    {
+        "dpayne/CodeGPT.nvim",
+        dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim" },
+        config =
+            require("codegpt.config")
+    },
+    { "akinsho/nvim-toggleterm.lua" },
+    {
+        "levouh/tint.nvim",
+        config = function()
+            require("tint").setup()
+        end
+    },
 };
