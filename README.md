@@ -8,6 +8,10 @@ Without these people and their resources I would not have been able to even star
 - [Craftzdog](https://www.youtube.com/channel/UC7yZ6keOGsvERMp2HaEbbXQ)
 - [Max Stoiber](https://www.youtube.com/@MaxStoiber)
 
+## Links to Where I got all this Info
+
+-[Awesome CLI workflow for git](https://dev.to/craftzdog/a-productive-command-line-git-workflow-for-indie-app-developers-k7d)
+
 ## Software Needed
 
 This is the software you need for full functionality of my dotfiles
@@ -16,6 +20,13 @@ This is the software you need for full functionality of my dotfiles
 - [Rectangle Window Managmenet](https://rectangleapp.com/)
 - [Notion](https://notion.so)
 - [Screen Studio](https://www.screen.studio/download)
+
+## CLI QOL
+
+- [Commitizen](https://github.com/commitizen/cz-cli)
+  `brew install commitizen`
+- [Tig](https://github.com/jonas/tig)
+  `$ brew install tig`
 
 ## Features of my dotfiles
 

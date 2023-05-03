@@ -14,15 +14,18 @@ alias ls "ls -p -G"
 alias la "ls -A"
 alias ll "exa -ll"
 alias lla "ll -A"
+alias python python3
 alias g git
 command -qv nvim && alias vim nvim
+
+# QOL
+alias pys "source .venv/bin/activate.fish"
 
 set -gx EDITOR nvim
 
 set -gx PATH bin $PATH
 set -gx PATH ~/bin $PATH
 set -gx PATH ~/.local/bin $PATH
-# set -gx PATH ~/anaconda3/bin $PATH  # commented out by conda initialize
 
 # NodeJS
 set -gx PATH node_modules/.bin $PATH
@@ -54,13 +57,6 @@ set LOCAL_CONFIG (dirname (status --current-filename))/config-local.fish
 if test -f $LOCAL_CONFIG
   source $LOCAL_CONFIG
 end
-
-# # >>> conda initialize >>>
-# # !! Contents within this block are managed by 'conda init' !!
-# if test -f /Users/xavier/anaconda3/bin/conda
-#     eval /Users/xavier/anaconda3/bin/conda "shell.fish" "hook" $argv | source
-# end
-# # <<< conda initialize <<<
 
 
 # pnpm
