@@ -8,10 +8,17 @@ return {
 		"christoomey/vim-tmux-navigator",
 		lazy = false,
 		config = function()
+<<<<<<< HEAD
 			vim.keymap.set("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>")
 			vim.keymap.set("n", "<C-j>", "<cmd>TmuxNavigateDown<CR>")
 			vim.keymap.set("n", "<C-k>", "<cmd>TmuxNavigateUp<CR>")
 			vim.keymap.set("n", "<C-l>", "<cmd>TmuxNavigateRight<CR>")
+=======
+			vim.keymap.set("n", "<c-h>", "<cmd>TmuxNavigateLeft<cr>")
+			vim.keymap.set("n", "<c-l>", "<cmd>TmuxNavigateRight<cr>")
+			vim.keymap.set("n", "<c-j>", "<cmd>TmuxNavigateDown<cr>")
+			vim.keymap.set("n", "<c-k>", "<cmd>TmuxNavigateUp<cr>")
+>>>>>>> dev
 		end,
 	},
 	{ "tpope/vim-surround" },
@@ -19,7 +26,10 @@ return {
 	{ "tpope/vim-fugitive" },
 	{ "tpope/vim-commentary" },
 	{ "tpope/vim-obsession" },
+<<<<<<< HEAD
 
+=======
+>>>>>>> dev
 	{ "monaqa/dial.nvim" },
 	{
 		"lewis6991/gitsigns.nvim",
@@ -166,10 +176,13 @@ return {
 			require("codegpt.config")
 		end,
 	},
+<<<<<<< HEAD
 	{
 		"kylechui/nvim-surround",
 		config = function()
 			require("nvim-surround").setup({})
 		end,
 	},
+=======
+>>>>>>> dev
 }
