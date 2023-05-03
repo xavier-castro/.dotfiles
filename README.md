@@ -14,6 +14,8 @@ This is the software you need for full functionality of my dotfiles
 
 - [Karabiner Elements](https://karabiner-elements.pqrs.org/)
 - [Rectangle Window Managmenet](https://rectangleapp.com/)
+- [Notion](https://notion.so)
+- [Screen Studio](https://www.screen.studio/download)
 
 ## Features of my dotfiles
 
