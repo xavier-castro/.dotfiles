@@ -7,6 +7,7 @@ return {
 	{ "tpope/vim-surround" },
 	{ "tpope/vim-repeat" },
 	{ "tpope/vim-fugitive" },
+	{ "tpope/vim-commentary" },
 	{
 		"lewis6991/gitsigns.nvim",
 		config = function()
@@ -15,6 +16,7 @@ return {
 	},
 	{ "norcalli/nvim-colorizer.lua" },
 	{ "kshenoy/vim-signature" },
+	{ "justinmk/vim-sneak" },
 	{ "unblevable/quick-scope" },
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -56,7 +58,21 @@ return {
 			"roobert/tailwindcss-colorizer-cmp.nvim",
 		},
 	},
-	{ "neovim/nvim-lspconfig" },
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = {
+			"folke/neodev.nvim",
+			"nvim-lua/lsp-status.nvim",
+			"jose-elias-alvarez/typescript.nvim",
+			"b0o/schemastore.nvim",
+			"williamboman/mason-lspconfig.nvim",
+		},
+		event = { "BufReadPre", "BufNewFile" },
+	},
+	{
+		"kevinhwang91/nvim-ufo",
+		dependencies = "kevinhwang91/promise-async",
+	},
 	{ "jose-elias-alvarez/null-ls.nvim" },
 	{ "williamboman/mason.nvim" },
 	{ "williamboman/mason-lspconfig.nvim" },
@@ -71,4 +87,14 @@ return {
 			require("tint").setup()
 		end,
 	},
+	{
+		"stevearc/aerial.nvim",
+		opts = {},
+		-- Optional dependencies
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-tree/nvim-web-devicons",
+		},
+	},
+	{ url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim" },
 }

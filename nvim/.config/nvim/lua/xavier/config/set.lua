@@ -18,22 +18,33 @@ vim.opt.incsearch = true
 vim.opt.scrolloff = 10
 vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
-vim.opt.shell = 'fish'
+vim.opt.shell = "fish"
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 vim.opt.cursorline = true
 vim.opt.termguicolors = true
 vim.opt.winblend = 0
-vim.opt.wildoptions = 'pum'
+vim.opt.wildoptions = "pum"
 vim.opt.pumblend = 5
-vim.opt.background = 'dark'
+vim.opt.background = "dark"
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 -- highlight yanked text for 200ms using the "Visual" highlight group
-vim.cmd [[
+vim.cmd([[
   augroup highlight_yank
   autocmd!
   au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=100})
   augroup END
-]]
+]])
+
+vim.api.nvim_set_option("foldmethod", "manual")
+vim.api.nvim_set_option("viewoptions", "folds,cursor,curdir")
+
+vim.cmd([[
+  augroup SaveFolds
+    autocmd!
+    autocmd BufWinLeave * silent!  mkview
+    autocmd BufWinEnter * silent!  loadview
+  augroup END
+]])
