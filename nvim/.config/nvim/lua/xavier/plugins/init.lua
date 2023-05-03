@@ -27,6 +27,10 @@ return {
 		},
 	},
 	{ "theprimeagen/harpoon" },
+	{
+		"folke/todo-comments.nvim",
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
 	{ "theprimeagen/refactoring.nvim" },
 	{ "mbbill/undotree" },
 	{ "folke/trouble.nvim" },
@@ -117,7 +121,6 @@ return {
 			},
 		},
 	},
-	{ "anuvyklack/hydra.nvim", event = "VeryLazy" },
 	{
 		"numToStr/Comment.nvim",
 		dependencies = {
@@ -144,6 +147,12 @@ return {
 		},
 		config = function()
 			require("codegpt.config")
+		end,
+	},
+	{
+		"kylechui/nvim-surround",
+		config = function()
+			require("nvim-surround").setup({})
 		end,
 	},
 }
