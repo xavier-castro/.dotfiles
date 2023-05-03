@@ -80,7 +80,7 @@ cmp.setup({
 			maxwidth = 50,
 			before = function(entry, vim_item)
 				vim_item = formatForTailwindCSS(entry, vim_item)
-				return require("tailwindcss-colorizer-cmp").formatter(entry, vim_item)
+				return vim_item
 			end,
 		}),
 	},
