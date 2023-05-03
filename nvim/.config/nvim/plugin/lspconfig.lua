@@ -271,7 +271,17 @@ nvim_lsp.tailwindcss.setup({
 	},
 })
 
-nvim_lsp.pylsp.setup({
+-- nvim_lsp.pylsp.setup({
+-- 	on_attach = on_attach,
+-- 	capabilities = capabilities,
+-- 	flags = {
+-- 		debounce_text_changes = 200,
+-- 		allow_incremental_sync = true,
+-- 	},
+-- })
+
+pyright = "pyright-langserver"
+nvim_lsp.pyright.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 	flags = {

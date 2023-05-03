@@ -47,8 +47,6 @@ null_ls.setup({
 		formatting.jq, -- code_actions.gitsigns,
 		code_actions.refactoring,
 		code_actions.shellcheck,
-		diagnostics.pylint,
-		diagnostics.mypy,
 	},
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then
