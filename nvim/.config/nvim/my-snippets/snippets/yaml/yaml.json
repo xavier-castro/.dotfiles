@@ -1,0 +1,15 @@
+{
+  "yaml minimal bp for prettier": {
+    "prefix": "xcbpprettier",
+    "body": [
+      "arrowParens: 'avoid'",
+      "bracketSpacing: true",
+      "endOfLine: 'lf'",
+      "semi: false",
+      "singleQuote: true",
+      "tabWidth: 2",
+      "trailingComma: 'none'"
+    ],
+    "description": "yaml minimal bp for prettier"
+  }
+}
