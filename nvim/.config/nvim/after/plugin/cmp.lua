@@ -20,6 +20,7 @@ local function formatForTailwindCSS(entry, vim_item)
 	vim_item.kind = lspkind.symbolic(vim_item.kind) and lspkind.symbolic(vim_item.kind) or vim_item.kind
 	return vim_item
 end
+
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -73,7 +74,6 @@ cmp.setup({
 			max_item_count = 5,
 			group_index = 2,
 		},
-		experimental = { native_menu = false, ghost_text = false },
 	},
 	formatting = {
 		format = lspkind.cmp_format({
@@ -86,30 +86,25 @@ cmp.setup({
 	},
 })
 
-cmp.setup.cmdline({ "/", "?" }, {
-	mapping = cmp.mapping.preset.cmdline(),
-	sources = {
-		{ name = "buffer" },
-	},
-})
--- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
-cmp.setup.cmdline(":", {
-	mapping = cmp.mapping.preset.cmdline(),
-	sources = cmp.config.sources({
-		{ name = "path" },
-	}, {
-		{ name = "cmdline" },
-	}),
-})
-
 vim.cmd([[
   set completeopt=menuone,noinsert,noselect
   highlight! default link CmpItemKind CmpItemMenuDefault
 ]])
 
-local presentAutopairs, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
-if not presentAutopairs then
-	return
-end
-
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
+vim.api.nvim_create_user_command("LuaSnipEdit", function()
+	require("luasnip.loaders").edit_snippet_files({
+		extend = function(ft, paths)
+			if #paths == 0 then
+				return {
+					{
+						"$CONFIG/" .. ft .. ".snippets",
+						string.format("%s/%s.snippets", "~/.dotfiles/nvim/.config/nvim/my_snippets", ft),
+					},
+				}
+			end
+			return {}
+		end,
+	})
+end, {
+	nargs = 0,
+})

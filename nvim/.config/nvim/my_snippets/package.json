@@ -7,24 +7,12 @@
     "snippets": [
       {
         "language": [
-          "all"
-        ],
-        "path": "./snippets/all.json"
-      },
-      {
-        "language": [
-          "lua"
-        ],
-        "path": "./snippets/lua.json"
-      },
-      {
-        "language": [
           "javascript",
           "typescript",
           "typescriptreact",
           "javascriptreact"
         ],
-        "path": "./snippets/xc_js.json"
+        "path": "./snippets/javascript.json"
       }
     ]
   }

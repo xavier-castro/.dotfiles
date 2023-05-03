@@ -45,3 +45,12 @@ vim.cmd([[
     autocmd BufWinEnter * silent!  loadview
   augroup END
 ]])
+
+local function open_markdown_preview(url)
+	local cmd = "silent !firefox --new-window " .. url
+	vim.cmd(cmd)
+end
+
+vim.g.mkdp_browserfunc = function(url)
+	open_markdown_preview(url)
+end

@@ -43,19 +43,26 @@ return {
 	{ "akinsho/nvim-bufferline.lua" },
 	{ "nvim-lualine/lualine.nvim" },
 	{
+		"L3MON4D3/LuaSnip",
+		dependencies = {
+			"rafamadriz/friendly-snippets",
+		},
+		event = "InsertEnter",
+	},
+	{
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
 		dependencies = {
-			"L3MON4D3/LuaSnip",
 			"hrsh7th/cmp-nvim-lsp-signature-help",
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-cmdline",
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-nvim-lua",
 			"windwp/nvim-autopairs",
 			"onsails/lspkind-nvim",
-			"roobert/tailwindcss-colorizer-cmp.nvim",
+			"rafamadriz/friendly-snippets",
 		},
 	},
 	{
@@ -66,6 +73,7 @@ return {
 			"jose-elias-alvarez/typescript.nvim",
 			"b0o/schemastore.nvim",
 			"williamboman/mason-lspconfig.nvim",
+			"MunifTanjim/prettier.nvim",
 		},
 		event = { "BufReadPre", "BufNewFile" },
 	},
@@ -83,8 +91,6 @@ return {
 	{ "akinsho/nvim-toggleterm.lua" },
 	{
 		"stevearc/aerial.nvim",
-		opts = {},
-		-- Optional dependencies
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
 			"nvim-tree/nvim-web-devicons",
