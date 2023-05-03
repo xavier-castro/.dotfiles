@@ -2,5 +2,6 @@ fish/.config/fish/functions/*
 fish/.config/fish/conf.d/*
 fish/.config/fish/completions/*
 fish/.config/fish/fish_variables
+tmux/.config/tmux/plugins/*
 .DS_STORE
 .env
