@@ -1,6 +1,6 @@
 local present, ufo = pcall(require, "ufo")
 
-_setupWithFallback = function()
+local setupWithFallback = function()
 	if not present then
 		vim.notify("ufo not installed")
 
@@ -303,27 +303,14 @@ for type, icon in pairs(signs) do
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "" })
 end
 
--- Diagnostic symbols in the virtual text (gutter)
-local config = {
-	virtual_text = { prefix = "●" },
-	virtual_lines = false,
-	signs = {
-		active = signs,
+setupWithFallback()
+
+vim.diagnostic.config({
+	virtual_text = {
+		prefix = "●",
 	},
 	update_in_insert = true,
-	underline = true,
-	severity_sort = true,
 	float = {
-		focus = false,
-		focusable = false,
-		style = "minimal",
-		border = "rounded",
-		source = "always",
-		header = "",
-		prefix = "",
+		source = "always", -- Or "if_many"
 	},
-}
-
-_setupWithFallback()
-
-vim.diagnostic.config(config)
+})

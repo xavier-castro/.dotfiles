@@ -38,9 +38,6 @@ vim.cmd([[
   augroup END
 ]])
 
-vim.api.nvim_set_option("foldmethod", "manual")
-vim.api.nvim_set_option("viewoptions", "folds,cursor,curdir")
-
 vim.cmd([[
   augroup SaveFolds
     autocmd!

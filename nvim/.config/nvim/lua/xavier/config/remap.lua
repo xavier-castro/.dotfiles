@@ -1,5 +1,11 @@
 -- Edit Snippets
 vim.keymap.set("n", ";s", ":lua require('luasnip.loaders').edit_snippet_files()<cr>")
+vim.keymap.set("i", "<c-j>", "<cmd>lua require'luasnip'.jump(1)<CR>")
+vim.keymap.set("s", "<c-j>", "<cmd>lua require'luasnip'.jump(1)<CR>")
+vim.keymap.set("i", "<c-k>", "<cmd>lua require'luasnip'.jump(-1)<CR>")
+vim.keymap.set("s", "<c-k>", "<cmd>lua require'luasnip'.jump(-1)<CR")
+vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 
 vim.keymap.set("n", "te", ":tabedit<cr>")
 vim.keymap.set("n", "<C-left>", "<C-w><")

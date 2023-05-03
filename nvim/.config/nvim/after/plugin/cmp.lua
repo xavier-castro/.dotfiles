@@ -76,26 +76,36 @@ cmp.setup({
 		experimental = { native_menu = false, ghost_text = false },
 	},
 	formatting = {
-		format = function(entry, vim_item)
-			-- fancy icons and a name of kind
-
-			vim_item.kind = lspkind.presets.default[vim_item.kind] .. " " .. vim_item.kind
-
-			-- set a name for each source
-			vim_item.menu = ({
-				-- copilot = "[cop]",
-				nvim_lsp = "[LSP]",
-				luasnip = "[snp]",
-				buffer = "[buf]",
-				nvim_lua = "[lua]",
-				path = "[path]",
-			})[entry.source.name]
-
-			return require("tailwindcss-colorizer-cmp").formatter(entry, vim_item)
-		end,
+		format = lspkind.cmp_format({
+			maxwidth = 50,
+			before = function(entry, vim_item)
+				vim_item = formatForTailwindCSS(entry, vim_item)
+				return require("tailwindcss-colorizer-cmp").formatter(entry, vim_item)
+			end,
+		}),
 	},
 })
-vim.cmd("  set completeopt=menuone,noinsert,noselect\n  highlight! default link CmpItemKind CmpItemMenuDefault\n")
+
+cmp.setup.cmdline({ "/", "?" }, {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = {
+		{ name = "buffer" },
+	},
+})
+-- Use cmdline & path source for ':' (if you enabled `native_menu`, this won't work anymore).
+cmp.setup.cmdline(":", {
+	mapping = cmp.mapping.preset.cmdline(),
+	sources = cmp.config.sources({
+		{ name = "path" },
+	}, {
+		{ name = "cmdline" },
+	}),
+})
+
+vim.cmd([[
+  set completeopt=menuone,noinsert,noselect
+  highlight! default link CmpItemKind CmpItemMenuDefault
+]])
 
 local presentAutopairs, cmp_autopairs = pcall(require, "nvim-autopairs.completion.cmp")
 if not presentAutopairs then

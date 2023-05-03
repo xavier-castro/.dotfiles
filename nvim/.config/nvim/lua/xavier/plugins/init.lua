@@ -8,6 +8,7 @@ return {
 	{ "tpope/vim-repeat" },
 	{ "tpope/vim-fugitive" },
 	{ "tpope/vim-commentary" },
+	{ "monaqa/dial.nvim" },
 	{
 		"lewis6991/gitsigns.nvim",
 		config = function()
@@ -17,10 +18,9 @@ return {
 	{ "norcalli/nvim-colorizer.lua" },
 	{ "kshenoy/vim-signature" },
 	{ "justinmk/vim-sneak" },
-	{ "unblevable/quick-scope" },
 	{
 		"nvim-treesitter/nvim-treesitter",
-		run = ":TSUpdate",
+		build = ":TSUpdate",
 		dependencies = {
 			{ "nvim-treesitter/playground" },
 			{ "nvim-treesitter/nvim-treesitter-context" },
@@ -82,12 +82,6 @@ return {
 	{ "github/copilot.vim" },
 	{ "akinsho/nvim-toggleterm.lua" },
 	{
-		"levouh/tint.nvim",
-		config = function()
-			require("tint").setup()
-		end,
-	},
-	{
 		"stevearc/aerial.nvim",
 		opts = {},
 		-- Optional dependencies
@@ -96,5 +90,53 @@ return {
 			"nvim-tree/nvim-web-devicons",
 		},
 	},
-	{ url = "https://git.sr.ht/~whynothugo/lsp_lines.nvim" },
+	{
+		"petertriho/nvim-scrollbar",
+		config = function()
+			local scrollbar = require("scrollbar")
+			scrollbar.setup({})
+		end,
+	},
+	{
+		"Pocco81/true-zen.nvim",
+		keys = {
+			{
+				"<leader>zz",
+				function()
+					local truezen = require("true-zen")
+					truezen.ataraxis()
+				end,
+				desc = "zen",
+			},
+		},
+	},
+	{ "anuvyklack/hydra.nvim", event = "VeryLazy" },
+	{
+		"numToStr/Comment.nvim",
+		dependencies = {
+			"JoosepAlviste/nvim-ts-context-commentstring",
+		},
+	},
+	{
+		"iamcco/markdown-preview.nvim",
+		build = "cd app && npm install",
+		config = function()
+			vim.g.mkdp_filetypes = {
+				"markdown",
+			}
+		end,
+		ft = {
+			"markdown",
+		},
+	},
+	{
+		"dpayne/CodeGPT.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"MunifTanjim/nui.nvim",
+		},
+		config = function()
+			require("codegpt.config")
+		end,
+	},
 }
