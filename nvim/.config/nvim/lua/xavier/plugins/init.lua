@@ -4,6 +4,9 @@ return {
 		dependencies = { "tjdevries/colorbuddy.nvim" },
 		lazy = false,
 	},
+	{ "olimorris/onedarkpro.nvim", lazy = false },
+	{ "Mofiqul/vscode.nvim", lazy = false },
+	{ "rose-pine/neovim", name = "rose-pine", lazy = false },
 	{
 		"AckslD/swenv.nvim",
 		config = function()
@@ -168,7 +171,43 @@ return {
 			require("codegpt.config")
 		end,
 	},
-	{ "levouh/tint.nvim" },
+	{
+		"folke/zen-mode.nvim",
+		config = function()
+			vim.keymap.set("n", "<leader>zz", function()
+				require("zen-mode").setup({
+					window = {
+						width = 90,
+						options = {},
+					},
+				})
+				require("zen-mode").toggle()
+				vim.wo.wrap = false
+				vim.wo.number = true
+				vim.wo.rnu = true
+			end)
+
+			vim.keymap.set("n", "<leader>zZ", function()
+				require("zen-mode").setup({
+					window = {
+						width = 80,
+						options = {},
+					},
+				})
+				require("zen-mode").toggle()
+				vim.wo.wrap = false
+				vim.wo.number = false
+				vim.wo.rnu = false
+				vim.opt.colorcolumn = "0"
+			end)
+		end,
+	},
+	{
+		"levouh/tint.nvim",
+		config = function()
+			require("tint").setup()
+		end,
+	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
