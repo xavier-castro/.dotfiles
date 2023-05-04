@@ -22,21 +22,15 @@ local code_actions = nls.builtins.code_actions
 ---@diagnostic disable-next-line: redundant-parameter
 null_ls.setup({
 	sources = {
-		null_ls.builtins.formatting.prettierd,
+		-- MARK: Diagnostics
 		diagnostics.stylelint,
 		diagnostics.yamllint,
 		diagnostics.jsonlint,
-		null_ls.builtins.diagnostics.eslint_d.with({
-			diagnostics_format = "[eslint] #{m}\n(#{c})",
-		}),
+		null_ls.builtins.diagnostics.eslint_d.with({ diagnostics_format = "[eslint] #{m}\n(#{c})" }),
 		null_ls.builtins.diagnostics.fish,
+		-- MARK: Formatting
 		formatting.stylua,
-		-- formatting.prettierd.with({
-		--   condition = function(utils)
-		--     return utils.has_file({ ".prettierrc*" })
-		--   end,
-		-- }),
-		formatting.prettierd,
+		formatting.prettierd.with({ timeout = 10000 }),
 		formatting.stylelint,
 		formatting.nginx_beautifier,
 		formatting.shfmt,
@@ -45,8 +39,10 @@ null_ls.setup({
 		formatting.terraform_fmt,
 		formatting.yamlfmt,
 		formatting.jq, -- code_actions.gitsigns,
+		-- MARK: Code Actions
 		code_actions.refactoring,
 		code_actions.shellcheck,
+		require("typescript.extensions.null-ls.code-actions"),
 	},
 	on_attach = function(client, bufnr)
 		if client.supports_method("textDocument/formatting") then

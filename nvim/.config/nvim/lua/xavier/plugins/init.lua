@@ -52,6 +52,7 @@ return {
 	{ "tpope/vim-fugitive" },
 	{ "tpope/vim-commentary" },
 	{ "RRethy/vim-illuminate" },
+	{ "phaazon/hop.nvim", branch = "v2" },
 	{
 		"lewis6991/gitsigns.nvim",
 		config = function()
@@ -146,23 +147,10 @@ return {
 	{
 		"petertriho/nvim-scrollbar",
 		config = function()
-			local scrollbar = require("scrollbar")
-			scrollbar.setup({})
+			require("scrollbar").setup()
 		end,
 	},
-	{
-		"Pocco81/true-zen.nvim",
-		keys = {
-			{
-				"<leader>zz",
-				function()
-					local truezen = require("true-zen")
-					truezen.ataraxis()
-				end,
-				desc = "zen",
-			},
-		},
-	},
+
 	{
 		"numToStr/Comment.nvim",
 		dependencies = {
@@ -180,7 +168,7 @@ return {
 			require("codegpt.config")
 		end,
 	},
-
+	{ "levouh/tint.nvim" },
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()

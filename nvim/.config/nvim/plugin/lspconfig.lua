@@ -82,13 +82,6 @@ end
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
 local on_attach = function(client, bufnr)
-	local opts = { buffer = bufnr, remap = false }
-	local function buf_set_keymap(...)
-		vim.api.nvim_buf_set_keymap(bufnr, ...)
-		vim.keymap.set("n", "<leader>nls", "<cmd>NullLsInfo<cr>", opts)
-		vim.keymap.set("n", ";d", "<cmd>Telescope diagnostics<cr>", opts)
-	end
-
 	-- Enable completion triggered by <c-x><c-o>
 	-- local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
 	-- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
@@ -107,11 +100,9 @@ local on_attach = function(client, bufnr)
 	end
 
 	-- Mappings.
-	local opts = { noremap = true, silent = true }
-
-	-- See `:help vim.lsp.*` for documentation on any of the below functions
-	buf_set_keymap("n", "gD", "<Cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	buf_set_keymap("n", "gi", "<cmd>lua vim.lsp.buf.implementation()<CR>", opts)
+	opts = { noremap = true, silent = true }
+	vim.keymap.set("n", "<leader>nls", "<cmd>NullLsInfo<cr>", opts)
+	vim.keymap.set("n", ";d", "<cmd>Telescope diagnostics<cr>", opts)
 end
 
 protocol.CompletionItemKind = {
@@ -205,14 +196,37 @@ nvim_lsp.flow.setup({
 	},
 })
 
-nvim_lsp.tsserver.setup({
-	on_attach = on_attach,
-	filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
-	cmd = { "typescript-language-server", "--stdio" },
-	capabilities = capabilities,
-	flags = {
-		debounce_text_changes = 200,
-		allow_incremental_sync = true,
+require("typescript").setup({
+	disable_commands = false, -- prevent the plugin from creating Vim commands
+	debug = false, -- enable debug logging for commands
+	go_to_source_definition = {
+		fallback = true, -- fall back to standard LSP definition on failure
+	},
+	server = {
+		-- pass options to lspconfig's setup method
+		on_attach = function(_, bufnr)
+			-- You can find more commands in the documentation:
+			-- https://github.com/jose-elias-alvarez/typescript.nvim#commands
+			vim.keymap.set("n", "<leader>cr", "<cmd>TypescriptRemoveUnused<cr>", {
+				buffer = bufnr,
+			})
+			vim.keymap.set("n", "<leader>co", "<cmd>TypescriptOrganizeImports<cr>", {
+				buffer = bufnr,
+			})
+			vim.keymap.set("n", "<leader>ci", "<cmd>TypescriptAddMissingImports<cr>", {
+				buffer = bufnr,
+			})
+			vim.keymap.set("n", "<leader>cf", "<cmd>TypescriptFixAll<cr>", {
+				buffer = bufnr,
+			})
+		end,
+		filetypes = { "typescript", "typescriptreact", "typescript.tsx" },
+		cmd = { "typescript-language-server", "--stdio" },
+		capabilities = capabilities,
+		flags = {
+			debounce_text_changes = 200,
+			allow_incremental_sync = true,
+		},
 	},
 })
 
