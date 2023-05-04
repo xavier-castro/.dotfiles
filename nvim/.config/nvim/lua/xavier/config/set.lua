@@ -32,6 +32,7 @@ vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
 vim.opt.wildignore:append({ "*/node_modules/*" })
 vim.opt.cursorline = true
 vim.opt.termguicolors = true
+vim.opt.colorcolumn = "80"
 vim.opt.winblend = 0
 vim.opt.wildoptions = "pum"
 vim.opt.pumblend = 5

@@ -6,7 +6,7 @@ return {
 	},
 	{ "olimorris/onedarkpro.nvim", lazy = false },
 	{ "Mofiqul/vscode.nvim", lazy = false },
-	{ "rose-pine/neovim", name = "rose-pine", lazy = false },
+	{ "rose-pine/neovim", name = "rose-pine", lazy = false, opts = { disable_background = true } },
 	{
 		"AckslD/swenv.nvim",
 		config = function()

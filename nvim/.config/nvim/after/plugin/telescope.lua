@@ -13,6 +13,9 @@ telescope.setup({
 			n = {
 				["q"] = actions.close,
 			},
+			i = {
+				["<C-c>"] = actions.close,
+			},
 		},
 	},
 	extensions = {
@@ -65,9 +68,10 @@ require("telescope").load_extension("aerial")
 
 -- Keybinds
 vim.keymap.set("n", "<leader>cs", "<cmd>Telescope colorscheme<cr>", {})
+vim.keymap.set("n", ";a", "<cmd>Telescope aerial<cr>", {})
 vim.keymap.set("n", "<C-p>", builtin.git_files, {})
 vim.keymap.set("n", ";o", builtin.oldfiles, {})
-vim.keymap.set("n", ";f", function()
+vim.keymap.set("n", ";ff", function()
 	builtin.find_files({
 		no_ignore = false,
 		hidden = true,
@@ -84,19 +88,38 @@ vim.keymap.set("n", ";g", function()
 	})
 end)
 
-vim.keymap.set("n", "\\\\", function()
-	builtin.buffers()
+vim.keymap.set("n", ";s", function()
+	builtin.spell_suggest({
+		attach_mappings = function(_, map)
+			map("i", "<CR>", actions.select_default)
+			return true
+		end,
+	})
+end)
+
+vim.keymap.set("n", ";c", function()
+	builtin.commands({
+		previewer = true,
+	})
+end)
+
+vim.keymap.set("n", ";b", function()
+	builtin.buffers({
+		sort_lastused = true,
+	})
 end)
 vim.keymap.set("n", ";h", function()
-	builtin.help_tags()
+	builtin.help_tags({
+		previewer = true,
+	})
 end)
 vim.keymap.set("n", ";j", function()
 	builtin.jumplist()
 end)
-vim.keymap.set("n", ";t", "<cmd>TodoTelescope keywords=TODO,FIX,MARK<cr>", {})
+vim.keymap.set("n", ";t", "<cmd>TodoTelescope keywords=TODO,FIX<cr>", {})
 vim.keymap.set("n", ";m", "<cmd>Telescope marks<cr>", {})
 vim.keymap.set("n", "<M-e>", "<cmd>Telescope harpoon marks<cr>", {})
-vim.keymap.set("n", "<leader><leader>f", "<cmd>Telescope current_buffer_fuzzy_find<cr>", {})
+vim.keymap.set("n", ";fz", "<cmd>Telescope current_buffer_fuzzy_find<cr>", {})
 
 vim.keymap.set("n", ";;", function()
 	telescope.extensions.file_browser.file_browser({

@@ -33,7 +33,7 @@ return {
 	init = function()
 		local r = require("xavier.utils.remaps")
 
-		r.noremap("n", "-", "<cmd>Neotree toggle<CR>", "Toggle explorer")
+		r.noremap("n", "-", "<cmd>Neotree show<CR>", "Toggle explorer")
 	end,
 	config = {
 		source_selector = {
@@ -48,7 +48,7 @@ return {
 		enable_git_status = false,
 		window = {
 			position = "left",
-			width = 40,
+			width = 35,
 			mapping_options = {
 				noremap = true,
 				nowait = true,
