@@ -12,14 +12,11 @@ set -g theme_hostname always
 # aliases
 alias ls "ls -p -G"
 alias la "ls -A"
-alias ll "exa -ll"
-alias lla "ll -A"
+alias ll "exa -l -g --icons"
+alias lla "ll -a"
 alias python python3
 alias g git
 command -qv nvim && alias vim nvim
-
-# QOL
-alias pys "source .venv/bin/activate.fish"
 
 set -gx EDITOR nvim
 

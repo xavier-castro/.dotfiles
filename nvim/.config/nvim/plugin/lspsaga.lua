@@ -23,6 +23,9 @@ saga.setup({
 		sign_priority = 40,
 		virtual_text = true,
 	},
+	symbol_in_winbar = {
+		enable = false,
+	},
 })
 
 local opts = { noremap = true, silent = true }
