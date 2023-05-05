@@ -6,7 +6,7 @@ set -gx TERM xterm-256color
 set -g theme_color_scheme terminal-dark
 set -g fish_prompt_pwd_dir_length 1
 set -g theme_display_user yes
-set -g theme_hide_hostname no
+set -g theme_hide_hostname yes
 set -g theme_hostname always
 
 # aliases
@@ -14,7 +14,6 @@ alias ls "ls -p -G"
 alias la "ls -A"
 alias ll "exa -l -g --icons"
 alias lla "ll -a"
-alias python python3
 alias g git
 command -qv nvim && alias vim nvim
 
@@ -51,7 +50,7 @@ switch (uname)
 end
 
 # Anaconda
-source ~/anaconda3/etc/fish/conf.d/conda.fish
+# source ~/anaconda3/etc/fish/conf.d/conda.fish
 
 set LOCAL_CONFIG (dirname (status --current-filename))/config-local.fish
 if test -f $LOCAL_CONFIG
