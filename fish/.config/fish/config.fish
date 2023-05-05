@@ -50,6 +50,9 @@ switch (uname)
     source (dirname (status --current-filename))/config-windows.fish
 end
 
+# Anaconda
+source ~/anaconda3/etc/fish/conf.d/conda.fish
+
 set LOCAL_CONFIG (dirname (status --current-filename))/config-local.fish
 if test -f $LOCAL_CONFIG
   source $LOCAL_CONFIG
