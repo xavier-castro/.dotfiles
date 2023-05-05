@@ -1,1 +1,4 @@
-local ls = require("luasnip")
+if vim.g.vscode then
+else
+	local ls = require("luasnip");
+end;
