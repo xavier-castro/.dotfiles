@@ -2,9 +2,9 @@ return {
 	{
 		"svrana/neosolarized.nvim",
 		dependencies = {
-			"tjdevries/colorbuddy.nvim"
+			"tjdevries/colorbuddy.nvim",
 		},
-		lazy = false
+		lazy = false,
 	},
 	{
 		"olimorris/onedarkpro.nvim",
@@ -12,43 +12,32 @@ return {
 		config = function()
 			(require("onedarkpro")).setup({
 				options = {
-					transparency = true
-				}
-			});
-		end
+					transparency = true,
+				},
+			})
+		end,
 	},
 	{
 		"Mofiqul/vscode.nvim",
 		lazy = false,
 		opts = {
-			transparent = true
-		}
+			transparent = true,
+		},
 	},
 	{
 		"rose-pine/neovim",
 		name = "rose-pine",
 		lazy = false,
 		opts = {
-			disable_background = true
-		}
+			disable_background = true,
+		},
+	},
+	{ "machakann/vim-sandwich" },
+	{
+		"nvim-pack/nvim-spectre",
 	},
 	{
-		"AckslD/swenv.nvim",
-		config = function()
-			(require("swenv")).setup({
-				get_venvs = function(venvs_path)
-					return (require("swenv.api")).get_venvs(venvs_path);
-				end,
-				venvs_path = vim.fn.expand("~/venvs"),
-				post_set_venv = nil
-			});
-		end
-	},
-	{
-		"nvim-pack/nvim-spectre"
-	},
-	{
-		"mrjones2014/nvim-ts-rainbow"
+		"mrjones2014/nvim-ts-rainbow",
 	},
 	{
 		"willothy/veil.nvim",
@@ -56,117 +45,117 @@ return {
 		dependencies = {
 			"nvim-telescope/telescope.nvim",
 			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope-file-browser.nvim"
+			"nvim-telescope/telescope-file-browser.nvim",
 		},
-		config = true
+		config = true,
 	},
 	{
 		"christoomey/vim-tmux-navigator",
 		lazy = false,
 		config = function()
-			vim.keymap.set("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>");
-			vim.keymap.set("n", "<C-j>", "<cmd>TmuxNavigateDown<CR>");
-			vim.keymap.set("n", "<C-k>", "<cmd>TmuxNavigateUp<CR>");
-			vim.keymap.set("n", "<C-l>", "<cmd>TmuxNavigateRight<CR>");
-		end
+			vim.keymap.set("n", "<C-h>", "<cmd>TmuxNavigateLeft<CR>")
+			vim.keymap.set("n", "<C-j>", "<cmd>TmuxNavigateDown<CR>")
+			vim.keymap.set("n", "<C-k>", "<cmd>TmuxNavigateUp<CR>")
+			vim.keymap.set("n", "<C-l>", "<cmd>TmuxNavigateRight<CR>")
+		end,
 	},
 	{
-		"tpope/vim-surround"
+		"tpope/vim-surround",
 	},
 	{
-		"tpope/vim-repeat"
+		"tpope/vim-repeat",
 	},
 	{
-		"tpope/vim-fugitive"
+		"tpope/vim-fugitive",
 	},
 	{
-		"tpope/vim-commentary"
+		"tpope/vim-commentary",
 	},
 	{
-		"RRethy/vim-illuminate"
+		"RRethy/vim-illuminate",
 	},
 	{
 		"phaazon/hop.nvim",
-		branch = "v2"
+		branch = "v2",
 	},
 	{
 		"lewis6991/gitsigns.nvim",
 		config = function()
-			(require("gitsigns")).setup();
-		end
+			(require("gitsigns")).setup()
+		end,
 	},
 	{
-		"norcalli/nvim-colorizer.lua"
+		"norcalli/nvim-colorizer.lua",
 	},
 	{
-		"kshenoy/vim-signature"
+		"kshenoy/vim-signature",
 	},
 	{
-		"justinmk/vim-sneak"
+		"justinmk/vim-sneak",
 	},
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
 		dependencies = {
 			{
-				"nvim-treesitter/playground"
+				"nvim-treesitter/playground",
 			},
 			{
-				"nvim-treesitter/nvim-treesitter-context"
-			}
-		}
+				"nvim-treesitter/nvim-treesitter-context",
+			},
+		},
 	},
 	{
-		"theprimeagen/harpoon"
+		"theprimeagen/harpoon",
 	},
 	{
 		"folke/todo-comments.nvim",
 		dependencies = {
-			"nvim-lua/plenary.nvim"
-		}
+			"nvim-lua/plenary.nvim",
+		},
 	},
 	{
-		"theprimeagen/refactoring.nvim"
+		"theprimeagen/refactoring.nvim",
 	},
 	{
-		"mbbill/undotree"
+		"mbbill/undotree",
 	},
 	{
-		"folke/trouble.nvim"
+		"folke/trouble.nvim",
 	},
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
 			{
-				"sar/web-devicons.nvim"
+				"sar/web-devicons.nvim",
 			},
 			{
-				"nvim-telescope/telescope-file-browser.nvim"
+				"nvim-telescope/telescope-file-browser.nvim",
 			},
 			{
-				"nvim-lua/plenary.nvim"
+				"nvim-lua/plenary.nvim",
 			},
 			{
-				"nvim-telescope/telescope-ui-select.nvim"
+				"nvim-telescope/telescope-ui-select.nvim",
 			},
 			{
 				"nvim-telescope/telescope-fzf-native.nvim",
-				build = "make"
-			}
-		}
+				build = "make",
+			},
+		},
 	},
 	{
-		"akinsho/nvim-bufferline.lua"
+		"akinsho/nvim-bufferline.lua",
 	},
 	{
-		"nvim-lualine/lualine.nvim"
+		"nvim-lualine/lualine.nvim",
 	},
 	{
 		"L3MON4D3/LuaSnip",
 		dependencies = {
-			"rafamadriz/friendly-snippets"
+			"rafamadriz/friendly-snippets",
 		},
-		event = "InsertEnter"
+		event = "InsertEnter",
 	},
 	{
 		"hrsh7th/nvim-cmp",
@@ -181,8 +170,8 @@ return {
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-nvim-lua",
 			"windwp/nvim-autopairs",
-			"onsails/lspkind-nvim"
-		}
+			"onsails/lspkind-nvim",
+		},
 	},
 	{
 		"neovim/nvim-lspconfig",
@@ -192,70 +181,70 @@ return {
 			"jose-elias-alvarez/typescript.nvim",
 			"b0o/schemastore.nvim",
 			"williamboman/mason-lspconfig.nvim",
-			"MunifTanjim/prettier.nvim"
+			"MunifTanjim/prettier.nvim",
 		},
 		event = {
 			"BufReadPre",
-			"BufNewFile"
-		}
+			"BufNewFile",
+		},
 	},
 	{
 		"kevinhwang91/nvim-ufo",
-		dependencies = "kevinhwang91/promise-async"
+		dependencies = "kevinhwang91/promise-async",
 	},
 	{
-		"jose-elias-alvarez/null-ls.nvim"
+		"jose-elias-alvarez/null-ls.nvim",
 	},
 	{
-		"williamboman/mason.nvim"
+		"williamboman/mason.nvim",
 	},
 	{
-		"williamboman/mason-lspconfig.nvim"
+		"williamboman/mason-lspconfig.nvim",
 	},
 	{
 		"glepnir/lspsaga.nvim",
-		event = "LspAttach"
+		event = "LspAttach",
 	},
 	{
-		"windwp/nvim-autopairs"
+		"windwp/nvim-autopairs",
 	},
 	{
-		"windwp/nvim-ts-autotag"
+		"windwp/nvim-ts-autotag",
 	},
 	{
-		"github/copilot.vim"
+		"github/copilot.vim",
 	},
 	{
-		"akinsho/nvim-toggleterm.lua"
+		"akinsho/nvim-toggleterm.lua",
 	},
 	{
 		"stevearc/aerial.nvim",
 		dependencies = {
 			"nvim-treesitter/nvim-treesitter",
-			"nvim-tree/nvim-web-devicons"
-		}
+			"nvim-tree/nvim-web-devicons",
+		},
 	},
 	{
 		"petertriho/nvim-scrollbar",
 		config = function()
-			(require("scrollbar")).setup();
-		end
+			(require("scrollbar")).setup()
+		end,
 	},
 	{
 		"numToStr/Comment.nvim",
 		dependencies = {
-			"JoosepAlviste/nvim-ts-context-commentstring"
-		}
+			"JoosepAlviste/nvim-ts-context-commentstring",
+		},
 	},
 	{
 		"dpayne/CodeGPT.nvim",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
-			"MunifTanjim/nui.nvim"
+			"MunifTanjim/nui.nvim",
 		},
 		config = function()
-			require("codegpt.config");
-		end
+			require("codegpt.config")
+		end,
 	},
 	{
 		"folke/zen-mode.nvim",
@@ -264,41 +253,41 @@ return {
 				(require("zen-mode")).setup({
 					window = {
 						width = 90,
-						options = {}
-					}
+						options = {},
+					},
 				});
-				(require("zen-mode")).toggle();
-				vim.wo.wrap = false;
-				vim.wo.number = true;
-				vim.wo.rnu = true;
-			end);
+				(require("zen-mode")).toggle()
+				vim.wo.wrap = false
+				vim.wo.number = true
+				vim.wo.rnu = true
+			end)
 			vim.keymap.set("n", "<leader>zZ", function()
 				(require("zen-mode")).setup({
 					window = {
 						width = 80,
-						options = {}
-					}
+						options = {},
+					},
 				});
-				(require("zen-mode")).toggle();
-				vim.wo.wrap = false;
-				vim.wo.number = false;
-				vim.wo.rnu = false;
-				vim.opt.colorcolumn = "0";
-			end);
-		end
+				(require("zen-mode")).toggle()
+				vim.wo.wrap = false
+				vim.wo.number = false
+				vim.wo.rnu = false
+				vim.opt.colorcolumn = "0"
+			end)
+		end,
 	},
 	{
 		"levouh/tint.nvim",
 		config = function()
-			(require("tint")).setup({});
-		end
+			(require("tint")).setup({})
+		end,
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
 		config = function()
 			(require("indent_blankline")).setup({
-				show_current_context = true
-			});
-		end
-	}
-};
+				show_current_context = true,
+			})
+		end,
+	},
+}
