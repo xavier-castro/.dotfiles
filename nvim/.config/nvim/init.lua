@@ -1,17 +1,16 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable",
-		lazypath,
-	})
-end
-vim.opt.rtp:prepend(lazypath)
-vim.g.mapleader = " "
 if vim.g.vscode then
+	local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+	if not vim.loop.fs_stat(lazypath) then
+		vim.fn.system({
+			"git",
+			"clone",
+			"--filter=blob:none",
+			"https://github.com/folke/lazy.nvim.git",
+			"--branch=stable",
+			lazypath,
+		})
+	end
+	vim.opt.rtp:prepend(lazypath)
 	vim.g.mapleader = " "
 	vim.keymap.set("x", "<leader>p", '"_dP') -- Your paste will be saved
 	vim.keymap.set("n", "<leader>y", '"+y')
@@ -38,7 +37,6 @@ if vim.g.vscode then
 	vim.opt.updatetime = 50
 	vim.opt.inccommand = "split"
 	vim.opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
-
 	-- highlight yanked text for 200ms using the "Visual" highlight group
 	vim.cmd([[
   augroup highlight_yank
@@ -46,7 +44,39 @@ if vim.g.vscode then
   au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=100})
   augroup END
 ]])
+	require("lazy").setup({
+		{ "machakann/vim-sandwich" },
+		{
+			"tpope/vim-surround",
+		},
+		{
+			"tpope/vim-repeat",
+		},
+		{
+			"justinmk/vim-sneak",
+		},
+		{
+			"tpope/vim-fugitive",
+		},
+		{
+			"tpope/vim-commentary",
+		},
+	})
 else
+	local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+	if not vim.loop.fs_stat(lazypath) then
+		vim.fn.system({
+			"git",
+			"clone",
+			"--filter=blob:none",
+			"https://github.com/folke/lazy.nvim.git",
+			"--branch=stable",
+			lazypath,
+		})
+	end
+	vim.opt.rtp:prepend(lazypath)
+	vim.g.mapleader = " "
+
 	require("xavier.config.set")
 	require("xavier.config.remap");
 	(require("lazy")).setup("xavier.plugins")
