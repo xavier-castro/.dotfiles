@@ -2,8 +2,6 @@
   "TS Functional Component inheritance": {
     "prefix": "xcfcc",
     "body": [
-      "// @prefix xcfcc",
-      "// @description ",
       "",
       "import { cn } from '@/lib/utils'",
       "import { FC, HTMLAttributes } from 'react'",
@@ -26,8 +24,6 @@
   "TS Functional Component": {
     "prefix": "xcfc",
     "body": [
-      "// @prefix xcfc",
-      "// @description ",
       "",
       "import { FC } from 'react';",
       "",

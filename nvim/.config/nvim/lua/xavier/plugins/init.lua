@@ -4,9 +4,24 @@ return {
 		dependencies = { "tjdevries/colorbuddy.nvim" },
 		lazy = false,
 	},
-	{ "olimorris/onedarkpro.nvim", lazy = false },
-	{ "Mofiqul/vscode.nvim", lazy = false },
-	{ "rose-pine/neovim", name = "rose-pine", lazy = false, opts = { disable_background = true } },
+	{
+		"olimorris/onedarkpro.nvim",
+		lazy = false,
+		config = function()
+			require("onedarkpro").setup({
+				options = {
+					transparency = true,
+				},
+			})
+		end,
+	},
+	{ "Mofiqul/vscode.nvim", lazy = false, opts = { transparent = true } },
+	{
+		"rose-pine/neovim",
+		name = "rose-pine",
+		lazy = false,
+		opts = { disable_background = true },
+	},
 	{
 		"AckslD/swenv.nvim",
 		config = function()

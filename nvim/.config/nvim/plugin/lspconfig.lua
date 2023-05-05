@@ -6,7 +6,7 @@ local setupWithFallback = function()
 
 		-- fold
 		vim.wo.foldcolumn = "0" -- defines 1 col at window left, to indicate folding
-		vim.o.foldlevelstart = 99 -- start file with all folds opened
+		-- vim.o.foldlevelstart = 99 -- start file with all folds opened
 
 		-- using treesitter for folding
 		vim.wo.foldmethod = "expr"
@@ -158,7 +158,6 @@ nvim_lsp.jsonls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 	flags = {
-		debounce_text_changes = 200,
 		allow_incremental_sync = true,
 	},
 	settings = {
@@ -179,7 +178,6 @@ nvim_lsp.eslint.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 	flags = {
-		debounce_text_changes = 200,
 		allow_incremental_sync = true,
 	},
 	settings = {
@@ -191,7 +189,6 @@ nvim_lsp.flow.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 	flags = {
-		debounce_text_changes = 200,
 		allow_incremental_sync = true,
 	},
 })
@@ -224,7 +221,6 @@ require("typescript").setup({
 		cmd = { "typescript-language-server", "--stdio" },
 		capabilities = capabilities,
 		flags = {
-			debounce_text_changes = 200,
 			allow_incremental_sync = true,
 		},
 	},
@@ -234,7 +230,6 @@ nvim_lsp.sourcekit.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 	flags = {
-		debounce_text_changes = 200,
 		allow_incremental_sync = true,
 	},
 })
@@ -248,7 +243,6 @@ nvim_lsp.efm.setup({
 		},
 	},
 	flags = {
-		debounce_text_changes = 200,
 		allow_incremental_sync = true,
 	},
 })
@@ -274,7 +268,6 @@ nvim_lsp.lua_ls.setup({
 		},
 	},
 	flags = {
-		debounce_text_changes = 200,
 		allow_incremental_sync = true,
 	},
 })
@@ -283,7 +276,6 @@ nvim_lsp.tailwindcss.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 	flags = {
-		debounce_text_changes = 200,
 		allow_incremental_sync = true,
 	},
 })
@@ -292,7 +284,7 @@ nvim_lsp.tailwindcss.setup({
 -- 	on_attach = on_attach,
 -- 	capabilities = capabilities,
 -- 	flags = {
--- 		debounce_text_changes = 200,
+-- 		,
 -- 		allow_incremental_sync = true,
 -- 	},
 -- })
@@ -302,7 +294,6 @@ nvim_lsp.pyright.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 	flags = {
-		debounce_text_changes = 200,
 		allow_incremental_sync = true,
 	},
 })
@@ -311,7 +302,6 @@ nvim_lsp.cssls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 	flags = {
-		debounce_text_changes = 200,
 		allow_incremental_sync = true,
 	},
 })
@@ -320,7 +310,6 @@ nvim_lsp.astro.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 	flags = {
-		debounce_text_changes = 200,
 		allow_incremental_sync = true,
 	},
 })

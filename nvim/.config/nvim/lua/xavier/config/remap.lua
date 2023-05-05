@@ -1,6 +1,6 @@
 -- Edit Snippets
 vim.keymap.set("i", "<C-c>", "<Esc>")
-vim.keymap.set("i", "<C-Enter>", "<C-o> <esc>o")
+vim.keymap.set("i", "<C-o>", "<C-o> <esc>o")
 vim.keymap.set("n", ";s", ":lua require('luasnip.loaders').edit_snippet_files()<cr>")
 vim.keymap.set("i", "<c-j>", "<cmd>lua require'luasnip'.jump(1)<CR>")
 vim.keymap.set("s", "<c-j>", "<cmd>lua require'luasnip'.jump(1)<CR>")
