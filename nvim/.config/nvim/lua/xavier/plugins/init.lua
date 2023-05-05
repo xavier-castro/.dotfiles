@@ -8,6 +8,7 @@ return {
 			})
 		end,
 	},
+	{ "aktersnurra/no-clown-fiesta.nvim", opts = { transparent = true }, lazy = false },
 	{
 		"svrana/neosolarized.nvim",
 		dependencies = {
@@ -47,12 +48,8 @@ return {
 		},
 	},
 	{ "machakann/vim-sandwich" },
-	{
-		"nvim-pack/nvim-spectre",
-	},
-	{
-		"mrjones2014/nvim-ts-rainbow",
-	},
+	{ "nvim-pack/nvim-spectre" },
+	{ "mrjones2014/nvim-ts-rainbow" },
 
 	{
 		"christoomey/vim-tmux-navigator",
@@ -64,24 +61,27 @@ return {
 			vim.keymap.set("n", "<C-l>", "<cmd>TmuxNavigateRight<CR>")
 		end,
 	},
-	{
-		"tpope/vim-surround",
-	},
-	{
-		"tpope/vim-repeat",
-	},
-	{
-		"tpope/vim-fugitive",
-	},
-	{
-		"tpope/vim-commentary",
-	},
-	{
-		"RRethy/vim-illuminate",
-	},
+	{ "tpope/vim-surround" },
+	{ "tpope/vim-repeat" },
+	{ "tpope/vim-fugitive" },
+	{ "tpope/vim-commentary" },
 	{
 		"phaazon/hop.nvim",
 		branch = "v2",
+		config = function()
+			local keymap = vim.api.nvim_set_keymap
+			local opts = {
+				noremap = true,
+				silent = true,
+			};
+			(require("hop")).setup()
+			keymap("", "s", "<cmd>HopChar1<CR>", opts)
+			keymap("", "<leader>j", "<cmd>HopWordBC<CR>", opts)
+			keymap("", "<leader>k", "<cmd>HopWordAC<CR>", opts)
+			vim.cmd(
+				"  highlight HopNextKey gui=bold guifg=#ff007c guibg=None\n  highlight HopNextKey1 gui=bold guifg=#00dfff guibg=None\n  highlight HopNextKey2 guifg=#2b8db3 guibg=None\n"
+			)
+		end,
 	},
 	{
 		"lewis6991/gitsigns.nvim",
@@ -89,15 +89,10 @@ return {
 			(require("gitsigns")).setup()
 		end,
 	},
-	{
-		"norcalli/nvim-colorizer.lua",
-	},
-	{
-		"kshenoy/vim-signature",
-	},
-	{
-		"justinmk/vim-sneak",
-	},
+	{ "norcalli/nvim-colorizer.lua" },
+	{ "kshenoy/vim-signature" },
+	{ "justinmk/vim-sneak" },
+	{ "mg979/vim-visual-multi", branch = "master" },
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = ":TSUpdate",
@@ -110,24 +105,16 @@ return {
 			},
 		},
 	},
-	{
-		"theprimeagen/harpoon",
-	},
+	{ "theprimeagen/harpoon" },
 	{
 		"folke/todo-comments.nvim",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
 	},
-	{
-		"theprimeagen/refactoring.nvim",
-	},
-	{
-		"mbbill/undotree",
-	},
-	{
-		"folke/trouble.nvim",
-	},
+	{ "theprimeagen/refactoring.nvim" },
+	{ "mbbill/undotree" },
+	{ "folke/trouble.nvim" },
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
@@ -149,12 +136,8 @@ return {
 			},
 		},
 	},
-	{
-		"akinsho/nvim-bufferline.lua",
-	},
-	{
-		"nvim-lualine/lualine.nvim",
-	},
+	{ "akinsho/nvim-bufferline.lua" },
+	{ "nvim-lualine/lualine.nvim" },
 	{
 		"L3MON4D3/LuaSnip",
 		dependencies = {
@@ -197,31 +180,17 @@ return {
 		"kevinhwang91/nvim-ufo",
 		dependencies = "kevinhwang91/promise-async",
 	},
-	{
-		"jose-elias-alvarez/null-ls.nvim",
-	},
-	{
-		"williamboman/mason.nvim",
-	},
-	{
-		"williamboman/mason-lspconfig.nvim",
-	},
+	{ "jose-elias-alvarez/null-ls.nvim" },
+	{ "williamboman/mason.nvim" },
+	{ "williamboman/mason-lspconfig.nvim" },
 	{
 		"glepnir/lspsaga.nvim",
 		event = "LspAttach",
 	},
-	{
-		"windwp/nvim-autopairs",
-	},
-	{
-		"windwp/nvim-ts-autotag",
-	},
-	{
-		"github/copilot.vim",
-	},
-	{
-		"akinsho/nvim-toggleterm.lua",
-	},
+	{ "windwp/nvim-autopairs" },
+	{ "windwp/nvim-ts-autotag" },
+	{ "github/copilot.vim" },
+	{ "akinsho/nvim-toggleterm.lua" },
 	{
 		"stevearc/aerial.nvim",
 		dependencies = {
@@ -229,12 +198,7 @@ return {
 			"nvim-tree/nvim-web-devicons",
 		},
 	},
-	{
-		"petertriho/nvim-scrollbar",
-		config = function()
-			(require("scrollbar")).setup()
-		end,
-	},
+
 	{
 		"numToStr/Comment.nvim",
 		dependencies = {
@@ -247,45 +211,14 @@ return {
 			"nvim-lua/plenary.nvim",
 			"MunifTanjim/nui.nvim",
 		},
-		config = function()
-			require("codegpt.config")
-		end,
 	},
-	{
-		"folke/zen-mode.nvim",
-		config = function()
-			vim.keymap.set("n", "<leader>zz", function()
-				(require("zen-mode")).setup({
-					window = {
-						width = 90,
-						options = {},
-					},
-				});
-				(require("zen-mode")).toggle()
-				vim.wo.wrap = false
-				vim.wo.number = true
-				vim.wo.rnu = true
-			end)
-			vim.keymap.set("n", "<leader>zZ", function()
-				(require("zen-mode")).setup({
-					window = {
-						width = 80,
-						options = {},
-					},
-				});
-				(require("zen-mode")).toggle()
-				vim.wo.wrap = false
-				vim.wo.number = false
-				vim.wo.rnu = false
-				vim.opt.colorcolumn = "0"
-			end)
-		end,
-	},
+	{ "folke/zen-mode.nvim", event = "VeryLazy" },
 	{
 		"levouh/tint.nvim",
 		config = function()
 			(require("tint")).setup({})
 		end,
+		event = "VeryLazy",
 	},
 	{
 		"lukas-reineke/indent-blankline.nvim",
@@ -294,5 +227,18 @@ return {
 				show_current_context = true,
 			})
 		end,
+	},
+	-- Lazy
+	{
+		"jackMort/ChatGPT.nvim",
+		event = "VeryLazy",
+		config = function()
+			require("chatgpt").setup()
+		end,
+		dependencies = {
+			"MunifTanjim/nui.nvim",
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
 	},
 }
