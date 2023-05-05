@@ -1,5 +1,14 @@
 return {
 	{
+		"Shatur/neovim-session-manager",
+		lazy = false,
+		config = function()
+			require("session_manager").setup({
+				autoload_mode = require("session_manager.config").AutoloadMode.Disabled, -- Define what to do when Neovim is started without arguments. Possible values: Disabled, CurrentDir, LastSession
+			})
+		end,
+	},
+	{
 		"svrana/neosolarized.nvim",
 		dependencies = {
 			"tjdevries/colorbuddy.nvim",
@@ -16,6 +25,11 @@ return {
 				},
 			})
 		end,
+	},
+	{ "tpope/vim-obsession" },
+	{
+		"goolord/alpha-nvim",
+		lazy = false,
 	},
 	{
 		"Mofiqul/vscode.nvim",
