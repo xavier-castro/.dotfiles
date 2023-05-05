@@ -95,7 +95,7 @@ else
 			model = "gpt-4",
 			frequency_penalty = 0,
 			presence_penalty = 0,
-			max_tokens = 300,
+			max_tokens = 1000,
 			temperature = 0,
 			top_p = 1,
 			n = 1,
@@ -111,4 +111,6 @@ else
 	})
 
 	vim.keymap.set("v", "<leader>pe", "<cmd>ChatGPTEditWithInstruction<cr>", { noremap = true, silent = true })
+	vim.keymap.set("v", "<leader>pr", ":ChatGPTRun ")
+	vim.keymap.set("n", "<M-Space>", "<cmd>ChatGPT<cr>")
 end
