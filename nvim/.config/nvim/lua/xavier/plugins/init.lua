@@ -39,16 +39,7 @@ return {
 	{
 		"mrjones2014/nvim-ts-rainbow",
 	},
-	{
-		"willothy/veil.nvim",
-		lazy = true,
-		dependencies = {
-			"nvim-telescope/telescope.nvim",
-			"nvim-lua/plenary.nvim",
-			"nvim-telescope/telescope-file-browser.nvim",
-		},
-		config = true,
-	},
+
 	{
 		"christoomey/vim-tmux-navigator",
 		lazy = false,
