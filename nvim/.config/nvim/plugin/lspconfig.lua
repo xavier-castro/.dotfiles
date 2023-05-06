@@ -95,9 +95,6 @@ else
 	nvim_lsp.jsonls.setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
-		flags = {
-			allow_incremental_sync = true,
-		},
 		settings = {
 			json = {
 				schemas = require("schemastore").json.schemas({
@@ -115,9 +112,6 @@ else
 	nvim_lsp.eslint.setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
-		flags = {
-			allow_incremental_sync = true,
-		},
 		settings = {
 			format = { enable = true },
 		},
@@ -126,9 +120,6 @@ else
 	nvim_lsp.flow.setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
-		flags = {
-			allow_incremental_sync = true,
-		},
 	})
 
 	nvim_lsp.texlab.setup({
@@ -173,9 +164,6 @@ else
 	nvim_lsp.sourcekit.setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
-		flags = {
-			allow_incremental_sync = true,
-		},
 	})
 
 	nvim_lsp.efm.setup({
@@ -185,9 +173,6 @@ else
 			languages = {
 				lua = { { formatCommand = "lua-format -i", formatStdin = true } },
 			},
-		},
-		flags = {
-			allow_incremental_sync = true,
 		},
 	})
 
@@ -211,17 +196,11 @@ else
 				},
 			},
 		},
-		flags = {
-			allow_incremental_sync = true,
-		},
 	})
 
 	nvim_lsp.tailwindcss.setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
-		flags = {
-			allow_incremental_sync = true,
-		},
 	})
 
 	-- nvim_lsp.pylsp.setup({
@@ -237,25 +216,21 @@ else
 	nvim_lsp.pyright.setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
-		flags = {
-			allow_incremental_sync = true,
-		},
 	})
 
 	nvim_lsp.cssls.setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
-		flags = {
-			allow_incremental_sync = true,
-		},
+	})
+
+	nvim_lsp.prismals.setup({
+		on_attach = on_attach,
+		capabilities = capabilities,
 	})
 
 	nvim_lsp.astro.setup({
 		on_attach = on_attach,
 		capabilities = capabilities,
-		flags = {
-			allow_incremental_sync = true,
-		},
 	})
 
 	vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {

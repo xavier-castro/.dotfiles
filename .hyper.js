@@ -164,7 +164,7 @@ module.exports = {
     // set to true to preserve working directory when creating splits or tabs
     preserveCWD: true,
     // for advanced config flags please refer to https://hyper.is/#cfg
-    opacity: 0.93,
+    opacity: 0.98,
     titleBarStyle: "transparent",
     transparent: true,
   },

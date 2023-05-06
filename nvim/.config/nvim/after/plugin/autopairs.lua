@@ -1,13 +1,13 @@
 if vim.g.vscode then
 else
-	local status, autopairs = pcall(require, "nvim-autopairs");
+	local status, autopairs = pcall(require, "nvim-autopairs")
 	if not status then
-		return;
-	end;
+		return
+	end
 	autopairs.setup({
 		disable_filetype = {
 			"TelescopePrompt",
-			"vim"
-		}
-	});
-end;
+			"vim",
+		},
+	})
+end

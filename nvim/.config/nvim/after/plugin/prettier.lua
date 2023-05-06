@@ -1,6 +1,6 @@
 if vim.g.vscode then
 else
-	local prettier = require("prettier");
+	local prettier = require("prettier")
 	prettier.setup({
 		bin = "prettierd",
 		filetypes = {
@@ -15,18 +15,18 @@ else
 			"scss",
 			"typescript",
 			"typescriptreact",
-			"yaml"
+			"yaml",
 		},
 		["null-ls"] = {
 			condition = function()
 				return prettier.config_exists({
-					check_package_json = true
-				});
+					check_package_json = true,
+				})
 			end,
 			runtime_condition = function()
-				return true;
+				return true
 			end,
-			timeout = 10000
-		}
-	});
-end;
+			timeout = 10000,
+		},
+	})
+end

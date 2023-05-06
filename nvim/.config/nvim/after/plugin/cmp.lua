@@ -43,8 +43,11 @@ else
 			end,
 		},
 		mapping = cmp.mapping.preset.insert({
+			["<C-d>"] = cmp.mapping.scroll_docs(-4),
+			["<C-f>"] = cmp.mapping.scroll_docs(4),
+			["<C-CR>"] = cmp.mapping.complete(),
 			["<C-e>"] = cmp.mapping.close(),
-			["<C-f>"] = cmp.mapping.confirm({
+			["<CR>"] = cmp.mapping.confirm({
 				behavior = cmp.ConfirmBehavior.Replace,
 				select = true,
 			}),
@@ -56,12 +59,12 @@ else
 			},
 			{
 				name = "luasnip",
-				-- max_item_count = 5,
+				max_item_count = 5,
 				group_index = 1,
 			},
 			{
 				name = "nvim_lsp",
-				-- max_item_count = 20,
+				max_item_count = 20,
 				group_index = 1,
 			},
 			{
@@ -74,8 +77,8 @@ else
 			},
 			{
 				name = "buffer",
-				-- keyword_length = 2,
-				-- max_item_count = 5,
+				keyword_length = 2,
+				max_item_count = 5,
 				group_index = 2,
 			},
 		},
