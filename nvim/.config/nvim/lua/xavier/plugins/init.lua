@@ -2,44 +2,11 @@ return {
 	{ "vimwiki/vimwiki" },
 	{ "lervag/vimtex" },
 	{
-		"Shatur/neovim-session-manager",
-		lazy = false,
-		config = function()
-			require("session_manager").setup({
-				autoload_mode = require("session_manager.config").AutoloadMode.Disabled, -- Define what to do when Neovim is started without arguments. Possible values: Disabled, CurrentDir, LastSession
-			})
-		end,
-	},
-	{ "aktersnurra/no-clown-fiesta.nvim", opts = { transparent = true }, lazy = false },
-	{
 		"svrana/neosolarized.nvim",
 		dependencies = {
 			"tjdevries/colorbuddy.nvim",
 		},
 		lazy = false,
-	},
-	{
-		"olimorris/onedarkpro.nvim",
-		lazy = false,
-		config = function()
-			(require("onedarkpro")).setup({
-				options = {
-					transparency = true,
-				},
-			})
-		end,
-	},
-	{ "tpope/vim-obsession" },
-	{
-		"goolord/alpha-nvim",
-		lazy = false,
-	},
-	{
-		"Mofiqul/vscode.nvim",
-		lazy = false,
-		opts = {
-			transparent = true,
-		},
 	},
 	{
 		"rose-pine/neovim",
@@ -67,24 +34,6 @@ return {
 	{ "tpope/vim-repeat" },
 	{ "tpope/vim-fugitive" },
 	{ "tpope/vim-commentary" },
-	{
-		"phaazon/hop.nvim",
-		branch = "v2",
-		config = function()
-			local keymap = vim.api.nvim_set_keymap
-			local opts = {
-				noremap = true,
-				silent = true,
-			};
-			(require("hop")).setup()
-			keymap("", "s", "<cmd>HopChar1<CR>", opts)
-			keymap("", "<leader>j", "<cmd>HopWordBC<CR>", opts)
-			keymap("", "<leader>k", "<cmd>HopWordAC<CR>", opts)
-			vim.cmd(
-				"  highlight HopNextKey gui=bold guifg=#ff007c guibg=None\n  highlight HopNextKey1 gui=bold guifg=#00dfff guibg=None\n  highlight HopNextKey2 guifg=#2b8db3 guibg=None\n"
-			)
-		end,
-	},
 	{
 		"lewis6991/gitsigns.nvim",
 		config = function()
@@ -114,7 +63,6 @@ return {
 			"nvim-lua/plenary.nvim",
 		},
 	},
-	{ "theprimeagen/refactoring.nvim" },
 	{ "mbbill/undotree" },
 	{ "folke/trouble.nvim" },
 	{
@@ -178,40 +126,18 @@ return {
 			"BufNewFile",
 		},
 	},
-	{
-		"kevinhwang91/nvim-ufo",
-		dependencies = "kevinhwang91/promise-async",
-	},
 	{ "jose-elias-alvarez/null-ls.nvim" },
 	{ "williamboman/mason.nvim" },
 	{ "williamboman/mason-lspconfig.nvim" },
-	{
-		"glepnir/lspsaga.nvim",
-		event = "LspAttach",
-	},
+	{ "glepnir/lspsaga.nvim", event = "LspAttach" },
 	{ "windwp/nvim-autopairs" },
 	{ "windwp/nvim-ts-autotag" },
 	{ "github/copilot.vim" },
 	{ "akinsho/nvim-toggleterm.lua" },
 	{
-		"stevearc/aerial.nvim",
-		dependencies = {
-			"nvim-treesitter/nvim-treesitter",
-			"nvim-tree/nvim-web-devicons",
-		},
-	},
-
-	{
 		"numToStr/Comment.nvim",
 		dependencies = {
 			"JoosepAlviste/nvim-ts-context-commentstring",
-		},
-	},
-	{
-		"dpayne/CodeGPT.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"MunifTanjim/nui.nvim",
 		},
 	},
 	{ "folke/zen-mode.nvim", event = "VeryLazy" },
@@ -221,14 +147,6 @@ return {
 			(require("tint")).setup({})
 		end,
 		event = "VeryLazy",
-	},
-	{
-		"lukas-reineke/indent-blankline.nvim",
-		config = function()
-			(require("indent_blankline")).setup({
-				show_current_context = true,
-			})
-		end,
 	},
 	-- Lazy
 	{
@@ -242,11 +160,5 @@ return {
 			"nvim-lua/plenary.nvim",
 			"nvim-telescope/telescope.nvim",
 		},
-	},
-	{
-		"iamcco/markdown-preview.nvim",
-		build = function()
-			vim.fn["mkdp#util#install"]()
-		end,
 	},
 }

@@ -1,6 +1,5 @@
 if vim.g.vscode then
 else
-	local CodeGPTModule = require("codegpt")
 	local status, lualine = pcall(require, "lualine")
 	if not status then
 		return
@@ -30,7 +29,6 @@ else
 					sources = { "nvim_diagnostic" },
 					symbols = { error = " ", warn = " ", info = " ", hint = " " },
 				},
-				CodeGPTModule.get_status,
 				"encoding",
 				"filetype",
 			},
