@@ -196,6 +196,23 @@ else
 		},
 	})
 
+	nvim_lsp.texlab.setup({
+		cmd = { "texlab" },
+		filetypes = { "tex", "bib" },
+		settings = {
+			texlab = {
+				rootDirectory = nil,
+				--      ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓ ↓
+				build = _G.TeXMagicBuildConfig,
+				--      ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑ ↑
+				forwardSearch = {
+					executable = "evince",
+					args = { "%p" },
+				},
+			},
+		},
+	})
+
 	require("typescript").setup({
 		disable_commands = false, -- prevent the plugin from creating Vim commands
 		debug = false, -- enable debug logging for commands

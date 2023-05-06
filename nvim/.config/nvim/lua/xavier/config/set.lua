@@ -25,8 +25,16 @@ vim.opt.shell = "fish"
 
 -- highlight yanked text for 200ms using the "Visual" highlight group
 vim.cmd([[
-  augroup highlight_yank
-  autocmd!
-  au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=100})
-  augroup END
+    augroup highlight_yank
+    autocmd!
+    au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=100})
+    augroup END
+]])
+
+-- Vim wiki setup autocommands
+vim.cmd([[
+    set nocompatible
+    filetype plugin on
+    syntax on
+    let g:vimtex_view_method='zathura'
 ]])
