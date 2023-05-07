@@ -1,6 +1,44 @@
 return {
+	{
+		"phaazon/hop.nvim",
+		branch = "v2", -- optional but strongly recommended
+		config = function()
+			-- you can configure Hop the way you like here; see :h hop-config
+			require("hop").setup({ keys = "etovxqpdygfblzhckisuran" })
+		end,
+	},
+	{
+		"iamcco/markdown-preview.nvim",
+		run = function()
+			vim.fn["mkdp#util#install"]()
+		end,
+	},
 	{ "vimwiki/vimwiki" },
 	{ "lervag/vimtex" },
+	{
+		"no-clown-fiesta/no-clown-fiesta.nvim",
+		lazy = false,
+		opts = {
+			lsp = { underline = true },
+		},
+	},
+	{
+		"projekt0n/github-nvim-theme",
+		lazy = false,
+	},
+	{ "kaiuri/nvim-juliana", lazy = false },
+	{
+		"Mofiqul/vscode.nvim",
+		lazy = false,
+		opts = {
+			transparent = true,
+		},
+	},
+	{
+		"mhartington/oceanic-next",
+		lazy = false,
+		config = function() end,
+	},
 	{
 		"svrana/neosolarized.nvim",
 		dependencies = {
@@ -17,6 +55,7 @@ return {
 		},
 	},
 	{ "machakann/vim-sandwich" },
+	{ "vim-scripts/ReplaceWithRegister" },
 	{ "nvim-pack/nvim-spectre" },
 	{ "mrjones2014/nvim-ts-rainbow" },
 

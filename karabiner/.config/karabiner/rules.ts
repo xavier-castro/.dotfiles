@@ -51,10 +51,11 @@ const rules: KarabinerRules[] = [
       d: app("Discord"),
       s: app("Slack"),
       e: app("Superhuman"),
+      k: app("Kitty"),
       f: app("Figma"),
       t: app("Electron"),
       w: app("iTerm"),
-      m: app("Messages"),
+      m: app("Mission Control"),
       p: app("Music"),
     },
 
@@ -123,15 +124,15 @@ const rules: KarabinerRules[] = [
           },
         ],
       },
-      f: {
-        description: "Window: Full Screen",
-        to: [
-          {
-            key_code: "f",
-            modifiers: ["right_option", "right_command"],
-          },
-        ],
-      },
+      //   f: {
+      //     description: "Window: Full Screen",
+      //     to: [
+      //       {
+      //         key_code: "f",
+      //         modifiers: ["right_option", "right_command"],
+      //       },
+      //     ],
+      //   },
       u: {
         description: "Window: Previous Tab",
         to: [
@@ -260,11 +261,11 @@ const rules: KarabinerRules[] = [
       },
       // Magicmove via homerow.app
       m: {
-        to: [{ key_code: "f", modifiers: ["right_control"] }],
+        to: [{ key_code: "f", modifiers: ["right_option"] }],
       },
       // Scroll mode via homerow.app
       s: {
-        to: [{ key_code: "j", modifiers: ["right_control"] }],
+        to: [{ key_code: "j", modifiers: ["right_option"] }],
       },
       d: {
         to: [{ key_code: "d", modifiers: ["right_shift", "right_command"] }],

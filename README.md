@@ -16,10 +16,13 @@ Without these people and their resources I would not have been able to even star
 
 This is the software you need for full functionality of my dotfiles
 
+![Software Stack](./assets/applications.png)
+
 - [Karabiner Elements](https://karabiner-elements.pqrs.org/)
 - [Rectangle Window Managmenet](https://rectangleapp.com/)
-- [Notion](https://notion.so)
 - [Screen Studio](https://www.screen.studio/download)
+- [Raycast](https://raycast.com/)
+
 
 ## CLI QOL
 
