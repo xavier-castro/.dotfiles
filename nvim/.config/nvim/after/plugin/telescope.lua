@@ -63,12 +63,7 @@ else
 	vim.keymap.set("n", "<leader>cs", "<cmd>Telescope colorscheme<cr>", {})
 	vim.keymap.set("n", "<C-p>", builtin.git_files, {})
 	vim.keymap.set("n", ";o", builtin.oldfiles, {})
-	vim.keymap.set("n", ";ff", function()
-		builtin.find_files({
-			no_ignore = false,
-			hidden = true,
-		})
-	end)
+	vim.keymap.set("n", ";f", "<Cmd>Telescope fd<Cr>", {})
 	vim.keymap.set("n", ";r", function()
 		builtin.registers({
 			previewer = true,
@@ -110,7 +105,7 @@ else
 	vim.keymap.set("n", ";t", "<cmd>TodoTelescope keywords=TODO,FIX<cr>", {})
 	vim.keymap.set("n", ";m", "<cmd>Telescope marks<cr>", {})
 	vim.keymap.set("n", "<M-e>", "<cmd>Telescope harpoon marks<cr>", {})
-	vim.keymap.set("n", ";fz", "<cmd>Telescope current_buffer_fuzzy_find<cr>", {})
+	vim.keymap.set("n", ";<Space>", "<cmd>Telescope current_buffer_fuzzy_find<cr>", {})
 	vim.keymap.set("n", ";;", function()
 		telescope.extensions.file_browser.file_browser({
 			path = "%:p:h",

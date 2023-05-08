@@ -13,8 +13,6 @@ return {
 			vim.fn["mkdp#util#install"]()
 		end,
 	},
-	{ "vimwiki/vimwiki" },
-	{ "lervag/vimtex" },
 	{
 		"no-clown-fiesta/no-clown-fiesta.nvim",
 		lazy = false,
@@ -58,6 +56,7 @@ return {
 	{ "vim-scripts/ReplaceWithRegister" },
 	{ "nvim-pack/nvim-spectre" },
 	{ "mrjones2014/nvim-ts-rainbow" },
+	{ "godlygeek/tabular" },
 
 	{
 		"christoomey/vim-tmux-navigator",

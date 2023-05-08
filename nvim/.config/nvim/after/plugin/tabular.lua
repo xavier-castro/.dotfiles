@@ -1,0 +1,7 @@
+vim.keymap.set("n", "<leader>a=", "<cmd>Tabularize /=<cr>", {})
+vim.keymap.set("n", "<leader>a:", "<cmd>Tabularize /:<cr>", {})
+vim.keymap.set("n", "<leader>a,", "<cmd>Tabularize /,<cr>", {})
+vim.keymap.set("n", "<leader>a;", "<cmd>Tabularize /;<cr>", {})
+vim.keymap.set("n", "<leader>a#", "<cmd>Tabularize /#<cr>", {})
+vim.keymap.set("n", "<leader>a|", "<cmd>Tabularize /|<cr>", {})
+vim.keymap.set("n", "<leader>a<bar>", "<cmd>Tabularize /<bar><cr>", {})
