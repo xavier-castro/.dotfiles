@@ -43,13 +43,14 @@ else
 			end,
 		},
 		mapping = cmp.mapping.preset.insert({
-			["<C-CR>"] = cmp.mapping.complete(),
 			["<C-e>"] = cmp.mapping.close(),
-			["<C-Space>"] = cmp.mapping.complete(),
 			["<C-f>"] = cmp.mapping.confirm({
 				behavior = cmp.ConfirmBehavior.Replace,
 				select = true,
 			}),
+			["<C-Space>"] = cmp.mapping.complete(),
+			["<Tab>"] = nil,
+			["<S-Tab>"] = nil,
 		}),
 		sources = {
 			{

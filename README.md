@@ -23,7 +23,6 @@ This is the software you need for full functionality of my dotfiles
 - [Screen Studio](https://www.screen.studio/download)
 - [Raycast](https://raycast.com/)
 
-
 ## CLI QOL
 
 - [Commitizen](https://github.com/commitizen/cz-cli)

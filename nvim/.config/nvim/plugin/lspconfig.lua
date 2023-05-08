@@ -203,19 +203,11 @@ else
 		capabilities = capabilities,
 	})
 
-	-- nvim_lsp.pylsp.setup({
-	-- 	on_attach = on_attach,
-	-- 	capabilities = capabilities,
-	-- 	flags = {
-	-- 		,
-	-- 		allow_incremental_sync = true,
-	-- 	},
-	-- })
-
-	pyright = "pyright-langserver"
-	nvim_lsp.pyright.setup({
+	local pyright_capabilities = vim.lsp.protocol.make_client_capabilities()
+	capabilities.textDocument.publishDiagnostics.tagSupport.valueSet = { 2 }
+	require("lspconfig")["pyright"].setup({
+		capabilities = pyright_capabilities,
 		on_attach = on_attach,
-		capabilities = capabilities,
 	})
 
 	nvim_lsp.cssls.setup({

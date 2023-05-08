@@ -63,7 +63,7 @@ else
 	vim.keymap.set("n", "<leader>cs", "<cmd>Telescope colorscheme<cr>", {})
 	vim.keymap.set("n", "<C-p>", builtin.git_files, {})
 	vim.keymap.set("n", ";o", builtin.oldfiles, {})
-	vim.keymap.set("n", ";f", "<Cmd>Telescope fd<Cr>", {})
+	vim.keymap.set("n", ";f", "<Cmd>Telescope fd hidden=true no_ignore=true<Cr>", {})
 	vim.keymap.set("n", ";r", function()
 		builtin.registers({
 			previewer = true,

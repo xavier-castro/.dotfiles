@@ -22,6 +22,7 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 vim.opt.shell = "fish"
+vim.opt.cursorline = true
 
 -- highlight yanked text for 200ms using the "Visual" highlight group
 vim.cmd([[
@@ -29,12 +30,4 @@ vim.cmd([[
     autocmd!
     au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=100})
     augroup END
-]])
-
--- Vim wiki setup autocommands
-vim.cmd([[
-    set nocompatible
-    filetype plugin on
-    syntax on
-    let g:vimtex_view_method='zathura'
 ]])

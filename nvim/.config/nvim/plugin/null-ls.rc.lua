@@ -40,7 +40,7 @@ null_ls.setup({
 		formatting.yamlfmt,
 		formatting.jq, -- code_actions.gitsigns,
 		-- MARK: Code Actions
-		code_actions.refactoring,
+		-- code_actions.refactoring,
 		code_actions.shellcheck,
 		require("typescript.extensions.null-ls.code-actions"),
 	},
