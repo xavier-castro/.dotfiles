@@ -3,6 +3,7 @@ fish/.config/fish/conf.d/*
 fish/.config/fish/completions/*
 fish/.config/fish/fish_variables
 tmux/.config/tmux/plugins/*
+raycast/.config/raycast/extensions/*
 raycast/*
 .DS_STORE
 .env
