@@ -21,7 +21,7 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
-vim.opt.shell = "fish"
+-- vim.opt.shell = "fish"
 vim.opt.cursorline = true
 
 -- highlight yanked text for 200ms using the "Visual" highlight group

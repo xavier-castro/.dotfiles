@@ -22,13 +22,6 @@ else
 			["ui-select"] = {
 				(require("telescope.themes")).get_dropdown({}),
 			},
-			aerial = {
-				show_nesting = {
-					_ = false,
-					json = true,
-					yaml = true,
-				},
-			},
 			fzf = {
 				fuzzy = true,
 				override_generic_sorter = true,
@@ -37,6 +30,7 @@ else
 			},
 			file_browser = {
 				theme = "dropdown",
+				hidden = true,
 				hijack_netrw = true,
 				mappings = {
 					i = {

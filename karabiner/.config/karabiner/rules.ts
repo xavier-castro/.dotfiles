@@ -54,8 +54,8 @@ const rules: KarabinerRules[] = [
       k: app("Kitty"),
       f: app("Figma"),
       t: app("Electron"),
-      w: app("iTerm"),
-      m: app("Mission Control"),
+      i: app("iTerm"),
+      m: app("Messages"),
       p: app("Music"),
     },
 
@@ -124,15 +124,15 @@ const rules: KarabinerRules[] = [
           },
         ],
       },
-      //   f: {
-      //     description: "Window: Full Screen",
-      //     to: [
-      //       {
-      //         key_code: "f",
-      //         modifiers: ["right_option", "right_command"],
-      //       },
-      //     ],
-      //   },
+      f: {
+        description: "Window: Full Screen",
+        to: [
+          {
+            key_code: "f",
+            modifiers: ["right_option", "right_command"],
+          },
+        ],
+      },
       u: {
         description: "Window: Previous Tab",
         to: [
