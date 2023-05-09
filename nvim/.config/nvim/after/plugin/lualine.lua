@@ -50,6 +50,6 @@ else
 			lualine_z = {},
 		},
 		tabline = {},
-		extensions = { "fugitive" },
+		extensions = { "fugitive", "lazy", "fzf" },
 	})
 end

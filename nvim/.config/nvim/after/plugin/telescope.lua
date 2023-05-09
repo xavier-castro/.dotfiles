@@ -6,7 +6,8 @@ else
 	local function telescope_buffer_dir()
 		return vim.fn.expand("%:p:h")
 	end
-	local fb_actions = (require("telescope")).extensions.file_browser.actions
+	local fb_actions = require("telescope").extensions.file_browser.actions
+
 	telescope.setup({
 		defaults = {
 			mappings = {
@@ -50,10 +51,13 @@ else
 			},
 		},
 	})
-	telescope.load_extension("file_browser")
-	telescope.load_extension("fzf");
-	(require("telescope")).load_extension("ui-select");
-	(require("telescope")).load_extension("harpoon")
+	require("telescope").load_extension("file_browser")
+	require("telescope").load_extension("find_pickers")
+	require("telescope").load_extension("fzf")
+	require("telescope").load_extension("ui-select")
+	require("telescope").load_extension("harpoon")
+
+	vim.keymap.set("n", ";F", "<cmd>Telescope find_pickers<cr>", {})
 	vim.keymap.set("n", "<leader>cs", "<cmd>Telescope colorscheme<cr>", {})
 	vim.keymap.set("n", "<C-p>", builtin.git_files, {})
 	vim.keymap.set("n", ";o", builtin.oldfiles, {})

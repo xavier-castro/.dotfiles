@@ -169,6 +169,24 @@ const rules: KarabinerRules[] = [
           },
         ],
       },
+      c: {
+        description: "Cascade All Windows",
+        to: [
+          {
+            key_code: "c",
+            modifiers: ["right_command", "right_option"],
+          },
+        ],
+      },
+      a: {
+        description: "Cascade All Windows",
+        to: [
+          {
+            key_code: "a",
+            modifiers: ["right_command", "right_option"],
+          },
+        ],
+      },
       // Note: No literal connection. Both f and n are already taken.
       m: {
         description: "Window: Forward",

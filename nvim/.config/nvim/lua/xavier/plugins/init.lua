@@ -90,21 +90,18 @@ return {
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
+			{ "sar/web-devicons.nvim" },
+			{ "nvim-telescope/telescope-file-browser.nvim" },
+			{ "nvim-lua/plenary.nvim" },
+			{ "nvim-telescope/telescope-ui-select.nvim" },
+			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+			{ "keyvchan/telescope-find-pickers.nvim" },
+			{ "kkharji/sqlite.lua" },
 			{
-				"sar/web-devicons.nvim",
-			},
-			{
-				"nvim-telescope/telescope-file-browser.nvim",
-			},
-			{
-				"nvim-lua/plenary.nvim",
-			},
-			{
-				"nvim-telescope/telescope-ui-select.nvim",
-			},
-			{
-				"nvim-telescope/telescope-fzf-native.nvim",
-				build = "make",
+				"prochri/telescope-all-recent.nvim",
+				config = function()
+					require("telescope-all-recent").setup({})
+				end,
 			},
 		},
 	},
@@ -186,25 +183,27 @@ return {
 	{
 		"phaazon/hop.nvim",
 		branch = "v2",
+		event = "VeryLazy",
 		config = function()
 			local keymap = vim.api.nvim_set_keymap
-			local opts = { noremap = true, silent = true }
+			local opts = {
+				noremap = true,
+				silent = true,
+			}
 			require("hop").setup()
 
 			-- key-mappings
 			keymap("", "s", "<cmd>HopChar1<CR>", opts)
-			keymap("", "<leader>j", "<cmd>HopLineBC<CR>", opts)
-			keymap("", "<leader>k", "<cmd>HopLineAC<CR>", opts)
-			keymap("", "<leader><leader>j", "<cmd>HopWordBC<CR>", opts)
-			keymap("", "<leader><leader>k", "<cmd>HopWordAC<CR>", opts)
+			keymap("", "<leader>j", "<cmd>HopWordBC<CR>", opts)
+			keymap("", "<leader>k", "<cmd>HopWordAC<CR>", opts)
 
 			-- highlights
 			vim.api.nvim_exec(
 				[[
-  highlight HopNextKey gui=bold guifg=#ff007c guibg=None
-  highlight HopNextKey1 gui=bold guifg=#00dfff guibg=None
-  highlight HopNextKey2 guifg=#2b8db3 guibg=None
-]],
+            highlight HopNextKey gui=bold guifg=#ff007c guibg=None
+              highlight HopNextKey1 gui=bold guifg=#00dfff guibg=None
+                highlight HopNextKey2 guifg=#2b8db3 guibg=None
+                ]],
 				false
 			)
 		end,
