@@ -7,3 +7,4 @@ raycast/.config/raycast/extensions/*
 raycast/*
 .DS_STORE
 .env
+nvim/.config/nvim/lua/xavier/config/keys.lua

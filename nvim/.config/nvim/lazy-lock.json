@@ -16,6 +16,7 @@
   "github-nvim-theme": { "branch": "main", "commit": "3812b0a4d38bc105db450d1c5ad5a61dabe54de2" },
   "gitsigns.nvim": { "branch": "main", "commit": "e5edefd9976039f5352e0c900f35206770b33a2d" },
   "harpoon": { "branch": "master", "commit": "f7040fd0c44e7a4010369136547de5604b9c22a1" },
+  "hfcc.nvim": { "branch": "main", "commit": "1bbee50b8d9a57de637e51d6c178f275aa50fbd3" },
   "hop.nvim": { "branch": "v2", "commit": "90db1b2c61b820e230599a04fedcd2679e64bd07" },
   "lazy.nvim": { "branch": "main", "commit": "9ac19880b677d08f416c5189ffc2dc023084a159" },
   "lsp-status.nvim": { "branch": "master", "commit": "54f48eb5017632d81d0fd40112065f1d062d0629" },
