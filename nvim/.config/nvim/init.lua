@@ -36,7 +36,7 @@ nnoremap gj :<C-u>call VSCodeCall('cursorMove', { 'to': 'down', 'by': 'wrappedLi
 	vim.keymap.set("i", "<C-c>", "<Esc>")
 	vim.keymap.set("i", "<C-o>", "<C-o> <esc>o")
 	vim.keymap.set("n", "<C-a>", "gg<S-v>G")
-	vim.opt.shell = "fish"
+	-- vim.opt.shell = "fish"
 	vim.opt.background = "dark"
 	vim.opt.updatetime = 50
 	vim.opt.inccommand = "split"
@@ -56,6 +56,30 @@ nnoremap gj :<C-u>call VSCodeCall('cursorMove', { 'to': 'down', 'by': 'wrappedLi
 		{
 			"phaazon/hop.nvim",
 			branch = "v2",
+			event = "VeryLazy",
+			config = function()
+				local keymap = vim.api.nvim_set_keymap
+				local opts = {
+					noremap = true,
+					silent = true,
+				}
+				require("hop").setup()
+
+				-- key-mappings
+				keymap("", "s", "<cmd>HopChar1<CR>", opts)
+				keymap("", "<leader>j", "<cmd>HopWordBC<CR>", opts)
+				keymap("", "<leader>k", "<cmd>HopWordAC<CR>", opts)
+
+				-- highlights
+				vim.api.nvim_exec(
+					[[
+                    highlight HopNextKey gui=bold guifg=#ff007c guibg=None
+                    highlight HopNextKey1 gui=bold guifg=#00dfff guibg=None
+                    highlight HopNextKey2 guifg=#2b8db3 guibg=None
+                ]],
+					false
+				)
+			end,
 		},
 		{
 			"tpope/vim-repeat",
