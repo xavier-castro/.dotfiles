@@ -1,3 +1,10 @@
+-- if vim.g.vscode then
+-- else
+-- 	require("rose-pine").setup({
+-- 		disable_background = true,
+-- 	})
+-- 	vim.cmd([[colorscheme rose-pine]])
+-- end
 if vim.g.vscode then
 else
 	local status, n = pcall(require, "neosolarized")

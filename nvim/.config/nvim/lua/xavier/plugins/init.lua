@@ -200,9 +200,9 @@ return {
 			-- highlights
 			vim.api.nvim_exec(
 				[[
-            highlight HopNextKey gui=bold guifg=#ff007c guibg=None
-              highlight HopNextKey1 gui=bold guifg=#00dfff guibg=None
-                highlight HopNextKey2 guifg=#2b8db3 guibg=None
+                    highlight HopNextKey gui=bold guifg=#ff007c guibg=None
+                    highlight HopNextKey1 gui=bold guifg=#00dfff guibg=None
+                    highlight HopNextKey2 guifg=#2b8db3 guibg=None
                 ]],
 				false
 			)

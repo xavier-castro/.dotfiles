@@ -33,7 +33,7 @@ return {
 	init = function()
 		local r = require("xavier.utils.remaps")
 
-		r.noremap("n", "-", "<cmd>Neotree show<CR>", "Toggle explorer")
+		r.noremap("n", "<leader>e", "<cmd>Neotree show<CR>", "Toggle explorer")
 	end,
 	config = {
 		source_selector = {

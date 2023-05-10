@@ -52,7 +52,6 @@ end)
 -- It also supports tagstack
 -- Use <C-t> to jump back
 vim.keymap.set("n", "gp", "<cmd>Lspsaga peek_definition<CR>")
-
 -- code action
 local codeaction = require("lspsaga.codeaction")
 vim.keymap.set("n", "<M-.>", function()

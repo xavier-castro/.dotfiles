@@ -57,6 +57,7 @@ const rules: KarabinerRules[] = [
       i: app("iTerm"),
       m: app("Messages"),
       p: app("Music"),
+      b: app("Firefox"), // Browser
     },
 
     // w = "Window" via rectangle.app
