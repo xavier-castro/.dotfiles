@@ -57,6 +57,7 @@ const rules: KarabinerRules[] = [
       i: app("iTerm"),
       m: app("Messages"),
       p: app("Music"),
+      g: app("Mission Control"),
       b: app("Firefox"), // Browser
     },
 
