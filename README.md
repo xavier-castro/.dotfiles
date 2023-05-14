@@ -23,6 +23,20 @@ This is the software you need for full functionality of my dotfiles
 - [Screen Studio](https://www.screen.studio/download)
 - [Raycast](https://raycast.com/)
 
+## Installs
+
+```
+brew install nvm
+brew install go
+brew install efm-langserver
+brew install sqlite
+brew install yarn
+brew install fzf
+brew install zoxide
+brew install tmux
+brew install neovim
+```
+
 ## CLI QOL
 
 - [Commitizen](https://github.com/commitizen/cz-cli)
