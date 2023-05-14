@@ -25,16 +25,33 @@ This is the software you need for full functionality of my dotfiles
 
 ## Installs
 
+Install homebrew
+`/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+
+Install Tmux TPM
+`git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
+
 ```
+brew install fish
 brew install nvm
 brew install go
 brew install efm-langserver
 brew install sqlite
 brew install yarn
 brew install fzf
+brew install peco
+brew install exa
+brew install lazygit
 brew install zoxide
 brew install tmux
 brew install neovim
+```
+
+### NPM Stuff
+
+```
+brew install fsouza/prettierd/prettierd
+npm install turbo --global
 ```
 
 ## CLI QOL
