@@ -1,3 +1,9 @@
+-- Neorg
+vim.keymap.set("n", "<LocalLeader>r", "<cmd>Neorg return<cr>")
+vim.keymap.set("n", "<LocalLeader>gw", "<cmd>Neorg workspace<cr>")
+vim.keymap.set("n", "<LocalLeader>gi", "<cmd>Neorg index<cr>")
+vim.keymap.set("n", "<LocalLeader>cc", "<cmd>Neorg toggle-concealer<cr>")
+
 -- Edit Snippets
 vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("n", "<leader>8", "<cmd>ColorMyPencils<cr>")
