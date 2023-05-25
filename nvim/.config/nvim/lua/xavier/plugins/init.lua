@@ -41,7 +41,25 @@ return {
 	{ "vim-scripts/ReplaceWithRegister" },
 	{ "nvim-pack/nvim-spectre" },
 	{ "mrjones2014/nvim-ts-rainbow" },
-
+	{
+		"nvim-neorg/neorg",
+		build = ":Neorg sync-parsers",
+		opts = {
+			load = {
+				["core.defaults"] = {}, -- Loads default behaviour
+				["core.concealer"] = {}, -- Adds pretty icons to your documents
+				["core.dirman"] = { -- Manages Neorg workspaces
+					config = {
+						workspaces = {
+							notes = "~/notes",
+						},
+						default_workspace = "notes",
+					},
+				},
+			},
+		},
+		dependencies = { { "nvim-lua/plenary.nvim" } },
+	},
 	{
 		"christoomey/vim-tmux-navigator",
 		lazy = false,
@@ -198,14 +216,11 @@ return {
 			keymap("", "<leader>k", "<cmd>HopWordAC<CR>", opts)
 
 			-- highlights
-			vim.api.nvim_exec(
-				[[
+			vim.cmd([[
                     highlight HopNextKey gui=bold guifg=#ff007c guibg=None
                     highlight HopNextKey1 gui=bold guifg=#00dfff guibg=None
                     highlight HopNextKey2 guifg=#2b8db3 guibg=None
-                ]],
-				false
-			)
+                ]])
 		end,
 	},
 }

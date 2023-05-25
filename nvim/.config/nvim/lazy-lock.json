@@ -27,6 +27,7 @@
   "mason.nvim": { "branch": "main", "commit": "08b2fd308e0107eab9f0b59d570b69089fd0b522" },
   "neo-tree.nvim": { "branch": "v2.x", "commit": "8c89efb93b8383666a6f989762c2f610f5f2c930" },
   "neodev.nvim": { "branch": "main", "commit": "ffa5f73f243954afb96fc19a512a24d7b8b0bb63" },
+  "neorg": { "branch": "main", "commit": "f922d5946de5474bb216dfc791ed339b942002bf" },
   "neosolarized.nvim": { "branch": "main", "commit": "ac33d79cca495e8f1122d9bd16b76ce74f57ae05" },
   "no-clown-fiesta.nvim": { "branch": "master", "commit": "f8e2b3fe8ecefaddf9ded87db03daa891a6975e2" },
   "nui.nvim": { "branch": "main", "commit": "698e75814cd7c56b0dd8af4936bcef2d13807f3c" },
