@@ -31,6 +31,8 @@ Install homebrew
 Install Tmux TPM
 `git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm`
 
+[Pyenv Guide Here](https://gist.github.com/entropiae/326611addf6662d1d8fbf5792ab9a770)
+
 ```
 brew install fish
 brew install nvm

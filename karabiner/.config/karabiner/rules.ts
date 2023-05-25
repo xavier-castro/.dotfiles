@@ -50,7 +50,7 @@ const rules: KarabinerRules[] = [
       v: app("Visual Studio Code"),
       d: app("Discord"),
       s: app("Slack"),
-      e: app("Superhuman"),
+      e: app("Mail"),
       k: app("Kitty"),
       f: app("Figma"),
       t: app("Electron"),
@@ -58,7 +58,7 @@ const rules: KarabinerRules[] = [
       m: app("Messages"),
       p: app("Music"),
       g: app("Mission Control"),
-      b: app("Firefox"), // Browser
+      b: app("Google Chrome"), // Browser
     },
 
     // w = "Window" via rectangle.app
