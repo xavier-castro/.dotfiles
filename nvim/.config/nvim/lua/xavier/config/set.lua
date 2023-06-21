@@ -89,9 +89,12 @@ augroup END
 ]])
 
 vim.cmd([[
-                    highlight HopNextKey gui=bold guifg=#ff007c guibg=None
-                    highlight HopNextKey1 gui=bold guifg=#00dfff guibg=None
-                    highlight HopNextKey2 guifg=#2b8db3 guibg=None
+augroup highlight_properly
+autocmd!
+        au BufWinEnter ?* silent!            highlight HopNextKey gui=bold guifg=#ff007c guibg=None
+         au BufWinEnter ?* silent!           highlight HopNextKey1 gui=bold guifg=#00dfff guibg=None
+ au BufWinEnter ?* silent!                   highlight HopNextKey2 guifg=#2b8db3 guibg=None
+ augroup END
                 ]])
 
 function _G.set_terminal_keymaps()
