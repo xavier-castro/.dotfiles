@@ -88,6 +88,12 @@ augroup remember_folds
 augroup END
 ]])
 
+vim.cmd([[
+                    highlight HopNextKey gui=bold guifg=#ff007c guibg=None
+                    highlight HopNextKey1 gui=bold guifg=#00dfff guibg=None
+                    highlight HopNextKey2 guifg=#2b8db3 guibg=None
+                ]])
+
 function _G.set_terminal_keymaps()
 	local opts = { buffer = 0 }
 	vim.keymap.set("t", "<esc>", [[<C-\><C-n>]], opts)

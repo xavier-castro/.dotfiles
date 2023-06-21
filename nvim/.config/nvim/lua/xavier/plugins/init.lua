@@ -1,27 +1,5 @@
 return {
-	{
-		"no-clown-fiesta/no-clown-fiesta.nvim",
-		lazy = false,
-		opts = {
-			lsp = { underline = true },
-		},
-	},
-	{
-		"projekt0n/github-nvim-theme",
-		lazy = false,
-	},
-	{
-		"Mofiqul/vscode.nvim",
-		lazy = false,
-		opts = {
-			transparent = true,
-		},
-	},
-	{
-		"mhartington/oceanic-next",
-		lazy = false,
-		config = function() end,
-	},
+
 	{
 		"svrana/neosolarized.nvim",
 		dependencies = {
