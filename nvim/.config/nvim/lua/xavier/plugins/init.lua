@@ -30,6 +30,8 @@ return {
 						icon_preset = "diamond",
 					},
 				}, -- Adds pretty icons to your documents
+				-- Required for export markdown
+				["core.integrations.treesitter"] = {},
 				["core.export.markdown"] = {},
 				["core.export"] = {},
 				["core.summary"] = {},
@@ -93,7 +95,7 @@ return {
 	{
 		"nvim-telescope/telescope.nvim",
 		dependencies = {
-			{ "sar/web-devicons.nvim" },
+			{ "nvim-tree/nvim-web-devicons" },
 			{ "nvim-telescope/telescope-file-browser.nvim" },
 			{ "nvim-lua/plenary.nvim" },
 			{ "nvim-telescope/telescope-ui-select.nvim" },
