@@ -46,7 +46,7 @@ const rules: KarabinerRules[] = [
     // o = "Open" applications
     o: {
       a: app("Arc"),
-      v: app("Visual Studio Code - Insiders"),
+      v: app("Visual Studio Code"),
       e: app("Mail"),
       f: app("Fantastical"),
       t: app("Electron"),
@@ -58,15 +58,15 @@ const rules: KarabinerRules[] = [
 
     // w = "Window" via rectangle.app
     w: {
-      semicolon: {
-        description: "Window: Hide",
-        to: [
-          {
-            key_code: "h",
-            modifiers: ["right_command"],
-          },
-        ],
-      },
+      // semicolon: {
+      //   description: "Window: Hide",
+      //   to: [
+      //     {
+      //       key_code: "h",
+      //       modifiers: ["right_command"],
+      //     },
+      //   ],
+      // },
       y: {
         description: "Window: First Third",
         to: [
