@@ -38,9 +38,11 @@ return {
 				["core.dirman"] = { -- Manages Neorg workspaces
 					config = {
 						workspaces = {
-							notes = "~/notes",
+							main = "~/neoorg/main",
+							school = "~/neorg/school",
+							projects = "~/neorg/projects",
 						},
-						default_workspace = "notes",
+						default_workspace = "main",
 					},
 				},
 			},
