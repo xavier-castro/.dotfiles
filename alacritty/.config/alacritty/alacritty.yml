@@ -3,7 +3,7 @@ window:
   # by DPI and the specified value is always added at both opposing sides.
   padding:
     x: 10
-    y: 10
+    y: 0
 scrolling:
   # Specifying '0' will disable scrolling.
   history: 100000
@@ -12,29 +12,29 @@ scrolling:
   multiplier: 3
 font:
   normal:
-    family: SauceCodePro Nerd Font
+    family: MesloLGS NF
     style: Regular
   bold:
-    family: SauceCodePro Nerd Font
+    family: MesloLGS NF
     style: Bold
   italic:
-    family: SauceCodePro Nerd Font
+    family: MesloLGS NF
     style: Italic
   bold_italic:
-    family: SauceCodePro Nerd Font
+    family: MesloLGS NF
     style: Bold Italic
-  size: 12.0
+  size: 11.0
 # If `true`, bold text is drawn using the bright color variants.
 draw_bold_text_with_bright_colors: true
 # Base16 Default Dark 256 - alacritty color config
 # Chris Kempson (http://chriskempson.com)
 import:
- - ~/.config/alacritty/themes/themes/gnome_terminal.yaml
+  - ~/.config/alacritty/themes/themes/gnome_terminal.yaml
 # Specifying a `duration` of `0` will disable the visual bell.
 bell:
   animation: EaseOutExpo
   duration: 0
-  color: '0xffffff'
+  color: "0xffffff"
 window.opacity: 0.99
 selection:
   # This string contains all characters that are used as separators for

@@ -68,3 +68,12 @@ npm install turbo --global
 ### Neovim
 
 My neovim settings which I use to code and develop. I did not make my settings for the purpose of being able to read and understand from an outsiders POV. This will be a future update.
+
+## Arch
+
+### Links
+
+These are the links I used to setup my arch linux
+
+[Look and Feel](https://www.youtube.com/watch?v=5h8B4SdJYHQ)
+[GRUB easier Bootloading](https://www.reddit.com/r/archlinux/comments/s1fvw6/adding_windows_11_to_grub_bootloader/)
