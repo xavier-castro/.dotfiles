@@ -26,25 +26,25 @@ else
 			"vim",
 			"markdown",
 			"markdown_inline",
-			"regex"
+			"regex",
 		},
-		rainbow = {
-			enable = true,
-			extended_mode = false,
-			max_file_lines = nil
-		},
+		-- rainbow = {
+		--     enable = true,
+		--     extended_mode = false,
+		--     max_file_lines = nil,
+		-- },
 		sync_install = false,
 		auto_install = true,
 		highlight = {
 			enable = true,
-			additional_vim_regex_highlighting = false
+			additional_vim_regex_highlighting = false,
 		},
 		autotag = {
-			enable = true
+			enable = true,
 		},
 		context_commentstring = {
 			enable = true,
-			enable_autocmd = false
+			enable_autocmd = false,
 		},
 		incremental_selection = {
 			enable = true,
@@ -52,13 +52,13 @@ else
 				init_selection = "<C-space>",
 				node_incremental = "<C-space>",
 				scope_incremental = "<nop>",
-				node_decremental = "<bs>"
-			}
-		}
-	});
-	local parser_config = (require("nvim-treesitter.parsers")).get_parser_configs();
+				node_decremental = "<bs>",
+			},
+		},
+	})
+	local parser_config = (require("nvim-treesitter.parsers")).get_parser_configs()
 	parser_config.tsx.filetype_to_parsername = {
 		"javascript",
-		"typescript.tsx"
-	};
-end;
+		"typescript.tsx",
+	}
+end

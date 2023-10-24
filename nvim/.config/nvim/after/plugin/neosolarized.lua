@@ -1,9 +1,22 @@
 if vim.g.vscode then
 else
-    require("rose-pine").setup({
-        disable_background = true,
-    })
-    vim.cmd([[colorscheme rose-pine]])
+	require("rose-pine").setup({
+		disable_background = true,
+	})
+	vim.cmd([[colorscheme rose-pine]])
+
+	function ColorMyPencils(color)
+		color = color or "neosolarized"
+		vim.cmd.colorscheme(color)
+		vim.api.nvim_set_hl(0, "Normal", {
+			bg = "none",
+		})
+		vim.api.nvim_set_hl(0, "NormalFloat", {
+			bg = "none",
+		})
+	end
+
+	ColorMyPencils()
 end
 -- if vim.g.vscode then
 -- else
@@ -40,16 +53,4 @@ end
 -- 	Group.new("DiagnosticUnderlineInfo", colors.none, colors.none, styles.undercurl, cInfo)
 -- 	Group.new("DiagnosticUnderlineHint", colors.none, colors.none, styles.undercurl, cHint)
 -- 	Group.new("HoverBorder", colors.yellow, colors.none, styles.NONE)
-function ColorMyPencils(color)
-    color = color or "neosolarized"
-    vim.cmd.colorscheme(color)
-    vim.api.nvim_set_hl(0, "Normal", {
-        bg = "none",
-    })
-    vim.api.nvim_set_hl(0, "NormalFloat", {
-        bg = "none",
-    })
-end
-
-ColorMyPencils()
 -- end
