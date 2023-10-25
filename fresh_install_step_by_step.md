@@ -10,6 +10,11 @@
 `yarn run build`
 [alttab](https://alt-tab-macos.netlify.app/)
 
+## Ubuntu MacOS Compatibility
+
+[Apple Patches](https://github.com/t2linux/T2-Ubuntu-Kernel#using-the-kernel-upgrade-script)
+[Setting Up Brew on Ubuntu on Fish Shell](https://cnu.hashnode.dev/set-up-homebrew-on-linux-with-fish-shell)
+
 ## CLI
 
 ### Scripts
