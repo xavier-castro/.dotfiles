@@ -6,11 +6,18 @@
 [1password](https://1password.com/downloads/mac)
 [rectangle](https://rectangleapp.com/pro)
 [karabiner](https://karabiner-elements.pqrs.org/)
-yarn
-yarn run build
+`yarn`
+`yarn run build`
 [alttab](https://alt-tab-macos.netlify.app/)
 
 ## CLI
+
+### Scripts
+
+Remove Mouse Acceleration
+`defaults write .GlobalPreferences com.apple.mouse.scaling -1`
+
+### Downloads
 
 ```bash
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
@@ -49,11 +56,12 @@ brew install fsouza/prettierd/prettierd
 npm install turbo --global
 brew install commitizen
 brew install tig
+brew install todoist --cask
 ```
 
 ## Mac App Store Downloads
 
-- Fanstasticalf
+- Fanstastical
 - 1Password
 - Xcode
 
@@ -63,6 +71,7 @@ brew install tig
 
 Shortcuts -> Spotlight -> Both off (replaced with Recast)
 Show F1 Keys
+Adjust Key Repeat
 
 ### Battery
 
