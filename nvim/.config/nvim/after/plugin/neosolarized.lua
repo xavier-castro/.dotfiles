@@ -6,7 +6,7 @@ else
 	vim.cmd([[colorscheme rose-pine]])
 
 	function ColorMyPencils(color)
-		color = color or "neosolarized"
+		color = color or "rose-pine"
 		vim.cmd.colorscheme(color)
 		vim.api.nvim_set_hl(0, "Normal", {
 			bg = "none",
