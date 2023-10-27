@@ -1,36 +1,36 @@
 local status, saga = pcall(require, "lspsaga")
 if not status then
-    return
+	return
 end
 
 saga.setup({
-    preview = {
-        lines_above = 0,
-        lines_below = 10,
-    },
-    request_timeout = 8000,
-    ui = {
-        winblend = 10,
-        border = "rounded",
-        colors = {
-            normal_bg = "#002b36",
-        },
-    },
-    lightbulb = {
-        enable = false,
-        enable_in_insert = true,
-        sign = true,
-        sign_priority = 40,
-        virtual_text = true,
-    },
-    symbol_in_winbar = {
-        enable = false,
-    },
+	preview = {
+		lines_above = 0,
+		lines_below = 10,
+	},
+	request_timeout = 8000,
+	ui = {
+		winblend = 10,
+		border = "rounded",
+		colors = {
+			normal_bg = "#002b36",
+		},
+	},
+	lightbulb = {
+		enable = false,
+		enable_in_insert = true,
+		sign = true,
+		sign_priority = 40,
+		virtual_text = true,
+	},
+	symbol_in_winbar = {
+		enable = false,
+	},
 })
 
 local opts = { noremap = true, silent = true }
 
-vim.keymap.set("n", "gd", "<cmd>Lspsaga lsp_finder<CR>", opts)
+vim.keymap.set("n", "gd", "<cmd>Lspsaga finder<CR>", opts)
 vim.keymap.set("i", "<C-k>", "<cmd>lua vim.lsp.buf.signature_help()<CR>", opts)
 vim.keymap.set("n", "K", "<Cmd>Lspsaga hover_doc<CR>", opts)
 vim.keymap.set("n", "gl", "<Cmd>Lspsaga show_diagnostic<CR>", opts)
@@ -41,10 +41,10 @@ vim.keymap.set("n", "[d", "<Cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
 vim.keymap.set("n", "<leader>o", "<Cmd>Lspsaga outline<cr>", opts)
 -- Diagnostic jump with filters such as only jumping to an error
 vim.keymap.set("n", "[D", function()
-    require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
+	require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
 end)
 vim.keymap.set("n", "]D", function()
-    require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+	require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
 end)
 -- Peek definition
 -- You can edit the file containing the definition in the floating window
@@ -55,17 +55,17 @@ vim.keymap.set("n", "gp", "<cmd>Lspsaga peek_definition<CR>")
 -- code action
 local codeaction = require("lspsaga.codeaction")
 vim.keymap.set("n", "<M-.>", function()
-    codeaction:code_action()
+	codeaction:code_action()
 end, { silent = true })
 -- code action
 vim.keymap.set("n", "<leader>ca", function()
-    codeaction:code_action()
+	codeaction:code_action()
 end, { silent = true })
 vim.keymap.set("v", "<leader>ca", function()
-    vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-U>", true, false, true))
-    codeaction:range_code_action()
+	vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-U>", true, false, true))
+	codeaction:range_code_action()
 end, { silent = true })
 vim.keymap.set("v", "<M-.>", function()
-    vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-U>", true, false, true))
-    codeaction:range_code_action()
+	vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<C-U>", true, false, true))
+	codeaction:range_code_action()
 end, { silent = true })

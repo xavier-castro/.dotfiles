@@ -28,6 +28,9 @@ vim.opt.cursorline = true
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
+-- Sandwich Rebinds
+vim.cmd([[runtime macros/sandwich/keymap/surround.vim]])
+
 -- highlight yanked text for 200ms using the "Visual" highlight group
 vim.cmd([[
     augroup highlight_yank
