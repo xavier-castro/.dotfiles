@@ -9,6 +9,7 @@
 `yarn`
 `yarn run build`
 [alttab](https://alt-tab-macos.netlify.app/)
+[NordVPN](https://my.nordaccount.com/setup/)
 
 ## Ubuntu MacOS Compatibility
 
