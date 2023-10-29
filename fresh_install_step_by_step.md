@@ -87,3 +87,8 @@ Options -> Disable All
 ### Lock Screen
 
 Set everything that puts my laptop to sleep off
+
+### Screensaver
+
+`brew install --cask brooklyn --no-quarantine`
+`defaults -currentHost write com.apple.screensaver moduleDict -dict moduleName Brooklyn path "$HOME/Library/Screen Savers/Brooklyn.saver"`
