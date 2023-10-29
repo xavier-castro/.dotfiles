@@ -63,6 +63,7 @@ return {
 	{ "tpope/vim-repeat" },
 	{ "tpope/vim-fugitive" },
 	{ "tpope/vim-commentary" },
+	{ "tpope/vim-dadbod" },
 	{
 		"lewis6991/gitsigns.nvim",
 		config = function()
