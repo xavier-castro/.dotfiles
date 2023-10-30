@@ -1,9 +1,9 @@
 if vim.g.vscode then
 else
-	local status, bufferline = pcall(require, "bufferline");
+	local status, bufferline = pcall(require, "bufferline")
 	if not status then
-		return;
-	end;
+		return
+	end
 	bufferline.setup({
 		options = {
 			mode = "tabs",
@@ -11,28 +11,28 @@ else
 			always_show_bufferline = false,
 			show_buffer_close_icons = false,
 			show_close_icon = false,
-			color_icons = true
+			color_icons = true,
 		},
 		highlights = {
 			separator = {
 				fg = "#073642",
-				bg = "#002b36"
+				bg = "#002b36",
 			},
 			separator_selected = {
-				fg = "#073642"
+				fg = "#073642",
 			},
 			background = {
 				fg = "#657b83",
-				bg = "#002b36"
+				bg = "#002b36",
 			},
 			buffer_selected = {
-				fg = "#fdf6e3"
+				fg = "#fdf6e3",
 			},
 			fill = {
-				bg = "#073642"
-			}
-		}
-	});
-	vim.keymap.set("n", "<Tab>", "<Cmd>BufferLineCycleNext<CR>", {});
-	vim.keymap.set("n", "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", {});
-end;
+				bg = "#073642",
+			},
+		},
+	})
+	vim.keymap.set("n", "<Tab>", "<Cmd>BufferLineCycleNext<CR>", {})
+	vim.keymap.set("n", "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", {})
+end
