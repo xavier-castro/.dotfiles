@@ -11,6 +11,7 @@ return {
 		"Mofiqul/vscode.nvim",
 		lazy = false,
 	},
+	{ "kdheepak/monochrome.nvim", lazy = false },
 	{
 		"rose-pine/neovim",
 		name = "rose-pine",

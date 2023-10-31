@@ -29,9 +29,9 @@ else
 			"regex",
 		},
 		-- rainbow = {
-		--     enable = true,
-		--     extended_mode = false,
-		--     max_file_lines = nil,
+		-- 	enable = true,
+		-- 	extended_mode = false,
+		-- 	max_file_lines = nil,
 		-- },
 		modules = {},
 		ignore_install = { "" },
@@ -43,6 +43,9 @@ else
 		},
 		autotag = {
 			enable = true,
+			enable_rename = true,
+			enable_close = true,
+			enable_close_on_slash = false,
 		},
 		context_commentstring = {
 			enable = true,
