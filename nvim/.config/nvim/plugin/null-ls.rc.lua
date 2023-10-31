@@ -26,7 +26,7 @@ null_ls.setup({
 		diagnostics.stylelint,
 		diagnostics.yamllint,
 		diagnostics.jsonlint,
-		null_ls.builtins.diagnostics.eslint_d.with({ diagnostics_format = "[eslint] #{m}\n(#{c})" }),
+		-- null_ls.builtins.diagnostics.eslint_d.with({ diagnostics_format = "[eslint] #{m}\n(#{c})" }),
 		-- null_ls.builtins.diagnostics.eslint,
 		null_ls.builtins.diagnostics.fish,
 		-- MARK: Formatting

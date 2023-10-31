@@ -1,5 +1,6 @@
 return {
 
+	{ "jxnblk/vim-mdx-js" },
 	{
 		"svrana/neosolarized.nvim",
 		dependencies = {
