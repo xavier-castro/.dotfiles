@@ -109,13 +109,13 @@ else
 		},
 	})
 
-	nvim_lsp.eslint.setup({
-		on_attach = on_attach,
-		capabilities = capabilities,
-		settings = {
-			format = { enable = true },
-		},
-	})
+	-- nvim_lsp.eslint.setup({
+	-- 	on_attach = on_attach,
+	-- 	capabilities = capabilities,
+	-- 	settings = {
+	-- 		format = { enable = true },
+	-- 	},
+	-- })
 
 	nvim_lsp.flow.setup({
 		on_attach = on_attach,

@@ -60,7 +60,7 @@ null_ls.setup({
 })
 
 vim.api.nvim_create_user_command("ColorMyPencils", function(color)
-	color = "neosolarized"
+	color = "rose-pine"
 	vim.cmd.colorscheme(color)
 	vim.api.nvim_set_hl(0, "Normal", {
 		bg = "none",
