@@ -33,7 +33,6 @@ else
 		-- 	extended_mode = false,
 		-- 	max_file_lines = nil,
 		-- },
-		additional_vim_regex_highlighting = false,
 		modules = {},
 		ignore_install = { "" },
 		sync_install = false,

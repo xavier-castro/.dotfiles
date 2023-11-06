@@ -1,4 +1,5 @@
 return {
+	{ "ThePrimeagen/git-worktree.nvim" },
 	{ "jxnblk/vim-mdx-js" },
 	{
 		"svrana/neosolarized.nvim",
