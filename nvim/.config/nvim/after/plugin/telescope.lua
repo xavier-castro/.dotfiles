@@ -86,8 +86,8 @@ else
 	-- end)
 	--
 	-- Primeagen's worktree telescope functions
-	vim.keymap.set("n", ":gwt", "<cmd>:lua require('telescope').extensions.git_worktree.git_worktrees()")
-	vim.keymap.set("n", ":cgwt", "<cmd>:lua require('telescope').extensions.git_worktree.create_git_worktree()")
+	vim.keymap.set("n", ";gwt", "<cmd>:lua require('telescope').extensions.git_worktree.git_worktrees()")
+	vim.keymap.set("n", ";cgwt", "<cmd>:lua require('telescope').extensions.git_worktree.create_git_worktree()")
 
 	vim.keymap.set("n", ";c", function()
 		builtin.commands({
