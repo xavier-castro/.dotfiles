@@ -64,6 +64,7 @@ npm install turbo --global
 brew install commitizen
 brew install tig
 brew install todoist --cask
+brew install ripgrep
 ```
 
 ## Mac App Store Downloads
