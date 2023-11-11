@@ -1,3 +1,4 @@
+local utils = require("xavier.utils")
 --[[
 
 =====================================================================
@@ -112,7 +113,7 @@ require('lazy').setup({
   },
 
   -- Useful plugin to show you pending keybinds.
-  { 'folke/which-key.nvim', opts = {} },
+  { 'folke/which-key.nvim',  opts = {} },
   {
     -- Adds git related signs to the gutter, as well as utilities for managing changes
     'lewis6991/gitsigns.nvim',
@@ -153,11 +154,15 @@ require('lazy').setup({
   },
 
   {
-    -- Theme inspired by Atom
-    'navarasu/onedark.nvim',
+    -- Theme inspired by Rose-Pine
+    'rose-pine/neovim',
+    name = 'rose-pine',
     priority = 1000,
     config = function()
-      vim.cmd.colorscheme 'onedark'
+      require('rose-pine').setup({
+        disable_background = true,
+      })
+      vim.cmd.colorscheme('rose-pine')
     end,
   },
 
@@ -168,7 +173,7 @@ require('lazy').setup({
     opts = {
       options = {
         icons_enabled = false,
-        theme = 'onedark',
+        theme = 'rose-pine',
         component_separators = '|',
         section_separators = '',
       },
@@ -186,6 +191,65 @@ require('lazy').setup({
 
   -- "gc" to comment visual regions/lines
   { 'numToStr/Comment.nvim', opts = {} },
+
+  -- git-worktree.nvim
+  {
+    -- https://github.com/ThePrimeagen/git-worktree.nvim/pull/106
+    "brandoncc/git-worktree.nvim",
+    branch = "catch-and-handle-telescope-related-error",
+    lazy = true,
+    keys = {
+      {
+        "<leader>pf",
+        function()
+          local Job = require("plenary.job")
+
+          local current_file = vim.fn.resolve(vim.fn.expand("%"))
+          local file_directory = vim.fn.fnamemodify(current_file, ":p:h")
+          local branch_name = utils.branch_name(nil, file_directory)
+
+          Job:new({
+            command = "zellij",
+            args = {
+              "run",
+              "-f",
+              "--",
+              "fish",
+            },
+            cwd = file_directory,
+            on_exit = function()
+              Job:new({
+                command = "zellij",
+                args = {
+                  "action",
+                  "rename-pane",
+                  branch_name,
+                },
+              }):start()
+            end,
+          }):start()
+        end,
+        desc = "Open floating pane inside worktree",
+      },
+      {
+        "<leader>pw",
+        function()
+          vim.ui.input({ prompt = "Git branch: " }, function(branch)
+            local data = {}
+            data.git_branch = branch
+
+            vim.ui.input({ prompt = "Unique path: " }, function(path)
+              data.unique_path = path
+
+              require("git-worktree").create_worktree(data.unique_path, data.git_branch)
+            end)
+          end)
+        end,
+        desc = "Create new worktree",
+      },
+    },
+    config = true,
+  },
 
   -- Fuzzy Finder (files, lsp, etc)
   {
@@ -205,7 +269,91 @@ require('lazy').setup({
           return vim.fn.executable 'make' == 1
         end,
       },
+
     },
+    opts = function()
+      local actions = require("telescope.actions")
+      local action_state = require("telescope.actions.state")
+      local action_set = require("telescope.actions.set")
+
+      local opts = {
+        defaults = {
+          git_worktrees = vim.g.git_worktrees,
+          path_display = { "shorten" },
+          sorting_strategy = "ascending",
+          layout_config = {
+            horizontal = {
+              prompt_position = "top",
+              preview_width = 0.55,
+            },
+            vertical = {
+              mirror = false,
+            },
+            width = 0.87,
+            height = 0.80,
+            preview_cutoff = 120,
+          },
+
+          mappings = {
+            i = {
+              ["<C-l>"] = actions.cycle_history_next,
+              ["<C-h>"] = actions.cycle_history_prev,
+            },
+            n = {
+              ["q"] = actions.close,
+
+              ["ss"] = actions.select_horizontal,                            -- default: ["<C-x>"]
+              ["sv"] = actions.select_vertical,                              -- default: ["<C-v>"]
+              ["te"] = actions.select_tab,                                   -- default: ["<C-t>"]
+              ["Q"] = actions.send_selected_to_qflist + actions.open_qflist, -- default: ["<M-q>"]
+            },
+          },
+        },
+        extensions = {
+          undo = {
+            use_delta = false,
+          },
+        },
+        pickers = {
+          buffers = {
+            show_all_buffers = true,
+            sort_lastused = true,
+            mappings = {
+              n = {
+                ["<c-d>"] = actions.delete_buffer,
+                -- Re-use open buffer instead of opening a new window
+                -- Thanks: https://github.com/jensenojs/dotfiles/blob/08cef709e68b25b99173e3445291ff15b666226d/.config/nvim/lua/plugins/ide/telescope.lua#L139
+                -- ["<CR>"] = actions.select_tab_drop,
+              },
+            },
+          },
+          git_status = {
+            mappings = {
+              n = {
+                -- Fix selection not working for `.dotfiles` repo
+                ["<CR>"] = function(prompt_bufnr)
+                  local entry = action_state.get_selected_entry()
+                  local extracted_entry = getmetatable(entry)
+                  if extracted_entry.toplevel ~= nil then
+                    actions.close(prompt_bufnr)
+                    local selected_file = extracted_entry.toplevel .. "/" .. entry.value
+                    return vim.cmd("edit " .. selected_file)
+                  end
+                  action_set.select(prompt_bufnr, "default")
+                end,
+              },
+            },
+          },
+        },
+      }
+
+      return opts
+    end,
+    config = function(_, opts)
+      local telescope = require("telescope")
+      telescope.setup(opts)
+      telescope.load_extension('git_worktree')
+    end,
   },
 
   {
@@ -229,12 +377,19 @@ require('lazy').setup({
   --    Uncomment the following line and add your plugins to `lua/custom/plugins/*.lua` to get going.
   --
   --    For additional information see: https://github.com/folke/lazy.nvim#-structuring-your-plugins
-  -- { import = 'custom.plugins' },
+  { import = 'xavier.plugins' },
 }, {})
 
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
+
+-- Remove highlights off gitsigns
+vim.cmd([[
+  hi GitSignsAdd guibg=none
+  hi GitSignsChange guibg=none
+  hi GitSignsDelete guibg=none
+]])
 
 -- Set highlight on search
 vim.o.hlsearch = false
@@ -345,7 +500,7 @@ local function live_grep_git_root()
   local git_root = find_git_root()
   if git_root then
     require('telescope.builtin').live_grep({
-      search_dirs = {git_root},
+      search_dirs = { git_root },
     })
   end
 end
@@ -378,7 +533,8 @@ vim.keymap.set('n', '<leader>sr', require('telescope.builtin').resume, { desc = 
 vim.defer_fn(function()
   require('nvim-treesitter.configs').setup {
     -- Add languages to be installed here that you want installed for treesitter
-    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim', 'bash' },
+    ensure_installed = { 'c', 'cpp', 'go', 'lua', 'python', 'rust', 'tsx', 'javascript', 'typescript', 'vimdoc', 'vim',
+      'bash' },
 
     -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
     auto_install = false,
