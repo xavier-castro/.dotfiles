@@ -1,6 +1,8 @@
 local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
 local namespace = vim.api.nvim_create_namespace
+local utils = require("xavier.utils")
+local events = require("xavier.events")
 
 local is_available = utils.is_available
 local MAX_WIN_HISTORY_LENGTH = 4
