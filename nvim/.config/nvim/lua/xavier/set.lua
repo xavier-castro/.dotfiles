@@ -50,7 +50,13 @@ vim.opt.softtabstop = 4
 vim.opt.shiftwidth = 4
 
 -- Add cursor line
-vim.opt.cursorline = false
+vim.opt.cursorline = true
+
+-- Add color column
+vim.opt.colorcolumn = '80'
+
+-- Nicer layout
+vim.opt.scrolloff = 8
 
 -- Make command height permanently 1
 vim.opt.cmdheight = 1
