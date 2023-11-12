@@ -16,9 +16,6 @@ vim.o.mouse = 'a'
 --  See `:help 'clipboard'`
 vim.o.clipboard = 'unnamedplus'
 
--- Enable break indent
-vim.o.breakindent = true
-
 -- Save undo history
 vim.o.undofile = true
 
@@ -39,4 +36,30 @@ vim.o.completeopt = 'menuone,noselect'
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
+-- Make cursor a block permanent
+vim.opt.guicursor = ''
 
+-- Tab settings
+vim.opt.smartindent = true
+vim.opt.smarttab = true
+vim.opt.breakindent = true
+vim.opt.autoindent = true
+vim.opt.expandtab = true
+vim.opt.tabstop = 4
+vim.opt.softtabstop = 4
+vim.opt.shiftwidth = 4
+
+-- Add cursor line
+vim.opt.cursorline = false
+
+-- Make command height permanently 1
+vim.opt.cmdheight = 1
+
+-- Make last status show 2 lines
+vim.opt.laststatus = 2
+
+-- Disable wraaping on default
+vim.opt.wrap = false
+
+-- Hide redundant mode
+vim.opt.showmode = false

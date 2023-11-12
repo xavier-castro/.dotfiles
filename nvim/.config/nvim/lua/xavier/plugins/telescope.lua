@@ -126,7 +126,7 @@ return {
           local function telescope_buffer_dir()
             return vim.fn.expand '%:p:h'
           end
-          require("telescope").extensions.file_browser.file_browser {
+          require('telescope').extensions.file_browser.file_browser {
             path = '%:p:h',
             cwd = telescope_buffer_dir(),
             respect_gitignore = false,
@@ -147,6 +147,13 @@ return {
           require('telescope.builtin').resume()
         end,
         desc = 'Resume last telescope session',
+      },
+      {
+        '<c-p>',
+        function()
+          require('telescope.builtin').git_files()
+        end,
+        desc = 'Show all git files in workspace',
       },
       {
         '<leader>fb',
