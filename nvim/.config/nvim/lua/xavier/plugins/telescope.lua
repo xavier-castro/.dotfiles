@@ -314,6 +314,13 @@ return {
         end,
         desc = 'Git status',
       },
+      {
+        '<leader>f<Space>',
+        function()
+          require('telescope.builtin').current_buffer_fuzzy_find()
+        end,
+        desc = 'Search within current file',
+      },
     },
     opts = function()
       local actions = require 'telescope.actions'
