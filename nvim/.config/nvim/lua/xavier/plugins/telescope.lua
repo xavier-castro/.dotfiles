@@ -121,7 +121,7 @@ return {
     },
     keys = {
       {
-        ';;',
+        '<leader>;;',
         function()
           local function telescope_buffer_dir()
             return vim.fn.expand '%:p:h'
@@ -196,6 +196,13 @@ return {
           require('telescope.builtin').grep_string()
         end,
         desc = 'Find word under cursor',
+      },
+      {
+        '<leader>fo',
+        function()
+          require('telescope.builtin').oldfiles()
+        end,
+        desc = 'Old files',
       },
       {
         '<leader>ff',
