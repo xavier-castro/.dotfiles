@@ -330,6 +330,15 @@ return {
       require('telescope').load_extension 'ui-select'
 
       local opts = {
+        file_ignore_patterns = {
+          'node_modules',
+          'vendor',
+          'dist',
+          'build',
+          'target',
+          'yarn.lock',
+          'package-lock.json',
+        },
         defaults = {
           git_worktrees = vim.g.git_worktrees,
           path_display = { 'shorten' },

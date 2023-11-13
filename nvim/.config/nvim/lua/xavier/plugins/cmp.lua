@@ -62,7 +62,7 @@ return {
           { name = 'nvim_lua' },
         },
         mapping = {
-          ['<C-y>'] = cmp.mapping.confirm { select = false },
+          ['<C-f>'] = cmp.mapping.confirm { select = false },
           ['<C-e>'] = cmp.mapping.abort(),
           -- Do not implement luasnip supertab because
           -- we need this on copilot
@@ -85,14 +85,14 @@ return {
             select = false,
           },
           ['<C-Space>'] = cmp.mapping.complete(),
-          ['<C-k>'] = cmp.mapping(function(fallback)
+          ['<C-j>'] = cmp.mapping(function(fallback)
             if luasnip.jumpable(1) then
               luasnip.jump(1)
             else
               fallback()
             end
           end, { 'i', 's' }),
-          ['<C-j>'] = cmp.mapping(function(fallback)
+          ['<C-k>'] = cmp.mapping(function(fallback)
             if luasnip.jumpable(-1) then
               luasnip.jump(-1)
             else
@@ -105,11 +105,6 @@ return {
           documentation = cmp.config.window.bordered(border_opts),
         },
       }
-
-      -- Setup `codeium.nvim` after `cmp`
-      if utils.is_available 'codeium.nvim' then
-        require 'codeium'
-      end
     end,
   },
 }
