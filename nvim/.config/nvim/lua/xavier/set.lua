@@ -69,3 +69,4 @@ vim.opt.wrap = false
 
 -- Hide redundant mode
 vim.opt.showmode = false
+
