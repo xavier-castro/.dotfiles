@@ -30,6 +30,7 @@ return {
       { 'L3MON4D3/LuaSnip' },
       { 'saadparwaiz1/cmp_luasnip' },
       { 'hrsh7th/cmp-nvim-lua' },
+      { 'hrsh7th/cmp-path' },
     },
     config = function()
       local cmp = require 'cmp'
@@ -60,6 +61,7 @@ return {
           { name = 'luasnip' },
           { name = 'nvim_lsp' },
           { name = 'nvim_lua' },
+          { name = 'path' },
         },
         mapping = {
           ['<C-f>'] = cmp.mapping.confirm { select = false },

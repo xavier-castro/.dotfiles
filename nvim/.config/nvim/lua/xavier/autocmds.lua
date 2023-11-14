@@ -106,6 +106,21 @@ autocmd('BufEnter', {
   group = general,
   desc = 'Disable bg on gitsigns',
 })
+
+-- Remember folds on load
+vim.api.nvim_create_autocmd('BufWritePre', {
+  pattern = '*',
+  callback = function()
+    vim.cmd [[
+    augroup remember_folds
+      autocmd!
+      au BufWinLeave ?* mkview 1
+      au BufWinEnter ?* silent! loadview 1
+    augroup END
+]]
+  end,
+})
+
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
 local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
