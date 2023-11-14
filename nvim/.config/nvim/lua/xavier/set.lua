@@ -70,3 +70,9 @@ vim.opt.wrap = false
 -- Hide redundant mode
 vim.opt.showmode = false
 
+-- Get rid of swap files
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
+
