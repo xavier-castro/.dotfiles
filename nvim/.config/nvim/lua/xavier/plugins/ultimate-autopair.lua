@@ -7,7 +7,4 @@ return {
   opts = {
     --Config goes here
   },
-
-  -- Don't know where else to put this
-  { 'tpope/vim-sleuth' },
 }
