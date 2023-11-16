@@ -46,70 +46,12 @@ end
 return {
   { 'nvim-lua/plenary.nvim' },
 
-  -- git-worktree.nvim
-  {
-    -- https://github.com/ThePrimeagen/git-worktree.nvim/pull/106
-    'brandoncc/git-worktree.nvim',
-    branch = 'catch-and-handle-telescope-related-error',
-    lazy = true,
-    keys = {
-      {
-        '<leader>pf',
-        function()
-          local Job = require 'plenary.job'
-
-          local current_file = vim.fn.resolve(vim.fn.expand '%')
-          local file_directory = vim.fn.fnamemodify(current_file, ':p:h')
-          local branch_name = utils.branch_name(nil, file_directory)
-
-          Job:new({
-            command = 'zellij',
-            args = {
-              'run',
-              '-f',
-              '--',
-              'fish',
-            },
-            cwd = file_directory,
-            on_exit = function()
-              Job:new({
-                command = 'zellij',
-                args = {
-                  'action',
-                  'rename-pane',
-                  branch_name,
-                },
-              }):start()
-            end,
-          }):start()
-        end,
-        desc = 'Open floating pane inside worktree',
-      },
-      {
-        '<leader>pw',
-        function()
-          vim.ui.input({ prompt = 'Git branch: ' }, function(branch)
-            local data = {}
-            data.git_branch = branch
-
-            vim.ui.input({ prompt = 'Unique path: ' }, function(path)
-              data.unique_path = path
-
-              require('git-worktree').create_worktree(data.unique_path, data.git_branch)
-            end)
-          end)
-        end,
-        desc = 'Create new worktree',
-      },
-    },
-    config = true,
-  },
-
   -- telescope.nvim
   {
     'nvim-telescope/telescope.nvim',
     dependencies = {
       { 'nvim-telescope/telescope-live-grep-args.nvim' },
+      { 'ThePrimeagen/git-worktree.nvim' },
       { 'nvim-telescope/telescope-file-browser.nvim' },
       { 'nvim-telescope/telescope-ui-select.nvim' },
       {
@@ -456,7 +398,7 @@ return {
       conditional_func(telescope.load_extension, utils.is_available 'live_grep_args')
       conditional_func(telescope.load_extension, utils.is_available 'telescope-undo.nvim', 'undo')
       -- https://github.com/ThePrimeagen/git-worktree.nvim
-      conditional_func(telescope.load_extension, utils.is_available 'git-worktree.nvim', 'git_worktree')
+      conditional_func(telescope.load_extension, utils.is_available 'git_worktree')
       -- https://github.com/rmagatti/auto-session#-session-lens
       conditional_func(telescope.load_extension, utils.is_available 'auto-sessions', 'session-lens')
     end,
