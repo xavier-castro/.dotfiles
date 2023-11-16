@@ -1,42 +1,80 @@
 vim.g.mapleader = " "
+-- [[ Setting options ]]
+-- See `:help vim.o`
+-- NOTE: You can change these options as you wish!
 
-vim.scriptencoding = "utf-8"
-vim.opt.encoding = "utf-8"
-vim.opt.fileencoding = "utf-8"
+-- Set highlight on search
+vim.o.hlsearch = false
 
-vim.opt.number = true
+-- Make line numbers default
+vim.wo.number = true
+
+-- Enable mouse mode
+vim.o.mouse = "a"
+
+-- Sync clipboard between OS and Neovim.
+--  Remove this option if you want your OS clipboard to remain independent.
+--  See `:help 'clipboard'`
+vim.o.clipboard = "unnamedplus"
+
+-- Save undo history
+vim.o.undofile = true
+
+-- Case-insensitive searching UNLESS \C or capital in search
+vim.o.ignorecase = true
+vim.o.smartcase = true
+
 -- Keep signcolumn on by default
 vim.wo.signcolumn = "yes"
+
+-- Decrease update time
+vim.o.updatetime = 250
+vim.o.timeoutlen = 300
+
+-- Set completeopt to have a better completion experience
+vim.o.completeopt = "menuone,noselect"
+
+-- NOTE: You should make sure your terminal supports this
+vim.o.termguicolors = true
+
+-- Make cursor a block permanent
 vim.opt.guicursor = ""
-vim.opt.title = true
-vim.opt.autoindent = true
+
+-- Tab settings
 vim.opt.smartindent = true
-vim.opt.hlsearch = true
-vim.opt.backup = false
-vim.opt.showcmd = true
-vim.opt.cmdheight = 1
-vim.opt.laststatus = 2
-vim.opt.expandtab = true
-vim.opt.scrolloff = 10
-vim.opt.shell = "fish"
-vim.opt.backupskip = { "/tmp/*", "/private/tmp/*" }
-vim.opt.inccommand = "split"
-vim.opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
 vim.opt.smarttab = true
 vim.opt.breakindent = true
-vim.opt.shiftwidth = 2
+vim.opt.autoindent = true
+vim.opt.expandtab = true
 vim.opt.tabstop = 2
-vim.opt.wrap = false -- No Wrap lines
-vim.opt.backspace = { "start", "eol", "indent" }
-vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
-vim.opt.wildignore:append({ "*/node_modules/*" })
-vim.opt.splitbelow = true -- Put new windows below current
-vim.opt.splitright = true -- Put new windows right of current
-vim.opt.splitkeep = "cursor"
-vim.opt.mouse = ""
+vim.opt.shiftwidth = 2
+
+-- Add cursor line
+vim.opt.cursorline = true
+
+-- Add color column
+vim.opt.colorcolumn = "80"
+
+-- Nicer layout
+vim.opt.scrolloff = 8
+
+-- Make command height permanently 1
+vim.opt.cmdheight = 1
+
+-- Make last status show 2 lines
+vim.opt.laststatus = 2
+
+-- Disable wraaping on default
+vim.opt.wrap = false
+
+-- Hide redundant mode
+vim.opt.showmode = false
+
+-- Get rid of swap files
 vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
 
 -- Undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
