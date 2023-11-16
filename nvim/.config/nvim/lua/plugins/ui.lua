@@ -61,15 +61,16 @@ return {
 	},
 
 	-- animations
-	{
-		"echasnovski/mini.animate",
-		event = "VeryLazy",
-		opts = function(_, opts)
-			opts.scroll = {
-				enable = false,
-			}
-		end,
-	},
+	-- {
+	-- 	"echasnovski/mini.animate",
+	-- 	event = "VeryLazy",
+	-- 	opts = function(_, opts)
+	-- 		opts.scroll = {
+	-- 			enable = false,
+	-- 		}
+	--
+	-- 	end,
+	-- },
 
 	-- buffer line
 	{

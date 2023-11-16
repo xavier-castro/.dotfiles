@@ -5,7 +5,8 @@ vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
 
 vim.opt.number = true
-
+-- Keep signcolumn on by default
+vim.wo.signcolumn = "yes"
 vim.opt.guicursor = ""
 vim.opt.title = true
 vim.opt.autoindent = true

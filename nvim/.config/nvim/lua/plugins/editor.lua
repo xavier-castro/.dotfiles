@@ -45,6 +45,8 @@ return {
 		},
 	},
 
+	{ "ThePrimeagen/git-worktree.nvim" },
+
 	{
 		"christoomey/vim-tmux-navigator",
 		lazy = false,
@@ -156,6 +158,20 @@ return {
 				end,
 				desc = "Open File Browser with the path of the current buffer",
 			},
+			{
+				";gwt",
+				function()
+					require("telescope").extensions.git_worktree.git_worktrees()
+				end,
+				desc = "List git worktrees",
+			},
+			{
+				";gwc",
+				function()
+					require("telescope").extensions.git_worktree.create_git_worktree()
+				end,
+				desc = "Create git worktree",
+			},
 		},
 		config = function(_, opts)
 			local telescope = require("telescope")
@@ -212,6 +228,7 @@ return {
 				},
 			}
 			telescope.setup(opts)
+			require("telescope").load_extension("git_worktree")
 			require("telescope").load_extension("fzf")
 			require("telescope").load_extension("file_browser")
 		end,
