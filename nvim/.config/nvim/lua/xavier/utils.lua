@@ -1,154 +1,126 @@
--- https://github.com/EmmanuelOga/columns/blob/master/utils/color.lua
-
 local M = {}
 
-local hexChars = "0123456789abcdef"
+--- Check if a list of strings has a value
+--- @param options string[] # The list of strings to check
+--- @param val string # The value to check
+function M.has_value(options, val)
+  for _, value in ipairs(options) do
+    if value == val then
+      return true
+    end
+  end
 
-function M.hex_to_rgb(hex)
-	hex = string.lower(hex)
-	local ret = {}
-	for i = 0, 2 do
-		local char1 = string.sub(hex, i * 2 + 2, i * 2 + 2)
-		local char2 = string.sub(hex, i * 2 + 3, i * 2 + 3)
-		local digit1 = string.find(hexChars, char1) - 1
-		local digit2 = string.find(hexChars, char2) - 1
-		ret[i + 1] = (digit1 * 16 + digit2) / 255.0
-	end
-	return ret
+  return false
 end
 
---[[
- * Converts an RGB color value to HSL. Conversion formula
- * adapted from http://en.wikipedia.org/wiki/HSL_color_space.
- * Assumes r, g, and b are contained in the set [0, 255] and
- * returns h, s, and l in the set [0, 1].
- *
- * @param   Number  r       The red color value
- * @param   Number  g       The green color value
- * @param   Number  b       The blue color value
- * @return  Array           The HSL representation
-]]
-function M.rgbToHsl(r, g, b)
-	local max, min = math.max(r, g, b), math.min(r, g, b)
-	local h = 0
-	local s = 0
-	local l = 0
-
-	l = (max + min) / 2
-
-	if max == min then
-		h, s = 0, 0 -- achromatic
-	else
-		local d = max - min
-		if l > 0.5 then
-			s = d / (2 - max - min)
-		else
-			s = d / (max + min)
-		end
-		if max == r then
-			h = (g - b) / d
-			if g < b then
-				h = h + 6
-			end
-		elseif max == g then
-			h = (b - r) / d + 2
-		elseif max == b then
-			h = (r - g) / d + 4
-		end
-		h = h / 6
-	end
-
-	return h * 360, s * 100, l * 100
+--- Check if a plugin is defined in lazy. Useful with lazy loading when a plugin is not necessarily loaded yet
+---@param plugin string # The plugin to search for
+---@return boolean available # Whether the plugin is available
+function M.is_available(plugin)
+  local lazy_config_avail, lazy_config = pcall(require, 'lazy.core.config')
+  return lazy_config_avail and lazy_config.plugins[plugin] ~= nil
 end
 
---[[
- * Converts an HSL color value to RGB. Conversion formula
- * adapted from http://en.wikipedia.org/wiki/HSL_color_space.
- * Assumes h, s, and l are contained in the set [0, 1] and
- * returns r, g, and b in the set [0, 255].
- *
- * @param   Number  h       The hue
- * @param   Number  s       The saturation
- * @param   Number  l       The lightness
- * @return  Array           The RGB representation
-]]
-function M.hslToRgb(h, s, l)
-	local r, g, b
-
-	if s == 0 then
-		r, g, b = l, l, l -- achromatic
-	else
-		function hue2rgb(p, q, t)
-			if t < 0 then
-				t = t + 1
-			end
-			if t > 1 then
-				t = t - 1
-			end
-			if t < 1 / 6 then
-				return p + (q - p) * 6 * t
-			end
-			if t < 1 / 2 then
-				return q
-			end
-			if t < 2 / 3 then
-				return p + (q - p) * (2 / 3 - t) * 6
-			end
-			return p
-		end
-
-		local q
-		if l < 0.5 then
-			q = l * (1 + s)
-		else
-			q = l + s - l * s
-		end
-		local p = 2 * l - q
-
-		r = hue2rgb(p, q, h + 1 / 3)
-		g = hue2rgb(p, q, h)
-		b = hue2rgb(p, q, h - 1 / 3)
-	end
-
-	return r * 255, g * 255, b * 255
+--- Call function if a condition is met
+---@param func function # The function to run
+---@param condition boolean # Wether to run the function or not
+---@return any|nil result # The result of the function running or nil
+function M.conditional_func(func, condition, ...)
+  if condition and type(func) == 'function' then
+    return func(...)
+  end
 end
 
-function M.hexToHSL(hex)
-	local hsluv = require("solarized-osaka.hsluv")
-	local rgb = M.hex_to_rgb(hex)
-	local h, s, l = M.rgbToHsl(rgb[1], rgb[2], rgb[3])
+--- Get the first worktree that a file belongs to (from a predefined list of worktrees only)
+--- Very useful for `.dotfiles` repository
+---
+--- Thanks AstroNvim!!
+--- https://astronvim.com/Recipes/detached_git_worktrees
+---
+---@param file string? the file to check, defaults to the current file
+---@param worktrees table<string, string>[]? an array like table of worktrees with entries `toplevel` and `gitdir`, default retrieves from `vim.g.git_worktrees`
+---@return table<string, string>|nil # a table specifying the `toplevel` and `gitdir` of a worktree or nil if not found
+function M.file_worktree(file, worktrees)
+  worktrees = worktrees or vim.g.git_worktrees
+  if not worktrees then
+    return
+  end
+  file = file or vim.fn.resolve(vim.fn.expand '%')
 
-	return string.format("hsl(%d, %d, %d)", math.floor(h + 0.5), math.floor(s + 0.5), math.floor(l + 0.5))
+  if string.find(file, 'neo-tree', 1, true) then
+    -- Not valid file, use a directory
+    file = vim.fn.fnamemodify(file, ':p:h')
+  end
+
+  for _, worktree in ipairs(worktrees) do
+    if
+      M.cmd({
+        'git',
+        '--work-tree',
+        worktree.toplevel,
+        '--git-dir',
+        worktree.gitdir,
+        'ls-files',
+        '--error-unmatch',
+        file,
+      }, false)
+    then
+      return worktree
+    end
+  end
 end
 
---[[
- * Converts an HSL color value to RGB in Hex representation.
- * @param   Number  h       The hue
- * @param   Number  s       The saturation
- * @param   Number  l       The lightness
- * @return  String           The hex representation
-]]
-function M.hslToHex(h, s, l)
-	local r, g, b = M.hslToRgb(h / 360, s / 100, l / 100)
-
-	return string.format("#%02x%02x%02x", r, g, b)
+--- Run a shell command and capture the output and if the command succeeded or failed
+---
+--- Thanks AstroNvim!!
+---
+---@param cmd string|string[] The terminal command to execute
+---@param show_error? boolean Whether or not to show an unsuccessful command as an error to the user
+---@return string|nil # The result of a successfully executed command or nil
+function M.cmd(cmd, show_error)
+  if type(cmd) == 'string' then
+    cmd = { cmd }
+  end
+  if vim.fn.has 'win32' == 1 then
+    cmd = vim.list_extend({ 'cmd.exe', '/C' }, cmd)
+  end
+  local result = vim.fn.system(cmd)
+  local success = vim.api.nvim_get_vvar 'shell_error' == 0
+  if not success and (show_error == nil or show_error) then
+    vim.api.nvim_err_writeln(('Error running command %s\nError message:\n%s'):format(table.concat(cmd, ' '), result))
+  end
+  return success and result:gsub('[\27\155][][()#;?%d]*[A-PRZcf-ntqry=><~]', '') or nil
 end
 
-function M.replaceHexWithHSL()
-	-- Get the current line number
-	local line_number = vim.api.nvim_win_get_cursor(0)[1]
+--- Get the focused buffer filetype from a window id
+--- @param winid number # The window id to get the filetype from
+--- @return string filetype # The filetype of the focused buffer
+function M.buf_filetype_from_winid(winid)
+  local bufnr = vim.api.nvim_win_get_buf(winid)
+  local filetype = vim.bo[bufnr].filetype
+  return filetype
+end
 
-	-- Get the line content
-	local line_content = vim.api.nvim_buf_get_lines(0, line_number - 1, line_number, false)[1]
+--- Get the branch name with git-dir and worktree support
+--- @param worktree table<string, string>|nil # a table specifying the `toplevel` and `gitdir` of a worktree
+--- @param as_path string|nil # execute the git command from specific path
+--- @return string branch # The branch name
+function M.branch_name(worktree, as_path)
+  local branch
 
-	-- Find hex code patterns and replace them
-	for hex in line_content:gmatch("#[0-9a-fA-F]+") do
-		local hsl = M.hexToHSL(hex)
-		line_content = line_content:gsub(hex, hsl)
-	end
+  if worktree then
+    branch = vim.fn.system(("git --git-dir=%s --work-tree=%s branch --show-current 2> /dev/null | tr -d '\n'"):format(worktree.gitdir, worktree.toplevel))
+  elseif as_path then
+    branch = vim.fn.system(("git -C %s branch --show-current 2> /dev/null | tr -d '\n'"):format(as_path))
+  else
+    branch = vim.fn.system "git branch --show-current 2> /dev/null | tr -d '\n'"
+  end
 
-	-- Set the line content back
-	vim.api.nvim_buf_set_lines(0, line_number - 1, line_number, false, { line_content })
+  if branch ~= '' then
+    return branch
+  else
+    return ''
+  end
 end
 
 return M

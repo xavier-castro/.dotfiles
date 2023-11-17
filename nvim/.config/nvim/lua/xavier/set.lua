@@ -1,4 +1,3 @@
-vim.g.mapleader = " "
 -- [[ Setting options ]]
 -- See `:help vim.o`
 -- NOTE: You can change these options as you wish!
@@ -10,12 +9,12 @@ vim.o.hlsearch = false
 vim.wo.number = true
 
 -- Enable mouse mode
-vim.o.mouse = "a"
+vim.o.mouse = 'a'
 
 -- Sync clipboard between OS and Neovim.
 --  Remove this option if you want your OS clipboard to remain independent.
 --  See `:help 'clipboard'`
-vim.o.clipboard = "unnamedplus"
+vim.o.clipboard = 'unnamedplus'
 
 -- Save undo history
 vim.o.undofile = true
@@ -25,20 +24,20 @@ vim.o.ignorecase = true
 vim.o.smartcase = true
 
 -- Keep signcolumn on by default
-vim.wo.signcolumn = "yes"
+vim.wo.signcolumn = 'yes'
 
 -- Decrease update time
 vim.o.updatetime = 250
 vim.o.timeoutlen = 300
 
 -- Set completeopt to have a better completion experience
-vim.o.completeopt = "menuone,noselect"
+vim.o.completeopt = 'menuone,noselect'
 
 -- NOTE: You should make sure your terminal supports this
 vim.o.termguicolors = true
 
 -- Make cursor a block permanent
-vim.opt.guicursor = ""
+vim.opt.guicursor = ''
 
 -- Tab settings
 vim.opt.smartindent = true
@@ -47,13 +46,14 @@ vim.opt.breakindent = true
 vim.opt.autoindent = true
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
 vim.opt.shiftwidth = 2
 
 -- Add cursor line
 vim.opt.cursorline = true
 
 -- Add color column
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = '80'
 
 -- Nicer layout
 vim.opt.scrolloff = 8
@@ -75,17 +75,3 @@ vim.opt.swapfile = false
 vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
-
--- Undercurl
-vim.cmd([[let &t_Cs = "\e[4:3m"]])
-vim.cmd([[let &t_Ce = "\e[4:0m"]])
-
--- Add asterisks in block comments
-vim.opt.formatoptions:append({ "r" })
-
-vim.cmd([[au BufNewFile,BufRead *.astro setf astro]])
-vim.cmd([[au BufNewFile,BufRead Podfile setf ruby]])
-
-if vim.fn.has("nvim-0.8") == 1 then
-	vim.opt.cmdheight = 0
-end
