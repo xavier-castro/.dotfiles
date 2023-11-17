@@ -53,7 +53,7 @@ vim.opt.shiftwidth = 2
 vim.opt.cursorline = true
 
 -- Add color column
-vim.opt.colorcolumn = '80'
+-- vim.opt.colorcolumn = '80'
 
 -- Nicer layout
 vim.opt.scrolloff = 8

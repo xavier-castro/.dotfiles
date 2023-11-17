@@ -14,7 +14,8 @@ local get_delta_previewer = function(previewers, mode, worktree)
       local args = { 'git', 'diff' }
 
       -- Make it compatible with `.dotfiles`
-      local worktree_match = worktree or utils.file_worktree() -- don't rely on `utils.file_worktree()` in here. Prefer the passing the param.
+      local worktree_match = worktree or
+      utils.file_worktree()                                    -- don't rely on `utils.file_worktree()` in here. Prefer the passing the param.
       if worktree_match ~= nil then
         table.insert(args, 2, ('--work-tree=%s'):format(worktree_match.toplevel))
         table.insert(args, 2, ('--git-dir=%s'):format(worktree_match.gitdir))
@@ -27,11 +28,11 @@ local get_delta_previewer = function(previewers, mode, worktree)
         table.insert(args, vim.fn.expand '#:p')
       elseif mode == 'commits' then
         table.insert(args, entry.value .. '^!')
-      -- git status
+        -- git status
       elseif mode == 'status' then
         local value = worktree_match and ('%s/%s'):format(worktree_match.toplevel, entry.value) or entry.value
         table.insert(args, value)
-      -- fallback
+        -- fallback
       else
         table.insert(args, entry.value .. '^!')
       end
@@ -54,6 +55,7 @@ return {
       { 'ThePrimeagen/git-worktree.nvim' },
       { 'nvim-telescope/telescope-file-browser.nvim' },
       { 'nvim-telescope/telescope-ui-select.nvim' },
+      { "keyvchan/telescope-find-pickers.nvim" },
       {
         'nvim-telescope/telescope-fzf-native.nvim',
         enabled = vim.fn.executable 'make' == 1,
@@ -63,7 +65,7 @@ return {
     },
     keys = {
       {
-        '<leader>;;',
+        ';;',
         function()
           local function telescope_buffer_dir()
             return vim.fn.expand '%:p:h'
@@ -313,9 +315,9 @@ return {
             n = {
               ['q'] = actions.close,
 
-              ['ss'] = actions.select_horizontal, -- default: ["<C-x>"]
-              ['sv'] = actions.select_vertical, -- default: ["<C-v>"]
-              ['te'] = actions.select_tab, -- default: ["<C-t>"]
+              ['ss'] = actions.select_horizontal,                            -- default: ["<C-x>"]
+              ['sv'] = actions.select_vertical,                              -- default: ["<C-v>"]
+              ['te'] = actions.select_tab,                                   -- default: ["<C-t>"]
               ['Q'] = actions.send_selected_to_qflist + actions.open_qflist, -- default: ["<M-q>"]
             },
           },
@@ -393,6 +395,10 @@ return {
       local telescope = require 'telescope'
       telescope.setup(opts)
       local conditional_func = utils.conditional_func
+      require("telescope").load_extension("file_browser")
+      require("telescope").load_extension("find_pickers")
+      require("telescope").load_extension("fzf")
+      require("telescope").load_extension("ui-select")
       conditional_func(telescope.load_extension, utils.is_available 'telescope-fzf-native.nvim', 'fzf')
       -- https://github.com/nvim-telescope/telescope-live-grep-args.nvim
       conditional_func(telescope.load_extension, utils.is_available 'live_grep_args')
