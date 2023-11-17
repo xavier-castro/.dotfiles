@@ -24,14 +24,6 @@ vim.api.nvim_create_autocmd("BufEnter", {
 
 vim.api.nvim_create_autocmd("BufEnter", {
 	callback = function()
-		vim.cmd([[
-      set list!
-    ]])
-	end,
-})
-
-vim.api.nvim_create_autocmd("BufEnter", {
-	callback = function()
 		-- Remove highlights off gitsigns
 		vim.cmd([[
   hi GitSignsAdd guibg=none
