@@ -15,7 +15,7 @@ local get_delta_previewer = function(previewers, mode, worktree)
 
       -- Make it compatible with `.dotfiles`
       local worktree_match = worktree or
-      utils.file_worktree()                                    -- don't rely on `utils.file_worktree()` in here. Prefer the passing the param.
+          utils.file_worktree() -- don't rely on `utils.file_worktree()` in here. Prefer the passing the param.
       if worktree_match ~= nil then
         table.insert(args, 2, ('--work-tree=%s'):format(worktree_match.toplevel))
         table.insert(args, 2, ('--git-dir=%s'):format(worktree_match.gitdir))
@@ -408,5 +408,26 @@ return {
       -- https://github.com/rmagatti/auto-session#-session-lens
       conditional_func(telescope.load_extension, utils.is_available 'auto-sessions', 'session-lens')
     end,
+  },
+  {
+    "theprimeagen/harpoon",
+    config = function()
+      local mark = require("harpoon.mark");
+      local ui = require("harpoon.ui");
+      vim.keymap.set("n", "<leader>a", mark.add_file);
+      vim.keymap.set("n", ";e", ui.toggle_quick_menu);
+      vim.keymap.set("n", "<M-h>", function()
+        ui.nav_file(1);
+      end);
+      vim.keymap.set("n", "<M-j>", function()
+        ui.nav_file(2);
+      end);
+      vim.keymap.set("n", "<M-k>", function()
+        ui.nav_file(3);
+      end);
+      vim.keymap.set("n", "<M-l>", function()
+        ui.nav_file(4);
+      end);
+    end
   },
 }

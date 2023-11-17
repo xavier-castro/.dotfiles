@@ -54,16 +54,16 @@ function M.file_worktree(file, worktrees)
 
   for _, worktree in ipairs(worktrees) do
     if
-      M.cmd({
-        'git',
-        '--work-tree',
-        worktree.toplevel,
-        '--git-dir',
-        worktree.gitdir,
-        'ls-files',
-        '--error-unmatch',
-        file,
-      }, false)
+        M.cmd({
+          'git',
+          '--work-tree',
+          worktree.toplevel,
+          '--git-dir',
+          worktree.gitdir,
+          'ls-files',
+          '--error-unmatch',
+          file,
+        }, false)
     then
       return worktree
     end
@@ -109,7 +109,8 @@ function M.branch_name(worktree, as_path)
   local branch
 
   if worktree then
-    branch = vim.fn.system(("git --git-dir=%s --work-tree=%s branch --show-current 2> /dev/null | tr -d '\n'"):format(worktree.gitdir, worktree.toplevel))
+    branch = vim.fn.system(("git --git-dir=%s --work-tree=%s branch --show-current 2> /dev/null | tr -d '\n'"):format(
+      worktree.gitdir, worktree.toplevel))
   elseif as_path then
     branch = vim.fn.system(("git -C %s branch --show-current 2> /dev/null | tr -d '\n'"):format(as_path))
   else
