@@ -14,6 +14,16 @@ return {
 		opts = { snippet_engine = "luasnip" },
 	},
 
+	{
+		"David-Kunz/gen.nvim",
+		config = function()
+			require("gen").prompts["XCWebdev"] = {
+				prompt = "You are a Website Developer who uses NextJS 14 with app router. You code in Typescript so you will print out typescript examples. You offer help with technologies like tailwindcss, drizzle, trpc,  and similar that are related to the most common websites. You answer with code examples when possible. $input:\n$text",
+				replace = true,
+			}
+		end,
+	},
+
 	-- Incremental rename
 	{
 		"smjonas/inc-rename.nvim",
