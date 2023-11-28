@@ -64,6 +64,7 @@ return {
       },
       { 'debugloop/telescope-undo.nvim' },
     },
+    event = "VimEnter",
     keys = {
       {
         ';;',
@@ -122,11 +123,25 @@ return {
         desc = 'Keymaps',
       },
       {
-        '<leader>fm',
+        '<leader>fM',
         function()
           require('telescope.builtin').man_pages()
         end,
         desc = 'Man pages',
+      },
+      {
+        '<leader>cs',
+        function()
+          require('telescope.builtin').colorscheme()
+        end,
+        desc = 'Show colorschemes'
+      },
+      {
+        '<leader>fm',
+        function()
+          require('telescope.builtin').marks()
+        end,
+        desc = 'Marks'
       },
       {
         '<leader>fr',
@@ -166,6 +181,13 @@ return {
           }
         end,
         desc = 'Find files (hidden)',
+      },
+      {
+        '<leader>fj',
+        function()
+          require('telescope.builtin').jumplist()
+        end,
+        desc = 'Jump List'
       },
       {
         '<leader>fw',
@@ -312,7 +334,17 @@ return {
             height = 0.80,
             preview_cutoff = 120,
           },
-
+          vimgrep_arguments = {
+            'rg',
+            '--color=never',
+            '--no-heading',
+            '--with-filename',
+            '--line-number',
+            '--column',
+            '--smart-case',
+            '--ignore-file',
+            '.gitignore'
+          },
           mappings = {
             i = {
               ['<C-l>'] = actions.cycle_history_next,
@@ -332,7 +364,7 @@ return {
           frecency = {
             show_scores = false,
             show_unindexed = true,
-            ignore_patterns = { "*.git/*", "*/tmp/*" },
+            ignore_patterns = { "*.git/*", "*/tmp/*", "node_modules", "lazy-lock.json" },
             disable_devicons = false,
             workspaces = {
               ["dev"] = "/Users/xc/Developer"

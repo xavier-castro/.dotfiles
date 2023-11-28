@@ -1,0 +1,41 @@
+{
+  "TS Functional Component inheritance": {
+    "prefix": "xcfcc",
+    "body": [
+      "",
+      "import { cn } from '@/lib/utils'",
+      "import { FC, HTMLAttributes } from 'react'",
+      "",
+      "interface ${1}Props extends HTMLAttributes<HTMLDivElement> {}",
+      "",
+      "const ${1}: FC<${1}Props> = ({ className, ...props }) => {",
+      "  return (",
+      "    <div {...props} className={cn('${2}', className)}>",
+      "      ${1}",
+      "    </div>",
+      "  )",
+      "}",
+      "",
+      "export default ${1}",
+      ""
+    ],
+    "description": "TS Functional Component inheritance"
+  },
+  "TS Functional Component": {
+    "prefix": "xcfc",
+    "body": [
+      "",
+      "import { FC } from 'react';",
+      "",
+      "interface ${1}Props {}",
+      "",
+      "const ${1}: FC<${1}Props> = ({}) => {",
+      "  return <div className=\"${2}\">${1}</div>;",
+      "};",
+      "",
+      "export default ${1};",
+      ""
+    ],
+    "description": "TS Functional Component"
+  }
+}
