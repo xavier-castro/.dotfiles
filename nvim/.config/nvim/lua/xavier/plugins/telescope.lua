@@ -56,6 +56,7 @@ return {
       { 'nvim-telescope/telescope-file-browser.nvim' },
       { 'nvim-telescope/telescope-ui-select.nvim' },
       { "keyvchan/telescope-find-pickers.nvim" },
+      { "nvim-telescope/telescope-frecency.nvim" },
       {
         'nvim-telescope/telescope-fzf-native.nvim',
         enabled = vim.fn.executable 'make' == 1,
@@ -235,6 +236,7 @@ return {
         desc = 'List commits for current directory',
       },
       { '<leader>fn', ':Telescope noice<cr>' },
+      { '<leader>fN', ':Telescope notify<cr>' },
       {
         '<leader>gt',
         function()
@@ -273,6 +275,9 @@ return {
         end,
         desc = 'Search within current file',
       },
+      {
+        '<leader><leader>', '<Cmd>Telescope frecency workspace=CWD<CR>', desc = 'Frecency'
+      }
     },
     opts = function()
       local actions = require 'telescope.actions'
@@ -324,6 +329,15 @@ return {
           },
         },
         extensions = {
+          frecency = {
+            show_scores = false,
+            show_unindexed = true,
+            ignore_patterns = { "*.git/*", "*/tmp/*" },
+            disable_devicons = false,
+            workspaces = {
+              ["dev"] = "/Users/xc/Developer"
+            }
+          },
           undo = {
             use_delta = false,
           },
@@ -400,7 +414,9 @@ return {
       require("telescope").load_extension("find_pickers")
       require("telescope").load_extension("fzf")
       require("telescope").load_extension("ui-select")
+      require("telescope").load_extension("notify")
       require("telescope").load_extension("noice")
+      require("telescope").load_extension("frecency")
       conditional_func(telescope.load_extension, utils.is_available 'telescope-fzf-native.nvim', 'fzf')
       -- https://github.com/nvim-telescope/telescope-live-grep-args.nvim
       conditional_func(telescope.load_extension, utils.is_available 'live_grep_args')

@@ -5,6 +5,7 @@ return {
 		dependencies = {
 			'nvim-treesitter/nvim-treesitter-textobjects',
 			"nvim-treesitter/nvim-treesitter-context",
+			'HiPhish/nvim-ts-rainbow2'
 		},
 		build = ':TSUpdate',
 		config = function()
@@ -18,7 +19,15 @@ return {
 
 					-- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
 					auto_install = false,
-
+					rainbow = {
+						enable = true,
+						-- list of languages you want to disable the plugin for
+						disable = { 'jsx', 'cpp' },
+						-- Which query to use for finding delimiters
+						query = 'rainbow-parens',
+						-- Highlight the entire buffer all at once
+						strategy = require('ts-rainbow').strategy.global,
+					},
 					highlight = { enable = true },
 					indent = { enable = true },
 					incremental_selection = {
