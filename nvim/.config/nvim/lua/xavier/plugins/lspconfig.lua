@@ -10,7 +10,16 @@ return {
 			'williamboman/mason-lspconfig.nvim',
 			-- Useful status updates for LSP
 			-- NOTE: `opts = {}` is the same as calling `require('fidget').setup({})`
-			{ 'j-hui/fidget.nvim', opts = {} },
+			{
+				'j-hui/fidget.nvim',
+				config = function()
+					require("fidget").setup({
+						window = {
+							blend = 0,
+						},
+					})
+				end,
+			},
 			-- Additional lua configuration, makes nvim stuff amazing!
 			'folke/neodev.nvim',
 			"nvim-lua/lsp-status.nvim",
@@ -167,6 +176,7 @@ return {
 					vim.api.nvim_buf_create_user_command(bufnr, 'Format', function(_)
 						vim.lsp.buf.format()
 					end, { desc = 'Format current buffer with LSP' })
+					nmap('<leader>lf', ':Format<cr>', 'Format File')
 				end
 
 				protocol.CompletionItemKind = {
@@ -249,9 +259,9 @@ return {
 
 				require("typescript").setup({
 					disable_commands = false, -- prevent the plugin from creating Vim commands
-					debug = false, -- enable debug logging for commands
+					debug = false,       -- enable debug logging for commands
 					go_to_source_definition = {
-						fallback = true, -- fall back to standard LSP definition on failure
+						fallback = true,   -- fall back to standard LSP definition on failure
 					},
 					server = {
 						-- pass options to lspconfig's setup method

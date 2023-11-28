@@ -1,9 +1,52 @@
 return {
+  -- lazy.nvim
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    opts = {
+      -- add any options here
+    },
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+      -- OPTIONAL:
+      --   `nvim-notify` is only needed, if you want to use the notification view.
+      --   If not available, we use `mini` as the fallback
+      "rcarriga/nvim-notify",
+    },
+    config = function()
+      require("noice").setup({
+        lsp = {
+          -- override markdown rendering so that **cmp** and other plugins use **Treesitter**
+          override = {
+            ["vim.lsp.util.convert_input_to_markdown_lines"] = true,
+            ["vim.lsp.util.stylize_markdown"] = true,
+            ["cmp.entry.get_documentation"] = true,
+          },
+        },
+        -- you can enable a preset for easier configuration
+        presets = {
+          bottom_search = true,         -- use a classic bottom cmdline for search
+          command_palette = true,       -- position the cmdline and popupmenu together
+          long_message_to_split = true, -- long messages will be sent to a split
+          inc_rename = false,           -- enables an input dialog for inc-rename.nvim
+          lsp_doc_border = false,       -- add a border to hover docs and signature help
+        },
+      })
+    end
+  },
+
+
   {
     "rcarriga/nvim-notify",
     opts = {
       timeout = 5000,
     },
+    config = function()
+      require("notify").setup({
+        background_colour = "#191724",
+      })
+    end
   },
 
   -- Useful plugin to show you pending keybinds.
@@ -62,6 +105,10 @@ return {
     },
   },
 
+  { 'Mofiqul/vscode.nvim' },
+
+  { 'andreypopp/vim-colors-plain' },
+
   {
     -- Theme inspired by Atom
     'navarasu/onedark.nvim',
@@ -106,8 +153,38 @@ return {
           background = true, -- use background color for virtual text
         },
       }
-      require('onedark').load()
     end,
+  },
+
+  {
+    "ellisonleao/gruvbox.nvim",
+    config = function()
+      -- Default options:
+      require("gruvbox").setup({
+        terminal_colors = true, -- add neovim terminal colors
+        undercurl = true,
+        underline = true,
+        bold = true,
+        italic = {
+          strings = true,
+          emphasis = true,
+          comments = true,
+          operators = false,
+          folds = true,
+        },
+        strikethrough = true,
+        invert_selection = false,
+        invert_signs = false,
+        invert_tabline = false,
+        invert_intend_guides = false,
+        inverse = true, -- invert background for search, diffs, statuslines and errors
+        contrast = "",  -- can be "hard", "soft" or empty string
+        palette_overrides = {},
+        overrides = {},
+        dim_inactive = false,
+        transparent_mode = true,
+      })
+    end
   },
 
   {
@@ -125,6 +202,12 @@ return {
     opts = {
       disable_background = true,
     },
+    config = function()
+      require('rose-pine').setup({
+        disable_background = true,
+      })
+      vim.cmd.colorscheme 'plain'
+    end
   },
 
 
@@ -169,7 +252,12 @@ return {
     -- Enable `lukas-reineke/indent-blankline.nvim`
     -- See `:help ibl`
     main = 'ibl',
-    opts = {},
+    config = function()
+      require("ibl").setup {
+        scope = { enabled = true },
+        vim.keymap.set("n", "<leader>iblt", ":IBLToggle<cr>")
+      }
+    end
   },
 
   -- "gc" to comment visual regions/lines
@@ -326,6 +414,15 @@ return {
       },
     },
   },
+
+  {
+    'kaiuri/nvim-juliana',
+    lazy = false,
+    opts = { --[=[ configuration --]=] },
+    config = function()
+    end,
+  },
+
 
   {
     "b0o/incline.nvim",

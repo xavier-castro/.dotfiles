@@ -234,6 +234,7 @@ return {
         end,
         desc = 'List commits for current directory',
       },
+      { '<leader>fn', ':Telescope noice<cr>' },
       {
         '<leader>gt',
         function()
@@ -399,6 +400,7 @@ return {
       require("telescope").load_extension("find_pickers")
       require("telescope").load_extension("fzf")
       require("telescope").load_extension("ui-select")
+      require("telescope").load_extension("noice")
       conditional_func(telescope.load_extension, utils.is_available 'telescope-fzf-native.nvim', 'fzf')
       -- https://github.com/nvim-telescope/telescope-live-grep-args.nvim
       conditional_func(telescope.load_extension, utils.is_available 'live_grep_args')
