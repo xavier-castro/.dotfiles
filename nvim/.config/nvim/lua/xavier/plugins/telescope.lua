@@ -130,7 +130,7 @@ return {
         desc = 'Man pages',
       },
       {
-        '<leader>cs',
+        '<leader>fC',
         function()
           require('telescope.builtin').colorscheme()
         end,
