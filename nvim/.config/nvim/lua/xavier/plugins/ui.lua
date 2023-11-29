@@ -77,7 +77,7 @@ return {
 
 	{
 		"akinsho/bufferline.nvim",
-		event = "VeryLazy",
+		lazy = false,
 		keys = {
 			{ "<Tab>", "<Cmd>BufferLineCycleNext<CR>", desc = "Next tab" },
 			{ "<S-Tab>", "<Cmd>BufferLineCyclePrev<CR>", desc = "Prev tab" },
@@ -214,7 +214,7 @@ return {
 			require("oil").setup({
 				-- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
 				-- Set to false if you still want to use netrw.
-				default_file_explorer = true,
+				default_file_explorer = false,
 				-- Id is automatically added at the beginning, and name at the end
 				-- See :help oil-columns
 				columns = {
@@ -225,7 +225,7 @@ return {
 				},
 				-- Buffer-local options to use for oil buffers
 				buf_options = {
-					buflisted = false,
+					buflisted = true,
 					bufhidden = "hide",
 				},
 				-- Window-local options to use for oil buffers
