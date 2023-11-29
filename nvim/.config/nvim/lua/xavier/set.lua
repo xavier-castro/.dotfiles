@@ -22,8 +22,10 @@ vim.o.clipboard = "unnamedplus"
 vim.o.undofile = true
 
 -- Case-insensitive searching UNLESS \C or capital in search
-vim.o.ignorecase = true
-vim.o.smartcase = true
+-- vim.o.ignorecase = true
+-- vim.o.smartcase = true
+vim.opt.hlsearch = true
+vim.opt.incsearch = true
 
 -- Keep signcolumn on by default
 vim.wo.signcolumn = "yes"
@@ -56,9 +58,6 @@ vim.opt.shell = "fish"
 -- Add cursor line
 vim.opt.cursorline = true
 
--- Add color column
--- vim.opt.colorcolumn = '80'
-
 -- Nicer layout
 vim.opt.scrolloff = 8
 
@@ -80,6 +79,6 @@ vim.opt.backup = false
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 
--- Undercurl
-vim.cmd([[let &t_Cs = "\e[4:3m"]])
-vim.cmd([[let &t_Ce = "\e[4:0m"]])
+-- -- Undercurl
+-- vim.cmd([[let &t_Cs = "\e[4:3m"]])
+-- vim.cmd([[let &t_Ce = "\e[4:0m"]])

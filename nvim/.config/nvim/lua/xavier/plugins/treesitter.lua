@@ -5,7 +5,6 @@ return {
 		-- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = {
-
 			"nvim-treesitter/nvim-treesitter-textobjects",
 			"nvim-treesitter/nvim-treesitter-context",
 			"nvim-treesitter/playground",
@@ -34,8 +33,8 @@ return {
 					},
 
 					-- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
-					auto_install = false,
-					highlight = { enable = true },
+					auto_install = true,
+					highlight = { enable = false },
 					indent = { enable = true },
 					incremental_selection = {
 						enable = true,

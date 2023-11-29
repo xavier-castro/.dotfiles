@@ -1,53 +1,4 @@
 return {
-	-- lazy.nvim
-	{
-		"folke/noice.nvim",
-		event = "VeryLazy",
-		opts = {
-			-- add any options here
-		},
-		dependencies = {
-			-- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-			"MunifTanjim/nui.nvim",
-			-- OPTIONAL:
-			--   `nvim-notify` is only needed, if you want to use the notification view.
-			--   If not available, we use `mini` as the fallback
-			"rcarriga/nvim-notify",
-		},
-		config = function()
-			require("noice").setup({
-				lsp = {
-					-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
-					override = {
-						["vim.lsp.util.convert_input_to_markdown_lines"] = true,
-						["vim.lsp.util.stylize_markdown"] = true,
-						["cmp.entry.get_documentation"] = true,
-					},
-				},
-				-- you can enable a preset for easier configuration
-				presets = {
-					bottom_search = true, -- use a classic bottom cmdline for search
-					command_palette = true, -- position the cmdline and popupmenu together
-					long_message_to_split = true, -- long messages will be sent to a split
-					inc_rename = false, -- enables an input dialog for inc-rename.nvim
-					lsp_doc_border = true, -- add a border to hover docs and signature help
-				},
-			})
-		end,
-	},
-
-	{
-		"rcarriga/nvim-notify",
-		opts = {
-			timeout = 5000,
-		},
-		config = function()
-			require("notify").setup({
-				background_colour = "#000000",
-			})
-		end,
-	},
-
 	-- Useful plugin to show you pending keybinds.
 	{
 		"folke/which-key.nvim",
@@ -108,141 +59,7 @@ return {
 			end,
 		},
 	},
-
-	{
-		"Mofiqul/vscode.nvim",
-		config = function()
-			local c = require("vscode.colors").get_colors()
-			require("vscode").setup({
-				-- Alternatively set style in setup
-				-- style = 'light'
-
-				-- Enable transparent background
-				transparent = true,
-
-				-- Enable italic comment
-				italic_comments = true,
-
-				-- Disable nvim-tree background color
-				disable_nvimtree_bg = true,
-
-				-- Override colors (see ./lua/vscode/colors.lua)
-				color_overrides = {
-					-- vscLineNumber = "#FFFFFF",
-				},
-
-				-- Override highlight groups (see ./lua/vscode/theme.lua)
-				group_overrides = {
-					-- this supports the same val table as vim.api.nvim_set_hl
-					-- use colors from this colorscheme by requiring vscode.colors!
-					Cursor = { fg = c.vscDarkBlue, bg = c.vscLightGreen, bold = true },
-				},
-			})
-		end,
-	},
-
 	{ "andreypopp/vim-colors-plain" },
-
-	{
-		-- Theme inspired by Atom
-		"navarasu/onedark.nvim",
-		priority = 1000,
-		config = function()
-			require("onedark").setup({
-				-- Main options --
-				style = "dark", -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
-				transparent = true, -- Show/hide background
-				term_colors = true, -- Change terminal color as per the selected theme style
-				ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
-				cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
-
-				-- toggle theme style ---
-				toggle_style_key = nil, -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
-				toggle_style_list = { "dark", "darker", "cool", "deep", "warm", "warmer", "light" }, -- List of styles to toggle between
-
-				-- Change code style ---
-				-- Options are italic, bold, underline, none
-				-- You can configure multiple style with comma separated, For e.g., keywords = 'italic,bold'
-				code_style = {
-					comments = "italic",
-					keywords = "none",
-					functions = "none",
-					strings = "none",
-					variables = "none",
-				},
-
-				-- Lualine options --
-				lualine = {
-					transparent = false, -- lualine center bar transparency
-				},
-
-				-- Custom Highlights --
-				colors = {}, -- Override default colors
-				highlights = {}, -- Override highlight groups
-
-				-- Plugins Config --
-				diagnostics = {
-					darker = false, -- darker colors for diagnostic
-					undercurl = true, -- use undercurl instead of underline for diagnostics
-					background = true, -- use background color for virtual text
-				},
-			})
-		end,
-	},
-
-	{
-		"ellisonleao/gruvbox.nvim",
-		config = function()
-			-- Default options:
-			require("gruvbox").setup({
-				terminal_colors = true, -- add neovim terminal colors
-				undercurl = true,
-				underline = true,
-				bold = true,
-				italic = {
-					strings = true,
-					emphasis = true,
-					comments = true,
-					operators = false,
-					folds = true,
-				},
-				strikethrough = true,
-				invert_selection = false,
-				invert_signs = false,
-				invert_tabline = false,
-				invert_intend_guides = false,
-				inverse = true, -- invert background for search, diffs, statuslines and errors
-				contrast = "", -- can be "hard", "soft" or empty string
-				palette_overrides = {},
-				overrides = {},
-				dim_inactive = false,
-				transparent_mode = true,
-			})
-		end,
-	},
-
-	{
-		"mcchrish/zenbones.nvim",
-		priority = 1000,
-		dependencies = {
-			{ "rktjmp/lush.nvim" },
-		},
-	},
-
-	{
-		"craftzdog/solarized-osaka.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = function()
-			return {
-				transparent = true,
-			}
-		end,
-		config = function()
-			-- vim.cmd.colorscheme("solarized-osaka")
-		end,
-	},
-
 	{
 		"rose-pine/neovim",
 		name = "rose-pine",
@@ -257,8 +74,6 @@ return {
 			vim.cmd.colorscheme("rose-pine")
 		end,
 	},
-
-	{ "kdheepak/monochrome.nvim", lazy = false },
 
 	{
 		"akinsho/bufferline.nvim",
@@ -386,43 +201,12 @@ return {
 		end,
 	},
 
-	-- {
-	-- 	-- Add indentation guides even on blank lines
-	-- 	"lukas-reineke/indent-blankline.nvim",
-	-- 	-- Enable `lukas-reineke/indent-blankline.nvim`
-	-- 	-- See `:help ibl`
-	-- 	main = "ibl",
-	-- 	config = function()
-	-- 		require("ibl").setup({
-	-- 			indent = { highlight = { "LineNr" }, char = "│" },
-	-- 			enabled = true,
-	-- 			scope = { enabled = true },
-	-- 			exclude = {
-	-- 				filetypes = {
-	-- 					"help",
-	-- 					"alpha",
-	-- 					"dashboard",
-	-- 					"*oil*",
-	-- 					"neo-tree",
-	-- 					"Trouble",
-	-- 					"lazy",
-	-- 					"mason",
-	-- 					"notify",
-	-- 					"toggleterm",
-	-- 					"lazyterm",
-	-- 					"asm",
-	-- 				},
-	-- 			},
-	-- 			vim.keymap.set("n", "<leader>iblt", ":IBLToggle<cr>"),
-	-- 		})
-	-- 	end,
-	-- },
-
 	-- "gc" to comment visual regions/lines
 	{ "numToStr/Comment.nvim", opts = {} },
 
 	{
 		"stevearc/oil.nvim",
+		lazy = false,
 		opts = {},
 		-- Optional dependencies
 		dependencies = { "nvim-tree/nvim-web-devicons" },
@@ -574,45 +358,6 @@ return {
 	},
 
 	{
-		"kaiuri/nvim-juliana",
-		lazy = false,
-		opts = { --[=[ configuration --]=]
-		},
-		config = function() end,
-	},
-
-	{
-		"b0o/incline.nvim",
-		dependencies = { "craftzdog/solarized-osaka.nvim" },
-		event = "BufReadPre",
-		priority = 1200,
-		config = function()
-			local colors = require("solarized-osaka.colors").setup()
-			require("incline").setup({
-				highlight = {
-					groups = {
-						InclineNormal = { guibg = colors.magenta500, guifg = colors.base04 },
-						InclineNormalNC = { guifg = colors.violet500, guibg = colors.base03 },
-					},
-				},
-				window = { margin = { vertical = 0, horizontal = 1 } },
-				hide = {
-					cursorline = true,
-				},
-				render = function(props)
-					local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
-					if vim.bo[props.buf].modified then
-						filename = "[+] " .. filename
-					end
-
-					local icon, color = require("nvim-web-devicons").get_icon_color(filename)
-					return { { icon, guifg = color }, { " " }, { filename } }
-				end,
-			})
-		end,
-	},
-
-	{
 		"folke/zen-mode.nvim",
 		config = function()
 			vim.keymap.set("n", "<leader>zz", function()
@@ -669,14 +414,6 @@ return {
 			},
 		},
 		opts = {},
-	},
-
-	{
-		"levouh/tint.nvim",
-		config = function()
-			(require("tint")).setup({})
-		end,
-		event = "VeryLazy",
 	},
 
 	-- Spectre Replace Word

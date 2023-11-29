@@ -256,8 +256,6 @@ return {
 				end,
 				desc = "List commits for current directory",
 			},
-			{ "<leader>fn", ":Telescope noice<cr>" },
-			{ "<leader>fN", ":Telescope notify<cr>" },
 			{
 				"<leader>gt",
 				function()
@@ -386,7 +384,7 @@ return {
 					file_browser = {
 						theme = "dropdown",
 						hidden = true,
-						hijack_netrw = true,
+						hijack_netrw = false,
 						mappings = {
 							i = {
 								["<C-w>"] = function()
@@ -442,27 +440,18 @@ return {
 		config = function(_, opts)
 			local telescope = require("telescope")
 			telescope.setup(opts)
-			local conditional_func = utils.conditional_func
 			require("telescope").load_extension("file_browser")
 			require("telescope").load_extension("find_pickers")
 			require("telescope").load_extension("fzf")
 			require("telescope").load_extension("ui-select")
-			require("telescope").load_extension("notify")
-			require("telescope").load_extension("noice")
 			require("telescope").load_extension("frecency")
-			conditional_func(telescope.load_extension, utils.is_available("telescope-fzf-native.nvim"), "fzf")
-			-- https://github.com/nvim-telescope/telescope-live-grep-args.nvim
-			conditional_func(telescope.load_extension, utils.is_available("live_grep_args"))
-			conditional_func(telescope.load_extension, utils.is_available("telescope-undo.nvim"), "undo")
-			-- https://github.com/ThePrimeagen/git-worktree.nvim
-			conditional_func(telescope.load_extension, utils.is_available("git_worktree"))
-			-- https://github.com/rmagatti/auto-session#-session-lens
-			conditional_func(telescope.load_extension, utils.is_available("auto-sessions"), "session-lens")
+			require("telescope").load_extension("git_worktree")
+			require("telescope").load_extension("live_grep_args")
 		end,
 	},
 	{
 		"theprimeagen/harpoon",
-		lazy=false,
+		lazy = false,
 		keys = {
 			{
 				";e",
