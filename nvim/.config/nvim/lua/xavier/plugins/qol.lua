@@ -195,6 +195,71 @@ return {
 			local openai_api_key = vim.fn.getenv("OPENAI_API_KEY")
 			require("gp").setup({
 				openai_api_key = openai_api_key,
+				hooks = {
+					InspectPlugin = function(plugin, params)
+						local bufnr = vim.api.nvim_create_buf(false, true)
+						local plugin_info = string.format("Plugin structure:\n%s", vim.inspect(plugin))
+						local params_info = string.format("Command params:\n%s", vim.inspect(params))
+						local lines = vim.split(plugin_info .. "\n" .. params_info, "\n")
+						vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, lines)
+						vim.api.nvim_win_set_buf(0, bufnr)
+					end,
+
+					-- GpImplement rewrites the provided selection/range based on comments in it
+					Implement = function(gp, params)
+						local template = "Having following from {{filename}}:\n\n"
+							.. "```{{filetype}}\n{{selection}}\n```\n\n"
+							.. "Please rewrite this according to the contained instructions."
+							.. "\n\nRespond exclusively with the snippet that should replace the selection above."
+
+						local agent = gp.get_command_agent()
+						gp.Info("Implementing selection with agent: " .. agent.name)
+
+						gp.Prompt(
+							params,
+							gp.Target.rewrite,
+							nil, -- command will run directly without any prompting for user input
+							agent.model,
+							template,
+							agent.system_prompt
+						)
+					end,
+
+					-- your own functions can go here, see README for more examples like
+					-- :GpExplain, :GpUnitTests.., :GpTranslator etc.
+
+					-- example of making :%GpChatNew a dedicated command which
+					-- opens new chat with the entire current buffer as a context
+					BufferChatNew = function(gp, _)
+						-- call GpChatNew command in range mode on whole buffer
+						vim.api.nvim_command("%" .. gp.config.cmd_prefix .. "ChatNew")
+					end,
+
+					-- -- example of adding command which opens new chat dedicated for translation
+					-- Translator = function(gp, params)
+					-- 	local agent = gp.get_command_agent()
+					-- 	local chat_system_prompt = "You are a Translator, please translate between English and Chinese."
+					-- 	gp.cmd.ChatNew(params, agent.model, chat_system_prompt)
+					-- end,
+
+					-- -- example of adding command which writes unit tests for the selected code
+					-- UnitTests = function(gp, params)
+					-- 	local template = "I have the following code from {{filename}}:\n\n"
+					-- 		.. "```{{filetype}}\n{{selection}}\n```\n\n"
+					-- 		.. "Please respond by writing table driven unit tests for the code above."
+					-- 	local agent = gp.get_command_agent()
+					-- 	gp.Prompt(params, gp.Target.enew, nil, agent.model, template, agent.system_prompt)
+					-- end,
+
+					-- example of adding command which explains the selected code
+					Explain = function(gp, params)
+						local template = "I have the following code from {{filename}}:\n\n"
+							.. "```{{filetype}}\n{{selection}}\n```\n\n"
+							.. "Please respond by explaining the code above."
+						local agent = gp.get_chat_agent()
+						gp.Prompt(params, gp.Target.popup, nil, agent.model, template, agent.system_prompt)
+					end,
+				},
 			})
 			-- VISUAL mode mappings
 			-- s, x, v modes are handled the same way by which_key
@@ -323,5 +388,49 @@ return {
 
 			-- shortcuts might be setup here (see Usage > Shortcuts in Readme)
 		end,
+	},
+	{
+		"nvim-neorg/neorg",
+		ft = "norg", -- lazy load on filetype
+		cmd = "Neorg", -- lazy load on command, allows you to autocomplete :Neorg regardless of whether it's loaded yet
+		--  (you could also just remove both lazy loading things)
+		priority = 30, -- treesitter is on default priority of 50, neorg should load after it.
+		build = ":Neorg sync-parsers",
+		lazy=false,
+		config = function()
+			require("neorg").setup({
+
+				load = {
+					["core.defaults"] = {}, -- Loads default behaviour
+					["core.concealer"] = {
+						config = {
+							icon_preset = "diamond",
+						},
+					}, -- Adds pretty icons to your documents
+					-- Required for export markdown
+					["core.integrations.treesitter"] = {},
+					["core.export.markdown"] = {},
+					["core.export"] = {},
+					["core.summary"] = {},
+					["core.dirman"] = { -- Manages Neorg workspaces
+						config = {
+							workspaces = {
+								main = "~/neorg/main",
+								school = "~/neorg/school",
+								projects = "~/neorg/projects",
+							},
+							default_workspace = "main",
+						},
+					},
+				},
+			})
+			-- Neorg
+			vim.keymap.set("n", "<LocalLeader>r", "<cmd>Neorg return<cr>")
+			vim.keymap.set("n", "<LocalLeader>gw", "<cmd>Neorg workspace<cr>")
+			vim.keymap.set("n", "<LocalLeader>gj", "<cmd>Neorg journal<cr>")
+			vim.keymap.set("n", "<LocalLeader>gi", "<cmd>Neorg index<cr>")
+			vim.keymap.set("n", "<LocalLeader>cc", "<cmd>Neorg toggle-concealer<cr>")
+		end,
+		dependencies = { { "nvim-lua/plenary.nvim" } },
 	},
 }
