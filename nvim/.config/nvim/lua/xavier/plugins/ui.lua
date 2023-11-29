@@ -239,7 +239,7 @@ return {
 			}
 		end,
 		config = function()
-			vim.cmd.colorscheme("solarized-osaka")
+			-- vim.cmd.colorscheme("solarized-osaka")
 		end,
 	},
 
@@ -254,6 +254,7 @@ return {
 			require("rose-pine").setup({
 				disable_background = true,
 			})
+			vim.cmd.colorscheme("rose-pine")
 		end,
 	},
 
@@ -284,7 +285,7 @@ return {
 		opts = {
 			options = {
 				icons_enabled = false,
-				theme = "solarized_dark",
+				theme = "rose-pine",
 				section_separators = { left = "", right = "" },
 				component_separators = { left = "", right = "" },
 			},
