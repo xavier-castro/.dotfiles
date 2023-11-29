@@ -109,7 +109,37 @@ return {
 		},
 	},
 
-	{ "Mofiqul/vscode.nvim" },
+	{
+		"Mofiqul/vscode.nvim",
+		config = function()
+			local c = require("vscode.colors").get_colors()
+			require("vscode").setup({
+				-- Alternatively set style in setup
+				-- style = 'light'
+
+				-- Enable transparent background
+				transparent = true,
+
+				-- Enable italic comment
+				italic_comments = true,
+
+				-- Disable nvim-tree background color
+				disable_nvimtree_bg = true,
+
+				-- Override colors (see ./lua/vscode/colors.lua)
+				color_overrides = {
+					-- vscLineNumber = "#FFFFFF",
+				},
+
+				-- Override highlight groups (see ./lua/vscode/theme.lua)
+				group_overrides = {
+					-- this supports the same val table as vim.api.nvim_set_hl
+					-- use colors from this colorscheme by requiring vscode.colors!
+					Cursor = { fg = c.vscDarkBlue, bg = c.vscLightGreen, bold = true },
+				},
+			})
+		end,
+	},
 
 	{ "andreypopp/vim-colors-plain" },
 
@@ -152,7 +182,7 @@ return {
 
 				-- Plugins Config --
 				diagnostics = {
-					darker = true, -- darker colors for diagnostic
+					darker = false, -- darker colors for diagnostic
 					undercurl = true, -- use undercurl instead of underline for diagnostics
 					background = true, -- use background color for virtual text
 				},
@@ -200,6 +230,20 @@ return {
 	},
 
 	{
+		"craftzdog/solarized-osaka.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = function()
+			return {
+				transparent = true,
+			}
+		end,
+		config = function()
+			vim.cmd.colorscheme("solarized-osaka")
+		end,
+	},
+
+	{
 		"rose-pine/neovim",
 		name = "rose-pine",
 		lazy = false,
@@ -210,7 +254,6 @@ return {
 			require("rose-pine").setup({
 				disable_background = true,
 			})
-			vim.cmd.colorscheme("plain")
 		end,
 	},
 
@@ -241,10 +284,48 @@ return {
 		opts = {
 			options = {
 				icons_enabled = false,
-				-- theme = 'onedark',
-				component_separators = "|",
-				section_separators = "",
+				theme = "solarized_dark",
+				section_separators = { left = "", right = "" },
+				component_separators = { left = "", right = "" },
 			},
+			sections = {
+				lualine_a = { "mode" },
+				lualine_b = { "branch" },
+				lualine_c = {
+					{
+						"filename",
+						file_status = true, -- displays file status (readonly status, modified status)
+						path = 0, -- 0 = just filename, 1 = relative path, 2 = absolute path
+					},
+				},
+				lualine_x = {
+					{
+						"diagnostics",
+						sources = { "nvim_diagnostic" },
+						symbols = { error = " ", warn = " ", info = " ", hint = " " },
+					},
+					"encoding",
+					"filetype",
+				},
+				lualine_y = { "progress" },
+				lualine_z = { "location" },
+			},
+			inactive_sections = {
+				lualine_a = {},
+				lualine_b = {},
+				lualine_c = {
+					{
+						"filename",
+						file_status = true, -- displays file status (readonly status, modified status)
+						path = 1, -- 0 = just filename, 1 = relative path, 2 = absolute path
+					},
+				},
+				lualine_x = { "location" },
+				lualine_y = {},
+				lualine_z = {},
+			},
+			tabline = {},
+			extensions = { "fugitive", "lazy", "fzf" },
 		},
 	},
 
@@ -275,7 +356,7 @@ return {
 				},
 
 				indent = {
-					enable = true,
+					enable = false,
 					use_treesitter = false,
 					chars = {
 						"│",

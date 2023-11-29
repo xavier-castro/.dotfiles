@@ -462,6 +462,7 @@ return {
 	},
 	{
 		"theprimeagen/harpoon",
+		lazy=false,
 		keys = {
 			{
 				";e",

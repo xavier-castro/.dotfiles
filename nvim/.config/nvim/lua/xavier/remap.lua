@@ -17,7 +17,7 @@ vim.keymap.set("n", "<C-l>", "<C-w>l")
 vim.keymap.set("n", "<C-q>", "<C-w>q")
 
 -- Toggle wrap
-vim.keymap.set("n", "<leader>uw", function()
+vim.keymap.set("n", "<leader>tw", function()
 	vim.wo.wrap = not vim.wo.wrap
 	vim.notify("Wrap " .. (vim.wo.wrap and "enabled" or "disabled"))
 end, { desc = "Toggle wrap" })
@@ -26,7 +26,7 @@ end, { desc = "Toggle wrap" })
 keymap.set("n", "<C-m>", "<C-i>", opts)
 
 -- New tab
-keymap.set("n", "te", ":tabedit")
+keymap.set("n", "te", ":tabedit<cr>")
 keymap.set("n", "<tab>", ":tabnext<Return>", opts)
 keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
 

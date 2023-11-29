@@ -106,6 +106,13 @@ return {
 					"javascript",
 					"typescript.tsx",
 				}
+				parser_config.norg = {
+					install_info = {
+						url = "https://github.com/vhyrro/tree-sitter-norg",
+						files = { "src/parser.c" },
+						branch = "main",
+					},
+				}
 
 				require("treesitter-context").setup({
 					enable = false,
