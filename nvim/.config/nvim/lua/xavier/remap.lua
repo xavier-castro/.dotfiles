@@ -1,9 +1,6 @@
 local opts = { noremap = true, silent = true }
 local keymap = vim.keymap
 
--- NTree Shortcut
-keymap.set("n", "<C-t>", ":Ntree<cr>")
-
 -- Delete a word backwards
 keymap.set("n", "dw", 'vb"_d')
 

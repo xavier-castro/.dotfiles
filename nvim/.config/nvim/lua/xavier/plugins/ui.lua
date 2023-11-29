@@ -30,7 +30,7 @@ return {
 					command_palette = true, -- position the cmdline and popupmenu together
 					long_message_to_split = true, -- long messages will be sent to a split
 					inc_rename = false, -- enables an input dialog for inc-rename.nvim
-					lsp_doc_border = false, -- add a border to hover docs and signature help
+					lsp_doc_border = true, -- add a border to hover docs and signature help
 				},
 			})
 		end,
@@ -43,7 +43,7 @@ return {
 		},
 		config = function()
 			require("notify").setup({
-				background_colour = "#191724",
+				background_colour = "#000000",
 			})
 		end,
 	},
@@ -587,5 +587,40 @@ return {
 			},
 		},
 		opts = {},
+	},
+
+	{
+		"levouh/tint.nvim",
+		config = function()
+			(require("tint")).setup({})
+		end,
+		event = "VeryLazy",
+	},
+
+	-- Spectre Replace Word
+	{
+		"nvim-pack/nvim-spectre",
+		config = function()
+			(require("spectre")).setup()
+			vim.keymap.set("n", "<leader>S", '<cmd>lua require("spectre").open()<CR>', {
+				desc = "Open Spectre",
+			})
+			vim.keymap.set("n", "<leader>sw", '<cmd>lua require("spectre").open_visual({select_word=true})<CR>', {
+				desc = "Search current word",
+			})
+			vim.keymap.set("v", "<leader>sw", '<esc><cmd>lua require("spectre").open_visual()<CR>', {
+				desc = "Search current word",
+			})
+			vim.keymap.set("n", "<leader>sp", '<cmd>lua require("spectre").open_file_search({select_word=true})<CR>', {
+				desc = "Search on current file",
+			})
+		end,
+	},
+	{
+		"iamcco/markdown-preview.nvim",
+		ft = "markdown",
+		build = function()
+			vim.fn["mkdp#util#install"]()
+		end,
 	},
 }

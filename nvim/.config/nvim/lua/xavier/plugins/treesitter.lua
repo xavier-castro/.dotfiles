@@ -1,4 +1,6 @@
 return {
+	-- MDX syntax
+	{ "jxnblk/vim-mdx-js" },
 	{
 		-- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
