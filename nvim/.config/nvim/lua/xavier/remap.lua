@@ -8,19 +8,19 @@ keymap.set("n", "dw", 'vb"_d')
 keymap.set("n", "<C-a>", "gg<S-v>G")
 
 -- Navigate between nvim splits
-vim.keymap.set('n', '<C-h>', '<C-w>h')
-vim.keymap.set('n', '<C-k>', '<C-w>k')
-vim.keymap.set('n', '<C-j>', '<C-w>j')
-vim.keymap.set('n', '<C-l>', '<C-w>l')
+vim.keymap.set("n", "<C-h>", "<C-w>h")
+vim.keymap.set("n", "<C-k>", "<C-w>k")
+vim.keymap.set("n", "<C-j>", "<C-w>j")
+vim.keymap.set("n", "<C-l>", "<C-w>l")
 
 -- Close window
-vim.keymap.set('n', '<C-q>', '<C-w>q')
+vim.keymap.set("n", "<C-q>", "<C-w>q")
 
 -- Toggle wrap
-vim.keymap.set('n', '<leader>uw', function()
-  vim.wo.wrap = not vim.wo.wrap
-  vim.notify('Wrap ' .. (vim.wo.wrap and 'enabled' or 'disabled'))
-end, { desc = 'Toggle wrap' })
+vim.keymap.set("n", "<leader>uw", function()
+	vim.wo.wrap = not vim.wo.wrap
+	vim.notify("Wrap " .. (vim.wo.wrap and "enabled" or "disabled"))
+end, { desc = "Toggle wrap" })
 
 -- Jumplist
 keymap.set("n", "<C-m>", "<C-i>", opts)
@@ -80,12 +80,12 @@ vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 local function close_floating()
-  for _, win in ipairs(vim.api.nvim_list_wins()) do
-    local config = vim.api.nvim_win_get_config(win)
-    if config.relative ~= "" then
-      vim.api.nvim_win_close(win, false)
-    end
-  end
+	for _, win in ipairs(vim.api.nvim_list_wins()) do
+		local config = vim.api.nvim_win_get_config(win)
+		if config.relative ~= "" then
+			vim.api.nvim_win_close(win, false)
+		end
+	end
 end
 
-vim.keymap.set({ 'n', 'i', 'v' }, '<M-c>', close_floating)
+vim.keymap.set({ "n", "i", "v" }, "<M-c>", close_floating)

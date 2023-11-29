@@ -53,22 +53,98 @@ return {
 			-- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
 			vim.keymap.set("n", "zR", require("ufo").openAllFolds)
 			vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
+			vim.keymap.set("n", "zr", require("ufo").openFoldsExceptKinds)
+			vim.keymap.set("n", "zm", require("ufo").closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
+			vim.keymap.set("n", "K", function()
+				local winid = require("ufo").peekFoldedLinesUnderCursor()
+				if not winid then
+					-- choose one of coc.nvim and nvim lsp
+					vim.fn.CocActionAsync("definitionHover") -- coc.nvim
+					vim.lsp.buf.hover()
+				end
+			end)
 		end,
 	},
 	{
 		"mbbill/undotree",
 		opts = {},
+		keys = {
+			{
+				"<leader>u",
+				function()
+					vim.cmd.UndotreeToggle()
+				end,
+				desc = "Toggle undotree",
+			},
+		},
 		config = function()
 			vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
 		end,
 	},
 	{
 		"folke/trouble.nvim",
+		keys = {
+			{
+				"<leader>xq",
+				function()
+					require("trouble").toggle("quickfix")
+				end,
+				desc = "Toggle quickfix",
+			},
+			{
+				"<leader>xx",
+				function()
+					require("trouble").toggle()
+				end,
+				desc = "Trouble Toggle",
+			},
+			{
+				"<leader>xw",
+				function()
+					require("trouble").toggle("workspace_diagnostics")
+				end,
+				desc = "Diagnostics",
+			},
+			{
+				"<leader>xd",
+				function()
+					require("trouble").toggle("document_diagnostics")
+				end,
+				desc = "Document Diagnostics",
+			},
+			{
+				"<leader>xl",
+				function()
+					require("trouble").toggle("loclist")
+				end,
+				desc = "Loclist",
+			},
+			{
+				"gR",
+				function()
+					require("trouble").toggle("lsp_references")
+				end,
+				desc = "LSP References",
+			},
+			{
+				"<leader>tsc",
+				function()
+					require("trouble").toggle("lsp_workspace_diagnostics")
+				end,
+				desc = "LSP Workspace Diagnostics",
+			},
+			{
+				"<leader>tsp",
+				function()
+					require("trouble").toggle("lsp_document_diagnostics")
+				end,
+				desc = "LSP Document Diagnostics",
+			},
+		},
 		config = function()
 			require("trouble").setup({
 				icons = false,
 			})
-			vim.keymap.set("n", "<leader>xq", "<cmd>TroubleToggle quickfix<cr>", { silent = true, noremap = true })
 		end,
 	},
 	{
@@ -120,6 +196,7 @@ return {
 				expr = true,
 				silent = true,
 			})
+			vim.keymap.set({ "i", "n" }, "<M-p>", ":Copilot panel<cr>")
 		end,
 	},
 	{
@@ -396,7 +473,7 @@ return {
 		--  (you could also just remove both lazy loading things)
 		priority = 30, -- treesitter is on default priority of 50, neorg should load after it.
 		build = ":Neorg sync-parsers",
-		lazy=false,
+		lazy = false,
 		config = function()
 			require("neorg").setup({
 
@@ -418,6 +495,7 @@ return {
 								main = "~/neorg/main",
 								school = "~/neorg/school",
 								projects = "~/neorg/projects",
+								notepad = "~/neorg/notepad",
 							},
 							default_workspace = "main",
 						},
@@ -427,6 +505,7 @@ return {
 			-- Neorg
 			vim.keymap.set("n", "<LocalLeader>r", "<cmd>Neorg return<cr>")
 			vim.keymap.set("n", "<LocalLeader>gw", "<cmd>Neorg workspace<cr>")
+			vim.keymap.set("n", "<LocalLeader>gg", "<cmd>Neorg workspace notepad<cr>")
 			vim.keymap.set("n", "<LocalLeader>gj", "<cmd>Neorg journal<cr>")
 			vim.keymap.set("n", "<LocalLeader>gi", "<cmd>Neorg index<cr>")
 			vim.keymap.set("n", "<LocalLeader>cc", "<cmd>Neorg toggle-concealer<cr>")

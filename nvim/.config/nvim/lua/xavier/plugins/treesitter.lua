@@ -5,8 +5,10 @@ return {
 		-- Highlight, edit, and navigate code
 		"nvim-treesitter/nvim-treesitter",
 		dependencies = {
+
 			"nvim-treesitter/nvim-treesitter-textobjects",
 			"nvim-treesitter/nvim-treesitter-context",
+			"nvim-treesitter/playground",
 		},
 		build = ":TSUpdate",
 		config = function()
@@ -108,6 +110,8 @@ return {
 				require("treesitter-context").setup({
 					enable = false,
 				})
+				vim.keymap.set("n", "<leader>tsc", "<cmd>TSCaptureUnderCursor<cr>")
+				vim.keymap.set("n", "<leader>tsp", "<cmd>TSPlaygroundToggle<cr>")
 			end, 0)
 		end,
 	},

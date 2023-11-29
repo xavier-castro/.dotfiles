@@ -28,3 +28,32 @@ vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
 		vim.cmd("set formatoptions-=cro")
 	end,
 })
+
+-- Quick close with Q
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	pattern = {
+		"Jaq",
+		"qf",
+		"help",
+		"man",
+		"lspinfo",
+		"Fugitive",
+		"fugitive",
+		"lir",
+		"DressingSelect",
+		"tsplayground",
+		"Markdown",
+		"Neogit",
+		"Trouble",
+		"trouble",
+		"SymbolsOutline",
+		"Oil",
+	},
+	callback = function()
+		vim.cmd([[
+      nnoremap <silent> <buffer> q :close<CR>
+      nnoremap <silent> <buffer> <esc> :close<CR>
+      set nobuflisted
+    ]])
+	end,
+})
