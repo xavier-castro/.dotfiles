@@ -1,59 +1,10 @@
-vim.api.nvim_create_autocmd("BufEnter", {
-	callback = function()
-		-- Remove highlights off gitsigns
-		vim.cmd([[
-  hi GitSignsAdd guibg=none
-  hi GitSignsChange guibg=none
-  hi GitSignsDelete guibg=none
-]])
-	end,
-	group = general,
-	desc = "Disable bg on gitsigns",
-})
-
 -- [[ Highlight on yank ]]
 -- See `:help vim.highlight.on_yank()`
-local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
-vim.api.nvim_create_autocmd("TextYankPost", {
-	callback = function()
-		vim.highlight.on_yank()
-	end,
-	group = highlight_group,
-	pattern = "*",
-})
-
--- Fixes Autocomment
-vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
-	callback = function()
-		vim.cmd("set formatoptions-=cro")
-	end,
-})
-
--- Quick close with Q
-vim.api.nvim_create_autocmd({ "FileType" }, {
-	pattern = {
-		"Jaq",
-		"qf",
-		"help",
-		"man",
-		"lspinfo",
-		"Fugitive",
-		"fugitive",
-		"lir",
-		"DressingSelect",
-		"tsplayground",
-		"Markdown",
-		"Neogit",
-		"Trouble",
-		"trouble",
-		"SymbolsOutline",
-		"Oil",
-	},
-	callback = function()
-		vim.cmd([[
-      nnoremap <silent> <buffer> q :close<CR>
-      nnoremap <silent> <buffer> <esc> :close<CR>
-      set nobuflisted
-    ]])
-	end,
+local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
+vim.api.nvim_create_autocmd('TextYankPost', {
+  callback = function()
+    vim.highlight.on_yank()
+  end,
+  group = highlight_group,
+  pattern = '*',
 })
