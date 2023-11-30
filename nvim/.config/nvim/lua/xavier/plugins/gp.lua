@@ -1,5 +1,5 @@
 return {
-    {
+	{
 		"robitx/gp.nvim",
 		config = function()
 			local openai_api_key = vim.fn.getenv("OPENAI_API_KEY")
@@ -192,7 +192,6 @@ return {
 				noremap = true,
 				nowait = true,
 			})
-
 		end,
 	},
 }

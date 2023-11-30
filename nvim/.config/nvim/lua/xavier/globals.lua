@@ -24,4 +24,3 @@ vim.api.nvim_create_user_command("CopilotToggle", function()
 	copilot_on = not copilot_on
 end, { nargs = 0 })
 vim.keymap.set("", "<M-\\>", ":CopilotToggle<CR>", { noremap = true, silent = true })
-

@@ -25,7 +25,7 @@ return {
 		local actions = require("telescope.actions")
 		local fb_actions = require("telescope").extensions.file_browser.actions
 
-		vim.keymap.set("n", ";;", builtin.pickers, { desc = "Telescope cached picker" })
+		vim.keymap.set("n", ";;", builtin.resume, { desc = "Resume last telescope" })
 		vim.keymap.set("n", "\\\\", builtin.buffers, { desc = "Buffers" })
 		-- Current Buffer Fuzzy Find
 		vim.keymap.set("n", "<leader>pp", builtin.current_buffer_fuzzy_find, { desc = "Current Buffer Fuzzy Find" })
