@@ -4,6 +4,7 @@ return {
         priority = 98,
         dependencies = {
             "nvim-treesitter/playground",
+            "nvim-treesitter/nvim-treesitter-textobjects",
             "nvim-treesitter/nvim-treesitter-context",
         },
         build = ":TSUpdate",
@@ -46,6 +47,15 @@ return {
                     -- Instead of true it can also be a list of languages
                     additional_vim_regex_highlighting = false,
                 },
+            })
+            local parser_config = (require("nvim-treesitter.parsers")).get_parser_configs()
+            parser_config.tsx.filetype_to_parsername = {
+                "javascript",
+                "typescript.tsx",
+            }
+
+            require("treesitter-context").setup({
+                enable = false,
             })
         end,
     },

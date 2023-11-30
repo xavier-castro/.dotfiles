@@ -97,9 +97,9 @@ return {
                 },
                 n = {
                     ["q"] = actions.close,
-                    ["ss"] = actions.select_horizontal,             -- default: ["<C-x>"]
-                    ["sv"] = actions.select_vertical,               -- default: ["<C-v>"]
-                    ["st"] = actions.select_tab,                    -- default: ["<C-t>"]
+                    ["ss"] = actions.select_horizontal,                            -- default: ["<C-x>"]
+                    ["sv"] = actions.select_vertical,                              -- default: ["<C-v>"]
+                    ["st"] = actions.select_tab,                                   -- default: ["<C-t>"]
                     ["Q"] = actions.send_selected_to_qflist + actions.open_qflist, -- default: ["<M-q>"]
                 },
                 vimgrep_arguments = {
@@ -125,10 +125,10 @@ return {
             },
             extensions = {
                 fzf = {
-                    fuzzy = true,    -- false will only do exact matching
+                    fuzzy = true,                   -- false will only do exact matching
                     override_generic_sorter = true, -- override the generic sorter
-                    override_file_sorter = true, -- override the file sorter
-                    case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+                    override_file_sorter = true,    -- override the file sorter
+                    case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
                     -- the default case_mode is "smart_case"
                 },
                 frecency = {

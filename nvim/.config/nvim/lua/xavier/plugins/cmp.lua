@@ -18,7 +18,6 @@ return {
         },
 
         config = function()
-            local lsp_zero = require("lsp-zero")
             local cmp = require("cmp")
             local luasnip = require("luasnip")
             require("luasnip.loaders.from_vscode").lazy_load()
@@ -185,7 +184,6 @@ return {
                     { name = "nvim_lua" },
                     { name = "buffer",                 max_item_count = 8 },
                 },
-                formatting = lsp_zero.cmp_format(),
                 window = {
                     documentation = {
                         max_width = 80,
