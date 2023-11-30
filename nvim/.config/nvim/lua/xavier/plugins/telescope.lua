@@ -20,7 +20,6 @@ return {
 
         vim.keymap.set("n", ";;", builtin.pickers, { desc = "Telescope cached picker" })
         vim.keymap.set("n", "\\\\", builtin.buffers, { desc = "Buffers" })
-        -- Current buffer fuzzy find
         -- Current Buffer Fuzzy Find
         vim.keymap.set("n", "<leader>pf", builtin.current_buffer_fuzzy_find, { desc = "Current Buffer Fuzzy Find" })
         -- Live Grep
@@ -64,14 +63,35 @@ return {
         end, { desc = "File Browser" })
 
         -- Git Worktree
-        vim.keymap.set("n", "<leader>pw", "<Cmd>Telescope git_worktree list<CR>", { desc = "Git Worktree" })
-        vim.keymap.set("n", "<leader>pn", "<Cmd>Telescope git_worktree create_new<CR>", { desc = "Git Worktree" })
+        vim.keymap.set("n", "<leader>pw", "<Cmd>Telescope git_worktree<CR>", { desc = "Git Worktree" })
+        vim.keymap.set("n", "<leader>pn", "<Cmd>Telescope git_worktree create_git_worktree<CR>",
+            { desc = "Git Worktree" })
 
         -- Telescope Settings
         telescope.setup({
             defaults = {
+                git_worktrees = vim.g.git_worktrees,
                 path_display = { "shorten" },
                 sorting_strategy = "ascending",
+                layout_config = {
+                    horizontal = {
+                        prompt_position = "top",
+                        preview_width = 0.55,
+                    },
+                    vertical = {
+                        mirror = false,
+                    },
+                    width = 0.87,
+                    height = 0.80,
+                    preview_cutoff = 120,
+                },
+                n = {
+                    ["q"] = actions.close,
+                    ["ss"] = actions.select_horizontal,                            -- default: ["<C-x>"]
+                    ["sv"] = actions.select_vertical,                              -- default: ["<C-v>"]
+                    ["st"] = actions.select_tab,                                   -- default: ["<C-t>"]
+                    ["Q"] = actions.send_selected_to_qflist + actions.open_qflist, -- default: ["<M-q>"]
+                },
                 vimgrep_arguments = {
                     "rg",
                     "--color=never",
@@ -114,8 +134,8 @@ return {
                             end,
                         },
                         n = {
-                            N = fb_actions.create,
-                            h = fb_actions.goto_parent_dir,
+                            ["%"] = fb_actions.create,
+                            ["-"] = fb_actions.goto_parent_dir,
                             M = fb_actions.move,
                             ["/"] = function()
                                 vim.cmd("startinsert")
@@ -130,13 +150,11 @@ return {
             pickers = {
                 buffers = {
                     show_all_buffers = true,
+                    initial_mode = "normal",
                     sort_lastused = true,
                     mappings = {
                         n = {
                             ["<c-d>"] = actions.delete_buffer,
-                            -- Re-use open buffer instead of opening a new window
-                            -- Thanks: https://github.com/jensenojs/dotfiles/blob/08cef709e68b25b99173e3445291ff15b666226d/.config/nvim/lua/plugins/ide/telescope.lua#L139
-                            -- ["<CR>"] = actions.select_tab_drop,
                         },
                     },
                 },
