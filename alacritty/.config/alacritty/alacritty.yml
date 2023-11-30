@@ -8,8 +8,8 @@ window:
   option_as_alt: Both
   opacity: 0.96
   dimensions:
-    columns: 80
-    lines: 52
+    columns: 90
+    lines: 25
   padding:
     x: 4
     y: 0

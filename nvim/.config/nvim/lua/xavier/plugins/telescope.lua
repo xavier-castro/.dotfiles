@@ -1,6 +1,7 @@
 -- Fuzzy Finder (files, lsp, etc)
 return {
 	"nvim-telescope/telescope.nvim",
+	event = "VimEnter",
 	tag = "0.1.4",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
@@ -19,27 +20,37 @@ return {
 		vim.keymap.set("n", "<leader>ph", builtin.help_tags, { desc = "Help Tags" })
 		vim.keymap.set("n", "<leader><leader>", "<Cmd>Telescope frecency workspace=CWD<CR>", { desc = "Frecency" })
 
-		-- Extensions
-		telescope.load_extension("windowizer")
-		telescope.load_extension("frecency")
-
 		-- Telescope Settings
 		telescope.setup({
+			defaults = {
+				path_display = { "shorten" },
+				sorting_strategy = "ascending",
+				vimgrep_arguments = {
+					"rg",
+					"--color=never",
+					"--no-heading",
+					"--with-filename",
+					"--line-number",
+					"--column",
+					"--smart-case",
+					"--ignore-file",
+					".gitignore",
+				},
+			},
 			extensions = {
 				frecency = {
-					db_root = "/home/my_username/path/to/db_root",
 					show_scores = false,
 					show_unindexed = true,
-					ignore_patterns = { "*.git/*", "*/tmp/*" },
+					ignore_patterns = { "*.git/*", "*/tmp/*", "node_modules", "lazy-lock.json" },
 					disable_devicons = false,
 					workspaces = {
-						["conf"] = "/home/my_username/.config",
-						["data"] = "/home/my_username/.local/share",
-						["project"] = "/home/my_username/projects",
-						["wiki"] = "/home/my_username/wiki",
+						["dev"] = "/Users/xc/Developer",
 					},
 				},
 			},
 		})
+		-- Extensions
+		telescope.load_extension("windowizer")
+		telescope.load_extension("frecency")
 	end,
 }
