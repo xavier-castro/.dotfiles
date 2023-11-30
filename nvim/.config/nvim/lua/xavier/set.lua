@@ -32,6 +32,8 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 vim.opt.cursorline = true
 vim.opt.colorcolumn = "80"
+-- Hide redundant mode
+vim.opt.showmode = false
 
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0

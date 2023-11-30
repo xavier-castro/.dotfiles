@@ -361,7 +361,7 @@ return {
 					vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
 						underline = false,
 						update_in_insert = false,
-						virtual_text = { spacing = 6, prefix = "●" },
+						virtual_text = { spacing = 4, prefix = "●" },
 						severity_sort = true,
 					})
 
@@ -371,7 +371,7 @@ return {
 					},
 					update_in_insert = true,
 					float = {
-						source = "if_many", -- Or "if_many"
+						source = "always", -- Or "if_many"
 					},
 				})
 			end
