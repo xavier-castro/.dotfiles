@@ -67,7 +67,7 @@ return {
 							.. "```{{filetype}}\n{{selection}}\n```\n\n"
 							.. "Please respond by explaining the code above."
 						local agent = gp.get_chat_agent()
-						gp.Prompt(params, gp.Target.popup, nil, agent.model, template, agent.system_prompt)
+						gp.Prompt(params, gp.Target.enew, nil, agent.model, template, agent.system_prompt)
 					end,
 				},
 			})
@@ -193,10 +193,6 @@ return {
 				nowait = true,
 			})
 
-			-- or setup with your own config (see Install > Configuration in Readme)
-			-- require("gp").setup(config)
-
-			-- shortcuts might be setup here (see Usage > Shortcuts in Readme)
 		end,
 	},
 }
