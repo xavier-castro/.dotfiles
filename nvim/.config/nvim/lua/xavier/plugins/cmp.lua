@@ -6,10 +6,16 @@ return {
             "L3MON4D3/LuaSnip",
             "saadparwaiz1/cmp_luasnip",
             "hrsh7th/cmp-nvim-lsp",
+            "hrsh7th/cmp-nvim-lsp-signature-help",
+            "hrsh7th/cmp-buffer",
+            "hrsh7th/cmp-path",
+            "hrsh7th/cmp-cmdline",
+            "hrsh7th/cmp-nvim-lua",
             "rafamadriz/friendly-snippets",
         },
+
         config = function()
-            lsp_zero = require("lsp-zero")
+            local lsp_zero = require("lsp-zero")
             local cmp = require("cmp")
             local luasnip = require("luasnip")
             require("luasnip.loaders.from_vscode").lazy_load()
@@ -67,9 +73,12 @@ return {
                     end,
                 }),
                 sources = {
+                    { name = "nvim_lsp_signature_help" },
                     { name = "path" },
                     { name = "nvim_lsp" },
                     { name = "nvim_lua" },
+                    { name = "luasnip" },
+                    { name = "buffer" },
                 },
                 formatting = lsp_zero.cmp_format(),
             })
