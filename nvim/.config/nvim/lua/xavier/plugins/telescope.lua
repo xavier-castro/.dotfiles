@@ -27,7 +27,7 @@ return {
         vim.keymap.set("n", ";;", builtin.pickers, { desc = "Telescope cached picker" })
         vim.keymap.set("n", "\\\\", builtin.buffers, { desc = "Buffers" })
         -- Current Buffer Fuzzy Find
-        vim.keymap.set("n", "<leader>pf", builtin.current_buffer_fuzzy_find, { desc = "Current Buffer Fuzzy Find" })
+        vim.keymap.set("n", "<leader>pp", builtin.current_buffer_fuzzy_find, { desc = "Current Buffer Fuzzy Find" })
         -- Live Grep
         vim.keymap.set("n", "<leader>ps", builtin.live_grep, { desc = "Live Grep" })
         -- Commands
@@ -47,7 +47,7 @@ return {
         -- Registers
         vim.keymap.set("n", "<leader>pr", builtin.registers, { desc = "Registers" })
         -- Jumplists
-        vim.keymap.set("n", "<leader>pl", builtin.jumplist, { desc = "Jumplist" })
+        vim.keymap.set("n", "<leader>pj", builtin.jumplist, { desc = "Jumplist" })
         vim.keymap.set("n", "<leader><leader>", "<Cmd>Telescope frecency workspace=CWD<CR>", { desc = "Frecency" })
         -- File Browser
         vim.keymap.set("n", "<leader>pf", function()
@@ -100,7 +100,7 @@ return {
                     ["ss"] = actions.select_horizontal,                            -- default: ["<C-x>"]
                     ["sv"] = actions.select_vertical,                              -- default: ["<C-v>"]
                     ["st"] = actions.select_tab,                                   -- default: ["<C-t>"]
-                    ["Q"] = actions.send_selected_to_qflist + actions.open_qflist, -- default: ["<M-q>"]
+                    -- ["Q"] = actions.send_selected_to_qflist + actions.open_qflist, -- default: ["<M-q>"]
                 },
                 vimgrep_arguments = {
                     "rg",
