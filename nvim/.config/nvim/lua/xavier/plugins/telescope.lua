@@ -11,6 +11,12 @@ return {
         "nvim-telescope/telescope-file-browser.nvim",
         "nvim-telescope/telescope-ui-select.nvim",
         "keyvchan/telescope-find-pickers.nvim",
+        { "junegunn/fzf", dir = "~/.fzf", build = "./install --all" },
+        {
+            "nvim-telescope/telescope-fzf-native.nvim",
+            build =
+            "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+        },
     },
     config = function()
         local builtin = require("telescope.builtin")
@@ -64,8 +70,12 @@ return {
 
         -- Git Worktree
         vim.keymap.set("n", "<leader>pw", "<Cmd>Telescope git_worktree<CR>", { desc = "Git Worktree" })
-        vim.keymap.set("n", "<leader>pn", "<Cmd>Telescope git_worktree create_git_worktree<CR>",
-            { desc = "Git Worktree" })
+        vim.keymap.set(
+            "n",
+            "<leader>pn",
+            "<Cmd>Telescope git_worktree create_git_worktree<CR>",
+            { desc = "Git Worktree" }
+        )
 
         -- Telescope Settings
         telescope.setup({
@@ -87,9 +97,9 @@ return {
                 },
                 n = {
                     ["q"] = actions.close,
-                    ["ss"] = actions.select_horizontal,                            -- default: ["<C-x>"]
-                    ["sv"] = actions.select_vertical,                              -- default: ["<C-v>"]
-                    ["st"] = actions.select_tab,                                   -- default: ["<C-t>"]
+                    ["ss"] = actions.select_horizontal,             -- default: ["<C-x>"]
+                    ["sv"] = actions.select_vertical,               -- default: ["<C-v>"]
+                    ["st"] = actions.select_tab,                    -- default: ["<C-t>"]
                     ["Q"] = actions.send_selected_to_qflist + actions.open_qflist, -- default: ["<M-q>"]
                 },
                 vimgrep_arguments = {
@@ -114,6 +124,13 @@ return {
                 "package-lock.json",
             },
             extensions = {
+                fzf = {
+                    fuzzy = true,    -- false will only do exact matching
+                    override_generic_sorter = true, -- override the generic sorter
+                    override_file_sorter = true, -- override the file sorter
+                    case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+                    -- the default case_mode is "smart_case"
+                },
                 frecency = {
                     show_scores = false,
                     show_unindexed = true,
@@ -161,6 +178,7 @@ return {
             },
         })
         -- Extensions
+        telescope.load_extension('fzf')
         telescope.load_extension("windowizer")
         telescope.load_extension("frecency")
         telescope.load_extension("git_worktree")
