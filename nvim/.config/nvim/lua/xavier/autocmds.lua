@@ -48,3 +48,36 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		require("lsp-inlayhints").on_attach(client, bufnr)
 	end,
 })
+
+-- Remember Folds
+autocmd({ "BufWinEnter" }, {
+	group = XavierGroup,
+	callback = function()
+    vim.cmd([[
+let g:skipview_files = [
+	\ '[EXAMPLE PLUGIN BUFFER]'
+	\ ]
+function! MakeViewCheck()
+	if has('quickfix') && &buftype =~ 'nofile'
+		" Buffer is marked as not a file
+		return 0
+	endif
+	if empty(glob(expand('%:p')))
+		" File does not exist on disk
+		return 0
+	endif
+	if index(g:skipview_files, expand('%')) >= 0
+		" File is in skip list
+		return 0
+	endif
+	return 1
+endfunction
+augroup vimrcAutoView
+	" Autosave & Load Views.
+	autocmd BufWritePost,BufLeave,BufWinLeave,WinLeave ?* if MakeViewCheck() | mkview! | endif
+	autocmd BufWinEnter,BufWritePost ?* if MakeViewCheck() | normal! zx
+	autocmd BufWinEnter,BufWritePost ?* if MakeViewCheck() | silent! loadview | endif
+augroup end
+]])
+	end,
+})

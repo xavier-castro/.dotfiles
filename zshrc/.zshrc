@@ -104,6 +104,7 @@ alias .dotfiles="nvim ~/.dotfiles"
 alias at="npx alacritty-themes"
 alias tt="tmux new-session -A -s main"
 alias ttk="tmux kill-server"
+alias pip="pip3"
 
 # Generated for envman. Do not edit.
 [ -s "$HOME/.config/envman/load.sh" ] && source "$HOME/.config/envman/load.sh"
