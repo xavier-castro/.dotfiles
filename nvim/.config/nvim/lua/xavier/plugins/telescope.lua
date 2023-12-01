@@ -30,7 +30,9 @@ return {
 		-- Current Buffer Fuzzy Find
 		vim.keymap.set("n", "<leader>pp", builtin.current_buffer_fuzzy_find, { desc = "Current Buffer Fuzzy Find" })
 		-- Live Grep
-		vim.keymap.set("n", "<leader>ps", builtin.live_grep, { desc = "Live Grep" })
+		vim.keymap.set("n", "<leader>ps", function()
+			require("telescope.builtin").live_grep({ search_dirs = { vim.fn.expand("%:p") } })
+		end, { desc = "Live Grep" })
 		-- Commands
 		vim.keymap.set("n", "<leader>po", builtin.oldfiles, { desc = "Commands" })
 		-- Find Files
