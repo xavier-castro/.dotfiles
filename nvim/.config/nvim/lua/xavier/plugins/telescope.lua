@@ -25,8 +25,25 @@ return {
 		local actions = require("telescope.actions")
 		local fb_actions = require("telescope").extensions.file_browser.actions
 
+		-- Different old files keybind I'm testing
+		vim.keymap.set(
+			"n",
+			"<leader>?",
+			require("telescope.builtin").oldfiles,
+			{ desc = "[?] Find recently opened files" }
+		)
+		-- Resume last closed telescope
 		vim.keymap.set("n", ";;", builtin.resume, { desc = "Resume last telescope" })
+		-- View Recent buffers
 		vim.keymap.set("n", "\\\\", builtin.buffers, { desc = "Buffers" })
+		-- Testing Different fuzzy find bind
+		vim.keymap.set("n", "<leader>/", function()
+			-- You can pass additional configuration to telescope to change theme, layout, etc.
+			require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+				winblend = 10,
+				previewer = false,
+			}))
+		end, { desc = "[/] Fuzzily search in current buffer]" })
 		-- Current Buffer Fuzzy Find
 		vim.keymap.set("n", "<leader>pp", builtin.current_buffer_fuzzy_find, { desc = "Current Buffer Fuzzy Find" })
 		-- Live Grep
@@ -99,6 +116,28 @@ return {
 			{ desc = "Git Worktree" }
 		)
 
+		-- Search Diagnostics
+		vim.keymap.set("n", "<leader>sd", require("telescope.builtin").diagnostics, { desc = "[S]earch [D]iagnostics" })
+
+		-- Search Git Status
+		vim.keymap.set("n", "<leader>sS", require("telescope.builtin").git_status, { desc = "" })
+
+		-- Search Marks
+		vim.keymap.set("n", "<leader>sm", ":Telescope harpoon marks<CR>", { desc = "Harpoon [M]arks" })
+
+		-- Notify
+		vim.keymap.set("n", "<Leader>sn", "<CMD>lua require('telescope').extensions.notify.notify()<CR>", {
+			desc = "Notify",
+		})
+
+		-- Options through Telescope
+		vim.api.nvim_set_keymap(
+			"n",
+			"<Leader><tab>",
+			"<Cmd>lua require('telescope.builtin').commands()<CR>",
+			{ noremap = false }
+		)
+
 		-- Telescope Settings
 		telescope.setup({
 			defaults = {
@@ -116,6 +155,14 @@ return {
 					width = 0.87,
 					height = 0.80,
 					preview_cutoff = 120,
+				},
+				mappings = {
+					i = {
+						["<C-u>"] = false,
+						["<C-d>"] = false,
+						["<C-j>"] = require("telescope.actions").move_selection_next,
+						["<C-k>"] = require("telescope.actions").move_selection_previous,
+					},
 				},
 				n = {
 					["q"] = actions.close,
@@ -209,5 +256,6 @@ return {
 		telescope.load_extension("ui-select")
 		telescope.load_extension("undo")
 		telescope.load_extension("live_grep_args")
+		telescope.load_extension("harpoon")
 	end,
 }

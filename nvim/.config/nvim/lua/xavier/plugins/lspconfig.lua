@@ -12,6 +12,7 @@ return {
 			"jose-elias-alvarez/typescript.nvim",
 			"b0o/schemastore.nvim",
 			"MunifTanjim/prettier.nvim",
+			"j-hui/fidget.nvim",
 			{
 				"lvimuser/lsp-inlayhints.nvim",
 				config = function()
@@ -20,6 +21,65 @@ return {
 			},
 		},
 		config = function()
+			-- Diagnostic keymaps
+			vim.keymap.set("n", "[d", vim.diagnostic.goto_prev)
+			vim.keymap.set("n", "]d", vim.diagnostic.goto_next)
+			vim.keymap.set("n", "<leader>e", vim.diagnostic.open_float)
+			vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist)
+
+			-- LSP settings.
+			--  This function gets run when an LSP connects to a particular buffer.
+			local on_attach = function(_, bufnr)
+				-- NOTE: Remember that lua is a real programming language, and as such it is possible
+				-- to define small helper and utility functions so you don't have to repeat yourself
+				-- many times.
+				--
+				-- In this case, we create a function that lets us more easily define mappings specific
+				-- for LSP related items. It sets the mode, buffer and description for us each time.
+				local nmap = function(keys, func, desc)
+					if desc then
+						desc = "LSP: " .. desc
+					end
+
+					vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
+				end
+
+				nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+				nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
+				nmap("gd", vim.lsp.buf.definition, "[G]oto [D]efinition")
+				nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
+				nmap("gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
+				nmap("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
+				nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
+				nmap("<leader>ws", require("telescope.builtin").lsp_dynamic_workspace_symbols, "[W]orkspace [S]ymbols")
+
+				-- See `:help K` for why this keymap
+				nmap("K", vim.lsp.buf.hover, "Hover Documentation")
+				nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
+
+				-- Lesser used LSP functionality
+				nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+				nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
+				nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
+				nmap("<leader>wl", function()
+					print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+				end, "[W]orkspace [L]ist Folders")
+
+				-- Create a command `:Format` local to the LSP buffer
+				vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
+					if vim.lsp.buf.format then
+						vim.lsp.buf.format()
+					elseif vim.lsp.buf.formatting then
+						vim.lsp.buf.formatting()
+					end
+				end, { desc = "Format current buffer with LSP" })
+			end
+
+			--  This function gets run when an LSP connects to a particular buffer.
+
+			-- Turn on lsp status information
+			require("fidget").setup()
+
 			-- mason-lspconfig requires that these setup functions are called in this order
 			-- before setting up the servers.
 			require("mason").setup()
@@ -99,75 +159,6 @@ return {
 				-- 		end,
 				-- 	})
 				-- end
-
-				-- Use an on_attach function to only map the following keys
-				-- after the language server attaches to the current buffer
-				local on_attach = function(client, bufnr)
-					-- Enable Inlay hints
-					require("lsp-inlayhints").on_attach(client, bufnr)
-					-- Enable completion triggered by <c-x><c-o>
-					-- local function buf_set_option(...) vim.api.nvim_buf_set_option(bufnr, ...) end
-					-- buf_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
-					if presentLspSignature then
-						lsp_signature.on_attach({ floating_window = false, timer_interval = 500 })
-					end
-
-					if presentLspStatus then
-						lsp_status.on_attach(client)
-					end
-
-					if client.name == "tsserver" then
-						-- let prettier format
-						client.server_capabilities.document_formatting = false
-						client.server_capabilities.documentFormattingProvider = false
-					end
-
-					-- Mappings.
-					opts = { noremap = true, silent = true }
-					vim.keymap.set("n", ";d", "<cmd>Telescope diagnostics<cr>", opts)
-					-- Diagnostic keymaps
-					vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous diagnostic message" })
-					vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Go to next diagnostic message" })
-
-					local nmap = function(keys, func, desc)
-						if desc then
-							desc = "LSP: " .. desc
-						end
-
-						vim.keymap.set("n", keys, func, { buffer = bufnr, desc = desc })
-					end
-
-					nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-					nmap("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
-					nmap("gd", require("telescope.builtin").lsp_definitions, "[G]oto [D]efinition")
-					nmap("gr", require("telescope.builtin").lsp_references, "[G]oto [R]eferences")
-					nmap("gI", require("telescope.builtin").lsp_implementations, "[G]oto [I]mplementation")
-					nmap("<leader>D", require("telescope.builtin").lsp_type_definitions, "Type [D]efinition")
-					nmap("<leader>ds", require("telescope.builtin").lsp_document_symbols, "[D]ocument [S]ymbols")
-					nmap(
-						"<leader>ws",
-						require("telescope.builtin").lsp_dynamic_workspace_symbols,
-						"[W]orkspace [S]ymbols"
-					)
-
-					-- See `:help K` for why this keymap
-					nmap("K", vim.lsp.buf.hover, "Hover Documentation")
-					nmap("<C-k>", vim.lsp.buf.signature_help, "Signature Documentation")
-
-					-- Lesser used LSP functionality
-					nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
-					nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
-					nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
-					nmap("<leader>wl", function()
-						print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-					end, "[W]orkspace [L]ist Folders")
-
-					-- Create a command `:Format` local to the LSP buffer
-					vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
-						vim.lsp.buf.format()
-					end, { desc = "Format current buffer with LSP" })
-					nmap("<leader>lF", ":Format<cr>", "Format File")
-				end
 
 				protocol.CompletionItemKind = {
 					"", -- Text

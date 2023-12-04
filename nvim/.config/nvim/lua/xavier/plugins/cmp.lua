@@ -204,6 +204,7 @@ return {
 					},
 					{ name = "nvim_lua" },
 					{ name = "buffer", max_item_count = 8 },
+					{ name = "neorg" },
 				},
 				window = {
 					documentation = {
