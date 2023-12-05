@@ -73,7 +73,7 @@ ZSH_THEME="robbyrussell"
 plugins=(git zsh-syntax-highlighting zsh-autosuggestions z)
 
 source $ZSH/oh-my-zsh.sh
-
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
@@ -101,7 +101,6 @@ fi
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias .zshrc="nvim ~/.zshrc"
 alias .dotfiles="nvim ~/.dotfiles"
-alias at="npx alacritty-themes"
 alias tt="tmux new-session -A -s main"
 alias ttk="tmux kill-server"
 alias pip="pip3"
@@ -112,4 +111,3 @@ alias pip="pip3"
 # Must add at the end of the file
 eval "$(starship init zsh)"
 
-[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

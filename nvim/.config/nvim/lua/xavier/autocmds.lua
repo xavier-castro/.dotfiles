@@ -53,7 +53,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 autocmd({ "BufWinEnter" }, {
 	group = XavierGroup,
 	callback = function()
-    vim.cmd([[
+		vim.cmd([[
 let g:skipview_files = [
 	\ '[EXAMPLE PLUGIN BUFFER]'
 	\ ]
@@ -80,4 +80,18 @@ augroup vimrcAutoView
 augroup end
 ]])
 	end,
+})
+
+-- Make GitSigns Transparent
+vim.api.nvim_create_autocmd("BufEnter", {
+	callback = function()
+		-- Remove highlights off gitsigns
+		vim.cmd([[
+  hi GitSignsAdd guibg=none
+  hi GitSignsChange guibg=none
+  hi GitSignsDelete guibg=none
+]])
+	end,
+	group = XavierGroup,
+	desc = "Disable bg on gitsigns",
 })
