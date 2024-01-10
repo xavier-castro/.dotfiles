@@ -14,8 +14,6 @@ return {
 			"hrsh7th/cmp-nvim-lua",
 			"onsails/lspkind.nvim",
 			"rafamadriz/friendly-snippets",
-			"tzachar/cmp-fuzzy-path",
-			"tzachar/fuzzy.nvim",
 		},
 
 		config = function()
@@ -45,108 +43,6 @@ return {
 				vim_item.kind = lspkind.symbolic(vim_item.kind) and lspkind.symbolic(vim_item.kind) or vim_item.kind
 				return vim_item
 			end
-
-			---Filter out unwanted entries
-			---@return boolean
-			local function entry_filter(entry, _)
-				return not vim.tbl_contains({
-					"No matches found",
-					"Searching...",
-					"Workspace loading",
-				}, entry.completion_item.label)
-			end
-
-			---Filter out unwanted entries for fuzzy_path source
-			local function entry_filter_fuzzy_path(entry, context)
-				return entry_filter(entry, context)
-					-- Don't show fuzzy-path entries in markdown/tex mathzone
-					and not (
-						vim.g.loaded_vimtex == 1
-						and (vim.bo.ft == "markdown" or vim.bo.ft == "tex")
-						and vim.api.nvim_eval("vimtex#syntax#in_mathzone()") == 1
-					)
-			end
-
-			---Options for fuzzy_path source
-			local fuzzy_path_option = {
-				fd_cmd = {
-					"fd",
-					"-p",
-					"-H",
-					"-L",
-					"-td",
-					"-tf",
-					"-tl",
-					"-d4",
-					"--mount",
-					"-c=never",
-					"-E=*$*",
-					"-E=*%*",
-					"-E=*.bkp",
-					"-E=*.bz2",
-					"-E=*.db",
-					"-E=*.directory",
-					"-E=*.dll",
-					"-E=*.doc",
-					"-E=*.docx",
-					"-E=*.drawio",
-					"-E=*.gif",
-					"-E=*.git/",
-					"-E=*.gz",
-					"-E=*.ico",
-					"-E=*.ipynb",
-					"-E=*.iso",
-					"-E=*.jar",
-					"-E=*.jpeg",
-					"-E=*.jpg",
-					"-E=*.mp3",
-					"-E=*.mp4",
-					"-E=*.o",
-					"-E=*.otf",
-					"-E=*.out",
-					"-E=*.pdf",
-					"-E=*.pickle",
-					"-E=*.png",
-					"-E=*.ppt",
-					"-E=*.pptx",
-					"-E=*.pyc",
-					"-E=*.rar",
-					"-E=*.so",
-					"-E=*.svg",
-					"-E=*.tar",
-					"-E=*.ttf",
-					"-E=*.venv/",
-					"-E=*.xls",
-					"-E=*.xlsx",
-					"-E=*.zip",
-					"-E=*Cache*/",
-					"-E=*\\~",
-					"-E=*cache*/",
-					"-E=.*Cache*/",
-					"-E=.*cache*/",
-					"-E=.*wine/",
-					"-E=.cargo/",
-					"-E=.conda/",
-					"-E=.dot/",
-					"-E=.fonts/",
-					"-E=.ipython/",
-					"-E=.java/",
-					"-E=.jupyter/",
-					"-E=.luarocks/",
-					"-E=.mozilla/",
-					"-E=.npm/",
-					"-E=.nvm/",
-					"-E=.steam*/",
-					"-E=.thunderbird/",
-					"-E=.tmp/",
-					"-E=__pycache__/",
-					"-E=dosdevices/",
-					"-E=events.out.tfevents.*",
-					"-E=node_modules/",
-					"-E=vendor/",
-					"-E=venv/",
-				},
-			}
 
 			cmp.setup({
 				snippet = {
@@ -215,11 +111,7 @@ return {
 				sources = {
 					{ name = "luasnip", max_item_count = 3 },
 					{ name = "nvim_lsp_signature_help" },
-					{
-						name = "fuzzy_path",
-						entry_filter = entry_filter_fuzzy_path,
-						option = fuzzy_path_option,
-					},
+					{ name = "path" },
 					{
 						name = "nvim_lsp",
 						max_item_count = 20,
