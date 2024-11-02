@@ -17,6 +17,7 @@ shell: /bin/zsh
 scrolling:
   history: 10000
   multiplier: 3
+colors:
 mouse:
   hide_when_typing: false
 font:
