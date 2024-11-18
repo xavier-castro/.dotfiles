@@ -6,8 +6,14 @@ local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices
 config.font = wezterm.font 'MesloLGS NF'
-config.color_scheme = 'Andromeda'
 config.enable_tab_bar = false
+config.color_scheme = 'Vs Code Dark+ (Gogh)'
+config.window_padding = {
+  left = 2,
+  right = 2,
+  top = 0,
+  bottom = 0,
+}
 
 -- and finally, return the configuration to wezterm
 return config
