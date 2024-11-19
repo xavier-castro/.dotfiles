@@ -2,6 +2,11 @@
 
 ## Revamp
 
+## Mac Terminal Commands
+
+Disables the annoying security check when installing foreign apps
+`sudo spctl --master-disable`
+
 Revamp includes rust shell and terminal. This branch is using nu shell and WezTerm
 
 `must_copy_manually` are files that must be put in the proper place in pc.
