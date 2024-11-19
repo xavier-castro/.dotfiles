@@ -5,12 +5,12 @@ local wezterm = require("wezterm")
 local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices
-config.font = wezterm.font("MesloLGS NF")
+-- config.font = wezterm.font("MesloLGS NF")
 config.freetype_render_target = "HorizontalLcd"
 config.freetype_load_target = "Light"
 config.max_fps = 144
 config.enable_tab_bar = false
-config.color_scheme = "Operator Mono Dark"
+config.color_scheme = "Vs Code Dark+ (Gogh)"
 config.window_padding = {
 	left = 2,
 	right = 2,
