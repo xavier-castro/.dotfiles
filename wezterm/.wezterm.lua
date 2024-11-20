@@ -6,6 +6,7 @@ local config = wezterm.config_builder()
 
 -- This is where you actually apply your config choices
 -- config.font = wezterm.font("MesloLGS NF")
+config.font = wezterm.font("MesloLGS NF")
 config.freetype_render_target = "HorizontalLcd"
 config.freetype_load_target = "Light"
 config.max_fps = 144
