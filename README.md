@@ -2,6 +2,10 @@
 
 ## Revamp
 
+### Get MarkdownPreview to Work
+
+[This issue makes markdown preview work](https://github.com/iamcco/markdown-preview.nvim/issues/424)
+
 ## Mac Terminal Commands
 
 Disables the annoying security check when installing foreign apps
@@ -14,5 +18,9 @@ Revamp includes rust shell and terminal. This branch is using nu shell and WezTe
 Make sure `/usr/local/bin/nu` is allowed in `/etc/shells`
 
 ## Applications
+
+### Aerospace - i3 for Mac
+
+[Aerospace](https://www.youtube.com/watch?v=5nwnJjr5eOo)
 
 `brew install --cask qbittorrent`
