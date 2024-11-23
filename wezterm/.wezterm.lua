@@ -11,7 +11,6 @@ config.freetype_render_target = "HorizontalLcd"
 config.freetype_load_target = "Light"
 config.max_fps = 144
 config.enable_tab_bar = false
-config.color_scheme = "Oxocarbon Dark (Gogh)"
 config.window_padding = {
 	left = 2,
 	right = 2,
