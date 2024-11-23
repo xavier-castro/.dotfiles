@@ -2,7 +2,7 @@
 live_config_reload = true
 
 [terminal.shell]
-program = "/usr/local/bin/zsh"
+program = "/usr/local/bin/fish"
 
 [window]
 blur = true
