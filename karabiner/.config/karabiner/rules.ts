@@ -121,15 +121,15 @@ const rules: KarabinerRules[] = [
           },
         ],
       },
-      f: {
-        description: "Window: Full Screen",
-        to: [
-          {
-            key_code: "f",
-            modifiers: ["right_option", "right_command"],
-          },
-        ],
-      },
+      // f: {
+      //   description: "Window: Full Screen",
+      //   to: [
+      //     {
+      //       key_code: "f",
+      //       modifiers: ["right_option", "right_command"],
+      //     },
+      //   ],
+      // },
       u: {
         description: "Window: Previous Tab",
         to: [
