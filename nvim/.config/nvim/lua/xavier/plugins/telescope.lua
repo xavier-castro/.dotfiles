@@ -11,6 +11,7 @@ return {
 		"nvim-telescope/telescope-frecency.nvim",
 		"ThePrimeagen/git-worktree.nvim",
 		"nvim-telescope/telescope-file-browser.nvim",
+		"nvim-telescope/telescope-project.nvim",
 		"nvim-telescope/telescope-ui-select.nvim",
 		"keyvchan/telescope-find-pickers.nvim",
 		"piersolenski/telescope-import.nvim",
@@ -194,6 +195,12 @@ return {
 				"package-lock.json",
 			},
 			extensions = {
+				project = {
+					base_dirs = {
+						{ "~/codebase", max_depth = 3 },
+					},
+					hidden_files = true,
+				},
 				import = {
 					-- Add imports to the top of the file keeping the cursor in place
 					insert_at_top = true,
@@ -274,5 +281,6 @@ return {
 		telescope.load_extension("live_grep_args")
 		telescope.load_extension("harpoon")
 		telescope.load_extension("import")
+		telescope.load_extension("project")
 	end,
 }
