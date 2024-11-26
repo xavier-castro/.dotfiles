@@ -228,6 +228,7 @@ return {
 					show_unindexed = true,
 					ignore_patterns = { "*.git/*", "*/tmp/*", "node_modules", "lazy-lock.json" },
 					disable_devicons = false,
+					db_safe_mode = false,
 					workspaces = {
 						["dev"] = "/Users/xc/Developer",
 					},

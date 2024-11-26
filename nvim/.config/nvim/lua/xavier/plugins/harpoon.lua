@@ -1,7 +1,7 @@
 return {
-    {
+	{
 		"theprimeagen/harpoon",
-        event="VeryLazy",
+		event = "VeryLazy",
 		keys = {
 			{
 				";e",
