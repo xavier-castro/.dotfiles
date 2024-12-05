@@ -41,7 +41,6 @@ return {
 				-- MARK: Code Actions
 				-- code_actions.refactoring,
 				code_actions.shellcheck,
-				require("typescript.extensions.null-ls.code-actions"),
 			},
 			on_attach = function(client, bufnr)
 				if client.supports_method("textDocument/formatting") then
