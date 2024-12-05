@@ -19,13 +19,15 @@ return {
 	},
 	opts = {
 		workspaces = {
+
+			-- define each workspace with a name and path
 			{
-				name = "main",
-				path = "~/vaults/main",
+				name = "obsi_all_purpose",
+				path = "~/Documents/obsi_all_purpose",
 			},
 			{
-				name = "personal",
-				path = "~/vaults/personal",
+				name = "obsi_personal",
+				path = "~/Documents/obsi_personal",
 			},
 		},
 
