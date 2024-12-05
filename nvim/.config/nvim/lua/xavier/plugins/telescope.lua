@@ -15,7 +15,7 @@ return {
 		"nvim-telescope/telescope-ui-select.nvim",
 		"keyvchan/telescope-find-pickers.nvim",
 		"piersolenski/telescope-import.nvim",
-		{ "junegunn/fzf", dir = "~/.fzf", build = "./install --all" },
+		{ "junegunn/fzf",  build = "./install --all" },
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
 			build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
