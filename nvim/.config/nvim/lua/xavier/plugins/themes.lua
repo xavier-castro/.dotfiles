@@ -43,13 +43,13 @@ return {
 			require("vscode").setup({
 				transparent = true,
 			})
-			-- vim.cmd.colorscheme("vscode")
+			vim.cmd.colorscheme("vscode")
 		end,
 	},
 	{
 		"andreasvc/vim-256noir",
 		config = function()
-			vim.cmd.colorscheme("256_noir")
+			-- vim.cmd.colorscheme("256_noir")
 		end,
 	},
 }
