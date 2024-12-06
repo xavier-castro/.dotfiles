@@ -11,16 +11,20 @@
 Disables the annoying security check when installing foreign apps
 `sudo spctl --master-disable`
 
-Revamp includes rust shell and terminal. This branch is using nu shell and WezTerm
-
-`must_copy_manually` are files that must be put in the proper place in pc.
-
-Make sure `/usr/local/bin/nu` is allowed in `/etc/shells`
-
 ## Applications
 
 ### Aerospace - i3 for Mac
 
-[Aerospace](https://www.youtube.com/watch?v=5nwnJjr5eOo)
+`defaults write -g NSWindowShouldDragOnGesture -bool true`
+
+#### Cheatsheet
+
+[Quick Basics Guide](https://www.youtube.com/watch?v=UOl7ErqWbrk)
+
+- `Alt + <Num>` - Switch to workspace
+- `Alt + Shift + <Num>` - Move window to workspace
+- `Alt + Shift + Q` - Close window
+- `Alt + <h> <j> <k> <l>` - Move focus
+- `Alt + Shift + <h> <j> <k> <l>` - Move window
 
 `brew install --cask qbittorrent`

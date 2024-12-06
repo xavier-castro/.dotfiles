@@ -31,6 +31,7 @@ set -g GOPATH $HOME/go
 set -gx PATH $GOPATH/bin $PATH
 
 if type -q eza
+  alias ls "eza -l --icons"
   alias ll "eza -l -g --icons"
   alias lla "ll -a"
 end
