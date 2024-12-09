@@ -19,6 +19,8 @@
   "git-worktree.nvim": { "branch": "master", "commit": "f247308e68dab9f1133759b05d944569ad054546" },
   "gitsigns.nvim": { "branch": "main", "commit": "5f808b5e4fef30bd8aca1b803b4e555da07fc412" },
   "goto-preview": { "branch": "main", "commit": "8a671ae123532bd7a8393ed2b1475bb40baf968f" },
+  "grug-far.nvim": { "branch": "main", "commit": "3707c4fb6ac982a1ca013c1b3bffa8e396f775cc" },
+  "gruvbox.nvim": { "branch": "main", "commit": "68c3460a5d1d1a362318960035c9f3466d5011f5" },
   "harpoon": { "branch": "master", "commit": "1bc17e3e42ea3c46b33c0bbad6a880792692a1b3" },
   "hop.nvim": { "branch": "v2", "commit": "90db1b2c61b820e230599a04fedcd2679e64bd07" },
   "lazy.nvim": { "branch": "main", "commit": "3388a26417c48b15d5266d954f62a4d47fe99490" },
