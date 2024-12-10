@@ -266,3 +266,8 @@ run = ['move-node-to-workspace P']
 [[on-window-detected]]
 if.app.id = 'com.apple.MobileSMS'
 run = ['move-node-to-workspace C']
+
+# Obsidian goes to N (notes) workspace
+[[on-window-detected]]
+if.app.id = 'md.obsidian'
+run = ['move-node-to-workspace N']
