@@ -2,12 +2,26 @@
 
 This is a complete revamp.
 
+TODO: Nix Migration
+
 ## Essentials
+
+Works on all Systems for me:
+
+- Alacritty `brew install --cask alacritty`
 
 Zsh/Neovim/Tmux
 
-### Why Zsh and OMZ
+## Mac Installations Required
 
-### Why Neovim
+- [Karabiner-Elements](https://pqrs.org/osx/karabiner/)
+- [Rectangle Pro](https://rectangleapp.com/pro)
 
-Duh
+### Dotfiles Installation Process
+
+`cd` into the karabiner folder and run the following command:
+
+```bash
+yarn
+yarn run build
+```
