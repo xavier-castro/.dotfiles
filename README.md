@@ -9,6 +9,7 @@ TODO: Nix Migration
 Works on all Systems for me:
 
 - Alacritty `brew install --cask alacritty`
+- [Docker](https://www.docker.com/)
 
 Zsh/Neovim/Tmux
 
