@@ -45,9 +45,6 @@ vim.keymap.set("n", "<C-a>", "gg<S-v>G")
 -- Duplicate a line and comment out the first line
 vim.keymap.set("n", "yc", "yygccp")
 
--- Folke
-vim.keymap.set("n", "<C-c>", "ciw")
-
 -- Navigate between nvim splits
 vim.keymap.set("n", "<C-h>", "<C-w>h")
 vim.keymap.set("n", "<C-k>", "<C-w>k")
