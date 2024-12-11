@@ -105,3 +105,4 @@ source $ZSH/oh-my-zsh.sh
 source ~/.zsh_profile
 
 eval "$(zoxide init zsh)"
+eval "$(starship init zsh)"
