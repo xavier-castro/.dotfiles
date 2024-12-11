@@ -1,5 +1,4 @@
-export XDG_CONFIG_HOME=$HOME/.config
-VIM="nvim"
+
 
 # PERSONAL=$XDG_CONFIG_HOME/personal
 # source $PERSONAL/env
@@ -7,9 +6,6 @@ VIM="nvim"
 # for i in `find -L $PERSONAL`; do
 #     source $i
 # done
-
-# Set up fzf key bindings and fuzzy completion
-source <(fzf --zsh)
 
 # addToPathFront $HOME/.local/bin
 path+=('$HOME/.local/bin')
@@ -19,3 +15,12 @@ path+=('/usr/local/bin')
 
 # Where should I put you?
 bindkey -s ^f "tmux-sessionizer\n"
+
+# Aliases
+# Next level of an ls
+# options :  --no-filesize --no-time --no-permissions
+alias ls="eza --no-filesize --long --color=always --icons=always --no-user"
+
+# tree
+alias tree="tree -L 3 -a -I '.git' --charset X "
+alias dtree="tree -L 3 -a -d -I '.git' --charset X "
