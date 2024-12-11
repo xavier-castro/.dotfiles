@@ -13,11 +13,8 @@ source <(fzf --zsh)
 
 # addToPathFront $HOME/.local/bin
 path+=('$HOME/.local/bin')
-# addToPathFront $HOME/.local/scripts
 path+=('$HOME/.local/scripts')
-# addToPathFront $HOME/.local/pipx
 path+=('$HOME/.local/pipx')
-# addToPathFront /usr/local/bin
 path+=('/usr/local/bin')
 
 # Where should I put you?
