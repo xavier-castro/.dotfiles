@@ -18,8 +18,7 @@ return {
 		{ "junegunn/fzf", build = "./install --all" },
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
-			build =
-			"cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+			build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
 		},
 	},
 	config = function()
@@ -57,6 +56,12 @@ return {
 		vim.keymap.set("n", "<leader>po", builtin.oldfiles, { desc = "Commands" })
 		-- Find Files
 		vim.keymap.set("n", "<leader>pf", builtin.find_files, { desc = "Find Files" })
+		vim.api.nvim_set_keymap(
+			"n",
+			"<Leader><tab>",
+			"<Cmd>lua require('telescope.builtin').commands()<CR>",
+			{ noremap = false }
+		)
 		-- Git Files
 		vim.keymap.set("n", "<C-p>", builtin.git_files, { desc = "Git Files" })
 		-- Help Tags
@@ -218,7 +223,7 @@ return {
 					},
 				},
 				fzf = {
-					fuzzy = true,    -- false will only do exact matching
+					fuzzy = true, -- false will only do exact matching
 					override_generic_sorter = true, -- override the generic sorter
 					override_file_sorter = true, -- override the file sorter
 					case_mode = "smart_case", -- or "ignore_case" or "respect_case"

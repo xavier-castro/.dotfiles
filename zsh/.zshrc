@@ -1,14 +1,6 @@
-# [Znap Guide](https://github.com/marlonrichert/zsh-snap/blob/main/README.md)
-
-# Download Znap, if it's not there yet.
-[[ -r ~/codebase/znap-cli/znap/znap.zsh ]] ||
-    git clone --depth 1 -- \
-        https://github.com/marlonrichert/zsh-snap.git ~/codebase/znap-cli/znap
-
-source ~/codebase/znap-cli/znap/znap.zsh
-
 export XDG_CONFIG_HOME=$HOME/.config
 VIM="nvim"
+
 
 # Prompt
 source ~/.zsh_prompt # XC Prompt
@@ -19,26 +11,37 @@ path+=('$HOME/.local/scripts')
 path+=('$HOME/.local/pipx')
 path+=('/usr/local/bin')
 
-# Where should I put you?
-bindkey -s ^f "tmux-sessionizer\n"
+##? Clone a plugin, identify its init file, source it, and add it to your fpath.
+# where do you want to store your plugins?
+ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-$HOME/.config/zsh}/plugins}
 
-# Aliases
-# Next level of an ls
-# options :  --no-filesize --no-time --no-permissions
-alias ls="eza --no-filesize --long --color=always --icons=always --no-user"
+# get zsh_unplugged and store it with your other plugins
+if [[ ! -d $ZPLUGINDIR/zsh_unplugged ]]; then
+  git clone --quiet https://github.com/mattmc3/zsh_unplugged $ZPLUGINDIR/zsh_unplugged
+fi
+source $ZPLUGINDIR/zsh_unplugged/zsh_unplugged.zsh
 
-# tree
-alias tree="tree -L 3 -a -I '.git' --charset X "
-alias dtree="tree -L 3 -a -d -I '.git' --charset X "
+# make list of the Zsh plugins you use
+repos=(
 
+  # other plugins
+  zsh-users/zsh-completions
+  rupa/z
+  # ...
 
-# Completion functions
-znap install junegunn/fzf
+  # plugins you want loaded last
+  zsh-users/zsh-syntax-highlighting
+  zsh-users/zsh-history-substring-search
+  zsh-users/zsh-autosuggestions
+)
 
+# now load your plugins
+plugin-load $repos
 
-# Evals
-znap eval zoxide "zoxide init zsh"
-znap eval fzf "fzf --zsh"
+# Source Private Keys from `~/.zshenv_private`
+if [ -f ~/.zshenv_private ]; then
+  source ~/.zshenv_private
+fi
 
 
 
