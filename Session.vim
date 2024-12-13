@@ -17,14 +17,23 @@ badd +24 ~/Documents/obsi_all_purpose/daily/2024-12-13.md
 badd +1 ~/Documents/obsi_all_purpose/daily/1734096177-HPKQ.md
 badd +4 nvim/.config/nvim/lua/xavier/plugins/copilot-chat.lua
 badd +20 nvim/.config/nvim/lua/xavier/plugins/fterm.lua
-badd +53 nvim/.config/nvim/lua/xavier/plugins/themes.lua
-badd +0 ~/Documents/obsi_all_purpose/2024-12-08.md
+badd +1 nvim/.config/nvim/lua/xavier/plugins/themes.lua
+badd +1 ~/Documents/obsi_all_purpose/2024-12-08.md
+badd +1 nvim/.config/nvim/lua/xavier/plugins/cmp.lua
+badd +68 nvim/.config/nvim/lua/xavier/plugins/code-companion.lua
 argglobal
 %argdel
 $argadd ~/Documents/obsi_all_purpose/2024-12-08.md
-edit nvim/.config/nvim/lua/xavier/plugins/themes.lua
+edit nvim/.config/nvim/lua/xavier/plugins/code-companion.lua
+wincmd t
+let s:save_winminheight = &winminheight
+let s:save_winminwidth = &winminwidth
+set winminheight=0
+set winheight=1
+set winminwidth=0
+set winwidth=1
 argglobal
-balt nvim/.config/nvim/lua/xavier/plugins/fterm.lua
+balt nvim/.config/nvim/lua/xavier/plugins/cmp.lua
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -34,60 +43,24 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-4,6fold
-2,7fold
-13,15fold
-12,17fold
-9,18fold
-22,24fold
-20,25fold
-32,40fold
-30,41fold
-29,43fold
-27,44fold
-49,51fold
-48,53fold
-46,54fold
+6,36fold
+39,43fold
+44,46fold
+50,52fold
+49,53fold
+48,54fold
 57,59fold
-55,60fold
-62,65fold
-73,76fold
-80,84fold
-88,102fold
-112,115fold
-106,117fold
-71,118fold
-70,122fold
-66,123fold
-143,149fold
-152,154fold
-161,165fold
-128,166fold
-126,168fold
-124,169fold
-186,190fold
-183,191fold
-192,203fold
-204,208fold
-209,211fold
-175,212fold
-174,216fold
-172,220fold
-170,221fold
-228,254fold
-256,279fold
-226,280fold
-225,282fold
-223,283fold
-1,284fold
+56,60fold
+55,71fold
+47,72fold
+37,73fold
+4,74fold
 let &fdl = &fdl
-1
-normal! zo
-let s:l = 1 - ((0 * winheight(0) + 30) / 60)
+let s:l = 68 - ((52 * winheight(0) + 30) / 60)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 1
+keepjumps 68
 normal! 0
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
@@ -96,6 +69,8 @@ endif
 unlet! s:wipebuf
 set winheight=1 winwidth=20
 let &shortmess = s:shortmess_save
+let &winminheight = s:save_winminheight
+let &winminwidth = s:save_winminwidth
 let s:sx = expand("<sfile>:p:r")."x.vim"
 if filereadable(s:sx)
   exe "source " . fnameescape(s:sx)

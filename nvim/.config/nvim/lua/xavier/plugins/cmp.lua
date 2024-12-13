@@ -14,6 +14,7 @@ return {
 			"hrsh7th/cmp-nvim-lua",
 			"onsails/lspkind.nvim",
 			"rafamadriz/friendly-snippets",
+			"olimorris/codecompanion.nvim",
 		},
 
 		config = function()
@@ -119,6 +120,7 @@ return {
 					},
 					{ name = "nvim_lua" },
 					{ name = "buffer", max_item_count = 8 },
+					{ name = "codecompanion" },
 					{ name = "neorg" },
 				},
 				window = {

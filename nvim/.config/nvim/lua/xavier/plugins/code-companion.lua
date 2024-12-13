@@ -1,6 +1,12 @@
 local anthropic_api_key = os.getenv("ANTHROPIC_API_KEY")
 local openai_api_key = os.getenv("OPENAI_API_KEY")
 
+vim.api.nvim_set_keymap("n", "<M-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<M-a>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<LocalLeader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "<LocalLeader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
+
 return {
 	"olimorris/codecompanion.nvim",
 	dependencies = {
