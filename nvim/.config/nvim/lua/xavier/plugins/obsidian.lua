@@ -14,23 +14,30 @@ return {
 	dependencies = {
 		-- Required.
 		"nvim-lua/plenary.nvim",
-
-		-- see below for full list of optional dependencies 👇
 	},
 	opts = {
 		workspaces = {
-
 			-- define each workspace with a name and path
 			{
 				name = "obsi_all_purpose",
 				path = "~/Documents/obsi_all_purpose",
 			},
-			{
-				name = "obsi_personal",
-				path = "~/Documents/obsi_personal",
-			},
 		},
 
-		-- see below for full list of options 👇
+		-- Templates configuration
+		templates = {
+			subdir = "templates",
+			date_format = "%Y-%m-%d",
+			time_format = "%H:%M",
+			-- Template substitutions
+			substitutions = {
+				date = function()
+					return os.date("%Y-%m-%d")
+				end,
+				time = function()
+					return os.date("%H:%M")
+				end,
+			},
+		},
 	},
 }
