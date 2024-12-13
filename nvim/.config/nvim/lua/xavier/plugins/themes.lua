@@ -49,7 +49,7 @@ return {
 			require("vscode").setup({
 				transparent = true,
 			})
-			vim.cmd.colorscheme("vscode")
+			-- vim.cmd.colorscheme("vscode")
 		end,
 	},
 	{
@@ -83,9 +83,9 @@ return {
 					percentage = 0.15, -- percentage of the shade to apply to the inactive window
 				},
 				no_italic = false, -- Force no italic
-				no_bold = false,   -- Force no bold
+				no_bold = false, -- Force no bold
 				no_underline = false, -- Force no underline
-				styles = {         -- Handles the styles of general hi groups (see `:h highlight-args`):
+				styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
 					comments = { "italic" }, -- Change the style of comments
 					conditionals = { "italic" },
 					loops = {},
@@ -127,14 +127,14 @@ return {
 			-- Lua
 			require("onedark").setup({
 				-- Main options --
-				style = "dark",   -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
+				style = "dark", -- Default theme style. Choose between 'dark', 'darker', 'cool', 'deep', 'warm', 'warmer' and 'light'
 				transparent = true, -- Show/hide background
 				term_colors = true, -- Change terminal color as per the selected theme style
 				ending_tildes = false, -- Show the end-of-buffer tildes. By default they are hidden
 				cmp_itemkind_reverse = false, -- reverse item kind highlights in cmp menu
 
 				-- toggle theme style ---
-				toggle_style_key = nil,                                                  -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
+				toggle_style_key = nil, -- keybind to toggle theme style. Leave it nil to disable it, or set it to a string, for example "<leader>ts"
 				toggle_style_list = { "dark", "darker", "cool", "deep", "warm", "warmer", "light" }, -- List of styles to toggle between
 
 				-- Change code style ---
@@ -278,7 +278,7 @@ return {
 					delta = "#e6be8c",
 				},
 			})
-			-- vim.cmd.colorscheme("vague")
+			vim.cmd.colorscheme("vague")
 		end,
 	},
 }

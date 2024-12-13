@@ -289,5 +289,6 @@ return {
 		telescope.load_extension("harpoon")
 		telescope.load_extension("import")
 		telescope.load_extension("project")
+		telescope.load_extension("codecompanion")
 	end,
 }
