@@ -72,3 +72,6 @@ vim.keymap.set("n", "<C-w><down>", "<C-w>-")
 
 -- Remove highlight
 vim.keymap.set("n", "<Esc>", ":nohl<cr>")
+
+-- Exit Terminal Buffers
+vim.api.nvim_set_keymap("t", "<C-x>", [[<C-\><C-n>:bd!<CR>]], { noremap = true, silent = true })

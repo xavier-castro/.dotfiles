@@ -1,3 +1,17 @@
+# Skip all initialization if not running interactively
+[[ $- != *i* ]] && return
+
+# Add to top of .zshrc
+PROFILE_STARTUP=false
+if [[ "$PROFILE_STARTUP" == true ]]; then
+    zmodload zsh/zprof
+fi
+
+# Add to bottom of .zshrc
+if [[ "$PROFILE_STARTUP" == true ]]; then
+    zprof
+fi
+
 source ~/.dotfiles/zsh/.zsh_prompt
 
 ### Added by Zinit's installer
@@ -21,15 +35,43 @@ fi
 autoload -Uz _zinit
 (( ${+_comps} )) && _comps[zinit]=_zinit
 
-# Load a few important annexes, without Turbo
-# (this is currently required for annexes)
-zinit light-mode for \
-    zdharma-continuum/zinit-annex-as-monitor \
-    zdharma-continuum/zinit-annex-bin-gem-node \
-    zdharma-continuum/zinit-annex-patch-dl \
-    zdharma-continuum/zinit-annex-rust
+# Load plugins with optimized turbo mode
+zinit wait'0a' lucid light-mode for \
+    atinit"zicompinit; zicdreplay" \
+    zdharma-continuum/fast-syntax-highlighting \
 
-### End of Zinit's installer chunk
+zinit wait'0b' lucid light-mode for \
+    atload"!_zsh_autosuggest_start" \
+    zsh-users/zsh-autosuggestions
+
+zinit wait'0c' lucid light-mode for \
+    blockf atpull'zinit creinstall -q .' \
+    zsh-users/zsh-completions
+
+# Load Git plugin with delay
+zinit wait'1' lucid for \
+    OMZP::git
+
+# Load helper module with delay
+zinit wait'1' lucid for \
+    PZT::modules/helper/init.zsh
+
+# Load colors with delay
+zinit wait'2' lucid light-mode for \
+    atclone"dircolors -b LS_COLORS > clrs.zsh" \
+    atpull'%atclone' pick"clrs.zsh" nocompile'!' \
+    atload'zstyle ":completion:*" list-colors "${(s.:.)LS_COLORS}"' \
+    trapd00r/LS_COLORS
 
 
+# Load fzf binary and completion
+zinit wait'1' lucid for \
+    atload"source ~/.fzf.zsh" \
+    junegunn/fzf
+
+# Load fzf-tab for better completion
+zinit wait'1' lucid for \
+    Aloxaf/fzf-tab
+
+# Remove zprof as it's adding overhead
 

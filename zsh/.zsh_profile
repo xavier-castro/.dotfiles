@@ -11,11 +11,11 @@ path+=('$HOME/.local/scripts')
 path+=('$HOME/.local/pipx')
 path+=('/usr/local/bin')
 
-# Aliases
-# Next level of an ls
-# options :  --no-filesize --no-time --no-permissions
-alias ls="eza --no-filesize --long --color=always --icons=always --no-user"
+# FZF settings
+export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git/*" --glob "!node_modules/*"'
+export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --border --preview 'bat --style=numbers --color=always {}'"
 
-# tree
-alias tree="tree -L 3 -a -I '.git' --charset X "
-alias dtree="tree -L 3 -a -d -I '.git' --charset X "
+# More efficient alias using the exported options
+alias fzf_find='fzf'
+
