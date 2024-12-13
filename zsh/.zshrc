@@ -1,51 +1,35 @@
-export XDG_CONFIG_HOME=$HOME/.config
-VIM="nvim"
+source ~/.dotfiles/zsh/.zsh_prompt
 
-
-# Prompt
-source ~/.zsh_prompt # XC Prompt
-
-# addToPathFront $HOME/.local/bin
-path+=('$HOME/.local/bin')
-path+=('$HOME/.local/scripts')
-path+=('$HOME/.local/pipx')
-path+=('/usr/local/bin')
-
-##? Clone a plugin, identify its init file, source it, and add it to your fpath.
-# where do you want to store your plugins?
-ZPLUGINDIR=${ZPLUGINDIR:-${ZDOTDIR:-$HOME/.config/zsh}/plugins}
-
-# get zsh_unplugged and store it with your other plugins
-if [[ ! -d $ZPLUGINDIR/zsh_unplugged ]]; then
-  git clone --quiet https://github.com/mattmc3/zsh_unplugged $ZPLUGINDIR/zsh_unplugged
+### Added by Zinit's installer
+if [[ ! -f $HOME/.local/share/zinit/zinit.git/zinit.zsh ]]; then
+    print -P "%F{33} %F{220}Installing %F{33}ZDHARMA-CONTINUUM%F{220} Initiative Plugin Manager (%F{33}zdharma-continuum/zinit%F{220})…%f"
+    command mkdir -p "$HOME/.local/share/zinit" && command chmod g-rwX "$HOME/.local/share/zinit"
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.local/share/zinit/zinit.git" && \
+        print -P "%F{33} %F{34}Installation successful.%f%b" || \
+        print -P "%F{160} The clone has failed.%f%b"
 fi
-source $ZPLUGINDIR/zsh_unplugged/zsh_unplugged.zsh
 
-# make list of the Zsh plugins you use
-repos=(
+source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
+source ~/.zsh_profile
 
-  # other plugins
-  zsh-users/zsh-completions
-  rupa/z
-  # ...
-
-  # plugins you want loaded last
-  zsh-users/zsh-syntax-highlighting
-  zsh-users/zsh-history-substring-search
-  zsh-users/zsh-autosuggestions
-)
-
-# now load your plugins
-plugin-load $repos
-
-# Source Private Keys from `~/.zshenv_private`
+# Cycle through private keys inside `~/.zshenv_private/` and load them
 if [ -f ~/.zshenv_private ]; then
   source ~/.zshenv_private
 fi
 
 
+autoload -Uz _zinit
+(( ${+_comps} )) && _comps[zinit]=_zinit
 
+# Load a few important annexes, without Turbo
+# (this is currently required for annexes)
+zinit light-mode for \
+    zdharma-continuum/zinit-annex-as-monitor \
+    zdharma-continuum/zinit-annex-bin-gem-node \
+    zdharma-continuum/zinit-annex-patch-dl \
+    zdharma-continuum/zinit-annex-rust
 
+### End of Zinit's installer chunk
 
 
 

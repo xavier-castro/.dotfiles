@@ -1,5 +1,3 @@
-
-
 # PERSONAL=$XDG_CONFIG_HOME/personal
 # source $PERSONAL/env
 
@@ -12,9 +10,6 @@ path+=('$HOME/.local/bin')
 path+=('$HOME/.local/scripts')
 path+=('$HOME/.local/pipx')
 path+=('/usr/local/bin')
-
-# Where should I put you?
-bindkey -s ^f "tmux-sessionizer\n"
 
 # Aliases
 # Next level of an ls
