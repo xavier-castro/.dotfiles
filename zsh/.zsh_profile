@@ -4,6 +4,9 @@ path+=('$HOME/.local/scripts')
 path+=('$HOME/.local/pipx')
 path+=('/usr/local/bin')
 
+# Bind ctrl-o to tmux
+bindkey -s '^o' 'tmux neww ~/.local/scripts/tmux-sessionizer\n'
+
 # FZF settings
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git/*" --glob "!node_modules/*"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
@@ -42,3 +45,42 @@ alias lld='eza -lD --icons --group-directories-first'         # list only direct
 # Combination aliases
 alias lla='eza -la --icons --group-directories-first --git'   # long listing with hidden files and git status
 alias llm='eza -la --icons --group-directories-first --sort=modified' # long listing with hidden files sorted by modified date
+
+#######################
+# Tmux & Tmuxinator Aliases
+#######################
+# Tmuxinator shortcuts
+alias mux='tmuxinator'
+alias muxl='tmuxinator list'
+alias muxe='tmuxinator edit'
+alias muxn='tmuxinator new'
+alias muxs='tmuxinator start'
+alias muxc='tmuxinator copy'
+alias muxd='tmuxinator delete'
+alias t='tmux'
+alias ta='tmux attach'
+alias tad='tmux attach -d'
+alias ts='tmux new-session -s'
+alias tta='tmux new-session -A -s main'
+alias tl='tmux list-sessions'
+alias tkill='tmux kill-session -t'
+alias tks='tmux kill-server'
+alias td='tmux detach'
+alias tn='tmux new'
+alias tconf='nvim ~/.tmux.conf'
+
+# Quick session switcher (requires fzf)
+alias tsw='tmux switch-client -t $(tmux list-sessions -F "#{session_name}" | fzf)'
+
+#
+# Neovim Aliases
+#######################
+alias v='nvim'
+alias vi='nvim'
+alias vim='nvim'
+alias nv='nvim'
+alias nvrc='nvim ~/.config/nvim/'
+alias nvp='nvim -p'  # Open files in tabs
+alias nvd='nvim -d'  # Open files in diff mode
+alias nvf='nvim $(fzf)'  # Open file using fzf
+

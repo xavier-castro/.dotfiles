@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Use fzf to switch between tmux sessions
+tmux switch-client -t $(tmux list-sessions -F "#{session_name}" | fzf --height 40% --reverse)

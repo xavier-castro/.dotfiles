@@ -1,4 +1,10 @@
 return {
+	{
+		"nomis51/nvim-xcode-theme",
+		config = function()
+			-- vim.cmd.colorscheme("xcode")
+		end,
+	},
 	-- Rose Pine
 	{
 		"rose-pine/neovim",
@@ -43,7 +49,7 @@ return {
 			require("vscode").setup({
 				transparent = true,
 			})
-			-- vim.cmd.colorscheme("vscode")
+			vim.cmd.colorscheme("vscode")
 		end,
 	},
 	{
@@ -272,7 +278,7 @@ return {
 					delta = "#e6be8c",
 				},
 			})
-			vim.cmd.colorscheme("vague")
+			-- vim.cmd.colorscheme("vague")
 		end,
 	},
 }

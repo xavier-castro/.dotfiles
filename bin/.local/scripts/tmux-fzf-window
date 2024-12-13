@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+# Use fzf to switch between tmux windows
+tmux select-window -t $(tmux list-windows -F "#{window_index}: #{window_name}" | fzf --height 40% --reverse | cut -d: -f1)
