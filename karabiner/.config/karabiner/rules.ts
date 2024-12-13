@@ -45,13 +45,13 @@ const rules: KarabinerRules[] = [
   ...createHyperSubLayers({
     // o = "Open" applications
     o: {
-      a: app("Arc"),
+      b: app("Firefox Developer Edition"),
       v: app("Visual Studio Code"),
       e: app("Mail"),
       f: app("Fantastical"),
-      t: app("Electron"),
-      i: app("iTerm"),
+      t: app("Alacritty"),
       m: app("Messages"),
+      n: app("Obsidian"),
       p: app("Music"),
       g: app("Mission Control"),
     },
@@ -121,15 +121,15 @@ const rules: KarabinerRules[] = [
           },
         ],
       },
-      f: {
-        description: "Window: Full Screen",
-        to: [
-          {
-            key_code: "f",
-            modifiers: ["right_option", "right_command"],
-          },
-        ],
-      },
+      // f: {
+      //   description: "Window: Full Screen",
+      //   to: [
+      //     {
+      //       key_code: "f",
+      //       modifiers: ["right_option", "right_command"],
+      //     },
+      //   ],
+      // },
       u: {
         description: "Window: Previous Tab",
         to: [

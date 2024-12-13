@@ -1,10 +1,7 @@
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
-if vim.g.vscode then
-    require("vscode.vscode-maps")
-    require("vscode.vscode-coloring")
-else
-    require("xavier.config.set")
-    require("xavier.config.remap");
-    (require("lazy")).setup("xavier.plugins")
-end
+require 'xavier.set'
+require 'xavier.remap'
+require 'xavier.globals'
+require 'xavier.lazy'
+require 'xavier.autocmds'
+
+
