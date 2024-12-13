@@ -10,7 +10,6 @@ return {
 				x = 0.5,
 				y = 0.5,
 			},
-			cmd = os.getenv("SHELL"),
 		})
 		-- Fterm
 		vim.api.nvim_set_keymap("n", "<leader>tt", ":lua require('FTerm').toggle()<CR>", { noremap = true })
