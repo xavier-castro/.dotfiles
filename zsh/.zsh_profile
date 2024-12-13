@@ -26,8 +26,6 @@ export FZF_CTRL_R_OPTS="--preview 'echo {}' --preview-window down:3:hidden:wrap 
 # More efficient alias using the exported options
 alias fzf_find='fzf'
 
-# More efficient alias using the exported options
-alias fzf_find='fzf'
 
 # eza aliases (modern replacement for ls)
 alias ls='eza --icons --group-directories-first'                # basic listing with icons
