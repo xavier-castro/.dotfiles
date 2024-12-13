@@ -114,3 +114,4 @@ zinit load robobenklein/zinc
 if [[ "$PROFILE_STARTUP" == true ]]; then
     zprof
 fi
+
