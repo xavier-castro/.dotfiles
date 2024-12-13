@@ -97,10 +97,10 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 
 -- Load avante_lib on buffer start
-vim.api.nvim_create_autocmd("BufEnter", {
-	callback = function()
-		require("avante_lib").load()
-	end,
-	group = XavierGroup,
-	desc = "Load avante_lib on buffer start",
-})
+-- vim.api.nvim_create_autocmd("BufEnter", {
+-- 	callback = function()
+-- 		require("avante_lib").load()
+-- 	end,
+-- 	group = XavierGroup,
+-- 	desc = "Load avante_lib on buffer start",
+-- })

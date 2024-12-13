@@ -81,6 +81,10 @@ set_rprompt() {
   local git_branch_text="%F{${COLOR_GIT_BRANCH_TEXT}}${git_branch_name}%f"
 
   RPROMPT="${git_repository_text} ${git_branch_sync_symbol}${git_stash_symbol}${git_status_symbol} ${git_branch_text}"
+
+  if [ -n "$SSH_CLIENT" ]; then
+    PS1="🌐 $PS1"  # Adds an icon when in SSH session
+fi
 }
 
 
