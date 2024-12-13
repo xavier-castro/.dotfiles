@@ -10,6 +10,9 @@ bindkey -s '^o' 'tmux neww ~/.local/scripts/tmux-sessionizer\n'
 # Bind ctrl-f to tmux-sessionizer
 bindkey -s '^f' 'tmux-sessionizer\n'
 
+# VI Mode!!!
+bindkey jj vi-cmd-mode
+
 # FZF settings
 export FZF_DEFAULT_COMMAND='rg --files --hidden --glob "!.git/*" --glob "!node_modules/*"'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
