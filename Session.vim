@@ -13,18 +13,12 @@ if &shortmess =~ 'A'
 else
   set shortmess=aoO
 endif
-badd +24 ~/Documents/obsi_all_purpose/daily/2024-12-13.md
-badd +1 ~/Documents/obsi_all_purpose/daily/1734096177-HPKQ.md
-badd +4 nvim/.config/nvim/lua/xavier/plugins/copilot-chat.lua
-badd +20 nvim/.config/nvim/lua/xavier/plugins/fterm.lua
-badd +1 nvim/.config/nvim/lua/xavier/plugins/themes.lua
-badd +1 ~/Documents/obsi_all_purpose/2024-12-08.md
-badd +1 nvim/.config/nvim/lua/xavier/plugins/cmp.lua
-badd +68 nvim/.config/nvim/lua/xavier/plugins/code-companion.lua
+badd +28 nvim/.config/nvim/lua/xavier/remap.lua
+badd +6 nvim/.config/nvim/lua/xavier/plugins/undotree.lua
 argglobal
 %argdel
 $argadd ~/Documents/obsi_all_purpose/2024-12-08.md
-edit nvim/.config/nvim/lua/xavier/plugins/code-companion.lua
+edit nvim/.config/nvim/lua/xavier/remap.lua
 wincmd t
 let s:save_winminheight = &winminheight
 let s:save_winminwidth = &winminwidth
@@ -33,7 +27,7 @@ set winheight=1
 set winminwidth=0
 set winwidth=1
 argglobal
-balt nvim/.config/nvim/lua/xavier/plugins/cmp.lua
+balt nvim/.config/nvim/lua/xavier/plugins/undotree.lua
 setlocal fdm=manual
 setlocal fde=0
 setlocal fmr={{{,}}}
@@ -43,25 +37,13 @@ setlocal fml=1
 setlocal fdn=20
 setlocal fen
 silent! normal! zE
-6,36fold
-39,43fold
-44,46fold
-50,52fold
-49,53fold
-48,54fold
-57,59fold
-56,60fold
-55,71fold
-47,72fold
-37,73fold
-4,74fold
 let &fdl = &fdl
-let s:l = 68 - ((52 * winheight(0) + 30) / 60)
+let s:l = 28 - ((27 * winheight(0) + 21) / 42)
 if s:l < 1 | let s:l = 1 | endif
 keepjumps exe s:l
 normal! zt
-keepjumps 68
-normal! 0
+keepjumps 28
+normal! 037|
 tabnext 1
 if exists('s:wipebuf') && len(win_findbuf(s:wipebuf)) == 0 && getbufvar(s:wipebuf, '&buftype') isnot# 'terminal'
   silent exe 'bwipe ' . s:wipebuf

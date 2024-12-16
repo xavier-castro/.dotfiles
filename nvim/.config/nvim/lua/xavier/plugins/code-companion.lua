@@ -51,6 +51,11 @@ return {
 		opts = {
 			log_level = "DEBUG",
 		},
+		display = {
+			chat = {
+				persistent = true, -- Make chat buffers persistent
+			},
+		},
 		adapters = {
 			anthropic = function()
 				return require("codecompanion.adapters").extend("anthropic", {
