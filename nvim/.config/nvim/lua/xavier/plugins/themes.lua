@@ -55,7 +55,7 @@ return {
 			require("rose-pine").setup({
 				disable_background = true,
 			})
-			vim.cmd.colorscheme("rose-pine")
+			-- vim.cmd.colorscheme("rose-pine")
 		end,
 	},
 	-- Vim Colors Plain
@@ -91,7 +91,7 @@ return {
 			require("vscode").setup({
 				transparent = true,
 			})
-			-- vim.cmd.colorscheme("vscode")
+			vim.cmd.colorscheme("vscode")
 		end,
 	},
 	{
