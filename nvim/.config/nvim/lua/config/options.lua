@@ -45,35 +45,8 @@ vim.keymap.set("n", "<leader><leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left
 vim.keymap.set("n", "<leader>X", "<cmd>!chmod +x %<CR>", { silent = true })
 
 -- XC
--- Select all
-vim.keymap.set("n", "<C-a>", "gg<S-v>G")
-
 -- Duplicate a line and comment out the first line
 vim.keymap.set("n", "yc", "yygccp")
-
--- Navigate between nvim splits
-vim.keymap.set("n", "<C-h>", "<C-w>h")
-vim.keymap.set("n", "<C-k>", "<C-w>k")
-vim.keymap.set("n", "<C-j>", "<C-w>j")
-vim.keymap.set("n", "<C-l>", "<C-w>l")
-
--- Close window
-vim.keymap.set("n", "<C-q>", "<C-w>q")
-
--- New tab
-vim.keymap.set("n", "te", ":tabedit<Return>")
-vim.keymap.set("n", "<tab>", ":tabnext<Return>")
-vim.keymap.set("n", "<s-tab>", ":tabprev<Return>")
-
--- Split window
-vim.keymap.set("n", "ss", ":split<Return>")
-vim.keymap.set("n", "sv", ":vsplit<Return>")
-
--- Resize window
-vim.keymap.set("n", "<C-w><left>", "<C-w><")
-vim.keymap.set("n", "<C-w><right>", "<C-w>>")
-vim.keymap.set("n", "<C-w><up>", "<C-w>+")
-vim.keymap.set("n", "<C-w><down>", "<C-w>-")
 
 -- Remove highlight
 vim.keymap.set("n", "<Esc>", ":nohl<cr>")
