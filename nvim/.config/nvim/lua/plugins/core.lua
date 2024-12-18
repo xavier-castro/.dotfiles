@@ -2,7 +2,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "vscode",
+      colorscheme = "rose-pine",
     },
   },
 
@@ -22,7 +22,7 @@ return {
     name = "rose-pine",
     config = function()
       require("rose-pine").setup({
-        variant = "moon",
+        variant = "main",
         colorscheme = "base",
         dim_inactive_windows = true,
         styles = {
