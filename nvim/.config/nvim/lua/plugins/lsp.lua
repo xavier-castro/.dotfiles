@@ -7,10 +7,6 @@ return {
 			"williamboman/mason-lspconfig.nvim",
 			"folke/neodev.nvim",
 			"saghen/blink.cmp",
-			{
-				"j-hui/fidget.nvim",
-				opts = {},
-			},
 		},
 		config = function()
 			require("mason").setup()

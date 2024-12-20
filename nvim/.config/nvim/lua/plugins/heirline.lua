@@ -359,10 +359,10 @@ return {
 			condition = conditions.has_diagnostics,
 
 			static = {
-				warn_icon = "",
-				error_icon = "",
-				info_icon = "",
-				hint_icon = "󰌵",
+				warn_icon = " ",
+				error_icon = " ",
+				info_icon = " ",
+				hint_icon = "󰌵 ",
 			},
 
 			init = function(self)
@@ -375,7 +375,7 @@ return {
 			update = { "DiagnosticChanged", "BufEnter" },
 
 			{
-				provider = "![",
+				provider = " ",
 			},
 			{
 				provider = function(self)
@@ -403,7 +403,7 @@ return {
 				hl = { fg = "diag_hint" },
 			},
 			{
-				provider = "]",
+				provider = " ",
 			},
 		}
 
