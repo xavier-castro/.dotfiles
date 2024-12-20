@@ -8,7 +8,11 @@ return {
 		},
 		version = "v0.*",
 		opts = {
-			keymap = { preset = "default" },
+			keymap = {
+				preset = "enter",
+				["<S-Tab>"] = { "select_prev", "fallback" },
+				["<Tab>"] = { "select_next", "fallback" },
+			},
 			appearance = {
 				use_nvim_cmp_as_default = true,
 				nerd_font_variant = "mono",
@@ -19,9 +23,16 @@ return {
 					"path",
 					"snippets",
 					"buffer",
+					"codecompanion",
+				},
+				providers = {
+					codecompanion = {
+						name = "CodeCompanion",
+						module = "codecompanion.providers.completion.blink",
+						enabled = true,
+					},
 				},
 			},
 		},
 	},
 }
-
