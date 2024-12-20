@@ -25,7 +25,7 @@ return {
           ensure_installed = {
             "lua_ls",
             "pyright",
-            "tsserver",
+            -- "tsserver",
             "rust_analyzer",
           },
         })
@@ -39,9 +39,9 @@ return {
           capabilities = capabilities,
         })
   
-        lspconfig.tsserver.setup({
-          capabilities = capabilities,
-        })
+        -- lspconfig.tsserver.setup({
+        --   capabilities = capabilities,
+        -- })
   
         lspconfig.rust_analyzer.setup({
           capabilities = capabilities,

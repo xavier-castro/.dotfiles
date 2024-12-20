@@ -44,3 +44,5 @@ opt.iskeyword:append("-")
 
 -- Disable swap file
 opt.swapfile = false
+
+vim.cmd('colorscheme anysphere-modern-darker')
