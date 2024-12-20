@@ -1,4 +1,5 @@
 -- ~/.config/nvim/lua/core/options.lua
+vim.opt.guicursor = ""
 -- Core Neovim options and settings
 local opt = vim.opt
 
@@ -45,3 +46,29 @@ opt.iskeyword:append("-")
 -- Disable swap file
 opt.swapfile = false
 
+-- XC
+opt.laststatus = 3
+opt.scrolloff = 10
+opt.splitbelow = true -- Put new windows below current
+opt.splitright = true -- Put new windows right of current
+opt.backspace = { "start", "eol", "indent" }
+opt.path:append({ "**" }) -- Finding files - Search down into subfolders
+opt.wildignore:append({ "*/node_modules/*" })
+
+-- Undercurl
+vim.cmd([[let &t_Cs = "\e[4:3m"]])
+vim.cmd([[let &t_Ce = "\e[4:0m"]])
+
+if vim.fn.has("nvim-0.8") == 1 then
+	vim.opt.cmdheight = 0
+end
+
+vim.opt.swapfile = false
+vim.opt.backup = false
+vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
+vim.opt.undofile = true
+vim.opt.scrolloff = 8
+vim.opt.signcolumn = "yes"
+vim.opt.isfname:append("@-@")
+vim.opt.updatetime = 50
+vim.opt.colorcolumn = "80"

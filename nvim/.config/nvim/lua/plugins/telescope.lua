@@ -12,6 +12,11 @@ return {
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
 		local fb_actions = require("telescope").extensions.file_browser.actions
+		local keymap = vim.keymap
+
+		local function telescope_buffer_dir()
+			return vim.fn.expand("%:p:h")
+		end
 
 		telescope.setup({
 			defaults = {
@@ -47,9 +52,9 @@ return {
 			},
 			extensions = {
 				file_browser = {
-					hidden = false,
 					hide_parent_dir = false,
-					dir_icon = "",
+					path = "%:p:h",
+					cwd = telescope_buffer_dir(),
 					dir_icon_hl = "Directory",
 					git_status = true,
 					mappings = {
@@ -65,7 +70,8 @@ return {
 					previewer = false,
 					hijack_netrw = true,
 					grouped = true,
-					respect_gitignore = true,
+					hidden = true,
+					respect_gitignore = false,
 					initial_mode = "normal",
 					layout_config = {
 						height = 0.7,
@@ -79,12 +85,19 @@ return {
 		telescope.load_extension("fzf")
 		telescope.load_extension("file_browser")
 
-		-- Keymaps
-		local keymap = vim.keymap
-		keymap.set("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "Find files" })
+		keymap.set("n", "<leader>ff", function()
+			require("telescope.builtin").find_files({
+				hidden = true,
+				no_ignore = true,
+			})
+		end, { desc = "Find files (including hidden)" })
+
 		keymap.set("n", "<leader>fr", "<cmd>Telescope oldfiles<cr>", { desc = "Find recent files" })
 		keymap.set("n", "<leader>fs", "<cmd>Telescope live_grep<cr>", { desc = "Find string" })
 		keymap.set("n", "<leader>fc", "<cmd>Telescope grep_string<cr>", { desc = "Find string under cursor" })
+		keymap.set("n", "<C-p>", "<cmd>Telescope git_files<cr>", { desc = "Find git files" })
+		keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Search help tags" })
+		keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Find buffers" })
 
 		keymap.set("n", ";;", function()
 			local telescope_fb = require("telescope").extensions.file_browser.file_browser
