@@ -1,7 +1,8 @@
 -- ~/.config/nvim/lua/core/options.lua
+local opt = vim.opt
+
 vim.opt.guicursor = ""
 -- Core Neovim options and settings
-local opt = vim.opt
 
 -- Line numbers
 opt.number = true
