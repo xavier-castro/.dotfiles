@@ -1,7 +1,7 @@
 -- ~/.config/nvim/init.lua
 -- Entry point for Neovim configuration
 vim.g.mapleader = " " -- Set leader key to space
-vim.g.maplocalleader = " "
+vim.g.maplocalleader = ","
 
 -- Bootstrap lazy.nvim
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
@@ -20,11 +20,12 @@ vim.opt.rtp:prepend(lazypath)
 -- Load core configuration
 require("core.options")
 require("core.keymaps")
+require("core.user_commands")
 
 -- Initialize lazy.nvim
 require("lazy").setup("plugins", {
 	install = {
-		colorscheme = { "anysphere-modern-darker" },
+		colorscheme = { "anysphere-modern-darker", "256_noir" },
 	},
 	checker = {
 		enabled = true,
