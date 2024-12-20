@@ -20,9 +20,6 @@ return {
 					"lua_ls",
 					"pyright",
 					"rust_analyzer",
-					"@typescript-language-server/typescript-language-server",
-					"prettierd",
-					"prettier",
 				},
 			})
 

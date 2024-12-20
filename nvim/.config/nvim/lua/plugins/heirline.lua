@@ -9,8 +9,12 @@ return {
 		local conditions = require("heirline.conditions")
 		local utils = require("heirline.utils")
 
+		-- Get the background color from your theme
+		local bg = utils.get_highlight("StatusLine").bg or utils.get_highlight("Normal").bg
+
 		-- Setup colors
 		local colors = {
+			bg = bg, -- Add this line to store the background color
 			bright_bg = utils.get_highlight("Folded").bg,
 			bright_fg = utils.get_highlight("Folded").fg,
 			red = utils.get_highlight("DiagnosticError").fg,
@@ -117,35 +121,48 @@ return {
 				end
 				return filename
 			end,
-			hl = { fg = colors.blue },
+			hl = { fg = colors.blue, bg = colors.bg },
 		}
 
 		-- Git component
+		-- lua/plugins/heirline.lua
+		-- Update the Git component to handle nil values safely:
+
 		local Git = {
 			condition = conditions.is_git_repo,
 
 			init = function(self)
-				self.status_dict = vim.b.gitsigns_status_dict
+				self.status_dict = vim.b.gitsigns_status_dict or {}
+				-- Ensure all values exist with defaults
+				self.status_dict.added = self.status_dict.added or 0
+				self.status_dict.removed = self.status_dict.removed or 0
+				self.status_dict.changed = self.status_dict.changed or 0
+				self.status_dict.head = self.status_dict.head or ""
 				self.has_changes = self.status_dict.added ~= 0
 					or self.status_dict.removed ~= 0
 					or self.status_dict.changed ~= 0
 			end,
 
-			hl = { fg = colors.orange },
+			hl = { fg = colors.orange, bg = colors.bg },
 
 			{ -- git branch name
 				provider = function(self)
-					return " " .. self.status_dict.head
+					return " " .. (self.status_dict.head or "")
 				end,
 				hl = { bold = true },
 			},
 			{ -- git diff status
 				provider = function(self)
-					local parts = {
-						{ text = "  " .. self.status_dict.added, fg = colors.git_add },
-						{ text = "  " .. self.status_dict.removed, fg = colors.git_del },
-						{ text = " 柳" .. self.status_dict.changed, fg = colors.git_change },
-					}
+					local parts = {}
+					if self.status_dict.added and self.status_dict.added > 0 then
+						table.insert(parts, { text = "  " .. self.status_dict.added, fg = colors.git_add })
+					end
+					if self.status_dict.removed and self.status_dict.removed > 0 then
+						table.insert(parts, { text = "  " .. self.status_dict.removed, fg = colors.git_del })
+					end
+					if self.status_dict.changed and self.status_dict.changed > 0 then
+						table.insert(parts, { text = " 柳" .. self.status_dict.changed, fg = colors.git_change })
+					end
 					return table.concat(vim.tbl_map(function(part)
 						return part.text
 					end, parts))
@@ -174,7 +191,7 @@ return {
 				provider = function(self)
 					return self.errors > 0 and (self.error_icon .. self.errors .. " ")
 				end,
-				hl = { fg = colors.diag_error },
+				hl = { fg = colors.diag_error, bg = colors.bg },
 			},
 			{
 				provider = function(self)
@@ -192,7 +209,7 @@ return {
 				provider = function(self)
 					return self.hints > 0 and (self.hint_icon .. self.hints .. " ")
 				end,
-				hl = { fg = colors.diag_hint },
+				hl = { fg = colors.diag_hint, bg = colors.bg },
 			},
 		}
 
@@ -207,13 +224,13 @@ return {
 				end
 				return " " .. table.concat(names, " ")
 			end,
-			hl = { fg = colors.green, bold = true },
+			hl = { fg = colors.green, bold = true, bg = colors.bg },
 		}
 
 		-- Ruler component
 		local Ruler = {
 			provider = "%7(%l/%3L%):%2c %P",
-			hl = { fg = colors.blue, bold = true },
+			hl = { fg = colors.blue, bold = true, bg = colors.bg },
 		}
 
 		-- FileType component
@@ -221,14 +238,14 @@ return {
 			provider = function()
 				return string.upper(vim.bo.filetype)
 			end,
-			hl = { fg = colors.blue, bold = true },
+			hl = { fg = colors.blue, bold = true, bg = colors.bg },
 		}
 
 		-- Align component
 		local Align = { provider = "%=" }
 
 		-- Space component
-		local Space = { provider = " " }
+		local Space = { provider = " ", hl = { fg = colors.gray, bg = colors.bg } }
 
 		-- Setup statusline
 		local StatusLine = {

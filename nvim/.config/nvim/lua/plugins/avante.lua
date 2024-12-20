@@ -18,6 +18,24 @@ return {
 		"nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
 		"zbirenbaum/copilot.lua", -- for providers='copilot'
 		{
+			"zbirenbaum/copilot.lua",
+			config = function()
+				local copilot = require("copilot")
+				copilot.setup({
+					suggestion = {
+						auto_trigger = true,
+						keymap = {
+							accept = "<M-a>",
+						},
+					},
+					filetypes = {
+						markdown = true,
+						help = true,
+					},
+				})
+			end,
+		},
+		{
 			-- support for image pasting
 			"HakonHarnes/img-clip.nvim",
 			event = "VeryLazy",
