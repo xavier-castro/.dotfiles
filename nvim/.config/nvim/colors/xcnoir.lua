@@ -255,7 +255,21 @@ for type, color in pairs({
 	hl["@text." .. type] = { fg = color }
 end
 
-vim.g.colors_name = "hl-dungeon"
+-- Find and update these lines in your highlights section:
+
+-- Make cursor bright red
+hl["Cursor"] = { bg = red2 } -- This is already correct in your code
+
+-- Update Normal highlight for active/inactive windows
+hl["Normal"] = { fg = gray5, bg = gray0 }
+hl["NormalNC"] = { fg = gray5, bg = utils.shade_color(gray0, -45) } -- NC = Non-Current window, slightly darker
+
+-- You might also want to adjust these related highlights
+hl["NormalFloat"] = { link = "Normal" }
+hl["WinBar"] = { link = "Normal" }
+hl["WinBarNC"] = { link = "NormalNC" }
+
+vim.g.colors_name = "xcnoir"
 
 -- call highlight
 set_hl(hl)

@@ -50,33 +50,45 @@ return {
 					"--hidden",
 				},
 			},
-			extensions = {
-				file_browser = {
-					hide_parent_dir = false,
-					path = "%:p:h",
-					cwd = telescope_buffer_dir(),
-					dir_icon_hl = "Directory",
-					git_status = true,
+			pickers = {
+				buffers = {
+					sort_lastused = true,
+					sort_mru = true,
+					ignore_current_buffer = true,
 					mappings = {
-						["i"] = {
-							["<C-h>"] = telescope.extensions.file_browser.actions.toggle_hidden,
-						},
-						["n"] = {
-							["H"] = telescope.extensions.file_browser.actions.toggle_hidden,
-							["%"] = fb_actions.create, -- Add the % mapping for file creation
+						i = {
+							["<c-d>"] = "delete_buffer",
 						},
 					},
-					theme = "dropdown",
-					previewer = false,
-					hijack_netrw = true,
-					grouped = true,
-					hidden = true,
-					respect_gitignore = false,
-					initial_mode = "normal",
-					layout_config = {
-						height = 0.7,
-						width = 0.5,
-						prompt_position = "top",
+				},
+				extensions = {
+					file_browser = {
+						hide_parent_dir = false,
+						path = "%:p:h",
+						cwd = telescope_buffer_dir(),
+						dir_icon_hl = "Directory",
+						git_status = true,
+						mappings = {
+							["i"] = {
+								["<C-h>"] = telescope.extensions.file_browser.actions.toggle_hidden,
+							},
+							["n"] = {
+								["H"] = telescope.extensions.file_browser.actions.toggle_hidden,
+								["%"] = fb_actions.create, -- Add the % mapping for file creation
+							},
+						},
+						theme = "dropdown",
+						previewer = false,
+						hijack_netrw = true,
+						grouped = true,
+						hidden = true,
+						respect_gitignore = false,
+						initial_mode = "normal",
+						layout_config = {
+							height = 0.7,
+							width = 0.5,
+							prompt_position = "top",
+						},
 					},
 				},
 			},
@@ -98,6 +110,10 @@ return {
 		keymap.set("n", "<C-p>", "<cmd>Telescope git_files<cr>", { desc = "Find git files" })
 		keymap.set("n", "<leader>fh", "<cmd>Telescope help_tags<cr>", { desc = "Search help tags" })
 		keymap.set("n", "<leader>fb", "<cmd>Telescope buffers<cr>", { desc = "Find buffers" })
+		vim.keymap.set("n", "\\\\", "<cmd>Telescope buffers<cr>", { desc = "Find buffers" })
+		vim.keymap.set("n", "<leader>fp", function()
+			require("telescope.builtin").registers()
+		end, { desc = "Show registers" })
 
 		keymap.set("n", ";;", function()
 			local telescope_fb = require("telescope").extensions.file_browser.file_browser

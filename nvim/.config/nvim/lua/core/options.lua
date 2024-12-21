@@ -74,5 +74,10 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
+-- Option 1: If using bufferline.nvim, add this to your config
+vim.opt.showtabline = 0 -- Completely hide the bufferline
+
+-- Option 2: If you're using the default tabline
+vim.opt.showtabline = 0 -- This will hide the default tabline
 
 vim.cmd("colorscheme xcnoir")

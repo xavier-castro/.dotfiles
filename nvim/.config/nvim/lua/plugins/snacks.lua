@@ -45,6 +45,8 @@ vim.api.nvim_create_autocmd("LspProgress", {
 -- lazy.nvim
 return {
 	"folke/snacks.nvim",
+	priorty = 1000,
+	lazy = false,
 	---@type snacks.Config
 	opts = {
 		notifier = {
@@ -52,5 +54,8 @@ return {
 			-- or leave it empty to use the default settings
 			-- refer to the configuration section below
 		},
+		win = { enabled = true },
+		toggle = { enabled = true },
+		terminal = { enabled = true },
 	},
 }
