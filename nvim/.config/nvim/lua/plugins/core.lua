@@ -2,10 +2,9 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "vscode",
+      colorscheme = "no-clown-fiesta",
     },
   },
-
   -- Vim Colors Plain
   {
     "andreypopp/vim-colors-plain",
@@ -29,10 +28,10 @@ return {
           lsp = { underline = false },
         },
       })
-      -- vim.cmd.colorscheme("no-clown-fiesta")
+      vim.cmd.colorscheme("no-clown-fiesta")
+      vim.api.nvim_set_hl(0, "SnacksIndent", { fg = "#212121", bg = "#212121" })
     end,
   },
-
   {
     "folke/tokyonight.nvim",
     opts = {
@@ -43,7 +42,6 @@ return {
       },
     },
   },
-
   {
     "rebelot/kanagawa.nvim",
     config = function()
@@ -59,7 +57,8 @@ return {
         transparent = true, -- do not set background color
         dimInactive = true, -- dim inactive window `:h hl-NormalNC`
         terminalColors = true, -- define vim.g.terminal_color_{0,17}
-        colors = { -- add/modify theme and palette colors
+        colors = {
+          -- add/modify theme and palette colors
           palette = {},
           theme = { wave = {}, lotus = {}, dragon = {}, all = {} },
         },
@@ -67,14 +66,14 @@ return {
           return {}
         end,
         theme = "wave", -- Load "wave" theme when 'background' option is not set
-        background = { -- map the value of 'background' option to a theme
+        background = {
+          -- map the value of 'background' option to a theme
           dark = "wave", -- try "dragon" !
           light = "lotus",
         },
       })
     end,
   },
-
   {
     "rose-pine/neovim",
     name = "rose-pine",
@@ -90,7 +89,6 @@ return {
       })
     end,
   },
-
   {
     "Mofiqul/vscode.nvim",
     config = function()
