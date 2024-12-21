@@ -2,7 +2,7 @@
   "avante.nvim": { "branch": "main", "commit": "01e05a538b4b7f20fb922016d72be8c42d400b0e" },
   "blink.cmp": { "branch": "main", "commit": "ca05bb33eb071d916d33af08cae8034c3d8002b5" },
   "bufferline.nvim": { "branch": "main", "commit": "261a72b90d6db4ed8014f7bda976bcdc9dd7ce76" },
-  "codecompanion.nvim": { "branch": "main", "commit": "86f96d5419915b0711afbc93d948a3312bfc25b6" },
+  "codecompanion.nvim": { "branch": "main", "commit": "4d61b3fb58e98c0a68713608c789f6b32e69c729" },
   "conform.nvim": { "branch": "master", "commit": "f4e8837878fc5712d053ba3091a73d27d96a09e2" },
   "copilot.lua": { "branch": "master", "commit": "d3783b9283a7c35940ed8d71549030d5f5f9f980" },
   "dressing.nvim": { "branch": "master", "commit": "fc78a3ca96f4db9f8893bb7e2fd9823e0780451b" },
@@ -16,7 +16,6 @@
   "lsp-status.nvim": { "branch": "master", "commit": "54f48eb5017632d81d0fd40112065f1d062d0629" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "2daa8921b7afdcfa47419a21ea343c3df6d74fa0" },
   "mason.nvim": { "branch": "main", "commit": "e2f7f9044ec30067bc11800a9e266664b88cda22" },
-  "mini.pairs": { "branch": "main", "commit": "7e834c5937d95364cc1740e20d673afe2d034cdb" },
   "neodev.nvim": { "branch": "main", "commit": "46aa467dca16cf3dfe27098042402066d2ae242d" },
   "nui.nvim": { "branch": "main", "commit": "53e907ffe5eedebdca1cd503b00aa8692068ca46" },
   "nvim-cmp": { "branch": "main", "commit": "b555203ce4bd7ff6192e759af3362f9d217e8c89" },
@@ -32,5 +31,6 @@
   "telescope-file-browser.nvim": { "branch": "master", "commit": "626998e5c1b71c130d8bc6cf7abb6709b98287bb" },
   "telescope-fzf-native.nvim": { "branch": "main", "commit": "dae2eac9d91464448b584c7949a31df8faefec56" },
   "telescope.nvim": { "branch": "0.1.x", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
-  "typescript-tools.nvim": { "branch": "master", "commit": "35e397ce467bedbbbb5bfcd0aa79727b59a08d4a" }
+  "typescript-tools.nvim": { "branch": "master", "commit": "35e397ce467bedbbbb5bfcd0aa79727b59a08d4a" },
+  "ultimate-autopair.nvim": { "branch": "v0.6", "commit": "9e3209190c22953566ae4e6436ad2b4ff4dabb95" }
 }
