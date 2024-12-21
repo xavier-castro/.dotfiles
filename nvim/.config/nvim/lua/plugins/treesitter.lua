@@ -4,6 +4,10 @@ return {
 	-- syntax highlighting.
 	{
 		"nvim-treesitter/nvim-treesitter",
+		dependencies = {
+			"nvim-treesitter/nvim-treesitter",
+			"nvim-treesitter/nvim-treesitter-textobjects",
+		},
 		version = false, -- last release is way too old and doesn't work on Windows
 		build = ":TSUpdate",
 		event = "VeryLazy",
@@ -81,6 +85,14 @@ return {
 						["[F"] = "@function.outer",
 						["[C"] = "@class.outer",
 						["[A"] = "@parameter.inner",
+					},
+				},
+				select = {
+					enable = true,
+					lookahead = true,
+					keymaps = {
+						["af"] = "@function.outer",
+						["if"] = "@function.inner",
 					},
 				},
 			},
