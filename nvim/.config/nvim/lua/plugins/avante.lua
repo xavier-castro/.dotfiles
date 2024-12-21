@@ -26,6 +26,7 @@ return {
 						auto_trigger = true,
 						keymap = {
 							accept = "<M-a>",
+							dismiss = "<M-]>",
 						},
 					},
 					filetypes = {

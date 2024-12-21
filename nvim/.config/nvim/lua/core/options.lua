@@ -1,4 +1,5 @@
 -- ~/.config/nvim/lua/core/options.lua
+--
 local opt = vim.opt
 
 vim.opt.guicursor = ""
