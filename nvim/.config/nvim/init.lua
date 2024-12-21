@@ -25,7 +25,7 @@ require("core.user_commands")
 -- Initialize lazy.nvim
 require("lazy").setup("plugins", {
 	install = {
-		colorscheme = { "anysphere-modern-darker", "256_noir" },
+		colorscheme = { "xcnoir" },
 	},
 	checker = {
 		enabled = true,

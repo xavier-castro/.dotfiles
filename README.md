@@ -1,5 +1,12 @@
 # README
 
+## Firefox Custom Style
+
+[Firefox Custom Style Github](https://github.com/black7375/Firefox-UI-Fix)
+
+One liner to paste in terminal
+`bash -c "$(curl -fsSL https://raw.githubusercontent.com/black7375/Firefox-UI-Fix/master/install.sh)"`
+
 ## CLI Essentials
 
 - [Zoxide]
