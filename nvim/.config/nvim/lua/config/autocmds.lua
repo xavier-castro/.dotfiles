@@ -19,10 +19,3 @@ vim.api.nvim_create_user_command("CopilotToggle", function()
   copilot_on = not copilot_on
 end, { nargs = 0 })
 vim.keymap.set("", "<M-\\>", ":CopilotToggle<CR>", { noremap = true, silent = true })
-
--- vim.api.nvim_create_autocmd({ "BufWinEnter", "WinEnter" }, {
---   group = vim.api.nvim_create_augroup("SnacksHighlight", { clear = true }),
---   callback = function()
---     vim.api.nvim_set_hl(0, "SnacksIndent", { fg = "#212121" })
---   end,
--- })

@@ -4,9 +4,12 @@ return {
     local copilot = require("copilot")
     copilot.setup({
       suggestion = {
-        auto_trigger = true,
+        enabled = true,
+        auto_trigger = false,
         keymap = {
           accept = "<M-a>",
+          next = "<M-]>",
+          prev = "<M-[>",
         },
       },
       filetypes = {
