@@ -19,3 +19,18 @@ vim.api.nvim_create_user_command("CopilotToggle", function()
   copilot_on = not copilot_on
 end, { nargs = 0 })
 vim.keymap.set("", "<M-\\>", ":CopilotToggle<CR>", { noremap = true, silent = true })
+
+-- Disable Ctrl-C in CodeCompanion buffers
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "codecompanion", "Avante", "AvanteInput" }, -- handle both filetypes
+
+  callback = function()
+    -- Remove the Ctrl-C mapping in the buffer
+    vim.keymap.set("n", "<C-c>", "<Nop>", { buffer = true })
+
+    -- Optionally, you could show a message if someone presses Ctrl-C
+    vim.keymap.set("n", "<C-c>", function()
+      vim.notify("Use :q to close CodeCompanion", vim.log.levels.INFO)
+    end, { buffer = true })
+  end,
+})
