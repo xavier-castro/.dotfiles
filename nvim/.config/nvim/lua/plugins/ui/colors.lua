@@ -1,5 +1,5 @@
 function ColorMyPencils(color)
-  color = color or "no-clown-fiesta"
+  color = color or "coal"
   vim.cmd.colorscheme(color)
 
   vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -13,11 +13,22 @@ return {
       colorscheme = "no-clown-fiesta",
     },
   },
+  {
+    "cranberry-clockworks/coal.nvim",
+    config = function()
+      require("coal").setup({
+        colors = {
+          smoky_black = "#00FFFFFF",
+        },
+      })
+      ColorMyPencils()
+    end,
+  },
   -- Vim Colors Plain
   {
     "andreypopp/vim-colors-plain",
     config = function()
-      -- vim.cmd.colorscheme("plain")
+      ColorMyPencils()
     end,
   },
   -- No Clown Fiesta
@@ -58,9 +69,8 @@ return {
         styles = {
           italic = false,
         },
+        ColorMyPencils(),
       })
-
-      ColorMyPencils()
     end,
   },
 
