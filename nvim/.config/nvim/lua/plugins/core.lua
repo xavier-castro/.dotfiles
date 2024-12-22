@@ -1,8 +1,16 @@
+function ColorMyPencils(color)
+  color = color or "rose-pine-moon"
+  vim.cmd.colorscheme(color)
+
+  vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+  vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+end
+
 return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "no-clown-fiesta",
+      colorscheme = "rose-pine",
     },
   },
   -- Vim Colors Plain
@@ -28,7 +36,7 @@ return {
           lsp = { underline = false },
         },
       })
-      vim.cmd.colorscheme("no-clown-fiesta")
+      -- vim.cmd.colorscheme("no-clown-fiesta")
     end,
   },
   {
@@ -46,16 +54,16 @@ return {
     name = "rose-pine",
     config = function()
       require("rose-pine").setup({
-        variant = "main",
-        colorscheme = "base",
-        dim_inactive_windows = true,
+        disable_background = true,
         styles = {
           italic = false,
-          transparency = true,
         },
       })
+
+      ColorMyPencils()
     end,
   },
+
   {
     "Mofiqul/vscode.nvim",
     config = function()
