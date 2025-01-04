@@ -1,5 +1,5 @@
 function ColorMyPencils(color)
-  color = color or "coal"
+  color = color or "rose-pine"
   vim.cmd.colorscheme(color)
 
   vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -10,7 +10,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "no-clown-fiesta",
+      colorscheme = "rose-pine",
     },
   },
   {
@@ -62,7 +62,7 @@ return {
   },
   {
     "rose-pine/neovim",
-    name = "rose-pine",
+    name = "rose-pine-moon",
     config = function()
       require("rose-pine").setup({
         disable_background = true,
