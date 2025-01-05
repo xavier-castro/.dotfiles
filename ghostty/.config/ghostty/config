@@ -14,7 +14,7 @@ confirm-close-surface = false
 macos-icon = custom-style 
 
 mouse-hide-while-typing = true
-mouse-scroll-multiplier = 1
+mouse-scroll-multiplier = 0.50
 
 window-padding-balance = true 
 # window-padding-y = 16, 0
@@ -27,7 +27,7 @@ background-blur-radius = 20
 window-vsync = false
 macos-titlebar-proxy-icon = visible
 # window-colorspace = "display-p3"
-# background = 1C2021
+background = 1C2021
 # foreground = d4be98
 
 # keybindings
