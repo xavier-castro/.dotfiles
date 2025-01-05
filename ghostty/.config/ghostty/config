@@ -3,22 +3,31 @@
  
 command = tmux new-session -A -s main
 font-family = MesloLGS NF
+theme = rose-pine-moon
+
 
 font-size = 10
 shell-integration-features = no-cursor,sudo,no-title
-cursor-style = block
 adjust-cell-height = 25%
 background-opacity = 0.96
 confirm-close-surface = false
+macos-icon = custom-style 
 
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = 1
 
 window-padding-balance = true 
+# window-padding-y = 16, 0
 window-save-state = always
-macos-titlebar-style=transparent
-window-colorspace = "display-p3"
-background = 1C2021
+cursor-style = block_hollow
+window-step-resize = true
+cursor-style-blink = true
+macos-titlebar-style = hidden
+background-blur-radius = 20
+window-vsync = false
+macos-titlebar-proxy-icon = visible
+# window-colorspace = "display-p3"
+# background = 1C2021
 # foreground = d4be98
 
 # keybindings
@@ -61,29 +70,5 @@ keybind = cmd+s>e=equalize_splits
 # other
 copy-on-select = clipboard
 
-# Sublime Mariana theme colors
-background = #343d46
-foreground = #d8dee9
-selection-background = #4f5b66
-selection-foreground = #d8dee9
-
-# Normal colors
-palette = 0=#343d46
-palette = 1=#ec5f67
-palette = 2=#99c794
-palette = 3=#fac863
-palette = 4=#6699cc
-palette = 5=#c594c5
-palette = 6=#5fb3b3
-palette = 7=#d8dee9
-
-# Bright colors
-palette = 8=#65737e
-palette = 9=#ec5f67
-palette = 10=#99c794
-palette = 11=#fac863
-palette = 12=#6699cc
-palette = 13=#c594c5
-palette = 14=#5fb3b3
-palette = 15=#ffffff
+mouse-hide-while-typing = true
 
