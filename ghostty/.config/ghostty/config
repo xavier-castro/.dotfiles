@@ -1,7 +1,7 @@
 
 # You can preview the config here
  
-command = tmux new-session -A -s main
+# command = tmux attach || tmux new-session -A -s main
 font-family = MesloLGS NF
 
 
@@ -13,7 +13,7 @@ confirm-close-surface = false
 macos-icon = custom-style 
 
 mouse-hide-while-typing = true
-mouse-scroll-multiplier = 0.50
+mouse-scroll-multiplier = 0.60
 
 window-padding-balance = true 
 # window-padding-y = 16, 0
