@@ -1,5 +1,5 @@
 function ColorMyPencils(color)
-  color = color or "juliana"
+  color = color or "catppuccin"
   vim.cmd.colorscheme(color)
 
   vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -10,7 +10,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "juliana",
+      colorscheme = "catppuccin",
     },
   },
   {
@@ -114,6 +114,8 @@ return {
         yellow3 = "#ee932b",
       },
     },
-    config = true,
+    config = function()
+      ColorMyPencils()
+    end,
   },
 }

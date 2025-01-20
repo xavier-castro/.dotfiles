@@ -1,7 +1,7 @@
 
 # You can preview the config here
  
-# command = tmux attach || tmux new-session -A -s main
+# command = tmux new-session -A -s main
 font-family = MesloLGS NF
 
 
@@ -10,7 +10,10 @@ shell-integration-features = no-cursor,sudo,no-title
 adjust-cell-height = 25%
 background-opacity = 0.96
 confirm-close-surface = false
-macos-icon = custom-style 
+macos-icon = custom-style
+adjust-cell-width = "7%"
+
+
 
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = 0.60
