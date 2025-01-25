@@ -1,5 +1,5 @@
 function ColorMyPencils(color)
-  color = color or "rose-pine-moon"
+  color = color or "rose-pine"
   vim.cmd.colorscheme(color)
 
   vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -10,8 +10,11 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "rose-pine-moon",
+      colorscheme = "rose-pine",
     },
+  },
+  {
+    "LunarVim/onedarker.nvim",
   },
   {
     "cranberry-clockworks/coal.nvim",
