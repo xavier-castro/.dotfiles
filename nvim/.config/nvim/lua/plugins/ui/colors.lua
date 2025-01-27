@@ -1,5 +1,5 @@
 function ColorMyPencils(color)
-  color = color or "no-clown-fiesta"
+  color = color or "catppuccin-frappe"
   vim.cmd.colorscheme(color)
 
   vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -10,7 +10,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "no-clown-fiesta",
+      colorscheme = "catppuccin-frappe",
     },
   },
   {
