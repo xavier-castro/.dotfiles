@@ -1,5 +1,5 @@
 function ColorMyPencils(color)
-  color = color or "rose-pine-moon"
+  color = color or "no-clown-fiesta"
   vim.cmd.colorscheme(color)
 
   vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -10,7 +10,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "rose-pine-moon",
+      colorscheme = "no-clown-fiesta",
     },
   },
   {
@@ -36,7 +36,7 @@ return {
     "aktersnurra/no-clown-fiesta.nvim",
     config = function()
       require("no-clown-fiesta").setup({
-        transparent = true,
+        transparent = false,
         styles = {
           -- You can set any of the style values specified for `:h nvim_set_hl`
           comments = {},
