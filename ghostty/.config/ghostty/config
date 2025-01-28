@@ -4,8 +4,8 @@
 # command = tmux new-session -A -s main
 font-family = MesloLGS NF
 
-theme=catppuccin-frappe
-font-size = 10
+theme=zenbones_dark
+font-size = 13
 shell-integration-features = no-cursor,sudo,no-title
 adjust-cell-height = 25%
 background-opacity = 0.96
@@ -18,8 +18,8 @@ adjust-cell-width = "7%"
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = 0.60
 
-window-padding-balance = true 
-# window-padding-y = 16, 0
+# window-padding-balance = true 
+window-padding-y = 6, 0
 window-save-state = always
 cursor-style = block_hollow
 window-step-resize = true
@@ -28,7 +28,7 @@ macos-titlebar-style = hidden
 background-blur-radius = 20
 window-vsync = false
 macos-titlebar-proxy-icon = visible
-# window-colorspace = "display-p3"
+window-colorspace = "display-p3"
 # background = 1C2021
 # foreground = d4be98
 

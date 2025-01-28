@@ -108,6 +108,12 @@ zinit wait'2' lucid light-mode for \
 # zinit  wait'!' lucid atload'true; _p9k_precmd' nocd
 zinit light romkatv/powerlevel10k
 
+# Z quickfind directories
+zinit load agkozak/zsh-z
+# ZSHZ_CASE=ignore
+ZSHZ_CASE=smart
+setopt COMPLETE_ALIASES
+
 #######################
 # FINALIZATION
 #######################

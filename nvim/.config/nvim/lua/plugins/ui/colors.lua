@@ -1,17 +1,57 @@
 function ColorMyPencils(color)
-  color = color or "catppuccin-frappe"
+  color = color or "256_noir"
   vim.cmd.colorscheme(color)
 
-  vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-  vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+  -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+  -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+  vim.cmd([[
+  colorscheme 256_noir
+" Change highlighting of cursor line when entering/leaving Insert Mode
+set cursorline
+highlight CursorLine cterm=NONE ctermfg=NONE ctermbg=233 guifg=NONE guibg=#121212
+autocmd InsertEnter * highlight CursorLine cterm=NONE ctermfg=NONE ctermbg=234 guifg=NONE guibg=#1c1c1c
+autocmd InsertLeave * highlight CursorLine cterm=NONE ctermfg=NONE ctermbg=233 guifg=NONE guibg=#121212
+  ]])
 end
 
 return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "catppuccin-frappe",
+      colorscheme = "256_noir",
     },
+  },
+  {
+    "datsfilipe/vesper.nvim",
+    config = function()
+      require("vesper").setup({
+        transparent = false, -- Boolean: Sets the background to transparent
+        italics = {
+          comments = true, -- Boolean: Italicizes comments
+          keywords = true, -- Boolean: Italicizes keywords
+          functions = true, -- Boolean: Italicizes functions
+          strings = true, -- Boolean: Italicizes strings
+          variables = true, -- Boolean: Italicizes variables
+        },
+        overrides = {}, -- A dictionary of group names, can be a function returning a dictionary or a table.
+        palette_overrides = {},
+      })
+      -- ColorMyPencils()
+    end,
+  },
+  {
+    "zenbones-theme/zenbones.nvim",
+    -- Optionally install Lush. Allows for more configuration or extending the colorscheme
+    -- If you don't want to install lush, make sure to set g:zenbones_compat = 1
+    -- In Vim, compat mode is turned on as Lush only works in Neovim.
+    dependencies = "rktjmp/lush.nvim",
+    lazy = false,
+    priority = 1000,
+    -- you can set set configuration options here
+    config = function()
+      vim.g.zenbones_darken_comments = 45
+      vim.cmd.colorscheme("zenbones")
+    end,
   },
   {
     "cranberry-clockworks/coal.nvim",
@@ -78,8 +118,9 @@ return {
     "Mofiqul/vscode.nvim",
     config = function()
       require("vscode").setup({
-        transparent = true,
+        -- transparent = true,
       })
+      ColorMyPencils()
     end,
   },
   {

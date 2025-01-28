@@ -3,12 +3,13 @@ path+=('$HOME/.local/bin')
 path+=('$HOME/.local/scripts')
 path+=('$HOME/.local/pipx')
 path+=('/usr/local/bin')
+path+=('$HOME/.dotfiles/bin/.local/scripts')
 
 # Bind ctrl-o to tmux
 bindkey -s '^o' 'tmux neww ~/.local/scripts/tmux-sessionizer\n'
 
 # Bind ctrl-f to tmux-sessionizer
-bindkey -s '^f' 'tmux-sessionizer\n'
+bindkey -s '^f' '~/.local/scripts/tmux-sessionizer\n'
 
 # VI Mode!!!
 bindkey jj vi-cmd-mode
