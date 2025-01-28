@@ -1,16 +1,11 @@
 function ColorMyPencils(color)
-  color = color or "256_noir"
+  color = color or "zenbones"
   vim.cmd.colorscheme(color)
-
-  -- vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-  -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+  -- Set transparent background
+  vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+  vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
   vim.cmd([[
-  colorscheme 256_noir
-" Change highlighting of cursor line when entering/leaving Insert Mode
-set cursorline
-highlight CursorLine cterm=NONE ctermfg=NONE ctermbg=233 guifg=NONE guibg=#121212
-autocmd InsertEnter * highlight CursorLine cterm=NONE ctermfg=NONE ctermbg=234 guifg=NONE guibg=#1c1c1c
-autocmd InsertLeave * highlight CursorLine cterm=NONE ctermfg=NONE ctermbg=233 guifg=NONE guibg=#121212
+        hi ColorColumn ctermbg=234 guibg=#1c1c1c
   ]])
 end
 
@@ -18,7 +13,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "256_noir",
+      colorscheme = "zenbones",
     },
   },
   {
@@ -51,6 +46,9 @@ return {
     config = function()
       vim.g.zenbones_darken_comments = 45
       vim.cmd.colorscheme("zenbones")
+      vim.cmd([[
+      hi ColorColumn ctermbg=234 guibg=#1c1c1c
+]])
     end,
   },
   {

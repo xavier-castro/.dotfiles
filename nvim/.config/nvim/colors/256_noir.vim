@@ -128,3 +128,34 @@ highlight! link Cursor StatusLine
 highlight! link Underlined SpellRare
 highlight! link rstEmphasis SpellRare
 highlight! link diffChanged DiffChange
+
+" Neovim terminal colors
+if has('nvim')
+    let g:terminal_color_0 = '#000000'
+    let g:terminal_color_1 = '#ff0000'
+    let g:terminal_color_2 = '#bcbcbc'
+    let g:terminal_color_3 = '#8a8a8a'
+    let g:terminal_color_4 = '#585858'
+    let g:terminal_color_5 = '#af0000'
+    let g:terminal_color_6 = '#870000'
+    let g:terminal_color_7 = '#eeeeee'
+    let g:terminal_color_8 = '#303030'
+    let g:terminal_color_9 = '#ff0000'
+    let g:terminal_color_10 = '#bcbcbc'
+    let g:terminal_color_11 = '#8a8a8a'
+    let g:terminal_color_12 = '#585858'
+    let g:terminal_color_13 = '#af0000'
+    let g:terminal_color_14 = '#870000'
+    let g:terminal_color_15 = '#eeeeee'
+endif
+
+" Neovim specific highlights
+hi! link TelescopeBorder Normal
+hi! link TelescopePromptBorder Normal
+hi! link TelescopeResultsBorder Normal
+hi! link TelescopePreviewBorder Normal
+hi! link NvimTreeNormal Normal
+hi! link NvimTreeEndOfBuffer EndOfBuffer
+hi! link NvimTreeFolderIcon Keyword
+hi! link NvimTreeFolderName Directory
+

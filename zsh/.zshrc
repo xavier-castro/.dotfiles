@@ -18,6 +18,8 @@ if [[ "$PROFILE_STARTUP" == true ]]; then
     zmodload zsh/zprof
 fi
 
+export TERM=xterm-256color
+
 #######################
 # ZINIT INSTALLATION
 #######################
