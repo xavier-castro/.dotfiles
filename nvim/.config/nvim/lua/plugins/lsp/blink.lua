@@ -1,18 +1,20 @@
 return {
   "saghen/blink.cmp",
   dependencies = {
-    "rafamadriz/friendly-snippets",
     "onsails/lspkind.nvim",
     {
       "L3MON4D3/LuaSnip",
       version = "v2.*",
       dependencies = {
         "rafamadriz/friendly-snippets",
-        config = function()
-          require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
-        end,
       },
-      opts = {},
+      config = function()
+        require("luasnip.loaders.from_vscode").lazy_load()
+        -- Load your custom snippets
+        require("luasnip.loaders.from_vscode").lazy_load({
+          paths = { vim.fn.stdpath("config") .. "/snippets" },
+        })
+      end,
     },
     {
       "saghen/blink.compat",
