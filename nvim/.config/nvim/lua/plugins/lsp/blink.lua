@@ -55,14 +55,11 @@ return {
     signature = { enabled = true },
 
     completion = {
-      ghost_text = {
-        enabled = true,
-      },
       menu = {
         border = "rounded",
         draw = {
-          -- padding = 1,
-          -- gap = 4,
+          padding = 1,
+          gap = 4,
           columns = { { "kind_icon", "label", "label_description", gap = 1 }, { "kind", gap = 1 } },
           components = {
             kind = {
