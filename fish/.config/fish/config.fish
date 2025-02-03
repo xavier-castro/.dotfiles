@@ -46,3 +46,17 @@ if test -f $LOCAL_CONFIG
 end
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
+
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+if test -f /Users/xavier/miniconda3/bin/conda
+    eval /Users/xavier/miniconda3/bin/conda "shell.fish" "hook" $argv | source
+else
+    if test -f "/Users/xavier/miniconda3/etc/fish/conf.d/conda.fish"
+        . "/Users/xavier/miniconda3/etc/fish/conf.d/conda.fish"
+    else
+        set -x PATH "/Users/xavier/miniconda3/bin" $PATH
+    end
+end
+# <<< conda initialize <<<
+
