@@ -7,4 +7,4 @@ Refer to the [documentation](https://lazyvim.github.io/installation) to get star
 
 ### TODO
 
-- [ ] Figure out how to install codecompanion
+- [x] Figure out how to install codecompanion
