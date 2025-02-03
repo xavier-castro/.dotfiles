@@ -1,5 +1,5 @@
 function ColorMyPencils(color)
-  color = color or "zenbones"
+  color = color or "no-clown-fiesta"
   vim.cmd.colorscheme(color)
   -- Set transparent background
   vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -13,7 +13,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "zenbones",
+      colorscheme = "no-clown-fiesta",
     },
   },
   {

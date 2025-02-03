@@ -3,7 +3,17 @@ return {
   dependencies = {
     "rafamadriz/friendly-snippets",
     "onsails/lspkind.nvim",
-    "L3MON4D3/LuaSnip",
+    {
+      "L3MON4D3/LuaSnip",
+      version = "v2.*",
+      dependencies = {
+        "rafamadriz/friendly-snippets",
+        config = function()
+          require("luasnip.loaders.from_vscode").lazy_load({ paths = { vim.fn.stdpath("config") .. "/snippets" } })
+        end,
+      },
+      opts = {},
+    },
     {
       "saghen/blink.compat",
       -- use the latest release, via version = '*', if you also use the latest release for blink.cmp
@@ -49,22 +59,26 @@ return {
         enabled = true,
       },
       menu = {
+        border = "rounded",
         draw = {
+          -- padding = 1,
+          -- gap = 4,
+          columns = { { "kind_icon", "label", "label_description", gap = 1 }, { "kind", gap = 1 } },
           components = {
-            kind_icon = {
-              ellipsis = false,
+            kind = {
               text = function(ctx)
-                local kind_icon, _, _ = require("mini.icons").get("lsp", ctx.kind)
-                return kind_icon
-              end,
-              -- Optionally, you may also use the highlights from mini.icons
-              highlight = function(ctx)
-                local _, hl, _ = require("mini.icons").get("lsp", ctx.kind)
-                return hl
+                local len = 10 - string.len(ctx.kind)
+                local space = string.rep(" ", len)
+                return ctx.kind .. space .. "[" .. ctx.source_name .. "]"
               end,
             },
           },
         },
+      },
+      documentation = {
+        window = { border = "rounded" },
+        auto_show = true,
+        auto_show_delay_ms = 0,
       },
     },
 
@@ -80,6 +94,25 @@ return {
         "avante_files",
       },
       providers = {
+        snippets = {
+          min_keyword_length = 1,
+          score_offset = 4,
+        },
+        lsp = {
+          min_keyword_length = 0,
+          score_offset = 3,
+          name = "LSP",
+          module = "blink.cmp.sources.lsp",
+          fallbacks = {},
+        },
+        path = {
+          min_keyword_length = 0,
+          score_offset = 2,
+        },
+        buffer = {
+          min_keyword_length = 1,
+          score_offset = 1,
+        },
         codecompanion = {
           name = "CodeCompanion",
           module = "codecompanion.providers.completion.blink",
