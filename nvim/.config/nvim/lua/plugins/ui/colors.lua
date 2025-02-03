@@ -1,5 +1,5 @@
 function ColorMyPencils(color)
-  color = color or "vscode"
+  color = color or "rose-pine"
   vim.cmd.colorscheme(color)
   -- Set transparent background
   vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -13,7 +13,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "vscode",
+      colorscheme = "rose-pine",
     },
   },
   {
@@ -118,7 +118,7 @@ return {
       require("vscode").setup({
         -- transparent = true,
       })
-      ColorMyPencils()
+      vim.cmd([[colorscheme vscode]])
     end,
   },
   {
