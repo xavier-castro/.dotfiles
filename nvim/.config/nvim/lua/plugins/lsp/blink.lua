@@ -52,11 +52,9 @@ return {
       ["<M-f>"] = { "scroll_documentation_down", "fallback" },
       ["<M-k>"] = { "show_signature", "hide_signature", "fallback" },
     },
-    signature = { enabled = true },
-
     completion = {
       menu = {
-        border = "rounded",
+        -- border = "rounded",
         draw = {
           padding = 1,
           gap = 4,
@@ -73,9 +71,9 @@ return {
         },
       },
       documentation = {
-        window = { border = "rounded" },
+        -- window = { border = "rounded" },
         auto_show = true,
-        auto_show_delay_ms = 0,
+        auto_show_delay_ms = 100,
       },
     },
 

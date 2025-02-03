@@ -13,3 +13,4 @@ vim.opt.colorcolumn = "80"
 vim.opt.wrap = false
 vim.opt.termguicolors = true
 vim.o.background = "dark"
+vim.o.relativenumber = true
