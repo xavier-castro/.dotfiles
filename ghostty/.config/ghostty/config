@@ -17,7 +17,7 @@ adjust-cell-width = "7%"
 
 mouse-hide-while-typing = true
 mouse-scroll-multiplier = 0.60
-# window-padding-balance = true 
+window-padding-balance = true 
 window-padding-y = 4, 0
 window-save-state = always
 cursor-style = block_hollow
