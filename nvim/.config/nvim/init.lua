@@ -87,6 +87,7 @@ require 'xavier.configs.options'
 require 'xavier.configs.keymaps'
 require 'xavier.configs.autocommands'
 require 'xavier.configs.floating-terminal'
+require 'xavier.configs.copy-relative-path'
 
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
 if not (vim.uv or vim.loop).fs_stat(lazypath) then

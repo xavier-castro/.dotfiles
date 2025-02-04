@@ -1,3 +1,6 @@
+local anthropic_api_key = os.getenv 'ANTHROPIC_API_KEY'
+local openai_api_key = os.getenv 'OPENAI_API_KEY'
+
 return {
   {
     'olimorris/codecompanion.nvim',
