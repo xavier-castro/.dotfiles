@@ -115,9 +115,22 @@ return { -- Fuzzy Finder (files, lsp, etc)
     -- Enable Telescope extensions if they are installed
     pcall(require('telescope').load_extension, 'fzf')
     pcall(require('telescope').load_extension, 'ui-select')
+    require('telescope').load_extension 'noice'
 
     -- See `:help telescope.builtin`
     local builtin = require 'telescope.builtin'
+    vim.keymap.set('n', '<leader>nl', function()
+      require('noice').cmd 'last'
+    end)
+
+    vim.keymap.set('n', '<leader>nh', function()
+      require('noice').cmd 'history'
+    end)
+
+    vim.keymap.set('n', '<leader>nd', function()
+      require('noice').cmd 'dismiss'
+    end)
+
     vim.keymap.set('n', '<leader>sh', builtin.help_tags, { desc = '[S]earch [H]elp' })
     vim.keymap.set('n', '<leader>sk', builtin.keymaps, { desc = '[S]earch [K]eymaps' })
     vim.keymap.set('n', '<leader>sf', '<cmd>Telescope find_files hidden=true no_ignore=false<cr>', { desc = '[S]earch [F]iles' })
