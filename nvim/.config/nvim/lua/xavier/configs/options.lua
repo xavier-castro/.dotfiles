@@ -132,4 +132,7 @@ vim.keymap.set('n', '<space>tr', function()
   vim.fn.chansend(job_id, { current_command .. '\r\n' })
 end)
 
-vim.keymap.set('n', '-', '<cmd>Oil<CR>')
+vim.opt.guicursor = ''
+
+vim.opt.nu = true
+vim.opt.relativenumber = true
