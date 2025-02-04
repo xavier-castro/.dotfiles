@@ -22,6 +22,22 @@ return { -- Fuzzy Finder (files, lsp, etc)
     -- Useful for getting pretty icons, but requires a Nerd Font.
     { 'nvim-tree/nvim-web-devicons', enabled = vim.g.have_nerd_font },
   },
+  keys = {
+    {
+      '<leader>s/',
+      function()
+        require('telescope.builtin').current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+          previewer = false,
+          borderchars = {
+            prompt = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
+            results = { '─', '│', '─', '│', '├', '┤', '┘', '└' },
+            preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
+          },
+        })
+      end,
+      desc = '[S]earch Fuzzily in current buffer',
+    },
+  },
   config = function()
     -- Telescope is a fuzzy finder that comes with a lot of different things that
     -- it can fuzzy find! It's more than just a "file finder", it can search
@@ -47,7 +63,36 @@ return { -- Fuzzy Finder (files, lsp, etc)
     require('telescope').setup {
       -- You can put your default mappings / updates / etc. in here
       --  All the info you're looking for is in `:help telescope.setup()`
-      --
+      defaults = {
+        prompt_prefix = '   ',
+        selection_caret = ' 󰁔 ',
+        entry_prefix = '   ',
+        sorting_strategy = 'ascending',
+        layout_config = {
+          horizontal = {
+            prompt_position = 'top',
+            preview_width = 0.55,
+          },
+          width = 0.77,
+          height = 0.80,
+        },
+        borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
+        mappings = {
+          i = {
+            ['<C-q>'] = 'send_to_qflist',
+            ['<C-Q>'] = 'add_to_qflist',
+            ['<M-q>'] = 'smart_send_to_qflist',
+            ['<M-Q>'] = 'smart_add_to_qflist',
+          },
+          n = {
+            ['q'] = 'close',
+            ['<C-q>'] = 'send_to_qflist',
+            ['<C-Q>'] = 'add_to_qflist',
+            ['<M-q>'] = 'smart_send_to_qflist',
+            ['<M-Q>'] = 'smart_add_to_qflist',
+          },
+        },
+      },
       -- defaults = {
       --   mappings = {
       --     i = { ['<c-enter>'] = 'to_fuzzy_refine' },
@@ -56,7 +101,13 @@ return { -- Fuzzy Finder (files, lsp, etc)
       -- pickers = {}
       extensions = {
         ['ui-select'] = {
-          require('telescope.themes').get_dropdown(),
+          require('telescope.themes').get_dropdown {
+            borderchars = {
+              prompt = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
+              results = { '─', '│', '─', '│', '├', '┤', '┘', '└' },
+              preview = { '─', '│', '─', '│', '┌', '┐', '┘', '└' },
+            },
+          },
         },
       },
     }
