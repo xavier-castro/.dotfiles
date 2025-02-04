@@ -4,7 +4,7 @@
 # command = tux new-session -A -s main
 font-family = IosevkaNerdFont-Extended
 theme=xcodedark
-font-size = 11
+font-size = 10
 shell-integration-features = no-cursor,sudo,no-title
 adjust-cell-height = 15%
 background-opacity = 0.975

@@ -1,16 +1,23 @@
 return {
-  'akinsho/bufferline.nvim',
-  event = 'VeryLazy',
-  keys = {
-    { '<Tab>', '<Cmd>BufferLineCycleNext<CR>', desc = 'Next tab' },
-    { '<S-Tab>', '<Cmd>BufferLineCyclePrev<CR>', desc = 'Prev tab' },
-  },
-  opts = {
-    options = {
-      mode = 'tabs',
-      -- separator_style = "slant",
-      show_buffer_close_icons = false,
-      show_close_icon = false,
-    },
-  },
+  'alvarosevilla95/luatab.nvim',
+  dependencies = { 'nvim-tree/nvim-web-devicons' },
+  config = function()
+    require('luatab').setup {
+      title = function()
+        return ''
+      end,
+      modified = function()
+        return ''
+      end,
+      windowCount = function()
+        return ''
+      end,
+      devicon = function()
+        return ''
+      end,
+      separator = function()
+        return ''
+      end,
+    }
+  end,
 }
