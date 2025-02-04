@@ -1,6 +1,10 @@
-local anthropic_api_key = os.getenv 'ANTHROPIC_API_KEY'
-local openai_api_key = os.getenv 'OPENAI_API_KEY'
+-- API keys from environment variables
+local api_keys = {
+  anthropic = os.getenv 'ANTHROPIC_API_KEY',
+  openai = os.getenv 'OPENAI_API_KEY',
+}
 
+-- Plugin configuration
 return {
   {
     'olimorris/codecompanion.nvim',
@@ -11,65 +15,48 @@ return {
       'CodeCompanionCmd',
     },
     keys = {
+      -- Chat operations
       { '<leader>ac', '<cmd>CodeCompanionChat Toggle<cr>', mode = { 'n', 'v' }, desc = 'AI Toggle [C]hat' },
       { '<leader>an', '<cmd>CodeCompanionChat<cr>', mode = { 'n', 'v' }, desc = 'AI [N]ew Chat' },
-      { '<leader>aa', '<cmd>CodeCompanionActions<cr>', mode = { 'n', 'v' }, desc = 'AI [A]ction' },
       { 'ga', '<cmd>CodeCompanionChat Add<CR>', mode = { 'v' }, desc = 'AI [A]dd to Chat' },
-      -- prompts
+      -- Actions and prompts
+      { '<leader>aa', '<cmd>CodeCompanionActions<cr>', mode = { 'n', 'v' }, desc = 'AI [A]ction' },
       { '<leader>ae', '<cmd>CodeCompanion /explain<cr>', mode = { 'v' }, desc = 'AI [E]xplain' },
     },
     opts = {
       strategies = {
         chat = {
-          adapter = 'aio_openai',
-          roles = {
-            ---@type fun(adapter: CodeCompanion.Adapter): string
-            llm = function(adapter)
-              local model = adapter.schema.model.default
-              if type(model) == 'function' then
-                model = model()
-              end
-              return string.format('Assistant (%s, %s)', adapter.formatted_name, model)
-            end,
-            user = 'Me',
-          },
+          adapter = 'anthropic',
+          keymaps = { send = { modes = {} } },
         },
-        inline = {
-          adapter = 'aio_openai',
-        },
-        cmd = {
-          adapter = 'aio_openai',
-        },
+        inline = { adapter = 'copilot' },
       },
       display = {
-        chat = {
-          intro_message = '  What can I help with? (Press ? for options)',
-          show_references = true,
-          show_header_separator = false,
-          show_settings = false,
-          window = {
-            width = 0.4,
-            opts = {
-              relativenumber = false,
-            },
-          },
-        },
-        diff = {
-          provider = 'mini_diff',
-        },
+        chat = { persistent = true },
       },
+      opts = { log_level = 'DEBUG' },
       adapters = {
-        aio_openai = function()
-          return require('xavier.plugins.codecompanion.aio-openai-adapter').make()
+        anthropic = function()
+          return require('codecompanion.adapters').extend('anthropic', {
+            env = { api_key = api_keys.anthropic },
+          })
+        end,
+        openai = function()
+          return require('codecompanion.adapters').extend('openai', {
+            env = { api_key = api_keys.openai },
+          })
         end,
       },
     },
     init = function()
+      -- Command alias
       vim.cmd [[cab cc CodeCompanion]]
+
+      -- Initialize custom spinner
       require('xavier.plugins.codecompanion.fidget-spinner'):init()
 
+      -- Auto-format after inline completions
       local group = vim.api.nvim_create_augroup('CodeCompanionHooks', {})
-
       vim.api.nvim_create_autocmd({ 'User' }, {
         pattern = 'CodeCompanionInlineFinished',
         group = group,
@@ -84,9 +71,8 @@ return {
       {
         'echasnovski/mini.diff',
         config = function()
-          local diff = require 'mini.diff'
-          diff.setup {
-            source = diff.gen_source.none(),
+          require('mini.diff').setup {
+            source = require('mini.diff').gen_source.none(),
           }
         end,
       },
