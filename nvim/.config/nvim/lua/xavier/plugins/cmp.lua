@@ -60,7 +60,7 @@ return {
             if vim.bo.filetype == 'codecompanion' then
               return true
             else
-              return false
+              return true
             end
           end,
           draw = {
