@@ -4,7 +4,7 @@
 # command = tmux new-session -A -s main
 font-family = MesloLGS NF
 
-theme=zenbones_dark
+# theme=zenbones_dark
 font-size = 11
 shell-integration-features = no-cursor,sudo,no-title
 adjust-cell-height = 15%
@@ -29,8 +29,8 @@ background-blur-radius = 25
 window-vsync = false
 macos-titlebar-proxy-icon = visible
 window-colorspace = "display-p3"
-# background = 1C2021
-# foreground = d4be98
+background = 1C2021
+foreground = d4be98
 
 # keybindings
 keybind = cmd+s>r=reload_config
