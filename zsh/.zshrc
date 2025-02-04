@@ -1,9 +1,9 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 #######################
 # INITIALIZATION
@@ -38,7 +38,7 @@ fi
 #######################
 
 source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
-# source ~/.zsh_prompt
+source ~/.zsh_prompt
 source ~/.zsh_profile
 
 # Load private environment variables
@@ -108,7 +108,7 @@ zinit wait'2' lucid light-mode for \
 # After finishing the configuration wizard change the atload'' ice to:
 # -> atload'source ~/.p10k.zsh; _p9k_precmd'
 # zinit  wait'!' lucid atload'true; _p9k_precmd' nocd
-# zinit light romkatv/powerlevel10k
+zinit light romkatv/powerlevel10k
 
 # Z quickfind directories
 zinit load agkozak/zsh-z
@@ -138,9 +138,6 @@ esac
 
 # Created by `pipx` on 2025-01-05 03:37:17
 export PATH="$PATH:/Users/xavier/.local/bin"
-
-# Initialize starship prompt
-eval "$(starship init zsh)"
 
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
