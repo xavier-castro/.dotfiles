@@ -8,6 +8,7 @@ local api_keys = {
   hf = os.getenv 'HF_API_KEY',
 }
 
+vim.api.nvim_set_keymap('n', '<M-.>', '<cmd>CodeCompanion<CR>', { noremap = true, silent = true })
 -- Plugin configuration
 return {
   {
@@ -28,24 +29,28 @@ return {
       { '<leader>ae', '<cmd>CodeCompanion /explain<cr>', mode = { 'v' }, desc = 'AI [E]xplain' },
     },
     opts = {
+      strategies = {
+        chat = {
+          adapter = 'anthropic',
+          keymaps = { send = { modes = {} } },
+        },
+        inline = { adapter = 'copilot' },
+      },
       display = {
         chat = { persistent = true },
       },
       opts = { log_level = 'DEBUG' },
       adapters = {
-        deepseek = function()
-          return require('codecompanion.adapters').extend('openai_compatible', {
-            env = {
-              url = 'https://api.deepseek.com',
-              api_key = api_keys.deepseek,
-            },
+        anthropic = function()
+          return require('codecompanion.adapters').extend('anthropic', {
+            env = { api_key = api_keys.anthropic },
           })
         end,
-      },
-      strategies = {
-        chat = { adapter = 'deepseek' },
-        inline = { adapter = 'deepseek' },
-        agent = { adapter = 'deepseek' },
+        openai = function()
+          return require('codecompanion.adapters').extend('openai', {
+            env = { api_key = api_keys.openai },
+          })
+        end,
       },
     },
     init = function()
@@ -53,7 +58,7 @@ return {
       vim.cmd [[cab cc CodeCompanion]]
 
       -- Initialize custom spinner
-      -- require('xavier.plugins.codecompanion.fidget-spinner'):init()
+      require('xavier.plugins.codecompanion.fidget-spinner'):init()
 
       -- Auto-format after inline completions
       local group = vim.api.nvim_create_augroup('CodeCompanionHooks', {})
@@ -74,6 +79,7 @@ return {
           require('mini.diff').setup {
             source = require('mini.diff').gen_source.none(),
           }
+          vim.cmd [[cab cc CodeCompanion]]
         end,
       },
     },

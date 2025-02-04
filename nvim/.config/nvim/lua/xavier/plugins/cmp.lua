@@ -2,38 +2,57 @@
 return {
   {
     'saghen/blink.cmp',
-    version = 'v0.*',
-    event = { 'InsertEnter', 'CmdlineEnter' },
-    ---@module 'blink.cmp'
-    ---@type blink.cmp.Config
-    opts = {
-      keymap = {
-        ['<C-Space>'] = { 'show', 'show_documentation', 'hide_documentation' },
-        ['<C-e>'] = { 'hide' },
-        ['<C-y>'] = { 'select_and_accept' },
-        ['<C-p>'] = { 'select_prev', 'fallback' },
-        ['<C-n>'] = { 'select_next', 'fallback' },
-        ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
-        ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
-        ['<Tab>'] = { 'snippet_forward', 'fallback' },
-        ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
-        cmdline = {
-          ['<C-Space>'] = { 'show', 'show_documentation', 'hide_documentation' },
-          ['<Tab>'] = { 'show', 'select_next', 'fallback' },
-          ['<S-Tab>'] = { 'select_prev', 'fallback' },
-          ['<C-e>'] = { 'hide' },
-          ['<C-y>'] = { 'select_and_accept' },
-          ['<C-p>'] = { 'select_prev', 'fallback' },
-          ['<C-n>'] = { 'select_next', 'fallback' },
-          ['<C-b>'] = { 'scroll_documentation_up', 'fallback' },
-          ['<C-f>'] = { 'scroll_documentation_down', 'fallback' },
+    dependencies = {
+      'onsails/lspkind.nvim',
+      {
+        'L3MON4D3/LuaSnip',
+        version = 'v2.*',
+        dependencies = {
+          'rafamadriz/friendly-snippets',
         },
+      },
+      version = 'v0.*',
+      event = { 'InsertEnter', 'CmdlineEnter' },
+      ---@module 'blink.cmp'
+      ---@type blink.cmp.Config
+      config = function()
+        require('luasnip.loaders.from_vscode').lazy_load()
+        -- Load your custom snippets
+        require('luasnip.loaders.from_vscode').lazy_load {
+          paths = { vim.fn.stdpath 'config' .. '/snippets' },
+        }
+      end,
+    },
+    opts = {
+      snippets = { preset = 'luasnip' },
+      -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
+      keymap = {
+        preset = 'none',
+        ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
+        ['<C-e>'] = { 'hide', 'fallback' },
+        ['<C-f>'] = {
+          function(cmp)
+            if cmp.snippet_active() then
+              return cmp.accept()
+            else
+              return cmp.select_and_accept()
+            end
+          end,
+          'snippet_forward',
+          'fallback',
+        },
+        ['<Tab>'] = nil,
+        ['<S-Tab>'] = nil,
+        ['<C-k>'] = { 'select_prev', 'fallback' },
+        ['<C-j>'] = { 'select_next', 'fallback' },
+        ['<M-b>'] = { 'scroll_documentation_up', 'fallback' },
+        ['<M-f>'] = { 'scroll_documentation_down', 'fallback' },
+        ['<M-k>'] = { 'show_signature', 'hide_signature', 'fallback' },
       },
       appearance = {
         nerd_font_variant = 'mono',
       },
       completion = {
-        ghost_text = { enabled = true },
         menu = {
           auto_show = function()
             if vim.bo.filetype == 'codecompanion' then
@@ -43,10 +62,17 @@ return {
             end
           end,
           draw = {
-            treesitter = { 'lsp', 'buffer', 'snippets' },
-            columns = {
-              { 'kind_icon' },
-              { 'label', 'label_description', gap = 1 },
+            padding = 1,
+            gap = 4,
+            columns = { { 'kind_icon', 'label', 'label_description', gap = 1 }, { 'kind', gap = 1 } },
+            components = {
+              kind = {
+                text = function(ctx)
+                  local len = 10 - string.len(ctx.kind)
+                  local space = string.rep(' ', len)
+                  return ctx.kind .. space .. '[' .. ctx.source_name .. ']'
+                end,
+              },
             },
           },
         },
