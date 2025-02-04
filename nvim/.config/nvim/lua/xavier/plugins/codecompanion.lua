@@ -2,6 +2,10 @@
 local api_keys = {
   anthropic = os.getenv 'ANTHROPIC_API_KEY',
   openai = os.getenv 'OPENAI_API_KEY',
+  deepseek = os.getenv 'DEEPSEEK_API_KEY',
+  azure_api = os.getenv 'AZURE_OPENAI_KEY',
+  azure_endpoint = os.getenv 'AZURE_OPENAI_ENDPOINT',
+  hf = os.getenv 'HF_API_KEY',
 }
 
 -- Plugin configuration
@@ -24,28 +28,24 @@ return {
       { '<leader>ae', '<cmd>CodeCompanion /explain<cr>', mode = { 'v' }, desc = 'AI [E]xplain' },
     },
     opts = {
-      strategies = {
-        chat = {
-          adapter = 'anthropic',
-          keymaps = { send = { modes = {} } },
-        },
-        inline = { adapter = 'copilot' },
-      },
       display = {
         chat = { persistent = true },
       },
       opts = { log_level = 'DEBUG' },
       adapters = {
-        anthropic = function()
-          return require('codecompanion.adapters').extend('anthropic', {
-            env = { api_key = api_keys.anthropic },
+        deepseek = function()
+          return require('codecompanion.adapters').extend('openai_compatible', {
+            env = {
+              url = 'https://api.deepseek.com',
+              api_key = api_keys.deepseek,
+            },
           })
         end,
-        openai = function()
-          return require('codecompanion.adapters').extend('openai', {
-            env = { api_key = api_keys.openai },
-          })
-        end,
+      },
+      strategies = {
+        chat = { adapter = 'deepseek' },
+        inline = { adapter = 'deepseek' },
+        agent = { adapter = 'deepseek' },
       },
     },
     init = function()

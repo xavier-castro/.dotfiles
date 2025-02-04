@@ -91,3 +91,4 @@ alias nvp='nvim -p'  # Open files in tabs
 alias nvd='nvim -d'  # Open files in diff mode
 alias nvf='nvim $(fzf)'  # Open file using fzf
 
+alias pip='pip3'
