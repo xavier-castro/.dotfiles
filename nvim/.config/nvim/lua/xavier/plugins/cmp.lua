@@ -1,4 +1,3 @@
----@diagnostic disable: missing-fields
 return {
   {
     'saghen/blink.cmp',
@@ -7,25 +6,28 @@ return {
       {
         'L3MON4D3/LuaSnip',
         version = 'v2.*',
+        build = 'make install_jsregexp',
         dependencies = {
           'rafamadriz/friendly-snippets',
         },
+        config = function()
+          require('luasnip.loaders.from_vscode').lazy_load()
+          -- Load your custom snippets
+          require('luasnip.loaders.from_vscode').lazy_load {
+            paths = { vim.fn.stdpath 'config' .. '/snippets' },
+          }
+        end,
       },
-      version = 'v0.*',
-      event = { 'InsertEnter', 'CmdlineEnter' },
-      ---@module 'blink.cmp'
-      ---@type blink.cmp.Config
-      config = function()
-        require('luasnip.loaders.from_vscode').lazy_load()
-        -- Load your custom snippets
-        require('luasnip.loaders.from_vscode').lazy_load {
-          paths = { vim.fn.stdpath 'config' .. '/snippets' },
-        }
-      end,
     },
+    version = 'v0.*',
+    event = { 'InsertEnter', 'CmdlineEnter' },
     opts = {
-      snippets = { preset = 'luasnip' },
-      -- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
+      snippets = {
+        preset = 'luasnip',
+        expand = function(args)
+          require('luasnip').lsp_expand(args.body)
+        end,
+      },
       keymap = {
         preset = 'none',
         ['<C-space>'] = { 'show', 'show_documentation', 'hide_documentation' },
