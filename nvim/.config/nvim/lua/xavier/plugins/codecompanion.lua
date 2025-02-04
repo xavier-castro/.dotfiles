@@ -53,7 +53,7 @@ return {
       vim.cmd [[cab cc CodeCompanion]]
 
       -- Initialize custom spinner
-      require('xavier.plugins.codecompanion.fidget-spinner'):init()
+      -- require('xavier.plugins.codecompanion.fidget-spinner'):init()
 
       -- Auto-format after inline completions
       local group = vim.api.nvim_create_augroup('CodeCompanionHooks', {})
