@@ -1,6 +1,6 @@
 ---@diagnostic disable-next-line: missing-global-doc
 function ColorMyPencils(color)
-  color = color or "solarized-osaka"
+  color = color or "vscode"
   vim.cmd.colorscheme(color)
 
   vim.api.nvim_set_hl(0, "Normal", { bg = "none" })

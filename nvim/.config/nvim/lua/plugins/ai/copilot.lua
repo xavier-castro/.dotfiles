@@ -5,7 +5,7 @@ return {
     copilot.setup({
       suggestion = {
         enabled = true,
-        auto_trigger = false,
+        auto_trigger = true,
         keymap = {
           accept = "<M-a>",
           next = "<M-]>",

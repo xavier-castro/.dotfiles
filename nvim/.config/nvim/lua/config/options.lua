@@ -3,8 +3,6 @@
 -- Add any additional options here
 -- Disable animations
 vim.g.snacks_animate = false
-
--- ThePrimeagen
 vim.opt.guicursor = ""
 vim.opt.nu = true
 vim.opt.relativenumber = true

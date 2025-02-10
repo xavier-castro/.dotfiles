@@ -4,7 +4,6 @@
 # command = tmux new-session -A -s main
 font-family = IosevkaNerdFont-Extended
 
-theme=Solarized Dark - Patched
 font-size = 11
 shell-integration-features = no-cursor,sudo,no-title
 adjust-cell-height = 15%
@@ -73,4 +72,25 @@ keybind = cmd+s>e=equalize_splits
 copy-on-select = clipboard
 
 mouse-hide-while-typing = true
+
+background = 1b1e28
+foreground = a6accd
+palette = 0=1B1E28
+palette = 1=D0679D
+palette = 2=5DE4C7
+palette = 3=FFFAC2
+palette = 4=89DDFF
+palette = 5=FCC5E9
+palette = 6=ADD7FF
+palette = 7=FFFFFF
+palette = 8=A6ACCD
+palette = 9=D0679D
+palette = 10=5DE4C7
+palette = 11=FFFAC2
+palette = 12=ADD7FF
+palette = 13=FAE4FC
+palette = 14=89DDFF
+palette = 15=FFFFFF
+
+custom-shader = /Users/xavier/Downloads/crt-shader-with-chromatic-aberration-glow-scanlines-dot-matrix
 
