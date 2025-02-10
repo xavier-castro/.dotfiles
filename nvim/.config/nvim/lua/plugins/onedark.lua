@@ -3,7 +3,7 @@ return {
   commit = "dd640f6",
   priority = 1000,
   config = function()
-    vim.cmd.colorscheme("onedark")
+    -- vim.cmd.colorscheme("onedark")
 
     local config = {
       -- Main options --
