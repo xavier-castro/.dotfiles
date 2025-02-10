@@ -69,8 +69,8 @@ return { -- Autocompletion
       },
       completion = { completeopt = 'menu,menuone,noinsert' },
       -- window = {
-      --     completion = cmp.config.window.bordered(),
-      --     documentation = cmp.config.window.bordered(),
+      --   completion = cmp.config.window.bordered(),
+      --   documentation = cmp.config.window.bordered(),
       -- },
       mapping = cmp.mapping.preset.insert {
         ['<C-j>'] = cmp.mapping.select_next_item(), -- Select the [n]ext item
