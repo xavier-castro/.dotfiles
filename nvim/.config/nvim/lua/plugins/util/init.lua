@@ -46,18 +46,19 @@ return {
     -- Hints keybinds
     'folke/which-key.nvim',
     opts = {
-      -- win = {
-      --   border = {
-      --     { '┌', 'FloatBorder' },
-      --     { '─', 'FloatBorder' },
-      --     { '┐', 'FloatBorder' },
-      --     { '│', 'FloatBorder' },
-      --     { '┘', 'FloatBorder' },
-      --     { '─', 'FloatBorder' },
-      --     { '└', 'FloatBorder' },
-      --     { '│', 'FloatBorder' },
-      --   },
-      -- },
+      preset = 'helix',
+      win = {
+        border = {
+          { '┌', 'FloatBorder' },
+          { '─', 'FloatBorder' },
+          { '┐', 'FloatBorder' },
+          { '│', 'FloatBorder' },
+          { '┘', 'FloatBorder' },
+          { '─', 'FloatBorder' },
+          { '└', 'FloatBorder' },
+          { '│', 'FloatBorder' },
+        },
+      },
     },
   },
   {

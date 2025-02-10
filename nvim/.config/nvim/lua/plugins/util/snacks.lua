@@ -21,8 +21,39 @@ return {
         -- wo = { wrap = true } -- Wrap notifications
       },
     },
+    -- lazy.nvim
+    explorer = {
+      -- your explorer configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+    picker = {
+      sources = {
+        explorer = {
+          -- your explorer picker configuration comes here
+          -- or leave it empty to use the default settings
+        },
+      },
+    },
   },
   keys = {
+    {
+      -- Snacks explorer
+      '<leader>e',
+      function()
+        Snacks.explorer.open()
+      end,
+      desc = 'Explorer',
+    },
+    {
+      '<leader>E',
+      function()
+        Snacks.explorer.open {
+          cwd = vim.fn.expand '%:p:h',
+        }
+      end,
+      desc = 'Explorer (Current File)',
+    },
     {
       '<leader>z',
       function()
