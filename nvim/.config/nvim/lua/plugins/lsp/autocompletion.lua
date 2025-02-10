@@ -73,10 +73,10 @@ return { -- Autocompletion
       --     documentation = cmp.config.window.bordered(),
       -- },
       mapping = cmp.mapping.preset.insert {
-        ['<C-j>'] = cmp.mapping.select_next_item(),       -- Select the [n]ext item
-        ['<C-k>'] = cmp.mapping.select_prev_item(),       -- Select the [p]revious item
-        ['<CR>'] = cmp.mapping.confirm { select = true }, -- Accept the completion with Enter.
-        ['<C-c>'] = cmp.mapping.complete {},              -- Manually trigger a completion from nvim-cmp.
+        ['<C-j>'] = cmp.mapping.select_next_item(), -- Select the [n]ext item
+        ['<C-k>'] = cmp.mapping.select_prev_item(), -- Select the [p]revious item
+        ['<C-f>'] = cmp.mapping.confirm { select = true }, -- Accept the completion with Enter.
+        ['<C-Space>'] = cmp.mapping.complete(),
 
         -- Think of <c-l> as moving to the right of your snippet expansion.
         --  So if you have a snippet that's like:
@@ -127,8 +127,8 @@ return { -- Autocompletion
         fields = { 'kind', 'abbr', 'menu' },
         format = function(entry, vim_item)
           -- Kind icons
-          -- vim_item.kind = string.format('%s', kind_icons[vim_item.kind])
-          vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+          vim_item.kind = string.format('%s', kind_icons[vim_item.kind])
+          -- vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
           vim_item.menu = ({
             nvim_lsp = '[LSP]',
             luasnip = '[Snippet]',
