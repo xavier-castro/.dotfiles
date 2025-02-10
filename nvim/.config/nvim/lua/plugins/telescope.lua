@@ -60,6 +60,15 @@ return {
       end,
       desc = 'Lists Diagnostics for all open buffers or a specific buffer',
     },
+    -- Telescope buffers
+    {
+      ';b',
+      function()
+        local builtin = require 'telescope.builtin'
+        builtin.buffers()
+      end,
+      desc = 'Lists open buffers',
+    },
     {
       ';o',
       function()
