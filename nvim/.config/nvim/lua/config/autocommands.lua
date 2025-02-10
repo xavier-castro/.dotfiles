@@ -1,11 +1,15 @@
--- Disable line numbers by default
-vim.api.nvim_create_autocmd('BufEnter', {
-  pattern = '*',
-  callback = function()
-    vim.opt.number = false
-    vim.opt.relativenumber = false
-  end,
-})
+local copilot_on = false
+vim.api.nvim_create_user_command('CopilotToggle', function()
+  if copilot_on then
+    vim.cmd 'Copilot disable'
+    print 'Copilot OFF'
+  else
+    vim.cmd 'Copilot enable'
+    print 'Copilot ON'
+  end
+  copilot_on = not copilot_on
+end, { nargs = 0 })
+vim.keymap.set('', '<M-\\>', ':CopilotToggle<CR>', { noremap = true, silent = true })
 
 -- Turn off paste mode when leaving insert
 vim.api.nvim_create_autocmd('InsertLeave', {

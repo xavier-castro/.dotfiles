@@ -30,7 +30,6 @@ return {
     require('mini.align').setup()
     require('mini.extra').setup()
     require('mini.sessions').setup()
-    require('mini.indentscope').setup()
     require('mini.hipatterns').setup()
     require('mini.icons').setup()
     require('mini.doc').setup()

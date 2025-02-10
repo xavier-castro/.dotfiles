@@ -26,6 +26,80 @@ return { -- LSP Configuration & Plugins
     },
   },
   config = function()
+    -- Diagnostic configuration
+    vim.diagnostic.config {
+      -- Show signs in the gutter
+      signs = true,
+      -- Update diagnostics in insert mode (false is better for performance)
+      update_in_insert = false,
+      -- Show diagnostics inline
+      virtual_text = {
+        -- Only show virtual text for errors
+        severity = { min = vim.diagnostic.severity.ERROR },
+        -- Add source of diagnostic after message
+        source = 'if_many',
+        -- Prefix diagnostic with arrow
+        prefix = '●',
+        -- Space between end of line and diagnostic message
+        spacing = 4,
+      },
+      -- Floating window config
+      float = {
+        -- Always show source of diagnostic
+        ---@diagnostic disable-next-line: assign-type-mismatch
+        source = 'always',
+        -- Add a border to the floating window
+        border = 'rounded',
+        -- Add padding inside the floating window
+        padding = 2,
+        -- Customize title of diagnostic float window
+        header = '',
+        -- Add prefix to each diagnostic in the float
+        prefix = function(diagnostic)
+          local severity_labels = {
+            [vim.diagnostic.severity.ERROR] = ' Error: ',
+            [vim.diagnostic.severity.WARN] = ' Warning: ',
+            [vim.diagnostic.severity.INFO] = ' Info: ',
+            [vim.diagnostic.severity.HINT] = ' Hint: ',
+          }
+          return severity_labels[diagnostic.severity]
+        end,
+      },
+      -- Sort diagnostics by severity
+      severity_sort = true,
+    }
+
+    -- Option 3: Bordered icons
+    local signs = {
+      Error = '󰅙 ',
+      Warn = '󰀨 ',
+      Hint = '󰌶 ',
+      Info = '󰋽 ',
+    }
+    -- Change diagnostic signs in the gutter
+    for type, icon in pairs(signs) do
+      local hl = 'DiagnosticSign' .. type
+      vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+    end
+
+    -- Show diagnostics in normal mode only
+    vim.api.nvim_create_autocmd({ 'ModeChanged' }, {
+      callback = function()
+        local mode = vim.api.nvim_get_mode().mode
+        if mode == 'n' then
+          vim.diagnostic.show()
+        else
+          vim.diagnostic.hide()
+        end
+      end,
+    })
+
+    -- Convenient diagnostic navigation
+    vim.keymap.set('n', '[d', vim.diagnostic.goto_prev, { desc = 'Go to previous diagnostic' })
+    vim.keymap.set('n', ']d', vim.diagnostic.goto_next, { desc = 'Go to next diagnostic' })
+    vim.keymap.set('n', '<leader>d', vim.diagnostic.open_float, { desc = 'Show diagnostic error messages' })
+    vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic quickfix list' })
+
     vim.api.nvim_create_autocmd('LspAttach', {
       group = vim.api.nvim_create_augroup('lsp-attach', { clear = true }),
       -- Create a function that lets us more easily define mappings specific LSP related items.
@@ -152,22 +226,22 @@ return { -- LSP Configuration & Plugins
           },
         },
       },
-      -- basedpyright = {
-      --   -- Config options: https://github.com/DetachHead/basedpyright/blob/main/docs/settings.md
-      --   settings = {
-      --     basedpyright = {
-      --       disableOrganizeImports = true, -- Using Ruff's import organizer
-      --       disableLanguageServices = false,
-      --       analysis = {
-      --         ignore = { '*' },                 -- Ignore all files for analysis to exclusively use Ruff for linting
-      --         typeCheckingMode = 'off',
-      --         diagnosticMode = 'openFilesOnly', -- Only analyze open files
-      --         useLibraryCodeForTypes = true,
-      --         autoImportCompletions = true,     -- whether pyright offers auto-import completions
-      --       },
-      --     },
-      --   },
-      -- },
+      basedpyright = {
+        -- Config options: https://github.com/DetachHead/basedpyright/blob/main/docs/settings.md
+        settings = {
+          basedpyright = {
+            disableOrganizeImports = true, -- Using Ruff's import organizer
+            disableLanguageServices = false,
+            analysis = {
+              ignore = { '*' }, -- Ignore all files for analysis to exclusively use Ruff for linting
+              typeCheckingMode = 'off',
+              diagnosticMode = 'openFilesOnly', -- Only analyze open files
+              useLibraryCodeForTypes = true,
+              autoImportCompletions = true, -- whether pyright offers auto-import completions
+            },
+          },
+        },
+      },
       ruff = {
         -- Notes on code actions: https://github.com/astral-sh/ruff-lsp/issues/119#issuecomment-1595628355
         -- Get isort like behavior: https://github.com/astral-sh/ruff/issues/8926#issuecomment-1834048218
