@@ -3,6 +3,7 @@ return {
   priority = 1000,
   'folke/tokyonight.nvim',
   opts = {
+    style = 'storm',
     transparent = false,
     styles = {
       sidebars = 'transparent',
