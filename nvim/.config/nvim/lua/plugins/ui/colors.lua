@@ -2,7 +2,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      colorscheme = "vscode",
+      colorscheme = "solarized-osaka",
     },
   },
   {
@@ -12,6 +12,16 @@ return {
         transparent = true,
       })
       ColorMyPencils()
+    end,
+  },
+  {
+    "craftzdog/solarized-osaka.nvim",
+    lazy = true,
+    priority = 1000,
+    opts = function()
+      return {
+        transparent = false,
+      }
     end,
   },
 }

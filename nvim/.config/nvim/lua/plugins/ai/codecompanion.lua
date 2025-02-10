@@ -14,32 +14,6 @@ return {
     { "nvim-treesitter/nvim-treesitter", build = ":TSUpdate" },
     { "nvim-lua/plenary.nvim", branch = "master" },
     { "MeanderingProgrammer/render-markdown.nvim", ft = { "markdown", "codecompanion" } },
-    -- Comment this out if you don't want to setup blink.cmp
-    -- {
-    -- 	"saghen/blink.cmp",
-    -- 	lazy = false,
-    -- 	build = "cargo build --release",
-    -- 	opts = {
-    -- 		-- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
-    -- 		keymap = {
-    -- 			preset = "enter",
-    -- 			["<S-Tab>"] = { "select_prev", "fallback" },
-    -- 			["<Tab>"] = { "select_next", "fallback" },
-    -- 		},
-    -- 		sources = {
-    -- 			completion = {
-    -- 				enabled_providers = { "lsp", "path", "buffer", "codecompanion" },
-    -- 			},
-    -- 			providers = {
-    -- 				codecompanion = {
-    -- 					name = "CodeCompanion",
-    -- 					module = "codecompanion.providers.completion.blink",
-    -- 					enabled = true,
-    -- 				},
-    -- 			},
-    -- 		},
-    -- 	},
-    -- },
   },
   opts = {
     --Refer to: https://github.com/olimorris/codecompanion.nvim/blob/main/lua/codecompanion/config.lua

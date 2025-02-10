@@ -9,7 +9,7 @@ return {
   -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
   lazy = false,
   config = function()
-    vim.keymap.set("n", "sf", ":Oil --float<CR>")
+    vim.keymap.set("n", "-", ":Oil --float<CR>")
 
     require("oil").setup({
       view_options = {

@@ -1,9 +1,15 @@
+---@diagnostic disable-next-line: missing-global-doc
 function ColorMyPencils(color)
-  color = color or "vscode"
+  color = color or "solarized-osaka"
   vim.cmd.colorscheme(color)
 
   vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
   vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+  -- Make number column transparent
+  vim.api.nvim_set_hl(0, "LineNr", { fg = "#666666", bg = "none" })
+  vim.api.nvim_set_hl(0, "SignColumn", { bg = "none" })
+  vim.api.nvim_set_hl(0, "FoldColumn", { bg = "none" })
+  vim.api.nvim_set_hl(0, "CursorLineNr", { fg = "#ffffff", bold = true, bg = "none" })
 end
 
 return {

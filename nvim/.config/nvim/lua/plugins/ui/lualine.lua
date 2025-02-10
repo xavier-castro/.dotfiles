@@ -2,6 +2,7 @@ return {
   "nvim-lualine/lualine.nvim",
   opts = function(_, opts)
     local LazyVim = require("lazyvim.util")
+    ---@diagnostic disable-next-line: no-unknown
     opts.sections.lualine_c[4] = {
       LazyVim.lualine.pretty_path({
         length = 0,
