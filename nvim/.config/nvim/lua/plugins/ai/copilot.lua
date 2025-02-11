@@ -17,5 +17,8 @@ return {
         help = true,
       },
     })
+
+    -- Set the ghost text color to a subtle gray
+    vim.api.nvim_set_hl(0, "CopilotSuggestion", { fg = "#777777" })
   end,
 }
