@@ -3,7 +3,6 @@
  
 # command = tmux new-session -A -s main
 font-family = IosevkaNerdFont-Extended
-theme=Dark+
 font-size = 11
 shell-integration-features = no-cursor,sudo,no-title
 adjust-cell-height = 15%
@@ -11,7 +10,6 @@ background-opacity = 0.975
 confirm-close-surface = false
 macos-icon = custom-style
 adjust-cell-width = "7%"
-
 
 
 mouse-hide-while-typing = true
@@ -29,7 +27,7 @@ window-vsync = false
 macos-titlebar-proxy-icon = visible
 window-colorspace = "display-p3"
 # background = #202020
-# foreground = d4be98
+# foreground = d4be98G
 
 # keybindings
 keybind = cmd+s>r=reload_config
