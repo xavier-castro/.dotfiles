@@ -20,14 +20,14 @@ window-save-state = always
 cursor-style = block_hollow
 window-step-resize = true
 cursor-style-blink = true
-# macos-titlebar-style = hidden
-macos-titlebar-style = tabs
+macos-titlebar-style = hidden
+#macos-titlebar-style = tabs
 background-blur-radius = 25
 window-vsync = false
 macos-titlebar-proxy-icon = visible
 window-colorspace = "display-p3"
-# background = #202020
-# foreground = d4be98G
+background = #202020
+#foreground = #d4be98
 
 # keybindings
 keybind = cmd+s>r=reload_config
