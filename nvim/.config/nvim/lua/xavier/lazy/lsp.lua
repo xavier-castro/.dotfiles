@@ -66,7 +66,6 @@ return {
                     })
                     vim.g.zig_fmt_parse_errors = 0
                     vim.g.zig_fmt_autosave = 0
-
                 end,
 
                 ["lua_ls"] = function()
@@ -84,9 +83,16 @@ return {
                     }
                 end,
 
-                ["ts_ls"] = function ()
+                ["ts_ls"] = function()
+                    local lspconfig = require("lspconfig")
+                    lspconfig.ts_ls.setup({
+                        capabilities = capabilities,
+                        settings = {},
+                    })
+                end,
 
-                end
+                require'lspconfig'.tailwindcss.setup{}
+
 
             }
         })
