@@ -10,6 +10,8 @@ background-opacity = 0.975
 confirm-close-surface = false
 macos-icon = custom-style
 adjust-cell-width = "7%"
+theme=rose-pine-moon
+background=#000
 
 
 mouse-hide-while-typing = true
@@ -26,8 +28,6 @@ background-blur-radius = 25
 window-vsync = false
 macos-titlebar-proxy-icon = visible
 window-colorspace = "display-p3"
-background = #202020
-#foreground = #d4be98
 
 # keybindings
 keybind = cmd+s>r=reload_config
