@@ -29,7 +29,7 @@ autocmd('TextYankPost', {
     end,
 })
 
-autocmd({"BufWritePre"}, {
+autocmd({ "BufWritePre" }, {
     group = XavierGroup,
     pattern = "*",
     command = [[%s/\s\+$//e]],
