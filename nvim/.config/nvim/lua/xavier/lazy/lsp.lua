@@ -17,7 +17,17 @@ return {
     config = function()
         require("conform").setup({
             formatters_by_ft = {
-            }
+                lua = { "stylua" },
+                typescript = { "prettierd" },
+                typescriptreact = { "prettierd" },
+                javascript = { "prettierd" },
+                javascriptreact = { "prettierd" },
+                html = { "prettierd" },
+                css = { "prettierd" },
+                json = { "prettierd" },
+                markdown = { "prettierd" },
+                python = { "black" },
+            },
         })
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
@@ -31,9 +41,9 @@ return {
         require("mason").setup()
         require("mason-lspconfig").setup({
             ensure_installed = {
+                "ts_ls",
                 "lua_ls",
                 "rust_analyzer",
-                "gopls",
             },
             handlers = {
                 function(server_name) -- default handler (optional)
@@ -58,6 +68,7 @@ return {
                     vim.g.zig_fmt_autosave = 0
 
                 end,
+
                 ["lua_ls"] = function()
                     local lspconfig = require("lspconfig")
                     lspconfig.lua_ls.setup {
@@ -72,6 +83,11 @@ return {
                         }
                     }
                 end,
+
+                ["ts_ls"] = function ()
+
+                end
+
             }
         })
 
