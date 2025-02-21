@@ -1,5 +1,9 @@
 # README
 
+## Neat Commands I need to use more
+
+`Alt+l` -> In fish shell, lists whats in the current directory you are in
+
 ## CLI Essentials
 
 - [Zoxide]

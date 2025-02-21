@@ -1,5 +1,5 @@
 function ColorMyPencils(color)
-    color = color or "rose-pine-main"
+    color = color or "vscode_modern"
     vim.cmd.colorscheme(color)
 
     vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -7,6 +7,18 @@ function ColorMyPencils(color)
 end
 
 return {
+    {
+        "gmr458/vscode_modern_theme.nvim",
+        lazy = false,
+        priority = 1000,
+        config = function()
+            require("vscode_modern").setup({
+                cursorline = false,
+                transparent_background = true,
+            })
+            ColorMyPencils()
+        end,
+    },
 
     {
         "erikbackman/brightburn.vim",
