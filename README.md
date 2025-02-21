@@ -2,7 +2,7 @@
 
 ## TODO
 
-- [ ] Grab all configs you think you'd like to keep before deleting lazyvim branch
+- [x] Grab all configs you think you'd like to keep before deleting lazyvim branch
 - [ ] Learn power of primeagen plugins (UndoTree, Trouble, QF)
 - [ ] Stow fish config correctly
 - [ ] Stow ghostty config correctly
