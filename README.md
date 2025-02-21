@@ -9,6 +9,13 @@
 - [ ] Edit Zenmode to how you like it
 - [ ] Maybe add more helpful telescope binds?
 - [ ] Create personal journaling folder (private)
+- [ ] Relearn git-worktrees and how to use primeagens
+- [ ] Figure out how to get a floating terminal
+
+## Plugins considering while still keeping it minimal
+
+- [ ] tpope/surround (use keybind sr)
+- [ ] the dot repeat one
 
 ## Cli Commands
 
