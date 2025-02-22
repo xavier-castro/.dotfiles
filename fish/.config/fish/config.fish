@@ -1,11 +1,3 @@
-set fish_greeting ""
-
-# theme
-set -g fish_prompt_pwd_dir_length 1
-set -g theme_display_user yes
-set -g theme_hide_hostname no
-set -g theme_hostname always
-
 # aliases
 alias ls "ls -p -G"
 alias la "ls -A"
@@ -44,7 +36,9 @@ set LOCAL_CONFIG (dirname (status --current-filename))/config-local.fish
 if test -f $LOCAL_CONFIG
     source $LOCAL_CONFIG
 end
-test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+
+# Keybinds
+bind \cf "~/.local/scripts/tmux-sessionizer; commandline -f execute"
 
 
 # >>> conda initialize >>>
@@ -60,3 +54,5 @@ else
 end
 # <<< conda initialize <<<
 
+# Add at end of file
+starship init fish | source

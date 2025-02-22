@@ -11,6 +11,7 @@
 - [ ] Create personal journaling folder (private)
 - [ ] Relearn git-worktrees and how to use primeagens
 - [ ] Figure out how to get a floating terminal
+- [x] Install Rust
 
 ## Plugins considering while still keeping it minimal
 
@@ -20,9 +21,10 @@
 ## Cli Commands
 
 Homebrew `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
+Rust `curl https://sh.rustup.rs -sSf | sh`
 
 ```bash
-brew install fish exa fzf z neovim ripgrep zoxide
+brew install fish exa fzf z neovim ripgrep zoxide fd
 ```
 
 ## Neat Commands I need to use more
