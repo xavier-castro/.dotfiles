@@ -3,8 +3,8 @@
 ## TODO
 
 - [x] Grab all configs you think you'd like to keep before deleting lazyvim branch
-- [ ] Learn power of primeagen plugins (UndoTree, Trouble, QF)
-- [ ] Stow fish config correctly
+- [ ] Learn power of primeagen plugins (UndoTree, Trouble, QF, harpoon, git-worktrees)
+- [x] Stow fish config correctly
 - [ ] Stow ghostty config correctly
 - [ ] Edit Zenmode to how you like it
 - [ ] Maybe add more helpful telescope binds?
@@ -12,6 +12,8 @@
 - [ ] Relearn git-worktrees and how to use primeagens
 - [ ] Figure out how to get a floating terminal
 - [x] Install Rust
+- [ ] Learn how to use grep better
+- [ ] Make better markdown, latex, obsidian for best note taking setup
 
 ## Plugins considering while still keeping it minimal
 
