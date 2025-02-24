@@ -1,5 +1,16 @@
 # README
 
+## I3 Setup philosophy
+
+workspace 1 -> general use browser
+workspace 2 -> developer use browser
+workspace 3 -> work terminal
+worksapce 4 -> mystery (lol)
+workspace 5 -> slack/messages
+workspace 6 -> gimp (primeagen)
+workspace 7 -> vpn (primeagen)
+workspace 9 -> utility window
+
 ## TODO
 
 - [x] Grab all configs you think you'd like to keep before deleting lazyvim branch

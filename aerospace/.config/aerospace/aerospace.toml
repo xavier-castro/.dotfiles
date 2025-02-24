@@ -84,3 +84,16 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
     l = 'resize width +50'
     enter = 'mode main'
     esc = 'mode main'
+
+[[on-window-detected]]
+    if.app-id = 'com.apple.finder'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.todoist.mac.Todoist'
+    run = 'layout floating'
+
+[[on-window-detected]]
+    if.app-id = 'com.flexibits.fantastical2.mac'
+    run = 'layout floating'
+
