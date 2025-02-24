@@ -17,7 +17,7 @@ workspace 9 -> utility window
 - [ ] Learn power of primeagen plugins (UndoTree, Trouble, QF, harpoon, git-worktrees)
 - [x] Stow fish config correctly
 - [ ] Stow ghostty config correctly
-- [ ] Edit Zenmode to how you like it
+- [x] Edit Zenmode to how you like it
 - [ ] Maybe add more helpful telescope binds?
 - [ ] Create personal journaling folder (private)
 - [ ] Relearn git-worktrees and how to use primeagens
