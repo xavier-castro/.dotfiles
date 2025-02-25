@@ -43,7 +43,7 @@ autocmd("BufEnter", {
 		-- elseif vim.bo.filetype == "help" then
 		-- 	vim.cmd.colorscheme("brightburn")
 		else
-			vim.cmd.colorscheme("vscode_modern")
+			vim.cmd.colorscheme("rose-pine-moon")
 		end
 	end,
 })

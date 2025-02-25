@@ -31,11 +31,7 @@ end
 # Fzf
 set -g FZF_PREVIEW_FILE_CMD "bat --style=numbers --color=always --line-range :500"
 set -g FZF_LEGACY_KEYBINDINGS 0
-
-set LOCAL_CONFIG (dirname (status --current-filename))/config-local.fish
-if test -f $LOCAL_CONFIG
-    source $LOCAL_CONFIG
-end
+set -x LOCAL_CONFIG ~/.config/fish/config-local.fish
 
 # Keybinds
 bind \cf "~/.local/scripts/tmux-sessionizer; commandline -f execute"
