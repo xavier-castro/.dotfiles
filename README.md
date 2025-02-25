@@ -11,6 +11,10 @@ workspace 6 -> gimp (primeagen)
 workspace 7 -> vpn (primeagen)
 workspace 9 -> utility window
 
+## Things to Re-remember
+
+
+
 ## TODO
 
 - [x] Grab all configs you think you'd like to keep before deleting lazyvim branch
@@ -35,6 +39,7 @@ workspace 9 -> utility window
 
 Homebrew `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
 Rust `curl https://sh.rustup.rs -sSf | sh`
+UV (pip pipx virtualenv written in Rust) `curl -LsSf https://astral.sh/uv/install.sh | sh`
 
 ```bash
 brew install fish exa fzf z neovim ripgrep zoxide fd
