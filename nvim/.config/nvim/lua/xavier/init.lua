@@ -40,6 +40,8 @@ autocmd("BufEnter", {
 	callback = function()
 		if vim.bo.filetype == "zig" then
 			vim.cmd.colorscheme("tokyonight-night")
+		elseif vim.bo.filetype == "help" then
+			vim.cmd.colorscheme("brightburn")
 		else
 			vim.cmd.colorscheme("vscode_modern")
 		end
