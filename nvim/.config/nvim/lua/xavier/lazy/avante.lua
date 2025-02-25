@@ -16,6 +16,9 @@ return {
 			temperature = 0,
 			max_tokens = 20000,
 		},
+		-- rag_service = {
+		-- 	enabled = true,
+		-- },
 	},
 	-- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
 	build = "make",
