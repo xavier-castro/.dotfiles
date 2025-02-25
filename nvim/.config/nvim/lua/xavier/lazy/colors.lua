@@ -29,7 +29,7 @@ return {
 	{
 		"folke/tokyonight.nvim",
 		lazy = false,
-		opts = {},
+		opts = { transparent = true },
 		config = function()
 			ColorMyPencils()
 		end,

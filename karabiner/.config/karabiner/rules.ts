@@ -46,16 +46,13 @@ const rules: KarabinerRules[] = [
     // o = "Open" applications
     o: {
       b: app("Firefox"),
-      v: app("Visual Studio Code"),
+      c: app("Cursor"),
       e: app("Mail"),
       f: app("Fantastical"),
-      // t: app("Alacritty"),
       m: app("Messages"),
       n: app("Obsidian"),
       p: app("Music"),
       g: app("Ghostty"),
-      s: app("SnippetsLab"),
-      t: app("TypingMind"),
     },
 
     // w = "Window" via rectangle.app

@@ -13,14 +13,22 @@ workspace 9 -> utility window
 
 ## Things to Re-remember
 
+### [UV](https://docs.astral.sh/uv/#scripts)
 
+```
+uv init example
+cd example
+uv add ruff
+uv run ruff check
+uv lock
+uv sync
+```
 
 ## TODO
 
 - [x] Grab all configs you think you'd like to keep before deleting lazyvim branch
 - [ ] Learn power of primeagen plugins (UndoTree, Trouble, QF, harpoon, git-worktrees)
 - [x] Stow fish config correctly
-- [ ] Stow ghostty config correctly
 - [x] Edit Zenmode to how you like it
 - [ ] Maybe add more helpful telescope binds?
 - [ ] Create personal journaling folder (private)
@@ -42,7 +50,7 @@ Rust `curl https://sh.rustup.rs -sSf | sh`
 UV (pip pipx virtualenv written in Rust) `curl -LsSf https://astral.sh/uv/install.sh | sh`
 
 ```bash
-brew install fish exa fzf z neovim ripgrep zoxide fd
+brew install fish exa fzf z neovim ripgrep zoxide fd uv go yarn
 ```
 
 ## Neat Commands I need to use more
