@@ -30,7 +30,7 @@ uv sync
 - [ ] Learn power of primeagen plugins (UndoTree, Trouble, QF, harpoon, git-worktrees)
 - [x] Stow fish config correctly
 - [x] Edit Zenmode to how you like it
-- [ ] Maybe add more helpful telescope binds?
+- [x] Maybe add more helpful telescope binds?
 - [ ] Create personal journaling folder (private)
 - [ ] Relearn git-worktrees and how to use primeagens
 - [ ] Figure out how to get a floating terminal
