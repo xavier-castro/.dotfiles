@@ -1,9 +1,9 @@
 vim.opt.guicursor = ""
 
--- vim.opt.nu = true
--- vim.opt.relativenumber = true
-vim.wo.number = false
-vim.wo.rnu = false
+vim.opt.nu = true
+vim.opt.relativenumber = true
+-- vim.wo.number = false
+-- vim.wo.rnu = false
 vim.opt.colorcolumn = "0"
 
 vim.opt.tabstop = 4
@@ -38,6 +38,27 @@ vim.o.foldenable = true -- Enable folding by default
 vim.o.foldmethod = "manual" -- Default fold method (change as needed)
 vim.o.foldlevel = 99 -- Open most folds by default
 vim.o.foldcolumn = "0"
+
+-- Enable persistent folds
+vim.opt.viewoptions = "folds,cursor" -- Save folds and cursor position
+vim.opt.sessionoptions:append("folds") -- Include folds in sessions
+
+-- Create directory for view files if it doesn't exist
+local view_dir = vim.fn.stdpath("data") .. "/view"
+if vim.fn.isdirectory(view_dir) == 0 then
+	vim.fn.mkdir(view_dir, "p")
+end
+
+-- Set up autocommands to save and load folds
+vim.api.nvim_create_autocmd({ "BufWinLeave" }, {
+	pattern = { "*.*" },
+	command = "silent! mkview",
+})
+
+vim.api.nvim_create_autocmd({ "BufWinEnter" }, {
+	pattern = { "*.*" },
+	command = "silent! loadview",
+})
 
 -- backspace
 vim.opt.backspace = { "start", "eol", "indent" }

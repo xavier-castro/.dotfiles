@@ -173,6 +173,15 @@ return {
 				end,
 
 				require("lspconfig").tailwindcss.setup({}),
+
+				["marksman"] = function()
+					local lspconfig = require("lspconfig")
+					lspconfig.marksman.setup({
+						capabilities = capabilities,
+						filetypes = { "markdown", "markdown.mdx" },
+						root_dir = lspconfig.util.root_pattern(".git", ".marksman.toml"),
+					})
+				end,
 			},
 		})
 
