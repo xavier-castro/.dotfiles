@@ -70,6 +70,7 @@ uv sync
 
 ## TODO
 
+- Add obsidian
 - Learn how to use dial
 - Learn git-worktree
 - Learn how to use all the gitstuff stuff properly
