@@ -21,6 +21,15 @@ workspace 9 -> utility window
 ## Things to Re-remember
 
 Added a lot of new but super useful binds:
+
+Trouble
+
+- `<leader>xd` -> Trouble Diagnostics
+- `<leader>xw` -> Trouble workspace diagnostic toggle
+- `<leader>xq` -> Trouble quickfix toggle
+- `<leader>xl` -> Trouble loclist toggle
+- `<leader>xt` -> Trouble togo toggle
+
 Terminal
 
 - `<leader>ft` -> toggles floating terminal
