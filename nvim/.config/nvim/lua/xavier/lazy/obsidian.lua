@@ -12,10 +12,8 @@ return {
 	--   "BufNewFile path/to/my-vault/*.md",
 	-- },
 	dependencies = {
-        -- Required
+		-- Required
 		"nvim-lua/plenary.nvim",
-
-		-- see below for full list of optional dependencies 👇
 	},
 	opts = {
 		workspaces = {
@@ -25,7 +23,6 @@ return {
 			},
 		},
 
-		-- see below for full list of options 👇
 		daily_notes = {
 			-- Optional, if you keep daily notes in a separate directory.
 			folder = "notes/dailies",
