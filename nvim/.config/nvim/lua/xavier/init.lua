@@ -194,3 +194,5 @@ autocmd("LspAttach", {
 vim.g.netrw_browse_split = 0 -- Open files in the same window
 vim.g.netrw_banner = 0 -- Hide the banner
 vim.g.netrw_winsize = 25 -- Set the width to 25% of the screen
+
+require("current-theme")

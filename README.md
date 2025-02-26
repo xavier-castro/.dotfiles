@@ -38,11 +38,6 @@ uv sync
 - [ ] Learn how to use grep better
 - [ ] Make better markdown, latex, obsidian for best note taking setup
 
-## Plugins considering while still keeping it minimal
-
-- [ ] tpope/surround (use keybind sr)
-- [ ] the dot repeat one
-
 ## Cli Commands
 
 Homebrew `/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"`
