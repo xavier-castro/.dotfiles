@@ -38,8 +38,7 @@ fi
 #######################
 
 source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
-# source ~/.zsh_prompt
-eval "$(starship init zsh)"
+source ~/.zsh_prompt
 source ~/.zsh_profile
 
 # Load private environment variables
@@ -155,6 +154,4 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
-# set Starship PATH
-export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
 
