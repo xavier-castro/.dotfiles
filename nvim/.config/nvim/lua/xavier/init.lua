@@ -143,6 +143,9 @@ autocmd("BufEnter", {
 			vim.cmd.colorscheme("tokyonight-night")
 			-- elseif vim.bo.filetype == "help" then
 			-- 	vim.cmd.colorscheme("brightburn")
+			-- elseif vim.bo.filetype == "Avante" then
+			-- 	vim.cmd.colorscheme("rose-pine-moon")
+			-- end
 		else
 			vim.cmd.colorscheme("rose-pine-moon")
 		end

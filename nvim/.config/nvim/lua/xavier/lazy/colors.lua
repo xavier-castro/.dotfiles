@@ -1,10 +1,10 @@
--- function ColorMyPencils(color)
--- 	color = color or "vscode_modern"
--- 	vim.cmd.colorscheme(color)
---
--- 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
--- 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
--- end
+function ColorMyPencils(color)
+	color = color or "vscode_modern"
+	vim.cmd.colorscheme(color)
+
+	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+end
 
 return {
 	{
@@ -20,10 +20,6 @@ return {
 			})
 			-- ColorMyPencils() -- Apply custom highlights
 		end,
-	},
-
-	{
-		"erikbackman/brightburn.vim",
 	},
 
 	{
@@ -59,8 +55,8 @@ return {
 				contrast = "", -- can be "hard", "soft" or empty string
 				palette_overrides = {},
 				overrides = {},
-				dim_inactive = false,
-				transparent_mode = false,
+				dim_inactive = true,
+				transparent_mode = true,
 			})
 		end,
 	},
@@ -97,8 +93,7 @@ return {
 				},
 			})
 
-			-- ColorMyPencils()
-            vim.cmd[[colorscheme rose-pine-moon]]
+			ColorMyPencils()
 		end,
 	},
 }

@@ -1,11 +1,8 @@
 return {
 	"yetone/avante.nvim",
-	event = "VeryLazy",
+	event = "BufEnter",
 	lazy = false,
 	version = false, -- Set this to "*" to always pull the latest release version, or set it to false to update to the latest code changes.
-	keys = {
-		{ "<leader><leader>a", "<cmd>AvanteToggle<cr>", desc = "Toggle Avante Chat" },
-	},
 	opts = {
 		-- add any opts here
 		-- for example
@@ -14,7 +11,7 @@ return {
 			endpoint = "https://api.anthropic.com",
 			model = "claude-3-7-sonnet-20250219",
 			temperature = 0,
-			max_tokens = 20000,
+			max_tokens = 16000,
 		},
 		-- rag_service = {
 		-- 	enabled = true,
