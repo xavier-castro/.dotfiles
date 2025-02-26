@@ -61,6 +61,9 @@ uv sync
 
 ## TODO
 
+- Learn how to use dial
+- Learn git-worktree
+- Learn how to use all the gitstuff stuff properly
 - Learn Trouble and Quickfix List
 - Refactor a bit (mainly init.lua)
 
@@ -75,6 +78,7 @@ UV (pip pipx virtualenv written in Rust) `curl -LsSf https://astral.sh/uv/instal
 ```bash
 brew install eza fzf z neovim ripgrep zoxide fd uv go yarn deno
 ```
+
 ## Mac Setup
 
 - [Homebrew](https://brew.sh/)
