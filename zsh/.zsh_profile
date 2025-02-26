@@ -90,4 +90,9 @@ alias nvrc='nvim ~/.config/nvim/'
 alias nvp='nvim -p'  # Open files in tabs
 alias nvd='nvim -d'  # Open files in diff mode
 alias nvf='nvim $(fzf)'  # Open file using fzf
-
+# zoxide (called from ~/.local/scripts/)
+alias nzo="~/.local/scripts/zoxide_openfiles_nvim.sh"
+# called from ~/scripts/
+alias nlof="~/.local/scripts/fzf_listoldfiles.sh"
+# opens documentation through fzf (eg: git,zsh etc.)
+alias fman="compgen -c | fzf | xargs man"

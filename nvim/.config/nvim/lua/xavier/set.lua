@@ -1,9 +1,9 @@
 vim.opt.guicursor = ""
 
-vim.opt.nu = true
-vim.opt.relativenumber = true
--- vim.wo.number = false
--- vim.wo.rnu = false
+-- vim.opt.nu = true
+-- vim.opt.relativenumber = true
+vim.wo.number = false
+vim.wo.rnu = false
 vim.opt.colorcolumn = "0"
 
 vim.opt.tabstop = 4
@@ -65,4 +65,4 @@ vim.opt.backspace = { "start", "eol", "indent" }
 
 --split windows
 vim.opt.splitright = true --split vertical window to the right
-vim.opt.splitbelow = true --split horizontal window to the bottom
+-- vim.opt.splitbelow = true --split horizontal window to the bottom
