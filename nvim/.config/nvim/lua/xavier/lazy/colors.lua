@@ -1,10 +1,10 @@
-function ColorMyPencils(color)
-	color = color or "vscode_modern"
-	vim.cmd.colorscheme(color)
-
-	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
-	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
-end
+-- function ColorMyPencils(color)
+-- 	color = color or "vscode_modern"
+-- 	vim.cmd.colorscheme(color)
+--
+-- 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+-- 	vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
+-- end
 
 return {
 	{
@@ -18,7 +18,7 @@ return {
 				cursorline = false, -- Disable cursorline highlight
 				transparent_background = true, -- Enable transparent background
 			})
-			ColorMyPencils() -- Apply custom highlights
+			-- ColorMyPencils() -- Apply custom highlights
 		end,
 	},
 
@@ -31,7 +31,7 @@ return {
 		lazy = false,
 		opts = { transparent = true },
 		config = function()
-			ColorMyPencils()
+			-- ColorMyPencils()
 		end,
 	},
 	{
@@ -97,7 +97,8 @@ return {
 				},
 			})
 
-			ColorMyPencils()
+			-- ColorMyPencils()
+            vim.cmd[[colorscheme rose-pine-moon]]
 		end,
 	},
 }

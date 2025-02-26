@@ -1,23 +1,30 @@
-require("xavier.set")
-require("xavier.remap")
-require("xavier.lazy_init")
+-- Xavier's Neovim Configuration
 
-local augroup = vim.api.nvim_create_augroup
-local XavierGroup = augroup("Xavier", {})
+-- Core configuration
+require("xavier.set") -- Basic settings
+require("xavier.remap") -- Key remappings
+require("xavier.lazy_init") -- Plugin manager initialization
 
-local autocmd = vim.api.nvim_create_autocmd
-local yank_group = augroup("HighlightYank", {})
-
+-- Helper function for module reloading during development
 function R(name)
 	require("plenary.reload").reload_module(name)
 end
 
+-- Create autocommand groups
+local augroup = vim.api.nvim_create_augroup
+local autocmd = vim.api.nvim_create_autocmd
+local XavierGroup = augroup("Xavier", {})
+local yank_group = augroup("HighlightYank", {})
+
+-- File type associations
 vim.filetype.add({
 	extension = {
 		templ = "templ",
 	},
 })
 
+-- Terminal configuration
+-- Disable line numbers in terminal buffers
 vim.api.nvim_create_autocmd("TermOpen", {
 	group = vim.api.nvim_create_augroup("custom-term-open", { clear = true }),
 	callback = function()
@@ -26,98 +33,33 @@ vim.api.nvim_create_autocmd("TermOpen", {
 	end,
 })
 
+-- Terminal escape mapping
+vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
+
+-- Split terminal functionality
 local job_id = 0
-vim.keymap.set("n", "<space>to", function()
+vim.keymap.set("n", "<space>to", function() -- Open terminal in split
 	vim.cmd.vnew()
 	vim.cmd.term()
 	vim.cmd.wincmd("J")
 	vim.api.nvim_win_set_height(0, 5)
-
 	job_id = vim.bo.channel
 end)
 
+-- Terminal command execution
 local current_command = ""
-vim.keymap.set("n", "<space>te", function()
+vim.keymap.set("n", "<space>te", function() -- Enter command
 	current_command = vim.fn.input("Command: ")
 end)
 
-vim.keymap.set("n", "<space>tr", function()
+vim.keymap.set("n", "<space>tr", function() -- Run command
 	if current_command == "" then
 		current_command = vim.fn.input("Command: ")
 	end
-
 	vim.fn.chansend(job_id, { current_command .. "\r\n" })
 end)
 
-autocmd("TextYankPost", {
-	group = yank_group,
-	pattern = "*",
-	callback = function()
-		vim.highlight.on_yank({
-			higroup = "IncSearch",
-			timeout = 40,
-		})
-	end,
-})
-
-autocmd({ "BufWritePre" }, {
-	group = XavierGroup,
-	pattern = "*",
-	command = [[%s/\s\+$//e]],
-})
-
-autocmd("BufEnter", {
-	group = XavierGroup,
-	callback = function()
-		if vim.bo.filetype == "zig" then
-			vim.cmd.colorscheme("tokyonight-night")
-		-- elseif vim.bo.filetype == "help" then
-		-- 	vim.cmd.colorscheme("brightburn")
-		else
-			vim.cmd.colorscheme("vscode_modern")
-		end
-	end,
-})
-
-autocmd("LspAttach", {
-	group = XavierGroup,
-	callback = function(e)
-		local opts = { buffer = e.buf }
-		vim.keymap.set("n", "gd", function()
-			vim.lsp.buf.definition()
-		end, opts)
-		vim.keymap.set("n", "K", function()
-			vim.lsp.buf.hover()
-		end, opts)
-		vim.keymap.set("n", "<leader>vws", function()
-			vim.lsp.buf.workspace_symbol()
-		end, opts)
-		vim.keymap.set("n", "<leader>vd", function()
-			vim.diagnostic.open_float()
-		end, opts)
-		vim.keymap.set("n", "<leader>vca", function()
-			vim.lsp.buf.code_action()
-		end, opts)
-		vim.keymap.set("n", "<leader>vrr", function()
-			vim.lsp.buf.references()
-		end, opts)
-		vim.keymap.set("n", "<leader>vrn", function()
-			vim.lsp.buf.rename()
-		end, opts)
-		vim.keymap.set("i", "<C-h>", function()
-			vim.lsp.buf.signature_help()
-		end, opts)
-		vim.keymap.set("n", "[d", function()
-			vim.diagnostic.goto_next()
-		end, opts)
-		vim.keymap.set("n", "]d", function()
-			vim.diagnostic.goto_prev()
-		end, opts)
-	end,
-})
-
-vim.keymap.set("t", "<esc><esc>", "<c-\\><c-n>")
-
+-- Floating terminal implementation
 local state = {
 	floating = {
 		buf = -1,
@@ -170,13 +112,82 @@ local toggle_terminal = function()
 	end
 end
 
--- Example usage:
--- Create a floating window with default dimensions
 vim.api.nvim_create_user_command("Floaterminal", toggle_terminal, {})
-vim.keymap.set("n", "<leader>ft", function()
-	toggle_terminal()
-end)
+vim.keymap.set("n", "<leader>ft", toggle_terminal)
 
-vim.g.netrw_browse_split = 0
-vim.g.netrw_banner = 0
-vim.g.netrw_winsize = 25
+-- Autocommands
+-- Highlight yanked text
+autocmd("TextYankPost", {
+	group = yank_group,
+	pattern = "*",
+	callback = function()
+		vim.highlight.on_yank({
+			higroup = "IncSearch",
+			timeout = 40,
+		})
+	end,
+})
+
+-- Remove trailing whitespace on save
+autocmd({ "BufWritePre" }, {
+	group = XavierGroup,
+	pattern = "*",
+	command = [[%s/\s\+$//e]],
+})
+
+-- Colorscheme switching based on filetype
+autocmd("BufEnter", {
+	group = XavierGroup,
+	callback = function()
+		if vim.bo.filetype == "zig" then
+			vim.cmd.colorscheme("tokyonight-night")
+			-- elseif vim.bo.filetype == "help" then
+			-- 	vim.cmd.colorscheme("brightburn")
+		else
+			vim.cmd.colorscheme("rose-pine-moon")
+		end
+	end,
+})
+
+-- LSP keybindings
+autocmd("LspAttach", {
+	group = XavierGroup,
+	callback = function(e)
+		local opts = { buffer = e.buf }
+		vim.keymap.set("n", "gd", function()
+			vim.lsp.buf.definition()
+		end, opts)
+		vim.keymap.set("n", "K", function()
+			vim.lsp.buf.hover()
+		end, opts)
+		vim.keymap.set("n", "<leader>vws", function()
+			vim.lsp.buf.workspace_symbol()
+		end, opts)
+		vim.keymap.set("n", "<leader>vd", function()
+			vim.diagnostic.open_float()
+		end, opts)
+		vim.keymap.set("n", "<leader>vca", function()
+			vim.lsp.buf.code_action()
+		end, opts)
+		vim.keymap.set("n", "<leader>vrr", function()
+			vim.lsp.buf.references()
+		end, opts)
+		vim.keymap.set("n", "<leader>vrn", function()
+			vim.lsp.buf.rename()
+		end, opts)
+		vim.keymap.set("i", "<C-h>", function()
+			vim.lsp.buf.signature_help()
+		end, opts)
+		vim.keymap.set("n", "[d", function()
+			vim.diagnostic.goto_next()
+		end, opts)
+		vim.keymap.set("n", "]d", function()
+			vim.diagnostic.goto_prev()
+		end, opts)
+	end,
+})
+
+-- Netrw (file explorer) settings
+vim.g.netrw_browse_split = 0 -- Open files in the same window
+vim.g.netrw_banner = 0 -- Hide the banner
+vim.g.netrw_winsize = 25 -- Set the width to 25% of the screen
