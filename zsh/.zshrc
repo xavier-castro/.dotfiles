@@ -1,9 +1,9 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
+# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+# fi
 
 #######################
 # INITIALIZATION
@@ -38,7 +38,8 @@ fi
 #######################
 
 source "$HOME/.local/share/zinit/zinit.git/zinit.zsh"
-source ~/.zsh_prompt
+# source ~/.zsh_prompt
+eval "$(starship init zsh)"
 source ~/.zsh_profile
 
 # Load private environment variables
@@ -108,7 +109,7 @@ zinit wait'2' lucid light-mode for \
 # After finishing the configuration wizard change the atload'' ice to:
 # -> atload'source ~/.p10k.zsh; _p9k_precmd'
 # zinit  wait'!' lucid atload'true; _p9k_precmd' nocd
-zinit light romkatv/powerlevel10k
+# zinit light romkatv/powerlevel10k
 
 # Z quickfind directories
 zinit load agkozak/zsh-z
@@ -126,7 +127,7 @@ if [[ "$PROFILE_STARTUP" == true ]]; then
 fi
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # pnpm
 export PNPM_HOME="/Users/xavier/Library/pnpm"
@@ -153,4 +154,7 @@ else
 fi
 unset __conda_setup
 # <<< conda initialize <<<
+
+# set Starship PATH
+export STARSHIP_CONFIG=$HOME/.config/starship/starship.toml
 
