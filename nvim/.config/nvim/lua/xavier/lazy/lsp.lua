@@ -12,122 +12,23 @@ return {
 		"L3MON4D3/LuaSnip",
 		"saadparwaiz1/cmp_luasnip",
 		"j-hui/fidget.nvim",
-		"onsails/lspkind.nvim", -- vs-code pictograms
-		"roobert/tailwindcss-colorizer-cmp.nvim",
 	},
 
 	config = function()
-		local conform = require("conform")
-		local lsp_kinds = {
-			Class = " ",
-			Color = " ",
-			Constant = " ",
-			Constructor = " ",
-			Enum = " ",
-			EnumMember = " ",
-			Event = " ",
-			Field = " ",
-			File = " ",
-			Folder = " ",
-			Function = " ",
-			Interface = " ",
-			Keyword = " ",
-			Method = " ",
-			Module = " ",
-			Operator = " ",
-			Property = " ",
-			Reference = " ",
-			Snippet = " ",
-			Struct = " ",
-			Text = " ",
-			TypeParameter = " ",
-			Unit = " ",
-			Value = " ",
-			Variable = " ",
-		}
-
-		conform.setup({
-			formatters = {
-				["markdown-toc"] = {
-					condition = function(_, ctx)
-						for _, line in ipairs(vim.api.nvim_buf_get_lines(ctx.buf, 0, -1, false)) do
-							if line:find("<!%-%- toc %-%->") then
-								return true
-							end
-						end
-					end,
-				},
-				["markdownlint-cli2"] = {
-					condition = function(_, ctx)
-						local diag = vim.tbl_filter(function(d)
-							return d.source == "markdownlint"
-						end, vim.diagnostic.get(ctx.buf))
-						return #diag > 0
-					end,
-				},
-			},
-
+		require("conform").setup({
 			formatters_by_ft = {
-				javascript = { "prettier" },
-				typescript = { "prettier" },
-				javascriptreact = { "prettier" },
-				typescriptreact = { "prettier" },
-				svelte = { "prettier" },
-				css = { "prettier" },
-				html = { "prettier" },
-				json = { "prettier" },
-				yaml = { "prettier" },
-				-- markdown = { "prettier" },
-				graphql = { "prettier" },
-				liquid = { "prettier" },
 				lua = { "stylua" },
+				typescript = { "prettierd" },
+				typescriptreact = { "prettierd" },
+				javascript = { "prettierd" },
+				javascriptreact = { "prettierd" },
+				html = { "prettierd" },
+				css = { "prettierd" },
+				json = { "prettierd" },
+				markdown = { "prettierd" },
 				python = { "black" },
-				markdown = { "prettier" },
-				["markdown.mdx"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
 			},
-			-- format_on_save = {
-			-- 	lsp_fallback = true,
-			-- 	async = false,
-			-- 	timeout_ms = 1000,
-			-- },
 		})
-
-		-- Configure individual formatters
-		conform.formatters.prettier = {
-			args = {
-				"--stdin-filepath",
-				"$FILENAME",
-				"--tab-width",
-				"4",
-				"--use-tabs",
-				"false",
-			},
-		}
-		conform.formatters.shfmt = {
-			prepend_args = { "-i", "4" },
-		}
-
-		vim.keymap.set({ "n", "v" }, "<leader>mp", function()
-			conform.format({
-				lsp_fallback = true,
-				async = false,
-				timeout_ms = 1000,
-			})
-		end, { desc = " Prettier Format whole file or range (in visual mode) with" })
-		-- require("conform").setup({
-		-- 	formatters_by_ft = {
-		-- 		lua = { "stylua" },
-		-- 		typescript = { "prettierd" },
-		-- 		typescriptreact = { "prettierd" },
-		-- 		javascript = { "prettierd" },
-		-- 		javascriptreact = { "prettierd" },
-		-- 		html = { "prettierd" },
-		-- 		css = { "prettierd" },
-		-- 		json = { "prettierd" },
-		-- 		markdown = { "prettierd" },
-		-- 		python = { "black" },
-		-- 	},
-		-- })
 		vim.api.nvim_create_user_command("Format", function(args)
 			local range = nil
 			if args.count ~= -1 then
@@ -203,21 +104,10 @@ return {
 				end,
 
 				require("lspconfig").tailwindcss.setup({}),
-
-				["marksman"] = function()
-					local lspconfig = require("lspconfig")
-					lspconfig.marksman.setup({
-						capabilities = capabilities,
-						filetypes = { "markdown", "markdown.mdx" },
-						root_dir = lspconfig.util.root_pattern(".git", ".marksman.toml"),
-					})
-				end,
 			},
 		})
 
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
-		local lspkind = require("lspkind")
-		local colorizer = require("tailwindcss-colorizer-cmp").formatter
 
 		cmp.setup({
 			snippet = {
@@ -232,12 +122,15 @@ return {
 				["<C-Space>"] = cmp.mapping.complete(),
 			}),
 			sources = cmp.config.sources({
-				{ name = "luasnip" }, -- snippets
 				{ name = "nvim_lsp" },
-				{ name = "buffer" }, -- text within current buffer
-				{ name = "path" }, -- file system paths
-				{ name = "tailwindcss-colorizer-cmp" },
+				{ name = "luasnip" }, -- For luasnip users.
+			}, {
+				{ name = "buffer" },
 			}),
+		})
+
+		vim.diagnostic.config({
+			-- update_in_insert = true,
 			float = {
 				focusable = false,
 				style = "minimal",
@@ -246,63 +139,6 @@ return {
 				header = "",
 				prefix = "",
 			},
-			-- setup lspkind for vscode pictograms in autocompletion dropdown menu
-			formatting = {
-				format = function(entry, vim_item)
-					-- Add custom lsp_kinds icons
-					vim_item.kind = string.format("%s %s", lsp_kinds[vim_item.kind] or "", vim_item.kind)
-
-					-- add menu tags (e.g., [Buffer], [LSP])
-					vim_item.menu = ({
-						buffer = "[Buffer]",
-						nvim_lsp = "[LSP]",
-						luasnip = "[LuaSnip]",
-						nvim_lua = "[Lua]",
-						latex_symbols = "[LaTeX]",
-					})[entry.source.name]
-
-					-- use lspkind and tailwindcss-colorizer-cmp for additional formatting
-					vim_item = lspkind.cmp_format({
-						maxwidth = 30,
-						ellipsis_char = "...",
-					})(entry, vim_item)
-
-					if entry.source.name == "nvim_lsp" then
-						vim_item = colorizer(entry, vim_item)
-					end
-
-					return vim_item
-				end,
-				-- format = lspkind.cmp_format({
-				--         maxwidth = 30,
-				--         ellipsis_char = "...",
-				--         before = require("tailwindcss-colorizer-cmp").formatter
-				-- }),
-				-- format = require("tailwindcss-colorizer-cmp").formatter
-			},
 		})
-
-		-- update_in_insert = true,
-
-		-- Function to check if cursor is before a closing character and jump past it with Tab
-		local function tab_jump_outside_pairs()
-			local line = vim.api.nvim_get_current_line()
-			local col = vim.api.nvim_win_get_cursor(0)[2]
-
-			-- Check if the next character is a closing pair character
-			local next_char = line:sub(col + 1, col + 1)
-			if next_char:match('[%]%)%}%>"]') then
-				-- Move cursor one position to the right (outside the pair)
-				return "<Right>"
-			else
-				-- Default Tab behavior
-				return "<Tab>"
-			end
-		end
-
-		-- Map Tab key in insert mode to the custom function
-		vim.keymap.set("i", "<Tab>", function()
-			return tab_jump_outside_pairs()
-		end, { expr = true, noremap = true })
 	end,
 }
