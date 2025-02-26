@@ -136,21 +136,21 @@ autocmd({ "BufWritePre" }, {
 })
 
 -- Colorscheme switching based on filetype
-autocmd("BufEnter", {
-	group = XavierGroup,
-	callback = function()
-		if vim.bo.filetype == "zig" then
-			vim.cmd.colorscheme("tokyonight-night")
-			-- elseif vim.bo.filetype == "help" then
-			-- 	vim.cmd.colorscheme("brightburn")
-			-- elseif vim.bo.filetype == "Avante" then
-			-- 	vim.cmd.colorscheme("rose-pine-moon")
-			-- end
-		else
-			vim.cmd.colorscheme("rose-pine-moon")
-		end
-	end,
-})
+-- autocmd("BufEnter", {
+-- 	group = XavierGroup,
+-- 	callback = function()
+-- 		if vim.bo.filetype == "zig" then
+-- 			vim.cmd.colorscheme("tokyonight-night")
+-- 			-- elseif vim.bo.filetype == "help" then
+-- 			-- 	vim.cmd.colorscheme("brightburn")
+-- 			-- elseif vim.bo.filetype == "Avante" then
+-- 			-- 	vim.cmd.colorscheme("rose-pine-moon")
+-- 			-- end
+-- 		else
+-- 			vim.cmd.colorscheme("solarized-osaka")
+-- 		end
+-- 	end,
+-- })
 
 -- LSP keybindings
 autocmd("LspAttach", {
