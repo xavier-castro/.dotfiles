@@ -32,3 +32,16 @@ vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 vim.opt.laststatus = 3
 vim.opt.colorcolumn = "80"
+
+-- Enable folding ( setup in nvim-ufo )
+vim.o.foldenable = true -- Enable folding by default
+vim.o.foldmethod = "manual" -- Default fold method (change as needed)
+vim.o.foldlevel = 99 -- Open most folds by default
+vim.o.foldcolumn = "0"
+
+-- backspace
+vim.opt.backspace = { "start", "eol", "indent" }
+
+--split windows
+vim.opt.splitright = true --split vertical window to the right
+vim.opt.splitbelow = true --split horizontal window to the bottom

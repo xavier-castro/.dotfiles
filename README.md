@@ -13,6 +13,30 @@ workspace 9 -> utility window
 
 ## Things to Re-remember
 
+Added a lot of new but super useful binds:
+Terminal
+- `<leader>ft` -> toggles floating terminal
+- `<leader>to` -> New terminal underneath
+
+LSP
+- `<leader>lx` -> Toggles LSP
+
+Tabs
+- `<leader>tn` -> New tab
+- `<leader>tf` -> Open current tab in new tab
+- `<leader>t]` -> Go to next tab
+- `<leader>tx` -> Tab close
+
+Splits
+- `<leader>sv` -> split vertically
+- `<leader>sh` -> horizontally
+- `<leader>sm` -> Maximize split toggle
+- `<leader>sx` -> Split close
+
+
+Misc
+- `<leader>fp` -> Copys filepath to clipboard
+
 ### [UV](https://docs.astral.sh/uv/#scripts)
 
 ```
@@ -57,7 +81,7 @@ brew install fish exa fzf z neovim ripgrep zoxide fd uv go yarn
 - [Homebrew](https://brew.sh/)
 - [UTM](https://mac.getutm.app/)
 - [Karabiner-Elements](https://pqrs.org/osx/karabiner/)
-- [Rectangle Pro](https://rectangleapp.com/pro)
+-[Rectangle Pro](https://rectangleapp.com/pro)
 - [Raycast](https://raycast.com/)
 
 ### Karabiner
