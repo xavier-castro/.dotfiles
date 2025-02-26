@@ -190,10 +190,13 @@ symbol = ""
 format = '[[ $symbol( $version) ]]($style)'
 
 [python]
-symbol = ""
-
-format = '[[ $symbol( $version) ]]($style)'
-
+format = '[${symbol}${version}]($style)'
+symbol = "🐍 "
+style = "yellow bold"
+# Specify the python binary path
+python_binary = ["python3", "python"]
+# Add .venv directory to detection
+detect_folders = [".venv", ".uv"]
 
 [docker_context]
 symbol = ""
