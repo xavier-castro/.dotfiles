@@ -1,5 +1,5 @@
 if vim.g.vscode then
-    require "xavier.vscode.keymaps"
+	require("xavier.vscode.keymaps")
 else
-    require "xavier"
+	require("xavier")
 end

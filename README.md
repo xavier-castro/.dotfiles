@@ -26,17 +26,9 @@ uv sync
 
 ## TODO
 
-- [x] Grab all configs you think you'd like to keep before deleting lazyvim branch
-- [ ] Learn power of primeagen plugins (UndoTree, Trouble, QF, harpoon, git-worktrees)
-- [x] Stow fish config correctly
-- [x] Edit Zenmode to how you like it
-- [x] Maybe add more helpful telescope binds?
-- [ ] Create personal journaling folder (private)
-- [ ] Relearn git-worktrees and how to use primeagens
-- [ ] Figure out how to get a floating terminal
-- [x] Install Rust
-- [ ] Learn how to use grep better
-- [ ] Make better markdown, latex, obsidian for best note taking setup
+- Learn Trouble and Quickfix List
+- Refactor a bit (mainly init.lua)
+- Better window and split management
 
 ## Cli Commands
 
