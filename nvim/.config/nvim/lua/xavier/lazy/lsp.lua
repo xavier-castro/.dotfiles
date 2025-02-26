@@ -196,10 +196,6 @@ return {
 			}, {
 				{ name = "buffer" },
 			}),
-		})
-
-		vim.diagnostic.config({
-			-- update_in_insert = true,
 			float = {
 				focusable = false,
 				style = "minimal",
@@ -209,5 +205,28 @@ return {
 				prefix = "",
 			},
 		})
+
+		-- update_in_insert = true,
+
+		-- Function to check if cursor is before a closing character and jump past it with Tab
+		local function tab_jump_outside_pairs()
+			local line = vim.api.nvim_get_current_line()
+			local col = vim.api.nvim_win_get_cursor(0)[2]
+
+			-- Check if the next character is a closing pair character
+			local next_char = line:sub(col + 1, col + 1)
+			if next_char:match('[%]%)%}%>"]') then
+				-- Move cursor one position to the right (outside the pair)
+				return "<Right>"
+			else
+				-- Default Tab behavior
+				return "<Tab>"
+			end
+		end
+
+		-- Map Tab key in insert mode to the custom function
+		vim.keymap.set("i", "<Tab>", function()
+			return tab_jump_outside_pairs()
+		end, { expr = true, noremap = true })
 	end,
 }
