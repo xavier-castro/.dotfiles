@@ -12,10 +12,39 @@ return {
 		"L3MON4D3/LuaSnip",
 		"saadparwaiz1/cmp_luasnip",
 		"j-hui/fidget.nvim",
+		"onsails/lspkind.nvim", -- vs-code pictograms
+		"roobert/tailwindcss-colorizer-cmp.nvim",
 	},
 
 	config = function()
 		local conform = require("conform")
+		local lsp_kinds = {
+			Class = " ",
+			Color = " ",
+			Constant = " ",
+			Constructor = " ",
+			Enum = " ",
+			EnumMember = " ",
+			Event = " ",
+			Field = " ",
+			File = " ",
+			Folder = " ",
+			Function = " ",
+			Interface = " ",
+			Keyword = " ",
+			Method = " ",
+			Module = " ",
+			Operator = " ",
+			Property = " ",
+			Reference = " ",
+			Snippet = " ",
+			Struct = " ",
+			Text = " ",
+			TypeParameter = " ",
+			Unit = " ",
+			Value = " ",
+			Variable = " ",
+		}
 
 		conform.setup({
 			formatters = {
@@ -37,6 +66,7 @@ return {
 					end,
 				},
 			},
+
 			formatters_by_ft = {
 				javascript = { "prettier" },
 				typescript = { "prettier" },
@@ -186,6 +216,8 @@ return {
 		})
 
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
+		local lspkind = require("lspkind")
+		local colorizer = require("tailwindcss-colorizer-cmp").formatter
 
 		cmp.setup({
 			snippet = {
@@ -200,10 +232,11 @@ return {
 				["<C-Space>"] = cmp.mapping.complete(),
 			}),
 			sources = cmp.config.sources({
+				{ name = "luasnip" }, -- snippets
 				{ name = "nvim_lsp" },
-				{ name = "luasnip" }, -- For luasnip users.
-			}, {
-				{ name = "buffer" },
+				{ name = "buffer" }, -- text within current buffer
+				{ name = "path" }, -- file system paths
+				{ name = "tailwindcss-colorizer-cmp" },
 			}),
 			float = {
 				focusable = false,
@@ -212,6 +245,40 @@ return {
 				source = "always",
 				header = "",
 				prefix = "",
+			},
+			-- setup lspkind for vscode pictograms in autocompletion dropdown menu
+			formatting = {
+				format = function(entry, vim_item)
+					-- Add custom lsp_kinds icons
+					vim_item.kind = string.format("%s %s", lsp_kinds[vim_item.kind] or "", vim_item.kind)
+
+					-- add menu tags (e.g., [Buffer], [LSP])
+					vim_item.menu = ({
+						buffer = "[Buffer]",
+						nvim_lsp = "[LSP]",
+						luasnip = "[LuaSnip]",
+						nvim_lua = "[Lua]",
+						latex_symbols = "[LaTeX]",
+					})[entry.source.name]
+
+					-- use lspkind and tailwindcss-colorizer-cmp for additional formatting
+					vim_item = lspkind.cmp_format({
+						maxwidth = 30,
+						ellipsis_char = "...",
+					})(entry, vim_item)
+
+					if entry.source.name == "nvim_lsp" then
+						vim_item = colorizer(entry, vim_item)
+					end
+
+					return vim_item
+				end,
+				-- format = lspkind.cmp_format({
+				--         maxwidth = 30,
+				--         ellipsis_char = "...",
+				--         before = require("tailwindcss-colorizer-cmp").formatter
+				-- }),
+				-- format = require("tailwindcss-colorizer-cmp").formatter
 			},
 		})
 
