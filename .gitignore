@@ -2,3 +2,6 @@ karabiner/.config/karabiner/automatic_backups
 **/node_modules/
 # Make all `.DS_Store` hidden files be ignored
 **/.DS_Store
+# Ignore private environment files
+zsh/.zshenv_private
+**/.zshenv_private

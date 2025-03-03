@@ -6,8 +6,10 @@
 
 ## Build/Lint/Test Commands
 - Install: `stow <directory>` (e.g., `stow tmux` to install tmux config)
+- Uninstall: `stow -D <directory>` to remove configs
 - Update: `git pull && stow <directory>` to update configs
 - For Karabiner: `cd karabiner && yarn build` to compile TypeScript
+- Reload Fish: `source ~/.config/fish/config.fish`
 
 ## Code Style Guidelines
 - **Indentation**: 2 spaces for all config files
@@ -17,12 +19,11 @@
 - **Organization**: Keep related functions/settings together
 - **Error Handling**: For scripts, use proper exit codes and stderr
 - **Line Length**: Keep under 80 chars when possible
-- **Config Structure**: 
-  - Organize Neovim config by feature in lua/xavier/
-  - Keep tmux bindings grouped by function
+- **Fish Functions**: Store in functions/ directory, use autoload pattern
 
 ## Folder Structure
 - bin/.local/scripts/ - Utility scripts
 - nvim/.config/nvim/ - Neovim configuration
 - tmux/ - Tmux configuration
 - fish/.config/fish/ - Fish shell configuration
+- zsh/ - Zsh configuration
