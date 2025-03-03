@@ -30,8 +30,7 @@ vim.opt.wildignore:append({ "*/node_modules/*" })
 
 -- File types
 vim.filetype.add({
-	extension = {
-		mdx = "mdx",
-	},
+  extension = {
+    mdx = "mdx",
+  },
 })
-

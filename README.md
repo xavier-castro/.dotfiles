@@ -29,7 +29,7 @@ Thank you Primeagen, craftzdog, TJDev for your videos and config files to help m
 - [ ] Add formatter for markdown/obsidian
 - [ ] Really setup my Conform and LSPConfig good instead of just copy/pasting until something works
 - [ ] Add Github worktrees and relearn it
-- [ ] Make Zenmode actually look good
+- [x] Make Zenmode actually look good
 - [ ] Have it where <Ctrl+v> and <Ctrl+h> opens telescope hover vertical and horizontal respectively
 
 ## Developer TODO
