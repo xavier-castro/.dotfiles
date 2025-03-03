@@ -13,6 +13,9 @@ return {
 			temperature = 0,
 			max_tokens = 16000,
 		},
+		ui = {
+			background_color = "#000000",
+		},
 		-- rag_service = {
 		-- 	enabled = true,
 		-- },
@@ -85,6 +88,7 @@ return {
 						enabled = true,
 						style = "rounded",
 					},
+					preserve_indentation = true,
 				},
 				heading = {
 					sign = false,

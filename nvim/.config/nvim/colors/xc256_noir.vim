@@ -238,14 +238,14 @@ hi @markup.strong cterm=bold ctermfg=252 ctermbg=NONE gui=bold guifg=#d0d0d0 gui
 hi @markup.italic cterm=italic ctermfg=252 ctermbg=NONE gui=italic guifg=#d0d0d0 guibg=NONE
 hi @markup.link cterm=underline ctermfg=110 ctermbg=NONE gui=underline guifg=#87afd7 guibg=NONE
 hi @markup.link.url cterm=underline ctermfg=110 ctermbg=NONE gui=underline guifg=#87afd7 guibg=NONE
-hi @markup.raw.block cterm=NONE ctermfg=248 ctermbg=234 gui=NONE guifg=#a8a8a8 guibg=#1c1c1c
-hi @markup.raw.inline cterm=NONE ctermfg=248 ctermbg=234 gui=NONE guifg=#a8a8a8 guibg=#1c1c1c
-hi CodeBlock cterm=NONE ctermfg=248 ctermbg=234 gui=NONE guifg=#a8a8a8 guibg=#1c1c1c
+hi @markup.raw.block cterm=NONE ctermfg=248 ctermbg=16 gui=NONE guifg=#a8a8a8 guibg=#000000
+hi @markup.raw.inline cterm=NONE ctermfg=248 ctermbg=16 gui=NONE guifg=#a8a8a8 guibg=#000000
+hi CodeBlock cterm=NONE ctermfg=248 ctermbg=16 gui=NONE guifg=#a8a8a8 guibg=#000000
 hi @markup.list cterm=NONE ctermfg=255 ctermbg=NONE gui=NONE guifg=#eeeeee guibg=NONE
 hi @markup.quote cterm=italic ctermfg=245 ctermbg=NONE gui=italic guifg=#8a8a8a guibg=NONE
 
 " render-markdown.nvim specific
-hi RenderMarkdownCode cterm=NONE ctermfg=248 ctermbg=234 gui=NONE guifg=#a8a8a8 guibg=#000000
+hi RenderMarkdownCode cterm=NONE ctermfg=248 ctermbg=16 gui=NONE guifg=#a8a8a8 guibg=#000000
 hi RenderMarkdownBorder cterm=NONE ctermfg=240 ctermbg=NONE gui=NONE guifg=#585858 guibg=NONE
 hi RenderMarkdownH1 cterm=bold ctermfg=255 ctermbg=NONE gui=bold guifg=#eeeeee guibg=NONE
 hi RenderMarkdownH2 cterm=bold ctermfg=255 ctermbg=NONE gui=bold guifg=#eeeeee guibg=NONE

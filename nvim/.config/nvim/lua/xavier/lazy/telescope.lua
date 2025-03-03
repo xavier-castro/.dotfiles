@@ -76,7 +76,7 @@ return {
 				file_ignore_patterns = {},
 				path_display = { "smart" },
 				set_env = { ["COLORTERM"] = "truecolor" },
-				use_file_icons = false,
+				color_devicons = false,
 			},
 			-- config for telescope themes
 			extensions = {

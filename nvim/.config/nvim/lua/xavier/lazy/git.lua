@@ -1,24 +1,24 @@
 return {
-    -- for all git plugins
+	-- for all git plugins
 	{
 		"tpope/vim-fugitive",
 	},
-    {
-        "NeogitOrg/neogit",
-        dependencies = {
-            "nvim-lua/plenary.nvim",         -- required
-            "sindrets/diffview.nvim",        -- optional - Diff integration
-            -- Only one of these is needed.
-            "nvim-telescope/telescope.nvim",
-        },
-        config = true,
-        keys = {
-            { "<leader>ng", "<cmd>Neogit<cr>", desc = "Opens Neogit" },
-        },
-        -- neogit keymaps
-        vim.keymap.set("n", "<leader>gc", ":Neogit commit<CR>", {silent = true, noremap = true}),
-        vim.keymap.set("n", "<leader>gbr", ":Telescope git_branches<CR>", {silent = true, noremap = true})
-    },
+	{
+		"NeogitOrg/neogit",
+		dependencies = {
+			"nvim-lua/plenary.nvim", -- required
+			"sindrets/diffview.nvim", -- optional - Diff integration
+			-- Only one of these is needed.
+			"nvim-telescope/telescope.nvim",
+		},
+		config = true,
+		keys = {
+			{ "<leader>ng", "<cmd>Neogit<cr>", desc = "Opens Neogit" },
+		},
+		-- neogit keymaps
+		vim.keymap.set("n", "<leader>gc", ":Neogit commit<CR>", { silent = true, noremap = true }),
+		vim.keymap.set("n", "<leader>gbr", ":Telescope git_branches<CR>", { silent = true, noremap = true }),
+	},
 	{
 		"lewis6991/gitsigns.nvim",
 		event = { "BufReadPre", "BufNewFile" },
@@ -67,25 +67,25 @@ return {
 			end,
 		},
 	},
-    -- Lazy git
-    {
-        "kdheepak/lazygit.nvim",
-        --NOTE: Trying out lazygit in Snacks nvim
-        enabled = false,
-        cmd = {
-            "LazyGit",
-            "LazyGitConfig",
-            "LazyGitCurrentFile",
-            "LazyGitFilter",
-            "LazyGitFilterCurrentFile",
-        },
-        -- window border thing
-        dependencies = {
-            "nvim-lua/plenary.nvim",
-        },
-        -- setting up with keys={} allows plugin to load when command runs at the start
-        keys = {
-            { "<leader>lg", "<cmd>LazyGit<cr>", desc = "Open lazy git" },
-        },
-    }
+	-- Lazy git
+	{
+		"kdheepak/lazygit.nvim",
+		--NOTE: Trying out lazygit in Snacks nvim
+		enabled = true,
+		cmd = {
+			"LazyGit",
+			"LazyGitConfig",
+			"LazyGitCurrentFile",
+			"LazyGitFilter",
+			"LazyGitFilterCurrentFile",
+		},
+		-- window border thing
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		-- setting up with keys={} allows plugin to load when command runs at the start
+		keys = {
+			{ "<leader>lg", "<cmd>LazyGit<cr>", desc = "Open lazy git" },
+		},
+	},
 }
