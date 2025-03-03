@@ -135,5 +135,25 @@ return {
 			})
 		end,
 	},
-	-- NOTE : tokyonight
+	{
+		"shellRaining/hlchunk.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		opts = {
+			chunk = {
+				enable = true,
+				style = {
+					{ fg = "#7aa2f7" },
+				},
+			},
+			indent = {
+				enable = true,
+				chars = { "┊" },
+			},
+		},
+	},
+	{
+		"HiPhish/rainbow-delimiters.nvim",
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+		opts = {},
+	},
 }

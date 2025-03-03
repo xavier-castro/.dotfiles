@@ -131,6 +131,9 @@ return {
 
 		vim.diagnostic.config({
 			-- update_in_insert = true,
+			virtual_text = false, -- Disable virtual text diagnostics
+			underline = true,     -- Enable underline for diagnostics
+			signs = true,         -- Keep signs in the gutter
 			float = {
 				focusable = false,
 				style = "minimal",
@@ -139,6 +142,15 @@ return {
 				header = "",
 				prefix = "",
 			},
+			severity_sort = true, -- Sort diagnostics by severity
 		})
+
+		-- Set specific highlight groups for diagnostics to use undercurl
+		vim.cmd([[
+			highlight DiagnosticUnderlineError gui=undercurl guisp=Red
+			highlight DiagnosticUnderlineWarn gui=undercurl guisp=Orange
+			highlight DiagnosticUnderlineInfo gui=undercurl guisp=LightBlue
+			highlight DiagnosticUnderlineHint gui=undercurl guisp=LightGrey
+		]])
 	end,
 }

@@ -113,7 +113,7 @@ local toggle_terminal = function()
 end
 
 vim.api.nvim_create_user_command("Floaterminal", toggle_terminal, {})
-vim.keymap.set("n", "<leader>ft", toggle_terminal)
+vim.keymap.set("n", "<M-F>", toggle_terminal)
 
 -- Autocommands
 -- Highlight yanked text
@@ -134,24 +134,6 @@ autocmd({ "BufWritePre" }, {
 	pattern = "*",
 	command = [[%s/\s\+$//e]],
 })
-
--- Colorscheme switching based on filetype
--- autocmd("BufEnter", {
--- 	group = XavierGroup,
--- 	callback = function()
--- 		if vim.bo.filetype == "zig" then
--- 			vim.cmd.colorscheme("tokyonight-night")
--- 			-- elseif vim.bo.filetype == "help" then
--- 			-- 	vim.cmd.colorscheme("brightburn")
--- 			-- elseif vim.bo.filetype == "Avante" then
--- 			-- 	vim.cmd.colorscheme("rose-pine-moon")
--- 			-- end
--- 		else
--- 			vim.cmd.colorscheme("solarized-osaka")
--- 		end
--- 	end,
--- })
-
 -- LSP keybindings
 autocmd("LspAttach", {
 	group = XavierGroup,

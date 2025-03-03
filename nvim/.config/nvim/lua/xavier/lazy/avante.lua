@@ -31,7 +31,35 @@ return {
 		"hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
 		"ibhagwan/fzf-lua", -- for file_selector provider fzf
 		"nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
-		"zbirenbaum/copilot.lua", -- for providers='copilot'
+		-- "zbirenbaum/copilot.lua", -- for providers='copilot'
+		{
+			"zbirenbaum/copilot.lua",
+			cmd = "Copilot",
+			build = ":Copilot auth",
+			event = "BufReadPost",
+			config = function()
+				require("copilot").setup({
+					suggestion = {
+						enabled = true,
+						auto_trigger = true,
+						hide_during_completion = true,
+						keymap = {
+							accept = "<M-y>",
+							next = "<M-]>",
+							prev = "<M-[>",
+							dismiss = "<C-e>",
+						},
+					},
+					panel = { enabled = true },
+					filetypes = {
+						markdown = true,
+						help = true,
+					},
+				})
+				-- Set the ghost text to dark gray
+				vim.api.nvim_set_hl(0, "CopilotSuggestion", { fg = "#666666", italic = true })
+			end,
+		},
 		{
 			-- support for image pasting
 			"HakonHarnes/img-clip.nvim",
