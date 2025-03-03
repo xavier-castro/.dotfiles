@@ -1,10 +1,4 @@
-fish/.config/fish/functions/*
-fish/.config/fish/conf.d/*
-fish/.config/fish/completions/*
-fish/.config/fish/fish_variables
-tmux/.config/tmux/plugins/*
-raycast/.config/raycast/extensions/*
-raycast/*
-.DS_STORE
-.env
-nvim/.config/nvim/lua/xavier/config/keys.lua
+karabiner/.config/karabiner/automatic_backups
+**/node_modules/
+# Make all `.DS_Store` hidden files be ignored
+**/.DS_Store

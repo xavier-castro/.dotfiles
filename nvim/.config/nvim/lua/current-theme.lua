@@ -1,1 +1,0 @@
-vim.cmd("colorscheme xc256_noir")

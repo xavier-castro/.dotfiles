@@ -1,119 +1,29 @@
 return {
-	"nvim-telescope/telescope.nvim",
-	tag = "0.1.5",
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-		{
-			-- Quickly Jump through the todo tags
-			"folke/todo-comments.nvim",
-			event = { "BufReadPre", "BufNewFile" },
-			dependencies = { "nvim-lua/plenary.nvim" },
-			config = function()
-				local todo_comments = require("todo-comments")
+    "nvim-telescope/telescope.nvim",
 
-				todo_comments.setup({
-					keywords = {
-						FIX = {
-							icon = " ", -- icon used for the sign, and in search results
-							color = "error", -- can be a hex color, or a named color (see below)
-							alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
-							-- signs = false, -- configure signs for some keywords individually
-						},
-						TODO = { icon = " ", color = "info" },
-						HACK = { icon = " ", color = "warning", alt = { "DON SKIP" } },
-						WARN = { icon = " ", color = "warning", alt = { "WARNING", "XXX" } },
-						PERF = { icon = " ", alt = { "OPTIM", "PERFORMANCE", "OPTIMIZE" } },
-						NOTE = { icon = " ", color = "hint", alt = { "INFO", "READ", "COLORS" } },
-						TEST = { icon = "⏲ ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
-					},
-				})
+    tag = "0.1.5",
 
-				-- keymaps
-				vim.keymap.set("n", "]t", function()
-					todo_comments.jump_next()
-				end, { desc = "Next todo comment" })
+    dependencies = {
+        "nvim-lua/plenary.nvim"
+    },
 
-				vim.keymap.set("n", "[t", function()
-					todo_comments.jump_prev()
-				end, { desc = "Previous todo comment" })
-			end,
-		},
-		"andrew-george/telescope-themes",
-	},
+    config = function()
+        require('telescope').setup({})
 
-	config = function()
-		local telescope = require("telescope")
-		local actions = require("telescope.actions")
-		local transform_mod = require("telescope.actions.mt").transform_mod
-		local trouble = require("trouble")
-		local builtin = require("telescope.builtin")
-		-- create your custom action
-		local custom_actions = transform_mod({
-			open_trouble_qflist = function()
-				trouble.toggle("quickfix")
-			end,
-		})
-
-		-- NOTE: Telescope Extensions
-		telescope.load_extension("fzf")
-		telescope.load_extension("themes") -- Telescope themes by Andrew George
-
-		require("telescope").setup({
-
-			defaults = {
-				mappings = {
-					i = {
-						["<C-k>"] = actions.move_selection_previous, -- move to prev result
-						["<C-j>"] = actions.move_selection_next, -- move test to next result
-						["<C-q>"] = actions.send_selected_to_qflist + custom_actions.open_trouble_qflist,
-					},
-				},
-				-- Disable icons
-				prompt_prefix = " ",
-				selection_caret = " ",
-				entry_prefix = "  ",
-				file_ignore_patterns = {},
-				path_display = { "smart" },
-				set_env = { ["COLORTERM"] = "truecolor" },
-				color_devicons = false,
-			},
-			-- config for telescope themes
-			extensions = {
-				themes = {
-					enable_previewer = true,
-					enable_live_preview = true,
-					persist = {
-						enabled = true,
-						path = vim.fn.stdpath("config") .. "/lua/colorscheme.lua",
-					},
-				},
-			},
-		})
-
-		vim.keymap.set("n", "<leader>pf", function()
-			require("telescope.builtin").find_files({ hidden = true, layout_config = { prompt_position = "top" } })
-		end, {})
-		vim.keymap.set("n", "<C-p>", builtin.git_files, {})
-		vim.keymap.set("n", "\\\\", builtin.buffers, {})
-		vim.keymap.set("n", "<leader>pws", function()
-			local word = vim.fn.expand("<cword>")
-			builtin.grep_string({ search = word })
-		end)
-		vim.keymap.set("n", "<leader>po", builtin.oldfiles, {})
-		vim.keymap.set("n", "<leader>pWs", function()
-			local word = vim.fn.expand("<cWORD>")
-			builtin.grep_string({ search = word })
-		end)
-		vim.keymap.set("n", "<leader>ps", function()
-			builtin.grep_string({ search = vim.fn.input("Grep > ") })
-		end)
-		vim.keymap.set("n", "<leader>vh", builtin.help_tags, {})
-		vim.keymap.set(
-			"n",
-			"<leader>ths",
-			":Telescope themes<CR>",
-			{ noremap = true, silent = true, desc = "Theme Switcher" }
-		)
-	end,
+        local builtin = require('telescope.builtin')
+        vim.keymap.set('n', '<leader>pf', builtin.find_files, {})
+        vim.keymap.set('n', '<C-p>', builtin.git_files, {})
+        vim.keymap.set('n', '<leader>pws', function()
+            local word = vim.fn.expand("<cword>")
+            builtin.grep_string({ search = word })
+        end)
+        vim.keymap.set('n', '<leader>pWs', function()
+            local word = vim.fn.expand("<cWORD>")
+            builtin.grep_string({ search = word })
+        end)
+        vim.keymap.set('n', '<leader>ps', function()
+            builtin.grep_string({ search = vim.fn.input("Grep > ") })
+        end)
+        vim.keymap.set('n', '<leader>vh', builtin.help_tags, {})
+    end
 }
