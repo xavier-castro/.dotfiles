@@ -25,4 +25,6 @@ return {
 			["q"] = "actions.close",
 		},
 	},
+	-- Oil
+	vim.keymap.set("n", "-", "<cmd>Oil --float<CR>", { desc = "Open Oil", silent = true }),
 }
