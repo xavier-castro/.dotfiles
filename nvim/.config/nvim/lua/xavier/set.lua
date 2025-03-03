@@ -1,5 +1,6 @@
 vim.opt.guicursor = ""
 
+vim.opt.mouse = "a"
 vim.opt.cursorline = true
 vim.opt.nu = true
 vim.opt.relativenumber = true
@@ -26,10 +27,6 @@ vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
 vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
 vim.opt.wildignore:append({ "*/node_modules/*" })
-vim.opt.splitbelow = true -- Put new windows below current
-vim.opt.splitright = true -- Put new windows right of current
-vim.opt.splitkeep = "cursor"
-vim.opt.mouse = ""
 
 -- File types
 vim.filetype.add({
@@ -38,6 +35,3 @@ vim.filetype.add({
 	},
 })
 
-if vim.fn.has("nvim-0.8") == 1 then
-	vim.opt.cmdheight = 0
-end
