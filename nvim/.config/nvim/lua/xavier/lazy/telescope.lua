@@ -2,7 +2,6 @@ return {
 	"nvim-telescope/telescope.nvim",
 	tag = "0.1.5",
 	dependencies = {
-		"nvim-tree/nvim-web-devicons",
 		"nvim-lua/plenary.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		{
@@ -63,7 +62,6 @@ return {
 		require("telescope").setup({
 
 			defaults = {
-				path_display = { "smart" },
 				mappings = {
 					i = {
 						["<C-k>"] = actions.move_selection_previous, -- move to prev result
@@ -71,13 +69,19 @@ return {
 						["<C-q>"] = actions.send_selected_to_qflist + custom_actions.open_trouble_qflist,
 					},
 				},
+				-- Disable icons
+				prompt_prefix = " ",
+				selection_caret = " ",
+				entry_prefix = "  ",
+				file_ignore_patterns = {},
+				path_display = { "smart" },
+				set_env = { ["COLORTERM"] = "truecolor" },
+				use_file_icons = false,
 			},
 			-- config for telescope themes
 			extensions = {
 				themes = {
-					-- (boolean) -> show/hide previewer window
 					enable_previewer = true,
-					-- (boolean) -> enable/disable live preview
 					enable_live_preview = true,
 					persist = {
 						enabled = true,

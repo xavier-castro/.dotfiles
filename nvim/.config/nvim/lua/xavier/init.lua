@@ -3,6 +3,7 @@
 -- Core configuration
 require("xavier.set") -- Basic settings
 require("xavier.remap") -- Key remappings
+require("xavier.autocommands") -- Autocommands
 require("xavier.lazy_init") -- Plugin manager initialization
 
 -- Helper function for module reloading during development
