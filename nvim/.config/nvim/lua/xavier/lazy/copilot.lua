@@ -13,10 +13,10 @@ return {
                     keymap = {
                         accept = false,
                         accept_word = false,
-                        accept_line = "<Tab>",
+                        accept_line = "<M-y>",
                         next = false,
                         prev = false,
-                        dismiss = false,
+                        dismiss = "<M-e>",
                     },
                 },
             })
