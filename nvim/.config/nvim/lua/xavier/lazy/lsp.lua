@@ -24,6 +24,20 @@ return {
 				rust = { "rustfmt", lsp_format = "fallback" },
 				-- Conform will run the first available formatter
 				javascript = { "prettierd", "prettier", stop_after_first = true },
+				-- Explicitly set prettier for markdown
+				markdown = { "prettier" },
+				["markdown.mdx"] = { "prettier" },
+			},
+			formatters = {
+				prettier = {
+					-- Configure prettier options specifically for markdown
+					options = {
+						["parser"] = "markdown",
+						["prose-wrap"] = "always",
+						["print-width"] = 80,
+						["tab-width"] = 2,
+					},
+				},
 			},
 		})
 
@@ -42,6 +56,17 @@ return {
 
 		require("fidget").setup({})
 		require("mason").setup()
+		
+		-- Install formatters and linters through Mason
+		require("mason-registry").update({
+			success = function()
+				-- Ensure prettier is installed for markdown
+				if not require("mason-registry").is_installed("prettier") then
+					vim.cmd('MasonInstall prettier')
+				end
+			end
+		})
+		
 		require("mason-lspconfig").setup({
 			ensure_installed = {
 				"lua_ls",

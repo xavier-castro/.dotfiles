@@ -27,14 +27,22 @@ vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>cf", function()
+vim.keymap.set("n", "<leader>ff", function()
   require("conform").format({ async = true })
 end)
 
-vim.keymap.set("n", "<leader>cF", function()
+vim.keymap.set("n", "<leader>fF", function()
   -- Regular LSP Format
   vim.lsp.buf.format()
 end)
+
+-- -- Combined formatting: runs conform first, then LSP formatter
+-- vim.keymap.set("n", "<leader>f", function()
+--   -- Run conform format first
+--   require("conform").format({ async = false })
+--   -- Then run the regular LSP format
+--   vim.lsp.buf.format()
+-- end)
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")

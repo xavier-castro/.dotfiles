@@ -8,7 +8,6 @@ Thank you Primeagen, craftzdog, TJDev for your videos and config files to help m
 
 ## Setup Workflow
 
-
 ### Non-negotiable Essentials (imo)
 
 - Aerospace for MacOS version of i3 window management
@@ -26,13 +25,15 @@ Thank you Primeagen, craftzdog, TJDev for your videos and config files to help m
 
 ## Setup TODO
 
-- [ ] Add formatter for markdown/obsidian
+[LSP Guide I was watching](https://www.youtube.com/watch?v=bTWWFQZqzyI&t=303s)
+
+- [x] Add formatter for markdown/obsidian
 - [ ] Really setup my Conform and LSPConfig good instead of just copy/pasting until something works
-- [ ] Add Github worktrees and relearn it
+- [x] Add Github worktrees and relearn it
 - [x] Make Zenmode actually look good
 - [ ] Have it where <Ctrl+v> and <Ctrl+h> opens telescope hover vertical and horizontal respectively
+- [ ] Try to get same thing above with Ex (I'm sure you can by default)
 
 ## Developer TODO
 
 - [ ] Learn `grep` and actually be good with it
-
