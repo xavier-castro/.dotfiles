@@ -39,7 +39,7 @@ autocmd('BufEnter', {
   group = xavierGroup,
   callback = function()
     if vim.bo.filetype == "zig" then
-      vim.cmd.colorscheme("tokyonight-night")
+      vim.cmd.colorscheme("256_noir")
     else
       vim.cmd.colorscheme("256_noir")
     end

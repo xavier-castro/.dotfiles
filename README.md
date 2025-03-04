@@ -2,7 +2,10 @@
 
 ## Quick Cheatsheet
 
-Inside `Ex`: `o` opens a horizontal split, `v` opens a vertical one
+Inside `Ex`: `o` opens a horizontal split, `v` opens a vertical one (Same with my oil setup rn)
+
+Harpoon `h` `t` `n` `s` are the keybinds. `<C-S-P>` and `<C-S-N>` for previous and next. `<leader>a` to Add
+
 
 ## Acknowledgments
 

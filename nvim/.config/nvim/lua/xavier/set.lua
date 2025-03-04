@@ -1,4 +1,5 @@
 vim.opt.guicursor = ""
+vim.g.maplocalleader = ','
 
 vim.opt.mouse = "a"
 vim.opt.cursorline = true
@@ -30,7 +31,7 @@ vim.opt.wildignore:append({ "*/node_modules/*" })
 
 -- File types
 vim.filetype.add({
-  extension = {
-    mdx = "mdx",
-  },
+	extension = {
+		mdx = "mdx",
+	},
 })
