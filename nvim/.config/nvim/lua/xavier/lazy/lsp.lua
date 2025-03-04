@@ -16,18 +16,29 @@ return {
 
 	config = function()
 		require("conform").setup({
+
 			formatters_by_ft = {
+				javascript = { "prettier" },
+				typescript = { "prettier" },
+				javascriptreact = { "prettier" },
+				typescriptreact = { "prettier" },
+				svelte = { "prettier" },
+				css = { "prettier" },
+				html = { "prettier" },
+				json = { "prettier" },
+				yaml = { "prettier" },
+				graphql = { "prettier" },
+				liquid = { "prettier" },
 				lua = { "stylua" },
-				-- Conform will run multiple formatters sequentially
-				python = { "isort", "black" },
-				-- You can customize some of the format options for the filetype (:help conform.format)
-				rust = { "rustfmt", lsp_format = "fallback" },
-				-- Conform will run the first available formatter
-				javascript = { "prettierd", "prettier", stop_after_first = true },
-				-- Explicitly set prettier for markdown
+				python = { "black" },
 				markdown = { "prettier" },
-				["markdown.mdx"] = { "prettier" },
+				["markdown.mdx"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
 			},
+			-- format_on_save = {
+			-- 	lsp_fallback = true,
+			-- 	async = false,
+			-- 	timeout_ms = 1000,
+			markdown = { "prettier" },
 			formatters = {
 				prettier = {
 					-- Configure prettier options specifically for markdown
@@ -56,17 +67,17 @@ return {
 
 		require("fidget").setup({})
 		require("mason").setup()
-		
+
 		-- Install formatters and linters through Mason
 		require("mason-registry").update({
 			success = function()
 				-- Ensure prettier is installed for markdown
 				if not require("mason-registry").is_installed("prettier") then
-					vim.cmd('MasonInstall prettier')
+					vim.cmd("MasonInstall prettier")
 				end
-			end
+			end,
 		})
-		
+
 		require("mason-lspconfig").setup({
 			ensure_installed = {
 				"lua_ls",
@@ -164,3 +175,4 @@ return {
 		})
 	end,
 }
+

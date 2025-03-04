@@ -2,6 +2,8 @@
 
 ## Quick Cheatsheet
 
+Inside `Ex`: `o` opens a horizontal split, `v` opens a vertical one
+
 ## Acknowledgments
 
 Thank you Primeagen, craftzdog, TJDev for your videos and config files to help me set up an environment I really enjoy!
@@ -32,7 +34,7 @@ Thank you Primeagen, craftzdog, TJDev for your videos and config files to help m
 - [x] Add Github worktrees and relearn it
 - [x] Make Zenmode actually look good
 - [ ] Have it where <Ctrl+v> and <Ctrl+h> opens telescope hover vertical and horizontal respectively
-- [ ] Try to get same thing above with Ex (I'm sure you can by default)
+- [x] Try to get same thing above with Ex (I'm sure you can by default)
 
 ## Developer TODO
 
