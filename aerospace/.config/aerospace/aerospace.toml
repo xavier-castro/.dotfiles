@@ -147,6 +147,10 @@ run = 'layout floating'
 if.app-id = 'com.apple.news'
 run = 'layout floating'
 
+[[on-window-detected]]
+if.app-id = 'md.obsidian'
+run = 'layout floating'
+
 # All monitors float by default
 # [[on-window-detected]]
 # if.app-name-regex-substring = ".*"
