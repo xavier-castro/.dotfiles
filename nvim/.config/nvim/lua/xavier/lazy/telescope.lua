@@ -8,6 +8,15 @@ return {
 
 	config = function()
 		require("telescope").setup({
+			defaults = {
+				mappings = {
+					i = {
+						["<C-o>"] = require("telescope.actions").select_horizontal,
+						["<C-v>"] = require("telescope.actions").select_vertical,
+					},
+				},
+			},
+
 			extensions = {
 				fzf = {},
 			},

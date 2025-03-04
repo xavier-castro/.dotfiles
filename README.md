@@ -29,13 +29,6 @@ Thank you Primeagen, craftzdog, TJDev for your videos and config files to help m
 
 [LSP Guide I was watching](https://www.youtube.com/watch?v=bTWWFQZqzyI&t=303s)
 
-- [x] Add formatter for markdown/obsidian
-- [ ] Really setup my Conform and LSPConfig good instead of just copy/pasting until something works
-- [x] Add Github worktrees and relearn it
-- [x] Make Zenmode actually look good
-- [ ] Have it where <Ctrl+v> and <Ctrl+h> opens telescope hover vertical and horizontal respectively
-- [x] Try to get same thing above with Ex (I'm sure you can by default)
-
 ## Developer TODO
 
 - [ ] Learn `grep` and actually be good with it
