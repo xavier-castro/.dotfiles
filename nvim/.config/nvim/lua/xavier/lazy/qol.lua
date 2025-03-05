@@ -7,7 +7,7 @@
 -- hlchunk
 -- grug-far
 -- cloak
---
+
 return {
 	{
 		"windwp/nvim-autopairs",

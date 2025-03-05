@@ -34,9 +34,9 @@ if has("gui_running") || &t_Co == 256
     hi DiffChange cterm=NONE ctermfg=160 ctermbg=255 gui=NONE guifg=#d70000 guibg=#eeeeee
     hi DiffText cterm=bold ctermfg=250 ctermbg=196 gui=bold guifg=#bcbcbc guibg=#ff0000
     hi SignColumn cterm=NONE ctermfg=124 ctermbg=NONE gui=NONE guifg=#af0000 guibg=NONE
-    hi SpellBad cterm=undercurl ctermfg=255 ctermbg=88 gui=undercurl guifg=#eeeeee guibg=#870000
-    hi SpellCap cterm=NONE ctermfg=255 ctermbg=124 gui=NONE guifg=#eeeeee guibg=#af0000
-    hi SpellRare cterm=NONE ctermfg=124 ctermbg=16 gui=NONE guifg=#af0000 guibg=#000000
+    hi SpellBad cterm=undercurl ctermfg=255 ctermbg=88 gui=undercurl guifg=#eeeeee guibg=NONE guisp=#ff0000
+    hi SpellCap cterm=undercurl ctermfg=255 ctermbg=124 gui=undercurl guifg=#eeeeee guibg=NONE guisp=#af0000
+    hi SpellRare cterm=undercurl ctermfg=124 ctermbg=16 gui=undercurl guifg=#af0000 guibg=NONE guisp=#af0000
     hi WildMenu cterm=NONE ctermfg=240 ctermbg=255 gui=NONE guifg=#585858 guibg=#eeeeee
     hi Pmenu cterm=NONE ctermfg=255 ctermbg=240 gui=NONE guifg=#eeeeee guibg=#585858
     hi PmenuThumb cterm=NONE ctermfg=232 ctermbg=240 gui=NONE guifg=#080808 guibg=#585858
@@ -47,6 +47,7 @@ if has("gui_running") || &t_Co == 256
     hi StatusLineNC cterm=reverse ctermfg=236 ctermbg=16 gui=reverse guifg=#303030 guibg=#000000
     hi Visual cterm=reverse ctermfg=250 ctermbg=16 gui=reverse guifg=#bcbcbc guibg=#000000
     hi TermCursor cterm=reverse ctermfg=NONE ctermbg=NONE gui=reverse guifg=NONE guibg=NONE
+
 else
     hi Normal cterm=NONE ctermfg=Gray ctermbg=NONE
     hi Keyword cterm=NONE ctermfg=White ctermbg=NONE
@@ -61,7 +62,7 @@ else
     hi DiffChange cterm=NONE ctermfg=Red ctermbg=White
     hi DiffText cterm=bold ctermfg=Gray ctermbg=Red
     hi SignColumn cterm=NONE ctermfg=Red ctermbg=NONE
-    hi SpellBad cterm=undercurl ctermfg=White ctermbg=DarkRed
+    hi SpellBad cterm=undercurl ctermfg=NONE ctermbg=NONE
     hi SpellCap cterm=NONE ctermfg=White ctermbg=Red
     hi SpellRare cterm=NONE ctermfg=Red ctermbg=Black
     hi WildMenu cterm=NONE ctermfg=DarkGray ctermbg=White
@@ -96,6 +97,10 @@ highlight! link Type Keyword
 highlight! link Typedef Keyword
 highlight! link Todo Keyword
 highlight! link Label Keyword
+highlight! link DiagnosticUnderlineError SpellBad
+highlight! link DiagnosticUnderlineWarn SpellCap
+highlight! link DiagnosticUnderlineInfo Underlined
+highlight! link DiagnosticUnderlineHint Underlined
 highlight! link Define Keyword
 highlight! link DiffAdd Keyword
 highlight! link diffAdded Keyword
@@ -125,6 +130,6 @@ highlight! link PmenuSel Visual
 highlight! link VisualNOS Visual
 highlight! link VertSplit Visual
 highlight! link Cursor StatusLine
-highlight! link Underlined SpellRare
+hi Underlined cterm=underline,undercurl ctermfg=124 ctermbg=NONE gui=underline,undercurl guifg=#af0000 guibg=NONE guisp=#af0000
 highlight! link rstEmphasis SpellRare
 highlight! link diffChanged DiffChange

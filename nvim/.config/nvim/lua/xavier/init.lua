@@ -14,15 +14,15 @@ function R(name)
 end
 
 -- Save folds when leaving a buffer, load when entering
-autocmd({"BufWinLeave"}, {
+autocmd({ "BufWinLeave" }, {
 	group = foldGroup,
-	pattern = {"*"},
+	pattern = { "*" },
 	command = "silent! mkview",
 })
 
-autocmd({"BufWinEnter"}, {
+autocmd({ "BufWinEnter" }, {
 	group = foldGroup,
-	pattern = {"*"},
+	pattern = { "*" },
 	command = "silent! loadview",
 })
 
@@ -122,5 +122,4 @@ require("xavier.utils.note_lookup")
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
-
 vim.cmd.colorscheme("256_noir")

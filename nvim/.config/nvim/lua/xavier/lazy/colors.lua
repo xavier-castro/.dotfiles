@@ -11,16 +11,9 @@ return {
 	{
 		"askfiy/visual_studio_code",
 		priority = 100,
-		opts = {},
-	},
-	{
-		"craftzdog/solarized-osaka.nvim",
-		priority = 1000,
-		opts = function()
-			return {
-				transparent = true,
-			}
-		end,
+		opts = {
+			transparent = true,
+		},
 	},
 	{
 		"craftzdog/solarized-osaka.nvim",
@@ -76,6 +69,7 @@ return {
 					}
 				end,
 			})
+			ColorMyPencils()
 		end,
 	},
 	{
@@ -86,13 +80,13 @@ return {
 				disable_background = true,
 				variant = "main", -- auto, main, moon, or dawn
 				dark_variant = "main", -- main, moon, or dawn
-				dim_inactive_windows = false,
+				dim_inactive_windows = true,
 				-- disable_background = true,
 				-- 	disable_nc_background = false,
 				-- 	disable_float_background = false,
 				-- extend_background_behind_borders = false,
 				styles = {
-					bold = true,
+					bold = false,
 					italic = false,
 					transparency = true,
 				},
@@ -105,13 +99,11 @@ return {
 					PmenuThumb = { bg = "#9ccfd8" }, -- Scrollbar thumb
 				},
 				enable = {
-					terminal = false,
-					legacy_highlights = false, -- Improve compatibility for previous versions of Neovim
+					terminal = true,
+					legacy_highlights = true, -- Improve compatibility for previous versions of Neovim
 					migrations = true, -- Handle deprecated options automatically
 				},
 			})
-
-			-- ColorMyPencils();
 		end,
 	},
 }
