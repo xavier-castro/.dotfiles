@@ -34,12 +34,11 @@ return {
 				html = { "prettier" },
 				json = { "prettier" },
 				yaml = { "prettier" },
-				-- markdown = { "prettier" },
+				markdown = { "prettier" },
 				graphql = { "prettier" },
 				liquid = { "prettier" },
 				lua = { "stylua" },
 				python = { "black" },
-				markdown = { "prettier" },
 				["markdown.mdx"] = { "prettier", "markdownlint-cli2", "markdown-toc" },
 			},
 			-- format_on_save = {
@@ -55,20 +54,20 @@ return {
 				"--stdin-filepath",
 				"$FILENAME",
 				"--tab-width",
-				"4",
+				"2",
 				"--use-tabs",
 				"false",
 			},
 		}
 		conform.formatters.shfmt = {
-			prepend_args = { "-i", "4" },
+			prepend_args = { "-i", "2" },
 		}
 
 		vim.keymap.set({ "n", "v" }, "<leader>mp", function()
 			conform.format({
 				lsp_fallback = true,
-				async = false,
-				timeout_ms = 1000,
+				async = true,
+				timeout_ms = 9000,
 			})
 		end, { desc = " Prettier Format whole file or range (in visual mode) with" })
 	end,

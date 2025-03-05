@@ -98,9 +98,9 @@ highlight! link Typedef Keyword
 highlight! link Todo Keyword
 highlight! link Label Keyword
 highlight! link DiagnosticUnderlineError SpellBad
-highlight! link DiagnosticUnderlineWarn SpellCap
+highlight! link DiagnosticUnderlineWarn WarnUnderlined
 highlight! link DiagnosticUnderlineInfo Underlined
-highlight! link DiagnosticUnderlineHint Underlined
+highlight! link DiagnosticUnderlineHint HintUnderlined
 highlight! link Define Keyword
 highlight! link DiffAdd Keyword
 highlight! link diffAdded Keyword
@@ -131,5 +131,7 @@ highlight! link VisualNOS Visual
 highlight! link VertSplit Visual
 highlight! link Cursor StatusLine
 hi Underlined cterm=underline,undercurl ctermfg=124 ctermbg=NONE gui=underline,undercurl guifg=#af0000 guibg=NONE guisp=#af0000
+hi WarnUnderlined cterm=underline,undercurl ctermfg=124 ctermbg=NONE gui=underline,undercurl guifg=#FFDF88 guibg=NONE guisp=#FFDF88
+hi HintUnderlined cterm=underline,undercurl ctermfg=124 ctermbg=NONE gui=underline,undercurl guifg=#96DDFF guibg=NONE guisp=#96DDFF
 highlight! link rstEmphasis SpellRare
 highlight! link diffChanged DiffChange

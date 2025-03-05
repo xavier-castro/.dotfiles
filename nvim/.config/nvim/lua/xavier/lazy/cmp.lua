@@ -10,9 +10,13 @@ return {
 		"j-hui/fidget.nvim",
 		"roobert/tailwindcss-colorizer-cmp.nvim",
 		"rafamadriz/friendly-snippets", -- snippets
+		"brenoprata10/nvim-highlight-colors",
 	},
 	config = function()
-    local cmp = require("cmp")
+		-- Ensure termguicolors is enabled if not already
+		vim.opt.termguicolors = true
+		require("nvim-highlight-colors").setup({})
+		local cmp = require("cmp")
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
 		cmp.setup({
@@ -34,6 +38,9 @@ return {
 				{ name = "path" }, -- file system paths
 				{ name = "tailwindcss-colorizer-cmp" },
 			}),
+			formatting = {
+				format = require("nvim-highlight-colors").format,
+			},
 		})
 
 		vim.diagnostic.config({
