@@ -4,6 +4,7 @@
 
 # Add your PATH modifications here
 export PATH="$HOME/.local/bin:$PATH"
+export PATH="$HOME/.local/scripts:$PATH"
 
 # Set default editors
 export EDITOR="nvim"
