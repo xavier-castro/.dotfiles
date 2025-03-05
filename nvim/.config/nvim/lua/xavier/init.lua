@@ -35,16 +35,16 @@ autocmd({ "BufWritePre" }, {
   command = [[%s/\s\+$//e]],
 })
 
-autocmd('BufEnter', {
-  group = xavierGroup,
-  callback = function()
-    if vim.bo.filetype == "markdown" then
-      vim.cmd.colorscheme("rose-pine")
-    else
-      vim.cmd.colorscheme("256_noir")
-    end
-  end
-})
+-- autocmd('BufEnter', {
+--   group = xavierGroup,
+--   callback = function()
+--     if vim.bo.filetype == "markdown" then
+--       vim.cmd.colorscheme("rose-pine")
+--     else
+--       vim.cmd.colorscheme("256_noir")
+--     end
+--   end
+-- })
 
 -- autocmd('LspAttach', {
 --   group = xavierGroup,
@@ -70,3 +70,4 @@ vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
 vim.g.netrw_winsize = 25
 
+vim.cmd.colorscheme("256_noir")
