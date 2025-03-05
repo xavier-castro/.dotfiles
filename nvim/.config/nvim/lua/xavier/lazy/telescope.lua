@@ -4,8 +4,7 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-		"folke/todo-comments.nvim",
-		"andrew-george/telescope-themes",
+		{ "folke/todo-comments.nvim", opts = {} },
 	},
 
 	config = function()
@@ -21,16 +20,6 @@ return {
 
 			extensions = {
 				fzf = {},
-				themes = {
-					-- (boolean) -> show/hide previewer window
-					enable_previewer = true,
-					-- (boolean) -> enable/disable live preview
-					enable_live_preview = true,
-					persist = {
-						enabled = true,
-						path = vim.fn.stdpath("config") .. "/lua/colorscheme.lua",
-					},
-				},
 			},
 		})
 
@@ -63,12 +52,5 @@ return {
 		vim.keymap.set("n", "<leader>ps", function()
 			builtin.grep_string({ search = vim.fn.input("Grep > ") })
 		end)
-
-		vim.keymap.set(
-			"n",
-			"<leader>ths",
-			":Telescope themes<CR>",
-			{ noremap = true, silent = true, desc = "Theme Switcher" }
-		)
 	end,
 }
