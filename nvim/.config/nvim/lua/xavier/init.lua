@@ -29,22 +29,24 @@ autocmd('TextYankPost', {
   end,
 })
 
-autocmd({ "BufWritePre" }, {
-  group = xavierGroup,
-  pattern = "*",
-  command = [[%s/\s\+$//e]],
-})
+-- autocmd({ "BufWritePre" }, {
+--   group = xavierGroup,
+--   pattern = "*",
+--   command = [[%s/\s\+$//e]],
+-- })
 
-autocmd('BufEnter', {
-  group = xavierGroup,
-  callback = function()
-    if vim.bo.filetype == "zig" then
-      vim.cmd.colorscheme("256_noir")
-    else
-      vim.cmd.colorscheme("256_noir")
-    end
-  end
-})
+vim.cmd.colorscheme("256_noir")
+
+-- autocmd('BufEnter', {
+--   group = xavierGroup,
+--   callback = function()
+--     if vim.bo.filetype == "zig" then
+--       vim.cmd.colorscheme("256_noir")
+--     else
+--       vim.cmd.colorscheme("256_noir")
+--     end
+--   end
+-- })
 
 autocmd('LspAttach', {
   group = xavierGroup,

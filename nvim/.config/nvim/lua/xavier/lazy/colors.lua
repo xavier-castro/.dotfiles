@@ -11,7 +11,17 @@ return {
 	{
 		"askfiy/visual_studio_code",
 		priority = 100,
-    opts = {},
+		opts = {},
+	},
+	{
+		"craftzdog/solarized-osaka.nvim",
+		lazy = true,
+		priority = 1000,
+		opts = function()
+			return {
+				transparent = true,
+			}
+		end,
 	},
 	{
 		"rose-pine/neovim",
