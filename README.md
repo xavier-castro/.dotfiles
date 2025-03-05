@@ -8,7 +8,6 @@ Inside `Ex`: `o` opens the default application of highlighted file
 
 Harpoon `h` `t` `n` `s` are the keybinds. `<C-S-P>` and `<C-S-N>` for previous and next. `<leader>a` to Add
 
-
 ## Acknowledgments
 
 Thank you Primeagen, craftzdog, TJDev for your videos and config files to help me set up an environment I really enjoy!
