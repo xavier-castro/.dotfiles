@@ -12,7 +12,6 @@ return {
 		local keymap = vim.keymap -- for conciseness
 
 		-- NOTE: LSP Keybinds
-
 		vim.api.nvim_create_autocmd("LspAttach", {
 			group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 			callback = function(ev)
@@ -86,7 +85,7 @@ return {
 				focusable = false,
 				style = "minimal",
 				border = "rounded",
-				source = "always",
+				source = "if_many",
 				header = "",
 				prefix = "",
 			},
