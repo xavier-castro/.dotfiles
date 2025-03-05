@@ -26,6 +26,7 @@ return {
 					javascript = { "template_string" }, -- dont add pairs in javscript template_string treesitter nodes
 					java = false, -- dont check treesitter on java
 				},
+				map_tab = true, -- enable tab to escape brackets/parentheses
 			})
 			-- import nvim-autopairs completion functionality
 			local cmp_autopairs = require("nvim-autopairs.completion.cmp")
