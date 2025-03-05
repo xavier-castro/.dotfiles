@@ -23,6 +23,16 @@ return {
 						return #diag > 0
 					end,
 				},
+
+				prettier = {
+					-- Configure prettier options specifically for markdown
+					options = {
+						["parser"] = "markdown",
+						["prose-wrap"] = "always",
+						["print-width"] = 80,
+						["tab-width"] = 2,
+					},
+				},
 			},
 			formatters_by_ft = {
 				javascript = { "prettier" },
@@ -49,16 +59,16 @@ return {
 		})
 
 		-- Configure individual formatters
-		conform.formatters.prettier = {
-			args = {
-				"--stdin-filepath",
-				"$FILENAME",
-				"--tab-width",
-				"2",
-				"--use-tabs",
-				"false",
-			},
-		}
+		-- conform.formatters.prettier = {
+		-- 	args = {
+		-- 		"--stdin-filepath",
+		-- 		"$FILENAME",
+		-- 		"--tab-width",
+		-- 		"2",
+		-- 		"--use-tabs",
+		-- 		"false",
+		-- 	},
+		-- }
 		conform.formatters.shfmt = {
 			prepend_args = { "-i", "2" },
 		}

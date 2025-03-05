@@ -15,7 +15,10 @@ return {
 	config = function()
 		-- Ensure termguicolors is enabled if not already
 		vim.opt.termguicolors = true
-		require("nvim-highlight-colors").setup({})
+		require("nvim-highlight-colors").setup({
+			enable_tailwind = true,
+		})
+		require("fidget").setup({})
 		local cmp = require("cmp")
 		local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
@@ -38,6 +41,7 @@ return {
 				{ name = "path" }, -- file system paths
 				{ name = "tailwindcss-colorizer-cmp" },
 			}),
+			---@diagnostic disable-next-line: missing-fields
 			formatting = {
 				format = require("nvim-highlight-colors").format,
 			},

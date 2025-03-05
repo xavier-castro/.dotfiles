@@ -15,6 +15,7 @@ return {
 			transparent = true,
 		},
 	},
+	-- buffer line
 	{
 		"craftzdog/solarized-osaka.nvim",
 		lazy = false,

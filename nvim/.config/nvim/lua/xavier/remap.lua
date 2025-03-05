@@ -50,6 +50,11 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 -- For all lsp's sometimes manual lsp restart is required
 vim.keymap.set("n", "<leader>ol", "<cmd>LspRestart<CR>", { desc = "Lsp restart", silent = true })
 
+-- Resize
+vim.keymap.set("n", "<C-w><left>", "<C-w><", {})
+vim.keymap.set("n", "<C-w><right>", "<C-w>>", {})
+vim.keymap.set("n", "<C-w><up>", "<C-w>+", {})
+vim.keymap.set("n", "<C-w><down>", "<C-w>-", {})
 
 -- Yank Diagnostisc to Keyboard
 -- Yank diagnostics to clipboard
