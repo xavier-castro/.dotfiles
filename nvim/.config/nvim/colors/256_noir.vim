@@ -131,7 +131,7 @@ highlight! link VisualNOS Visual
 highlight! link VertSplit Visual
 highlight! link Cursor StatusLine
 hi Underlined cterm=underline,undercurl ctermfg=124 ctermbg=NONE gui=underline,undercurl guifg=#af0000 guibg=NONE guisp=#af0000
-hi WarnUnderlined cterm=underline,undercurl ctermfg=124 ctermbg=NONE gui=underline,undercurl guifg=#FFDF88 guibg=NONE guisp=#FFDF88
-hi HintUnderlined cterm=underline,undercurl ctermfg=124 ctermbg=NONE gui=underline,undercurl guifg=#96DDFF guibg=NONE guisp=#96DDFF
+hi WarnUnderlined cterm=underline,undercurl ctermfg=124 ctermbg=NONE gui=underline,undercurl guifg=#eeeeee guibg=NONE guisp=#FFDF88
+hi HintUnderlined cterm=underline,undercurl ctermfg=124 ctermbg=NONE gui=underline,undercurl guifg=#eeeeee guibg=NONE guisp=#96DDFF
 highlight! link rstEmphasis SpellRare
 highlight! link diffChanged DiffChange
