@@ -58,10 +58,6 @@ vim.keymap.set("n", "<C-w><right>", "<C-w>>", {})
 vim.keymap.set("n", "<C-w><up>", "<C-w>+", {})
 vim.keymap.set("n", "<C-w><down>", "<C-w>-", {})
 
--- Increment/decrement
-vim.keymap.set("n", "+", "<C-a>")
-vim.keymap.set("n", "-", "<C-x>")
-
 -- Delete a word backwards
 vim.keymap.set("n", "dw", 'vb"_d')
 
