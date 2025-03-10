@@ -1,5 +1,5 @@
 function ColorMyPencils(color)
-	color = color or "256_noir"
+	color = color or "solarized-osaka"
 	vim.cmd.colorscheme(color)
 
 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -8,6 +8,7 @@ end
 
 return {
 	-- lazy
+  -- NOTE: VSCode
 	{
 		"askfiy/visual_studio_code",
 		priority = 100,
@@ -16,6 +17,8 @@ return {
 		},
 	},
 	-- buffer line
+  --
+  -- NOTE: Neosolarized
 	{
 		"craftzdog/solarized-osaka.nvim",
 		lazy = false,
@@ -73,6 +76,7 @@ return {
 			ColorMyPencils()
 		end,
 	},
+  -- NOTE: Rose Pine
 	{
 		"rose-pine/neovim",
 		name = "rose-pine",
