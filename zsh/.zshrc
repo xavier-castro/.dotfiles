@@ -103,3 +103,10 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # pnpm is configured in .zshenv for faster startup
+
+# bun completions
+[ -s "/Users/xavier/.bun/_bun" ] && source "/Users/xavier/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
