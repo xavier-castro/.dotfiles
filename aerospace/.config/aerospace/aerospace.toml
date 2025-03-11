@@ -159,6 +159,22 @@ run = 'layout floating'
 if.app-id = 'com.anthropic.claudefordesktop'
 run = 'layout floating'
 
+[[on-window-detected]]
+if.app-id = 'com.apple.iphonesimulator'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.todesktop.230313mzl4w4u92'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.colliderli.iina'
+run = 'layout floating'
+
 # All monitors float by default
 # [[on-window-detected]]
 # if.app-name-regex-substring = ".*"

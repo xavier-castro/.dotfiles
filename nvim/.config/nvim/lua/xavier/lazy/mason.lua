@@ -41,6 +41,7 @@ return {
 				"tailwindcss",
 				"gopls",
 				"marksman",
+				"vtsls",
 			},
 			-- auto install configured servers (with lspconfig)
 			automatic_installation = true,
@@ -115,6 +116,11 @@ return {
 				})
 			end,
 
+			["vtsls"] = function()
+				lspconfig.vtsls.setup({
+					capabilities = capabilities,
+				})
+			end,
 		})
 	end,
 }

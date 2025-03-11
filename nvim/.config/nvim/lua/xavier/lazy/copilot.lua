@@ -25,9 +25,9 @@ return {
 				hide_during_completion = false,
 				debounce = 25,
 				keymap = {
-					accept = false,
+					accept = "<M-y>",
 					accept_word = false,
-					accept_line = "<M-y>",
+					accept_line = false,
 					next = "<M-]>", -- How to trigger
 					prev = "<M-[>",
 					dismiss = "<M-e>",
