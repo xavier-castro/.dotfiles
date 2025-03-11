@@ -1,5 +1,5 @@
 vim.opt.guicursor = ""
-vim.g.maplocalleader = ','
+vim.g.maplocalleader = ","
 
 vim.opt.mouse = "a"
 vim.opt.cursorline = true
