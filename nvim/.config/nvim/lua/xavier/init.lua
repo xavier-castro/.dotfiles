@@ -12,4 +12,5 @@ vim.g.maplocalleader = ","
 require("lazy").setup({
 	{ import = "xavier.plugins_notvscode", cond = (function() return not vim.g.vscode end) },
 	{ import = "xavier.plugins_always",    cond = true },
+    { import = "xavier.plugins_vscode",    cond = (function() return vim.g.vscode end) },
 })
