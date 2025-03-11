@@ -8,6 +8,8 @@ return {
       dashboard = { enabled = false },
       scroll = { enabled = false },
       scratch = { enabled = false },
+      -- picker = { enabled = false },
+      -- explorer = { enabled = false },
     },
   },
 }

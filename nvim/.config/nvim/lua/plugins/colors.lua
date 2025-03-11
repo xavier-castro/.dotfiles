@@ -1,22 +1,21 @@
 return {
   {
-    "folke/tokyonight.nvim",
+    "craftzdog/solarized-osaka.nvim",
+    lazy = false,
+    priority = 1000,
+    opts = {},
+  },
+  {
+    "Mofiqul/vscode.nvim",
     opts = {
-      style = "night",
       transparent = true,
     },
   },
-
   {
     "rose-pine/neovim",
     name = "rose-pine",
-    config = function()
-      require("rose-pine").setup({
-        disable_background = true,
-        styles = {
-          italic = false,
-        },
-      })
-    end,
+    opts = { styles = {
+      transparent = true,
+    } },
   },
 }
