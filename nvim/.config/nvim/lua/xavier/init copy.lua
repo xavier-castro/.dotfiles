@@ -1,44 +1,11 @@
-local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
-if not vim.loop.fs_stat(lazypath) then
-	vim.fn.system({
-		"git",
-		"clone",
-		"--filter=blob:none",
-		"https://github.com/folke/lazy.nvim.git",
-		"--branch=stable", -- latest stable release
-		lazypath,
-	})
-end
-vim.opt.rtp:prepend(lazypath)
-
-vim.g.mapleader = " "
-vim.g.maplocalleader = ","
-
-require("lazy").setup({
-	{
-		import = "xavier.plugins_notvscode",
-		cond = function()
-			return not vim.g.vscode
-		end,
-	},
-	{ import = "xavier.plugins_always", cond = true },
-	{
-		import = "xavier.plugins_vscode",
-		cond = function()
-			return vim.g.vscode
-		end,
-	},
-})
-
 if vim.g.vscode then
 	-- Code to run when inside VS Code with the vscode-neovim extension
 	-- Example: Source a VS Code-specific config file
 else
 	-- Code to run when running Neovim outside of VS Code
 	-- Example: Source a regular Neovim config file
-
-	require("xavier.set")
-	require("xavier.remap")
+	require("xavier.plugins_notvscode.set")
+	require("xavier.plugins_notvscode.remap")
 
 	local augroup = vim.api.nvim_create_augroup
 	local xavierGroup = augroup("xavier", {})
