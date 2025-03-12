@@ -18,6 +18,16 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+
+# bun completions
+[ -s "/Users/xavier/.bun/_bun" ] && source "/Users/xavier/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+
+
+
 # Load private environment variables if file exists
 # This ensures private keys are available to all zsh sessions
 if [[ -f "$HOME/.zshenv_private" ]]; then
