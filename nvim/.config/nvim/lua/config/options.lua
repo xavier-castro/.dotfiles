@@ -69,7 +69,6 @@ vim.g.lazyvim_picker = "telescope"
 -- -- Can be one of: nvim-cmp, blink.cmp
 -- -- Leave it to "auto" to automatically use the completion engine
 -- -- enabled with `:LazyExtras`
--- vim.g.lazyvim_cmp = "blink"
 
 -- if the completion engine supports the AI source,
 -- use that instead of inline suggestions
@@ -83,3 +82,4 @@ vim.o.relativenumber = false
 vim.o.nu = false
 vim.diagnostic.config({ virtual_text = false, signs = false })
 vim.o.signcolumn = "no"
+vim.opt.mousescroll = "ver:2,hor:0"
