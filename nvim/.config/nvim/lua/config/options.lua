@@ -78,8 +78,7 @@ vim.g.lazyvim_cmp = "blink.cmp"
 vim.g.lazyvim_prettier_needs_config = true
 
 -- Set nonumber and norelativenumber
-vim.o.relativenumber = false
-vim.o.nu = false
+vim.o.rnu = true
 vim.diagnostic.config({ virtual_text = false, signs = false })
-vim.o.signcolumn = "no"
+vim.o.signcolumn = "number"
 vim.opt.mousescroll = "ver:2,hor:0"
