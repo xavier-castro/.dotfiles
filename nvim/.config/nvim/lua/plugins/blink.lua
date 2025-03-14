@@ -5,6 +5,8 @@ return {
       preset = "enter",
       ["<C-k>"] = { "snippet_forward", "fallback" },
       ["<C-j>"] = { "snippet_backward", "fallback" },
+      ["<C-space>"] = { "show", "show_documentation", "hide_documentation" },
+      ["<C-e>"] = { "hide", "fallback" },
       ["<CR>"] = {},
     },
     completion = {
@@ -13,6 +15,7 @@ return {
       },
     },
     signature = {
+      enabled = false,
       window = {
         winblend = vim.o.pumblend,
       },

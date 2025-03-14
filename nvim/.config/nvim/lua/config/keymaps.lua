@@ -41,3 +41,5 @@ vim.keymap.set("n", "<C-w><down>", "<C-w>-")
 
 require("utils.vscode-like-quickfix")
 require("utils.search-files")
+require("utils.float-terminal")
+require("utils.multi-grep").setup()
