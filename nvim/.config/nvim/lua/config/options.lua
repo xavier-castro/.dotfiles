@@ -17,7 +17,8 @@ vim.opt.showcmd = true
 vim.opt.cmdheight = 1
 vim.opt.laststatus = 3
 vim.opt.expandtab = true
-vim.opt.scrolloff = 20
+vim.opt.scrolloff = 10
+vim.opt.shell = "fish"
 vim.opt.backupskip = { "/tmp/*", "/private/tmp/*" }
 vim.opt.inccommand = "split"
 vim.opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
@@ -63,8 +64,6 @@ vim.filetype.add({
 -- -- Can be one of: telescope, fzf
 -- -- Leave it to "auto" to automatically use the picker
 -- -- enabled with `:LazyExtras`
-vim.g.lazyvim_picker = "telescope"
---
 -- -- LazyVim completion engine to use.
 -- -- Can be one of: nvim-cmp, blink.cmp
 -- -- Leave it to "auto" to automatically use the completion engine
@@ -74,7 +73,6 @@ vim.g.lazyvim_picker = "telescope"
 -- use that instead of inline suggestions
 vim.g.ai_cmp = false
 vim.g.snacks_animate = false
-vim.g.lazyvim_cmp = "blink.cmp"
 vim.g.lazyvim_prettier_needs_config = true
 
 -- Set nonumber and norelativenumber
