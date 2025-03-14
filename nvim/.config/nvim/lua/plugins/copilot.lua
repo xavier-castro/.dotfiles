@@ -13,13 +13,15 @@ return {
           keymap = {
             accept = false,
             accept_word = false,
-            accept_line = "<Tab>",
+            accept_line = "<M-y>",
             next = false,
             prev = false,
             dismiss = false,
           },
         },
       })
+      vim.api.nvim_set_hl(0, "CopilotSuggestion", { fg = "#A9A9A9" })
+      vim.api.nvim_set_hl(0, "CopilotAnnotation", { fg = "#A9A9A9" })
     end,
   },
 }
