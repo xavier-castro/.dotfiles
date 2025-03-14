@@ -5,11 +5,11 @@ return {
     opts = {
       statuscolumn = { enabled = false },
       animate = { enabled = false },
-      -- dashboard = { enabled = false },
+      dashboard = { enabled = false },
       scroll = { enabled = false },
       scratch = { enabled = false },
-      -- picker = { enabled = false },
-      -- explorer = { enabled = false },
+      picker = { enabled = false },
+      explorer = { enabled = false },
     },
   },
 }
