@@ -3,12 +3,9 @@
 -- Add any additional options here
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
-
 vim.opt.guicursor = ""
-
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
-
 vim.opt.number = true
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
@@ -36,11 +33,9 @@ vim.opt.wildignore:append({ "*/node_modules/*" })
 vim.opt.splitbelow = true -- Put new windows below current
 vim.opt.splitright = true -- Put new windows right of current
 vim.opt.splitkeep = "cursor"
-
 -- Undercurl
 vim.cmd([[let &t_Cs = "\e[4:3m"]])
 vim.cmd([[let &t_Ce = "\e[4:0m"]])
-
 -- Add asterisks in block comments
 vim.opt.formatoptions:append({ "r" })
 

@@ -7,6 +7,7 @@ return {
         build = "make",
       },
       "nvim-telescope/telescope-file-browser.nvim",
+      "folke/todo-comments.nvim",
     },
     keys = {
       {
@@ -17,6 +18,18 @@ return {
           })
         end,
         desc = "Find Plugin File",
+      },
+      {
+        "<C-p>",
+        function()
+          require("telescope.builtin").git_files()
+        end,
+      },
+      {
+        ";o",
+        function()
+          require("telescope.builtin").oldfiles()
+        end,
       },
       {
         ";f",
@@ -106,8 +119,19 @@ return {
       local telescope = require("telescope")
       local actions = require("telescope.actions")
       local fb_actions = require("telescope").extensions.file_browser.actions
+      local builtin = require("telescope.builtin")
+      local transform_mod = require("telescope.actions.mt").transform_mod
+      local trouble = require("trouble")
+
+      -- create your custom action
+      local custom_actions = transform_mod({
+        open_trouble_qflist = function()
+          trouble.toggle("quickfix")
+        end,
+      })
 
       opts.defaults = vim.tbl_deep_extend("force", opts.defaults, {
+        path_display = { "smart" },
         wrap_results = true,
         layout_strategy = "horizontal",
         layout_config = { prompt_position = "top" },
@@ -115,6 +139,11 @@ return {
         winblend = 0,
         mappings = {
           n = {},
+          i = {
+            ["<C-k>"] = actions.move_selection_previous, -- move to prev result
+            ["<C-j>"] = actions.move_selection_next, -- move test to next result
+            ["<C-q>"] = actions.send_selected_to_qflist + custom_actions.open_trouble_qflist,
+          },
         },
       })
       opts.pickers = {

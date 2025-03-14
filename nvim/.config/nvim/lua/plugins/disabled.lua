@@ -1,5 +1,4 @@
 return {
-  { "akinsho/bufferline.nvim", enabled = false },
   {
     "folke/snacks.nvim",
     opts = {
@@ -10,6 +9,7 @@ return {
       scratch = { enabled = false },
       picker = { enabled = false },
       explorer = { enabled = false },
+      indent = { enabled = false },
     },
   },
 }

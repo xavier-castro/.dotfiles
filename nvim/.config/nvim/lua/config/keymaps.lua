@@ -12,7 +12,9 @@ vim.keymap.set("x", "<leader>p", [["_dP]])
 vim.keymap.set({ "n", "v" }, "<leader>y", [["+y]])
 vim.keymap.set("n", "<leader>Y", [["+Y]])
 vim.keymap.set({ "n", "v" }, "<leader>d", '"_d')
-
+-- ctrl c as escape cuz Im lazy to reach up to the esc key
+vim.keymap.set("i", "<C-c>", "<Esc>")
+vim.keymap.set("n", "<C-c>", ":nohl<CR>", { desc = "Clear search hl", silent = true })
 -- Jumplist
 vim.keymap.set("n", "<C-m>", "<C-i>", opts)
 
@@ -36,3 +38,4 @@ vim.keymap.set("n", "<C-w><up>", "<C-w>+")
 vim.keymap.set("n", "<C-w><down>", "<C-w>-")
 
 require("utils.vscode-like-quickfix")
+require("utils.search-files")

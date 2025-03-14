@@ -6,7 +6,9 @@ Inside `Ex`: `o` opens the default application of highlighted file
 `v` opens a vertical one (Same with my oil setup rn)
 `x` opens horizontal
 
-Harpoon `h` `t` `n` `s` are the keybinds. `<C-S-P>` and `<C-S-N>` for previous and next. `<leader>a` to Add
+## Vim Commands I Want to get Better At
+
+- `<C-r>` in insert mode -> Shows registers
 
 ## Acknowledgments
 
