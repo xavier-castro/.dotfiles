@@ -6,7 +6,6 @@ vim.g.maplocalleader = "\\"
 vim.opt.guicursor = ""
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"
-vim.opt.number = true
 vim.opt.undodir = os.getenv("HOME") .. "/.vim/undodir"
 vim.opt.undofile = true
 vim.opt.title = true
@@ -18,7 +17,7 @@ vim.opt.showcmd = true
 vim.opt.cmdheight = 1
 vim.opt.laststatus = 3
 vim.opt.expandtab = true
-vim.opt.scrolloff = 10
+vim.opt.scrolloff = 20
 vim.opt.backupskip = { "/tmp/*", "/private/tmp/*" }
 vim.opt.inccommand = "split"
 vim.opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
@@ -53,9 +52,6 @@ vim.filetype.add({
   },
 })
 
-vim.g.lazyvim_prettier_needs_config = true
-vim.g.lazyvim_picker = "telescope"
-
 -- NOTE: LazyVim Overrides:
 -- This file is automatically loaded by plugins.core
 -- LazyVim auto format
@@ -63,13 +59,11 @@ vim.g.lazyvim_picker = "telescope"
 
 -- Snacks animations
 -- Set to `false` to globally disable all snacks animations
-vim.g.snacks_animate = true
---
 -- -- LazyVim picker to use.
 -- -- Can be one of: telescope, fzf
 -- -- Leave it to "auto" to automatically use the picker
 -- -- enabled with `:LazyExtras`
--- vim.g.lazyvim_picker = "telescope"
+vim.g.lazyvim_picker = "telescope"
 --
 -- -- LazyVim completion engine to use.
 -- -- Can be one of: nvim-cmp, blink.cmp
@@ -82,3 +76,10 @@ vim.g.snacks_animate = true
 vim.g.ai_cmp = false
 vim.g.snacks_animate = false
 vim.g.lazyvim_cmp = "blink.cmp"
+vim.g.lazyvim_prettier_needs_config = true
+
+-- Set nonumber and norelativenumber
+vim.o.relativenumber = false
+vim.o.nu = false
+vim.diagnostic.config({ virtual_text = false, signs = false })
+vim.o.signcolumn = "no"

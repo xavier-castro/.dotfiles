@@ -7,12 +7,13 @@ return {
     local todo_comments = require("todo-comments")
 
     todo_comments.setup({
+      signs = false,
       keywords = {
         FIX = {
           icon = " ", -- icon used for the sign, and in search results
           color = "error", -- can be a hex color, or a named color (see below)
           alt = { "FIXME", "BUG", "FIXIT", "ISSUE" }, -- a set of other keywords that all map to this FIX keywords
-          -- signs = false, -- configure signs for some keywords individually
+          signs = false, -- configure signs for some keywords individually
         },
         TODO = { icon = " ", color = "info" },
         HACK = { icon = " ", color = "warning", alt = { "DON SKIP" } },
