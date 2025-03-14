@@ -26,7 +26,7 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 [mode.main.binding]
 # See: https://nikitabobko.github.io/AeroSpace/goodies#open-a-new-window-with-applescript
 alt-enter = '''exec-and-forget osascript -e '
-    tell application "Ghostty"
+    tell application "Ghostty.app"
         do script
         activate
     end tell'
@@ -163,9 +163,9 @@ run = 'layout floating'
 if.app-id = 'com.apple.iphonesimulator'
 run = 'layout floating'
 
-# [[on-window-detected]]
-# if.app-id = 'com.mitchellh.ghostty'
-# run = 'layout floating'
+[[on-window-detected]]
+if.app-id = 'com.mitchellh.ghostty'
+run = 'layout floating'
 
 [[on-window-detected]]
 if.app-id = 'com.todesktop.230313mzl4w4u92'
@@ -174,6 +174,11 @@ run = 'layout floating'
 [[on-window-detected]]
 if.app-id = 'com.colliderli.iina'
 run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'dev.zed.Zed'
+run = 'layout floating'
+
 
 # All monitors float by default
 # [[on-window-detected]]
