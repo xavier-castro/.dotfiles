@@ -109,3 +109,4 @@ eval "$(zoxide init zsh)"
 
 # Tmux layout restore alias
 alias xcmux="/Users/xavier/xcmux"
+eval "$(mise activate zsh)"
