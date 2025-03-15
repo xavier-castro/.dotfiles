@@ -1,5 +1,6 @@
 return {
   "epwalsh/obsidian.nvim",
+  dependencies = { "https://github.com/echasnovski/mini.pick" },
   version = "*",
   lazy = false,
   event = "BufRead",
