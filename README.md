@@ -1,5 +1,11 @@
 # README
 
+## TODO
+
+- [ ] Figure out how to read your noice errors better
+- [ ] Remove <cr> as enter for nvim-cmp
+- [ ] Install git-worktree
+
 ## Quick Cheatsheet
 
 Inside `Ex`: `o` opens the default application of highlighted file
