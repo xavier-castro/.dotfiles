@@ -62,13 +62,13 @@ local fold_persistence = vim.api.nvim_create_augroup("FoldPersistence", { clear 
 -- Save folds when leaving the buffer
 vim.api.nvim_create_autocmd("BufWinLeave", {
   group = fold_persistence,
-  pattern = { "*.py", "*.ts", "*.js", "*.tsx", "*.jsx" },
+  pattern = { "*.py", "*.ts", "*.js", "*.tsx", "*.jsx", "*.lua" },
   command = "mkview",
 })
 
 -- Load folds when entering the buffer
 vim.api.nvim_create_autocmd("BufWinEnter", {
   group = fold_persistence,
-  pattern = { "*.py", "*.ts", "*.js" },
+  pattern = { "*.py", "*.ts", "*.js", "*.tsx", "*.jsx", "*.lua" },
   command = "silent! loadview",
 })
