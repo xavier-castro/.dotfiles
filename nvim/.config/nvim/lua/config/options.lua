@@ -14,6 +14,7 @@ vim.opt.smartindent = true
 vim.opt.hlsearch = true
 vim.opt.backup = false
 vim.opt.showcmd = true
+vim.opt.shell = "fish"
 vim.opt.cmdheight = 1
 vim.opt.laststatus = 3
 vim.opt.expandtab = true
