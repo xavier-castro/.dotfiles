@@ -1,4 +1,4 @@
--- Options are automatically loaded before lazy.nvim startup
+--a Options are automatically loaded before lazy.nvim startup
 -- Default options that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/options.lua
 -- Add any additional options here
 vim.g.mapleader = " "
@@ -77,6 +77,6 @@ vim.g.lazyvim_picker = "telescope"
 
 -- Set nonumber and norelativenumber
 vim.o.rnu = true
-vim.diagnostic.config({ virtual_text = false, signs = false })
 vim.o.signcolumn = "number"
 vim.opt.mousescroll = "ver:2,hor:0"
+vim.opt.colorcolumn = "80"

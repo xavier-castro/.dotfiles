@@ -55,3 +55,20 @@ vim.api.nvim_create_autocmd("TermOpen", {
     vim.keymap.set("t", "<C-l>", [[<C-\><C-n><C-W>l]], opts)
   end,
 })
+
+-- Save and restore folds for specific file types
+local fold_persistence = vim.api.nvim_create_augroup("FoldPersistence", { clear = true })
+
+-- Save folds when leaving the buffer
+vim.api.nvim_create_autocmd("BufWinLeave", {
+  group = fold_persistence,
+  pattern = { "*.py", "*.ts", "*.js", "*.tsx", "*.jsx" },
+  command = "mkview",
+})
+
+-- Load folds when entering the buffer
+vim.api.nvim_create_autocmd("BufWinEnter", {
+  group = fold_persistence,
+  pattern = { "*.py", "*.ts", "*.js" },
+  command = "silent! loadview",
+})
