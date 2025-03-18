@@ -10,7 +10,7 @@ return { -- Collection of various small independent pluins/modules
     })
     vim.keymap.set(
       "n",
-      "<leader>E",
+      "-",
       ":lua MiniFiles.open()<CR>",
       { noremap = true, silent = true, desc = "MiniFile [E]xplorer" }
     )
