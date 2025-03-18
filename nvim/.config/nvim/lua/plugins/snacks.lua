@@ -66,12 +66,10 @@ return {
   },
   {
     "folke/noice.nvim",
+    enabled = false,
     opts = function(_, opts)
-      opts.views = {
-        cmdline_popup = { position = { row = 35, col = "50%" } },
-        cmdline_popupmenu = { position = { row = 38, col = "50%" } },
-        mini = { win_options = { winblend = 0 } },
-      }
+      opts.view = "cmdline"
+
       opts.lsp = { progress = { enabled = false }, hover = { silent = true } }
       opts.presets.lsp_doc_border = true
 

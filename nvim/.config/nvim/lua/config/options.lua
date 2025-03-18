@@ -42,9 +42,9 @@ vim.opt.formatoptions:append({ "r" })
 vim.cmd([[au BufNewFile,BufRead *.astro setf astro]])
 vim.cmd([[au BufNewFile,BufRead Podfile setf ruby]])
 
-if vim.fn.has("nvim-0.8") == 1 then
-  vim.opt.cmdheight = 0
-end
+-- if vim.fn.has("nvim-0.8") == 1 then
+--   vim.opt.cmdheight = 0
+-- end
 
 -- File types
 vim.filetype.add({
@@ -77,7 +77,7 @@ vim.g.lazyvim_prettier_needs_config = true
 vim.g.lazyvim_picker = "telescope"
 
 -- Set nonumber and norelativenumber
-vim.o.rnu = true
+vim.o.rnu = false
+vim.o.number = false
 vim.o.signcolumn = "number"
 vim.opt.mousescroll = "ver:2,hor:0"
-vim.opt.colorcolumn = "80"
