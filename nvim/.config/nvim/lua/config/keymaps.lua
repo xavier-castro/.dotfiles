@@ -39,6 +39,18 @@ vim.keymap.set("n", "<C-w><right>", "<C-w>>")
 vim.keymap.set("n", "<C-w><up>", "<C-w>+")
 vim.keymap.set("n", "<C-w><down>", "<C-w>-")
 
+-- Delete All Marks
+vim.keymap.set("n", "<leader>dm", ":delmarks!<CR>", opts)
+-- Notifications
+-- stylua: ignore
+vim.keymap.set("n", "<leader>oN", function() Snacks.picker.notifications() end, { desc = "Notifications" })
+-- stylua: ignore
+vim.keymap.set("n", "<leader>on", function() Snacks.notifier.show_history() end, { desc = "Notifications(win)" })
+
+-- LSP Symbols
+-- stylua: ignore
+vim.keymap.set("n", "|", function() require("namu.namu_symbols").show() end, { desc = "LSP Symbols" })
+
 require("utils.vscode-like-quickfix")
 require("utils.search-files")
 require("utils.float-terminal")

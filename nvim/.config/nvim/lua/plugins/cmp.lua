@@ -6,6 +6,8 @@ return {
     "hrsh7th/cmp-nvim-lsp",
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
+    "saadparwaiz1/cmp_luasnip",
+    "L3MON4D3/LuaSnip",
   },
   -- Not all LSP servers add brackets when completing a function.
   -- To better deal with this, LazyVim adds a custom option to cmp,
@@ -17,6 +19,7 @@ return {
   -- }
   -- ```
   opts = function()
+    require("luasnip.loaders.from_lua").load({ paths = "~/.config/nvim/snippets" })
     vim.api.nvim_set_hl(0, "CmpGhostText", { link = "Comment", default = true })
     local cmp = require("cmp")
     local defaults = require("cmp.config.default")()
@@ -46,6 +49,7 @@ return {
         end,
       }),
       sources = cmp.config.sources({
+        { name = "luasnip", option = { show_autosnippets = true } },
         { name = "lazydev" },
         { name = "nvim_lsp" },
         { name = "path" },

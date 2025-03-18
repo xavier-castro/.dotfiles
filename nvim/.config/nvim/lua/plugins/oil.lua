@@ -7,22 +7,27 @@ return {
       default_file_explorer = true, -- start up nvim with oil instead of netrw
       columns = {},
       keymaps = {
-        ["<C-h>"] = false,
-        ["<C-c>"] = false, -- prevent from closing Oil as <C-c> is esc key
-        ["<M-h>"] = "actions.select_split",
+        ["<C-v>"] = { "actions.select", opts = { vertical = true }, desc = "Open the entry in a vertical split" },
+        ["<C-x>"] = { "actions.select", opts = { horizontal = true }, desc = "Open the entry in a horizontal split" },
+        ["<c-c>"] = false,
         ["q"] = "actions.close",
       },
       delete_to_trash = true,
+      skip_confirm_for_simple_edits = true,
       view_options = {
         show_hidden = true,
+        is_always_hidden = function(name, _)
+          return name == "node_modules" or name == ".git"
+        end,
       },
-      skip_confirm_for_simple_edits = true,
+      float = {
+        max_width = 235,
+        max_height = 65,
+      },
     })
 
-    -- opens parent dir over current active window
-    vim.keymap.set("n", "-", "<CMD>Oil<CR>", { desc = "Open parent directory" })
-    -- open parent dir in float window
-    vim.keymap.set("n", "<leader>-", require("oil").toggle_float)
+    -- Oil
+    vim.keymap.set("n", "-", "<cmd>Oil --float<CR>", { desc = "Open Oil" })
 
     vim.api.nvim_create_autocmd("FileType", {
       pattern = "oil", -- Adjust if Oil uses a specific file type identifier
