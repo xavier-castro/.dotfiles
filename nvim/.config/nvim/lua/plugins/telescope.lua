@@ -48,7 +48,7 @@ return {
         desc = "Lists open buffers",
       },
       {
-        ";t",
+        ";h",
         function()
           local builtin = require("telescope.builtin")
           builtin.help_tags()
@@ -88,7 +88,7 @@ return {
         desc = "Lists LSP incoming calls for word under the cursor",
       },
       {
-        "sf",
+        "-",
         function()
           local telescope = require("telescope")
 
