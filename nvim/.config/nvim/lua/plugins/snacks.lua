@@ -52,7 +52,8 @@ return {
       opts.indent = { enabled = false }
       opts.words = { enabled = true }
       opts.statuscolumn = { enabled = false }
-      opts.dashboard = { enabled = false }
+      opts.dashboard = { enabled = true }
+      opts.explorer = { enabled = true }
       opts.notifier = { enabled = true, timeout = 4000, top_down = true, style = "compact" }
       opts.styles = { lazygit = { width = 0, height = 0 } }
       opts.styles["input"] = {
@@ -62,12 +63,12 @@ return {
         width = 40,
         keys = { i_esc = { "<esc>", "stopinsert", mode = "i" } },
       }
-      opts.picker = { enabled = false }
+      opts.picker = { enabled = true }
     end,
   },
   {
     "folke/noice.nvim",
-    enabled = false,
+    enabled = true,
     opts = function(_, opts)
       opts.view = "cmdline"
 

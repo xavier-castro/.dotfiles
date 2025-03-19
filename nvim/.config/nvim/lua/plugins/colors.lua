@@ -9,8 +9,13 @@ return {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
-    opts = {},
+    opts = {
+      transparent = true,
+    },
   },
+  { "catppuccin/nvim", name = "catppuccin", priority = 1000, opts = {
+    transparent_background = true,
+  } },
   {
     "craftzdog/solarized-osaka.nvim",
     lazy = false,
@@ -43,7 +48,7 @@ return {
         -- Apply theme colors to terminal
         terminal_colors = true,
       })
-      require("vscode").load()
+      -- require("vscode").load()
     end,
   },
   {
