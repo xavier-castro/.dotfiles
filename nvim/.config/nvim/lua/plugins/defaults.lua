@@ -1,6 +1,4 @@
 return {
-  -- NOTE: Render Markdown
-  { "MeanderingProgrammer/render-markdown.nvim", enabled = false },
   -- NOTE: LSPCONFIG
   {
     "neovim/nvim-lspconfig",

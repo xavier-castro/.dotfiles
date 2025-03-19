@@ -30,10 +30,25 @@ return {
       },
     },
   },
+  -- NOTE: Render Markdown
+  { "MeanderingProgrammer/render-markdown.nvim", enabled = false },
   -- NOTE: MDX Support
   {
     "davidmh/mdx.nvim",
     config = true,
     dependencies = { "nvim-treesitter/nvim-treesitter" },
+  },
+  -- NOTE: Markdown Previewer
+  {
+    "toppair/peek.nvim",
+    event = { "VeryLazy" },
+    build = "deno task --quiet build:fast",
+    config = function()
+      require("peek").setup({
+        filetype = { "markdown", "conf" },
+      })
+      vim.api.nvim_create_user_command("PeekOpen", require("peek").open, {})
+      vim.api.nvim_create_user_command("PeekClose", require("peek").close, {})
+    end,
   },
 }

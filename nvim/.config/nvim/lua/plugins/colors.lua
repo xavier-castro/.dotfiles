@@ -29,19 +29,12 @@ return {
       require("vscode").setup({
         -- Alternatively set style in setup
         -- style = 'light'
-
         -- Enable transparent background
         transparent = true,
-
         -- Enable italic comment
         italic_comments = true,
-
-        -- Underline `@markup.link.*` variants
-        underline_links = true,
-
         -- Disable nvim-tree background color
         disable_nvimtree_bg = true,
-
         -- Apply theme colors to terminal
         terminal_colors = true,
       })
@@ -54,8 +47,6 @@ return {
     -- priority = 1000,
     config = function()
       require("rose-pine").setup({
-        variant = "moon", -- auto, main, moon, or dawn
-        dark_variant = "moon", -- main, moon, or dawn
         dim_inactive_windows = false,
         styles = {
           bold = true,
