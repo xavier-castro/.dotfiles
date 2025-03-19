@@ -79,7 +79,7 @@ hi Type            ctermfg=255             guifg=#ffffff
 hi Special         ctermfg=250             guifg=#bcbcbc
 hi Underlined      ctermfg=250             guifg=#bcbcbc gui=underline
 hi Ignore          ctermfg=237             guifg=#3a3a3a
-hi Error           ctermfg=250             guifg=#bcbcbc gui=underline guisp=#ff5555
+hi Error           ctermfg=250             guifg=#bcbcbc gui=undercurl guisp=#ff5555
 hi Todo            ctermfg=0   ctermbg=243 guifg=#000000 guibg=#767676
 
 " Diff highlighting
@@ -91,6 +91,17 @@ hi DiffText                    ctermbg=237 guibg=#3a3a3a guisp=#bd93f9 gui=under
 " Git highlighting
 hi gitCommitOverflow ctermfg=243          guifg=#767676
 hi gitCommitSummary  ctermfg=255          guifg=#ffffff
+
+" LSP highlighting
+hi DiagnosticError  ctermfg=243          guifg=#767676 gui=none
+hi DiagnosticWarn   ctermfg=243          guifg=#767676 gui=none
+hi DiagnosticInfo   ctermfg=243          guifg=#767676 gui=none
+hi DiagnosticHint   ctermfg=243          guifg=#767676 gui=none
+
+hi DiagnosticUnderlineError ctermfg=250 ctermbg=none guifg=#bcbcbc guibg=none gui=undercurl guisp=#ff5555
+hi DiagnosticUnderlineWarn  ctermfg=250 ctermbg=none guifg=#bcbcbc guibg=none gui=undercurl guisp=#f1fa8c
+hi DiagnosticUnderlineInfo  ctermfg=250 ctermbg=none guifg=#bcbcbc guibg=none gui=undercurl guisp=#bd93f9
+hi DiagnosticUnderlineHint  ctermfg=250 ctermbg=none guifg=#bcbcbc guibg=none gui=undercurl guisp=#50fa7b
 
 " Link groups to keep compatibility 
 hi link Boolean Constant
