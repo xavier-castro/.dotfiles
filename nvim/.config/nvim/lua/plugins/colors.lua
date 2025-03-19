@@ -1,5 +1,11 @@
 return {
   {
+    "LazyVim/LazyVim",
+    opts = {
+      colorscheme = "vscode",
+    },
+  },
+  {
     "folke/tokyonight.nvim",
     lazy = false,
     priority = 1000,
