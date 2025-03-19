@@ -14,7 +14,6 @@ vim.opt.smartindent = true
 vim.opt.hlsearch = true
 vim.opt.backup = false
 vim.opt.showcmd = true
-vim.opt.shell = "fish"
 vim.opt.cmdheight = 1
 vim.opt.laststatus = 3
 vim.opt.expandtab = true
@@ -58,22 +57,12 @@ vim.filetype.add({
 -- LazyVim auto format
 -- vim.g.autoformat = true
 
--- Snacks animations
--- Set to `false` to globally disable all snacks animations
--- -- LazyVim picker to use.
--- -- Can be one of: telescope, fzf
--- -- Leave it to "auto" to automatically use the picker
--- -- enabled with `:LazyExtras`
--- -- LazyVim completion engine to use.
--- -- Can be one of: nvim-cmp, blink.cmp
--- -- Leave it to "auto" to automatically use the completion engine
--- -- enabled with `:LazyExtras`
-
 -- if the completion engine supports the AI source,
 -- use that instead of inline suggestions
 vim.g.ai_cmp = false
 vim.g.snacks_animate = false
 vim.g.lazyvim_prettier_needs_config = true
+vim.g.lazyvim_cmp = "blink.cmp"
 -- vim.g.lazyvim_picker = "telescope"
 
 -- Set nonumber and norelativenumber
