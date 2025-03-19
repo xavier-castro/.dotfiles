@@ -1,4 +1,18 @@
 return {
+  -- NOTE: Flash
+  {
+    enabled = false,
+    "folke/flash.nvim",
+    ---@type Flash.Config
+    opts = {
+      search = {
+        forward = true,
+        multi_window = false,
+        wrap = false,
+        incremental = true,
+      },
+    },
+  },
   -- NOTE: Bufferline
   {
     "akinsho/bufferline.nvim",
@@ -22,6 +36,15 @@ return {
     opts = {
       inlay_hints = { enabled = false },
     },
+    keys = {
+      "gd",
+      function()
+        -- DO NOT RESUSE WINDOW
+        require("telescope.builtin").lsp_definitions({ reuse_win = false })
+      end,
+      desc = "Goto Definition",
+      has = "definition",
+    },
   },
   -- NOTE: Typescript tools
   {
@@ -36,6 +59,25 @@ return {
       image = {},
       picker = {},
       explorer = {},
+      scroll = { enabled = false },
     },
+  },
+  -- NOTE: Statusline
+  {
+    "nvim-lualine/lualine.nvim",
+    opts = function(_, opts)
+      local LazyVim = require("lazyvim.util")
+      opts.sections.lualine_c[4] = {
+        LazyVim.lualine.pretty_path({
+          length = 0,
+          relative = "cwd",
+          modified_hl = "MatchParen",
+          directory_hl = "",
+          filename_hl = "Bold",
+          modified_sign = "",
+          readonly_icon = " 󰌾 ",
+        }),
+      }
+    end,
   },
 }
