@@ -61,10 +61,6 @@ vim.filetype.add({
 -- use that instead of inline suggestions
 vim.g.ai_cmp = false
 vim.g.snacks_animate = false
-vim.g.lazyvim_prettier_needs_config = true
 vim.g.lazyvim_cmp = "blink.cmp"
--- vim.g.lazyvim_picker = "telescope"
 
--- Set nonumber and norelativenumber
-vim.o.signcolumn = "number"
 vim.opt.mousescroll = "ver:2,hor:0"
