@@ -77,5 +77,5 @@ vim.g.lazyvim_prettier_needs_config = true
 -- vim.g.lazyvim_picker = "telescope"
 
 -- Set nonumber and norelativenumber
--- vim.o.signcolumn = "number"
+vim.o.signcolumn = "number"
 vim.opt.mousescroll = "ver:2,hor:0"
