@@ -33,3 +33,7 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 if [[ -f "$HOME/.zshenv_private" ]]; then
   source "$HOME/.zshenv_private"
 fi
+
+# Where should I put you?
+bindkey -s ^f "tmux-sessionizer\n"
+

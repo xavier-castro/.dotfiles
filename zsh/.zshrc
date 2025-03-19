@@ -102,11 +102,7 @@ fi
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
+alias tt="tmux new-session -A -s 'MAIN'"
 # pnpm is configured in .zshenv for faster startup
 
-
 eval "$(zoxide init zsh)"
-
-# Tmux layout restore alias
-alias xcmux="/Users/xavier/xcmux"
-eval "$(mise activate zsh)"

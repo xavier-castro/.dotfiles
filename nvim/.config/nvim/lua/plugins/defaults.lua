@@ -36,15 +36,6 @@ return {
     opts = {
       inlay_hints = { enabled = false },
     },
-    keys = {
-      "gd",
-      function()
-        -- DO NOT RESUSE WINDOW
-        require("telescope.builtin").lsp_definitions({ reuse_win = false })
-      end,
-      desc = "Goto Definition",
-      has = "definition",
-    },
   },
   -- NOTE: Typescript tools
   {
