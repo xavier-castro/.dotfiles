@@ -1,4 +1,5 @@
 return {
+  -- NOTE: Tmux Navigations
   {
     "christoomey/vim-tmux-navigator",
     cmd = {
@@ -17,6 +18,7 @@ return {
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },
+  -- NOTE: Markdown Previewer
   {
     "toppair/peek.nvim",
     event = { "VeryLazy" },

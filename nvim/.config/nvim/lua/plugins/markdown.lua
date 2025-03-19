@@ -30,6 +30,7 @@ return {
       },
     },
   },
+  -- NOTE: MDX Support
   {
     "davidmh/mdx.nvim",
     config = true,
