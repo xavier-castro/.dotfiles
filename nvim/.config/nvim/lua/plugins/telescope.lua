@@ -124,7 +124,7 @@ return {
         desc = "Lists LSP incoming calls for word under the cursor",
       },
       {
-        "sf",
+        "<leader>e",
         function()
           local telescope = require("telescope")
 
