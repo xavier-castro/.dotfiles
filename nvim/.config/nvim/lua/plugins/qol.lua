@@ -1,4 +1,6 @@
 return {
+  -- NOTE: Plenary latest
+  { "nvim-lua/plenary.nvim", branch = "master" },
   -- NOTE: Tmux Navigations
   {
     "christoomey/vim-tmux-navigator",
