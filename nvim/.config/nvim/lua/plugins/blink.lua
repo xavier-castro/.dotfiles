@@ -115,7 +115,7 @@ return {
       },
 
       cmdline = {
-        enabled = false,
+        enabled = true,
       },
 
       keymap = {
@@ -140,15 +140,15 @@ return {
       end
 
       -- add ai_accept to <Tab> key
-      if not opts.keymap["<Tab>"] then
+      if not opts.keymap["<C-y>"] then
         if opts.keymap.preset == "super-tab" then -- super-tab
           opts.keymap["<Tab>"] = {
-            require("blink.cmp.keymap.presets")["super-tab"]["<Tab>"][1],
+            require("blink.cmp.keymap.presets")["super-tab"]["<C-y>"][1],
             LazyVim.cmp.map({ "snippet_forward", "ai_accept" }),
             "fallback",
           }
         else -- other presets
-          opts.keymap["<Tab>"] = {
+          opts.keymap["<C-y>"] = {
             LazyVim.cmp.map({ "snippet_forward", "ai_accept" }),
             "fallback",
           }
