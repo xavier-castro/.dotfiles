@@ -37,12 +37,6 @@ return {
       inlay_hints = { enabled = false },
     },
   },
-  -- NOTE: Typescript tools
-  {
-    "pmizio/typescript-tools.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    opts = {},
-  },
   -- NOTE: Snacks
   {
     "folke/snacks.nvim",

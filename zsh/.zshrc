@@ -106,3 +106,6 @@ alias tt="tmux new-session -A -s 'MAIN'"
 # pnpm is configured in .zshenv for faster startup
 
 eval "$(zoxide init zsh)"
+
+# Custom keybindings
+bindkey -s '^f' 'tmux-sessionizer\n'
