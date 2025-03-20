@@ -134,8 +134,8 @@ return {
       },
       strategies = {
         agent = { adapter = "venice" },
-        chat = { adapter = "venice" },
-        inline = { adapter = "venice" },
+        chat = { adapter = "anthropic" },
+        inline = { adapter = "anthropic" },
       },
     })
     vim.keymap.set({ "n", "v" }, "<M-g>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
