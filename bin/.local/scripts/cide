@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+# Create a new tmux window named 'cide'
+tmux new-window -n cide
+
+# Split the window vertically
+tmux split-window -h
+
+# Run claude in the first pane
+tmux send-keys -t :.0 "claude" C-m
+
+# Focus on the second pane
+tmux select-pane -t :.1
