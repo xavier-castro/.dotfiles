@@ -1,3 +1,4 @@
+return {}
 -- -- https://github.com/olimorris/codecompanion.nvim/discussions/972
 -- local venice_api_key = os.getenv("VENICE_API_KEY")
 --
