@@ -57,12 +57,10 @@ return {
           },
         },
       },
-      -- Use mini.pick as the file selector
       file_selector = {
-        provider = 'mini.pick',
+        provider = 'telescope',
         provider_opts = {},
       },
-      -- Use Cursor-like keymappings
       mappings = {
         ask = prefix .. '<CR>',
         edit = prefix .. 'e',
