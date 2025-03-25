@@ -5,6 +5,9 @@ return {
     -- ... Other dependencies
   },
   opts = {
+    keymap = {
+      ["<CR>"] = {}, -- Disables <CR>
+    },
     sources = {
       -- Add 'avante' to the list
       default = { "avante" },
