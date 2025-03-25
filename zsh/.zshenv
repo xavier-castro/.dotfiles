@@ -1,46 +1,14 @@
-# . "$HOME/.cargo/env"
-# Xavier's zsh environment variables
+# Xavier's minimal zshenv - essential environment variables only
 # This file is loaded before .zshrc
 
-# Add your PATH modifications here
-export PATH="$HOME/.local/bin:$PATH"
-export PATH="$HOME/.local/scripts:$PATH"
+# Critical PATH exports
+export PATH="$HOME/.local/bin:$HOME/.local/scripts:$PATH"
 
 # Set default editors
 export EDITOR="nvim"
 export VISUAL="nvim"
 
-# pnpm
-export PNPM_HOME="/Users/xavier/Library/pnpm"
-case ":$PATH:" in
-  *":$PNPM_HOME:"*) ;;
-  *) export PATH="$PNPM_HOME:$PATH" ;;
-esac
-# pnpm end
-
-
-# bun completions
-[ -s "/Users/xavier/.bun/_bun" ] && source "/Users/xavier/.bun/_bun"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# NVM
-export NVM_DIR="$HOME/.nvm"
-[ -s "/usr/local/opt/nvm/nvm.sh" ] && \. "/usr/local/opt/nvm/nvm.sh"  # This loads nvm
-[ -s "/usr/local/opt/nvm/etc/bash_completion.d/nvm" ] && \. "/usr/local/opt/nvm/etc/bash_completion.d/nvm"  # This loads nvm bash_completion
-
-
-
-
-
 # Load private environment variables if file exists
-# This ensures private keys are available to all zsh sessions
 if [[ -f "$HOME/.zshenv_private" ]]; then
   source "$HOME/.zshenv_private"
 fi
-
-# Where should I put you?
-bindkey -s ^f "tmux-sessionizer\n"
-
