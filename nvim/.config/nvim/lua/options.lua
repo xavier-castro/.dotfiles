@@ -23,6 +23,16 @@ vim.schedule(function()
   vim.opt.clipboard = 'unnamedplus'
 end)
 
+-- No swapfile
+vim.opt.swapfile = false
+
+-- Cursor settings
+vim.opt.guicursor = ''
+
+-- Line nunber settings
+vim.opt.nu = true
+vim.opt.relativenumber = true
+
 -- Enable break indent
 vim.opt.breakindent = true
 
@@ -70,5 +80,14 @@ vim.opt.confirm = true
 
 -- views can only be fully collapsed with the global statusline
 vim.opt.laststatus = 3
+
+vim.opt.colorcolumn = '80'
+
+-- Only horizontal scrolling
+vim.opt.mousescroll = 'ver:2,hor:0'
 --
+
+require 'util.vscode-like-quickfix'
+require 'util.float-terminal'
+
 -- vim: ts=2 sts=2 sw=2 et
