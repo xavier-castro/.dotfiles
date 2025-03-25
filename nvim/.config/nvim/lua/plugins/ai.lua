@@ -91,6 +91,7 @@ return {
       {
         -- Make sure to set this up properly if you have lazy=true
         "MeanderingProgrammer/render-markdown.nvim",
+        enabled = false,
         dependencies = {
           -- make sure rendering happens even without opening a markdown file first
           "yetone/avante.nvim",
