@@ -44,6 +44,12 @@ return {
         temperature = 0,
         max_tokens = 8192,
       },
+      file_selector = {
+        --- @alias FileSelectorProvider "native" | "fzf" | "mini.pick" | "snacks" | "telescope" | string | fun(params: avante.file_selector.IParams|nil): nil
+        provider = "snacks",
+        -- Options override for custom providers
+        provider_opts = {},
+      },
     },
     -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
     -- dynamically build it, taken from astronvim
