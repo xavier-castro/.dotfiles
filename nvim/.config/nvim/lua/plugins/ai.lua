@@ -2,11 +2,23 @@ local prefix = "<Leader>a"
 return {
   {
     "zbirenbaum/copilot.lua",
-    opts = function(_, opts)
-      opts.suggestion = opts.suggestion or {}
-      opts.suggestion.debounce = 200
-      return opts
-    end,
+    opts = {
+      suggestion = {
+        auto_trigger = true,
+        keymap = {
+          accept = "<C-l>",
+          accept_word = "<M-l>",
+          accept_line = "<M-S-l>",
+          next = "<M-]>",
+          prev = "<M-[>",
+          dismiss = "<C-]>",
+        },
+      },
+      filetypes = {
+        markdown = true,
+        help = true,
+      },
+    },
   },
   {
     "yetone/avante.nvim",
