@@ -3,7 +3,7 @@ return {
   dependencies = { 'nvim-tree/nvim-web-devicons' },
   config = function()
     require('oil').setup {
-      default_file_explorer = true, -- start up nvim with oil instead of netrw
+      default_file_explorer = false, -- start up nvim with oil instead of netrw
       columns = {},
       keymaps = {
         ['q'] = 'actions.close',
