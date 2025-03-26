@@ -1,4 +1,7 @@
 local prefix = "<Leader>a"
+vim.api.nvim_set_hl(0, "CopilotSuggestion", { fg = "#585858" })
+vim.api.nvim_set_hl(0, "CopilotAnnotation", { fg = "#585858" })
+
 return {
   {
     "zbirenbaum/copilot.lua",
