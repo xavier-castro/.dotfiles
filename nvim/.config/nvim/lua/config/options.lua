@@ -9,8 +9,6 @@ vim.g.snacks_animate = false
 vim.g.ai_cmp = false
 
 -- XC Defaults
-vim.g.mapleader = " "
-vim.g.maplocalleader = "\\"
 vim.opt.guicursor = ""
 vim.opt.encoding = "utf-8"
 vim.opt.fileencoding = "utf-8"

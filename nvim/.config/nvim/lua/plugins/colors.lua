@@ -6,6 +6,9 @@ return {
     },
   },
   {
+    "rebelot/kanagawa.nvim", -- neorg needs a colorscheme with treesitter support
+  },
+  {
     "olimorris/onedarkpro.nvim",
     priority = 1000, -- Ensure it loads first
     config = function()
