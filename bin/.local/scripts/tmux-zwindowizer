@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+#
+# This script creates a new tmux window and changes to a directory using zoxide
+
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    # Get directories from zoxide and let user select with fzf
+    selected=$(zoxide query -l | fzf)
+fi
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+# Create a clean name for the window
+window_name=$(basename "$selected" | tr . _)
+session_name=$(tmux display-message -p "#S")
+target="$session_name:$window_name"
+
+# Create new window or switch to it if it exists
+if ! tmux has-window -t $target 2> /dev/null; then
+    tmux new-window -dn $window_name
+    # Use zoxide to navigate to the directory
+    tmux send-keys -t $target "cd $(printf %q "$selected")" C-m
+fi
+
+# Focus on the window
+tmux select-window -t $window_name
