@@ -33,7 +33,7 @@ let s:cyan = "#88c0d0"             " terminal.ansiCyan
 let s:purple_bg = "#1f0d49"        " titleBar.activeBackground
 
 " Basic UI Elements
-hi Normal guifg=#d8dee9 guibg=#1a1a1a gui=NONE
+hi Normal guifg=#d8dee9 guibg=NONE gui=NONE
 hi NonText guifg=#505050b3 guibg=NONE gui=NONE
 hi LineNr guifg=#505050 guibg=NONE gui=NONE
 hi CursorLine guibg=#292929 gui=NONE
@@ -46,13 +46,13 @@ hi VertSplit guifg=#ffffff0d guibg=#1a1a1a gui=NONE
 hi MatchParen guifg=NONE guibg=#14141400 gui=NONE guisp=#ffffff55
 hi IncSearch guifg=#ffffff guibg=#88c0d0 gui=NONE
 hi Search guibg=#88c0d066 gui=NONE
-hi Visual guibg=#40404099 gui=NONE
 hi VisualNOS guibg=#40404077 gui=NONE
 hi SpecialKey guifg=#404040 guibg=NONE gui=NONE
 hi EndOfBuffer guifg=#505050 guibg=NONE gui=NONE
 hi Whitespace guifg=#505050b3 guibg=NONE gui=NONE
 hi Cursor guifg=NONE guibg=#ffffff gui=NONE
-
+hi Visual cterm=reverse ctermfg=250 ctermbg=16 gui=reverse guifg=#bcbcbc guibg=#000000
+" hi Visual guibg=#40404099 gui=NONE
 " Status Line
 hi StatusLine guifg=#cccccc82 guibg=#141414 gui=NONE
 hi StatusLineNC guifg=#cccccc99 guibg=#141414 gui=NONE

@@ -16,3 +16,16 @@ vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
     vim.api.nvim_set_hl(0, "CopilotAnnotation", { fg = "#585858" })
   end,
 })
+
+-- Run ColorMyPencils on startup
+local color_setup = vim.api.nvim_create_augroup("ColorSetup", { clear = true })
+vim.api.nvim_create_autocmd("VimEnter", {
+  group = color_setup,
+  callback = function()
+    -- Call the ColorMyPencils function which is globally defined in colors.lua
+    -- This will be available after colors.lua is loaded by lazy.nvim
+    if ColorMyPencils then
+      ColorMyPencils()
+    end
+  end,
+})

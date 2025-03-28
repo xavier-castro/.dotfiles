@@ -2,17 +2,18 @@ return {
   "folke/snacks.nvim",
   opts = {
     bigfile = { enabled = true },
+    indent = { enabled = false },
     image = {},
     scroll = { enabled = false },
     picker = {
       sources = {
         explorer = {
-          layout = { layout = { position = "right" } },
+          layout = { layout = { position = "left" } },
           follow_file = true,
           tree = true,
           focus = "list",
           jump = { close = false },
-          auto_close = false,
+          auto_close = true,
           win = {
             list = {
               keys = {
