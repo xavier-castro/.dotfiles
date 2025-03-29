@@ -326,13 +326,21 @@ require('lazy').setup({
   'numToStr/Comment.nvim', -- "gc" to comment visual regions/lines
   'stevearc/oil.nvim', -- More modern netrw
   {
-    'navarasu/onedark.nvim',
-    config = function()
-      require('onedark').setup {
+    'craftzdog/solarized-osaka.nvim',
+    lazy = false,
+    priority = 1000,
+    opts = function()
+      return {
         transparent = true,
       }
     end,
-  }, -- Colorscheme
+  },
+  {
+    'Mofiqul/vscode.nvim',
+    opts = {
+      transparent = true,
+    },
+  },
   'nvim-lualine/lualine.nvim', -- Fancier statusline
   -- Add indentation guides even on blank lines
   'lukas-reineke/indent-blankline.nvim',
@@ -1147,7 +1155,7 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- Set colorscheme (order is important here)
 vim.o.termguicolors = true
-vim.cmd.colorscheme 'xcnoir'
+vim.cmd.colorscheme 'solarized-osaka'
 
 -- Set statusbar
 require('lualine').setup {
