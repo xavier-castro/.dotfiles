@@ -180,71 +180,92 @@ require('lazy').setup({
     },
   },
   {
+    'ThePrimeagen/git-worktree.nvim',
+    dependencies = {
+      'nvim-lua/plenary.nvim',
+      'nvim-telescope/telescope.nvim',
+    },
+
+    config = function()
+      local gitworktree = require 'git-worktree'
+
+      gitworktree.setup()
+
+      require('telescope').load_extension 'git_worktree'
+
+      -- HACK: by default
+      -- <Enter> - switches to that worktree
+      -- <c-d> - deletes that worktree
+      -- <c-f> - toggles forcing of the next deletion
+
+      -- Create new worktree
+      vim.keymap.set('n', '<leader>wl', function()
+        require('telescope').extensions.git_worktree.git_worktrees()
+      end, { desc = 'list Git Worktree' })
+
+      -- Switch/list worktrees
+      vim.keymap.set('n', '<leader>wc', function()
+        require('telescope').extensions.git_worktree.create_git_worktree()
+      end, { desc = 'Create Git Worktree Branches' })
+    end,
+  },
+  {
     'stevearc/conform.nvim',
-    event = { 'BufWritePre' },
-    cmd = { 'ConformInfo' },
-    keys = {
-      {
-        '<leader>f',
-        function()
-          require('conform').format { async = true, lsp_fallback = true }
-        end,
-        mode = '',
-        desc = 'Format buffer',
-      },
-    },
-    opts = {
-      -- Define formatters
-      formatters_by_ft = {
-        lua = { 'stylua' },
-        python = { 'isort', 'black' },
-        javascript = { { 'prettierd', 'prettier' } },
-        typescript = { { 'prettierd', 'prettier' } },
-        typescriptreact = { { 'prettierd', 'prettier' } },
-        javascriptreact = { { 'prettierd', 'prettier' } },
-        json = { { 'prettierd', 'prettier' } },
-        yaml = { { 'prettierd', 'prettier' } },
-        html = { { 'prettierd', 'prettier' } },
-        css = { { 'prettierd', 'prettier' } },
-        scss = { { 'prettierd', 'prettier' } },
-        markdown = { { 'prettierd', 'prettier' } },
-        rust = { 'rustfmt' },
-        go = { 'gofmt' },
-        c = { 'clang_format' },
-        cpp = { 'clang_format' },
-        sh = { 'shfmt' },
-      },
-      -- Set up format-on-save
-      format_on_save = function(bufnr)
-        -- Disable with a global or buffer-local variable
-        if vim.g.disable_autoformat or vim.b[bufnr].disable_autoformat then
-          return
-        end
-        return { timeout_ms = 500, lsp_fallback = true }
-      end,
-      -- Customize formatters
-      formatters = {
-        shfmt = {
-          prepend_args = { '-i', '2', '-ci' },
+    event = 'VeryLazy',
+    config = function()
+      local conform = require 'conform'
+      conform.setup {
+        formatters_by_ft = {
+          css = { 'prettier' },
+          go = { lsp_format = 'fallback' },
+          html = { 'prettier' },
+          json = { 'prettier' },
+          lua = { 'stylua' },
+          markdown = { 'prettier' },
+          python = { 'ruff_format' },
+          sh = { 'shfmt' },
+          yaml = { 'prettier' },
         },
-        black = {
-          prepend_args = { '--line-length', '88' },
+        format_on_save = {
+          async = false,
+          timeout_ms = 1000,
+          lsp_fallback = true,
+          lsp_format = 'fallback',
         },
-      },
-    },
-    init = function()
-      -- Add commands to toggle format-on-save
-      vim.api.nvim_create_user_command('FormatToggle', function(args)
+      }
+
+      vim.api.nvim_create_user_command('FormatDisable', function(args)
         if args.bang then
-          -- FormatToggle! will toggle globally
-          vim.g.disable_autoformat = not vim.g.disable_autoformat
-          print('Global autoformatting ' .. (vim.g.disable_autoformat and 'disabled' or 'enabled'))
+          -- FormatDisable! will disable formatting just for this buffer
+          vim.b.disable_autoformat = true
         else
-          -- FormatToggle will toggle for the current buffer
-          vim.b.disable_autoformat = not vim.b.disable_autoformat
-          print('Buffer autoformatting ' .. (vim.b.disable_autoformat and 'disabled' or 'enabled'))
+          vim.g.disable_autoformat = true
         end
-      end, { bang = true, desc = 'Toggle autoformatting' })
+      end, {
+        desc = 'Disable autoformat-on-save',
+        bang = true,
+      })
+      vim.api.nvim_create_user_command('FormatEnable', function()
+        vim.b.disable_autoformat = false
+        vim.g.disable_autoformat = false
+      end, {
+        desc = 'Re-enable autoformat-on-save',
+      })
+
+      vim.keymap.set({ 'n', 'v' }, '<leader>fmt', function()
+        conform.format {
+          lsp_fallback = true,
+          async = false,
+          timeout_ms = 1000,
+        }
+      end, { desc = 'Format file' })
+    end,
+  },
+  {
+    'zapling/mason-conform.nvim',
+    event = { 'BufReadPre', 'BufNewFile' },
+    config = function()
+      require('mason-conform').setup()
     end,
   },
   {
@@ -351,7 +372,6 @@ require('lazy').setup({
     'windwp/nvim-autopairs',
     event = 'InsertEnter',
     -- Optional dependency
-    dependencies = { 'hrsh7th/nvim-cmp' },
     config = function()
       require('nvim-autopairs').setup {}
       -- If you want to automatically add `(` after selecting a function or method
@@ -360,9 +380,38 @@ require('lazy').setup({
       cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
     end,
   },
-  { -- Autocompletion
-    'hrsh7th/nvim-cmp',
-    dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
+  {
+    'L3MON4D3/LuaSnip',
+    version = 'v2.*',
+    dependencies = { 'rafamadriz/friendly-snippets' },
+    config = function()
+      require('luasnip.loaders.from_vscode').lazy_load()
+    end,
+  },
+  {
+    'saghen/blink.cmp',
+    event = { 'LspAttach' },
+    version = 'v0.*',
+    dependencies = { 'L3MON4D3/LuaSnip', version = 'v2.*' },
+    opts = {
+      keymap = {
+        preset = 'default',
+        ['<Tab>'] = { 'snippet_forward', 'fallback' },
+        ['<S-Tab>'] = { 'snippet_backward', 'fallback' },
+        ['<Up>'] = { 'select_prev', 'fallback' },
+        ['<Down>'] = { 'select_next', 'fallback' },
+        ['<C-p>'] = { 'select_prev', 'fallback' },
+        ['<C-n>'] = { 'select_next', 'fallback' },
+      },
+      snippets = { preset = 'luasnip' },
+      sources = {
+        default = { 'lsp', 'path', 'snippets', 'buffer' },
+      },
+    },
+    opts_extend = { 'sources.default' },
+    menu = {
+      ghost_text = { enabled = true },
+    },
   },
   -- Fuzzy Finder (files, lsp, etc)
   {
@@ -1346,7 +1395,6 @@ end
 
 -- nvim-cmp supports additional completion capabilities
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = require('cmp_nvim_lsp').default_capabilities(capabilities)
 
 -- Enable the following language servers
 local servers = { 'clangd', 'rust_analyzer', 'basedpyright', 'vtsls' }
@@ -1371,48 +1419,4 @@ lspconfig.lua_ls.setup {
   },
 }
 
--- nvim-cmp setup
-local cmp = require 'cmp'
-local luasnip = require 'luasnip'
-
-luasnip.config.setup {}
-
-cmp.setup {
-  snippet = {
-    expand = function(args)
-      luasnip.lsp_expand(args.body)
-    end,
-  },
-  mapping = cmp.mapping.preset.insert {
-    ['<C-d>'] = cmp.mapping.scroll_docs(-4),
-    ['<C-f>'] = cmp.mapping.scroll_docs(4),
-    ['<C-Space>'] = cmp.mapping.complete {},
-    ['<CR>'] = cmp.mapping.confirm {
-      behavior = cmp.ConfirmBehavior.Replace,
-      select = true,
-    },
-    ['<Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_next_item()
-      elseif luasnip.expand_or_jumpable() then
-        luasnip.expand_or_jump()
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-    ['<S-Tab>'] = cmp.mapping(function(fallback)
-      if cmp.visible() then
-        cmp.select_prev_item()
-      elseif luasnip.jumpable(-1) then
-        luasnip.jump(-1)
-      else
-        fallback()
-      end
-    end, { 'i', 's' }),
-  },
-  sources = {
-    { name = 'nvim_lsp' },
-    { name = 'luasnip' },
-  },
-}
 -- vim: ts=2 sts=2 sw=2 et
