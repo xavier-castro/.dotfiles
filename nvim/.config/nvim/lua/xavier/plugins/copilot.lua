@@ -6,7 +6,7 @@ return {
       auto_trigger = true,
       hide_during_completion = vim.g.ai_cmp,
       keymap = {
-        accept = "<Tav>", -- handled by nvim-cmp / blink.cmp
+        accept = "<Tab>", -- handled by nvim-cmp / blink.cmp
         next = '<M-]>',
         prev = '<M-[>',
       },
