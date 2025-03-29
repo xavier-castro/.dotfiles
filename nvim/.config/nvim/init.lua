@@ -8,6 +8,9 @@ vim.opt.rtp:prepend(lazypath)
 
 local venice_api_key = os.getenv 'VENICE_API_KEY'
 
+vim.g.mapleader = ' '
+vim.g.maplocalleader = ','
+
 -- Add plugins
 require('lazy').setup({
   'tpope/vim-fugitive', -- Git commands in nvim
@@ -137,7 +140,14 @@ require('lazy').setup({
   },
   'numToStr/Comment.nvim', -- "gc" to comment visual regions/lines
   'stevearc/oil.nvim', -- More modern netrw
-  'navarasu/onedark.nvim', -- Colorscheme
+  {
+    'navarasu/onedark.nvim',
+    config = function()
+      require('onedark').setup {
+        transparent = true,
+      }
+    end,
+  }, -- Colorscheme
   'nvim-lualine/lualine.nvim', -- Fancier statusline
   -- Add indentation guides even on blank lines
   'lukas-reineke/indent-blankline.nvim',
@@ -149,6 +159,30 @@ require('lazy').setup({
   'williamboman/mason.nvim', -- Automatically install LSPs to stdpath for neovim
   'williamboman/mason-lspconfig.nvim', -- ibid
   'folke/neodev.nvim', -- Lua language server configuration for nvim
+  {
+    'kevinhwang91/nvim-ufo',
+    dependencies = { 'kevinhwang91/promise-async' },
+    opts = {
+      filetype_exclude = { 'help', 'alpha', 'dashboard', 'neo-tree', 'Trouble', 'lazy', 'mason', 'lazydev' },
+    },
+    config = function(_, opts)
+      vim.opt.foldlevelstart = 99
+      vim.o.foldcolumn = '0' -- '0' is not bad
+      vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
+      vim.o.foldlevelstart = 99
+      vim.o.foldenable = true
+
+      -- Using ufo provider need remap `zR` and `zM`. If Neovim is 0.6.1, remap yourself
+      vim.keymap.set('n', 'zR', require('ufo').openAllFolds)
+      vim.keymap.set('n', 'zM', require('ufo').closeAllFolds)
+
+      require('ufo').setup {
+        provider_selector = function(bufnr, filetype, buftype)
+          return { 'treesitter', 'indent' }
+        end,
+      }
+    end,
+  },
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
     dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
@@ -337,13 +371,12 @@ vim.o.completeopt = 'menuone,noselect'
 
 -- Set colorscheme (order is important here)
 vim.o.termguicolors = true
-vim.cmd.colorscheme 'onedark'
+vim.cmd.colorscheme 'xcnoir'
 
 -- Set statusbar
 require('lualine').setup {
   options = {
     icons_enabled = false,
-    theme = 'onedark',
     component_separators = '|',
     section_separators = '',
   },
@@ -400,9 +433,16 @@ require('oil').setup {
   },
   skip_confirm_for_simple_edits = true,
 }
-vim.keymap.set('n', '-', function()
-  require('oil').open()
-end, { desc = 'Open parent directory' })
+vim.keymap.set('n', '<leader>-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+-- open parent dir in float window
+vim.keymap.set('n', '-', require('oil').toggle_float)
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'oil', -- Adjust if Oil uses a specific file type identifier
+  callback = function()
+    vim.opt_local.cursorline = true
+  end,
+})
 
 -- Telescope
 require('telescope').setup {
@@ -535,7 +575,20 @@ require('lspsaga').setup {
     enable = true,
   },
   symbol_in_winbar = {
-    enable = false,
+    enable = true,
+  },
+  callhierarchy = {
+    layout = 'float', -- can be 'float' or 'normal'
+    keys = {
+      edit = 'e',
+      vsplit = 's',
+      split = 'i',
+      tabe = 't',
+      quit = 'q',
+      shuttle = '[w', -- shuttle between left/right windows
+      toggle_or_req = 'u',
+      close = '<C-c>k',
+    },
   },
 }
 
@@ -562,6 +615,9 @@ local on_attach = function(_, bufnr)
   vim.keymap.set('n', '[d', '<cmd>Lspsaga diagnostic_jump_prev<CR>', attach_opts)
   vim.keymap.set('n', ']d', '<cmd>Lspsaga diagnostic_jump_next<CR>', attach_opts)
   vim.keymap.set('n', '<leader>o', '<cmd>Lspsaga outline<CR>', attach_opts)
+  -- Call hierarchy keybindings
+  vim.keymap.set('n', '<leader>ci', '<cmd>Lspsaga incoming_calls<CR>', attach_opts)
+  vim.keymap.set('n', '<leader>co', '<cmd>Lspsaga outgoing_calls<CR>', attach_opts)
 end
 
 -- nvim-cmp supports additional completion capabilities

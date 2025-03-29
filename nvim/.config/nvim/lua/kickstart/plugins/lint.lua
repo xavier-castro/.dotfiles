@@ -10,7 +10,7 @@ return {
       typescript = { "eslint" },
       typescriptreact = { "eslint" },
       javascriptreact = { "eslint" },
-      lua = { "luacheck" },
+      -- lua = { "luacheck" }, -- Removed until luacheck is installed
       sh = { "shellcheck" },
       markdown = { "markdownlint" },
       yaml = { "yamllint" },
@@ -25,11 +25,12 @@ return {
     }
 
     -- Customize linters that need special configuration
-    lint.linters.luacheck.args = {
-      "--globals",
-      "vim",
-      "--no-max-line-length",
-    }
+    -- Commented out until luacheck is installed
+    -- lint.linters.luacheck.args = {
+    --   "--globals",
+    --   "vim",
+    --   "--no-max-line-length",
+    -- }
 
     -- Set up auto-linting
     local lint_augroup = vim.api.nvim_create_augroup("lint", { clear = true })
