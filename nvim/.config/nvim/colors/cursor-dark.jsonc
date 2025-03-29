@@ -2504,6 +2504,30 @@
       "settings": {
         "fontStyle": "italic"
       }
+    },
+    {
+      "scope": "meta.attribute.class.html string.quoted",
+      "settings": {
+        "foreground": "#F8C762"
+      }
+    },
+    {
+      "scope": "meta.attribute.class.html string.quoted meta.class.tailwind.dark",
+      "settings": {
+        "foreground": "#ffffff"
+      }
+    },
+    {
+      "scope": "entity.other.attribute-name.class.css",
+      "settings": {
+        "foreground": "#F8C762"
+      }
+    },
+    {
+      "scope": "entity.other.attribute-name.class.css support.type.property-name.css",
+      "settings": {
+        "foreground": "#87C3FF"
+      }
     }
   ]
 }

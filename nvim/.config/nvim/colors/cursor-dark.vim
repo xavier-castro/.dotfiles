@@ -51,7 +51,7 @@ hi SpecialKey guifg=#404040 guibg=NONE gui=NONE
 hi EndOfBuffer guifg=#505050 guibg=NONE gui=NONE
 hi Whitespace guifg=#505050b3 guibg=NONE gui=NONE
 hi Cursor guifg=NONE guibg=#ffffff gui=NONE
-hi Visual cterm=reverse ctermfg=250 ctermbg=16 gui=reverse guifg=#bcbcbc guibg=#000000
+" hi Visual cterm=reverse ctermfg=250 ctermbg=16 gui=reverse guifg=#bcbcbc guibg=#000000
 " hi Visual guibg=#40404099 gui=NONE
 " Status Line
 hi StatusLine guifg=#cccccc82 guibg=#141414 gui=NONE
@@ -234,7 +234,29 @@ hi! link @exception Exception
 hi! link @include Include
 hi! link @storageclass StorageClass
 
-" Additional filetypes
+" TreeSitter JSX specific
+hi! link @jsx.attribute.className Label
+hi! link @jsx.attribute.className.value String
+hi! link @jsx.string.fragment String
+hi! link @jsx.text TailwindDarkClass
+
+" Normal class utilities (non-dark mode)
+hi NormalTailwind guifg=#F8C762 guibg=NONE gui=NONE
+
+
+" JSX/React specific highlighting
+hi jsxTagName guifg=#87C3FF guibg=NONE gui=NONE
+hi jsxComponentName guifg=#87C3FF guibg=NONE gui=NONE
+hi jsxAttrib guifg=#AAA0FA guibg=NONE gui=NONE
+hi jsxBraces guifg=#D6D6DD guibg=NONE gui=NONE
+
+" Create custom highlights for Tailwind CSS
+hi TailwindDarkMode guifg=#ffffff guibg=NONE gui=NONE
+hi TailwindDarkText guifg=#ffffff guibg=NONE gui=NONE
+" Create highlight group for html class attribute
+hi htmlClassName guifg=#F8C762 guibg=NONE gui=NONE
+" Set dark:text-* to white foreground
+
 " Markdown specific
 hi markdownH1 guifg=#88c0d0 gui=bold
 hi markdownH2 guifg=#88c0d0 gui=bold
