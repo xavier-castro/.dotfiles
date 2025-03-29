@@ -22,6 +22,29 @@ return {
       { 'williamboman/mason.nvim', opts = {} },
       'williamboman/mason-lspconfig.nvim',
       'WhoIsSethDaniel/mason-tool-installer.nvim',
+      {
+        'nvimdev/lspsaga.nvim',
+        config = function()
+          require('lspsaga').setup {
+            -- Optional custom configuration
+            finder = {
+              max_height = 0.6,
+            },
+            definition = {
+              width = 0.7,
+              height = 0.5,
+            },
+            hover = {
+              max_width = 0.9,
+              max_height = 0.8,
+            },
+          }
+        end,
+        dependencies = {
+          'nvim-treesitter/nvim-treesitter',
+          'nvim-tree/nvim-web-devicons',
+        },
+      },
 
       -- Useful status updates for LSP.
       { 'j-hui/fidget.nvim', opts = {} },
@@ -75,39 +98,74 @@ return {
           -- Jump to the definition of the word under your cursor.
           --  This is where a variable was first declared, or where a function is defined, etc.
           --  To jump back, press <C-t>.
-          map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+          -- map('gd', require('telescope.builtin').lsp_definitions, '[G]oto [D]efinition')
+          --
+          -- -- Find references for the word under your cursor.
+          -- map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+          --
+          -- -- Jump to the implementation of the word under your cursor.
+          -- --  Useful when your language has ways of declaring types without an actual implementation.
+          -- map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+          --
+          -- -- Jump to the type of the word under your cursor.
+          -- --  Useful when you're not sure what type a variable is and you want to see
+          -- --  the definition of its *type*, not where it was *defined*.
+          -- map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+          --
+          -- -- Fuzzy find all the symbols in your current document.
+          -- --  Symbols are things like variables, functions, types, etc.
+          -- map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+          --
+          -- -- Fuzzy find all the symbols in your current workspace.
+          -- --  Similar to document symbols, except searches over your entire project.
+          -- map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+          --
+          -- -- Rename the variable under your cursor.
+          -- --  Most Language Servers support renaming across files, etc.
+          -- map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+          --
+          -- -- Execute a code action, usually your cursor needs to be on top of an error
+          -- -- or a suggestion from your LSP for this to activate.
+          -- map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
+          --
+          -- -- WARN: This is not Goto Definition, this is Goto Declaration.
+          -- --  For example, in C this would take you to the header.
+          -- map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
 
-          -- Find references for the word under your cursor.
-          map('gr', require('telescope.builtin').lsp_references, '[G]oto [R]eferences')
+          -- Set up keybindings (better in on_attach if you have one, but this works too)
 
-          -- Jump to the implementation of the word under your cursor.
-          --  Useful when your language has ways of declaring types without an actual implementation.
-          map('gI', require('telescope.builtin').lsp_implementations, '[G]oto [I]mplementation')
+          -- Hover documentation
+          map('n', 'K', '<cmd>Lspsaga hover_doc<CR>', { desc = 'Hover documentation' })
 
-          -- Jump to the type of the word under your cursor.
-          --  Useful when you're not sure what type a variable is and you want to see
-          --  the definition of its *type*, not where it was *defined*.
-          map('<leader>D', require('telescope.builtin').lsp_type_definitions, 'Type [D]efinition')
+          -- Code actions
+          map('n', '<leader>ca', '<cmd>Lspsaga code_action<CR>', { desc = 'Code action' })
+          map('v', '<leader>ca', '<cmd>Lspsaga code_action<CR>', { desc = 'Code action' })
 
-          -- Fuzzy find all the symbols in your current document.
-          --  Symbols are things like variables, functions, types, etc.
-          map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+          -- Navigation
+          map('n', 'gd', '<cmd>Lspsaga goto_definition<CR>', { desc = 'Go to definition' })
+          map('n', 'gD', '<cmd>Lspsaga peek_definition<CR>', { desc = 'Peek definition' })
+          map('n', 'gt', '<cmd>Lspsaga goto_type_definition<CR>', { desc = 'Go to type definition' })
+          map('n', 'gT', '<cmd>Lspsaga peek_type_definition<CR>', { desc = 'Peek type definition' })
 
-          -- Fuzzy find all the symbols in your current workspace.
-          --  Similar to document symbols, except searches over your entire project.
-          map('<leader>ws', require('telescope.builtin').lsp_dynamic_workspace_symbols, '[W]orkspace [S]ymbols')
+          -- References and implementations
+          map('n', 'gr', '<cmd>Lspsaga finder ref<CR>', { desc = 'Find references' })
+          map('n', 'gi', '<cmd>Lspsaga finder imp<CR>', { desc = 'Find implementations' })
+          map('n', 'gf', '<cmd>Lspsaga finder<CR>', { desc = 'Find references & implementations' })
 
-          -- Rename the variable under your cursor.
-          --  Most Language Servers support renaming across files, etc.
-          map('<leader>rn', vim.lsp.buf.rename, '[R]e[n]ame')
+          -- Diagnostics
+          map('n', '[d', '<cmd>Lspsaga diagnostic_jump_prev<CR>', { desc = 'Previous diagnostic' })
+          map('n', ']d', '<cmd>Lspsaga diagnostic_jump_next<CR>', { desc = 'Next diagnostic' })
+          map('n', '<leader>d', '<cmd>Lspsaga show_cursor_diagnostics<CR>', { desc = 'Show cursor diagnostics' })
 
-          -- Execute a code action, usually your cursor needs to be on top of an error
-          -- or a suggestion from your LSP for this to activate.
-          map('<leader>ca', vim.lsp.buf.code_action, '[C]ode [A]ction', { 'n', 'x' })
+          -- Rename
+          map('n', '<leader>rn', '<cmd>Lspsaga rename<CR>', { desc = 'Rename' })
 
-          -- WARN: This is not Goto Definition, this is Goto Declaration.
-          --  For example, in C this would take you to the header.
-          map('gD', vim.lsp.buf.declaration, '[G]oto [D]eclaration')
+          -- Add this after line 138, which has the regular rename keybind
+          map('n', '<leader>prn', '<cmd>Lspsaga lsp_rename ++project<CR>', { desc = 'Project Rename' })
+
+          -- Call hierarchy
+          map('n', '<leader>ci', '<cmd>Lspsaga incoming_calls<CR>', { desc = 'Show incoming calls' })
+          map('n', '<leader>co', '<cmd>Lspsaga outgoing_calls<CR>', { desc = 'Show outgoing calls' })
 
           -- This function resolves a difference between neovim nightly (version 0.11) and stable (version 0.10)
           ---@param client vim.lsp.Client
