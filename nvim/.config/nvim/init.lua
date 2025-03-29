@@ -16,6 +16,170 @@ require('lazy').setup({
   'tpope/vim-fugitive', -- Git commands in nvim
   'tpope/vim-rhubarb', -- Fugitive-companion to interact with github
   {
+    'tadaa/vimade',
+    -- default opts (you can partially set these or configure them however you like)
+    opts = {
+      -- Recipe can be any of 'default', 'minimalist', 'duo', and 'ripple'
+      -- Set animate = true to enable animations on any recipe.
+      -- See the docs for other config options.
+      recipe = { 'default', { animate = false } },
+      -- ncmode = 'windows' will fade inactive windows.
+      -- ncmode = 'focus' will only fade after you activate the `:VimadeFocus` command.
+      ncmode = 'buffers',
+      fadelevel = 0.4, -- any value between 0 and 1. 0 is hidden and 1 is opaque.
+      -- Changes the real or theoretical background color. basebg can be used to give
+      -- transparent terminals accurating dimming.  See the 'Preparing a transparent terminal'
+      -- section in the README.md for more info.
+      -- basebg = [23,23,23],
+      basebg = '',
+      tint = {
+        -- bg = {rgb={0,0,0}, intensity=0.3}, -- adds 30% black to background
+        -- fg = {rgb={0,0,255}, intensity=0.3}, -- adds 30% blue to foreground
+        -- fg = {rgb={120,120,120}, intensity=1}, -- all text will be gray
+        -- sp = {rgb={255,0,0}, intensity=0.5}, -- adds 50% red to special characters
+        -- you can also use functions for tint or any value part in the tint object
+        -- to create window-specific configurations
+        -- see the `Tinting` section of the README for more details.
+      },
+      -- prevent a window or buffer from being styled. You
+      blocklist = {
+        default = {
+          highlights = {
+            laststatus_3 = function(win, active)
+              -- Global statusline, laststatus=3, is currently disabled as multiple windows take
+              -- ownership of the StatusLine highlight (see #85).
+              if vim.go.laststatus == 3 then
+                -- you can also return tables (e.g. {'StatusLine', 'StatusLineNC'})
+                return 'StatusLine'
+              end
+            end,
+            -- Prevent ActiveTabs from highlighting.
+            'TabLineSel',
+            'Pmenu',
+            'PmenuSel',
+            'PmenuKind',
+            'PmenuKindSel',
+            'PmenuExtra',
+            'PmenuExtraSel',
+            'PmenuSbar',
+            'PmenuThumb',
+            -- Lua patterns are supported, just put the text between / symbols:
+            -- '/^StatusLine.*/' -- will match any highlight starting with "StatusLine"
+          },
+          buf_opts = { buftype = { 'prompt' } },
+          -- buf_name = {'name1','name2', name3'},
+          -- buf_vars = { variable = {'match1', 'match2'} },
+          -- win_opts = { option = {'match1', 'match2' } },
+          -- win_vars = { variable = {'match1', 'match2'} },
+          -- win_type = {'name1','name2', name3'},
+          -- win_config = { variable = {'match1', 'match2'} },
+        },
+        default_block_floats = function(win, active)
+          return win.win_config.relative ~= '' and (win ~= active or win.buf_opts.buftype == 'terminal') and true or false
+        end,
+        -- any_rule_name1 = {
+        --   buf_opts = {}
+        -- },
+        -- only_behind_float_windows = {
+        --   buf_opts = function(win, current)
+        --     if (win.win_config.relative == '')
+        --       and (current and current.win_config.relative ~= '') then
+        --         return false
+        --     end
+        --     return true
+        --   end
+        -- },
+      },
+      -- Link connects windows so that they style or unstyle together.
+      -- Properties are matched against the active window. Same format as blocklist above
+      link = {},
+      groupdiff = true, -- links diffs so that they style together
+      groupscrollbind = false, -- link scrollbound windows so that they style together.
+      -- enable to bind to FocusGained and FocusLost events. This allows fading inactive
+      -- tmux panes.
+      enablefocusfading = false,
+      -- Time in milliseconds before re-checking windows. This is only used when usecursorhold
+      -- is set to false.
+      checkinterval = 1000,
+      -- enables cursorhold event instead of using an async timer.  This may make Vimade
+      -- feel more performant in some scenarios. See h:updatetime.
+      usecursorhold = false,
+      -- when nohlcheck is disabled the highlight tree will always be recomputed. You may
+      -- want to disable this if you have a plugin that creates dynamic highlights in
+      -- inactive windows. 99% of the time you shouldn't need to change this value.
+      nohlcheck = true,
+      focus = {
+        providers = {
+          filetypes = {
+            default = {
+              -- If you use mini.indentscope, snacks.indent, or hlchunk, you can also highlight
+              -- using the same indent scope!
+              -- {'snacks', {}},
+              -- {'mini', {}},
+              -- {'hlchunk', {}},
+              {
+                'treesitter',
+                {
+                  min_node_size = 2,
+                  min_size = 1,
+                  max_size = 0,
+                  -- exclude types either too large and/or mundane
+                  exclude = {
+                    'script_file',
+                    'stream',
+                    'document',
+                    'source_file',
+                    'translation_unit',
+                    'chunk',
+                    'module',
+                    'stylesheet',
+                    'statement_block',
+                    'block',
+                    'pair',
+                    'program',
+                    'switch_case',
+                    'catch_clause',
+                    'finally_clause',
+                    'property_signature',
+                    'dictionary',
+                    'assignment',
+                    'expression_statement',
+                    'compound_statement',
+                  },
+                },
+              },
+              -- if treesitter fails or there isn't a good match, fallback to blanks
+              -- (similar to limelight)
+              { 'blanks', {
+                min_size = 1,
+                max_size = '35%',
+              } },
+              -- if blanks fails to find a good match, fallback to static 35%
+              { 'static', {
+                size = '35%',
+              } },
+            },
+            -- You can make custom configurations for any filetype.  Here are some examples.
+            -- markdown ={{'blanks', {min_size=0, max_size='50%'}}, {'static', {max_size='50%'}}}
+            -- javascript = {
+            -- -- only use treesitter (no fallbacks)
+            --   {'treesitter', { min_node_size = 2, include = {'if_statement', ...}}},
+            -- },
+            -- typescript = {
+            --   {'treesitter', { min_node_size = 2, exclude = {'if_statement'}}},
+            --   {'static', {size = '35%'}}
+            -- },
+            -- java = {
+            -- -- mini with a fallback to blanks
+            -- {'mini', {min_size = 1, max_size = 20}},
+            -- {'blanks', {min_size = 1, max_size = '100%' }},
+            -- },
+          },
+        },
+      },
+    },
+  },
+  {
     'stevearc/conform.nvim',
     event = { 'BufWritePre' },
     cmd = { 'ConformInfo' },
@@ -201,7 +365,408 @@ require('lazy').setup({
     dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
   },
   -- Fuzzy Finder (files, lsp, etc)
-  { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' } },
+  {
+    'nvim-telescope/telescope.nvim',
+    dependencies = {
+      {
+        'nvim-telescope/telescope-fzf-native.nvim',
+        build = 'make',
+      },
+      'nvim-telescope/telescope-file-browser.nvim',
+      { 'nvim-telescope/telescope-ui-select.nvim' },
+    },
+    keys = {
+      -- Open git files
+      {
+        '<C-p>',
+        function()
+          require('telescope.builtin').git_files()
+        end,
+        desc = 'Find Git Files',
+      },
+      {
+        '<leader>fP',
+        function()
+          require('telescope.builtin').find_files {
+            cwd = require('lazy.core.config').options.root,
+          }
+        end,
+        desc = 'Find Plugin File',
+      },
+      {
+        ';f',
+        function()
+          local builtin = require 'telescope.builtin'
+          builtin.find_files {
+            no_ignore = false,
+            hidden = true,
+          }
+        end,
+        desc = 'Lists files in your current working directory, respects .gitignore',
+      },
+      {
+        ';r',
+        function()
+          local builtin = require 'telescope.builtin'
+          builtin.live_grep {
+            additional_args = { '--hidden' },
+          }
+        end,
+        desc = 'Search for a string in your current working directory and get results live as you type, respects .gitignore',
+      },
+      {
+        '\\\\',
+        function()
+          local builtin = require 'telescope.builtin'
+          builtin.buffers()
+        end,
+        desc = 'Lists open buffers',
+      },
+      {
+        ';t',
+        function()
+          local builtin = require 'telescope.builtin'
+          builtin.help_tags()
+        end,
+        desc = 'Lists available help tags and opens a new window with the relevant help info on <cr>',
+      },
+      {
+        ';;',
+        function()
+          local builtin = require 'telescope.builtin'
+          builtin.resume()
+        end,
+        desc = 'Resume the previous telescope picker',
+      },
+      {
+        ';e',
+        function()
+          local builtin = require 'telescope.builtin'
+          builtin.diagnostics()
+        end,
+        desc = 'Lists Diagnostics for all open buffers or a specific buffer',
+      },
+      {
+        ';s',
+        function()
+          local builtin = require 'telescope.builtin'
+          builtin.treesitter()
+        end,
+        desc = 'Lists Function names, variables, from Treesitter',
+      },
+      {
+        ';c',
+        function()
+          local builtin = require 'telescope.builtin'
+          builtin.lsp_incoming_calls()
+        end,
+        desc = 'Lists LSP incoming calls for word under the cursor',
+      },
+      {
+        '<leader>e',
+        function()
+          local telescope = require 'telescope'
+
+          local function telescope_buffer_dir()
+            return vim.fn.expand '%:p:h'
+          end
+
+          telescope.extensions.file_browser.file_browser {
+            path = '%:p:h',
+            cwd = telescope_buffer_dir(),
+            respect_gitignore = false,
+            hidden = true,
+            grouped = true,
+            previewer = false,
+            initial_mode = 'normal',
+            layout_config = { height = 40 },
+          }
+        end,
+        desc = 'Open File Browser with the path of the current buffer',
+      },
+    },
+    config = function()
+      local telescope = require 'telescope'
+      local actions = require 'telescope.actions'
+      local fb_actions = require('telescope').extensions.file_browser.actions
+
+      require('telescope').setup {
+        {
+          'nvim-telescope/telescope.nvim',
+          dependencies = {
+            {
+              'nvim-telescope/telescope-fzf-native.nvim',
+              build = 'make',
+            },
+            'nvim-telescope/telescope-file-browser.nvim',
+            { 'nvim-telescope/telescope-ui-select.nvim' },
+          },
+          keys = {
+            -- Open git files
+            {
+              '<C-p>',
+              function()
+                require('telescope.builtin').git_files()
+              end,
+              desc = 'Find Git Files',
+            },
+            {
+              '<leader>fP',
+              function()
+                require('telescope.builtin').find_files {
+                  cwd = require('lazy.core.config').options.root,
+                }
+              end,
+              desc = 'Find Plugin File',
+            },
+            {
+              ';f',
+              function()
+                local builtin = require 'telescope.builtin'
+                builtin.find_files {
+                  no_ignore = false,
+                  hidden = true,
+                }
+              end,
+              desc = 'Lists files in your current working directory, respects .gitignore',
+            },
+            {
+              ';r',
+              function()
+                local builtin = require 'telescope.builtin'
+                builtin.live_grep {
+                  additional_args = { '--hidden' },
+                }
+              end,
+              desc = 'Search for a string in your current working directory and get results live as you type, respects .gitignore',
+            },
+            {
+              '\\\\',
+              function()
+                local builtin = require 'telescope.builtin'
+                builtin.buffers()
+              end,
+              desc = 'Lists open buffers',
+            },
+            {
+              ';t',
+              function()
+                local builtin = require 'telescope.builtin'
+                builtin.help_tags()
+              end,
+              desc = 'Lists available help tags and opens a new window with the relevant help info on <cr>',
+            },
+            {
+              ';;',
+              function()
+                local builtin = require 'telescope.builtin'
+                builtin.resume()
+              end,
+              desc = 'Resume the previous telescope picker',
+            },
+            {
+              ';e',
+              function()
+                local builtin = require 'telescope.builtin'
+                builtin.diagnostics()
+              end,
+              desc = 'Lists Diagnostics for all open buffers or a specific buffer',
+            },
+            {
+              ';s',
+              function()
+                local builtin = require 'telescope.builtin'
+                builtin.treesitter()
+              end,
+              desc = 'Lists Function names, variables, from Treesitter',
+            },
+            {
+              ';c',
+              function()
+                local builtin = require 'telescope.builtin'
+                builtin.lsp_incoming_calls()
+              end,
+              desc = 'Lists LSP incoming calls for word under the cursor',
+            },
+            {
+              '<leader>e',
+              function()
+                local telescope = require 'telescope'
+
+                local function telescope_buffer_dir()
+                  return vim.fn.expand '%:p:h'
+                end
+
+                telescope.extensions.file_browser.file_browser {
+                  path = '%:p:h',
+                  cwd = telescope_buffer_dir(),
+                  respect_gitignore = false,
+                  hidden = true,
+                  grouped = true,
+                  previewer = false,
+                  initial_mode = 'normal',
+                  layout_config = { height = 40 },
+                }
+              end,
+              desc = 'Open File Browser with the path of the current buffer',
+            },
+          },
+          config = function(_, opts)
+            local telescope = require 'telescope'
+            local actions = require 'telescope.actions'
+            local fb_actions = require('telescope').extensions.file_browser.actions
+
+            opts.defaults = vim.tbl_deep_extend('force', opts.defaults, {
+              wrap_results = true,
+              layout_strategy = 'horizontal',
+              layout_config = { prompt_position = 'top' },
+              sorting_strategy = 'ascending',
+              winblend = 0,
+              mappings = {
+                n = {},
+              },
+            })
+            opts.pickers = {
+              diagnostics = {
+                theme = 'ivy',
+                initial_mode = 'normal',
+                layout_config = {
+                  preview_cutoff = 9999,
+                },
+              },
+            }
+            opts.extensions = {
+              ['ui-select'] = {
+                require('telescope.themes').get_dropdown(),
+              },
+              file_browser = {
+                theme = 'dropdown',
+                -- disables netrw and use telescope-file-browser in its place
+                hijack_netrw = true,
+                mappings = {
+                  -- your custom insert mode mappings
+                  ['n'] = {
+                    -- your custom normal mode mappings
+                    ['N'] = fb_actions.create,
+                    ['h'] = fb_actions.goto_parent_dir,
+                    ['/'] = function()
+                      vim.cmd 'startinsert'
+                    end,
+                    ['<C-u>'] = function(prompt_bufnr)
+                      for i = 1, 10 do
+                        actions.move_selection_previous(prompt_bufnr)
+                      end
+                    end,
+                    ['<C-d>'] = function(prompt_bufnr)
+                      for i = 1, 10 do
+                        actions.move_selection_next(prompt_bufnr)
+                      end
+                    end,
+                    ['<PageUp>'] = actions.preview_scrolling_up,
+                    ['<PageDown>'] = actions.preview_scrolling_down,
+                  },
+                },
+              },
+            }
+            telescope.setup(opts)
+            require('telescope').load_extension 'fzf'
+            require('telescope').load_extension 'file_browser'
+            require('telescope').load_extension 'ui-select'
+
+            local builtin = require 'telescope.builtin'
+            -- Slightly advanced example of overriding default behavior and theme
+            vim.keymap.set('n', '<leader>/', function()
+              -- You can pass additional configuration to Telescope to change the theme, layout, etc.
+              builtin.current_buffer_fuzzy_find(require('telescope.themes').get_dropdown {
+                winblend = 10,
+                previewer = false,
+              })
+            end, { desc = '[/] Fuzzily search in current buffer' })
+
+            -- It's also possible to pass additional configuration options.
+            --  See `:help telescope.builtin.live_grep()` for information about particular keys
+            vim.keymap.set('n', '<leader>s/', function()
+              builtin.live_grep {
+                grep_open_files = true,
+                prompt_title = 'Live Grep in Open Files',
+              }
+            end, { desc = '[S]earch [/] in Open Files' })
+          end,
+        },
+        defaults = {
+          wrap_results = true,
+          layout_strategy = 'horizontal',
+          layout_config = { prompt_position = 'top' },
+          sorting_strategy = 'ascending',
+          winblend = 0,
+          mappings = {
+            n = {},
+          },
+        },
+        pickers = {
+          diagnostics = {
+            theme = 'ivy',
+            initial_mode = 'normal',
+            layout_config = {
+              preview_cutoff = 9999,
+            },
+          },
+        },
+        extensions = {
+          ['ui-select'] = {
+            require('telescope.themes').get_dropdown(),
+          },
+          file_browser = {
+            theme = 'dropdown',
+            -- disables netrw and use telescope-file-browser in its place
+            hijack_netrw = true,
+            mappings = {
+              -- your custom insert mode mappings
+              ['n'] = {
+                -- your custom normal mode mappings
+                ['N'] = fb_actions.create,
+                ['h'] = fb_actions.goto_parent_dir,
+                ['/'] = function()
+                  vim.cmd 'startinsert'
+                end,
+                ['<C-u>'] = function(prompt_bufnr)
+                  for i = 1, 10 do
+                    actions.move_selection_previous(prompt_bufnr)
+                  end
+                end,
+                ['<C-d>'] = function(prompt_bufnr)
+                  for i = 1, 10 do
+                    actions.move_selection_next(prompt_bufnr)
+                  end
+                end,
+                ['<PageUp>'] = actions.preview_scrolling_up,
+                ['<PageDown>'] = actions.preview_scrolling_down,
+              },
+            },
+          },
+        },
+      }
+    end,
+  },
+  {
+    'shellRaining/hlchunk.nvim',
+    event = { 'BufReadPre', 'BufNewFile' },
+    opts = {
+      chunk = {
+        enable = true,
+        style = {
+          { fg = '#9AA6DF' },
+        },
+        exclude_filetypes = {
+          yaml = true,
+        },
+      },
+      indent = {
+        enable = false,
+        chars = { '┊' },
+      },
+    },
+  },
   { 'folke/trouble.nvim', opts = {} },
   {
     'mbbill/undotree',
@@ -358,6 +923,136 @@ require('lazy').setup({
 
       -- Expand 'cc' into 'CodeCompanion' in the command line
       vim.cmd [[cab cc CodeCompanion]]
+    end,
+  },
+
+  {
+    'nvim-neo-tree/neo-tree.nvim',
+    dependencies = { 'MunifTanjim/nui.nvim' },
+    cmd = 'Neotree',
+    keys = {
+      {
+        '<leader>fe',
+        function()
+          require('neo-tree.command').execute { toggle = true, dir = LazyVim.root() }
+        end,
+        desc = 'Explorer NeoTree (Root Dir)',
+      },
+      {
+        '<leader>fE',
+        function()
+          require('neo-tree.command').execute { toggle = true, dir = vim.uv.cwd() }
+        end,
+        desc = 'Explorer NeoTree (cwd)',
+      },
+      -- { "<leader>e", "<leader>fe", desc = "Explorer NeoTree (Root Dir)", remap = true },
+      { '<leader>E', '<leader>fE', desc = 'Explorer NeoTree (cwd)', remap = true },
+      {
+        '<leader>ge',
+        function()
+          require('neo-tree.command').execute { source = 'git_status', toggle = true }
+        end,
+        desc = 'Git Explorer',
+      },
+      {
+        '<leader>be',
+        function()
+          require('neo-tree.command').execute { source = 'buffers', toggle = true }
+        end,
+        desc = 'Buffer Explorer',
+      },
+    },
+    deactivate = function()
+      vim.cmd [[Neotree close]]
+    end,
+    init = function()
+      -- FIX: use `autocmd` for lazy-loading neo-tree instead of directly requiring it,
+      -- because `cwd` is not set up properly.
+      vim.api.nvim_create_autocmd('BufEnter', {
+        group = vim.api.nvim_create_augroup('Neotree_start_directory', { clear = true }),
+        desc = 'Start Neo-tree with directory',
+        once = true,
+        callback = function()
+          if package.loaded['neo-tree'] then
+            return
+          else
+            local stats = vim.uv.fs_stat(vim.fn.argv(0))
+            if stats and stats.type == 'directory' then
+              require 'neo-tree'
+            end
+          end
+        end,
+      })
+    end,
+    opts = {
+      source_selector = {
+        winbar = true,
+        statusline = false,
+      },
+      sources = { 'filesystem', 'buffers', 'git_status' },
+      open_files_do_not_replace_types = { 'terminal', 'Trouble', 'trouble', 'qf', 'Outline' },
+      filesystem = {
+        bind_to_cwd = false,
+        follow_current_file = { enabled = true },
+        use_libuv_file_watcher = true,
+      },
+      window = {
+        mappings = {
+          ['l'] = 'open',
+          ['h'] = 'close_node',
+          ['<space>'] = 'none',
+          ['Y'] = {
+            function(state)
+              local node = state.tree:get_node()
+              local path = node:get_id()
+              vim.fn.setreg('+', path, 'c')
+            end,
+            desc = 'Copy Path to Clipboard',
+          },
+          ['O'] = {
+            function(state)
+              require('lazy.util').open(state.tree:get_node().path, { system = true })
+            end,
+            desc = 'Open with System Application',
+          },
+          ['P'] = { 'toggle_preview', config = { use_float = false } },
+        },
+      },
+      default_component_configs = {
+        indent = {
+          with_expanders = true, -- if nil and file nesting is enabled, will enable expanders
+          expander_collapsed = '',
+          expander_expanded = '',
+          expander_highlight = 'NeoTreeExpander',
+        },
+        git_status = {
+          symbols = {
+            unstaged = '󰄱',
+            staged = '󰱒',
+          },
+        },
+      },
+    },
+    config = function(_, opts)
+      local function on_move(data)
+        Snacks.rename.on_rename_file(data.source, data.destination)
+      end
+
+      local events = require 'neo-tree.events'
+      opts.event_handlers = opts.event_handlers or {}
+      vim.list_extend(opts.event_handlers, {
+        { event = events.FILE_MOVED, handler = on_move },
+        { event = events.FILE_RENAMED, handler = on_move },
+      })
+      require('neo-tree').setup(opts)
+      vim.api.nvim_create_autocmd('TermClose', {
+        pattern = '*lazygit',
+        callback = function()
+          if package.loaded['neo-tree.sources.git_status'] then
+            require('neo-tree.sources.git_status').refresh()
+          end
+        end,
+      })
     end,
   },
 }, {})

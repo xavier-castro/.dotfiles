@@ -14,18 +14,18 @@ setopt HIST_IGNORE_DUPS       # Don't record duplicated commands
 setopt HIST_EXPIRE_DUPS_FIRST # Delete dupes first when HISTFILE size exceeds HISTSIZE
 
 # Basic zsh settings for good UX
-setopt AUTO_CD              # If command is directory name, cd into it
-setopt NO_CASE_GLOB         # Case insensitive globbing
-setopt EXTENDED_GLOB        # Extended globbing capabilities
-setopt PROMPT_SUBST         # Allow parameter expansion in prompt
+setopt AUTO_CD       # If command is directory name, cd into it
+setopt NO_CASE_GLOB  # Case insensitive globbing
+setopt EXTENDED_GLOB # Extended globbing capabilities
+setopt PROMPT_SUBST  # Allow parameter expansion in prompt
 
 # Minimal but useful key bindings
-bindkey -e                  # Use emacs keybindings
-bindkey '^[[A' up-line-or-search    # Up arrow searches history
-bindkey '^[[B' down-line-or-search  # Down arrow searches history
+bindkey -e                         # Use emacs keybindings
+bindkey '^[[A' up-line-or-search   # Up arrow searches history
+bindkey '^[[B' down-line-or-search # Down arrow searches history
 
 # Fixed keybinding for tmux-sessionizer
-bindkey -s '^f' 'tmux-sessionizer\n'  # Simplified keybinding
+bindkey -s '^f' 'tmux-sessionizer\n' # Simplified keybinding
 
 # Basic completion system - faster than Oh My Zsh
 autoload -Uz compinit
@@ -36,14 +36,14 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # Case insensitive tab
 # Git status function for prompt - much faster than Oh My Zsh git plugin
 function git_prompt_info() {
   local ref
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
+  ref=$(git symbolic-ref HEAD 2>/dev/null) || return
   echo " %F{yellow}(${ref#refs/heads/})%f"
 }
 
 # Robbyrussell-inspired theme but much faster
 PROMPT='%F{cyan}%c%f$(git_prompt_info) %F{red}❯%f '
 
-# Critical aliases 
+# Critical aliases
 alias tt="tmux new-session -A -s 'MAIN'"
 alias ls="ls -G"
 alias ll="ls -la"
