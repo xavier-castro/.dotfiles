@@ -1,115 +1,188 @@
-local prefix = "<Leader>a"
+local venice_api_key = os.getenv("VENICE_API_KEY")
+
 return {
   {
-    "zbirenbaum/copilot.lua",
+    "shellRaining/hlchunk.nvim",
+    event = { "BufReadPre", "BufNewFile" },
     opts = {
-      suggestion = {
-        auto_trigger = true,
-        keymap = {
-          accept = "<C-l>",
-          accept_word = "<M-l>",
-          accept_line = "<M-S-l>",
-          next = "<M-]>",
-          prev = "<M-[>",
-          dismiss = "<C-e>",
+      chunk = {
+        enable = true,
+        style = {
+          { fg = "#9AA6DF" },
+        },
+        exclude_filetypes = {
+          yaml = true,
         },
       },
-      filetypes = {
-        markdown = true,
-        help = true,
+      indent = {
+        enable = false,
+        chars = { "┊" },
       },
     },
   },
   {
-    "yetone/avante.nvim",
-    event = "VeryLazy",
-    lazy = true,
-    version = false, -- set this if you want to always pull the latest change
-    opts = {
-      -- TODO: Figure this out
-      -- rag_service = {
-      --   enabled = true, -- Enables the RAG service
-      --   host_mount = os.getenv("HOME"), -- Host mount path for the rag service
-      --   provider = "openai", -- The provider to use for RAG service (e.g. openai or ollama)
-      --   llm_model = "", -- The LLM model to use for RAG service
-      --   embed_model = "", -- The embedding model to use for RAG service
-      --   endpoint = "https://api.openai.com/v1", -- The API endpoint for RAG service
-      -- },
-      -- add any opts here
-      mappings = {
-        ask = prefix .. "<CR>",
-        edit = prefix .. "e",
-        refresh = prefix .. "r",
-        focus = prefix .. "f",
-        toggle = {
-          default = prefix .. "t",
-          debug = prefix .. "d",
-          hint = prefix .. "h",
-          suggestion = prefix .. "s",
-          repomap = prefix .. "R",
-        },
-        diff = {
-          next = "]c",
-          prev = "[c",
-        },
-        files = {
-          add_current = prefix .. ".",
-        },
-      },
-      behaviour = {
-        auto_suggestions = false,
-      },
-      provider = "copilot",
-      copilot = {
-        model = "claude-3.7-sonnet",
-        temperature = 0,
-        max_tokens = 8192,
-      },
-      file_selector = {
-        --- @alias FileSelectorProvider "native" | "fzf" | "mini.pick" | "snacks" | "telescope" | string | fun(params: avante.file_selector.IParams|nil): nil
-        provider = "snacks",
-        -- Options override for custom providers
-        provider_opts = {},
-      },
-    },
-    -- if you want to build from source then do `make BUILD_FROM_SOURCE=true`
-    -- dynamically build it, taken from astronvim
-    build = vim.fn.has("win32") == 1 and "powershell -ExecutionPolicy Bypass -File Build.ps1 -BuildFromSource false"
-      or "make",
+    "olimorris/codecompanion.nvim",
     dependencies = {
-      -- "stevearc/dressing.nvim",
       "nvim-lua/plenary.nvim",
-      "MunifTanjim/nui.nvim",
-      {
-        -- support for image pasting
-        "HakonHarnes/img-clip.nvim",
-        event = "VeryLazy",
-        opts = {
-          -- recommended settings
-          default = {
-            embed_image_as_base64 = false,
-            prompt_for_file_name = false,
-            drag_and_drop = {
-              insert_mode = true,
+      "nvim-treesitter/nvim-treesitter",
+      "j-hui/fidget.nvim",
+    },
+    config = function()
+      require("plugins.codecompanion.fidget-spinner"):init()
+
+      require("codecompanion").setup({
+        display = {
+          action_palette = {
+            width = 95,
+            height = 10,
+            prompt = "Prompt ", -- Prompt used for interactive LLM calls
+            provider = "default", -- default|telescope|mini_pick
+            opts = {
+              show_default_actions = true, -- Show the default actions in the action palette?
+              show_default_prompt_library = true, -- Show the default prompt library in the action palette?
             },
-            -- required for Windows users
-            use_absolute_path = true,
           },
         },
-      },
-      {
-        -- Make sure to set this up properly if you have lazy=true
-        "MeanderingProgrammer/render-markdown.nvim",
-        enabled = false,
-        dependencies = {
-          -- make sure rendering happens even without opening a markdown file first
-          "yetone/avante.nvim",
+        adapters = {
+          venice = function()
+            return require("codecompanion.adapters").extend("openai_compatible", {
+              name = "venice",
+              formatted_name = "Venice",
+              roles = {
+                llm = "assistant",
+                user = "user",
+              },
+              opts = {
+                stream = true,
+              },
+              features = {
+                text = true,
+                tokens = true,
+                vision = false,
+              },
+              env = {
+                url = "https://api.venice.ai/api",
+                chat_url = "/v1/chat/completions",
+                -- api_key = "",  <-- get from sys env: OPENAI_API_KEY
+                api_key = venice_api_key,
+              },
+              schema = {
+                model = {
+                  default = "deepseek-r1-671b",
+                  -- Other models available:
+                  --   llama-3.1-405b
+                  --   llama-3.2-3b
+                  --   llama-3.3-70b
+                  --   dolphin-2.9.2-qwen2-72b
+                  --   deepseek-r1-llama-70b
+                  --   deepseek-r1-671b
+                  --   qwen2.5-coder-32b
+                  --   qwen-2.5-vl
+                },
+                temperature = {
+                  order = 2,
+                  mapping = "parameters",
+                  type = "number",
+                  optional = true,
+                  default = 0.8,
+                  desc = "What sampling temperature to use, between 0 and 2. Higher values like 0.8 will make the output more random, while lower values like 0.2 will make it more focused and deterministic. We generally recommend altering this or top_p but not both.",
+                  validate = function(n)
+                    return n >= 0 and n <= 2, "Must be between 0 and 2"
+                  end,
+                },
+                max_completion_tokens = {
+                  order = 3,
+                  mapping = "parameters",
+                  type = "integer",
+                  optional = true,
+                  default = nil,
+                  desc = "An upper bound for the number of tokens that can be generated for a completion.",
+                  validate = function(n)
+                    return n > 0, "Must be greater than 0"
+                  end,
+                },
+                presence_penalty = {
+                  order = 4,
+                  mapping = "parameters",
+                  type = "number",
+                  optional = true,
+                  default = 0,
+                  desc = "Number between -2.0 and 2.0. Positive values penalize new tokens based on whether they appear in the text so far, increasing the model's likelihood to talk about new topics.",
+                  validate = function(n)
+                    return n >= -2 and n <= 2, "Must be between -2 and 2"
+                  end,
+                },
+                top_p = {
+                  order = 5,
+                  mapping = "parameters",
+                  type = "number",
+                  optional = true,
+                  default = 0.9,
+                  desc = "A higher value (e.g., 0.95) will lead to more diverse text, while a lower value (e.g., 0.5) will generate more focused and conservative text. (Default: 0.9)",
+                  validate = function(n)
+                    return n >= 0 and n <= 1, "Must be between 0 and 1"
+                  end,
+                },
+                stop = {
+                  order = 6,
+                  mapping = "parameters",
+                  type = "string",
+                  optional = true,
+                  default = nil,
+                  desc = "Sets the stop sequences to use. When this pattern is encountered the LLM will stop generating text and return. Multiple stop patterns may be set by specifying multiple separate stop parameters in a modelfile.",
+                  validate = function(s)
+                    return s:len() > 0, "Cannot be an empty string"
+                  end,
+                },
+                frequency_penalty = {
+                  order = 8,
+                  mapping = "parameters",
+                  type = "number",
+                  optional = true,
+                  default = 0,
+                  desc = "Number between -2.0 and 2.0. Positive values penalize new tokens based on their existing frequency in the text so far, decreasing the model's likelihood to repeat the same line verbatim.",
+                  validate = function(n)
+                    return n >= -2 and n <= 2, "Must be between -2 and 2"
+                  end,
+                },
+                logit_bias = {
+                  order = 9,
+                  mapping = "parameters",
+                  type = "map",
+                  optional = true,
+                  default = nil,
+                  desc = "Modify the likelihood of specified tokens appearing in the completion. Maps tokens (specified by their token ID) to an associated bias value from -100 to 100. Use https://platform.openai.com/tokenizer to find token IDs.",
+                  subtype_key = {
+                    type = "integer",
+                  },
+                  subtype = {
+                    type = "integer",
+                    validate = function(n)
+                      return n >= -100 and n <= 100, "Must be between -100 and 100"
+                    end,
+                  },
+                },
+              },
+            })
+          end,
         },
-        opts = function(_, opts)
-          opts.file_types = opts.file_types or { "markdown", "norg", "rmd", "org" }
-          vim.list_extend(opts.file_types, { "Avante" })
-        end,
-      },
-    },
+        strategies = {
+          agent = { adapter = "venice" },
+          chat = { adapter = "anthropic" },
+          inline = { adapter = "anthropic" },
+        },
+      })
+      vim.keymap.set({ "n", "v" }, "<M-g>", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
+      vim.keymap.set(
+        { "n", "v" },
+        "<LocalLeader>a",
+        "<cmd>CodeCompanionChat Toggle<cr>",
+        { noremap = true, silent = true }
+      )
+      vim.keymap.set("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
+
+      -- Expand 'cc' into 'CodeCompanion' in the command line
+      vim.cmd([[cab cc CodeCompanion]])
+    end,
   },
 }
