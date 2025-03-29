@@ -2,16 +2,16 @@ return {
   'zbirenbaum/copilot.lua',
   opts = {
     suggestion = {
+      enabled = not vim.g.ai_cmp,
       auto_trigger = true,
+      hide_during_completion = vim.g.ai_cmp,
       keymap = {
-        accept = '<C-l>',
-        accept_word = '<M-l>',
-        accept_line = '<M-S-l>',
+        accept = "<Tav>", -- handled by nvim-cmp / blink.cmp
         next = '<M-]>',
         prev = '<M-[>',
-        dismiss = '<C-]>',
       },
     },
+    panel = { enabled = false },
     filetypes = {
       markdown = true,
       help = true,

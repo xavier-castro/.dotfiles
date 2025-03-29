@@ -1,13 +1,11 @@
-# kickstart-modular.nvim
+# kickstart.nvim
 
 ## Introduction
-
-*This is a fork of [nvim-lua/kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim) that moves from a single file to a multi file configuration.*
 
 A starting point for Neovim that is:
 
 * Small
-* Modular
+* Single-file
 * Completely Documented
 
 **NOT** a Neovim distribution, but instead a starting point for your configuration.
@@ -35,13 +33,13 @@ External Requirements:
   - If you want to write Golang, you will need `go`
   - etc.
 
-> **NOTE**
+> [!NOTE]
 > See [Install Recipes](#Install-Recipes) for additional Windows and Linux specific notes
 > and quick install snippets
 
 ### Install Kickstart
 
-> **NOTE**
+> [!NOTE]
 > [Backup](#FAQ) your previous configuration (if any exists)
 
 Neovim's configurations are located under the following paths, depending on your OS:
@@ -58,23 +56,24 @@ Neovim's configurations are located under the following paths, depending on your
 so that you have your own copy that you can modify, then install by cloning the
 fork to your machine using one of the commands below, depending on your OS.
 
-> **NOTE**
+> [!NOTE]
 > Your fork's URL will be something like this:
-> `https://github.com/<your_github_username>/kickstart-modular.nvim.git`
+> `https://github.com/<your_github_username>/kickstart.nvim.git`
 
 You likely want to remove `lazy-lock.json` from your fork's `.gitignore` file
 too - it's ignored in the kickstart repo to make maintenance easier, but it's
 [recommended to track it in version control](https://lazy.folke.io/usage/lockfile).
 
 #### Clone kickstart.nvim
-> **NOTE**
+
+> [!NOTE]
 > If following the recommended step above (i.e., forking the repo), replace
-> `dam9000` with `<your_github_username>` in the commands below
+> `nvim-lua` with `<your_github_username>` in the commands below
 
 <details><summary> Linux and Mac </summary>
 
 ```sh
-git clone https://github.com/dam9000/kickstart-modular.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
+git clone https://github.com/nvim-lua/kickstart.nvim.git "${XDG_CONFIG_HOME:-$HOME/.config}"/nvim
 ```
 
 </details>
@@ -84,13 +83,13 @@ git clone https://github.com/dam9000/kickstart-modular.nvim.git "${XDG_CONFIG_HO
 If you're using `cmd.exe`:
 
 ```
-git clone https://github.com/dam9000/kickstart.nvim.git "%localappdata%\nvim"
+git clone https://github.com/nvim-lua/kickstart.nvim.git "%localappdata%\nvim"
 ```
 
 If you're using `powershell.exe`
 
 ```
-git clone https://github.com/dam9000/kickstart.nvim.git "${env:LOCALAPPDATA}\nvim"
+git clone https://github.com/nvim-lua/kickstart.nvim.git "${env:LOCALAPPDATA}\nvim"
 ```
 
 </details>
@@ -146,9 +145,6 @@ examples of adding popularly requested plugins.
     into smaller parts. A fork of kickstart that does this while maintaining the
     same functionality is available here:
     * [kickstart-modular.nvim](https://github.com/dam9000/kickstart-modular.nvim)
-  * *NOTE: This is the fork that splits the configuration into smaller parts.*
-    The original repo with the single `init.lua` file is available here:
-    * [kickstart.nvim](https://github.com/nvim-lua/kickstart.nvim)
   * Discussions on this topic can be found here:
     * [Restructure the configuration](https://github.com/nvim-lua/kickstart.nvim/issues/218)
     * [Reorganize init.lua into a multi-file setup](https://github.com/nvim-lua/kickstart.nvim/pull/473)
