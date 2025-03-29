@@ -374,10 +374,6 @@ require('lazy').setup({
     -- Optional dependency
     config = function()
       require('nvim-autopairs').setup {}
-      -- If you want to automatically add `(` after selecting a function or method
-      local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
-      local cmp = require 'cmp'
-      cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
     end,
   },
   {
@@ -834,8 +830,11 @@ require('lazy').setup({
     dependencies = {
       'nvim-lua/plenary.nvim',
       'nvim-treesitter/nvim-treesitter',
+      'j-hui/fidget.nvim',
     },
     config = function()
+      require('plugins.codecompanion.fidget-spinner'):init()
+
       require('codecompanion').setup {
         adapters = {
           venice = function()
