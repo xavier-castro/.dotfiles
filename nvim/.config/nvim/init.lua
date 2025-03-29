@@ -183,12 +183,33 @@ require('lazy').setup({
       }
     end,
   },
+  {
+    'windwp/nvim-autopairs',
+    event = 'InsertEnter',
+    -- Optional dependency
+    dependencies = { 'hrsh7th/nvim-cmp' },
+    config = function()
+      require('nvim-autopairs').setup {}
+      -- If you want to automatically add `(` after selecting a function or method
+      local cmp_autopairs = require 'nvim-autopairs.completion.cmp'
+      local cmp = require 'cmp'
+      cmp.event:on('confirm_done', cmp_autopairs.on_confirm_done())
+    end,
+  },
   { -- Autocompletion
     'hrsh7th/nvim-cmp',
     dependencies = { 'hrsh7th/cmp-nvim-lsp', 'L3MON4D3/LuaSnip', 'saadparwaiz1/cmp_luasnip' },
   },
   -- Fuzzy Finder (files, lsp, etc)
   { 'nvim-telescope/telescope.nvim', version = '*', dependencies = { 'nvim-lua/plenary.nvim' } },
+  { 'folke/trouble.nvim', opts = {} },
+  {
+    'mbbill/undotree',
+
+    config = function()
+      vim.keymap.set('n', '<leader>u', vim.cmd.UndotreeToggle)
+    end,
+  },
   {
     'nvim-telescope/telescope-fzf-native.nvim',
     -- NOTE: If you have trouble with this installation, refer to the README for telescope-fzf-native.
@@ -489,7 +510,15 @@ end)
 -- Parsers must be installed manually via :TSInstall
 require('nvim-treesitter.configs').setup {
   highlight = {
-    enable = true, -- false will disable the whole extension
+    enable = true,
+    disable = function(lang, buf)
+      local max_filesize = 100 * 1024 -- 100 KB
+      local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
+      if ok and stats and stats.size > max_filesize then
+        return true
+      end
+    end,
+    additional_vim_regex_highlighting = false,
   },
   incremental_selection = {
     enable = true,
