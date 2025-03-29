@@ -109,3 +109,6 @@ fi
 # Uncomment to see total load time
 # LOAD_END=$EPOCHREALTIME
 # echo "Shell loaded in $((($LOAD_END - $LOAD_START) * 1000)) ms"
+
+# Added by Windsurf
+export PATH="/Users/xavier/.codeium/windsurf/bin:$PATH"
