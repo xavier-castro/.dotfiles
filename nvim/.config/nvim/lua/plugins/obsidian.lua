@@ -11,7 +11,7 @@ return {
     workspaces = {
       {
         name = "xcvault",
-        path = "~/xcvault",
+        path = "~/xcvault/",
       },
     },
 

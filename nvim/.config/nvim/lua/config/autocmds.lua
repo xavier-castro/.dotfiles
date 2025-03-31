@@ -1,27 +1,4 @@
--- Autocmds are automatically loaded on the VeryLazy event
--- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
---
--- Add any additional autocmds here
--- with `vim.api.nvim_create_autocmd`
---
--- Or remove existing autocmds by their group name (which is prefixed with `lazyvim_` for the defaults)
--- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
-
-local augroup = vim.api.nvim_create_augroup
 local autocmd = vim.api.nvim_create_autocmd
-local XavierGroup = augroup("XavierGroup", {})
-
-autocmd({ "BufWritePre" }, {
-  group = XavierGroup,
-  pattern = "*",
-  command = [[%s/\s\+$//e]],
-})
-
--- autocmd("BufEnter", {
---   group = XavierGroup,
---   callback = function()
---   end,
--- })
 
 -- Automatically sort classes in a .tsx file on save
 autocmd("BufWritePost", {
@@ -48,5 +25,47 @@ autocmd({ "User" }, {
       -- Format the buffer after the inline request has completed
       require("conform").format({ bufnr = request.buf })
     end
+  end,
+})
+
+local gdproject = io.open(vim.fn.getcwd() .. "/project.godot", "r")
+local godotserver = io.open("./godothost", "r")
+if gdproject then
+  io.close(gdproject)
+  if godotserver then
+    io.close(godotserver)
+    return
+  end
+  vim.fn.serverstart("./godothost")
+end
+
+-- Auto save buffer on leave
+autocmd("BufLeave", {
+  pattern = "*",
+  callback = function()
+    vim.cmd("silent! wa")
+  end,
+})
+
+-- Remove trailing whitespace on save
+autocmd("BufWritePre", {
+  pattern = "*",
+  callback = function()
+    vim.cmd([[silent! %s/\s\+$//e]])
+  end,
+})
+
+-- Setup filetype for .aliasesrc
+autocmd({ "BufRead", "BufNewFile" }, {
+  pattern = ".aliasesrc",
+  callback = function()
+    vim.bo.filetype = "zsh"
+  end,
+})
+
+autocmd("FileType", {
+  pattern = "hyprlang",
+  callback = function()
+    vim.bo.commentstring = "# %s"
   end,
 })

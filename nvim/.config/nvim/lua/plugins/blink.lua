@@ -12,6 +12,7 @@ return {
       and vim.b.completion ~= false
   end,
   event = "InsertEnter",
+
   ---@module 'blink.cmp'
   ---@type blink.cmp.Config
   opts = {
