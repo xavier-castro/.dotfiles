@@ -12,19 +12,12 @@ if not (vim.uv or vim.loop).fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
-if vim.g.vscode then
-    require("xavier.neovim-vscode.keymaps")
-    require('lazy').setup({{
-        import = 'xavier.neovim-vscode'
-    }}, {})
-else
+require 'xavier.config.autocommands'
+require 'xavier.config.set'
+require 'xavier.config.keymaps'
 
-    require 'xavier.config.autocommands'
-    require 'xavier.config.set'
-    require 'xavier.config.keymaps'
-    require('lazy').setup({{
-        import = 'xavier.plugins'
-    }}, {})
+require('lazy').setup({{
+    import = 'xavier.plugins'
+}}, {})
 
-end
 
