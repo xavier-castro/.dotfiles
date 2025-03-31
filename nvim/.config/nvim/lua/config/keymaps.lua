@@ -192,16 +192,6 @@ local keymaps = {
   },
   { N, "<leader>bd", "<cmd>lua Snacks.bufdelete()<CR>", opts("Delete buffer") },
 
-  -- Treewalker
-  { N_V, "<S-k>", "<cmd>Treewalker Up<CR>", opts("Treewalker Up") },
-  { N_V, "<S-j>", "<cmd>Treewalker Down<CR>", opts("Treewalker Down") },
-  { N_V, "<A-l>", "<cmd>Treewalker Right<CR>", opts("Treewalker Right") },
-  { N_V, "<A-h>", "<cmd>Treewalker Left<CR>", opts("Treewalker Left") },
-  { N, "<A-S-j>", "<cmd>Treewalker SwapDown<CR>", opts("Swap Down") },
-  { N, "<A-S-k>", "<cmd>Treewalker SwapUp<CR>", opts("Swap Up") },
-  { N, "<A-S-l>", "<cmd>Treewalker SwapRight<CR>", opts("Swap Right") },
-  { N, "<A-S-h>", "<cmd>Treewalker SwapLeft<CR>", opts("Swap Left") },
-
   -- Tabs
   { N, "<Tab><Tab>", "<cmd>tabnext<CR>", opts("Switch Tab") },
 

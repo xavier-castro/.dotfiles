@@ -77,21 +77,4 @@ return {
       })
     end,
   },
-  {
-    "mistricky/codesnap.nvim",
-    event = "BufRead",
-    build = "make build_generator",
-    keys = {
-      { "<leader>cs", "", mode = "x", desc = "+Code Snap" },
-      { "<leader>csc", "<cmd>CodeSnap<cr>", mode = "x", desc = "Save selected code snapshot into clipboard" },
-      { "<leader>css", "<cmd>CodeSnapSave<cr>", mode = "x", desc = "Save selected code snapshot in ~/Pictures" },
-    },
-    opts = {
-      save_path = "~/Pictures/CodeSnap/",
-      has_breadcrumbs = true,
-      bg_theme = "grape",
-      code_font_family = "JetBrainsMono Nerd Font",
-      watermark = "",
-    },
-  },
 }
