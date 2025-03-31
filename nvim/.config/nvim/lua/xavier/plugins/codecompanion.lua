@@ -1,7 +1,8 @@
 return {
   "olimorris/codecompanion.nvim",
-  version = "11.28.x",
   event = "VeryLazy",
+  dependencies = {
+  "nvim-lua/plenary.nvim"},
   config = function()
     require("codecompanion").setup({
       display = {
