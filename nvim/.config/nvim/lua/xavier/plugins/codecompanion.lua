@@ -14,7 +14,7 @@ return {
         chat = {
           roles = {
             llm = "  Copilot ",
-            user = "  D7OM ",
+            user = "  XVVR ",
           },
           keymaps = {
             close = {
