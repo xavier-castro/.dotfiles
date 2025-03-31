@@ -2,7 +2,7 @@ _G.Utils = {}
 
 -- UI-related functions
 function Utils.is_transparent_theme()
-  return require("nvconfig").base46.transparency
+  return true
 end
 
 function _G.ToggleLspStatus()

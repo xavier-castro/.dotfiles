@@ -50,5 +50,6 @@ return {
         hgcommit = false,
       },
     })
+    require("utils.copilot-stl").setup()
   end,
 }
