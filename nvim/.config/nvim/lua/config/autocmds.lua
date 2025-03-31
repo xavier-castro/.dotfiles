@@ -22,3 +22,31 @@ autocmd({ "BufWritePre" }, {
 --   callback = function()
 --   end,
 -- })
+
+-- Automatically sort classes in a .tsx file on save
+autocmd("BufWritePost", {
+  pattern = { "*.tsx", "*.vue" },
+  callback = function()
+    local clients = vim.lsp.get_clients()
+    for _, client in ipairs(clients) do
+      if client.name == "tailwindcss" then
+        local lsp = require("tailwind-tools.lsp")
+        lsp.sort_classes(true)
+        break
+      end
+    end
+  end,
+})
+
+local group = vim.api.nvim_create_augroup("CodeCompanionHooks", {})
+
+autocmd({ "User" }, {
+  pattern = "CodeCompanionInline*",
+  group = group,
+  callback = function(request)
+    if request.match == "CodeCompanionInlineFinished" then
+      -- Format the buffer after the inline request has completed
+      require("conform").format({ bufnr = request.buf })
+    end
+  end,
+})

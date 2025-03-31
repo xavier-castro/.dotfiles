@@ -23,6 +23,7 @@ return {
     indent = { enabled = false },
     line_number = { enabled = false },
     scroll = { enabled = false },
+    explorer = { enabled = true },
     picker = {
       sources = {
         explorer = {
