@@ -1,4 +1,4 @@
-return {{
+return {
     "folke/flash.nvim",
     event = "VeryLazy",
     ---@type Flash.Config
@@ -40,4 +40,4 @@ return {{
         end,
         desc = "Toggle Flash Search"
     }}
-}}
+}
