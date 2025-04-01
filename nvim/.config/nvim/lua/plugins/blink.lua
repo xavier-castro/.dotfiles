@@ -3,6 +3,16 @@ return {
 	version = "1.*",
 	dependencies = {
 		"Kaiser-Yang/blink-cmp-avante",
+		{
+			"L3MON4D3/LuaSnip",
+			dependencies = {
+				"rafamadriz/friendly-snippets",
+				config = function()
+					require("luasnip.loaders.from_vscode").lazy_load()
+					require("luasnip.loaders.from_lua").load({ paths = { "~/.config/nvim/snippets" } })
+				end,
+			},
+		},
 	},
 	opts_extend = {
 		"sources.completion.enabled_providers",
@@ -67,7 +77,7 @@ return {
 		--
 		sources = {
 			-- Add 'avante' to the list
-			default = { "avante" },
+			default = { "lsp", "path", "snippets", "buffer",  "avante" },
 			providers = {
 				avante = {
 					module = "blink-cmp-avante",

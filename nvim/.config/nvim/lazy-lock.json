@@ -1,4 +1,5 @@
 {
+  "LuaSnip": { "branch": "master", "commit": "c9b9a22904c97d0eb69ccb9bab76037838326817" },
   "avante.nvim": { "branch": "main", "commit": "06757e8bf57175da45180a26840c5db1f38cb4d9" },
   "blink-cmp-avante": { "branch": "master", "commit": "a214d1e50990ddc08743065d78f48e7671f2f281" },
   "blink.cmp": { "branch": "main", "commit": "49f211fe5d729df53df4c042d7c3464cf47d199e" },
@@ -6,7 +7,9 @@
   "conform.nvim": { "branch": "master", "commit": "b1a75324ddf96b7bb84963a297b1ed334db087c0" },
   "dressing.nvim": { "branch": "master", "commit": "2d7c2db2507fa3c4956142ee607431ddb2828639" },
   "format-ts-errors.nvim": { "branch": "main", "commit": "4b7418d6689bc0fd3c1db0500c67133422522384" },
+  "friendly-snippets": { "branch": "main", "commit": "efff286dd74c22f731cdec26a70b46e5b203c619" },
   "gruvbox": { "branch": "main", "commit": "977b0103c66d505233d739b417cf01bd5994883e" },
+  "hlchunk.nvim": { "branch": "main", "commit": "5465dd33ade8676d63f6e8493252283060cd72ca" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
   "lspsaga.nvim": { "branch": "main", "commit": "778d56ff9b387dacd14ae648ed5604394b486f51" },
   "mini.nvim": { "branch": "main", "commit": "687fa868d869078194c02065628712982d971fd6" },

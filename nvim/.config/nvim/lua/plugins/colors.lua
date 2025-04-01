@@ -1,5 +1,5 @@
 function ColorMyPencils(color)
-	color = color or "tokyonight"
+	color = color or "onedark"
 	vim.cmd.colorscheme(color)
 
 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -8,14 +8,17 @@ end
 
 return {
 	{
+		"shellRaining/hlchunk.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+		config = function()
+			require("hlchunk").setup({})
+		end,
+	},
+	{
 		"olimorris/onedarkpro.nvim",
 		priority = 1000, -- Ensure it loads first
 		config = function()
-			require("onedarkpro").setup({
-				options = {
-					transparency = true,
-				},
-			})
+			require("onedarkpro").setup({})
 		end,
 	},
 	{
