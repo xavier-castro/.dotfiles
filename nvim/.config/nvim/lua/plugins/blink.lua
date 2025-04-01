@@ -77,7 +77,7 @@ return {
 		--
 		sources = {
 			-- Add 'avante' to the list
-			default = { "lsp", "path", "snippets", "buffer",  "avante" },
+			default = { "lsp", "path", "snippets", "buffer", "avante" },
 			providers = {
 				avante = {
 					module = "blink-cmp-avante",
