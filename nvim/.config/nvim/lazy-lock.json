@@ -1,9 +1,13 @@
 {
   "LuaSnip": { "branch": "master", "commit": "03c8e67eb7293c404845b3982db895d59c0d1538" },
+  "avante.nvim": { "branch": "main", "commit": "06757e8bf57175da45180a26840c5db1f38cb4d9" },
   "blink.cmp": { "branch": "main", "commit": "49f211fe5d729df53df4c042d7c3464cf47d199e" },
+  "codecompanion.nvim": { "branch": "main", "commit": "7ffbc5a8f7ba349cea0c3f20bac6c404d4130a4a" },
   "conform.nvim": { "branch": "master", "commit": "b1a75324ddf96b7bb84963a297b1ed334db087c0" },
+  "dressing.nvim": { "branch": "master", "commit": "2d7c2db2507fa3c4956142ee607431ddb2828639" },
   "gruvbox": { "branch": "main", "commit": "977b0103c66d505233d739b417cf01bd5994883e" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
+  "lspsaga.nvim": { "branch": "main", "commit": "778d56ff9b387dacd14ae648ed5604394b486f51" },
   "mini.nvim": { "branch": "main", "commit": "687fa868d869078194c02065628712982d971fd6" },
   "neo-tree": { "branch": "main", "commit": "69f798bf9493b84df660ac3c6b2fc03e23956d25" },
   "nui.nvim": { "branch": "main", "commit": "8d3bce9764e627b62b07424e0df77f680d47ffdb" },
@@ -11,8 +15,11 @@
   "onedarkpro.nvim": { "branch": "main", "commit": "9f92da13ef8e44c97f1b31ccb3bddd30ab30ec9a" },
   "outline.nvim": { "branch": "main", "commit": "ae473fb51b7b6086de0876328c81a63f9c3ecfef" },
   "plenary.nvim": { "branch": "master", "commit": "857c5ac632080dba10aae49dba902ce3abf91b35" },
+  "render-markdown.nvim": { "branch": "main", "commit": "6b66c32364cd3e6101d37fd71ba4c6fbb2eddfda" },
   "rose-pine": { "branch": "main", "commit": "96ff3993a67356ee85d1cdab9be652cdc1c5d1ac" },
   "solarized-osaka.nvim": { "branch": "main", "commit": "e96ec4bb1a622d969d77bb0b4ffd525ccc44b73a" },
+  "telescope-fzf-native.nvim": { "branch": "main", "commit": "1f08ed60cafc8f6168b72b80be2b2ea149813e55" },
+  "telescope.nvim": { "branch": "master", "commit": "a0bbec21143c7bc5f8bb02e0005fa0b982edc026" },
   "tokyonight.nvim": { "branch": "main", "commit": "057ef5d260c1931f1dffd0f052c685dcd14100a3" },
   "vscode.nvim": { "branch": "main", "commit": "49d6014ba151fc6cc585b8d5f057ca7839077bf8" }
 }

@@ -55,6 +55,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 vim.api.nvim_create_autocmd("LspDetach", { command = "setl foldexpr<" })
 
+
+local group = vim.api.nvim_create_augroup("CodeCompanionHooks", {})
+autocmd({ "User" }, {
+  pattern = "CodeCompanionInline*",
+  group = group,
+  callback = function(request)
+    if request.match == "CodeCompanionInlineFinished" then
+      -- Format the buffer after the inline request has completed
+      require("conform").format({ bufnr = request.buf })
+    end
+  end,
+})
+
 -- autocmd('LspAttach', {
 --     group = XavierGroup,
 --     callback = function(e)

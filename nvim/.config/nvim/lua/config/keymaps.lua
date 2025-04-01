@@ -24,6 +24,12 @@ vim.keymap.set("n", "<leader>E", "<cmd>Neotree toggle position=current right<cr>
 vim.keymap.set("n", "<leader>lf", "<cmd>Format<cr>") -- Format
 vim.keymap.set("n", "<leader>a", "<cmd>Outline<CR>") -- Outline
 
+-- Resize window
+vim.keymap.set("n", "<C-w><left>", "<C-w><")
+vim.keymap.set("n", "<C-w><right>", "<C-w>>")
+vim.keymap.set("n", "<C-w><up>", "<C-w>+")
+vim.keymap.set("n", "<C-w><down>", "<C-w>-")
+
 -- Delete current buffer
 vim.keymap.set("n", "q", function()
 	require("mini.bufremove").delete()
