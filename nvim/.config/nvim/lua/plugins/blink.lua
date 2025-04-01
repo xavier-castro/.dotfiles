@@ -1,6 +1,9 @@
 return {
 	"saghen/blink.cmp",
 	version = "1.*",
+	dependencies = {
+		"Kaiser-Yang/blink-cmp-avante",
+	},
 	opts_extend = {
 		"sources.completion.enabled_providers",
 		"sources.compat",
@@ -62,6 +65,19 @@ return {
 		--   default = { "lsp", "path", "snippets", "buffer" },
 		-- },
 		--
+		sources = {
+			-- Add 'avante' to the list
+			default = { "avante" },
+			providers = {
+				avante = {
+					module = "blink-cmp-avante",
+					name = "Avante",
+					opts = {
+						-- options for blink-cmp-avante
+					},
+				},
+			},
+		},
 		keymap = {
 			["<Down>"] = { "select_next", "fallback" },
 			["<Up>"] = { "select_prev", "fallback" },
