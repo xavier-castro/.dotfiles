@@ -1,23 +1,155 @@
-vim.g.mapleader = ' '
-vim.g.maplocalleader = ','
-vim.g.have_nerd_font = true
+vim.loader.enable()
 
-local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
-if not (vim.uv or vim.loop).fs_stat(lazypath) then
-    local lazyrepo = 'https://github.com/folke/lazy.nvim.git'
-    local out = vim.fn.system {'git', 'clone', '--filter=blob:none', '--branch=stable', lazyrepo, lazypath}
-    if vim.v.shell_error ~= 0 then
-        error('Error cloning lazy.nvim:\n' .. out)
+--- Global configuration and functions
+-------------------------------------------------------------------------------
+_G.My = {
+  notes_dir = "~/Syncthing/SYNC_STUFF/notes/zk/notes",
+
+  --- Function to modify an existing highlight group in Neovim
+  ---@param name string The name of the highlight group to modify
+  ---@param opts table A table containing highlight options (e.g., colors, styles)
+  hi = function(name, opts)
+    local is_ok, hl = pcall(vim.api.nvim_get_hl, 0, { name = name })
+    if is_ok then
+      vim.iter(opts):each(function(k, v) hl[k] = v end)
+      pcall(vim.api.nvim_set_hl, 0, name, hl)
     end
-end ---@diagnostic disable-next-line: undefined-field
-vim.opt.rtp:prepend(lazypath)
+  end,
+}
 
-require 'xavier.config.autocommands'
-require 'xavier.config.set'
-require 'xavier.config.keymaps'
+--- Bootstrap 'mini.deps'
+-------------------------------------------------------------------------------
+local mini_path = vim.fn.stdpath("data") .. "/site/pack/deps/start/mini.nvim"
+---@diagnostic disable-next-line: undefined-field
+if not vim.uv.fs_stat(mini_path) then
+  vim.cmd('echo "Installing `mini.nvim`" | redraw')
+  local clone_cmd = { "git", "clone", "--filter=blob:none", "https://github.com/echasnovski/mini.nvim", mini_path }
+  vim.fn.system(clone_cmd)
+  vim.cmd("packadd mini.nvim | helptags ALL")
+  vim.cmd('echo "Installed `mini.nvim`" | redraw')
+end
+require("mini.deps").setup({ job = { n_threads = 4 } })
 
-require('lazy').setup({{
-    import = 'xavier.plugins'
-}}, {})
+--- Core configuration
+-------------------------------------------------------------------------------
+require("xavier.core.options")
+require("xavier.core.mappings")
+require("xavier.core.autocmds")
 
+--- Mini nvim
+-------------------------------------------------------------------------------
+local add, later = MiniDeps.add, MiniDeps.later
+local now_if_args = vim.fn.argc(-1) > 0 and MiniDeps.now or later
+
+add({ name = "mini.nvim" })
+-- vim.cmd("colorscheme selenized")
+-- vim.cmd("colorscheme selenized-bw")
+vim.cmd("colorscheme mininord")
+-- vim.cmd("colorscheme randomhue")
+
+require("xavier.plugins.mini.basics")
+require("xavier.plugins.mini.notify")
+require("mini.icons").setup()
+require("mini.icons").mock_nvim_web_devicons()
+require("mini.tabline").setup()
+require("xavier.plugins.mini.statusline")
+require("mini.extra").setup()
+require("mini.diff").setup({ view = { style = "sign" } })
+require("mini.git").setup({ command = { split = "vertical" } })
+require("xavier.plugins.mini.files")
+require("xavier.plugins.mini.hipatterns")
+
+later(function()
+  require("mini.misc").setup({ make_global = { "put", "put_text" } })
+  MiniMisc.setup_auto_root()
+  -- MiniMisc.setup_termbg_sync()
+end)
+later(function() require("mini.ai").setup() end) -- Enables 'ciq' (change inside quotes) or 'cib' (change inside brackets), etc.
+later(function() require("mini.bufremove").setup() end)
+-- later(require("mini.cursorword").setup)
+later(function() require("xavier.plugins.mini.indentscope") end)
+-- sa => surround around
+-- sd => surround delete
+-- sr => surround replace
+-- Example: Visual select a word -> sa"  (surround around quotes, 'saq' with mini.ai)
+later(function() require("mini.surround").setup() end)
+later(function() require("mini.visits").setup() end)
+later(function() require("xavier.plugins.mini.pick") end)
+later(function() require("xavier.plugins.mini.clue") end)
+later(function() require("xavier.plugins.mini.completion") end)
+later(function() require("mini.jump").setup({ delay = { highlight = 50 } }) end)
+later(
+  -- Press CR to start jumping
+  function() require("mini.jump2d").setup({ labels = "abcdefghijklmnopqrstu1234vwxyz", allowed_lines = { blank = false, cursor_at = false, fold = false } }) end
+)
+--- Plugins
+-------------------------------------------------------------------------------
+add({ source = "tpope/vim-sleuth" })
+-- add({ source = "kcl-lang/kcl.nvim" })
+
+-- Treesitter
+now_if_args(function()
+  add({
+    source = "nvim-treesitter/nvim-treesitter",
+    checkout = "master",
+    hooks = { post_checkout = function() vim.cmd("TSUpdate") end },
+  })
+  add({ source = "nvim-treesitter/nvim-treesitter-context" })
+  add({ source = "nvim-treesitter/nvim-treesitter-textobjects" })
+
+  require("xavier.plugins.treesitter")
+end)
+
+-- Nvim-Lspconfig
+now_if_args(function()
+  add({ source = "neovim/nvim-lspconfig" })
+  require("xavier.plugins.lsp")
+end)
+
+-- Formatting
+later(function()
+  add({ source = "stevearc/conform.nvim" })
+  require("xavier.plugins.formatting")
+end)
+
+-- Linting
+later(function()
+  add({ source = "mfussenegger/nvim-lint" })
+  require("xavier.plugins.linting")
+end)
+
+-- Outline
+later(function()
+  add({ source = "hedyhli/outline.nvim" })
+  require("xavier.plugins.outline")
+end)
+
+-- Neotree
+later(function()
+  add({
+    source = "nvim-neo-tree/neo-tree.nvim",
+    name = "neo-tree",
+    depends = {
+      { source = "nvim-lua/plenary.nvim", name = "plenary" },
+      { source = "MunifTanjim/nui.nvim", name = "nui" },
+    },
+  })
+  require("xavier.plugins.neotree")
+end)
+
+-- Mason
+later(function()
+  add({
+    source = "williamboman/mason.nvim",
+    hooks = { post_checkout = function() vim.cmd("MasonUpdate") end },
+  })
+  require("xavier.plugins.mason")
+end)
+
+-- local configs = {}
+-- for _, v in ipairs(vim.api.nvim_get_runtime_file("lsp/*", true)) do
+--   configs[vim.fn.fnamemodify(v, ":t:r")] = true
+-- end
+-- vim.lsp.enable(vim.tbl_keys(configs))
+--
 
