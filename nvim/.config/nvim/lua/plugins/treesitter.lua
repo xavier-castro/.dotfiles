@@ -3,6 +3,9 @@ return {
 	build = ":TSUpdate",
 	opts = {
 		ensure_installed = {
+			"tsx",
+			"css",
+			"html",
 			"vimdoc",
 			"javascript",
 			"typescript",

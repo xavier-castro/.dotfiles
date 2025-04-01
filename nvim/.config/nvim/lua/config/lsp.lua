@@ -55,7 +55,7 @@ vim.lsp.config("*", {
 })
 
 -- Enable each language server by filename under the lsp/ folder
-vim.lsp.enable({ "basedpyright", "luals", "ts_ls" })
+vim.lsp.enable({ "basedpyright", "luals", "ts_ls", "tailwindcss" })
 
 -- Log level
 vim.lsp.set_log_level(vim.log.levels.WARN)
