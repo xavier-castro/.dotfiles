@@ -30,11 +30,6 @@ vim.keymap.set("n", "<C-w><right>", "<C-w>>")
 vim.keymap.set("n", "<C-w><up>", "<C-w>+")
 vim.keymap.set("n", "<C-w><down>", "<C-w>-")
 
--- Delete current buffer
-vim.keymap.set("n", "q", function()
-	require("mini.bufremove").delete()
-end)
-
 -- Utils
 require("utils.float-terminal")
 require("utils.vscode-like-quickfix")
