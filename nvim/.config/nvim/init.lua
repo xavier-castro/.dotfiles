@@ -44,8 +44,8 @@ local now_if_args = vim.fn.argc(-1) > 0 and MiniDeps.now or later
 add({ name = "mini.nvim" })
 -- vim.cmd("colorscheme selenized")
 -- vim.cmd("colorscheme selenized-bw")
-vim.cmd("colorscheme mininord")
--- vim.cmd("colorscheme randomhue")
+-- vim.cmd("colorscheme mininord")
+vim.cmd("colorscheme randomhue")
 
 require("xavier.plugins.mini.basics")
 require("xavier.plugins.mini.notify")
