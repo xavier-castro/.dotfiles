@@ -29,6 +29,7 @@ return {
 	---@module 'blink.cmp'
 	---@type blink.cmp.Config
 	opts = {
+		snippets = { preset = "luasnip" },
 		completion = {
 			accept = {
 				auto_brackets = {
@@ -63,20 +64,10 @@ return {
 				enabled = true,
 			},
 		},
-		signature = { enabled = false, window = { border = "single" } },
-		sources = {
-			default = { "lsp", "path", "snippets", "buffer", "avante" },
-			providers = {
-				avante = {
-					module = "blink-cmp-avante",
-					name = "Avante",
-					opts = {},
-				},
-			},
-		},
+		signature = { enabled = true, window = { border = "single" } },
 		keymap = {
-			["<Tab>"] = { "select_next", "fallback" },
-			["<S-Tab>"] = { "select_prev", "fallback" },
+			["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
+			["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
 		},
 	},
 	appearance = {
