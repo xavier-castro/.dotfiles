@@ -44,6 +44,7 @@ return {
 			silent = false,
 		})
 
+        require("mini.statusline").setup({})
 		require("mini.surround").setup({})
 		require("mini.bufremove").setup({})
 		require("mini.ai").setup({})

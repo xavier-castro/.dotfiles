@@ -50,7 +50,7 @@ return {
 				},
 			},
 			list = {
-				selection = { preselect = false, auto_insert = true },
+				selection = { preselect = true, auto_insert = true },
 			},
 			documentation = {
 				auto_show = true,
@@ -64,33 +64,19 @@ return {
 			},
 		},
 		signature = { enabled = false, window = { border = "single" } },
-		-- sources = {
-		--   providers = {
-		--     ecolog = { name = "ecolog", module = "ecolog.integrations.cmp.blink_cmp" },
-		--     codecompanion = {
-		--       name = "CodeCompanion",
-		--       module = "codecompanion.providers.completion.blink",
-		--     },
-		--   },
-		--   default = { "lsp", "path", "snippets", "buffer" },
-		-- },
-		--
 		sources = {
-			-- Add 'avante' to the list
 			default = { "lsp", "path", "snippets", "buffer", "avante" },
 			providers = {
 				avante = {
 					module = "blink-cmp-avante",
 					name = "Avante",
-					opts = {
-						-- options for blink-cmp-avante
-					},
+					opts = {},
 				},
 			},
 		},
 		keymap = {
-			["<Down>"] = { "select_next", "fallback" },
-			["<Up>"] = { "select_prev", "fallback" },
+			["<Tab>"] = { "select_next", "fallback" },
+			["<S-Tab>"] = { "select_prev", "fallback" },
 		},
 	},
 	appearance = {
