@@ -41,11 +41,14 @@ require("xavier.core.autocmds")
 local add, later = MiniDeps.add, MiniDeps.later
 local now_if_args = vim.fn.argc(-1) > 0 and MiniDeps.now or later
 
+
+add({source='Mofiqul/vscode.nvim'})
 add({ name = "mini.nvim" })
 -- vim.cmd("colorscheme selenized")
 -- vim.cmd("colorscheme selenized-bw")
 -- vim.cmd("colorscheme mininord")
-vim.cmd("colorscheme randomhue")
+-- vim.cmd("colorscheme randomhue")
+vim.cmd("colorscheme vscode")
 
 require("xavier.plugins.mini.basics")
 require("xavier.plugins.mini.notify")
@@ -66,7 +69,6 @@ later(function()
 end)
 later(function() require("mini.ai").setup() end) -- Enables 'ciq' (change inside quotes) or 'cib' (change inside brackets), etc.
 later(function() require("mini.bufremove").setup() end)
--- later(require("mini.cursorword").setup)
 later(function() require("xavier.plugins.mini.indentscope") end)
 -- sa => surround around
 -- sd => surround delete

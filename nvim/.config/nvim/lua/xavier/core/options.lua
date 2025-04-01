@@ -98,10 +98,28 @@ vim.o.spelloptions = 'camel'      -- Treat parts of camelCase words as separate 
 vim.o.complete     = ".,b,kspell" -- Use spell check and don't use tags for completion
 
 -- Folds ----------------------------------------------------------------------
-vim.o.foldmethod       = 'indent' -- Set 'indent' folding method
-vim.o.foldlevel        = 1        -- Display all folds except top ones
-vim.o.foldlevelstart   = 99       -- Start with all folds open
-vim.o.foldnestmax      = 10       -- Create folds only for some number of nested levels
+-- vim.o.foldmethod       = 'indent' -- Set 'indent' folding method
+-- vim.o.foldlevel        = 1        -- Display all folds except top ones
+-- vim.o.foldlevelstart   = 99       -- Start with all folds open
+-- vim.o.foldnestmax      = 10       -- Create folds only for some number of nested levels
+vim.o.foldenable = true
+vim.o.foldlevel = 99
+vim.o.foldtext = ""
+vim.opt.foldcolumn = "0"
+vim.opt.fillchars:append({fold = " "})
+vim.o.foldmethod = 'expr'
+-- Default to treesitter folding
+vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+-- Prefer LSP folding if client supports it
+vim.api.nvim_create_autocmd('LspAttach', {
+    callback = function(args)
+         local client = vim.lsp.get_client_by_id(args.data.client_id)
+         if client:supports_method('textDocument/foldingRange') then
+             local win = vim.api.nvim_get_current_win()
+             vim.wo[win][0].foldexpr = 'v:lua.vim.lsp.foldexpr()'
+        end
+    end,
+ })
 
 -- Timers and performance -----------------------------------------------------
 vim.o.ttimeoutlen   = 5     -- Milliseconds to wait for a key code sequence to complete
