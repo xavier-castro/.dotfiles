@@ -64,10 +64,11 @@ function nvm_commands() {
   [[ -z "$NVM_LOADED" ]] && load_nvm
   "$@"
 }
-alias nvm='nvm_commands nvm'
-alias npm='nvm_commands npm'
-alias node='nvm_commands node'
-alias npx='nvm_commands npx'
+# alias nvm='nvm_commands nvm'
+# alias npm='nvm_commands npm'
+# alias node='nvm_commands node'
+# alias npx='nvm_commands npx'
+alias bunx='bun x'
 
 # PNPM lazy loading
 export PNPM_HOME="/Users/xavier/Library/pnpm"
