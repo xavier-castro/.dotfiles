@@ -39,10 +39,10 @@ local opts = {
   notify_on_error = true,
 }
 
-local xdg_config = vim.fn.getenv("XDG_CONFIG_HOME") ~= vim.NIL and vim.fn.getenv("XDG_CONFIG_HOME") or (vim.fn.getenv("HOME") .. "/.config")
-require("conform").formatters.yamlfmt = {
-  prepend_args = { "-conf", xdg_config .. "/" .. utils.nvim_appname .. "/extra/yamlfmt" },
-}
+-- local xdg_config = vim.fn.getenv("XDG_CONFIG_HOME") ~= vim.NIL and vim.fn.getenv("XDG_CONFIG_HOME") or (vim.fn.getenv("HOME") .. "/.config")
+-- require("conform").formatters.yamlfmt = {
+--   prepend_args = { "-conf", xdg_config .. "/" .. utils.nvim_appname .. "/extra/yamlfmt" },
+-- }
 require("conform").formatters.shfmt = { prepend_args = { "--indent", "4" } }
 require("conform").formatters.ruff = { prepend_args = { "--ignore", "F841" } }
 require("conform").formatters.stylua = { prepend_args = utils.find_stylua_conf }

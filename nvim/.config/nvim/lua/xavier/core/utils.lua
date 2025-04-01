@@ -6,13 +6,22 @@ vim.cmd("command! GetActiveLSPClients :lua =require('xavier.core.utils').get_act
 local M = {}
 
 -- directory configuration
-M.nvim_appname = vim.fn.getenv("NVIM_APPNAME") ~= vim.NIL and vim.fn.getenv("NVIM_APPNAME") or "nvim"
+local function get_nvim_appname()
+  local appname = vim.fn.getenv("NVIM_APPNAME")
+  return appname and tostring(appname) or "nvim"
+end
+
+M.nvim_appname = get_nvim_appname()
 
 M.find_stylua_conf = function()
+  local home = tostring(vim.fn.expand("$HOME"))
+  local xdg_config = vim.fn.getenv("XDG_CONFIG_HOME")
+  local config_path = xdg_config and tostring(xdg_config) or (home .. "/.config")
+  
   local conf_paths = {
     vim.fn.getcwd() .. "/stylua.toml",
     vim.fn.getcwd() .. "/.stylua.toml",
-    vim.fn.getenv("XDG_CONFIG_HOME") .. "/" .. M.nvim_appname .. "/stylua.toml",
+    config_path .. "/" .. M.nvim_appname .. "/stylua.toml",
   }
 
   for _, v in ipairs(conf_paths) do
