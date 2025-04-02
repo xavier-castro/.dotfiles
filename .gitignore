@@ -5,3 +5,4 @@ karabiner/.config/karabiner/automatic_backups
 # Ignore private environment files
 zsh/.zshenv_private
 **/.zshenv_private
+.aider*

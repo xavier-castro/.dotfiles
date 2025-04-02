@@ -15,6 +15,10 @@ return {
   --   end,
   --   priority = 1000
   -- },
+  {
+    "mcauley-penney/phobos-anomaly.nvim",
+    priority = 1000
+  },
 
   {
     "folke/tokyonight.nvim",

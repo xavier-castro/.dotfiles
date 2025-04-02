@@ -24,6 +24,10 @@ set -gx PATH ~/bin $PATH
 set -gx PATH ~/.local/bin $PATH
 set -gx PATH ~/.local/scripts $PATH
 
+# Aider
+alias aiscrape "python -m aider.scrape"
+
+
 # NodeJS
 set -gx PATH node_modules/.bin $PATH
 
