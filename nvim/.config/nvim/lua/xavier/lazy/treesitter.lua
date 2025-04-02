@@ -14,7 +14,7 @@ return {
       ignore_install = {},
       auto_install = true,
       highlight = {
-        enable = true,
+        enable = false,
       },
       indent = {
         enable = true,

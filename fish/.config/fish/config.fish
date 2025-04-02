@@ -25,7 +25,8 @@ set -gx PATH ~/.local/bin $PATH
 set -gx PATH ~/.local/scripts $PATH
 
 # Aider
-alias aiscrape "python -m aider.scrape"
+alias aidscrape "python -m aider.scrape"
+alias aidergem "aider --model gemini/gemini-2.5-pro-exp-03-25"
 
 
 # NodeJS
