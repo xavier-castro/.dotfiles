@@ -21,6 +21,7 @@ autocmd({ "BufWritePre" }, {
 	command = [[%s/\s\+$//e]],
 })
 
+
 -- https://www.reddit.com/r/neovim/comments/1jmqd7t/sorry_ufo_these_7_lines_replaced_you/
 vim.api.nvim_create_autocmd("LspAttach", {
 	callback = function(args)
@@ -47,21 +48,3 @@ autocmd({ "User" }, {
 })
 
 
--- Remember folds on buffer save and load
-local fold_group = augroup("RememberFolds", {})
-
-autocmd("BufWinLeave", {
-	group = fold_group,
-	pattern = "*",
-	callback = function()
-		vim.cmd("mkview")
-	end,
-})
-
-autocmd("BufWinEnter", {
-	group = fold_group,
-	pattern = "*",
-	callback = function()
-		vim.cmd("silent! loadview")
-	end,
-})

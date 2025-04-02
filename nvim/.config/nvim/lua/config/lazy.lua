@@ -21,8 +21,6 @@ vim.opt.rtp:prepend(lazypath)
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
-vim.cmd.colorscheme("xcnoir")
-
 require("config.options")
 require("config.keymaps")
 require("config.autocommands")
