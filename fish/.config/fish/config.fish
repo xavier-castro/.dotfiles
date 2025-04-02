@@ -14,6 +14,7 @@ alias ll "ls -l"
 alias lla "ll -A"
 alias g git
 alias c claude
+alias brew="env PATH=(string replace (pyenv root)/shims '' \"$PATH\") brew"
 command -qv nvim && alias vim nvim
 
 set -gx EDITOR nvim
@@ -45,3 +46,5 @@ set LOCAL_CONFIG (dirname (status --current-filename))/config-local.fish
 if test -f $LOCAL_CONFIG
     source $LOCAL_CONFIG
 end
+
+# Pyenv is lazily initialized (see functions/__pyenv_init.fish)
