@@ -30,7 +30,6 @@
   "nvim-treesitter": { "branch": "master", "commit": "30654ee72a69e7c76a54b66d748dae088429e863" },
   "nvim-ts-autotag": { "branch": "main", "commit": "a1d526af391f6aebb25a8795cbc05351ed3620b5" },
   "peek.nvim": { "branch": "master", "commit": "5820d937d5414baea5f586dc2a3d912a74636e5b" },
-  "phobos-anomaly.nvim": { "branch": "main", "commit": "bc970da6e5ded6c006c8ea3f3e799a6b11090219" },
   "plenary.nvim": { "branch": "master", "commit": "857c5ac632080dba10aae49dba902ce3abf91b35" },
   "rose-pine": { "branch": "main", "commit": "96ff3993a67356ee85d1cdab9be652cdc1c5d1ac" },
   "telescope.nvim": { "branch": "master", "commit": "d90956833d7c27e73c621a61f20b29fdb7122709" },

@@ -1,5 +1,5 @@
 function ColorMyPencils(color)
-  color = color or ""
+  color = color or "rose-pine-moon"
   vim.cmd.colorscheme(color)
 
   vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -8,13 +8,13 @@ end
 
 return {
 
-  {
-    "mcauley-penney/phobos-anomaly.nvim",
-    config = function()
-      vim.cmd.colorscheme("phobos-anomaly")
-    end,
-    priority = 1000
-  },
+  -- {
+  --   "mcauley-penney/phobos-anomaly.nvim",
+  --   config = function()
+  --     vim.cmd.colorscheme("phobos-anomaly")
+  --   end,
+  --   priority = 1000
+  -- },
 
   {
     "folke/tokyonight.nvim",
