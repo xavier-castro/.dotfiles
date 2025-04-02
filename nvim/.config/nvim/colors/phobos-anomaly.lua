@@ -313,4 +313,3 @@ hl["VisualNonText"] = { fg = hl["Comment"]["fg"], bg = hl["Visual"]["bg"] }
 for group, opts in pairs(hl) do
   vim.api.nvim_set_hl(0, group, opts)
 end
-

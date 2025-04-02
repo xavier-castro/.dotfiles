@@ -1,5 +1,5 @@
 function ColorMyPencils(color)
-  color = color or "rose-pine-moon"
+  color = color or "solarized-osaka"
   vim.cmd.colorscheme(color)
 
   vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -8,13 +8,6 @@ end
 
 return {
 
-  -- {
-  --   "mcauley-penney/phobos-anomaly.nvim",
-  --   config = function()
-  --     vim.cmd.colorscheme("phobos-anomaly")
-  --   end,
-  --   priority = 1000
-  -- },
   {
     "mcauley-penney/phobos-anomaly.nvim",
     priority = 1000
@@ -81,6 +74,50 @@ return {
   },
 
   {
+    "craftzdog/solarized-osaka.nvim",
+    lazy = true,
+    priority = 1000,
+    opts = function()
+      return {
+        transparent = true,
+      }
+    end,
+  },
+
+
+	-- filename
+	{
+		"b0o/incline.nvim",
+		dependencies = { "craftzdog/solarized-osaka.nvim" },
+		event = "BufReadPre",
+		priority = 1200,
+		config = function()
+			local colors = require("solarized-osaka.colors").setup()
+			require("incline").setup({
+				highlight = {
+					groups = {
+						InclineNormal = { guibg = colors.magenta500, guifg = colors.base04 },
+						InclineNormalNC = { guifg = colors.violet500, guibg = colors.base03 },
+					},
+				},
+				window = { margin = { vertical = 0, horizontal = 1 } },
+				hide = {
+					cursorline = true,
+				},
+				render = function(props)
+					local filename = vim.fn.fnamemodify(vim.api.nvim_buf_get_name(props.buf), ":t")
+					if vim.bo[props.buf].modified then
+						filename = "[+] " .. filename
+					end
+
+					local icon, color = require("nvim-web-devicons").get_icon_color(filename)
+					return { { icon, guifg = color }, { " " }, { filename } }
+				end,
+			})
+		end,
+	},
+
+  {
     "rose-pine/neovim",
     name = "rose-pine",
     config = function()
@@ -91,7 +128,7 @@ return {
         },
       })
 
-      -- ColorMyPencils();
+      ColorMyPencils();
     end
   },
 

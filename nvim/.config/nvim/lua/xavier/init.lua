@@ -30,16 +30,6 @@ autocmd({ "BufWritePre" }, {
   command = [[%s/\s\+$//e]],
 })
 
-autocmd('BufEnter', {
-  group = XavierGroup,
-  callback = function()
-    if vim.bo.filetype == "zig" then
-      vim.cmd.colorscheme("tokyonight-night")
-    else
-      vim.cmd.colorscheme("phobos-anomaly")
-    end
-  end
-})
 
 local og_virt_text
 local og_virt_line
