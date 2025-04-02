@@ -1,2 +1,4 @@
-require("config.lazy")
-require("config.lsp")
+require("xavier")
+
+-- hello fem
+

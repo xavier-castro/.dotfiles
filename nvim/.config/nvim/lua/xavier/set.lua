@@ -1,9 +1,9 @@
 vim.opt.guicursor = ""
 vim.opt.nu = true
 vim.opt.relativenumber = true
-vim.opt.tabstop = 4
-vim.opt.softtabstop = 4
-vim.opt.shiftwidth = 4
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.shiftwidth = 2
 vim.opt.expandtab = true
 vim.opt.smartindent = true
 vim.opt.wrap = false
@@ -19,13 +19,3 @@ vim.opt.signcolumn = "yes"
 vim.opt.isfname:append("@-@")
 vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
-vim.opt.cursorline = true
-
--- Nice and simple folding:
-vim.o.foldenable = true
-vim.o.foldlevel = 99
-vim.o.foldmethod = "expr"
-vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.o.foldtext = ""
-vim.opt.foldcolumn = "0"
-vim.opt.fillchars:append({ fold = " " })
