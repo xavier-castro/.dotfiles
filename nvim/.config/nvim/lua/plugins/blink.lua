@@ -61,7 +61,7 @@ return {
 				},
 			},
 			ghost_text = {
-				enabled = true,
+				enabled = false,
 			},
 		},
 		signature = { enabled = true, window = { border = "single" } },
