@@ -43,7 +43,7 @@ function git_prompt_info() {
 # Robbyrussell-inspired theme but much faster
 PROMPT='%F{cyan}%c%f$(git_prompt_info) %F{red}❯%f '
 
-# Critical aliases 
+# Critical aliases
 alias tt="tmux new-session -A -s 'MAIN'"
 alias ls="ls -G"
 alias ll="ls -la"
@@ -68,6 +68,9 @@ alias nvm='nvm_commands nvm'
 alias npm='nvm_commands npm'
 alias node='nvm_commands node'
 alias npx='nvm_commands npx'
+
+
+export PATH="$HOME/.cargo/bin:$PATH"
 
 # PNPM lazy loading
 export PNPM_HOME="/Users/xavier/Library/pnpm"
@@ -109,6 +112,3 @@ fi
 # Uncomment to see total load time
 # LOAD_END=$EPOCHREALTIME
 # echo "Shell loaded in $((($LOAD_END - $LOAD_START) * 1000)) ms"
-
-# Added by Windsurf
-export PATH="/Users/xavier/.codeium/windsurf/bin:$PATH"

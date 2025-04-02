@@ -7,10 +7,8 @@ return {
 			options = {
 				-- Basic options ('number', 'ignorecase', and many more)
 				basic = false,
-
 				-- Extra UI features ('winblend', 'cmdheight=0', ...)
 				extra_ui = false,
-
 				-- Presets for window borders ('single', 'double', ...)
 				win_borders = "bold",
 			},
@@ -43,8 +41,6 @@ return {
 			-- Whether to disable showing non-error feedback
 			silent = false,
 		})
-
-        require("mini.statusline").setup({})
 		require("mini.surround").setup({})
 		require("mini.bufremove").setup({})
 		require("mini.ai").setup({})

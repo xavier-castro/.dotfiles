@@ -4,7 +4,11 @@ return {
 	dependencies = {
 		{ "nvim-lua/plenary.nvim", branch = "master" },
 		"nvim-treesitter/nvim-treesitter",
+		"j-hui/fidget.nvim",
 	},
+	init = function()
+		require("plugins.codecompanion.fidget-spinner"):init()
+	end,
 	config = function()
 		require("codecompanion").setup({
 			display = {
