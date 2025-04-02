@@ -40,3 +40,11 @@ vim.keymap.set("n", "<C-h>", "<C-w>h", { desc = "Go to left window" })
 vim.keymap.set("n", "<C-j>", "<C-w>j", { desc = "Go to lower window" })
 vim.keymap.set("n", "<C-k>", "<C-w>k", { desc = "Go to upper window" })
 vim.keymap.set("n", "<C-l>", "<C-w>l", { desc = "Go to right window" })
+
+-- Outline
+vim.keymap.set("n", "<leader>a", "<cmd>Outline<cr>")
+
+vim.keymap.set("n", "<leader>lf",
+  function() require("conform").format({ async = false, lsp_format = "fallback", timeout_ms = 5000 }) end)
+vim.keymap.set("v", "<leader>lf",
+  function() require("conform").format({ async = false, lsp_format = "fallback", timeout_ms = 5000 }) end)
