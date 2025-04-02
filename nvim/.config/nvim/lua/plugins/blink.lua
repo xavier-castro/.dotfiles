@@ -66,8 +66,16 @@ return {
 		},
 		signature = { enabled = true, window = { border = "single" } },
 		keymap = {
-			["<Tab>"] = { "select_next", "snippet_forward", "fallback" },
-			["<S-Tab>"] = { "select_prev", "snippet_backward", "fallback" },
+			["<Tab>"] = {
+				"snippet_forward",
+				function()
+					if vim.g.ai_accept then
+						return vim.g.ai_accept()
+					end
+				end,
+				"fallback",
+			},
+			["<S-Tab>"] = { "snippet_backward", "fallback" },
 		},
 	},
 	appearance = {

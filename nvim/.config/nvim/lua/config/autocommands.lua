@@ -45,3 +45,23 @@ autocmd({ "User" }, {
 		end
 	end,
 })
+
+
+-- Remember folds on buffer save and load
+local fold_group = augroup("RememberFolds", {})
+
+autocmd("BufWinLeave", {
+	group = fold_group,
+	pattern = "*",
+	callback = function()
+		vim.cmd("mkview")
+	end,
+})
+
+autocmd("BufWinEnter", {
+	group = fold_group,
+	pattern = "*",
+	callback = function()
+		vim.cmd("silent! loadview")
+	end,
+})
