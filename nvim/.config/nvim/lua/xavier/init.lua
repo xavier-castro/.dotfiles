@@ -63,12 +63,16 @@ vim.api.nvim_create_autocmd({ 'CursorMoved', 'DiagnosticChanged' }, {
   end
 })
 
-vim.api.nvim_create_autocmd('ModeChanged', {
-  group = vim.api.nvim_create_augroup('diagnostic_redraw', {}),
+-- Theme on bufenter
+autocmd({ "BufEnter" }, {
+  group = XavierGroup,
+  pattern = "BufEnter",
   callback = function()
-    pcall(vim.diagnostic.show)
+    vim.cmd.colorschmee("rose-pine-moon")
   end
 })
+
+
 
 autocmd('LspAttach', {
   group = XavierGroup,
@@ -82,8 +86,34 @@ autocmd('LspAttach', {
     vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
     vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-    vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-    vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+    -- vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
+    -- vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+
+    vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", { desc = "Show hover doc" })
+    vim.keymap.set("n", "<leader>ol", "<cmd>Lspsaga outline<CR>", { desc = "Show outline" })
+    vim.keymap.set("n", "gpd", "<cmd>Lspsaga peek_definition<CR>", { desc = "Peek definition" })
+    vim.keymap.set("n", "gpt", "<cmd>Lspsaga peek_type_definition<CR>", { desc = "Peek type definition" })
+    vim.keymap.set("n", "gdd", "<cmd>Lspsaga goto_definition<CR>", { desc = "Goto definition" })
+    vim.keymap.set("n", "gdt", "<cmd>Lspsaga goto_type_definition<CR>", { desc = "Goto type definition" })
+    vim.keymap.set("n", "<M-.>", "<cmd>Lspsaga finder<cr>")
+
+
+    vim.keymap.set("n", "[d", function()
+      require("lspsaga.diagnostic"):goto_prev()
+    end, { desc = "Previous diagnostic" })
+
+    vim.keymap.set("n", "]d", function()
+      require("lspsaga.diagnostic"):goto_next()
+    end, { desc = "Next diagnostic" })
+
+    vim.keymap.set("n", "[e", function()
+      require("lspsaga.diagnostic"):goto_prev({ severity = vim.diagnostic.severity.ERROR })
+    end, { desc = "Previous error" })
+
+    vim.keymap.set("n", "]e", function()
+      require("lspsaga.diagnostic"):goto_next({ severity = vim.diagnostic.severity.ERROR })
+    end, { desc = "Next error" })
+    -- Lspsaga
   end
 })
 

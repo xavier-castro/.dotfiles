@@ -23,8 +23,12 @@ return {
     })
     vim.keymap.set("n", "<S-r>", "<cmd>Lspsaga hover_doc<CR>", { desc = "Show hover doc" })
     vim.keymap.set("n", "<leader>ol", "<cmd>Lspsaga outline<CR>", { desc = "Show outline" })
-    vim.keymap.set("n", "<C-c>d", "<cmd>Lspsaga peek_definition<CR>", { desc = "Peek definition" })
-    vim.keymap.set("n", "<C-c>t", "<cmd>Lspsaga peek_type_definition<CR>", { desc = "Peek type definition" })
+    vim.keymap.set("n", "gpd", "<cmd>Lspsaga peek_definition<CR>", { desc = "Peek definition" })
+    vim.keymap.set("n", "gpt", "<cmd>Lspsaga peek_type_definition<CR>", { desc = "Peek type definition" })
+    vim.keymap.set("n", "gdd", "<cmd>Lspsaga goto_definition<CR>", { desc = "Goto definition" })
+    vim.keymap.set("n", "gdt", "<cmd>Lspsaga goto_type_definition<CR>", { desc = "Goto type definition" })
+    vim.keymap.set("n", "<M-.>", "<cmd>Lspsaga finder<cr>")
+
 
     vim.keymap.set("n", "[d", function()
       require("lspsaga.diagnostic"):goto_prev()
