@@ -80,7 +80,6 @@ vim.api.nvim_create_autocmd('ModeChanged', {
   end
 })
 
-
 autocmd('LspAttach', {
   group = XavierGroup,
   callback = function(e)
