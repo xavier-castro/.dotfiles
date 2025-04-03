@@ -1,5 +1,7 @@
 # High-performance zsh configuration
-
+export EDITOR="nvim"
+export VISUAL="nvim"
+export PATH="$HOME/.local/bin:$HOME/.local/scripts:$PATH"
 # Enable timing measurement (uncomment to enable)
 # zmodload zsh/datetime
 # LOAD_START=$EPOCHREALTIME
@@ -56,18 +58,17 @@ eval "$(zoxide init zsh --hook prompt)"
 
 # NVM ultra-lazy loading with caching
 export NVM_DIR="$HOME/.nvm"
-function load_nvm() {
-  export NVM_LOADED=1
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && source "/usr/local/opt/nvm/nvm.sh" --no-use
-}
-function nvm_commands() {
-  [[ -z "$NVM_LOADED" ]] && load_nvm
-  "$@"
-}
-alias nvm='nvm_commands nvm'
-alias npm='nvm_commands npm'
-alias node='nvm_commands node'
-alias npx='nvm_commands npx'
+[ -s "/usr/local/opt/nvm/nvm.sh" ] && source "/usr/local/opt/nvm/nvm.sh" --no-use
+
+autoload -U compinit && compinit
+
+export PATH="$HOME/.cargo/bin:$PATH"
+# So pipx works correctly
+
+export PYENV_ROOT="$HOME/.pyenv"
+[[ -d $PYENV_ROOT/bin ]] && export PATH="$PYENV_ROOT/bin:$PATH"
+
+eval "$(starship init zsh)" # CLI theme
 
 
 export PATH="$HOME/.cargo/bin:$PATH"
@@ -109,6 +110,12 @@ if [[ -f ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions/zsh-auto
   source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 fi
 
+source /usr/share/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
+source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+
+# Load private env vars
+[[ -f "$HOME/.zshenv_private" ]] && source "$HOME/.zshenv_private"
+#
 # Uncomment to see total load time
 # LOAD_END=$EPOCHREALTIME
 # echo "Shell loaded in $((($LOAD_END - $LOAD_START) * 1000)) ms"
