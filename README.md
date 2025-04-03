@@ -1,24 +1,16 @@
 # README
 
-## TODO
-
-- [ ] Figure out how to read your noice errors better
-- [x] Remove <cr> as enter for nvim-cmp
-- [ ] Install git-worktree
-
-## Quick Cheatsheet
-
-Inside `Ex`: `o` opens the default application of highlighted file
-`v` opens a vertical one (Same with my oil setup rn)
-`x` opens horizontal
-
-## Vim Commands I Want to get Better At
-
-- `<C-r>` in insert mode -> Shows registers
-
 ## Acknowledgments
 
 Thank you Primeagen, craftzdog, TJDev for your videos and config files to help me set up an environment I really enjoy!
+
+
+## TODO
+- [ ] Create script to lookup whatever I am trying to search (maybe with aider?)
+- [ ] Have a better file manager
+
+
+
 
 ## Setup Workflow
 
