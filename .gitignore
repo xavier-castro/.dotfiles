@@ -6,3 +6,4 @@ karabiner/.config/karabiner/automatic_backups
 zsh/.zshenv_private
 **/.zshenv_private
 .aider*
+asdf/.config/asdf/custom_data_dir/plugin-index
