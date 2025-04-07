@@ -5,6 +5,7 @@ return {
     "hrsh7th/cmp-buffer",
     "hrsh7th/cmp-path",
     "hrsh7th/cmp-calc",
+    "stevearc/conform.nvim",
     {
       "L3MON4D3/LuaSnip",
       -- follow latest release.
@@ -20,9 +21,14 @@ return {
     "saadparwaiz1/cmp_luasnip",
   },
   config = function()
+    require("conform").setup({
+      formatters_by_ft = {
+      }
+    })
     local cmp = require("cmp")
 
     local luasnip = require("luasnip")
+    local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
     cmp.setup({
       completion = {
@@ -34,13 +40,10 @@ return {
         end,
       },
       mapping = cmp.mapping.preset.insert({
-        ["<S-Tab>"] = cmp.mapping.select_prev_item(),
-        ["<Tab>"] = cmp.mapping.select_next_item(),
-        ["<C-b>"] = cmp.mapping.scroll_docs(-4),
-        ["<C-f>"] = cmp.mapping.scroll_docs(4),
+        ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+        ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+        ['<C-y>'] = cmp.mapping.confirm({ select = true }),
         ["<C-Space>"] = cmp.mapping.complete(),
-        ["<C-e>"] = cmp.mapping.abort(),
-        ["<CR>"] = cmp.mapping.confirm({ select = true }),
       }),
 
       sources = cmp.config.sources({

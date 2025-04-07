@@ -94,3 +94,8 @@ vim.opt.guicursor = {
   "n-v-c:block", -- Block in normal mode
   "i:ver25",     -- Vertical line in insert mode
 }
+
+-- folding
+vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.opt.foldmethod = "expr"
+vim.opt.foldnestmax = 1
