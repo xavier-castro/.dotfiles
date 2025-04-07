@@ -1,0 +1,6 @@
+# alone
+read: CONVENTIONS.md
+
+# multiple files
+# read: [CONVENTIONS.md, anotherfile.txt]
+
