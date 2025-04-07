@@ -1,114 +1,89 @@
-# High-performance zsh configuration
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Enable timing measurement (uncomment to enable)
-# zmodload zsh/datetime
-# LOAD_START=$EPOCHREALTIME
+# Path to your oh-my-zsh installation.
+  export ZSH=/Users/xavier/.oh-my-zsh
 
-# History configuration
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
-setopt SHARE_HISTORY          # Share history between sessions
-setopt HIST_IGNORE_SPACE      # Don't record commands starting with space
-setopt HIST_IGNORE_DUPS       # Don't record duplicated commands
-setopt HIST_EXPIRE_DUPS_FIRST # Delete dupes first when HISTFILE size exceeds HISTSIZE
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+ZSH_THEME="robbyrussell"
 
-# Basic zsh settings for good UX
-setopt AUTO_CD              # If command is directory name, cd into it
-setopt NO_CASE_GLOB         # Case insensitive globbing
-setopt EXTENDED_GLOB        # Extended globbing capabilities
-setopt PROMPT_SUBST         # Allow parameter expansion in prompt
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
 
-# Minimal but useful key bindings
-bindkey -e                  # Use emacs keybindings
-bindkey '^[[A' up-line-or-search    # Up arrow searches history
-bindkey '^[[B' down-line-or-search  # Down arrow searches history
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
 
-# Fixed keybinding for tmux-sessionizer
-bindkey -s '^f' 'tmux-sessionizer\n'  # Simplified keybinding
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
 
-# Basic completion system - faster than Oh My Zsh
-autoload -Uz compinit
-compinit -C # -C flag skips check that speeds up loading
-zstyle ':completion:*' menu select
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' # Case insensitive tab completion
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
 
-# Git status function for prompt - much faster than Oh My Zsh git plugin
-function git_prompt_info() {
-  local ref
-  ref=$(git symbolic-ref HEAD 2> /dev/null) || return
-  echo " %F{yellow}(${ref#refs/heads/})%f"
-}
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
 
-# Robbyrussell-inspired theme but much faster
-PROMPT='%F{cyan}%c%f$(git_prompt_info) %F{red}❯%f '
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
 
-# Critical aliases 
-alias tt="tmux new-session -A -s 'MAIN'"
-alias ls="ls -G"
-alias ll="ls -la"
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
 
-# Fast zoxide initialization
-eval "$(zoxide init zsh --hook prompt)"
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
 
-# ULTRA LAZY LOADING
-# ------------------
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
-# NVM ultra-lazy loading with caching
-export NVM_DIR="$HOME/.nvm"
-function load_nvm() {
-  export NVM_LOADED=1
-  [ -s "/usr/local/opt/nvm/nvm.sh" ] && source "/usr/local/opt/nvm/nvm.sh" --no-use
-}
-function nvm_commands() {
-  [[ -z "$NVM_LOADED" ]] && load_nvm
-  "$@"
-}
-alias nvm='nvm_commands nvm'
-alias npm='nvm_commands npm'
-alias node='nvm_commands node'
-alias npx='nvm_commands npx'
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# HIST_STAMPS="mm/dd/yyyy"
 
-# PNPM lazy loading
-export PNPM_HOME="/Users/xavier/Library/pnpm"
-function pnpm() {
-  unset -f pnpm
-  export PATH="$PNPM_HOME:$PATH"
-  pnpm "$@"
-}
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
 
-# Bun lazy loading
-export BUN_INSTALL="$HOME/.bun"
-function bun() {
-  unset -f bun
-  export PATH="$BUN_INSTALL/bin:$PATH"
-  [ -s "/Users/xavier/.bun/_bun" ] && source "/Users/xavier/.bun/_bun"
-  bun "$@"
-}
+# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+plugins=(vi-mode git mise)
 
-# MINIMAL PLUGIN REPLACEMENTS
-# --------------------------
+source $ZSH/oh-my-zsh.sh
 
-# Syntax highlighting - minimal and async load
-if [[ -f ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ]]; then
-  source ~/.zsh/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
-elif [[ -f ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh ]]; then
-  ZSH_HIGHLIGHT_MAXLENGTH=300
-  ZSH_HIGHLIGHT_HIGHLIGHTERS=(main)
-  source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
-fi
+# User configuration
+export KEYTIMEOUT=1
+# export MANPATH="/usr/local/man:$MANPATH"
 
-# Autosuggestions - minimal and async load
-if [[ -f ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh ]]; then
-  ZSH_AUTOSUGGEST_BUFFER_MAX_SIZE=20
-  ZSH_AUTOSUGGEST_STRATEGY=(history)
-  ZSH_AUTOSUGGEST_USE_ASYNC=1
-  source ${ZSH_CUSTOM:-~/.oh-my-zsh/custom}/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
-fi
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
 
-# Uncomment to see total load time
-# LOAD_END=$EPOCHREALTIME
-# echo "Shell loaded in $((($LOAD_END - $LOAD_START) * 1000)) ms"
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
 
-# Added by Windsurf
-export PATH="/Users/xavier/.codeium/windsurf/bin:$PATH"
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# ssh
+# export SSH_KEY_PATH="~/.ssh/rsa_id"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+source ~/.bash_aliases
+
