@@ -1,6 +1,10 @@
--- bootstrap lazy.nvim, LazyVim and your plugins
-if vim.g.vscode then
-  require("code.lazy")
-else
-  require("config.lazy")
+if vim.loader then
+	vim.loader.enable()
 end
+
+_G.dd = function(...)
+	require("util.debug").dump(...)
+end
+vim.print = _G.dd
+
+require("config.lazy")
