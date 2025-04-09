@@ -2,6 +2,7 @@
 bun = "latest"
 ghq = "latest"
 node = "latest"
+pipx = "latest"
 pnpm = "latest"
 python = "latest"
 # ruby = "latest"
