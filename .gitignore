@@ -5,3 +5,8 @@ karabiner/.config/karabiner/automatic_backups
 # Ignore private environment files
 zsh/.zshenv_private
 **/.zshenv_private
+.aider.chat.history.md
+.aider.conf.yml
+.aider.input.history
+.aider.tags.cache.v4
+
