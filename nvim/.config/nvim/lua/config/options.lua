@@ -1,101 +1,58 @@
--- Set the background theme to dark
-vim.opt.background = "dark"
+vim.g.mapleader = " "
 
--- Disable backup file creation
-vim.opt.backup = false
+vim.opt.encoding = "utf-8"
+vim.opt.fileencoding = "utf-8"
 
--- Set the command line height to 1 line
-vim.opt.cmdheight = 1
-
--- Use spaces instead of tabs
-vim.opt.expandtab = true
-
--- Support multiple file formats
-vim.opt.fileformats = { "unix", "mac", "dos" }
-
--- Disable code folding by default
-vim.opt.foldenable = false
-
--- Allow buffer switching without saving
-vim.opt.hidden = true
-
--- Set command history to remember 1000 commands
-vim.opt.history = 1000
-
--- Ignore case in search patterns
-vim.opt.ignorecase = true
-
--- Enable lazy redraw for faster macros and scripts
-vim.opt.lazyredraw = true
-
--- Enable regular expression magic
-vim.opt.magic = true
-
--- Display line numbers
 vim.opt.number = true
 
--- Display relative line numbers
-vim.opt.relativenumber = true
-
--- Number of spaces to use for each step of (auto)indent
-vim.opt.shiftwidth = 2
-
--- Disable highlighting matching parentheses
-vim.opt.showmatch = false
-
--- Display the sign column with line numbers
-vim.opt.signcolumn = "yes"
-
--- Override ignorecase if search pattern contains uppercase letters
-vim.opt.smartcase = true
-
--- Number of spaces that a <Tab> counts for while performing editing operations
-vim.opt.softtabstop = 2
-
--- Disable swap file creation
-vim.opt.swapfile = false
-
--- Number of spaces that a <Tab> in the file counts for
-vim.opt.tabstop = 2
-
--- Enable true color support
-vim.opt.termguicolors = true
-
--- Allow specified keys to move to the previous/next line when at the beginning/end of a line
-vim.opt.whichwrap = vim.opt.whichwrap:append("<,>,[,]")
-
--- Enable command-line completion mode
-vim.opt.wildmenu = true
-
--- Disable line wrapping
-vim.opt.wrap = false
-
--- Disable write backup file creation
-vim.opt.writebackup = false
-
--- Highlight current cursor line
-vim.opt.cursorline = true
-
--- Enable system clipboard integration
-vim.opt.clipboard:append("unnamedplus")
-
--- Set title string
 vim.opt.title = true
-vim.opt.titlestring = [[%{fnamemodify(getcwd(),':t')} - %{expand('%:.')}]]
+vim.opt.autoindent = true
+vim.opt.smartindent = true
+vim.opt.hlsearch = true
+vim.opt.backup = false
+vim.opt.showcmd = true
+vim.opt.cmdheight = 1
+vim.opt.laststatus = 3
+vim.opt.expandtab = true
+vim.opt.scrolloff = 10
+vim.opt.shell = "fish"
+vim.opt.backupskip = { "/tmp/*", "/private/tmp/*" }
+vim.opt.inccommand = "split"
+vim.opt.ignorecase = true -- Case insensitive searching UNLESS /C or capital in search
+vim.opt.smarttab = true
+vim.opt.breakindent = true
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.wrap = false -- No Wrap lines
+vim.opt.backspace = { "start", "eol", "indent" }
+vim.opt.path:append({ "**" }) -- Finding files - Search down into subfolders
+vim.opt.wildignore:append({ "*/node_modules/*" })
+vim.opt.splitbelow = true -- Put new windows below current
+vim.opt.splitright = true -- Put new windows right of current
+vim.opt.splitkeep = "cursor"
+vim.opt.mouse = ""
 
--- Ensure the completion menu appears but does not automatically select any item
-vim.opt.completeopt:append("noselect")
+-- Undercurl
+vim.cmd([[let &t_Cs = "\e[4:3m"]])
+vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
--- Stop the terminal's cursor from blinking
-vim.opt.guicursor = ""
+-- Add asterisks in block comments
+vim.opt.formatoptions:append({ "r" })
 
--- Change the terminal's cursor
-vim.opt.guicursor = {
-  "n-v-c:block", -- Block in normal mode
-  "i:ver25",     -- Vertical line in insert mode
-}
+vim.cmd([[au BufNewFile,BufRead *.astro setf astro]])
+vim.cmd([[au BufNewFile,BufRead Podfile setf ruby]])
 
--- folding
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.opt.foldmethod = "expr"
-vim.opt.foldnestmax = 1
+if vim.fn.has("nvim-0.8") == 1 then
+	vim.opt.cmdheight = 0
+end
+
+-- File types
+vim.filetype.add({
+	extension = {
+		mdx = "mdx",
+	},
+})
+
+vim.g.lazyvim_prettier_needs_config = true
+vim.g.lazyvim_picker = "telescope"
+vim.g.lazyvim_cmp = "blink.cmp"
