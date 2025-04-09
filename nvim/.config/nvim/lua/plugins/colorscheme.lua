@@ -1,5 +1,5 @@
 function ColorMyPencils(color)
-	color = color or "tokyonight-storm"
+	color = color or "phobos-anomaly"
 	vim.cmd.colorscheme(color)
 
 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -7,6 +7,10 @@ function ColorMyPencils(color)
 end
 
 return {
+	{
+		"mcauley-penney/phobos-anomaly.nvim",
+		priority = 1000,
+	},
 	{
 		"craftzdog/solarized-osaka.nvim",
 		lazy = true,

@@ -243,7 +243,15 @@ return {
 	{
 		"saghen/blink.cmp",
 		opts = {
+			keymap = {
+				preset = "default",
+				["<C-y>"] = { "select_and_accept" },
+				["<CR>"] = {},
+			},
 			completion = {
+				ghost_text = {
+					enabled = false,
+				},
 				menu = {
 					winblend = vim.o.pumblend,
 				},
