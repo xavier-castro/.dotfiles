@@ -79,6 +79,11 @@ return {
 				desc = "Lists files in your current working directory, respects .gitignore",
 			},
 			{
+				"<leader>fw",
+				":Telescope grep_string<cr>",
+				desc = "Search for the word under your cursor in the working directory",
+			},
+			{
 				";r",
 				function()
 					local builtin = require("telescope.builtin")
@@ -137,7 +142,7 @@ return {
 				desc = "Lists LSP incoming calls for word under the cursor",
 			},
 			{
-				"sf",
+				"-",
 				function()
 					local telescope = require("telescope")
 
@@ -165,14 +170,18 @@ return {
 			local fb_actions = require("telescope").extensions.file_browser.actions
 
 			opts.defaults = vim.tbl_deep_extend("force", opts.defaults, {
+				path_display = { "smart" },
+				mappings = {
+					i = {
+						["<C-k>"] = actions.move_selection_previous,
+						["<C-j>"] = actions.move_selection_next,
+					},
+				},
 				wrap_results = true,
 				layout_strategy = "horizontal",
 				layout_config = { prompt_position = "top" },
 				sorting_strategy = "ascending",
 				winblend = 0,
-				mappings = {
-					n = {},
-				},
 			})
 			opts.pickers = {
 				diagnostics = {
@@ -216,6 +225,35 @@ return {
 			telescope.setup(opts)
 			require("telescope").load_extension("fzf")
 			require("telescope").load_extension("file_browser")
+		end,
+	},
+	{
+		"ThePrimeagen/git-worktree.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"nvim-telescope/telescope.nvim",
+		},
+
+		config = function()
+			local gitworktree = require("git-worktree")
+
+			gitworktree.setup()
+
+			require("telescope").load_extension("git_worktree")
+			-- HACK: by default
+			-- <Enter> - switches to that worktree
+			-- <c-d> - deletes that worktree
+			-- <c-f> - toggles forcing of the next deletion
+
+			-- Create new worktree
+			vim.keymap.set("n", "<leader>wl", function()
+				require("telescope").extensions.git_worktree.git_worktrees()
+			end, { desc = "list Git Worktree" })
+
+			-- Switch/list worktrees
+			vim.keymap.set("n", "<leader>wc", function()
+				require("telescope").extensions.git_worktree.create_git_worktree()
+			end, { desc = "Create Git Worktree Branches" })
 		end,
 	},
 

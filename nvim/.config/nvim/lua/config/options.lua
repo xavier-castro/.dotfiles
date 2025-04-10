@@ -52,10 +52,6 @@ vim.filetype.add({
 	},
 })
 
--- folding
-vim.opt.foldexpr = "v:lua.vim.treesitter.foldexpr()"
-vim.opt.foldmethod = "expr"
-vim.opt.foldnestmax = 1
 vim.g.lazyvim_prettier_needs_config = true
 vim.g.lazyvim_picker = "telescope"
 vim.g.lazyvim_cmp = "blink.cmp"
