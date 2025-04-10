@@ -56,6 +56,7 @@ autocmd('LspAttach', {
     vim.keymap.set('n', 'K', '<cmd>Lspsaga hover_dock<cr>', opts)
     vim.keymap.set('n', '<leader>ca', '<cmd>Lspsaga code_action<cr>', opts)
     vim.keymap.set('n', '<leader>crn', '<cmd>Lspsaga rename<Cr>', opts)
+    vim.keymap.set('n', '<M-.>', '<cmd>Lspsaga finder<cr>')
     vim.keymap.set('n', '[d', function()
       require('lspsaga.diagnostic'):goto_prev()
     end, { desc = 'Previous diagnostic' })
