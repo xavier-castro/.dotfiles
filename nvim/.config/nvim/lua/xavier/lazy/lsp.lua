@@ -126,24 +126,18 @@ return {
 				["<C-Space>"] = cmp.mapping.complete(),
 			}),
 			sources = cmp.config.sources({
-				{ name = "copilot", group_index = 2 },
 				{ name = "nvim_lsp" },
-				{ name = "luasnip" }, -- For luasnip users.
-			}, {
+				{ name = "luasnip" },
 				{ name = "buffer" },
+				{ name = "path" },
 			}),
 		})
 
 		vim.diagnostic.config({
-			-- update_in_insert = true,
-			float = {
-				focusable = false,
-				style = "minimal",
-				border = "rounded",
-				source = "always",
-				header = "",
-				prefix = "",
-			},
+			virtual_text = false,
+			virtual_lines = { current_line = true },
+			underline = true,
+			update_in_insert = false,
 		})
 	end,
 }
