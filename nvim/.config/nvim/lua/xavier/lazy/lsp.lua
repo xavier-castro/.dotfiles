@@ -1,7 +1,47 @@
 return {
     "neovim/nvim-lspconfig",
     dependencies = {
-        "stevearc/conform.nvim",
+        {
+            "stevearc/conform.nvim",
+            lazy = true,
+            event = { "BufReadPre", "BufNewFile" },
+            opts = function()
+                vim.api.nvim_create_user_command("Format", function(args)
+                    local range = nil
+                    if args.count ~= -1 then
+                        local end_line = vim.api.nvim_buf_get_lines(0, args.line2 - 1, args.line2, true)[1]
+                        range = {
+                            start = { args.line1, 0 },
+                            ["end"] = { args.line2, end_line:len() },
+                        }
+                    end
+                    require("conform").format({ async = true, lsp_format = "fallback", range = range })
+                end, { range = true })
+                local opts = {
+                    formatters_by_ft = {
+                        lua = { "stylua" },
+                        python = { "black" },
+                        javascript = { "prettier" },
+                        typescript = { "prettier" },
+                        javascriptreact = { "prettier" },
+                        typescriptreact = { "prettier" },
+                        css = { "prettier" },
+                        html = { "prettier" },
+                        json = { "prettier" },
+                        yaml = { "prettier" },
+                        markdown = { "prettier" },
+                        graphql = { "prettier" },
+                    },
+                    formatters = {
+                        prettier = {
+                            single_quote = true,
+                            jsx_single_quote = true,
+                        },
+                    },
+                }
+                return opts
+            end,
+        },
         "williamboman/mason.nvim",
         "williamboman/mason-lspconfig.nvim",
         "hrsh7th/cmp-nvim-lsp",
@@ -15,10 +55,6 @@ return {
     },
 
     config = function()
-        require("conform").setup({
-            formatters_by_ft = {
-            }
-        })
         local cmp = require('cmp')
         local cmp_lsp = require("cmp_nvim_lsp")
         local capabilities = vim.tbl_deep_extend(
@@ -56,7 +92,6 @@ return {
                     })
                     vim.g.zig_fmt_parse_errors = 0
                     vim.g.zig_fmt_autosave = 0
-
                 end,
                 ["lua_ls"] = function()
                     local lspconfig = require("lspconfig")
