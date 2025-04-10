@@ -42,3 +42,32 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<leader><leader>", function()
 	vim.cmd("so")
 end)
+
+vim.keymap.set("n", "<leader>lf", function()
+	require("conform").format({ async = false, lsp_format = "fallback", timeout_ms = 5000 })
+end)
+vim.keymap.set("v", "<leader>lf", function()
+	require("conform").format({ async = false, lsp_format = "fallback", timeout_ms = 5000 })
+end)
+
+-- Nice and simple folding:
+vim.o.foldenable = true
+vim.o.foldlevel = 99
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.o.foldtext = ""
+vim.opt.foldcolumn = "0"
+vim.opt.fillchars:append({ fold = " " })
+vim.o.foldmethod = "expr"
+-- Default to treesitter folding
+vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+-- Prefer LSP folding if client supports it
+vim.api.nvim_create_autocmd("LspAttach", {
+	callback = function(args)
+		local client = vim.lsp.get_client_by_id(args.data.client_id)
+		if client:supports_method("textDocument/foldingRange") then
+			local win = vim.api.nvim_get_current_win()
+			vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
+		end
+	end,
+})
