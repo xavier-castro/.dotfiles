@@ -115,65 +115,64 @@ return {
 				desc = "Open File Browser with the path of the current buffer",
 			},
 		},
-		config = function(_, opts)
+		config = function()
 			local telescope = require("telescope")
 			local actions = require("telescope.actions")
 			local fb_actions = require("telescope").extensions.file_browser.actions
 
-			opts.defaults = vim.tbl_deep_extend("force", opts.defaults, {
-				path_display = { "smart" },
-				mappings = {
-					i = {
-						["<C-k>"] = actions.move_selection_previous,
-						["<C-j>"] = actions.move_selection_next,
-					},
-				},
-				wrap_results = true,
-				layout_strategy = "horizontal",
-				layout_config = { prompt_position = "top" },
-				sorting_strategy = "ascending",
-				winblend = 0,
-			})
-			opts.pickers = {
-				diagnostics = {
-					theme = "ivy",
-					initial_mode = "normal",
-					layout_config = {
-						preview_cutoff = 9999,
-					},
-				},
-			}
-			opts.extensions = {
-				file_browser = {
-					theme = "dropdown",
-					-- disables netrw and use telescope-file-browser in its place
-					hijack_netrw = true,
+			telescope.setup({
+				defaults = {
+					path_display = { "smart" },
 					mappings = {
-						-- your custom insert mode mappings
-						["n"] = {
-							-- your custom normal mode mappings
-							["N"] = fb_actions.create,
-							["h"] = fb_actions.goto_parent_dir,
-							["/"] = function()
-								vim.cmd("startinsert")
-							end,
-							["<C-u>"] = function(prompt_bufnr)
-								for i = 1, 10 do
-									actions.move_selection_previous(prompt_bufnr)
-								end
-							end,
-							["<C-d>"] = function(prompt_bufnr)
-								for i = 1, 10 do
-									actions.move_selection_next(prompt_bufnr)
-								end
-							end,
-							["<PageUp>"] = actions.preview_scrolling_up,
-							["<PageDown>"] = actions.preview_scrolling_down,
+						i = {
+							["<C-k>"] = actions.move_selection_previous,
+							["<C-j>"] = actions.move_selection_next,
+						},
+					},
+					wrap_results = true,
+					layout_strategy = "horizontal",
+					layout_config = { prompt_position = "top" },
+					sorting_strategy = "ascending",
+					winblend = 0,
+				},
+				pickers = {
+					diagnostics = {
+						theme = "ivy",
+						initial_mode = "normal",
+						layout_config = {
+							preview_cutoff = 9999,
 						},
 					},
 				},
-			}
-			telescope.setup(opts)
+				extensions = {
+					file_browser = {
+						theme = "dropdown",
+						hijack_netrw = true,
+						mappings = {
+							["n"] = {
+								["N"] = fb_actions.create,
+								["h"] = fb_actions.goto_parent_dir,
+								["/"] = function()
+									vim.cmd("startinsert")
+								end,
+								["<C-u>"] = function(prompt_bufnr)
+									for i = 1, 10 do
+										actions.move_selection_previous(prompt_bufnr)
+									end
+								end,
+								["<C-d>"] = function(prompt_bufnr)
+									for i = 1, 10 do
+										actions.move_selection_next(prompt_bufnr)
+									end
+								end,
+								["<PageUp>"] = actions.preview_scrolling_up,
+								["<PageDown>"] = actions.preview_scrolling_down,
+							},
+						},
+					},
+				},
+			})
+
 			require("telescope").load_extension("fzf")
 			require("telescope").load_extension("file_browser")
 		end,
@@ -191,17 +190,11 @@ return {
 			gitworktree.setup()
 
 			require("telescope").load_extension("git_worktree")
-			-- HACK: by default
-			-- <Enter> - switches to that worktree
-			-- <c-d> - deletes that worktree
-			-- <c-f> - toggles forcing of the next deletion
 
-			-- Create new worktree
 			vim.keymap.set("n", "<leader>wl", function()
 				require("telescope").extensions.git_worktree.git_worktrees()
 			end, { desc = "list Git Worktree" })
 
-			-- Switch/list worktrees
 			vim.keymap.set("n", "<leader>wc", function()
 				require("telescope").extensions.git_worktree.create_git_worktree()
 			end, { desc = "Create Git Worktree Branches" })
