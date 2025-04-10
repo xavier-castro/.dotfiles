@@ -46,24 +46,34 @@ return {
 	},
 
 	-- copilot
+	-- {
+	-- 	"zbirenbaum/copilot.lua",
+	-- 	opts = {
+	-- 		suggestion = {
+	-- 			auto_trigger = true,
+	-- 			keymap = {
+	-- 				accept = "<C-l>",
+	-- 				accept_word = "<M-l>",
+	-- 				accept_line = "<M-S-l>",
+	-- 				next = "<M-]>",
+	-- 				prev = "<M-[>",
+	-- 				dismiss = "<C-]>",
+	-- 			},
+	-- 		},
+	-- 		filetypes = {
+	-- 			markdown = true,
+	-- 			help = true,
+	-- 		},
+	-- 	},
+	-- },
 	{
-		"zbirenbaum/copilot.lua",
-		opts = {
-			suggestion = {
-				auto_trigger = true,
-				keymap = {
-					accept = "<C-l>",
-					accept_word = "<M-l>",
-					accept_line = "<M-S-l>",
-					next = "<M-]>",
-					prev = "<M-[>",
-					dismiss = "<C-]>",
-				},
-			},
-			filetypes = {
-				markdown = true,
-				help = true,
-			},
-		},
+		"github/copilot.vim",
+		enabled = true,
+		config = function()
+			vim.api.nvim_set_keymap("i", "<C-k>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+			vim.g.copilot_no_tab_map = true
+			vim.g.copilot_assume_mapped = true
+			vim.g.copilot_tab_fallback = ""
+		end,
 	},
 }
