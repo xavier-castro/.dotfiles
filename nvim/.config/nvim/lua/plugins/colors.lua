@@ -1,15 +1,9 @@
 return {
-	{
-		"craftzdog/solarized-osaka.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = function()
-			return {
-				transparent = true,
-			}
-		end,
-    config=function ()
-      vim.cmd.colorscheme("solarized-osaka")
-    end
-	},
+  {'Mofiqul/vscode.nvim', config=function ()
+    require('vscode').setup({
+    transparent = true,
+
+})
+    vim.cmd.colorscheme("vscode")
+  end}
 }
