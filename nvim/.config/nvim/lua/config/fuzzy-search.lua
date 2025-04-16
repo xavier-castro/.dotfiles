@@ -1,5 +1,5 @@
-local searcher = "raw-dog" --- "telescope" | "raw-dog"
-if searcher == "raw-dog" then
+local searcher = "xavier" --- "telescope" | "xavier"
+if searcher == "xavier" then
 	vim.opt.grepprg = "rg --vimgrep --smart-case"
 	vim.keymap.set("n", "<leader>/", function()
 		local pattern = vim.fn.input("rg: ")
@@ -7,7 +7,7 @@ if searcher == "raw-dog" then
 			vim.cmd('silent grep! "' .. pattern .. '"')
 			vim.cmd("copen")
 		end
-	end, { desc = "raw-dog: Live grep" })
+	end, { desc = "xavier: Live grep" })
 
 	function Fd(file_pattern, _)
 		-- if first char is * then fuzzy search
@@ -19,7 +19,7 @@ if searcher == "raw-dog" then
 		return result
 	end
 	vim.opt.findfunc = "v:lua.Fd"
-	vim.keymap.set("n", "<C-p>", ":find ", { desc = "raw-dog: Project Files" })
+	vim.keymap.set("n", "<C-p>", ":find ", { desc = "xavier: Project Files" })
 	return {}
 end
 
