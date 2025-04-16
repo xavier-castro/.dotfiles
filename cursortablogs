@@ -2401,3 +2401,88 @@ fish/ (0, 7)
 2025/04/16 07:44:58 lines identical so skipping preview
 2025/04/16 07:44:58 diffStr: 
 2025/04/16 07:44:58 applying to buffer 7 (0..0)
+2025/04/16 07:47:23 starting stream
+2025/04/16 07:47:23 synced col: 0, row: 0
+2025/04/16 07:47:23 stream finished: ../
+./
+autopairs.lua
+avante.lua
+colors.lua
+copilot.lua
+cursortab.lua
+dap.lua (0, 7)
+2025/04/16 07:47:23 editing lines: 0, 7
+2025/04/16 07:47:23 editing lines 0..7 in buffer 12
+2025/04/16 07:47:23 applied line modification: 14
+2025/04/16 07:47:23 relativeLineIdx: 0
+2025/04/16 07:47:23 placing line 0
+2025/04/16 07:47:23 lines identical so skipping preview
+2025/04/16 07:47:23 relativeLineIdx: 1
+2025/04/16 07:47:23 placing line 1
+2025/04/16 07:47:23 lines identical so skipping preview
+2025/04/16 07:47:23 relativeLineIdx: 2
+2025/04/16 07:47:23 placing line 2
+2025/04/16 07:47:23 lines identical so skipping preview
+2025/04/16 07:47:23 relativeLineIdx: 3
+2025/04/16 07:47:23 placing line 3
+2025/04/16 07:47:23 lines identical so skipping preview
+2025/04/16 07:47:23 relativeLineIdx: 4
+2025/04/16 07:47:23 placing line 4
+2025/04/16 07:47:23 lines identical so skipping preview
+2025/04/16 07:47:23 relativeLineIdx: 5
+2025/04/16 07:47:23 placing line 5
+2025/04/16 07:47:23 lines identical so skipping preview
+2025/04/16 07:47:23 relativeLineIdx: 6
+2025/04/16 07:47:23 placing line 6
+2025/04/16 07:47:23 lines identical so skipping preview
+2025/04/16 07:47:23 relativeLineIdx: 7
+2025/04/16 07:47:23 placing line 7
+2025/04/16 07:47:23 lines identical so skipping preview
+2025/04/16 07:47:23 diffStr: 
+2025/04/16 07:47:23 applying to buffer 12 (0..7)
+2025/04/16 07:47:52 starting stream
+2025/04/16 07:47:52 synced col: 20, row: 0
+2025/04/16 07:47:52 stream finished: }
+ (20, 20)
+2025/04/16 07:47:52 editing lines: 20, 20
+2025/04/16 07:47:52 editing lines 20..20 in buffer 13
+2025/04/16 07:47:52 applied line modification: 14
+2025/04/16 07:47:52 relativeLineIdx: 0
+2025/04/16 07:47:52 placing line 0
+2025/04/16 07:47:52 lines identical so skipping preview
+2025/04/16 07:47:52 diffStr: 
+2025/04/16 07:47:52 applying to buffer 13 (20..20)
+2025/04/16 07:47:59 starting cursor tab...
+2025/04/16 07:47:59 service created
+2025/04/16 07:47:59 nvim created
+2025/04/16 07:47:59 creating new buffer
+2025/04/16 07:47:59 buffer created: &{[] 0 0  0 0 []}
+2025/04/16 07:47:59 starting stream
+2025/04/16 07:48:00 starting stream
+2025/04/16 07:48:00 synced col: 0, row: 0
+2025/04/16 07:48:00 synced col: 0, row: 0
+2025/04/16 07:48:00 error starting stream: canceled: context canceled
+2025/04/16 07:48:00 starting stream
+2025/04/16 07:48:00 synced col: 0, row: 0
+2025/04/16 07:48:00 error starting stream: canceled: context canceled
+2025/04/16 07:48:00 stream finished: 
+   Home (H)   Install (I)   Update (U)   Sync (S)   Clean (X)   Check (C)   Log (L)   Restore (R)  
+   Profile (P)   Debug (D)   Help (?) 
+ (0, 3)
+2025/04/16 07:48:00 editing lines: 0, 3
+2025/04/16 07:48:00 editing lines 0..3 in buffer 2
+2025/04/16 07:48:00 applied line modification: 20
+2025/04/16 07:48:00 relativeLineIdx: 0
+2025/04/16 07:48:00 placing line 0
+2025/04/16 07:48:00 lines identical so skipping preview
+2025/04/16 07:48:00 relativeLineIdx: 1
+2025/04/16 07:48:00 placing line 1
+2025/04/16 07:48:00 lines identical so skipping preview
+2025/04/16 07:48:00 relativeLineIdx: 2
+2025/04/16 07:48:00 placing line 2
+2025/04/16 07:48:00 lines identical so skipping preview
+2025/04/16 07:48:00 relativeLineIdx: 3
+2025/04/16 07:48:00 placing line 3
+2025/04/16 07:48:00 lines identical so skipping preview
+2025/04/16 07:48:00 diffStr: 
+2025/04/16 07:48:00 applying to buffer 2 (0..3)
