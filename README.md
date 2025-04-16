@@ -2,9 +2,9 @@
 
 ## TODO
 
-- [ ] Figure out how to read your noice errors better
-- [x] Remove <cr> as enter for nvim-cmp
-- [ ] Install git-worktree
+## To Watch
+
+- [Cursor Tab Clone](https://github.com/reachingforthejack/cursortab.nvim)
 
 ## Quick Cheatsheet
 
