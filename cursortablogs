@@ -2486,3 +2486,206 @@ dap.lua (0, 7)
 2025/04/16 07:48:00 lines identical so skipping preview
 2025/04/16 07:48:00 diffStr: 
 2025/04/16 07:48:00 applying to buffer 2 (0..3)
+2025/04/16 07:48:24 starting stream
+2025/04/16 07:48:24 synced col: 13, row: 0
+2025/04/16 07:48:24 stream finished: 
+.zshrc_private
+**/.zshrc_private
+ (13, 13)
+2025/04/16 07:48:24 editing lines: 13, 13
+2025/04/16 07:48:24 editing lines 13..13 in buffer 1
+2025/04/16 07:48:24 applied line modification: 20
+2025/04/16 07:48:24 relativeLineIdx: 0
+2025/04/16 07:48:24 placing line 0
+2025/04/16 07:48:24 lines identical so skipping preview
+2025/04/16 07:48:24 diffStr: 
+2025/04/16 07:48:24 applying to buffer 1 (13..13)
+2025/04/16 07:48:27 starting stream
+2025/04/16 07:48:27 synced col: 0, row: 0
+2025/04/16 07:48:27 stream finished: ../
+.aider.tags.cache.v4/
+.git/
+aerospace/
+assets/
+bin/
+fish/ (0, 7)
+2025/04/16 07:48:27 editing lines: 0, 7
+2025/04/16 07:48:27 editing lines 0..7 in buffer 4
+2025/04/16 07:48:27 applied line modification: 20
+2025/04/16 07:48:27 relativeLineIdx: 0
+2025/04/16 07:48:27 placing line 0
+2025/04/16 07:48:27 lines identical so skipping preview
+2025/04/16 07:48:27 relativeLineIdx: 1
+2025/04/16 07:48:27 placing line 1
+2025/04/16 07:48:27 lines different so adding preview
+2025/04/16 07:48:27 adding buffer extmark + hl to line 1
+2025/04/16 07:48:27 added buffer extmark + hl to line 1
+2025/04/16 07:48:27 relativeLineIdx: 2
+2025/04/16 07:48:27 placing line 2
+2025/04/16 07:48:27 lines different so adding preview
+2025/04/16 07:48:27 adding buffer extmark + hl to line 2
+2025/04/16 07:48:27 added buffer extmark + hl to line 2
+2025/04/16 07:48:27 relativeLineIdx: 3
+2025/04/16 07:48:27 placing line 3
+2025/04/16 07:48:27 lines different so adding preview
+2025/04/16 07:48:27 adding buffer extmark + hl to line 3
+2025/04/16 07:48:27 added buffer extmark + hl to line 3
+2025/04/16 07:48:27 relativeLineIdx: 4
+2025/04/16 07:48:27 placing line 4
+2025/04/16 07:48:27 lines different so adding preview
+2025/04/16 07:48:27 adding buffer extmark + hl to line 4
+2025/04/16 07:48:27 added buffer extmark + hl to line 4
+2025/04/16 07:48:27 relativeLineIdx: 5
+2025/04/16 07:48:27 placing line 5
+2025/04/16 07:48:27 lines different so adding preview
+2025/04/16 07:48:27 adding buffer extmark + hl to line 5
+2025/04/16 07:48:27 added buffer extmark + hl to line 5
+2025/04/16 07:48:27 relativeLineIdx: 6
+2025/04/16 07:48:27 placing line 6
+2025/04/16 07:48:27 lines different so adding preview
+2025/04/16 07:48:27 adding buffer extmark + hl to line 6
+2025/04/16 07:48:27 added buffer extmark + hl to line 6
+2025/04/16 07:48:27 relativeLineIdx: 7
+2025/04/16 07:48:27 removing line from preview
+2025/04/16 07:48:27 nothing to preview
+2025/04/16 07:48:27 diffStr: 2-|./
+2+|.aider.tags.cache.v4/
+3-|.aider.tags.cache.v4/
+3+|.git/
+4-|.git/
+4+|aerospace/
+5-|aerospace/
+5+|assets/
+6-|assets/
+6+|bin/
+7-|bin/
+7+|fish/
+8-|fish/
+2025/04/16 07:48:27 applying to buffer 4 (0..7)
+2025/04/16 07:48:37 starting stream
+2025/04/16 07:48:37 synced col: 13, row: 1
+2025/04/16 07:48:37 starting stream
+2025/04/16 07:48:37 synced col: 13, row: 2
+2025/04/16 07:48:37 error starting stream: canceled: context canceled
+2025/04/16 07:48:38 stream finished: cursor.log
+ (13, 13)
+2025/04/16 07:48:38 editing lines: 13, 13
+2025/04/16 07:48:38 editing lines 13..13 in buffer 1
+2025/04/16 07:48:38 applied line modification: 20
+2025/04/16 07:48:38 relativeLineIdx: 0
+2025/04/16 07:48:38 placing line 0
+2025/04/16 07:48:38 lines different so adding preview
+2025/04/16 07:48:38 adding buffer extmark + hl to line 13
+2025/04/16 07:48:38 added buffer extmark + hl to line 13
+2025/04/16 07:48:38 diffStr: 14-|cu
+14+|cursor.log
+2025/04/16 07:48:38 applying to buffer 1 (13..13)
+2025/04/16 07:48:38 starting stream
+2025/04/16 07:48:38 synced col: 13, row: 3
+2025/04/16 07:48:38 stream finished: cursor.log
+ (13, 13)
+2025/04/16 07:48:38 editing lines: 13, 13
+2025/04/16 07:48:38 editing lines 13..13 in buffer 1
+2025/04/16 07:48:38 applied line modification: 20
+2025/04/16 07:48:38 relativeLineIdx: 0
+2025/04/16 07:48:38 placing line 0
+2025/04/16 07:48:38 lines different so adding preview
+2025/04/16 07:48:38 adding buffer extmark + hl to line 13
+2025/04/16 07:48:38 added buffer extmark + hl to line 13
+2025/04/16 07:48:38 diffStr: 14-|cur
+14+|cursor.log
+2025/04/16 07:48:38 applying to buffer 1 (13..13)
+2025/04/16 07:48:38 starting stream
+2025/04/16 07:48:38 synced col: 13, row: 4
+2025/04/16 07:48:38 starting stream
+2025/04/16 07:48:38 synced col: 13, row: 5
+2025/04/16 07:48:38 error starting stream: canceled: context canceled
+2025/04/16 07:48:38 starting stream
+2025/04/16 07:48:38 synced col: 13, row: 6
+2025/04/16 07:48:38 stream finished:  (0, 0)
+2025/04/16 07:48:38 stream error: canceled: context canceled
+2025/04/16 07:48:38 stream finished: cursor.log
+ (13, 13)
+2025/04/16 07:48:38 editing lines: 13, 13
+2025/04/16 07:48:38 editing lines 13..13 in buffer 1
+2025/04/16 07:48:38 applied line modification: 20
+2025/04/16 07:48:38 relativeLineIdx: 0
+2025/04/16 07:48:38 placing line 0
+2025/04/16 07:48:38 lines different so adding preview
+2025/04/16 07:48:38 adding buffer extmark + hl to line 13
+2025/04/16 07:48:38 added buffer extmark + hl to line 13
+2025/04/16 07:48:38 diffStr: 14-|cursor
+14+|cursor.log
+2025/04/16 07:48:38 applying to buffer 1 (13..13)
+2025/04/16 07:48:38 starting stream
+2025/04/16 07:48:38 synced col: 13, row: 7
+2025/04/16 07:48:38 starting stream
+2025/04/16 07:48:38 synced col: 13, row: 8
+2025/04/16 07:48:38 stream finished:  (0, 0)
+2025/04/16 07:48:38 stream error: canceled: context canceled
+2025/04/16 07:48:39 stream finished: cursor.log
+ (13, 13)
+2025/04/16 07:48:39 editing lines: 13, 13
+2025/04/16 07:48:39 editing lines 13..13 in buffer 1
+2025/04/16 07:48:39 applied line modification: 20
+2025/04/16 07:48:39 relativeLineIdx: 0
+2025/04/16 07:48:39 placing line 0
+2025/04/16 07:48:39 lines different so adding preview
+2025/04/16 07:48:39 adding buffer extmark + hl to line 13
+2025/04/16 07:48:39 added buffer extmark + hl to line 13
+2025/04/16 07:48:39 diffStr: 14-|cursorta
+14+|cursor.log
+2025/04/16 07:48:39 applying to buffer 1 (13..13)
+2025/04/16 07:48:39 starting stream
+2025/04/16 07:48:39 synced col: 13, row: 9
+2025/04/16 07:48:39 stream finished: cursor.log
+ (13, 13)
+2025/04/16 07:48:39 editing lines: 13, 13
+2025/04/16 07:48:39 editing lines 13..13 in buffer 1
+2025/04/16 07:48:39 applied line modification: 20
+2025/04/16 07:48:39 relativeLineIdx: 0
+2025/04/16 07:48:39 placing line 0
+2025/04/16 07:48:39 lines different so adding preview
+2025/04/16 07:48:39 adding buffer extmark + hl to line 13
+2025/04/16 07:48:39 added buffer extmark + hl to line 13
+2025/04/16 07:48:39 diffStr: 14-|cursortab
+14+|cursor.log
+2025/04/16 07:48:39 applying to buffer 1 (13..13)
+2025/04/16 07:48:40 starting stream
+2025/04/16 07:48:40 synced col: 13, row: 10
+2025/04/16 07:48:40 stream finished: cursor.log
+ (13, 13)
+2025/04/16 07:48:40 editing lines: 13, 13
+2025/04/16 07:48:40 editing lines 13..13 in buffer 1
+2025/04/16 07:48:40 applied line modification: 20
+2025/04/16 07:48:40 relativeLineIdx: 0
+2025/04/16 07:48:40 placing line 0
+2025/04/16 07:48:40 lines different so adding preview
+2025/04/16 07:48:40 adding buffer extmark + hl to line 13
+2025/04/16 07:48:40 added buffer extmark + hl to line 13
+2025/04/16 07:48:40 diffStr: 14-|cursortabl
+14+|cursor.log
+2025/04/16 07:48:40 applying to buffer 1 (13..13)
+2025/04/16 07:48:40 starting stream
+2025/04/16 07:48:40 synced col: 13, row: 11
+2025/04/16 07:48:40 starting stream
+2025/04/16 07:48:40 synced col: 13, row: 12
+2025/04/16 07:48:40 error starting stream: canceled: context canceled
+2025/04/16 07:48:41 starting stream
+2025/04/16 07:48:41 synced col: 13, row: 13
+2025/04/16 07:48:41 stream finished: cursortablog
+ (13, 13)
+2025/04/16 07:48:41 stream error: canceled: context canceled
+2025/04/16 07:48:41 stream finished: cursortablogs/*
+ (13, 13)
+2025/04/16 07:48:41 editing lines: 13, 13
+2025/04/16 07:48:41 editing lines 13..13 in buffer 1
+2025/04/16 07:48:41 applied line modification: 20
+2025/04/16 07:48:41 relativeLineIdx: 0
+2025/04/16 07:48:41 placing line 0
+2025/04/16 07:48:41 lines different so adding preview
+2025/04/16 07:48:41 adding buffer extmark + hl to line 13
+2025/04/16 07:48:41 added buffer extmark + hl to line 13
+2025/04/16 07:48:41 diffStr: 14-|cursortablogs
+14+|cursortablogs/*
+2025/04/16 07:48:41 applying to buffer 1 (13..13)
