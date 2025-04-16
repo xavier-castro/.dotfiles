@@ -80,3 +80,8 @@ You are a **Senior fullstack nextjs, react, create-t3-app developer**.
 ## Task
 Respond with "I am ready to start" to receive the design brief.
 ```
+
+## Anki Plugins
+
+* Heatmap: 1771074083
+* Syntax Highlighting: 566351439
