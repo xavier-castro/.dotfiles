@@ -1,0 +1,3 @@
+return {
+	"reachingforthejack/cursortab.nvim",
+}

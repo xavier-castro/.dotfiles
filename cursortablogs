@@ -1,0 +1,8 @@
+2025/04/19 09:59:20 starting cursor tab...
+2025/04/19 09:59:20 service created
+2025/04/19 09:59:20 nvim created
+2025/04/19 09:59:20 error creating state: error getting cursorAuth/accessToken (cmd /home/linuxbrew/.linuxbrew/bin/sqlite3 /home/xavier/Library/Application Support/Cursor/User/globalStorage/state.vscdb SELECT value FROM ItemTable WHERE key = 'cursorAuth/accessToken';): exit status 1
+2025/04/19 10:04:09 starting cursor tab...
+2025/04/19 10:04:09 service created
+2025/04/19 10:04:09 nvim created
+2025/04/19 10:04:09 error creating state: error getting cursorAuth/accessToken (cmd /home/linuxbrew/.linuxbrew/bin/sqlite3 /home/xavier/Library/Application Support/Cursor/User/globalStorage/state.vscdb SELECT value FROM ItemTable WHERE key = 'cursorAuth/accessToken';): exit status 1
