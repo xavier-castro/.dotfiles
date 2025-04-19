@@ -179,6 +179,13 @@ run = 'layout floating'
 if.app-id = 'dev.zed.Zed'
 run = 'layout floating'
 
+[[on-window-detected]]
+if.app-id = 'dev.zed.Zed-Preview'
+run = 'layout floating'
+
+[[on-window-detected]]
+if.app-id = 'com.vivaldi.Vivaldi'
+run = 'layout floating'
 
 # All monitors float by default
 # [[on-window-detected]]

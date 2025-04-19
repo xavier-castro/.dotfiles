@@ -2,9 +2,9 @@
 
 ## TODO
 
-- [ ] Figure out how to read your noice errors better
-- [x] Remove <cr> as enter for nvim-cmp
-- [ ] Install git-worktree
+## To Watch
+
+- [Cursor Tab Clone](https://github.com/reachingforthejack/cursortab.nvim)
 
 ## Quick Cheatsheet
 
@@ -80,3 +80,8 @@ You are a **Senior fullstack nextjs, react, create-t3-app developer**.
 ## Task
 Respond with "I am ready to start" to receive the design brief.
 ```
+
+## Anki Plugins
+
+* Heatmap: 1771074083
+* Syntax Highlighting: 566351439

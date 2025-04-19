@@ -1,0 +1,21 @@
+#theme = "Solarized Dark - Patched"
+theme="tokyonight"
+background-opacity = 0.96
+background-blur-radius = 20
+background = #031219
+background = #0A0A0A
+
+font-family = "SauceCodePro Nerd Font"
+
+#Cursor
+cursor-style = block
+cursor-style-blink = true
+cursor-invert-fg-bg = true
+cursor-opacity = .8
+shell-integration-features = no-cursor
+
+#keybind = global:cmd+ctrl+shift+j=toggle_visibility
+
+macos-option-as-alt = left
+keybind = alt+left=unbind
+keybind = alt+right=unbind

@@ -54,7 +54,7 @@ const rules: KarabinerRules[] = [
       n: app("Obsidian"),
       p: app("Music"),
       g: app("Ghostty"),
-      z: app("Zed"),
+      z: app("Zed Preview"),
     },
 
     // w = "Window" via rectangle.app
