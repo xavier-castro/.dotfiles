@@ -4646,3 +4646,1205 @@ grug-far.lua (0, 9)
 2025/04/19 10:37:24 lines identical so skipping preview
 2025/04/19 10:37:24 diffStr: 
 2025/04/19 10:37:24 applying to buffer 11 (25..32)
+2025/04/19 11:38:09 starting cursor tab...
+2025/04/19 11:38:09 service created
+2025/04/19 11:38:09 nvim created
+2025/04/19 11:38:09 creating new buffer
+2025/04/19 11:38:09 buffer created: &{[] 0 0  0 0 []}
+2025/04/19 11:38:09 starting stream
+2025/04/19 11:38:09 starting stream
+2025/04/19 11:38:09 synced col: 0, row: 0
+2025/04/19 11:38:09 synced col: 0, row: 0
+2025/04/19 11:38:09 error starting stream: canceled: context canceled
+2025/04/19 11:38:10 stream finished: 
+   Home (H)   Install (I)   Update (U)   Sync (S)   Clean (X)   Check (C)   Log (L)   Restore (R)   Profile (P)   Debug (D)   Help (?) 
+ (0, 2)
+2025/04/19 11:38:10 editing lines: 0, 2
+2025/04/19 11:38:10 editing lines 0..2 in buffer 2
+2025/04/19 11:38:10 applied line modification: 21
+2025/04/19 11:38:10 relativeLineIdx: 0
+2025/04/19 11:38:10 placing line 0
+2025/04/19 11:38:10 lines identical so skipping preview
+2025/04/19 11:38:10 relativeLineIdx: 1
+2025/04/19 11:38:10 placing line 1
+2025/04/19 11:38:10 lines identical so skipping preview
+2025/04/19 11:38:10 relativeLineIdx: 2
+2025/04/19 11:38:10 placing line 2
+2025/04/19 11:38:10 lines identical so skipping preview
+2025/04/19 11:38:10 diffStr: 
+2025/04/19 11:38:10 applying to buffer 2 (0..2)
+2025/04/19 11:38:11 starting stream
+2025/04/19 11:38:11 synced col: 0, row: 0
+2025/04/19 11:38:11 starting stream
+2025/04/19 11:38:11 synced col: 0, row: 0
+2025/04/19 11:38:11 error starting stream: canceled: context canceled
+2025/04/19 11:38:11 stream finished: 
+   Home (H)   Install (I)   Update (U)   Sync (S)   Clean (X)   Check (C)   Log (L)   Restore (R)   Profile (P)   Debug (D)   Help (?) 
+ (0, 2)
+2025/04/19 11:38:11 editing lines: 0, 2
+2025/04/19 11:38:11 editing lines 0..2 in buffer 2
+2025/04/19 11:38:11 applied line modification: 21
+2025/04/19 11:38:11 relativeLineIdx: 0
+2025/04/19 11:38:11 placing line 0
+2025/04/19 11:38:11 lines identical so skipping preview
+2025/04/19 11:38:11 relativeLineIdx: 1
+2025/04/19 11:38:11 placing line 1
+2025/04/19 11:38:11 lines identical so skipping preview
+2025/04/19 11:38:11 relativeLineIdx: 2
+2025/04/19 11:38:11 placing line 2
+2025/04/19 11:38:11 lines identical so skipping preview
+2025/04/19 11:38:11 diffStr: 
+2025/04/19 11:38:11 applying to buffer 2 (0..2)
+2025/04/19 11:38:14 starting stream
+2025/04/19 11:38:14 synced col: 0, row: 0
+2025/04/19 11:38:15 stream finished: ../
+.aider.tags.cache.v4/
+.git/
+aerospace/
+assets/
+bin/
+fish/ (0, 7)
+2025/04/19 11:38:15 editing lines: 0, 7
+2025/04/19 11:38:15 editing lines 0..7 in buffer 1
+2025/04/19 11:38:15 applied line modification: 21
+2025/04/19 11:38:15 relativeLineIdx: 0
+2025/04/19 11:38:15 placing line 0
+2025/04/19 11:38:15 lines identical so skipping preview
+2025/04/19 11:38:15 relativeLineIdx: 1
+2025/04/19 11:38:15 placing line 1
+2025/04/19 11:38:15 lines different so adding preview
+2025/04/19 11:38:15 adding buffer extmark + hl to line 1
+2025/04/19 11:38:15 added buffer extmark + hl to line 1
+2025/04/19 11:38:15 relativeLineIdx: 2
+2025/04/19 11:38:15 placing line 2
+2025/04/19 11:38:15 lines different so adding preview
+2025/04/19 11:38:15 adding buffer extmark + hl to line 2
+2025/04/19 11:38:15 added buffer extmark + hl to line 2
+2025/04/19 11:38:15 relativeLineIdx: 3
+2025/04/19 11:38:15 placing line 3
+2025/04/19 11:38:15 lines different so adding preview
+2025/04/19 11:38:15 adding buffer extmark + hl to line 3
+2025/04/19 11:38:15 added buffer extmark + hl to line 3
+2025/04/19 11:38:15 relativeLineIdx: 4
+2025/04/19 11:38:15 placing line 4
+2025/04/19 11:38:15 lines different so adding preview
+2025/04/19 11:38:15 adding buffer extmark + hl to line 4
+2025/04/19 11:38:15 added buffer extmark + hl to line 4
+2025/04/19 11:38:15 relativeLineIdx: 5
+2025/04/19 11:38:15 placing line 5
+2025/04/19 11:38:15 lines different so adding preview
+2025/04/19 11:38:15 adding buffer extmark + hl to line 5
+2025/04/19 11:38:15 added buffer extmark + hl to line 5
+2025/04/19 11:38:15 relativeLineIdx: 6
+2025/04/19 11:38:15 placing line 6
+2025/04/19 11:38:15 lines different so adding preview
+2025/04/19 11:38:15 adding buffer extmark + hl to line 6
+2025/04/19 11:38:15 added buffer extmark + hl to line 6
+2025/04/19 11:38:15 relativeLineIdx: 7
+2025/04/19 11:38:15 removing line from preview
+2025/04/19 11:38:15 nothing to preview
+2025/04/19 11:38:15 diffStr: 2-|./
+2+|.aider.tags.cache.v4/
+3-|.aider.tags.cache.v4/
+3+|.git/
+4-|.git/
+4+|aerospace/
+5-|aerospace/
+5+|assets/
+6-|assets/
+6+|bin/
+7-|bin/
+7+|fish/
+8-|fish/
+2025/04/19 11:38:15 applying to buffer 1 (0..7)
+2025/04/19 11:38:18 starting stream
+2025/04/19 11:38:18 synced col: 3, row: 0
+2025/04/19 11:38:18 stream finished: .DS_Store
+ (3, 3)
+2025/04/19 11:38:18 editing lines: 3, 3
+2025/04/19 11:38:18 editing lines 3..3 in buffer 4
+2025/04/19 11:38:18 applied line modification: 21
+2025/04/19 11:38:18 relativeLineIdx: 0
+2025/04/19 11:38:18 placing line 0
+2025/04/19 11:38:18 lines identical so skipping preview
+2025/04/19 11:38:18 diffStr: 
+2025/04/19 11:38:18 applying to buffer 4 (3..3)
+2025/04/19 11:38:18 starting stream
+2025/04/19 11:38:18 synced col: 2, row: 0
+2025/04/19 11:38:19 stream finished: nvim/
+.DS_Store
+ (2, 3)
+2025/04/19 11:38:19 editing lines: 2, 3
+2025/04/19 11:38:19 editing lines 2..3 in buffer 5
+2025/04/19 11:38:19 applied line modification: 21
+2025/04/19 11:38:19 relativeLineIdx: 0
+2025/04/19 11:38:19 placing line 0
+2025/04/19 11:38:19 lines identical so skipping preview
+2025/04/19 11:38:19 relativeLineIdx: 1
+2025/04/19 11:38:19 placing line 1
+2025/04/19 11:38:19 lines identical so skipping preview
+2025/04/19 11:38:19 diffStr: 
+2025/04/19 11:38:19 applying to buffer 5 (2..3)
+2025/04/19 11:38:19 starting stream
+2025/04/19 11:38:19 synced col: 2, row: 0
+2025/04/19 11:38:19 stream finished: lua/
+.gitignore
+README.md
+init.lua (2, 5)
+2025/04/19 11:38:19 editing lines: 2, 5
+2025/04/19 11:38:19 editing lines 2..5 in buffer 6
+2025/04/19 11:38:19 applied line modification: 21
+2025/04/19 11:38:19 relativeLineIdx: 0
+2025/04/19 11:38:19 placing line 0
+2025/04/19 11:38:19 lines identical so skipping preview
+2025/04/19 11:38:19 relativeLineIdx: 1
+2025/04/19 11:38:19 placing line 1
+2025/04/19 11:38:19 lines identical so skipping preview
+2025/04/19 11:38:19 relativeLineIdx: 2
+2025/04/19 11:38:19 placing line 2
+2025/04/19 11:38:19 lines identical so skipping preview
+2025/04/19 11:38:19 relativeLineIdx: 3
+2025/04/19 11:38:19 placing line 3
+2025/04/19 11:38:19 lines identical so skipping preview
+2025/04/19 11:38:19 diffStr: 
+2025/04/19 11:38:19 applying to buffer 6 (2..5)
+2025/04/19 11:38:19 starting stream
+2025/04/19 11:38:19 synced col: 2, row: 0
+2025/04/19 11:38:19 stream finished: config/
+plugins/
+xavier/ (2, 4)
+2025/04/19 11:38:19 editing lines: 2, 4
+2025/04/19 11:38:19 editing lines 2..4 in buffer 7
+2025/04/19 11:38:19 applied line modification: 21
+2025/04/19 11:38:19 relativeLineIdx: 0
+2025/04/19 11:38:19 placing line 0
+2025/04/19 11:38:19 lines identical so skipping preview
+2025/04/19 11:38:19 relativeLineIdx: 1
+2025/04/19 11:38:19 placing line 1
+2025/04/19 11:38:19 lines identical so skipping preview
+2025/04/19 11:38:19 relativeLineIdx: 2
+2025/04/19 11:38:19 placing line 2
+2025/04/19 11:38:19 lines identical so skipping preview
+2025/04/19 11:38:19 diffStr: 
+2025/04/19 11:38:19 applying to buffer 7 (2..4)
+2025/04/19 11:38:20 starting stream
+2025/04/19 11:38:20 synced col: 2, row: 0
+2025/04/19 11:38:20 stream finished: ../
+./
+lsp/
+float-terminal.lua
+fuzzy-search.lua
+keymaps.lua
+options.lua
+ui.lua (0, 7)
+2025/04/19 11:38:20 editing lines: 0, 7
+2025/04/19 11:38:20 editing lines 0..7 in buffer 8
+2025/04/19 11:38:20 applied line modification: 21
+2025/04/19 11:38:20 relativeLineIdx: 0
+2025/04/19 11:38:20 placing line 0
+2025/04/19 11:38:20 lines identical so skipping preview
+2025/04/19 11:38:20 relativeLineIdx: 1
+2025/04/19 11:38:20 placing line 1
+2025/04/19 11:38:20 lines identical so skipping preview
+2025/04/19 11:38:20 relativeLineIdx: 2
+2025/04/19 11:38:20 placing line 2
+2025/04/19 11:38:20 lines identical so skipping preview
+2025/04/19 11:38:20 relativeLineIdx: 3
+2025/04/19 11:38:20 placing line 3
+2025/04/19 11:38:20 lines identical so skipping preview
+2025/04/19 11:38:20 relativeLineIdx: 4
+2025/04/19 11:38:20 placing line 4
+2025/04/19 11:38:20 lines identical so skipping preview
+2025/04/19 11:38:20 relativeLineIdx: 5
+2025/04/19 11:38:20 placing line 5
+2025/04/19 11:38:20 lines identical so skipping preview
+2025/04/19 11:38:20 relativeLineIdx: 6
+2025/04/19 11:38:20 placing line 6
+2025/04/19 11:38:20 lines identical so skipping preview
+2025/04/19 11:38:20 relativeLineIdx: 7
+2025/04/19 11:38:20 placing line 7
+2025/04/19 11:38:20 lines identical so skipping preview
+2025/04/19 11:38:20 diffStr: 
+2025/04/19 11:38:20 applying to buffer 8 (0..7)
+2025/04/19 11:38:21 starting stream
+2025/04/19 11:38:21 synced col: 2, row: 0
+2025/04/19 11:38:21 stream finished: global.lua (2, 2)
+2025/04/19 11:38:21 editing lines: 2, 2
+2025/04/19 11:38:21 editing lines 2..2 in buffer 9
+2025/04/19 11:38:21 applied line modification: 21
+2025/04/19 11:38:21 relativeLineIdx: 0
+2025/04/19 11:38:21 placing line 0
+2025/04/19 11:38:21 lines identical so skipping preview
+2025/04/19 11:38:21 diffStr: 
+2025/04/19 11:38:21 applying to buffer 9 (2..2)
+2025/04/19 11:38:22 starting stream
+2025/04/19 11:38:22 synced col: 2, row: 0
+2025/04/19 11:38:22 stream finished: ../
+./
+lsp/
+float-terminal.lua
+fuzzy-search.lua
+keymaps.lua
+options.lua
+ui.lua (0, 7)
+2025/04/19 11:38:22 editing lines: 0, 7
+2025/04/19 11:38:22 editing lines 0..7 in buffer 8
+2025/04/19 11:38:22 applied line modification: 21
+2025/04/19 11:38:22 relativeLineIdx: 0
+2025/04/19 11:38:22 placing line 0
+2025/04/19 11:38:22 lines identical so skipping preview
+2025/04/19 11:38:22 relativeLineIdx: 1
+2025/04/19 11:38:22 placing line 1
+2025/04/19 11:38:22 lines identical so skipping preview
+2025/04/19 11:38:22 relativeLineIdx: 2
+2025/04/19 11:38:22 placing line 2
+2025/04/19 11:38:22 lines identical so skipping preview
+2025/04/19 11:38:22 relativeLineIdx: 3
+2025/04/19 11:38:22 placing line 3
+2025/04/19 11:38:22 lines identical so skipping preview
+2025/04/19 11:38:22 relativeLineIdx: 4
+2025/04/19 11:38:22 placing line 4
+2025/04/19 11:38:22 lines identical so skipping preview
+2025/04/19 11:38:22 relativeLineIdx: 5
+2025/04/19 11:38:22 placing line 5
+2025/04/19 11:38:22 lines identical so skipping preview
+2025/04/19 11:38:22 relativeLineIdx: 6
+2025/04/19 11:38:22 placing line 6
+2025/04/19 11:38:22 lines identical so skipping preview
+2025/04/19 11:38:22 relativeLineIdx: 7
+2025/04/19 11:38:22 placing line 7
+2025/04/19 11:38:22 lines identical so skipping preview
+2025/04/19 11:38:22 diffStr: 
+2025/04/19 11:38:22 applying to buffer 8 (0..7)
+2025/04/19 11:38:27 starting stream
+2025/04/19 11:38:27 synced col: 2, row: 0
+2025/04/19 11:38:28 stream finished: config/
+plugins/
+xavier/ (2, 4)
+2025/04/19 11:38:28 editing lines: 2, 4
+2025/04/19 11:38:28 editing lines 2..4 in buffer 7
+2025/04/19 11:38:28 applied line modification: 21
+2025/04/19 11:38:28 relativeLineIdx: 0
+2025/04/19 11:38:28 placing line 0
+2025/04/19 11:38:28 lines identical so skipping preview
+2025/04/19 11:38:28 relativeLineIdx: 1
+2025/04/19 11:38:28 placing line 1
+2025/04/19 11:38:28 lines identical so skipping preview
+2025/04/19 11:38:28 relativeLineIdx: 2
+2025/04/19 11:38:28 placing line 2
+2025/04/19 11:38:28 lines identical so skipping preview
+2025/04/19 11:38:28 diffStr: 
+2025/04/19 11:38:28 applying to buffer 7 (2..4)
+2025/04/19 11:38:29 starting stream
+2025/04/19 11:38:29 synced col: 2, row: 0
+2025/04/19 11:38:29 stream finished: ../
+./
+lsp/
+float-terminal.lua
+fuzzy-search.lua
+keymaps.lua
+options.lua
+ui.lua (0, 7)
+2025/04/19 11:38:29 editing lines: 0, 7
+2025/04/19 11:38:29 editing lines 0..7 in buffer 8
+2025/04/19 11:38:29 applied line modification: 21
+2025/04/19 11:38:29 relativeLineIdx: 0
+2025/04/19 11:38:29 placing line 0
+2025/04/19 11:38:29 lines identical so skipping preview
+2025/04/19 11:38:29 relativeLineIdx: 1
+2025/04/19 11:38:29 placing line 1
+2025/04/19 11:38:29 lines identical so skipping preview
+2025/04/19 11:38:29 relativeLineIdx: 2
+2025/04/19 11:38:29 placing line 2
+2025/04/19 11:38:29 lines identical so skipping preview
+2025/04/19 11:38:29 relativeLineIdx: 3
+2025/04/19 11:38:29 placing line 3
+2025/04/19 11:38:29 lines identical so skipping preview
+2025/04/19 11:38:29 relativeLineIdx: 4
+2025/04/19 11:38:29 placing line 4
+2025/04/19 11:38:29 lines identical so skipping preview
+2025/04/19 11:38:29 relativeLineIdx: 5
+2025/04/19 11:38:29 placing line 5
+2025/04/19 11:38:29 lines identical so skipping preview
+2025/04/19 11:38:29 relativeLineIdx: 6
+2025/04/19 11:38:29 placing line 6
+2025/04/19 11:38:29 lines identical so skipping preview
+2025/04/19 11:38:29 relativeLineIdx: 7
+2025/04/19 11:38:29 placing line 7
+2025/04/19 11:38:29 lines identical so skipping preview
+2025/04/19 11:38:29 diffStr: 
+2025/04/19 11:38:29 applying to buffer 8 (0..7)
+2025/04/19 11:38:31 starting stream
+2025/04/19 11:38:31 synced col: 2, row: 0
+2025/04/19 11:38:31 stream finished: config/
+plugins/
+xavier/ (2, 4)
+2025/04/19 11:38:31 editing lines: 2, 4
+2025/04/19 11:38:31 editing lines 2..4 in buffer 7
+2025/04/19 11:38:31 applied line modification: 21
+2025/04/19 11:38:31 relativeLineIdx: 0
+2025/04/19 11:38:31 placing line 0
+2025/04/19 11:38:31 lines identical so skipping preview
+2025/04/19 11:38:31 relativeLineIdx: 1
+2025/04/19 11:38:31 placing line 1
+2025/04/19 11:38:31 lines identical so skipping preview
+2025/04/19 11:38:31 relativeLineIdx: 2
+2025/04/19 11:38:31 placing line 2
+2025/04/19 11:38:31 lines identical so skipping preview
+2025/04/19 11:38:31 diffStr: 
+2025/04/19 11:38:31 applying to buffer 7 (2..4)
+2025/04/19 11:38:31 starting stream
+2025/04/19 11:38:31 synced col: 3, row: 0
+2025/04/19 11:38:32 stream finished: nvim-cmp.lua
+telescope.lua
+ (3, 4)
+2025/04/19 11:38:32 editing lines: 3, 4
+2025/04/19 11:38:32 editing lines 3..4 in buffer 10
+2025/04/19 11:38:32 applied line modification: 21
+2025/04/19 11:38:32 relativeLineIdx: 0
+2025/04/19 11:38:32 placing line 0
+2025/04/19 11:38:32 lines identical so skipping preview
+2025/04/19 11:38:32 relativeLineIdx: 1
+2025/04/19 11:38:32 placing line 1
+2025/04/19 11:38:32 lines identical so skipping preview
+2025/04/19 11:38:32 diffStr: 
+2025/04/19 11:38:32 applying to buffer 10 (3..4)
+2025/04/19 11:38:36 starting stream
+2025/04/19 11:38:36 synced col: 3, row: 0
+2025/04/19 11:38:36 stream finished: plugins/
+xavier/
+ (3, 4)
+2025/04/19 11:38:36 editing lines: 3, 4
+2025/04/19 11:38:36 editing lines 3..4 in buffer 7
+2025/04/19 11:38:36 applied line modification: 21
+2025/04/19 11:38:36 relativeLineIdx: 0
+2025/04/19 11:38:36 placing line 0
+2025/04/19 11:38:36 lines identical so skipping preview
+2025/04/19 11:38:36 relativeLineIdx: 1
+2025/04/19 11:38:36 placing line 1
+2025/04/19 11:38:36 lines identical so skipping preview
+2025/04/19 11:38:36 diffStr: 
+2025/04/19 11:38:36 applying to buffer 7 (3..4)
+2025/04/19 11:38:37 starting stream
+2025/04/19 11:38:37 synced col: 4, row: 0
+2025/04/19 11:38:37 stream finished: lazy/
+utils/
+init.lua
+lazy_init.lua
+remap.lua
+set.lua (2, 7)
+2025/04/19 11:38:37 editing lines: 2, 7
+2025/04/19 11:38:37 editing lines 2..7 in buffer 11
+2025/04/19 11:38:37 applied line modification: 21
+2025/04/19 11:38:37 relativeLineIdx: 0
+2025/04/19 11:38:37 placing line 0
+2025/04/19 11:38:37 lines identical so skipping preview
+2025/04/19 11:38:37 relativeLineIdx: 1
+2025/04/19 11:38:37 placing line 1
+2025/04/19 11:38:37 lines identical so skipping preview
+2025/04/19 11:38:37 relativeLineIdx: 2
+2025/04/19 11:38:37 placing line 2
+2025/04/19 11:38:37 lines identical so skipping preview
+2025/04/19 11:38:37 relativeLineIdx: 3
+2025/04/19 11:38:37 placing line 3
+2025/04/19 11:38:37 lines identical so skipping preview
+2025/04/19 11:38:37 relativeLineIdx: 4
+2025/04/19 11:38:37 placing line 4
+2025/04/19 11:38:37 lines identical so skipping preview
+2025/04/19 11:38:37 relativeLineIdx: 5
+2025/04/19 11:38:37 placing line 5
+2025/04/19 11:38:37 lines identical so skipping preview
+2025/04/19 11:38:37 diffStr: 
+2025/04/19 11:38:37 applying to buffer 11 (2..7)
+2025/04/19 11:38:38 starting stream
+2025/04/19 11:38:38 synced col: 2, row: 0
+2025/04/19 11:38:39 stream finished: ../
+./
+aider.lua
+autopairs.lua
+avante.lua
+colors.lua
+conform.lua
+copilot.lua
+cursortab.lua
+dap.lua (0, 9)
+2025/04/19 11:38:39 editing lines: 0, 9
+2025/04/19 11:38:39 editing lines 0..9 in buffer 12
+2025/04/19 11:38:39 applied line modification: 21
+2025/04/19 11:38:39 relativeLineIdx: 0
+2025/04/19 11:38:39 placing line 0
+2025/04/19 11:38:39 lines identical so skipping preview
+2025/04/19 11:38:39 relativeLineIdx: 1
+2025/04/19 11:38:39 placing line 1
+2025/04/19 11:38:39 lines identical so skipping preview
+2025/04/19 11:38:39 relativeLineIdx: 2
+2025/04/19 11:38:39 placing line 2
+2025/04/19 11:38:39 lines identical so skipping preview
+2025/04/19 11:38:39 relativeLineIdx: 3
+2025/04/19 11:38:39 placing line 3
+2025/04/19 11:38:39 lines identical so skipping preview
+2025/04/19 11:38:39 relativeLineIdx: 4
+2025/04/19 11:38:39 placing line 4
+2025/04/19 11:38:39 lines identical so skipping preview
+2025/04/19 11:38:39 relativeLineIdx: 5
+2025/04/19 11:38:39 placing line 5
+2025/04/19 11:38:39 lines identical so skipping preview
+2025/04/19 11:38:39 relativeLineIdx: 6
+2025/04/19 11:38:39 placing line 6
+2025/04/19 11:38:39 lines identical so skipping preview
+2025/04/19 11:38:39 relativeLineIdx: 7
+2025/04/19 11:38:39 placing line 7
+2025/04/19 11:38:39 lines identical so skipping preview
+2025/04/19 11:38:39 relativeLineIdx: 8
+2025/04/19 11:38:39 placing line 8
+2025/04/19 11:38:39 lines identical so skipping preview
+2025/04/19 11:38:39 relativeLineIdx: 9
+2025/04/19 11:38:39 placing line 9
+2025/04/19 11:38:39 lines identical so skipping preview
+2025/04/19 11:38:39 diffStr: 
+2025/04/19 11:38:39 applying to buffer 12 (0..9)
+2025/04/19 11:38:39 starting stream
+2025/04/19 11:38:39 synced col: 2, row: 0
+2025/04/19 11:38:39 stream finished: ../
+./
+lazy/
+utils/
+init.lua
+lazy_init.lua
+remap.lua
+set.lua (0, 7)
+2025/04/19 11:38:39 editing lines: 0, 7
+2025/04/19 11:38:39 editing lines 0..7 in buffer 11
+2025/04/19 11:38:39 applied line modification: 21
+2025/04/19 11:38:39 relativeLineIdx: 0
+2025/04/19 11:38:39 placing line 0
+2025/04/19 11:38:39 lines identical so skipping preview
+2025/04/19 11:38:39 relativeLineIdx: 1
+2025/04/19 11:38:39 placing line 1
+2025/04/19 11:38:39 lines identical so skipping preview
+2025/04/19 11:38:39 relativeLineIdx: 2
+2025/04/19 11:38:39 placing line 2
+2025/04/19 11:38:39 lines identical so skipping preview
+2025/04/19 11:38:39 relativeLineIdx: 3
+2025/04/19 11:38:39 placing line 3
+2025/04/19 11:38:39 lines identical so skipping preview
+2025/04/19 11:38:39 relativeLineIdx: 4
+2025/04/19 11:38:39 placing line 4
+2025/04/19 11:38:39 lines identical so skipping preview
+2025/04/19 11:38:39 relativeLineIdx: 5
+2025/04/19 11:38:39 placing line 5
+2025/04/19 11:38:39 lines identical so skipping preview
+2025/04/19 11:38:39 relativeLineIdx: 6
+2025/04/19 11:38:39 placing line 6
+2025/04/19 11:38:39 lines identical so skipping preview
+2025/04/19 11:38:39 relativeLineIdx: 7
+2025/04/19 11:38:39 placing line 7
+2025/04/19 11:38:39 lines identical so skipping preview
+2025/04/19 11:38:39 diffStr: 
+2025/04/19 11:38:39 applying to buffer 11 (0..7)
+2025/04/19 11:38:41 starting stream
+2025/04/19 11:38:41 synced col: 3, row: 0
+2025/04/19 11:38:41 stream finished: fuzzy-search.lua
+ (3, 3)
+2025/04/19 11:38:41 editing lines: 3, 3
+2025/04/19 11:38:41 editing lines 3..3 in buffer 13
+2025/04/19 11:38:41 applied line modification: 21
+2025/04/19 11:38:41 relativeLineIdx: 0
+2025/04/19 11:38:41 placing line 0
+2025/04/19 11:38:41 lines identical so skipping preview
+2025/04/19 11:38:41 diffStr: 
+2025/04/19 11:38:41 applying to buffer 13 (3..3)
+2025/04/19 11:38:42 starting stream
+2025/04/19 11:38:42 synced col: 1, row: 0
+2025/04/19 11:38:42 stream finished: ./
+float-terminal.lua
+fuzzy-search.lua
+
+
+
+
+
+ (1, 3)
+2025/04/19 11:38:42 editing lines: 1, 3
+2025/04/19 11:38:42 editing lines 1..3 in buffer 13
+2025/04/19 11:38:42 applied line modification: 21
+2025/04/19 11:38:42 relativeLineIdx: 0
+2025/04/19 11:38:42 placing line 0
+2025/04/19 11:38:42 lines identical so skipping preview
+2025/04/19 11:38:42 relativeLineIdx: 1
+2025/04/19 11:38:42 placing line 1
+2025/04/19 11:38:42 lines identical so skipping preview
+2025/04/19 11:38:42 relativeLineIdx: 2
+2025/04/19 11:38:42 placing line 2
+2025/04/19 11:38:42 lines identical so skipping preview
+2025/04/19 11:38:42 diffStr: 
+2025/04/19 11:38:42 applying to buffer 13 (1..3)
+2025/04/19 11:38:43 starting stream
+2025/04/19 11:38:43 synced col: 0, row: 0
+2025/04/19 11:38:43 stream finished: ../
+./
+lazy/
+utils/
+init.lua
+lazy_init.lua
+remap.lua
+set.lua (0, 7)
+2025/04/19 11:38:43 editing lines: 0, 7
+2025/04/19 11:38:43 editing lines 0..7 in buffer 11
+2025/04/19 11:38:43 applied line modification: 21
+2025/04/19 11:38:43 relativeLineIdx: 0
+2025/04/19 11:38:43 placing line 0
+2025/04/19 11:38:43 lines identical so skipping preview
+2025/04/19 11:38:43 relativeLineIdx: 1
+2025/04/19 11:38:43 placing line 1
+2025/04/19 11:38:43 lines identical so skipping preview
+2025/04/19 11:38:43 relativeLineIdx: 2
+2025/04/19 11:38:43 placing line 2
+2025/04/19 11:38:43 lines identical so skipping preview
+2025/04/19 11:38:43 relativeLineIdx: 3
+2025/04/19 11:38:43 placing line 3
+2025/04/19 11:38:43 lines identical so skipping preview
+2025/04/19 11:38:43 relativeLineIdx: 4
+2025/04/19 11:38:43 placing line 4
+2025/04/19 11:38:43 lines identical so skipping preview
+2025/04/19 11:38:43 relativeLineIdx: 5
+2025/04/19 11:38:43 placing line 5
+2025/04/19 11:38:43 lines identical so skipping preview
+2025/04/19 11:38:43 relativeLineIdx: 6
+2025/04/19 11:38:43 placing line 6
+2025/04/19 11:38:43 lines identical so skipping preview
+2025/04/19 11:38:43 relativeLineIdx: 7
+2025/04/19 11:38:43 placing line 7
+2025/04/19 11:38:43 lines identical so skipping preview
+2025/04/19 11:38:43 diffStr: 
+2025/04/19 11:38:43 applying to buffer 11 (0..7)
+2025/04/19 11:38:43 starting stream
+2025/04/19 11:38:43 synced col: 0, row: 0
+2025/04/19 11:38:44 starting stream
+2025/04/19 11:38:44 synced col: 2, row: 0
+2025/04/19 11:38:44 error starting stream: canceled: context canceled
+2025/04/19 11:38:44 stream finished: ../
+./
+lsp/
+float-terminal.lua
+fuzzy-search.lua
+keymaps.lua
+options.lua
+ui.lua (0, 7)
+2025/04/19 11:38:44 editing lines: 0, 7
+2025/04/19 11:38:44 editing lines 0..7 in buffer 8
+2025/04/19 11:38:44 applied line modification: 21
+2025/04/19 11:38:44 relativeLineIdx: 0
+2025/04/19 11:38:44 placing line 0
+2025/04/19 11:38:44 lines identical so skipping preview
+2025/04/19 11:38:44 relativeLineIdx: 1
+2025/04/19 11:38:44 placing line 1
+2025/04/19 11:38:44 lines identical so skipping preview
+2025/04/19 11:38:44 relativeLineIdx: 2
+2025/04/19 11:38:44 placing line 2
+2025/04/19 11:38:44 lines identical so skipping preview
+2025/04/19 11:38:44 relativeLineIdx: 3
+2025/04/19 11:38:44 placing line 3
+2025/04/19 11:38:44 lines identical so skipping preview
+2025/04/19 11:38:44 relativeLineIdx: 4
+2025/04/19 11:38:44 placing line 4
+2025/04/19 11:38:44 lines identical so skipping preview
+2025/04/19 11:38:44 relativeLineIdx: 5
+2025/04/19 11:38:44 placing line 5
+2025/04/19 11:38:44 lines identical so skipping preview
+2025/04/19 11:38:44 relativeLineIdx: 6
+2025/04/19 11:38:44 placing line 6
+2025/04/19 11:38:44 lines identical so skipping preview
+2025/04/19 11:38:44 relativeLineIdx: 7
+2025/04/19 11:38:44 placing line 7
+2025/04/19 11:38:44 lines identical so skipping preview
+2025/04/19 11:38:44 diffStr: 
+2025/04/19 11:38:44 applying to buffer 8 (0..7)
+2025/04/19 11:38:49 starting stream
+2025/04/19 11:38:49 synced col: 2, row: 0
+2025/04/19 11:38:49 stream finished: config/
+plugins/
+xavier/ (2, 4)
+2025/04/19 11:38:49 editing lines: 2, 4
+2025/04/19 11:38:49 editing lines 2..4 in buffer 7
+2025/04/19 11:38:49 applied line modification: 21
+2025/04/19 11:38:49 relativeLineIdx: 0
+2025/04/19 11:38:49 placing line 0
+2025/04/19 11:38:49 lines identical so skipping preview
+2025/04/19 11:38:49 relativeLineIdx: 1
+2025/04/19 11:38:49 placing line 1
+2025/04/19 11:38:49 lines identical so skipping preview
+2025/04/19 11:38:49 relativeLineIdx: 2
+2025/04/19 11:38:49 placing line 2
+2025/04/19 11:38:49 lines identical so skipping preview
+2025/04/19 11:38:49 diffStr: 
+2025/04/19 11:38:49 applying to buffer 7 (2..4)
+2025/04/19 11:38:50 starting stream
+2025/04/19 11:38:50 synced col: 4, row: 0
+2025/04/19 11:38:50 stream finished: lazy/
+utils/
+init.lua
+lazy_init.lua
+remap.lua
+set.lua (2, 7)
+2025/04/19 11:38:50 editing lines: 2, 7
+2025/04/19 11:38:50 editing lines 2..7 in buffer 11
+2025/04/19 11:38:50 applied line modification: 21
+2025/04/19 11:38:50 relativeLineIdx: 0
+2025/04/19 11:38:50 placing line 0
+2025/04/19 11:38:50 lines identical so skipping preview
+2025/04/19 11:38:50 relativeLineIdx: 1
+2025/04/19 11:38:50 placing line 1
+2025/04/19 11:38:50 lines identical so skipping preview
+2025/04/19 11:38:50 relativeLineIdx: 2
+2025/04/19 11:38:50 placing line 2
+2025/04/19 11:38:50 lines identical so skipping preview
+2025/04/19 11:38:50 relativeLineIdx: 3
+2025/04/19 11:38:50 placing line 3
+2025/04/19 11:38:50 lines identical so skipping preview
+2025/04/19 11:38:50 relativeLineIdx: 4
+2025/04/19 11:38:50 placing line 4
+2025/04/19 11:38:50 lines identical so skipping preview
+2025/04/19 11:38:50 relativeLineIdx: 5
+2025/04/19 11:38:50 placing line 5
+2025/04/19 11:38:50 lines identical so skipping preview
+2025/04/19 11:38:50 diffStr: 
+2025/04/19 11:38:50 applying to buffer 11 (2..7)
+2025/04/19 11:38:55 starting stream
+2025/04/19 11:38:55 synced col: 0, row: 0
+2025/04/19 11:38:55 stream finished: ../
+./
+lazy/
+utils/
+init.lua
+lazy_init.lua
+remap.lua
+set.lua (0, 7)
+2025/04/19 11:38:55 editing lines: 0, 7
+2025/04/19 11:38:55 editing lines 0..7 in buffer 11
+2025/04/19 11:38:55 applied line modification: 21
+2025/04/19 11:38:55 relativeLineIdx: 0
+2025/04/19 11:38:55 placing line 0
+2025/04/19 11:38:55 lines identical so skipping preview
+2025/04/19 11:38:55 relativeLineIdx: 1
+2025/04/19 11:38:55 placing line 1
+2025/04/19 11:38:55 lines identical so skipping preview
+2025/04/19 11:38:55 relativeLineIdx: 2
+2025/04/19 11:38:55 placing line 2
+2025/04/19 11:38:55 lines identical so skipping preview
+2025/04/19 11:38:55 relativeLineIdx: 3
+2025/04/19 11:38:55 placing line 3
+2025/04/19 11:38:55 lines identical so skipping preview
+2025/04/19 11:38:55 relativeLineIdx: 4
+2025/04/19 11:38:55 placing line 4
+2025/04/19 11:38:55 lines identical so skipping preview
+2025/04/19 11:38:55 relativeLineIdx: 5
+2025/04/19 11:38:55 placing line 5
+2025/04/19 11:38:55 lines identical so skipping preview
+2025/04/19 11:38:55 relativeLineIdx: 6
+2025/04/19 11:38:55 placing line 6
+2025/04/19 11:38:55 lines identical so skipping preview
+2025/04/19 11:38:55 relativeLineIdx: 7
+2025/04/19 11:38:55 placing line 7
+2025/04/19 11:38:55 lines identical so skipping preview
+2025/04/19 11:38:55 diffStr: 
+2025/04/19 11:38:55 applying to buffer 11 (0..7)
+2025/04/19 11:39:05 starting stream
+2025/04/19 11:39:05 synced col: 0, row: 0
+2025/04/19 11:39:06 stream finished: ../
+./
+lazy/
+utils/
+init.lua
+lazy_init.lua
+remap.lua
+set.lua (0, 7)
+2025/04/19 11:39:06 editing lines: 0, 7
+2025/04/19 11:39:06 editing lines 0..7 in buffer 11
+2025/04/19 11:39:06 applied line modification: 21
+2025/04/19 11:39:06 relativeLineIdx: 0
+2025/04/19 11:39:06 placing line 0
+2025/04/19 11:39:06 lines identical so skipping preview
+2025/04/19 11:39:06 relativeLineIdx: 1
+2025/04/19 11:39:06 placing line 1
+2025/04/19 11:39:06 lines identical so skipping preview
+2025/04/19 11:39:06 relativeLineIdx: 2
+2025/04/19 11:39:06 placing line 2
+2025/04/19 11:39:06 lines identical so skipping preview
+2025/04/19 11:39:06 relativeLineIdx: 3
+2025/04/19 11:39:06 placing line 3
+2025/04/19 11:39:06 lines identical so skipping preview
+2025/04/19 11:39:06 relativeLineIdx: 4
+2025/04/19 11:39:06 placing line 4
+2025/04/19 11:39:06 lines identical so skipping preview
+2025/04/19 11:39:06 relativeLineIdx: 5
+2025/04/19 11:39:06 placing line 5
+2025/04/19 11:39:06 lines identical so skipping preview
+2025/04/19 11:39:06 relativeLineIdx: 6
+2025/04/19 11:39:06 placing line 6
+2025/04/19 11:39:06 lines identical so skipping preview
+2025/04/19 11:39:06 relativeLineIdx: 7
+2025/04/19 11:39:06 placing line 7
+2025/04/19 11:39:06 lines identical so skipping preview
+2025/04/19 11:39:06 diffStr: 
+2025/04/19 11:39:06 applying to buffer 11 (0..7)
+2025/04/19 11:39:07 starting stream
+2025/04/19 11:39:07 synced col: 2, row: 0
+2025/04/19 11:39:07 stream finished: ../
+./
+aider.lua
+autopairs.lua
+avante.lua
+colors.lua
+conform.lua
+copilot.lua
+cursortab.lua
+dap.lua (0, 9)
+2025/04/19 11:39:07 editing lines: 0, 9
+2025/04/19 11:39:07 editing lines 0..9 in buffer 12
+2025/04/19 11:39:07 applied line modification: 21
+2025/04/19 11:39:07 relativeLineIdx: 0
+2025/04/19 11:39:07 placing line 0
+2025/04/19 11:39:07 lines identical so skipping preview
+2025/04/19 11:39:07 relativeLineIdx: 1
+2025/04/19 11:39:07 placing line 1
+2025/04/19 11:39:07 lines identical so skipping preview
+2025/04/19 11:39:07 relativeLineIdx: 2
+2025/04/19 11:39:07 placing line 2
+2025/04/19 11:39:07 lines identical so skipping preview
+2025/04/19 11:39:07 relativeLineIdx: 3
+2025/04/19 11:39:07 placing line 3
+2025/04/19 11:39:07 lines identical so skipping preview
+2025/04/19 11:39:07 relativeLineIdx: 4
+2025/04/19 11:39:07 placing line 4
+2025/04/19 11:39:07 lines identical so skipping preview
+2025/04/19 11:39:07 relativeLineIdx: 5
+2025/04/19 11:39:07 placing line 5
+2025/04/19 11:39:07 lines identical so skipping preview
+2025/04/19 11:39:07 relativeLineIdx: 6
+2025/04/19 11:39:07 placing line 6
+2025/04/19 11:39:07 lines identical so skipping preview
+2025/04/19 11:39:07 relativeLineIdx: 7
+2025/04/19 11:39:07 placing line 7
+2025/04/19 11:39:07 lines identical so skipping preview
+2025/04/19 11:39:07 relativeLineIdx: 8
+2025/04/19 11:39:07 placing line 8
+2025/04/19 11:39:07 lines identical so skipping preview
+2025/04/19 11:39:07 relativeLineIdx: 9
+2025/04/19 11:39:07 placing line 9
+2025/04/19 11:39:07 lines identical so skipping preview
+2025/04/19 11:39:07 diffStr: 
+2025/04/19 11:39:07 applying to buffer 12 (0..9)
+2025/04/19 11:39:17 starting stream
+2025/04/19 11:39:17 synced col: 0, row: 0
+2025/04/19 11:39:17 stream finished: ../
+./
+aider.lua
+autopairs.lua
+avante.lua
+colors.lua
+conform.lua
+copilot.lua (0, 7)
+2025/04/19 11:39:17 editing lines: 0, 7
+2025/04/19 11:39:17 editing lines 0..7 in buffer 12
+2025/04/19 11:39:17 applied line modification: 21
+2025/04/19 11:39:17 relativeLineIdx: 0
+2025/04/19 11:39:17 placing line 0
+2025/04/19 11:39:17 lines identical so skipping preview
+2025/04/19 11:39:17 relativeLineIdx: 1
+2025/04/19 11:39:17 placing line 1
+2025/04/19 11:39:17 lines identical so skipping preview
+2025/04/19 11:39:17 relativeLineIdx: 2
+2025/04/19 11:39:17 placing line 2
+2025/04/19 11:39:17 lines identical so skipping preview
+2025/04/19 11:39:17 relativeLineIdx: 3
+2025/04/19 11:39:17 placing line 3
+2025/04/19 11:39:17 lines identical so skipping preview
+2025/04/19 11:39:17 relativeLineIdx: 4
+2025/04/19 11:39:17 placing line 4
+2025/04/19 11:39:17 lines identical so skipping preview
+2025/04/19 11:39:17 relativeLineIdx: 5
+2025/04/19 11:39:17 placing line 5
+2025/04/19 11:39:17 lines identical so skipping preview
+2025/04/19 11:39:17 relativeLineIdx: 6
+2025/04/19 11:39:17 placing line 6
+2025/04/19 11:39:17 lines identical so skipping preview
+2025/04/19 11:39:17 relativeLineIdx: 7
+2025/04/19 11:39:17 placing line 7
+2025/04/19 11:39:17 lines identical so skipping preview
+2025/04/19 11:39:17 diffStr: 
+2025/04/19 11:39:17 applying to buffer 12 (0..7)
+2025/04/19 11:39:20 starting stream
+2025/04/19 11:39:20 synced col: 0, row: 0
+2025/04/19 11:39:20 stream finished: ../
+./
+aider.lua
+autopairs.lua
+avante.lua
+colors.lua
+conform.lua
+copilot.lua (0, 7)
+2025/04/19 11:39:20 editing lines: 0, 7
+2025/04/19 11:39:20 editing lines 0..7 in buffer 12
+2025/04/19 11:39:20 applied line modification: 21
+2025/04/19 11:39:20 relativeLineIdx: 0
+2025/04/19 11:39:20 placing line 0
+2025/04/19 11:39:20 lines identical so skipping preview
+2025/04/19 11:39:20 relativeLineIdx: 1
+2025/04/19 11:39:20 placing line 1
+2025/04/19 11:39:20 lines identical so skipping preview
+2025/04/19 11:39:20 relativeLineIdx: 2
+2025/04/19 11:39:20 placing line 2
+2025/04/19 11:39:20 lines identical so skipping preview
+2025/04/19 11:39:20 relativeLineIdx: 3
+2025/04/19 11:39:20 placing line 3
+2025/04/19 11:39:20 lines identical so skipping preview
+2025/04/19 11:39:20 relativeLineIdx: 4
+2025/04/19 11:39:20 placing line 4
+2025/04/19 11:39:20 lines identical so skipping preview
+2025/04/19 11:39:20 relativeLineIdx: 5
+2025/04/19 11:39:20 placing line 5
+2025/04/19 11:39:20 lines identical so skipping preview
+2025/04/19 11:39:20 relativeLineIdx: 6
+2025/04/19 11:39:20 placing line 6
+2025/04/19 11:39:20 lines identical so skipping preview
+2025/04/19 11:39:20 relativeLineIdx: 7
+2025/04/19 11:39:20 placing line 7
+2025/04/19 11:39:20 lines identical so skipping preview
+2025/04/19 11:39:20 diffStr: 
+2025/04/19 11:39:20 applying to buffer 12 (0..7)
+2025/04/19 11:39:22 starting stream
+2025/04/19 11:39:22 synced col: 0, row: 0
+2025/04/19 11:39:23 stream finished: ../
+./
+aider.lua
+autopairs.lua
+avante.lua
+colors.lua
+conform.lua
+copilot.lua (0, 7)
+2025/04/19 11:39:23 editing lines: 0, 7
+2025/04/19 11:39:23 editing lines 0..7 in buffer 12
+2025/04/19 11:39:23 applied line modification: 21
+2025/04/19 11:39:23 relativeLineIdx: 0
+2025/04/19 11:39:23 placing line 0
+2025/04/19 11:39:23 lines identical so skipping preview
+2025/04/19 11:39:23 relativeLineIdx: 1
+2025/04/19 11:39:23 placing line 1
+2025/04/19 11:39:23 lines identical so skipping preview
+2025/04/19 11:39:23 relativeLineIdx: 2
+2025/04/19 11:39:23 placing line 2
+2025/04/19 11:39:23 lines identical so skipping preview
+2025/04/19 11:39:23 relativeLineIdx: 3
+2025/04/19 11:39:23 placing line 3
+2025/04/19 11:39:23 lines identical so skipping preview
+2025/04/19 11:39:23 relativeLineIdx: 4
+2025/04/19 11:39:23 placing line 4
+2025/04/19 11:39:23 lines identical so skipping preview
+2025/04/19 11:39:23 relativeLineIdx: 5
+2025/04/19 11:39:23 placing line 5
+2025/04/19 11:39:23 lines identical so skipping preview
+2025/04/19 11:39:23 relativeLineIdx: 6
+2025/04/19 11:39:23 placing line 6
+2025/04/19 11:39:23 lines identical so skipping preview
+2025/04/19 11:39:23 relativeLineIdx: 7
+2025/04/19 11:39:23 placing line 7
+2025/04/19 11:39:23 lines identical so skipping preview
+2025/04/19 11:39:23 diffStr: 
+2025/04/19 11:39:23 applying to buffer 12 (0..7)
+2025/04/19 11:39:29 starting stream
+2025/04/19 11:39:29 synced col: 23, row: 0
+2025/04/19 11:39:29 stream finished: telescope.lua
+tj.lua
+tmux-navigate.lua
+toggleterm.lua
+treesitter.lua
+trouble.lua
+undotree.lua
+vim-fugitive.lua
+vim-sleuth.lua
+which-key.lua
+yanky.lua (20, 30)
+2025/04/19 11:39:29 editing lines: 20, 30
+2025/04/19 11:39:29 editing lines 20..30 in buffer 12
+2025/04/19 11:39:29 applied line modification: 21
+2025/04/19 11:39:29 relativeLineIdx: 0
+2025/04/19 11:39:29 placing line 0
+2025/04/19 11:39:29 lines identical so skipping preview
+2025/04/19 11:39:29 relativeLineIdx: 1
+2025/04/19 11:39:29 placing line 1
+2025/04/19 11:39:29 lines identical so skipping preview
+2025/04/19 11:39:29 relativeLineIdx: 2
+2025/04/19 11:39:29 placing line 2
+2025/04/19 11:39:29 lines identical so skipping preview
+2025/04/19 11:39:29 relativeLineIdx: 3
+2025/04/19 11:39:29 placing line 3
+2025/04/19 11:39:29 lines identical so skipping preview
+2025/04/19 11:39:29 relativeLineIdx: 4
+2025/04/19 11:39:29 placing line 4
+2025/04/19 11:39:29 lines identical so skipping preview
+2025/04/19 11:39:29 relativeLineIdx: 5
+2025/04/19 11:39:29 placing line 5
+2025/04/19 11:39:29 lines identical so skipping preview
+2025/04/19 11:39:29 relativeLineIdx: 6
+2025/04/19 11:39:29 placing line 6
+2025/04/19 11:39:29 lines identical so skipping preview
+2025/04/19 11:39:29 relativeLineIdx: 7
+2025/04/19 11:39:29 placing line 7
+2025/04/19 11:39:29 lines identical so skipping preview
+2025/04/19 11:39:29 relativeLineIdx: 8
+2025/04/19 11:39:29 placing line 8
+2025/04/19 11:39:29 lines identical so skipping preview
+2025/04/19 11:39:29 relativeLineIdx: 9
+2025/04/19 11:39:29 placing line 9
+2025/04/19 11:39:29 lines identical so skipping preview
+2025/04/19 11:39:29 relativeLineIdx: 10
+2025/04/19 11:39:29 placing line 10
+2025/04/19 11:39:29 lines identical so skipping preview
+2025/04/19 11:39:29 diffStr: 
+2025/04/19 11:39:29 applying to buffer 12 (20..30)
+2025/04/19 11:39:39 starting stream
+2025/04/19 11:39:39 synced col: 0, row: 0
+2025/04/19 11:39:39 stream finished: ../
+./
+aider.lua
+autopairs.lua
+avante.lua
+colors.lua
+conform.lua
+copilot.lua (0, 7)
+2025/04/19 11:39:39 editing lines: 0, 7
+2025/04/19 11:39:39 editing lines 0..7 in buffer 12
+2025/04/19 11:39:39 applied line modification: 21
+2025/04/19 11:39:39 relativeLineIdx: 0
+2025/04/19 11:39:39 placing line 0
+2025/04/19 11:39:39 lines identical so skipping preview
+2025/04/19 11:39:39 relativeLineIdx: 1
+2025/04/19 11:39:39 placing line 1
+2025/04/19 11:39:39 lines identical so skipping preview
+2025/04/19 11:39:39 relativeLineIdx: 2
+2025/04/19 11:39:39 placing line 2
+2025/04/19 11:39:39 lines identical so skipping preview
+2025/04/19 11:39:39 relativeLineIdx: 3
+2025/04/19 11:39:39 placing line 3
+2025/04/19 11:39:39 lines identical so skipping preview
+2025/04/19 11:39:39 relativeLineIdx: 4
+2025/04/19 11:39:39 placing line 4
+2025/04/19 11:39:39 lines identical so skipping preview
+2025/04/19 11:39:39 relativeLineIdx: 5
+2025/04/19 11:39:39 placing line 5
+2025/04/19 11:39:39 lines identical so skipping preview
+2025/04/19 11:39:39 relativeLineIdx: 6
+2025/04/19 11:39:39 placing line 6
+2025/04/19 11:39:39 lines identical so skipping preview
+2025/04/19 11:39:39 relativeLineIdx: 7
+2025/04/19 11:39:39 placing line 7
+2025/04/19 11:39:39 lines identical so skipping preview
+2025/04/19 11:39:39 diffStr: 
+2025/04/19 11:39:39 applying to buffer 12 (0..7)
+2025/04/19 11:39:54 starting stream
+2025/04/19 11:39:54 synced col: 0, row: 0
+2025/04/19 11:39:54 stream finished: ../
+./
+aider.lua
+autopairs.lua
+avante.lua
+colors.lua
+conform.lua
+copilot.lua (0, 7)
+2025/04/19 11:39:54 editing lines: 0, 7
+2025/04/19 11:39:54 editing lines 0..7 in buffer 12
+2025/04/19 11:39:54 applied line modification: 21
+2025/04/19 11:39:54 relativeLineIdx: 0
+2025/04/19 11:39:54 placing line 0
+2025/04/19 11:39:54 lines identical so skipping preview
+2025/04/19 11:39:54 relativeLineIdx: 1
+2025/04/19 11:39:54 placing line 1
+2025/04/19 11:39:54 lines identical so skipping preview
+2025/04/19 11:39:54 relativeLineIdx: 2
+2025/04/19 11:39:54 placing line 2
+2025/04/19 11:39:54 lines identical so skipping preview
+2025/04/19 11:39:54 relativeLineIdx: 3
+2025/04/19 11:39:54 placing line 3
+2025/04/19 11:39:54 lines identical so skipping preview
+2025/04/19 11:39:54 relativeLineIdx: 4
+2025/04/19 11:39:54 placing line 4
+2025/04/19 11:39:54 lines identical so skipping preview
+2025/04/19 11:39:54 relativeLineIdx: 5
+2025/04/19 11:39:54 placing line 5
+2025/04/19 11:39:54 lines identical so skipping preview
+2025/04/19 11:39:54 relativeLineIdx: 6
+2025/04/19 11:39:54 placing line 6
+2025/04/19 11:39:54 lines identical so skipping preview
+2025/04/19 11:39:54 relativeLineIdx: 7
+2025/04/19 11:39:54 placing line 7
+2025/04/19 11:39:54 lines identical so skipping preview
+2025/04/19 11:39:54 diffStr: 
+2025/04/19 11:39:54 applying to buffer 12 (0..7)
+2025/04/19 11:40:12 starting stream
+2025/04/19 11:40:12 synced col: 3, row: 2
+2025/04/19 11:40:12 stream finished: 		"williamboman/mason.nvim",
+		"williamboman/mason-lspconfig.nvim",
+		"hrsh7th/cmp-nvim-lsp",
+		"hrsh7th/cmp-buffer",
+		"hrsh7th/cmp-path",
+		"hrsh7th/cmp-cmdline",
+		"hrsh7th/nvim-cmp",
+		"L3MON4D3/LuaSnip", (3, 10)
+2025/04/19 11:40:12 editing lines: 3, 10
+2025/04/19 11:40:12 editing lines 3..10 in buffer 20
+2025/04/19 11:40:12 applied line modification: 21
+2025/04/19 11:40:12 relativeLineIdx: 0
+2025/04/19 11:40:12 placing line 0
+2025/04/19 11:40:12 lines different so adding preview
+2025/04/19 11:40:12 adding buffer extmark + hl to line 3
+2025/04/19 11:40:12 added buffer extmark + hl to line 3
+2025/04/19 11:40:12 relativeLineIdx: 1
+2025/04/19 11:40:12 placing line 1
+2025/04/19 11:40:12 lines identical so skipping preview
+2025/04/19 11:40:12 relativeLineIdx: 2
+2025/04/19 11:40:12 placing line 2
+2025/04/19 11:40:12 lines identical so skipping preview
+2025/04/19 11:40:12 relativeLineIdx: 3
+2025/04/19 11:40:12 placing line 3
+2025/04/19 11:40:12 lines identical so skipping preview
+2025/04/19 11:40:12 relativeLineIdx: 4
+2025/04/19 11:40:12 placing line 4
+2025/04/19 11:40:12 lines identical so skipping preview
+2025/04/19 11:40:12 relativeLineIdx: 5
+2025/04/19 11:40:12 placing line 5
+2025/04/19 11:40:12 lines identical so skipping preview
+2025/04/19 11:40:12 relativeLineIdx: 6
+2025/04/19 11:40:12 placing line 6
+2025/04/19 11:40:12 lines identical so skipping preview
+2025/04/19 11:40:12 relativeLineIdx: 7
+2025/04/19 11:40:12 placing line 7
+2025/04/19 11:40:12 lines identical so skipping preview
+2025/04/19 11:40:12 diffStr: 4-|				"williamboman/mason.nvim",
+4+|		"williamboman/mason.nvim",
+2025/04/19 11:40:12 applying to buffer 20 (3..10)
+2025/04/19 11:40:17 starting stream
+2025/04/19 11:40:17 synced col: 0, row: 0
+2025/04/19 11:40:17 stream finished: ../
+./
+aider.lua
+autopairs.lua
+avante.lua
+colors.lua
+conform.lua
+copilot.lua (0, 7)
+2025/04/19 11:40:17 editing lines: 0, 7
+2025/04/19 11:40:17 editing lines 0..7 in buffer 12
+2025/04/19 11:40:17 applied line modification: 21
+2025/04/19 11:40:17 relativeLineIdx: 0
+2025/04/19 11:40:17 placing line 0
+2025/04/19 11:40:17 lines identical so skipping preview
+2025/04/19 11:40:17 relativeLineIdx: 1
+2025/04/19 11:40:17 placing line 1
+2025/04/19 11:40:17 lines identical so skipping preview
+2025/04/19 11:40:17 relativeLineIdx: 2
+2025/04/19 11:40:17 placing line 2
+2025/04/19 11:40:17 lines identical so skipping preview
+2025/04/19 11:40:17 relativeLineIdx: 3
+2025/04/19 11:40:17 placing line 3
+2025/04/19 11:40:17 lines identical so skipping preview
+2025/04/19 11:40:17 relativeLineIdx: 4
+2025/04/19 11:40:17 placing line 4
+2025/04/19 11:40:17 lines identical so skipping preview
+2025/04/19 11:40:17 relativeLineIdx: 5
+2025/04/19 11:40:17 placing line 5
+2025/04/19 11:40:17 lines identical so skipping preview
+2025/04/19 11:40:17 relativeLineIdx: 6
+2025/04/19 11:40:17 placing line 6
+2025/04/19 11:40:17 lines identical so skipping preview
+2025/04/19 11:40:17 relativeLineIdx: 7
+2025/04/19 11:40:17 placing line 7
+2025/04/19 11:40:17 lines identical so skipping preview
+2025/04/19 11:40:17 diffStr: 
+2025/04/19 11:40:17 applying to buffer 12 (0..7)
+2025/04/19 11:40:33 starting cursor tab...
+2025/04/19 11:40:33 service created
+2025/04/19 11:40:33 nvim created
+2025/04/19 11:40:33 creating new buffer
+2025/04/19 11:40:33 buffer created: &{[] 0 0  0 0 []}
+2025/04/19 11:40:33 starting stream
+2025/04/19 11:40:33 synced col: 0, row: 0
+2025/04/19 11:40:33 stream finished: 
+   lazy.nvim 󰒲   Install (I)   Update (U)   Sync (S)   Clean (X)   Check (C)   Log (L)   Restore (R)   Profile (P)   Debug (D)   Help (?) 
+ (0, 2)
+2025/04/19 11:40:33 editing lines: 0, 2
+2025/04/19 11:40:33 editing lines 0..2 in buffer 2
+2025/04/19 11:40:33 applied line modification: 14
+2025/04/19 11:40:33 relativeLineIdx: 0
+2025/04/19 11:40:33 placing line 0
+2025/04/19 11:40:33 lines identical so skipping preview
+2025/04/19 11:40:33 relativeLineIdx: 1
+2025/04/19 11:40:33 placing line 1
+2025/04/19 11:40:33 lines identical so skipping preview
+2025/04/19 11:40:33 relativeLineIdx: 2
+2025/04/19 11:40:33 placing line 2
+2025/04/19 11:40:33 lines identical so skipping preview
+2025/04/19 11:40:33 diffStr: 
+2025/04/19 11:40:33 applying to buffer 2 (0..2)
+2025/04/19 11:40:43 starting stream
+2025/04/19 11:40:43 synced col: 0, row: 0
+2025/04/19 11:40:43 stream finished: ../
+.aider.tags.cache.v4/
+.git/
+aerospace/
+assets/
+bin/
+fish/ (0, 7)
+2025/04/19 11:40:43 editing lines: 0, 7
+2025/04/19 11:40:43 editing lines 0..7 in buffer 1
+2025/04/19 11:40:43 applied line modification: 14
+2025/04/19 11:40:43 relativeLineIdx: 0
+2025/04/19 11:40:43 placing line 0
+2025/04/19 11:40:43 lines identical so skipping preview
+2025/04/19 11:40:43 relativeLineIdx: 1
+2025/04/19 11:40:43 placing line 1
+2025/04/19 11:40:43 lines different so adding preview
+2025/04/19 11:40:43 adding buffer extmark + hl to line 1
+2025/04/19 11:40:43 added buffer extmark + hl to line 1
+2025/04/19 11:40:43 relativeLineIdx: 2
+2025/04/19 11:40:43 placing line 2
+2025/04/19 11:40:43 lines different so adding preview
+2025/04/19 11:40:43 adding buffer extmark + hl to line 2
+2025/04/19 11:40:43 added buffer extmark + hl to line 2
+2025/04/19 11:40:43 relativeLineIdx: 3
+2025/04/19 11:40:43 placing line 3
+2025/04/19 11:40:43 lines different so adding preview
+2025/04/19 11:40:43 adding buffer extmark + hl to line 3
+2025/04/19 11:40:43 added buffer extmark + hl to line 3
+2025/04/19 11:40:43 relativeLineIdx: 4
+2025/04/19 11:40:43 placing line 4
+2025/04/19 11:40:43 lines different so adding preview
+2025/04/19 11:40:43 adding buffer extmark + hl to line 4
+2025/04/19 11:40:43 added buffer extmark + hl to line 4
+2025/04/19 11:40:43 relativeLineIdx: 5
+2025/04/19 11:40:43 placing line 5
+2025/04/19 11:40:43 lines different so adding preview
+2025/04/19 11:40:43 adding buffer extmark + hl to line 5
+2025/04/19 11:40:43 added buffer extmark + hl to line 5
+2025/04/19 11:40:43 relativeLineIdx: 6
+2025/04/19 11:40:43 placing line 6
+2025/04/19 11:40:43 lines different so adding preview
+2025/04/19 11:40:43 adding buffer extmark + hl to line 6
+2025/04/19 11:40:43 added buffer extmark + hl to line 6
+2025/04/19 11:40:43 relativeLineIdx: 7
+2025/04/19 11:40:43 removing line from preview
+2025/04/19 11:40:43 nothing to preview
+2025/04/19 11:40:43 diffStr: 2-|./
+2+|.aider.tags.cache.v4/
+3-|.aider.tags.cache.v4/
+3+|.git/
+4-|.git/
+4+|aerospace/
+5-|aerospace/
+5+|assets/
+6-|assets/
+6+|bin/
+7-|bin/
+7+|fish/
+8-|fish/
+2025/04/19 11:40:43 applying to buffer 1 (0..7)
