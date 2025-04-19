@@ -3,7 +3,7 @@ return {
 		"zbirenbaum/copilot.lua",
 		cmd = "Copilot",
 		event = "InsertEnter",
-    enabled = true,
+		enabled = true,
 		config = function()
 			require("copilot").setup({
 				suggestion = {
@@ -12,9 +12,9 @@ return {
 					hide_during_completion = false,
 					debounce = 25,
 					keymap = {
-						accept = "<C-Tab>",
+						accept = false,
 						accept_word = false,
-						accept_line = "<Tab>",
+						accept_line = "<C-Tab>",
 						next = false,
 						prev = false,
 						dismiss = false,
