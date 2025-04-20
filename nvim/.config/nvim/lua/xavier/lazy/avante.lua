@@ -3,6 +3,17 @@ return {
 	event = "VeryLazy",
 	version = false, -- Never set this value to "*"! Never!
 	opts = {
+		behaviour = {
+			auto_suggestions = false, -- Experimental stage
+			auto_set_highlight_group = true,
+			auto_set_keymaps = true,
+			auto_apply_diff_after_generation = false,
+			support_paste_from_clipboard = true,
+			minimize_diff = true, -- Whether to remove unchanged lines when applying a code block
+			enable_token_counting = true, -- Whether to enable token counting. Default to true.
+			enable_cursor_planning_mode = true, -- Whether to enable Cursor Planning Mode. Default to false.
+			enable_claude_text_editor_tool_mode = true, -- Whether to enable Claude Text Editor Tool Mode.
+		},
 		-- other config
 		-- The system_prompt type supports both a string and a function that returns a string. Using a function here allows dynamically updating the prompt with mcphub
 		system_prompt = function()
