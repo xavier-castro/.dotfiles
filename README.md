@@ -1,5 +1,9 @@
 # README
 
+## MacOS Brew Install
+
+`brew install node pnpm uv python3 yarn deno luarocks pipx rust go`
+
 ## TODO
 
 ## To Watch
@@ -36,14 +40,6 @@ Thank you Primeagen, craftzdog, TJDev for your videos and config files to help m
 ## Other Dailies that can be user preferance
 
 - Vivaldi browser... like the workspaces so far since Firefox stopped caring about their security
-
-## Setup TODO
-
-[LSP Guide I was watching](https://www.youtube.com/watch?v=bTWWFQZqzyI&t=303s)
-
-## Developer TODO
-
-- [ ] Learn `grep` and actually be good with it
 
 ## Claude Prompts
 
@@ -83,5 +79,5 @@ Respond with "I am ready to start" to receive the design brief.
 
 ## Anki Plugins
 
-* Heatmap: 1771074083
-* Syntax Highlighting: 566351439
+- Heatmap: 1771074083
+- Syntax Highlighting: 566351439

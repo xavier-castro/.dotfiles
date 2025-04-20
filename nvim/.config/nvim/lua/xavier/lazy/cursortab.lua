@@ -1,1 +1,2 @@
-return {"reachingforthejack/cursortab.nvim"}
+return {}
+-- return {"reachingforthejack/cursortab.nvim"}
