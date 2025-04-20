@@ -2,6 +2,12 @@
 #
 # This script creates a new tmux window and changes to a directory using zoxide
 
+# Check if we're inside a tmux session
+if [[ -z "$TMUX" ]]; then
+    echo "Error: Not inside a tmux session"
+    exit 1
+fi
+
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
@@ -19,11 +25,16 @@ session_name=$(tmux display-message -p "#S")
 target="$session_name:$window_name"
 
 # Create new window or switch to it if it exists
-if ! tmux has-window -t $target 2> /dev/null; then
-    tmux new-window -dn $window_name
+if ! tmux has-window -t "$target" 2> /dev/null; then
+    tmux new-window -dn "$window_name"
     # Use zoxide to navigate to the directory
-    tmux send-keys -t $target "cd $(printf %q "$selected")" C-m
+    tmux send-keys -t "$target" "cd $(printf %q "$selected")" C-m
+else
+    # If window exists, just select it
+    tmux select-window -t "$window_name"
+    exit 0
 fi
 
 # Focus on the window
-tmux select-window -t $window_name
+tmux select-window -t "$window_name"
+
