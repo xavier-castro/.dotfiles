@@ -81,3 +81,14 @@ Respond with "I am ready to start" to receive the design brief.
 
 - Heatmap: 1771074083
 - Syntax Highlighting: 566351439
+
+## Claude Desktop MCP with Smithy
+
+```bash
+npx -y @smithery/cli@latest install @smithery/toolbox --client claude
+npx -y @smithery/cli@latest install @wonderwhy-er/desktop-commander --client claude
+npx -y @smithery/cli install @alioshr/memory-bank-mcp --client claude
+npx -y @smithery/cli@latest install @smithery-ai/server-sequential-thinking --client claude
+npx -y @smithery/cli@latest install @Dhravya/apple-mcp --client claude
+npx -y @smithery/cli@latest install @21st-dev/magic-mcp --client claude
+```
