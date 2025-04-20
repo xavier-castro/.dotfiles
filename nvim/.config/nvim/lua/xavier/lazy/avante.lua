@@ -3,6 +3,8 @@ return {
 	event = "VeryLazy",
 	version = false, -- Never set this value to "*"! Never!
 	opts = {
+		hints = { enabled = false },
+
 		behaviour = {
 			auto_suggestions = false, -- Experimental stage
 			auto_set_highlight_group = true,
