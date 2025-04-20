@@ -147,6 +147,7 @@ alias glog="git log --oneline --graph --decorate"
 #------------------------------------------------------------------------------
 alias pip=/usr/bin/pip3
 alias tt="tmux new-session -A -s 'MAIN'"
+alias tk="tmux kill-server"
 alias zshrc="$EDITOR ~/.zshrc"
 alias reload="source ~/.zshrc"
 
