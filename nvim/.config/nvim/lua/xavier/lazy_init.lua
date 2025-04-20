@@ -15,3 +15,4 @@ require("lazy").setup({
 	spec = "xavier.lazy",
 	change_detection = { notify = false },
 })
+
