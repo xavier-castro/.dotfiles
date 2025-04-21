@@ -9,7 +9,7 @@ return {
 
 		nvimtree.setup({
 			diagnostics = {
-				enable = true,
+				enable = false,
 				show_on_dirs = true,
 				icons = {
 					hint = "",
@@ -19,6 +19,7 @@ return {
 				},
 			},
 			view = {
+				side = "right",
 				width = 35,
 				relativenumber = true,
 			},

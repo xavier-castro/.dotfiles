@@ -3,7 +3,10 @@ return {
 	event = "VeryLazy",
 	version = false, -- Never set this value to "*"! Never!
 	opts = {
-		  hints = { enabled = false },
+		hints = { enabled = false },
+		windows = {
+			position = "left",
+		},
 
 		behaviour = {
 			auto_suggestions = false, -- Experimental stage
