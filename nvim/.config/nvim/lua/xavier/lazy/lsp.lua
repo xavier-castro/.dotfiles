@@ -64,7 +64,6 @@ return {
 			cmp_lsp.default_capabilities()
 		)
 
-		require("fidget").setup({})
 		require("mason").setup()
 		require("mason-lspconfig").setup({
 			ensure_installed = {
@@ -101,11 +100,5 @@ return {
 			}),
 		})
 
-		vim.diagnostic.config({
-			virtual_text = false,
-			virtual_lines = { current_line = true },
-			underline = true,
-			update_in_insert = false,
-		})
 	end,
 }

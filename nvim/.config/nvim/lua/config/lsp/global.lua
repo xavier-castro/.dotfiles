@@ -131,24 +131,31 @@ local function set_global_keymaps(client, bufnr)
 end
 
 local function configure_diagnostics()
-	vim.diagnostic.config({
-		virtual_text = { current_line = true },
-		underline = true,
-		update_in_insert = true,
-		severity_sort = true,
-		signs = {
-			text = {
-				[vim.diagnostic.severity.ERROR] = "",
-				[vim.diagnostic.severity.WARN] = "",
-				[vim.diagnostic.severity.INFO] = "",
-				[vim.diagnostic.severity.HINT] = "",
-			},
-		},
-		float = {
-			border = "rounded",
-			source = "if_many",
-		},
-	})
+	-- vim.diagnostic.config({
+	-- 	virtual_text = { current_line = true },
+	-- 	underline = true,
+	-- 	update_in_insert = true,
+	-- 	severity_sort = true,
+	-- 	signs = {
+	-- 		text = {
+	-- 			[vim.diagnostic.severity.ERROR] = "",
+	-- 			[vim.diagnostic.severity.WARN] = "",
+	-- 			[vim.diagnostic.severity.INFO] = "",
+	-- 			[vim.diagnostic.severity.HINT] = "",
+	-- 		},
+	-- 	},
+	-- 	float = {
+	-- 		border = "rounded",
+	-- 		source = "if_many",
+	-- 	},
+	-- })
+
+		vim.diagnostic.config({
+			virtual_text = false,
+			virtual_lines = { current_line = true },
+			underline = true,
+			update_in_insert = false,
+		})
 end
 
 vim.api.nvim_create_autocmd("LspAttach", {

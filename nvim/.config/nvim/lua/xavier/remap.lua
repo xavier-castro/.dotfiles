@@ -58,6 +58,13 @@ vim.keymap.set('t', '<C-o>', '<C-\\><C-n>')
 -- Make all windows equal size
 vim.keymap.set('n', '<leader>rw', '<C-W>=')
 
+
+-- Resize window
+vim.keymap.set("n", "<C-w><left>", "<C-w><")
+vim.keymap.set("n", "<C-w><right>", "<C-w>>")
+vim.keymap.set("n", "<C-w><up>", "<C-w>+")
+vim.keymap.set("n", "<C-w><down>", "<C-w>-")
+
 vim.keymap.set("n", "<leader>lf", function()
 	require("conform").format({ async = false, lsp_format = "fallback", timeout_ms = 5000 })
 end)
