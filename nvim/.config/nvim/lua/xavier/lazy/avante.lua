@@ -3,9 +3,26 @@ return {
 	event = "VeryLazy",
 	version = false, -- Never set this value to "*"! Never!
 	opts = {
+		rag_service = {
+			enabled = true, -- Enables the RAG service
+			host_mount = os.getenv("HOME"), -- Host mount path for the rag service
+			provider = "openai", -- The provider to use for RAG service (e.g. openai or ollama)
+			llm_model = "", -- The LLM model to use for RAG service
+			embed_model = "", -- The embedding model to use for RAG service
+			endpoint = "https://api.openai.com/v1", -- The API endpoint for RAG service
+		},
+
 		hints = { enabled = false },
 		windows = {
 			position = "left",
+		},
+
+		provider = "claude",
+		claude = {
+			endpoint = "https://api.anthropic.com",
+			model = "claude-3-7-sonnet-20250219",
+			timeout = 30000,
+			max_tokens = 8000,
 		},
 
 		behaviour = {
@@ -15,7 +32,7 @@ return {
 			auto_apply_diff_after_generation = false,
 			support_paste_from_clipboard = true,
 			minimize_diff = true, -- Whether to remove unchanged lines when applying a code block
-			enable_token_counting = true, -- Whether to enable token counting. Default to true.
+			enable_token_counting = false, -- Whether to enable token counting. Default to true.
 			enable_cursor_planning_mode = true, -- Whether to enable Cursor Planning Mode. Default to false.
 			enable_claude_text_editor_tool_mode = true, -- Whether to enable Claude Text Editor Tool Mode.
 		},
