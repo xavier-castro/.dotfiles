@@ -4,6 +4,10 @@
 
 `brew install node pnpm uv python3 yarn deno luarocks pipx rust go`
 
+## Have Browserbase going
+
+`npx @agentdeskai/browser-tools-server@latest`
+
 ## TODO
 
 ## To Watch
