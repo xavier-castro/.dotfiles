@@ -1,0 +1,54 @@
+{
+  "nativeMCPServers": [],
+  "mcpServers": {
+    "1": {
+      "args": [
+        "-y",
+        "@upstash/context7-mcp@latest"
+      ],
+      "command": "npx",
+      "name": "github.com/upstash/context7-mcp"
+    },
+    "3": {
+      "args": [
+        "-y",
+        "@21st-dev/magic@latest",
+        "API_KEY=\"ac17bb5b5e30ed5c88fc2127c48c1fcf7638236d29fa9a5d2a84863c3e44ef25\""
+      ],
+      "command": "npx",
+      "name": "github.com/21st-dev/magic-mcp"
+    },
+    "5": {
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
+      "command": "npx",
+      "name": "github.com/modelcontextprotocol/servers/tree/main/src/memory"
+    },
+    "2": {
+      "args": [
+        "-y",
+        "@agentdeskai/browser-tools-mcp@latest"
+      ],
+      "command": "npx",
+      "name": "github.com/AgentDeskAI/browser-tools-mcp"
+    },
+    "4": {
+      "args": [
+        "--no-cache",
+        "@dhravya/apple-mcp@latest"
+      ],
+      "command": "bunx",
+      "name": "github.com/Dhravya/apple-mcp"
+    },
+    "6": {
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ],
+      "command": "npx",
+      "name": "github.com/modelcontextprotocol/servers/tree/main/src/sequentialthinking"
+    }
+  }
+}
