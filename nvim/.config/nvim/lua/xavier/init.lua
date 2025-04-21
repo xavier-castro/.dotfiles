@@ -2,6 +2,21 @@ require("xavier.set")
 require("xavier.remap")
 require("xavier.lazy_init")
 
+-- Load all LSP's in "lua/config/lsp"
+local lsp_path = vim.fn.stdpath("config") .. "/lua/config/lsp"
+
+-- First, explicitly load the global configuration
+require("config.lsp.global")
+
+
+-- Then load all other LSP configs
+for _, file in ipairs(vim.fn.readdir(lsp_path)) do
+  if file:match("%.lua$") and file ~= "global.lua" then
+    local module_name = "config.lsp." .. file:gsub("%.lua$", "")
+    require(module_name)
+  end
+end
+
 local augroup = vim.api.nvim_create_augroup
 local XavierGroup = augroup('Xavier', {})
 
@@ -80,6 +95,13 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 		vim.cmd.loadview({ mods = { emsg_silent = true } })
 	end,
 	group = save_fold,
+})
+
+vim.api.nvim_create_autocmd("ColorScheme", {
+  pattern = "*",
+  callback = function()
+    vim.cmd [[highlight CursorLine guibg=#383a4a ctermbg=290]]
+  end
 })
 
 vim.g.netrw_browse_split = 0
