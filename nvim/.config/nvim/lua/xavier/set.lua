@@ -31,3 +31,9 @@ vim.opt.updatetime = 50
 vim.opt.colorcolumn = "80"
 vim.opt.cursorline = true
 vim.opt.laststatus = 3
+-- Change the terminal's cursor
+--
+vim.opt.guicursor = {
+	"n-v-c:block", -- Block in normal mode
+	"i:ver25", -- Vertical line in insert mode
+}

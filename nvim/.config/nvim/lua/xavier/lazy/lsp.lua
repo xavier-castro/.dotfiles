@@ -71,7 +71,15 @@ return {
 				"lua_ls",
 				"rust_analyzer",
 				"gopls",
+				"bashls",
+				"eslint",
+				"jsonls",
+				"lua_ls",
+				"pyright",
+				"ts_ls",
 			},
+			automatic_installation = true,
+
 			handlers = {
 				function(server_name) -- default handler (optional)
 					require("lspconfig")[server_name].setup({
@@ -123,6 +131,7 @@ return {
 				["<C-p>"] = cmp.mapping.select_prev_item(cmp_select),
 				["<C-n>"] = cmp.mapping.select_next_item(cmp_select),
 				["<C-y>"] = cmp.mapping.confirm({ select = true }),
+				["<C-e>"] = cmp.mapping.abort(),
 				["<C-Space>"] = cmp.mapping.complete(),
 			}),
 			sources = cmp.config.sources({

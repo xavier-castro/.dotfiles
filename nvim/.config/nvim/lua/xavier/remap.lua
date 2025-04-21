@@ -2,7 +2,6 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-vim.keymap.set("n", "-", vim.cmd.Ex)
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
@@ -43,6 +42,21 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<leader><leader>", function()
 	vim.cmd("so")
 end)
+
+-- Navigate between windows using Ctrl + arrow keys
+vim.keymap.set("n", "<C-J>", "<C-W><C-J>")
+vim.keymap.set("n", "<C-K>", "<C-W><C-K>")
+vim.keymap.set("n", "<C-L>", "<C-W><C-L>")
+vim.keymap.set("n", "<C-H>", "<C-W><C-H>")
+
+-- Use this for navigation in terminal mode
+vim.keymap.set('t', '<C-k>', [[<C-\><C-n><C-W>k]])
+
+-- Enter normal mode in a terminal buffer.
+vim.keymap.set('t', '<C-o>', '<C-\\><C-n>')
+
+-- Make all windows equal size
+vim.keymap.set('n', '<leader>rw', '<C-W>=')
 
 vim.keymap.set("n", "<leader>lf", function()
 	require("conform").format({ async = false, lsp_format = "fallback", timeout_ms = 5000 })

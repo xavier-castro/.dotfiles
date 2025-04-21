@@ -1,23 +1,30 @@
 return {
-    {
-        "folke/trouble.nvim",
-        config = function()
-            require("trouble").setup({
-                icons = false,
-            })
-
-            vim.keymap.set("n", "<leader>tt", function()
-                require("trouble").toggle()
-            end)
-
-            vim.keymap.set("n", "[t", function()
-                require("trouble").next({skip_groups = true, jump = true});
-            end)
-
-            vim.keymap.set("n", "]t", function()
-                require("trouble").previous({skip_groups = true, jump = true});
-            end)
-
-        end
-    },
+	"folke/trouble.nvim",
+	dependencies = { "nvim-tree/nvim-web-devicons" },
+	opts = {
+		focus = true,
+	},
+	cmd = "Trouble",
+	keys = {
+		{
+			"<leader>xx",
+			"<cmd>Trouble diagnostics toggle<CR>",
+			desc = "Open trouble workspace diagnostics",
+		},
+		{
+			"<leader>xX",
+			"<cmd>Trouble diagnostics toggle filter.buf=0<CR>",
+			desc = "Open trouble document diagnostics",
+		},
+		{
+			"<leader>xs",
+			"<cmd>Trouble quickfix toggle<CR>",
+			desc = "Open trouble quickfix list",
+		},
+		{
+			"<leader>xl",
+			"<cmd>Trouble loclist toggle<CR>",
+			desc = "Open trouble location list",
+		},
+	},
 }
