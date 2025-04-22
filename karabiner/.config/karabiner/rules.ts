@@ -48,7 +48,7 @@ const rules: KarabinerRules[] = [
       b: app("Brave Browser"),
       c: app("Visual Studio Code"),
       e: app("Mail"),
-      f: app("Fantastical"),
+      n: app("Notion"),
       m: app("Messages"),
       p: app("Music"),
       g: app("Ghostty"),
