@@ -12,3 +12,10 @@ zsh/.zshenv_private
 
 .aider*
 cursortablogs
+
+bin/.local/share/** /*
+# Ignore all files in the `bin/.local/share/` directory
+
+bin/.local/state/** /*
+# Ignore all files in the `bin/.local/state/` directory
+bin/.local/share/Trash/** /*
