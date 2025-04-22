@@ -3,14 +3,14 @@ return {
 	event = "VeryLazy",
 	version = false, -- Never set this value to "*"! Never!
 	opts = {
-		rag_service = {
-			enabled = true, -- Enables the RAG service
-			host_mount = os.getenv("HOME"), -- Host mount path for the rag service
-			provider = "openai", -- The provider to use for RAG service (e.g. openai or ollama)
-			llm_model = "", -- The LLM model to use for RAG service
-			embed_model = "", -- The embedding model to use for RAG service
-			endpoint = "https://api.openai.com/v1", -- The API endpoint for RAG service
-		},
+		-- rag_service = {
+		-- 	enabled = true, -- Enables the RAG service
+		-- 	host_mount = os.getenv("HOME"), -- Host mount path for the rag service
+		-- 	provider = "openai", -- The provider to use for RAG service (e.g. openai or ollama)
+		-- 	llm_model = "", -- The LLM model to use for RAG service
+		-- 	embed_model = "", -- The embedding model to use for RAG service
+		-- 	endpoint = "https://api.openai.com/v1", -- The API endpoint for RAG service
+		-- },
 
 		hints = { enabled = false },
 		windows = {
@@ -62,7 +62,7 @@ return {
 		--- The below dependencies are optional,
 		"nvim-telescope/telescope.nvim", -- for file_selector provider telescope
 		"hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions
-		"ibhagwan/fzf-lua", -- for file_selector provider fzf
+		-- "ibhagwan/fzf-lua", -- for file_selector provider fzf
 		"nvim-tree/nvim-web-devicons", -- or echasnovski/mini.icons
 		"zbirenbaum/copilot.lua", -- for providers='copilot'
 		{

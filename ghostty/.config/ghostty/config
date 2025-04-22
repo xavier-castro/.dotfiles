@@ -4,7 +4,7 @@ background-blur-radius = 25
 window-colorspace = display-p3
 
 
-#Cursor
+# Cursor
 cursor-style = block
 cursor-style-blink = false
 cursor-invert-fg-bg = false

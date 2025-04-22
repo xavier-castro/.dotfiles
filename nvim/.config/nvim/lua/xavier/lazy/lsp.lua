@@ -73,6 +73,8 @@ return {
 				"lua_ls",
 				"pyright",
 				"ts_ls",
+				"tailwindcss",
+				"astro"
 			},
 			automatic_installation = true,
 		})
@@ -99,6 +101,5 @@ return {
 				{ name = "path" },
 			}),
 		})
-
 	end,
 }
