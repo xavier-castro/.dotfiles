@@ -207,6 +207,18 @@ run = 'layout floating'
 if.app-id = "com.brave.Browser"
 run = "layout floating"
 
+[[on-window-detected]]
+if.app-id = "com.1password.1password"
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = "notion.id"
+run = "layout floating"
+
+[[on-window-detected]]
+if.app-id = "com.toggl.daneel"
+run = "layout floating"
+
 # All monitors float by default
 # [[on-window-detected]]
 # if.app-name-regex-substring = ".*"
