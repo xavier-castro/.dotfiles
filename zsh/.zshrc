@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # ~/.zshrc - ZSH Configuration File
 
 #------------------------------------------------------------------------------
@@ -110,13 +117,13 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#8a8a8a"
 # Starship Prompt
 #------------------------------------------------------------------------------
 # Initialize Starship prompt if installed
-if command -v starship &> /dev/null; then
-  eval "$(starship init zsh)"
-else
-  echo "Starship is not installed. Install it with: brew install starship"
-  # Simple fallback prompt if Starship is not available
-  PS1='%F{green}%n@%m%f:%F{blue}%~%f$ '
-fi
+# if command -v starship &> /dev/null; then
+#   eval "$(starship init zsh)"
+# else
+#   echo "Starship is not installed. Install it with: brew install starship"
+#   # Simple fallback prompt if Starship is not available
+#   PS1='%F{green}%n@%m%f:%F{blue}%~%f$ '
+# fi
 
 #------------------------------------------------------------------------------
 # Eza Aliases (Modern ls replacement)
@@ -161,5 +168,10 @@ alias reload="source ~/.zshrc"
 # Zoxide (Smart cd command)
 #------------------------------------------------------------------------------
 # Initialize zoxide if installed
-command -v zoxide &> /dev/null && eval "$(zoxide init zsh)"
+eval "$(zoxide init zsh)"
+
+
+source /usr/local/share/powerlevel10k/powerlevel10k.zsh-theme
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
