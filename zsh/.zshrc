@@ -11,9 +11,12 @@ fi
 # PATH Configuration
 #------------------------------------------------------------------------------
 # Add various directories to PATH
+export BUN_INSTALL="$HOME/.bun"
 export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 export PATH=$HOME/.local/scripts:$PATH
 export PATH=$HOME/go/bin:$PATH
+export PATH="$BUN_INSTALL/bin:$PATH"
+export GOPATH="$HOME/go"
 
 #------------------------------------------------------------------------------
 # Environment Variables
@@ -170,8 +173,8 @@ alias reload="source ~/.zshrc"
 # Initialize zoxide if installed
 eval "$(zoxide init zsh)"
 
-
 source /usr/local/share/powerlevel10k/powerlevel10k.zsh-theme
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
+alias claude="/Users/xavier/.claude/local/claude"
