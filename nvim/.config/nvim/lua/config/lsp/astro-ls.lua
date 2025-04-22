@@ -5,4 +5,4 @@ vim.lsp.config.astro = {
   init_options = { typescript = {} }
 }
 
-vim.lsp.enable("astro-ls")
+vim.lsp.enable("astro")
