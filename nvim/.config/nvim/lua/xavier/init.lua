@@ -89,10 +89,10 @@ autocmd("LspAttach", {
 			vim.lsp.buf.signature_help()
 		end, opts)
 		vim.keymap.set("n", "[d", function()
-			vim.diagnostic.jump({ count = 1, float = true })
+			vim.diagnostic.goto_next()
 		end, opts)
 		vim.keymap.set("n", "]d", function()
-			vim.diagnostic.jump({ count = -1, float = true })
+			vim.diagnostic.goto_prev()
 		end, opts)
 	end,
 })
@@ -121,6 +121,14 @@ vim.api.nvim_create_autocmd("ColorScheme", {
 		vim.cmd([[highlight CursorLine guibg=#383a4a ctermbg=290]])
 	end,
 })
+
+vim.api.nvim_create_autocmd("User", {
+  pattern = "ToggleMyPrompt",
+  callback = function() require("avante.config").override({system_prompt = "MY CUSTOM SYSTEM PROMPT"}) end,
+})
+
+vim.keymap.set("n", "<leader>am", function() vim.api.nvim_exec_autocmds("User", { pattern = "ToggleMyPrompt" }) end, { desc = "avante: toggle my prompt" })
+
 
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0

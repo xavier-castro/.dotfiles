@@ -58,6 +58,7 @@ return {
 		"stevearc/dressing.nvim",
 		"nvim-lua/plenary.nvim",
 		"MunifTanjim/nui.nvim",
+		"HiPhish/jinja.vim",
 		--- The below dependencies are optional,
 		"nvim-telescope/telescope.nvim", -- for file_selector provider telescope
 		"hrsh7th/nvim-cmp", -- autocompletion for avante commands and mentions

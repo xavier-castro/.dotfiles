@@ -20,6 +20,7 @@
   "gruvbox": { "branch": "main", "commit": "a933d8666dad9363dc6908ae72cfc832299c2f59" },
   "img-clip.nvim": { "branch": "main", "commit": "08a02e14c8c0d42fa7a92c30a98fd04d6993b35d" },
   "jai.vim": { "branch": "master", "commit": "72c09c5f803b8ab2e708a3ad2b7c3704e2b4b3d8" },
+  "jinja.vim": { "branch": "master", "commit": "f29c4abc60dae17b2931621748d14d2759e00a6c" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "1a31f824b9cd5bc6f342fc29e9a53b60d74af245" },
   "mason-nvim-dap.nvim": { "branch": "main", "commit": "4c2cdc69d69fe00c15ae8648f7e954d99e5de3ea" },
