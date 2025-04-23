@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # ~/.zshrc - ZSH Configuration File
 
 #------------------------------------------------------------------------------
@@ -120,13 +113,13 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#8a8a8a"
 # Starship Prompt
 #------------------------------------------------------------------------------
 # Initialize Starship prompt if installed
-# if command -v starship &> /dev/null; then
-#   eval "$(starship init zsh)"
-# else
-#   echo "Starship is not installed. Install it with: brew install starship"
-#   # Simple fallback prompt if Starship is not available
-#   PS1='%F{green}%n@%m%f:%F{blue}%~%f$ '
-# fi
+if command -v starship &> /dev/null; then
+  eval "$(starship init zsh)"
+else
+  echo "Starship is not installed. Install it with: brew install starship"
+  # Simple fallback prompt if Starship is not available
+  PS1='%F{green}%n@%m%f:%F{blue}%~%f$ '
+fi
 
 #------------------------------------------------------------------------------
 # Eza Aliases (Modern ls replacement)
@@ -173,11 +166,54 @@ alias reload="source ~/.zshrc"
 # Initialize zoxide if installed
 eval "$(zoxide init zsh)"
 
-source /usr/local/share/powerlevel10k/powerlevel10k.zsh-theme
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+# UV and UVX Configuration for Python package management
+# Initialize UV/UVX only if they're installed
+if command -v uv &> /dev/null; then
+  # Add UV to PATH if not already there
+  export PATH="$HOME/.local/bin:$PATH"
+
+  # Enable UV shell completion - lazy-loaded to maintain shell startup speed
+  uv_completion_setup() {
+    eval "$(uv --completion-script)"
+    # Remove this function after first use to avoid repeated evaluation
+    unfunction uv_completion_setup
+  }
+
+  # Create function aliases that load completion only when needed
+  uv() {
+    uv_completion_setup
+    command uv "$@"
+  }
+
+  # Convenient aliases for common operations
+  alias pipi='uv pip install'
+  alias pipup='uv pip install --upgrade'
+
+  # UVX specific configuration (if installed)
+  if command -v uvx &> /dev/null; then
+    # Load UVX completion only when needed
+    uvx_completion_setup() {
+      eval "$(uvx --completion-script)"
+      unfunction uvx_completion_setup
+    }
+
+    uvx() {
+      uvx_completion_setup
+      command uvx "$@"
+    }
+  fi
+
+  # Optional: Use UV as default pip if you want
+  # alias pip='uv pip'
+
+  # Create/activate virtual environments more efficiently
+  venv() {
+    if [ ! -d "$1" ]; then
+      uv venv "$1"
+    fi
+    source "$1/bin/activate"
+  }
+fi
 
 alias claude="/Users/xavier/.claude/local/claude"
 
-# Added by Windsurf
-export PATH="/Users/xavier/.codeium/windsurf/bin:$PATH"
