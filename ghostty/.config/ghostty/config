@@ -2,8 +2,6 @@ font-family = CaskaydiaCove Nerd Font
 background-opacity = 0.95
 background-blur-radius = 25
 window-colorspace = display-p3
-theme = dark:Ghostty Default StyleDark,light:xcodelight
-
 
 
 cursor-style = block
