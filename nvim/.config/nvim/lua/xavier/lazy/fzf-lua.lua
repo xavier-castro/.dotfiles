@@ -1,6 +1,7 @@
 return {
 	"ibhagwan/fzf-lua",
-
+	lazy = false,
+	event = "BufEnter",
 	keys = {
 		{
 			"<leader>ff",
