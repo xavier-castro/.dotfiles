@@ -48,17 +48,17 @@ autocmd({ "BufWritePre" }, {
 	pattern = "*",
 	command = [[%s/\s\+$//e]],
 })
-
-autocmd("BufEnter", {
-	group = XavierGroup,
-	callback = function()
-		if vim.bo.filetype == "zig" then
-			vim.cmd.colorscheme("tokyonight-night")
-		else
-			vim.cmd.colorscheme("vscode")
-		end
-	end,
-})
+--
+-- autocmd("BufEnter", {
+-- 	group = XavierGroup,
+-- 	callback = function()
+-- 		if vim.bo.filetype == "zig" then
+-- 			vim.cmd.colorscheme("tokyonight-night")
+-- 		else
+-- 			vim.cmd.colorscheme("rose-pine-moon")
+-- 		end
+-- 	end,
+-- })
 
 autocmd("LspAttach", {
 	group = XavierGroup,
@@ -115,20 +115,8 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 	group = save_fold,
 })
 
-vim.api.nvim_create_autocmd("ColorScheme", {
-	pattern = "*",
-	callback = function()
-		vim.cmd([[highlight CursorLine guibg=#383a4a ctermbg=290]])
-	end,
-})
 
-vim.api.nvim_create_autocmd("User", {
-	pattern = "ToggleMyPrompt",
-	callback = function() require("avante.config").override({ system_prompt = "MY CUSTOM SYSTEM PROMPT" }) end,
-})
 
-vim.keymap.set("n", "<leader>am", function() vim.api.nvim_exec_autocmds("User", { pattern = "ToggleMyPrompt" }) end,
-	{ desc = "avante: toggle my prompt" })
 
 
 vim.g.netrw_browse_split = 0

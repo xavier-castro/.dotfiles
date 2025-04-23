@@ -4,6 +4,7 @@ vim.keymap.set("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, si
 
 -- Expand 'cc' into 'CodeCompanion' in the command line
 vim.cmd([[cab cc CodeCompanion]])
+vim.g.codecompanion_auto_tool_mode = true
 
 return {
 	"olimorris/codecompanion.nvim",
@@ -13,6 +14,16 @@ return {
 	},
 	opts = {
 		display = {
+			chat = {
+				intro_message = "Welcome to CodeCompanion ✨! Press ? for options",
+				show_header_separator = true, -- Show header separators in the chat buffer? Set this to false if you're using an external markdown formatting plugin
+				separator = "─", -- The separator between the different messages in the chat buffer
+				show_references = true, -- Show references (from slash commands and variables) in the chat buffer?
+				show_settings = true, -- Show LLM settings at the top of the chat buffer?
+				show_token_count = true, -- Show the token count for each response?
+				start_in_insert_mode = false, -- Open the chat buffer in insert mode?
+			},
+
 			action_palette = {
 				width = 95,
 				height = 10,
@@ -39,6 +50,15 @@ return {
 			},
 			-- Change the default chat adapter
 			chat = {
+				keymaps = {
+					send = {
+						modes = { n = "<C-s>", i = "<C-s>" },
+					},
+					close = {
+						modes = { n = "<C-q>", i = "<C-q>" },
+					},
+
+				},
 				adapter = "anthropic",
 				tools = {
 					["cmd_runner"] = {
@@ -56,7 +76,7 @@ return {
 		},
 		opts = {
 			-- Set debug logging
-			log_level = "DEBUG",
+			-- log_level = "DEBUG",
 		},
 	},
 }

@@ -12,12 +12,12 @@ return {
 					hide_during_completion = false,
 					debounce = 25,
 					keymap = {
-						accept = "<M-S-Tab>",
+						accept = "<M-y>",
 						accept_word = false,
 						accept_line = "<M-Tab>",
 						next = false,
 						prev = false,
-						dismiss = false,
+						dismiss = "<M-e>",
 					},
 				},
 			})

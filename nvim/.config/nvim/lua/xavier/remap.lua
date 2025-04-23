@@ -24,11 +24,10 @@ vim.keymap.set("n", "<leader>Y", [["+Y]])
 vim.keymap.set({ "n", "v" }, "<leader>d", '"_d')
 
 -- This is going to get me cancelled
-vim.keymap.set("i", "<C-c>", "<Esc>")
+-- vim.keymap.set("i", "<C-c>", "<Esc>")
 
 vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>f", "<cmd>Format<cr>")
 vim.keymap.set("n", "<leader>F", vim.lsp.buf.format)
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
@@ -38,10 +37,6 @@ vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
-
-vim.keymap.set("n", "<leader><leader>", function()
-	vim.cmd("so")
-end)
 
 -- Navigate between windows using Ctrl + arrow keys
 vim.keymap.set("n", "<C-J>", "<C-W><C-J>")
@@ -60,16 +55,16 @@ vim.keymap.set('n', '<leader>rw', '<C-W>=')
 
 
 -- Resize window
-vim.keymap.set("n", "<C-w><left>", "<C-w><")
-vim.keymap.set("n", "<C-w><right>", "<C-w>>")
-vim.keymap.set("n", "<C-w><up>", "<C-w>+")
-vim.keymap.set("n", "<C-w><down>", "<C-w>-")
+vim.keymap.set("n", "<C-left>", "<C-w><")
+vim.keymap.set("n", "<C-right>", "<C-w>>")
+vim.keymap.set("n", "<C-up>", "<C-w>+")
+vim.keymap.set("n", "<C-down>", "<C-w>-")
 
 vim.keymap.set("n", "<leader>lf", function()
-	require("conform").format({ async = false, lsp_format = "fallback", timeout_ms = 5000 })
+	require("conform").format({ async = true, lsp_format = "fallback", timeout_ms = 5000 })
 end)
 vim.keymap.set("v", "<leader>lf", function()
-	require("conform").format({ async = false, lsp_format = "fallback", timeout_ms = 5000 })
+	require("conform").format({ async = true, lsp_format = "fallback", timeout_ms = 5000 })
 end)
 
 -- Nice and simple folding:

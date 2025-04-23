@@ -1,4 +1,4 @@
-local searcher = "xavier" --- "telescope" | "Xavier"
+local searcher = "xavier" --- "fzf-lua" | "Xavier"
 if searcher == "xavier" then
 	vim.opt.grepprg = "rg --vimgrep --smart-case"
 	vim.keymap.set("n", "<leader>/", function()
@@ -18,6 +18,7 @@ if searcher == "xavier" then
 		local result = vim.fn.systemlist(cmd)
 		return result
 	end
+
 	vim.opt.findfunc = "v:lua.Fd"
 	vim.keymap.set("n", "<C-p>", ":find ", { desc = "xavier: Project Files" })
 	return {}
@@ -25,62 +26,60 @@ end
 
 return {
 	{
-		"nvim-telescope/telescope.nvim",
-		enabled = searcher == "telescope",
-		tag = "0.1.8",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-			"nvim-telescope/telescope-ui-select.nvim",
-		},
+		"ibhagwan/fzf-lua",
+		enabled = searcher == "fzf-lua",
 		config = function()
-			local default_theme = "dropdown"
-			require("telescope").setup({
-				pickers = {
-					find_files = {
-						theme = default_theme,
-						previewer = false,
-					},
-					git_files = {
-						theme = default_theme,
-						previewer = false,
-					},
-					builtin = {
-						theme = default_theme,
-						previewer = false,
-					},
-					current_buffer_fuzzy_find = {
-						previewer = false,
+			require("fzf-lua").setup({
+				winopts = {
+					height = 0.85,
+					width = 0.80,
+					preview = {
+						default = "bat",
+						border = "border",
 					},
 				},
-				extensions = {
-					["ui-select"] = {
-						require("telescope.themes").get_ivy(),
-					},
+				fzf_opts = {
+					["--layout"] = "reverse",
+					["--info"] = "inline",
+				},
+				files = {
+					prompt = "Files❯ ",
+					cmd = "fd --type f --hidden --exclude .git",
+					git_icons = true,
+					file_icons = true,
+				},
+				grep = {
+					prompt = "Rg❯ ",
+					input_prompt = "Grep For❯ ",
+					cmd = "rg --vimgrep",
+					git_icons = true,
+					file_icons = true,
 				},
 			})
-			local utils = require("telescope.utils")
-			local builtin = require("telescope.builtin")
-			local project_files = function()
-				local _, ret, _ = utils.get_os_command_output({ "git", "rev-parse", "--is-inside-work-tree" })
-				if ret == 0 then
-					builtin.git_files()
-				else
-					builtin.find_files()
-				end
-			end
-			vim.keymap.set("n", "<C-p>", project_files, { desc = "Project Files" })
 
-			vim.keymap.set("n", "<leader>tj", builtin.builtin, { desc = "Telescope builtins" })
-			vim.keymap.set("n", "<leader>tf", builtin.find_files, { desc = "Telescope find files" })
-			vim.keymap.set("n", "<leader>/", builtin.live_grep, { desc = "Telescope live grep" })
-			vim.keymap.set("n", "<leader>th", builtin.help_tags, { desc = "Telescope help tags" })
+			vim.keymap.set("n", "<C-p>", function()
+				require("fzf-lua").files()
+			end, { desc = "fzf-lua: Project Files" })
+
+			vim.keymap.set("n", ";g", function()
+				require("fzf-lua").live_grep()
+			end, { desc = "fzf-lua: Live grep" })
+
+			vim.keymap.set("n", "<leader>tj", function()
+				require("fzf-lua").builtin()
+			end, { desc = "fzf-lua: Builtins" })
+
+			vim.keymap.set("n", "<leader>tf", function()
+				require("fzf-lua").files()
+			end, { desc = "fzf-lua: Find files" })
+
+			vim.keymap.set("n", "<leader>th", function()
+				require("fzf-lua").help_tags()
+			end, { desc = "fzf-lua: Help tags" })
+
 			vim.keymap.set("n", "<leader>c", function()
-				builtin.git_files({ cwd = "~/.config/nvim/" })
-			end, { desc = "Open nvim init.lua" })
-
-			require("telescope").load_extension("fzf")
-			require("telescope").load_extension("ui-select")
+				require("fzf-lua").files({ cwd = "~/.config/nvim/" })
+			end, { desc = "fzf-lua: Open nvim init.lua" })
 		end,
 	},
 }

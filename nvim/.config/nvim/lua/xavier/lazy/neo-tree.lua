@@ -1,6 +1,6 @@
 return {
 	"nvim-tree/nvim-tree.lua",
-	dependencies = "nvim-tree/nvim-web-devicons",
+	dependencies = { "nvim-tree/nvim-web-devicons", "OXY2DEV/markview.nvim" },
 	config = function()
 		local nvimtree = require("nvim-tree")
 
