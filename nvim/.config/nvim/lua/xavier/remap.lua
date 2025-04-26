@@ -91,3 +91,4 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 require("xavier.utils.float-terminal")
 require("xavier.utils.fuzzy-search")
+require("xavier.utils.browser-search-bar")

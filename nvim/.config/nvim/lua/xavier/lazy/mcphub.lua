@@ -3,7 +3,8 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
 	},
-	cmd = "MCPHub",    -- Lazy load by default
+	enabled = false,
+	cmd = "MCPHub", -- Lazy load by default
 	event = "BufEnter",
 	build = "npm install -g mcp-hub@latest",
 	config = function()
@@ -13,7 +14,7 @@ return {
 				codecompanion = {
 					-- Show the mcp tool result in the chat buffer
 					show_result_in_chat = true,
-					make_vars = true, -- make chat #variables from MCP server resources
+					make_vars = true,      -- make chat #variables from MCP server resources
 					make_slash_commands = true, -- make /slash_commands from MCP server prompts
 				},
 			},
@@ -22,7 +23,7 @@ return {
 			config = vim.fn.expand("~/.config/mcphub/servers.json"),
 			log = {
 				level = vim.log.levels.WARN, -- Adjust verbosity (DEBUG, INFO, WARN, ERROR)
-				to_file = true, -- Log to ~/.local/state/nvim/mcphub.log
+				to_file = true,          -- Log to ~/.local/state/nvim/mcphub.log
 			},
 			on_ready = function()
 				vim.notify("MCP Hub backend server is initialized and ready.", vim.log.levels.INFO)
