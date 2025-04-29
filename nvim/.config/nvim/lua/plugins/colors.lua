@@ -108,10 +108,7 @@ return {
   {
     "LazyVim/LazyVim",
     opts = {
-      -- colorscheme = "tokyonight",
+      colorscheme = "rose-pine",
     },
-    config = function()
-      ColorMyPencils()
-    end,
   },
 }
