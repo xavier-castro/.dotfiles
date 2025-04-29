@@ -48,3 +48,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
   end,
 })
+
+-- Change terminal's cursor
+vim.opt.guicursor = {
+  "n-v-c:block", -- Block in normal mode
+  "i:ver25", -- Vertical line in insert mode
+}
