@@ -1,7 +1,7 @@
 local config = {
 	default_engine = "google",
 	query_map = {
-		google = "https://www.google.com/search?q=%sauthuser=0&udm=50&hl=en&source=searchlabs",
+		google = "https://www.google.com/search?q=%s&udm=50&hl=en&source=searchlabs",
 		bing = "https://cn.bing.com/search?q=%s",
 		duckduckgo = "https://duckduckgo.com/?q=%s",
 		wikipedia = "https://en.wikipedia.org/w/index.php?search=%s",
