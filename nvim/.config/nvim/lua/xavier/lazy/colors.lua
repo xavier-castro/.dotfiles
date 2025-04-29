@@ -1,5 +1,5 @@
 function ColorMyPencils(color)
-	color = color or "rose-pine-moon"
+	color = color or "vscode"
 	vim.cmd.colorscheme(color)
 
 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -61,7 +61,7 @@ return {
 			require("tokyonight").setup({
 				-- your configuration comes here
 				-- or leave it empty to use the default settings
-				style = "storm",    -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
+				style = "storm", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
 				transparent = true, -- Enable this to disable setting the background color
 				terminal_colors = true, -- Configure the colors used when opening a `:terminal` in Neovim
 				styles = {
@@ -91,26 +91,24 @@ return {
 		end,
 	},
 	{
-		'Mofiqul/vscode.nvim',
-		opts = {
-
-		},
+		"Mofiqul/vscode.nvim",
+		opts = {},
 		config = function()
 			-- Lua:
 			-- For dark theme (neovim's default)
-			vim.o.background = 'dark'
+			vim.o.background = "dark"
 			-- For light theme
 			-- vim.o.background = 'light'
 
-			local c = require('vscode.colors').get_colors()
-			require('vscode').setup({
+			local c = require("vscode.colors").get_colors()
+			require("vscode").setup({
 
-				transparent = true
+				transparent = true,
 			})
 			-- require('vscode').load()
 
 			-- load the theme without affecting devicon colors.
 			-- vim.cmd.colorscheme "vscode"
-		end
-	}
+		end,
+	},
 }
