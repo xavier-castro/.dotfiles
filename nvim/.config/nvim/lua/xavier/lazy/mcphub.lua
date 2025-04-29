@@ -3,7 +3,7 @@ return {
 	dependencies = {
 		"nvim-lua/plenary.nvim", -- Required for Job and HTTP requests
 	},
-	enabled = false,
+	enabled = true,
 	cmd = "MCPHub", -- Lazy load by default
 	event = "BufEnter",
 	build = "npm install -g mcp-hub@latest",

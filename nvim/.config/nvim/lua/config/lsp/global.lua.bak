@@ -12,7 +12,7 @@ local function set_global_keymaps(client, bufnr)
 	-- Go to definition
 	utils.set_keymap({
 		key = "gd",
-		cmd = ":FzfLua lsp_definitions<CR>",
+		cmd = ":Telescope lsp_definitions<CR>",
 		desc = "Go to definition",
 		bufnr = bufnr,
 	})
@@ -20,7 +20,7 @@ local function set_global_keymaps(client, bufnr)
 	-- Go to type definition
 	utils.set_keymap({
 		key = "gt",
-		cmd = ":FzfLua lsp_typedefs<CR>",
+		cmd = ":Telescope lsp_type_definitions<CR>",
 		desc = "Go to type definition",
 		bufnr = bufnr,
 	})
@@ -38,7 +38,7 @@ local function set_global_keymaps(client, bufnr)
 	-- Float diagnostics
 	utils.set_keymap({
 		key = "<leader>D",
-		cmd = ":FzfLua lsp_document_diagnostics<CR>",
+		cmd = ":Telescope diagnostics bufnr=0<CR>",
 		desc = "Show diagnostics for current buffer",
 		bufnr = bufnr,
 	})
@@ -54,7 +54,7 @@ local function set_global_keymaps(client, bufnr)
 	-- Go to implementation
 	utils.set_keymap({
 		key = "gi",
-		cmd = ":FzfLua lsp_implementations<CR>",
+		cmd = ":Telescope lsp_implementations<CR>",
 		desc = "Go to implementation",
 		bufnr = bufnr,
 	})
@@ -86,7 +86,7 @@ local function set_global_keymaps(client, bufnr)
 	-- Go to references
 	utils.set_keymap({
 		key = "gr",
-		cmd = ":FzfLua lsp_references<CR>",
+		cmd = ":Telescope lsp_references<CR>",
 		desc = "Go to references",
 		bufnr = bufnr,
 	})
