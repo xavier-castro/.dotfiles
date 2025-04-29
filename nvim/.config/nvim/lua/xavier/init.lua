@@ -48,13 +48,17 @@ autocmd({ "BufWritePre" }, {
 	pattern = "*",
 	command = [[%s/\s\+$//e]],
 })
---
-autocmd("BufEnter", {
-	group = XavierGroup,
-	callback = function()
-		vim.cmd.colorscheme("rose-pine-moon")
-	end,
-})
+
+-- autocmd("BufEnter", {
+-- 	group = XavierGroup,
+-- 	callback = function()
+-- 		if vim.bo.filetype == "zig" then
+-- 			vim.cmd.colorscheme("tokyonight-night")
+-- 		else
+-- 			vim.cmd.colorscheme("rose-pine-moon")
+-- 		end
+-- 	end,
+-- })
 
 autocmd("LspAttach", {
 	group = XavierGroup,
@@ -110,6 +114,10 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 	end,
 	group = save_fold,
 })
+
+
+
+
 
 vim.g.netrw_browse_split = 0
 vim.g.netrw_banner = 0
