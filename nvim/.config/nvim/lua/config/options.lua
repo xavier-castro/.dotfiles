@@ -5,6 +5,9 @@
 -- Enable the option to require a Prettier config file
 -- If no prettier config file is found, the formatter will not be used
 vim.g.lazyvim_prettier_needs_config = false
+vim.g.lazyvim_cmp = "nvim-cmp"
+vim.g.lazyvim_picker = "fzf"
+vim.g.lazyvim_eslint_auto_format = true
 
 -- Folding
 -- Nice and simple folding:
