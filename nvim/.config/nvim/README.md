@@ -1,103 +1,18 @@
-# Neovim Keybinds Documentation
+### ThePrimeagen's init.lua
+Prerequisite: install [ripgrep](https://github.com/BurntSushi/ripgrep).
 
-This document provides a simple and organized overview of all the custom keybinds defined in my Neovim configuration.
+[The full video of me setting up this repo](https://www.youtube.com/watch?v=w7i4amO_zaE)
 
-## General Keybinds
+For anyone that is interested in my vimrc, i will have a commit log below
+documenting each one of my commits (easy to C-f the change you want to know
+about though i would just suggest `git log -S`).
 
-| Mode | Key             | Action                                                                                      |
-|------|-----------------|---------------------------------------------------------------------------------------------|
-| `n`  | `<leader>cd`    | Open Ex mode (`:Ex`)                                                                        |
-| `n`  | `J`             | Join lines while keeping the cursor in place                                                |
-| `n`  | `<C-d>`         | Scroll half-page down and keep the cursor centered                                          |
-| `n`  | `<C-u>`         | Scroll half-page up and keep the cursor centered                                            |
-| `n`  | `n`             | Move to next search result and keep it centered                                             |
-| `n`  | `N`             | Move to previous search result and keep it centered                                         |
-| `n`  | `Q`             | Disable Ex mode                                                                             |
-| `n`  | `<C-k>`         | Jump to next quickfix entry and keep it centered                                            |
-| `n`  | `<C-j>`         | Jump to previous quickfix entry and keep it centered                                        |
-| `n`  | `<leader>k`     | Jump to next location entry and keep it centered                                            |
-| `n`  | `<leader>j`     | Jump to previous location entry and keep it centered                                        |
-| `i`  | `<C-c>`         | Exit insert mode (acts like `Esc`)                                                          |
-| `n`  | `<leader>x`     | Make current file executable (`chmod +x`)                                                   |
-| `n`  | `<leader>u`     | Toggle Undotree                                                                             |
-| `n`  | `<leader>rl`    | Reload the Neovim config (`~/.config/nvim/init.lua`)                                        |
-| `n`  | `<leader><leader>` | Source the current file (`:so`)                                                          |
+### Change Log
+* [33eee9ad](https://github.com/ThePrimeagen/init.lua/commit/33eee9ad0c035a92137d99dae06a2396be4c892e) initial commits
+* [cb210006](https://github.com/ThePrimeagen/init.lua/commit/cb210006356b4b613b71c345cb2b02eefa961fc0) netrw, autogroups for yank highlighting, and auto remove whitespace
+* [c8c0bf4a](https://github.com/ThePrimeagen/init.lua/commit/c8c0bf4aeacd0bd77136d9c5ee490680515a106b) zenmode.  i really like this plugin
+* [81c770d2](https://github.com/ThePrimeagen/init.lua/commit/81c770d2d2e32e59916b39c7f5babbc8560f7a82) copilot testing
+* [4a96e645](https://github.com/ThePrimeagen/init.lua/commit/4a96e6457b0a0241ca7361ce62177aa6b9a33a38) fugitive mappings for push and pull
+* [a3bad06a](https://github.com/ThePrimeagen/init.lua/commit/a3bad06a4681c322538d609aa1c0bd18880f77c6) disabled eslint.  driving me crazy
 
----
 
-## Visual Mode Keybinds
-
-| Mode | Key             | Action                                                                                      |
-|------|-----------------|---------------------------------------------------------------------------------------------|
-| `v`  | `J`             | Move selected block down                                                                    |
-| `v`  | `K`             | Move selected block up                                                                      |
-| `x`  | `<leader>p`     | Paste without overwriting clipboard                                                         |
-| `v`  | `<leader>y`     | Yank into system clipboard (even on SSH)                                                    |
-
----
-
-## Linting and Formatting
-
-| Mode | Key             | Action                                                                                      |
-|------|-----------------|---------------------------------------------------------------------------------------------|
-| `n`  | `<leader>cc`    | Run `php-cs-fixer` to lint and format PHP files                                             |
-| `n`  | `<F3>`          | Format code (`LSP`)                                                                         |
-
----
-
-## Telescope Keybinds
-
-| Mode | Key             | Action                                                                                      |
-|------|-----------------|---------------------------------------------------------------------------------------------|
-| `n`  | `<leader>ff`    | Find files                                                                                  |
-| `n`  | `<leader>fg`    | Find git-tracked files                                                                      |
-| `n`  | `<leader>fo`    | Open recent files                                                                           |
-| `n`  | `<leader>fq`    | Open quickfix list                                                                          |
-| `n`  | `<leader>fh`    | Open help tags                                                                              |
-| `n`  | `<leader>fb`    | Open buffer list                                                                            |
-| `n`  | `<leader>fs`    | Grep current string                                                                         |
-| `n`  | `<leader>fc`    | Grep instances of the current file name without the extension                               |
-| `n`  | `<leader>fi`    | Find files in Neovim configuration directory (`~/.config/nvim/`)                            |
-
----
-
-## Harpoon Integration
-
-| Mode | Key             | Action                                                                                      |
-|------|-----------------|---------------------------------------------------------------------------------------------|
-| `n`  | `<leader>a`     | Add current file to Harpoon list                                                            |
-| `n`  | `<C-e>`         | Toggle Harpoon quick menu                                                                   |
-| `n`  | `<leader>fl`    | Open Harpoon window with Telescope                                                          |
-| `n`  | `<C-p>`         | Go to previous Harpoon mark                                                                 |
-| `n`  | `<C-n>`         | Go to next Harpoon mark                                                                     |
-
----
-
-## LSP Keybinds
-
-| Mode      | Key        | Action                                                                                      |
-|-----------|------------|---------------------------------------------------------------------------------------------|
-| `n`       | `K`        | Show hover information                                                                      |
-| `n`       | `gd`       | Go to definition                                                                            |
-| `n`       | `gD`       | Go to declaration                                                                           |
-| `n`       | `gi`       | Go to implementation                                                                        |
-| `n`       | `go`       | Go to type definition                                                                       |
-| `n`       | `gr`       | Show references                                                                             |
-| `n`       | `gs`       | Show signature help                                                                         |
-| `n`       | `gl`       | Show diagnostics in a floating window                                                       |
-| `n`       | `<F2>`     | Rename symbol                                                                               |
-| `n`, `x`  | `<F3>`     | Format code asynchronously                                                                 |
-| `n`       | `<F4>`     | Show code actions                                                                           |
-
----
-
-## Miscellaneous
-
-| Mode | Key             | Action                                                                                      |
-|------|-----------------|---------------------------------------------------------------------------------------------|
-| `n`  | `<leader>dg`    | Run `DogeGenerate` (comment documentation generation)                                       |
-| `n`  | `<leader>s`     | Replace all instances of the word under the cursor on the current line                      |
-
----
-
-Let me know if you want to modify or add descriptions for any specific keybinds!
