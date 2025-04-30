@@ -13,10 +13,7 @@ return {
           dismiss = "<C-]>",
         },
       },
-      filetypes = {
-        markdown = true,
-        help = true,
-      },
+      filetypes = { markdown = true, help = true },
     },
   },
 }

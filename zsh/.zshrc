@@ -217,3 +217,6 @@ fi
 
 alias claude="/Users/xavier/.claude/local/claude"
 
+
+# Added by Windsurf
+export PATH="/Users/xavier/.codeium/windsurf/bin:$PATH"
