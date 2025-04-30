@@ -24,10 +24,13 @@ if searcher == "xavier" then
 	return {
 		{
 			"nvim-telescope/telescope.nvim",
+			priority = 1000,
+			lazy = false,
 			dependencies = {
 				"nvim-lua/plenary.nvim",
 				{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 				"nvim-telescope/telescope-ui-select.nvim",
+				"nvim-telescope/telescope-file-browser.nvim",
 			},
 			opts = {},
 			keys = {
@@ -179,6 +182,7 @@ if searcher == "xavier" then
 
 				require("telescope").load_extension("fzf")
 				require("telescope").load_extension("ui-select")
+				require("telescope").load_extension("file_browser")
 			end,
 		},
 	}
