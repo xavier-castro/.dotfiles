@@ -19,7 +19,7 @@ The repository follows a stow-compatible structure where each package directory 
 - `tmux-sessionizer/` - Tmux session management
 - `zsh/` - Shell configuration with zi plugin manager
 
-## Common Commands
+# Common Commands
 
 ### Installing Dotfiles
 
@@ -55,12 +55,14 @@ This repository uses pnpm as the package manager (per user preferences in ~/.cla
 ## Key Configuration Details
 
 ### Neovim
+
 - Has its own comprehensive CLAUDE.md at `nvim/.config/nvim/CLAUDE.md`
 - Based on Kickstart.nvim with extensive customizations
 - Uses lazy.nvim for plugin management
 - Includes LSP setup for multiple languages
 
 ### Tmux
+
 - Configuration split across multiple files in `tmux/.config/tmux/`:
   - `tmux.conf` - Main configuration
   - `statusline.conf` - Status bar customization
@@ -68,6 +70,7 @@ This repository uses pnpm as the package manager (per user preferences in ~/.cla
   - `macos.conf` - macOS-specific settings
 
 ### Zsh
+
 - Uses zi (formerly zinit) as the plugin manager
 - Configuration in `.config/zsh/` with modular setup:
   - `config/aliases.zsh` - Shell aliases
@@ -87,3 +90,4 @@ This repository uses pnpm as the package manager (per user preferences in ~/.cla
 - All stow packages follow the pattern of having `.config/` or `.local/` subdirectories
 - The `.gitignore` is configured to exclude common development artifacts and OS files
 - Each package is self-contained and can be installed/removed independently
+

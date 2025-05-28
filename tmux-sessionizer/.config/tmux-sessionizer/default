@@ -1,3 +1,0 @@
-tmux neww -n scratch
-tmux prev
-tmux renamew vim

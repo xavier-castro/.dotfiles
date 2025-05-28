@@ -145,13 +145,6 @@ zi snippet OMZL::prompt_info_functions.zsh
 
 zi light-mode for @sindresorhus/pure
 
-##### Greeting #####
-function zsh_greeting() {
-  fastfetch
-}
-
-zsh_greeting
-
 # Load PowerLevel10k configuration
 # [[ ! -f ~/.config/zsh/.p10k.zsh ]] || source ~/.config/zsh/.p10k.zsh
 
