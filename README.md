@@ -30,7 +30,7 @@ Terminal multiplexer configuration that enables multiple terminal sessions in a 
 Custom tmux session management tool that streamlines creating and switching between project-specific tmux sessions. Makes it easy to jump between different projects and maintain separate working environments.
 
 ### zsh
-Z shell configuration using zi (formerly zinit) as the plugin manager. Includes custom aliases, shell options, and Powerlevel10k theme for an enhanced command-line experience.
+Optimized Z shell configuration using zi (formerly zinit) as the plugin manager. Features fast startup times through lazy loading, the classic robbyrussell theme, and essential plugins including syntax highlighting, autosuggestions, and enhanced completions. Configuration is modular with separate files for aliases and options.
 
 ## Installation
 

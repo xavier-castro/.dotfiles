@@ -71,11 +71,17 @@ This repository uses pnpm as the package manager (per user preferences in ~/.cla
 
 ### Zsh
 
-- Uses zi (formerly zinit) as the plugin manager
+- Uses zi (formerly zinit) as the plugin manager with optimized turbo loading
 - Configuration in `.config/zsh/` with modular setup:
-  - `config/aliases.zsh` - Shell aliases
-  - `config/options.zsh` - Shell options
-  - `.p10k.zsh` - Powerlevel10k theme configuration
+  - `.zshrc` - Main configuration with optimized plugin loading
+  - `config/aliases.zsh` - Shell aliases and functions
+  - `config/options.zsh` - Shell options for better UX and performance
+  - `config/performance.zsh` - Performance measurement utilities
+- Features:
+  - Robbyrussell theme (lightweight alternative to Powerlevel10k)
+  - Syntax highlighting and autosuggestions loaded immediately
+  - Completions and other plugins loaded with turbo mode
+  - Optimized completion compilation (once per day)
 
 ## Development Workflow
 

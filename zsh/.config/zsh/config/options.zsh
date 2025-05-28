@@ -1,41 +1,43 @@
-setopt extendedglob
-setopt nocaseglob
-setopt rcexpandparam
-setopt nobeep
-setopt appendhistory
-setopt inc_append_history
-setopt histignorealldups
-setopt autocd
-setopt histignorespace
-setopt share_history
-setopt hist_expire_dups_first
-setopt hist_ignore_dups
-setopt hist_verify
-# set -o vi
+# Globbing and matching
+setopt extendedglob       # Extended globbing patterns
+setopt nocaseglob         # Case-insensitive globbing
+setopt rcexpandparam      # Array expansion with parameters
+setopt glob_complete      # Generate matches for globbing
 
-# "If a completion is performed with the cursor within a word, and a
-# full completion is inserted, the cursor is moved to the end of the
-# word."
-# https://zsh.sourceforge.io/Doc/Release/Options.html#Completion-4
-setopt always_to_end
+# History
+setopt appendhistory          # Append to history file
+setopt inc_append_history     # Add commands immediately
+setopt share_history          # Share history between sessions
+setopt hist_expire_dups_first # Expire duplicates first
+setopt hist_ignore_dups       # Ignore duplicates
+setopt hist_ignore_space      # Ignore commands starting with space
+setopt hist_verify            # Show command before executing from history
+setopt hist_reduce_blanks     # Remove extra blanks from commands
 
-# "If the internal history needs to be trimmed to add the current
-# command line, setting this option will cause the oldest history
-# event that has a duplicate to be lost before losing a unique event
-# from the list."
-# https://zsh.sourceforge.io/Doc/Release/Options.html#History
-setopt hist_expire_dups_first
+# Navigation
+setopt autocd             # Change directory without cd
+setopt auto_pushd         # Push directories onto stack
+setopt pushd_ignore_dups  # Don't push duplicates
+setopt pushd_minus        # Exchange + and - meanings
 
-# "When searching for history entries in the line editor, do not
-# display duplicates of a line previously found, even if the
-# duplicates are not contiguous."
-# https://zsh.sourceforge.io/Doc/Release/Options.html#History
-setopt hist_find_no_dups
+# Completion
+setopt always_to_end      # Move cursor to end after completion
+setopt complete_in_word   # Complete from cursor position
+setopt list_packed        # Compact completion lists
+setopt list_types         # Show file types in completion
+setopt menu_complete      # Auto-select first completion match
 
-# "Turns on interactive comments; comments begin with a #."
-# https://zsh.sourceforge.io/Intro/intro_16.html
-#
-# That is, enable comments in the terminal. Nice when copying and
-# pasting from documentation/tutorials, and disable part of
-# a command pulled up from history.
-setopt interactivecomments
+# Corrections
+setopt correct            # Suggest command corrections
+unsetopt correct_all      # Don't correct arguments
+
+# Misc
+setopt nobeep            # No beeping
+setopt interactive_comments  # Allow comments in interactive mode
+setopt multios           # Enable multiple redirections
+setopt prompt_subst      # Expand parameters in prompt
+
+# Performance optimizations
+setopt no_bg_nice        # Don't nice background jobs
+setopt no_hup            # Don't send HUP to jobs on exit
+setopt no_check_jobs     # Don't warn about background jobs on exit
