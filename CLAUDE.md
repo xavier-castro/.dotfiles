@@ -96,4 +96,3 @@ This repository uses pnpm as the package manager (per user preferences in ~/.cla
 - All stow packages follow the pattern of having `.config/` or `.local/` subdirectories
 - The `.gitignore` is configured to exclude common development artifacts and OS files
 - Each package is self-contained and can be installed/removed independently
-
