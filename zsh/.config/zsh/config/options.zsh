@@ -28,7 +28,7 @@ setopt list_types         # Show file types in completion
 setopt menu_complete      # Auto-select first completion match
 
 # Corrections
-setopt correct            # Suggest command corrections
+unsetopt correct            # Suggest command corrections
 unsetopt correct_all      # Don't correct arguments
 
 # Misc
