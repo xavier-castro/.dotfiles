@@ -9,7 +9,7 @@ fi
 
 
 # Path configuration
-export PATH=$HOME/.config/zsh/scripts:$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
+export PATH=$HOME/.config/zsh/scripts:$HOME/bin:$HOME/.local/bin:$HOME/.local/scripts:/usr/local/bin:$PATH
 
 # asdf 0.16.0+ configuration
 export ASDF_DATA_DIR="$HOME/.asdf"
