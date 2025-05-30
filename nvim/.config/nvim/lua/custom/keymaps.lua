@@ -1,0 +1,312 @@
+-- Custom Keymaps
+--
+----------------------------------------------------------------------------------
+-- TERMINAL COMMANDS
+--------------------------------------------------------------------------------
+-- Single ESC to enter normal mode, <Esc><Esc> to close terminal
+vim.keymap.set('t', '<Esc>', '<C-\\><C-n>', { desc = 'Terminal: Enter normal mode' })
+vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>:bd!<CR>', { desc = 'Terminal: Close terminal' })
+
+-- Open a terminal buffer
+vim.keymap.set('n', '<leader>tt', ':terminal<CR>i', { desc = '[T]erminal: Open [t]erminal' })
+
+-- Add floating terminal keymap
+local float_terminal = require 'custom.extras.float-terminal'
+vim.keymap.set({ 'n', 't' }, '<leader>tf', float_terminal.toggle_terminal, { desc = '[T]oggle [f]loating terminal' })
+
+-- Disable line numbers in terminal buffers
+vim.api.nvim_create_autocmd('TermOpen', {
+  group = vim.api.nvim_create_augroup('terminal_settings', { clear = true }),
+  callback = function()
+    vim.opt_local.number = false
+    vim.opt_local.relativenumber = false
+  end,
+})
+
+-- Add bottom and right terminal splits
+vim.keymap.set('n', '<leader>tb', function()
+  vim.cmd('botright ' .. math.ceil(vim.fn.winheight(0) * 0.3) .. 'sp | term')
+end, { desc = 'Launch a [T]erminal in the [B]ottom' })
+
+vim.keymap.set('n', '<leader>tr', function()
+  vim.cmd('bot ' .. math.ceil(vim.fn.winwidth(0) * 0.3) .. 'vs | term')
+end, { desc = 'Launch a [T]erminal to the [R]ight' })
+
+--------------------------------------------------------------------------------
+-- BUFFER COMMANDS (leader + b)
+--------------------------------------------------------------------------------
+-- Delete (kill) current buffer
+-- vim.keymap.set('n', '<leader>bd', ':bdelete<CR>', { desc = '[B]uffer [d]elete' })
+-- Close buffer without closing window (cycles to previous buffer)
+vim.keymap.set('n', '<leader>bd', ':bp | bd #<CR>', { desc = '[B]uffer [k]ill (preserve window)' })
+
+-- Remap Macros
+vim.keymap.set('n', 'q', '<Nop>', { noremap = true, desc = 'Disabled default macro key' })
+vim.keymap.set('n', '<leader>m', 'q', { noremap = true, desc = 'Start recording macro' })
+
+-- Quick kill help menus
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'help',
+  callback = function()
+    vim.keymap.set('n', 'q', ':q<CR>', { buffer = true, desc = '[Q]uit help window', silent = true })
+  end,
+})
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'help',
+  callback = function()
+    vim.keymap.set('n', '<ESC><ESC>', ':q<CR>', { buffer = true, desc = '[Q]uit help window', silent = true })
+  end,
+})
+
+-- Go to next/previous buffer
+vim.keymap.set('n', '<leader>bn', ':bn<CR>', { desc = '[B]uffer [n]ext' })
+vim.keymap.set('n', '<leader>bp', ':bp<CR>', { desc = '[B]uffer [p]revious' })
+
+-- Reload current buffer (like re-edit)
+vim.keymap.set('n', '<leader>bR', ':edit<CR>', { desc = '[B]uffer [R]eload current file' })
+
+-- Open scratch buffer
+vim.keymap.set('n', '<leader>bs', function()
+  vim.cmd 'enew' -- Create a new empty buffer.
+  -- Set scratch buffer options.
+  vim.opt_local.buftype = 'nofile'
+  vim.opt_local.bufhidden = 'hide' -- Keeps buffer in memory when switching.
+  vim.opt_local.swapfile = false
+  -- Prevent auto-session from saving this buffer.
+  vim.b.auto_session_enabled = false
+  -- Generate a unique buffer name, e.g., using the current date/time.
+  local name = 'Scratch-' .. os.date '%m%d-%H:%M:%S'
+  vim.cmd('file ' .. name)
+
+  -- Custom variable to track scratch buffers
+  vim.b.scratch_buffer = true
+  -- Autocmd to change bufhidden to 'wipe' only when exiting Neovim.
+  vim.api.nvim_create_autocmd('VimLeavePre', {
+    buffer = 0, -- Apply to the current buffer
+    callback = function()
+      vim.opt_local.bufhidden = 'delete'
+      vim.cmd 'bdelete!'
+    end,
+  })
+end, { desc = '[B]uffer [S]cratch' })
+
+-- Save scratch buffer
+vim.keymap.set('n', '<leader>bw', ':setlocal buftype= | w<CR>', { desc = '[B]uffer [W]rite Scratch' })
+
+--------------------------------------------------------------------------------
+-- FILE COMMANDS (leader + f)
+--------------------------------------------------------------------------------
+-- Edit Neovim config (replace with your actual init.lua path, if desired)
+vim.keymap.set('n', '<leader>fed', ':e $MYVIMRC<CR>', { desc = '/init.lua' })
+
+-- Edit Neovim config (replace with your actual init.lua path, if desired)
+vim.keymap.set('n', '<leader>fec', ':e /Users/kyle/.config/nvim/lua/custom/keymaps.lua<CR>', { desc = 'custom/keymaps.lua' })
+
+-- Edit Neovim config (replace with your actual init.lua path, if desired)
+vim.keymap.set('n', '<leader>fep', ':e /Users/kyle/.config/nvim/lua/custom/plugins/init.lua<CR>', { desc = 'custom/plugins/init.lua' })
+
+-- Open Ghostty documentation
+vim.keymap.set('n', '<leader>fg', ':GhosttyDocs<CR>', { desc = '[F]ile [g]hostty docs' })
+
+-- Reloading not supported with lazy.nvim
+-- vim.keymap.set('n', '<leader>feR', ':source $MYVIMRC', { desc = 'reload init.lua' })
+
+-- Note: We use Telescope for file finding with <leader>ff and <leader>pf
+-- so this keybinding is unnecessary
+
+-- Write (save) current file
+vim.keymap.set('n', '<leader>fs', ':write<CR>', { desc = '[F]ile [s]ave' })
+
+-- Write all open files
+vim.keymap.set('n', '<leader>fS', ':wall<CR>', { desc = '[F]ile [S]ave all' })
+
+-- Yank relative file path
+vim.keymap.set('n', '<leader>fyy', function()
+  local path = vim.fn.expand '%'
+  vim.fn.setreg('+', path)
+  vim.api.nvim_echo({ { path, 'Normal' } }, false, {})
+end, { desc = '[F]ile [Y]ank rel path' })
+
+-- Yank absolute file path
+vim.keymap.set('n', '<leader>fyY', function()
+  local path = vim.fn.expand '%:p'
+  vim.fn.setreg('+', path)
+  vim.api.nvim_echo({ { path, 'Normal' } }, false, {})
+end, { desc = '[F]ile [Y]ank abs path' })
+
+--------------------------------------------------------------------------------
+-- QUITTING (leader + q)
+--------------------------------------------------------------------------------
+-- Quit all
+vim.keymap.set('n', '<leader>qq', ':quitall<CR>', { desc = '[Q]uit [a]ll' })
+
+-- Quit all (discard changes)
+vim.keymap.set('n', '<leader>qQ', ':quitall!<CR>', { desc = '[Q]uit all (force)' })
+
+-- Save all and quit
+vim.keymap.set('n', '<leader>qs', ':xa<CR>', { desc = '[Q]uit & [s]ave all' })
+
+--------------------------------------------------------------------------------
+-- WINDOW / SPLITS (leader + w)
+--------------------------------------------------------------------------------
+-- Horizontal / vertical splits
+vim.keymap.set('n', '<leader>w-', ':split<CR>', { desc = '[W]indow - horizontal split' })
+vim.keymap.set('n', '<leader>w/', ':vsplit<CR>', { desc = '[W]indow / vertical split' })
+
+-- Equalize split sizes
+vim.keymap.set('n', '<leader>w=', '<C-W>=', { desc = '[W]indow resize [=]' })
+
+-- Close current split
+vim.keymap.set('n', '<leader>wd', ':q<CR>', { desc = '[W]indow [d]elete' })
+
+-- Jump among splits (via vim-tmux-navigator plugin)
+-- These are now defined in lua/custom/plugins/init.lua
+
+-- Switch split windows (rotate focus)
+vim.keymap.set('n', '<leader>ww', '<C-W><C-W>', { desc = '[W]indow cycle' })
+
+-- Maximize current window
+vim.keymap.set('n', '<leader>wm', ':only<CR>', { desc = '[W]indow [m]aximize' })
+
+--------------------------------------------------------------------------------
+-- SPACEMACS WINDOW COMMANDS (leader + w)
+--------------------------------------------------------------------------------
+-- Window movement (not navigation)
+vim.keymap.set('n', '<leader>wH', '<C-w>H', { desc = '[W]indow move window to left' })
+vim.keymap.set('n', '<leader>wJ', '<C-w>J', { desc = '[W]indow move window to bottom' })
+vim.keymap.set('n', '<leader>wK', '<C-w>K', { desc = '[W]indow move window to top' })
+vim.keymap.set('n', '<leader>wL', '<C-w>L', { desc = '[W]indow move window to right' })
+
+-- Window maximize (alternative)
+vim.keymap.set('n', '<leader>w_', '<C-w>_', { desc = '[W]indow maximize horizontally' })
+vim.keymap.set('n', '<leader>w|', '<C-w>|', { desc = '[W]indow maximize vertically' })
+
+-- Tab alternate window
+vim.keymap.set('n', '<leader><Tab>', '<C-^>', { desc = 'Switch to alternate window' })
+-- Toggle between current and previous window (like 'last' on a remote)
+vim.keymap.set('n', '<leader>w<Tab>', '<C-w>p', { desc = '[W]indow toggle to previous' })
+
+-- Window resize
+vim.keymap.set('n', '<leader>w[', ':vertical resize -5<CR>', { desc = '[W]indow shrink horizontally' })
+vim.keymap.set('n', '<leader>w]', ':vertical resize +5<CR>', { desc = '[W]indow enlarge horizontally' })
+vim.keymap.set('n', '<leader>w{', ':resize -5<CR>', { desc = '[W]indow shrink vertically' })
+vim.keymap.set('n', '<leader>w}', ':resize +5<CR>', { desc = '[W]indow enlarge vertically' })
+
+-- Window rotation
+vim.keymap.set('n', '<leader>wr', '<C-w>r', { desc = '[W]indow [r]otate forward' })
+vim.keymap.set('n', '<leader>wR', '<C-w>R', { desc = '[W]indow [R]otate backward' })
+
+--------------------------------------------------------------------------------
+-- TOGGLES (leader + T for global toggles)
+--------------------------------------------------------------------------------
+-- Toggle line numbers
+vim.keymap.set('n', '<leader>Tn', ':set number!<CR>', { desc = '[T]oggle [n]umber' })
+
+-- Toggle line wrapping
+vim.keymap.set('n', '<leader>Tl', ':set wrap!<CR>', { desc = '[T]oggle [l]ine wrap' })
+
+--------------------------------------------------------------------------------
+-- ERROR/LOCATION LIST NAVIGATION (leader + e)
+--------------------------------------------------------------------------------
+vim.keymap.set('n', '<leader>en', ':lnext<CR>', { desc = '[E]rror [n]ext (location list)' })
+vim.keymap.set('n', '<leader>ep', ':lprev<CR>', { desc = '[E]rror [p]revious (location list)' })
+
+--------------------------------------------------------------------------------
+-- MISC
+--------------------------------------------------------------------------------
+-- Re-indent entire buffer
+vim.keymap.set('n', '<leader>=', 'mzgg=G`z', { desc = 'Reindent entire buffer' })
+
+-- Clear search highlight
+vim.keymap.set('n', '<leader>sc', ':nohlsearch<CR>', { desc = '[S]earch [c]lear highlight' })
+
+-- (Optionally) if you still want <Tab> to switch buffers:
+-- vim.keymap.set('n', '<Tab>', '<C-^>', { desc = 'Switch to previous buffer' })
+--
+--------------------------------------------------------------------------------
+-- MINI: mini.surround
+--------------------------------------------------------------------------------
+-- Remap adding surrounding to Visual mode selection
+vim.keymap.set('x', 'S', [[:<C-u>lua MiniSurround.add('visual')<CR>]], { desc = '[S]urround' })
+
+--------------------------------------------------------------------------------
+-- TROUBLE (leader + x for diagnostic)
+--------------------------------------------------------------------------------
+vim.keymap.set('n', '<leader>xx', ':Trouble<CR>', { desc = 'Trouble Toggle' })
+vim.keymap.set('n', '<leader>xq', ':Trouble quickfix<CR>', { desc = 'Trouble [Q]uickfix' })
+vim.keymap.set('n', '<leader>xl', ':Trouble loclist<CR>', { desc = 'Trouble [L]oclist' })
+vim.keymap.set('n', '<leader>xr', ':Trouble lsp_references<CR>', { desc = 'Trouble [R]eferences (LSP)' })
+vim.keymap.set('n', '<leader>xd', ':Trouble document_diagnostics<CR>', { desc = 'Trouble [D]ocument Diagnostics' })
+vim.keymap.set('n', '<leader>xw', ':Trouble workspace_diagnostics<CR>', { desc = 'Trouble [W]orkspace Diagnostics' })
+vim.keymap.set('n', '<leader>xf', ':TroubleRefresh<CR>', { desc = 'Trouble Re[f]resh' })
+-- vim.keymap.set('n', '<leader>xo', ':Trouble fold_open_all<CR>', { desc = 'Trouble Fold [O]pen All' })
+-- vim.keymap.set('n', '<leader>xc', ':Trouble fold_close_all<CR>', { desc = 'Trouble Fold [C]lose All' })
+
+vim.api.nvim_create_autocmd('FileType', {
+  pattern = 'trouble',
+  callback = function()
+    vim.keymap.set('n', '<Tab>', function()
+      require('trouble').fold_toggle()
+    end, { buffer = true, desc = 'Trouble: Fold Toggle' })
+  end,
+})
+
+--------------------------------------------------------------------------------
+-- GIT LINKER
+--------------------------------------------------------------------------------
+vim.keymap.set(
+  'n',
+  '<leader>gyY',
+  '<cmd>lua require"gitlinker".get_buf_range_url("n", {action_callback = require"gitlinker.actions".open_in_browser})<cr>',
+  { silent = true, desc = 'Git [Y]ank and browse URL (current line)' }
+)
+vim.keymap.set(
+  'v',
+  '<leader>gyY',
+  '<cmd>lua require"gitlinker".get_buf_range_url("v", {action_callback = require"gitlinker.actions".open_in_browser})<cr>',
+  { silent = true, desc = 'Git [Y]ank and browse URL (selection)' }
+)
+
+--------------------------------------------------------------------------------
+-- MESSAGES
+--------------------------------------------------------------------------------
+-- Add a keymap to copy from :messages buffer to clipboard
+vim.keymap.set('n', '<leader>cm', function()
+  -- Create a new split and redirect messages into it
+  vim.cmd 'botright new'
+  vim.cmd 'redir @a'
+  vim.cmd 'silent messages'
+  vim.cmd 'redir END'
+  vim.cmd 'put a'
+  vim.cmd 'normal! ggdd'
+  vim.cmd 'setlocal buftype=nofile bufhidden=wipe noswapfile nomodified'
+  vim.cmd 'file Messages'
+
+  -- Set local options for this buffer
+  vim.opt_local.number = false
+  vim.opt_local.relativenumber = false
+
+  -- Add a helpful mapping to copy all messages
+  vim.keymap.set('n', 'yG', function()
+    -- Yank from start to end
+    vim.cmd 'normal! ggVGy'
+    print 'Messages copied to clipboard'
+  end, { buffer = true, desc = 'Yank all messages' })
+
+  -- Add quit mapping
+  vim.keymap.set('n', 'q', ':q<CR>', { buffer = true, desc = 'Close messages window', silent = true })
+
+  print 'Press yG to copy all messages to clipboard, q to close'
+end, { desc = 'Open [M]essages buffer with copy support' })
+
+-- XC
+vim.keymap.set('i', 'jk', '<C-c>')
+
+vim.keymap.set('n', '<leader>lf', function()
+  require('conform').format { async = false, lsp_format = 'fallback', timeout_ms = 5000 }
+end)
+vim.keymap.set('v', '<leader>lf', function()
+  require('conform').format { async = false, lsp_format = 'fallback', timeout_ms = 5000 }
+end)
+
+vim.keymap.set('n', '<C-f>', '<cmd>silent tmux-sessionizer<CR>')
