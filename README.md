@@ -8,6 +8,10 @@ Each directory in this repository represents a "package" that can be symlinked t
 
 ## Tools and Configurations
 
+### asdf
+Global library manager. after using `stow` you want to then follow with:
+`asdf plugin install`
+
 ### aerospace
 Window manager for macOS that provides tiling window management capabilities. Allows you to organize windows into workspaces and manage them with keyboard shortcuts.
 
@@ -78,3 +82,4 @@ pnpm run build
 ## Structure
 
 Each package follows a structure that mirrors the target location in your home directory. Most configurations live in `.config/` or `.local/` subdirectories within each package.
+

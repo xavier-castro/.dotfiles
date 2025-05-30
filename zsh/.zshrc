@@ -9,6 +9,10 @@ fi
 # Path configuration
 export PATH=$HOME/.config/zsh/scripts:$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
+# asdf 0.16.0+ configuration
+export ASDF_DATA_DIR="$HOME/.asdf"
+export PATH="$ASDF_DATA_DIR/shims:$PATH"
+
 # Source private configuration if exists
 [[ -f ~/.zsh_private.zshrc ]] && source ~/.zsh_private.zshrc
 
@@ -70,6 +74,3 @@ zi ice as"command" from"gh-r" \
   atpull"%atclone" src"init.zsh"
 zi light starship/starship
 
-# asdf 0.16.0+ configuration
-export ASDF_DATA_DIR="$HOME/.asdf"
-export PATH="$ASDF_DATA_DIR/shims:$PATH"
