@@ -309,5 +309,4 @@ vim.keymap.set('v', '<leader>lf', function()
   require('conform').format { async = false, lsp_format = 'fallback', timeout_ms = 5000 }
 end)
 
-vim.keymap.set('n', '<C-f>', '<cmd>silent zelli-sessionizer<CR>')
-
+vim.keymap.set('n', '<C-f>', '<cmd>silent tmux-sessionizer<CR>')
