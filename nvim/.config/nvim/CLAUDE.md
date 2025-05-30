@@ -2,114 +2,123 @@
 
 This file provides guidance to Claude Code (claude.ai/code) when working with code in this repository.
 
-## Neovim Configuration Overview
+## Repository Overview
 
-This is a Neovim configuration based on Kickstart.nvim with numerous custom enhancements. It uses the lazy.nvim plugin manager and includes configurations for LSP (Language Server Protocol), telescopic fuzzy finding, UI elements, and various coding tools.
+This is a Neovim configuration based on Kickstart.nvim - a minimal, documented starting point for Neovim configs. The configuration is structured as a single-file setup (`init.lua`) with optional modular plugin additions in `lua/xavier/plugins/`.
 
-## Directory Structure
+## Architecture
 
-- `init.lua`: Main configuration file that loads all modules
-- `lua/kickstart/`: Core kickstart modules 
-- `lua/custom/`: Custom configuration modules:
-  - `plugins/`: Plugin-specific configurations
-  - `ui/`: UI elements (statusline, winbar, tabline)
-  - `extras/`: Additional utility modules
-  - `keymaps.lua`: Key mappings
+### Core Structure
+- `init.lua` - Main configuration file containing:
+  - Basic Neovim options and settings
+  - Key mappings
+  - Lazy.nvim plugin manager setup
+  - Core plugin configurations (LSP, Telescope, Treesitter, etc.)
+  - Plugin loading from `lua/xavier/plugins/`
 
-## Language Server Protocol (LSP)
+### Plugin System
+- Uses [lazy.nvim](https://github.com/folke/lazy.nvim) as the plugin manager
+- Core plugins configured directly in `init.lua`
+- Additional plugins can be added in `lua/xavier/plugins/` directory
+- Plugins are automatically loaded via `{ import = 'xavier.plugins' }`
 
-The configuration uses Neovim's native LSP support (for Neovim 0.11+). Language servers are configured in:
+### Key Components
+1. **LSP (Language Server Protocol)**
+   - Mason.nvim for LSP server installation
+   - Native LSP configuration with nvim-lspconfig
+   - Blink.cmp for autocompletion
 
-- `lua/lsp/init.lua`: Core LSP setup
-- Various files in `/lsp/` for language-specific configurations
+2. **Fuzzy Finding**
+   - Telescope.nvim for file finding, grep, and more
+   - FZF integration for better performance
 
-### Key commands for LSP:
+3. **Syntax Highlighting**
+   - Treesitter for advanced syntax highlighting and code understanding
 
-```
-:LspInfo      - Show LSP status
-:LspRestart   - Restart all language servers
-:LspStart     - Start LSP for current buffer
-:LspStop      - Stop LSP services
-:LspLog       - View LSP logs
-```
+4. **Additional Features**
+   - Gitsigns for git integration
+   - Which-key for key binding help
+   - Mini.nvim for various utilities (surround, statusline, etc.)
 
-## Ruby Development
+## Common Commands
 
-For Ruby/Rails development, the configuration includes:
-
-- Ruby LSP integration
-- Vim-rails plugin for Rails navigation
-- Vim-test for test running
-
-To set up Ruby LSP for a project:
-1. Copy the example configuration: `cp ~/.config/nvim/example.neoconf.ruby.json /path/to/project/.neoconf.ruby.json`
-2. Either install Ruby LSP globally: `gem install ruby-lsp standardrb`, or add it to your project's Gemfile
-
-Ruby/Rails specific commands:
-- `<leader>rt`: Run test file
-- `<leader>rs`: Run single test
-- `<leader>rl`: Run last test
-- `<leader>ra`: Run all tests
-- `:Emodel`, `:Econtroller`, `:Eview`, etc.: Navigate Rails project
-
-## Common Keymaps
-
-The configuration uses Space as the leader key and follows a structured keymap organization:
-
-- `<leader>f`: File operations
-- `<leader>b`: Buffer operations
-- `<leader>w`: Window operations
-- `<leader>s`: Search operations (Telescope)
-- `<leader>g`: Git operations
-- `<leader>T`: Toggle options
-- `<leader>c`: Code actions
-- `<leader>e`: Error/diagnostic navigation
-- `<leader>r`: Rename/Ruby operations
-- `<leader>x`: Trouble/Diagnostics
-
-Some useful key mappings:
-- `<leader>/`: Fuzzy search in current buffer ("Swiper")
-- `<leader>ff` or `<leader>sf`: Find files
-- `<leader>sg`: Search with live grep
-- `<leader>sc`: Clear search highlighting
-- `jk`: Escape from insert mode
-
-## Plugins
-
-The configuration uses lazy.nvim to manage plugins. Key plugins include:
-
-- telescope.nvim: Fuzzy finder
-- gitsigns.nvim: Git integration
-- which-key.nvim: Keybinding help
-- nvim-treesitter: Syntax highlighting and code navigation
-- mini.nvim: Collection of small utilities
-- conform.nvim: Code formatting
-
-## Formatter
-
-For code formatting, the configuration uses conform.nvim. To format a buffer:
-
-```
-<leader>F    - Format current buffer
+### Plugin Management
+```vim
+:Lazy               " Open Lazy plugin manager UI
+:Lazy update        " Update all plugins
+:Lazy install       " Install missing plugins
+:Lazy sync          " Install missing plugins and update existing ones
 ```
 
-The formatter supports various languages including: Lua, Python, JavaScript/TypeScript, Ruby, HTML, CSS, and more.
+### LSP Commands
+```vim
+:Mason              " Open Mason UI to manage LSP servers
+:LspInfo            " Show LSP status for current buffer
+:LspRestart         " Restart LSP servers
+```
 
-## Terminal Integration
+### Health Check
+```vim
+:checkhealth        " Run Neovim health checks
+```
 
-The configuration provides multiple ways to open terminal windows:
+### Code Formatting
+```vim
+:ConformInfo        " Show conform.nvim status
+<leader>f           " Format current buffer
+```
 
-- `<leader>tt`: Toggle floating terminal
-- `<leader>tb`: Open terminal at the bottom
-- `<leader>tr`: Open terminal to the right
-- `<Esc><Esc>`: Exit terminal mode
+### Lua Code Formatting
+The configuration includes Stylua for Lua formatting with these settings:
+- Column width: 160
+- Indent: 2 spaces
+- Quote style: Auto prefer single quotes
+- No call parentheses
 
-## Window Navigation
+To format Lua files:
+```bash
+stylua .
+```
 
-For window navigation and management:
+## Key Mappings
 
-- `<C-h/j/k/l>`: Navigate between windows (or create new splits)
-- `<leader>w-`: Horizontal split
-- `<leader>w/`: Vertical split
-- `<leader>wd`: Close window
-- `<leader>wm`: Maximize window
+### Leader Key
+- `<space>` is the leader key
+- `\\` is the local leader key
+
+### Essential Mappings
+- `<leader>sh` - Search help tags
+- `<leader>sf` - Search files
+- `<leader>sg` - Live grep
+- `<leader><leader>` - Search buffers
+- `<leader>f` - Format buffer
+- `<leader>q` - Open diagnostic quickfix list
+
+### LSP Mappings (when LSP is active)
+- `grn` - Rename symbol
+- `gra` - Code action
+- `grd` - Go to definition
+- `grr` - Find references
+- `gri` - Go to implementation
+- `gO` - Document symbols
+- `<leader>th` - Toggle inlay hints
+
+### Claude Code Integration
+- `<leader>ac` - Toggle Claude Terminal
+- `<leader>ak` - Send selection to Claude Code
+- `<leader>ao` - Open/Focus Claude Terminal
+- `<leader>ax` - Close Claude Terminal
+
+## Development Workflow
+
+1. **Adding New Plugins**: Create a new file in `lua/xavier/plugins/` returning a plugin spec table
+2. **Modifying Core Config**: Edit `init.lua` directly
+3. **Installing LSP Servers**: Use `:Mason` to interactively install servers
+4. **Checking Plugin Status**: Use `:Lazy` to see plugin load status and profiling
+
+## Plugin Development Tips
+
+When creating new plugin configurations in `lua/xavier/plugins/`:
+- Each file should return a table (single plugin) or array of tables (multiple plugins)
+- Use lazy loading where appropriate (`event`, `cmd`, `ft` keys)
+- Follow the existing patterns for consistency

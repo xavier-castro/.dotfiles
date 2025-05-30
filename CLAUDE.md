@@ -6,18 +6,24 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 This is a dotfiles repository that manages macOS configuration files using GNU Stow. Each top-level directory represents a "package" that can be symlinked to the home directory.
 
+## Prerequisites
+
+- GNU Stow (`brew install stow`)
+- pnpm (for TypeScript-based configurations)
+
 ## Architecture
 
 The repository follows a stow-compatible structure where each package directory contains files organized to mirror their target locations:
 
-- `aerospace/` - Window manager configuration
-- `karabiner/` - Keyboard customization (TypeScript-based config)
-- `lazygit/` - Git UI configuration
-- `local/` - Local binaries and scripts
-- `nvim/` - Neovim configuration (extensive setup with LSP, plugins)
-- `tmux/` - Terminal multiplexer configuration
-- `tmux-sessionizer/` - Tmux session management
-- `zsh/` - Shell configuration with zi plugin manager
+- `aerospace/` - Window manager for macOS providing tiling window management with keyboard shortcuts
+- `asdf/` - Tool version manager for runtime management (.tool-versions includes nodejs, python, golang, rust, deno)
+- `karabiner/` - Advanced keyboard customization tool for macOS with TypeScript-based config
+- `lazygit/` - Terminal-based Git UI for simplified Git operations
+- `local/` - Local binaries and custom scripts accessible system-wide
+- `nvim/` - Neovim configuration based on Kickstart.nvim with LSP support and extensive plugins
+- `tmux/` - Terminal multiplexer for managing multiple terminal sessions
+- `zellij/` - Modern terminal workspace with built-in multiplexing
+- `zsh/` - Optimized Z shell configuration using zi plugin manager with fast startup
 
 # Common Commands
 
@@ -48,6 +54,15 @@ pnpm run build      # Build the configuration
 pnpm run watch      # Watch for changes and rebuild
 ```
 
+### asdf Configuration
+
+After installing asdf package with stow:
+
+```bash
+# Install plugins for all tools defined in .tool-versions
+asdf plugin install
+```
+
 ### Package Management
 
 This repository uses pnpm as the package manager (per user preferences in ~/.claude/CLAUDE.md).
@@ -68,6 +83,18 @@ This repository uses pnpm as the package manager (per user preferences in ~/.cla
   - `statusline.conf` - Status bar customization
   - `theme.conf` - Visual theming
   - `macos.conf` - macOS-specific settings
+
+### Tmux-sessionizer
+
+- Custom tmux session management tool for quick project switching
+- Streamlines creating and switching between project-specific tmux sessions
+- Maintains separate working environments for different projects
+
+### Zellij
+
+- Modern terminal workspace and multiplexer
+- Alternative to tmux with built-in features
+- Configuration includes custom layouts and harpoon plugin
 
 ### Zsh
 
@@ -96,3 +123,11 @@ This repository uses pnpm as the package manager (per user preferences in ~/.cla
 - All stow packages follow the pattern of having `.config/` or `.local/` subdirectories
 - The `.gitignore` is configured to exclude common development artifacts and OS files
 - Each package is self-contained and can be installed/removed independently
+- Documentation lives in `docs/` directory:
+  - `claude_code_best_practices.md` - Best practices for using Claude Code
+  - `python_env_guide.md` - Python environment management guide
+
+
+
+
+
