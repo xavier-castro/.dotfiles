@@ -3,6 +3,10 @@ require 'xavier.config.options'
 require 'xavier.config.keymaps'
 require 'xavier.config.autocommands'
 
+-- Extras
+require 'xavier.helpers.browser-search-bar'
+require 'xavier.helpers.terminal'
+
 -- Undercurl Support
 vim.cmd [[let &t_Cs = "\e[4:3m"]]
 vim.cmd [[let &t_Ce = "\e[4:0m"]]
