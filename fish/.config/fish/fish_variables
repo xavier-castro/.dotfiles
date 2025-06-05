@@ -1,8 +1,8 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR __fish_initialized:3800
-SETUVAR _hydro_git_51730:main\u2022\x20
-SETUVAR _hydro_git_51812:main\u2022\x20
+SETUVAR _hydro_git_52162:main\u2022\x20
+SETUVAR _hydro_git_53087:main\u2022\x20
 SETUVAR fish_color_autosuggestion:brblack
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:normal

@@ -34,7 +34,7 @@ return {
           ----------------------------------
           -- Load key mappings
           ----------------------------------
-          require '.plugins.lsp.keymaps'(event.buf)
+          require 'xavier.plugins.lsp.keymaps'(event.buf)
 
           ----------------------------------
           -- Add highlights

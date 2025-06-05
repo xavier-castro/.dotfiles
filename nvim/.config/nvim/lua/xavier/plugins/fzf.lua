@@ -43,11 +43,11 @@ return {
       desc = 'Find obsidian words ',
       mode = 'n',
     },
-    -- {
-    --   "<leader>sW",
-    --   ":lua require'fzf-lua'.grep_project({ multiprocess=true })<CR>",
-    --   desc = "Find word (grep project)",
-    -- },
+    {
+      '<leader>sW',
+      ":lua require'fzf-lua'.grep_project({ multiprocess=true })<CR>",
+      desc = 'Find word (grep project)',
+    },
     { '<leader><tab>', ':FzfLua buffers<cr>', desc = 'Find buffers' },
     { '<leader>sR', ':FzfLua registers <cr>', desc = 'Search registers' },
     {
