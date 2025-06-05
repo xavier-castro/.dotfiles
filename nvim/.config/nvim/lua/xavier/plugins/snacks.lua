@@ -19,7 +19,6 @@ return {
   ---@type snacks.Config
   opts = {
     bigfile = { enabled = true },
-    indent = { enabled = true, animate = { enabled = false } },
     lazygit = { enabled = true },
     statuscolumn = { enabled = true },
     zen = { enabled = true, toggles = { dim = false } },
