@@ -24,11 +24,11 @@ return {
         includeCompletionsForModuleExports = true, -- Suggest exports from other modules
         includeAutomaticOptionalChainCompletions = true, -- Auto-complete with optional chaining where applicable
       },
-      -- compilerOptions = {
-      -- 	strict = true, -- Enable strict type checks
-      -- 	strictNullChecks = true, -- Enforce null safety
-      -- 	strictPropertyInitialization = true, -- Ensure all properties are initialized
-      -- },
+      compilerOptions = {
+        strict = false, -- Enable strict type checks
+        strictNullChecks = true, -- Enforce null safety
+        strictPropertyInitialization = true, -- Ensure all properties are initialized
+      },
       inlayHints = {
         enumMemberValues = { enabled = true },
         functionLikeReturnTypes = { enabled = true },
@@ -43,7 +43,7 @@ return {
       format = {
         enable = false,
       },
-      -- maxTsServerMemory = 4096,
+      maxTsServerMemory = 4096,
     },
     javascript = {
       suggest = { completeFunctionCalls = true },

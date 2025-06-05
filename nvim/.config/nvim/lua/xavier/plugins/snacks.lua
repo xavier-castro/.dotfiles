@@ -20,12 +20,11 @@ return {
   opts = {
     bigfile = { enabled = true },
     lazygit = { enabled = true },
-    statuscolumn = { enabled = true },
+    statuscolumn = { enabled = false },
     zen = { enabled = true, toggles = { dim = false } },
     quickfile = { enabled = true },
-
     explorer = { enabled = false, replace_netrw = false },
-    dashboard = { enabled = false },
+    dashboard = { enabled = true },
     scroll = { enabled = false },
     input = { enabled = false },
     notifier = { enabled = false },

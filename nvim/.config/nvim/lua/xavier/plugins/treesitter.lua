@@ -9,6 +9,11 @@ return {
   branch = 'main',
   dependencies = {
     {
+      'pmizio/typescript-tools.nvim',
+      dependencies = { 'nvim-lua/plenary.nvim', 'neovim/nvim-lspconfig' },
+      opts = {},
+    },
+    {
       'nvim-treesitter/nvim-treesitter-context',
       config = true,
       opts = {
