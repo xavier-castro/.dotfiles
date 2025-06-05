@@ -11,10 +11,9 @@ return {
       ':FzfLua files<cr>',
       desc = 'Find files',
     },
-    { '<leader><space>', '<cmd>FzfLua resume<cr>', desc = 'Resume last command' },
-    { '<leader>sw', '<cmd>FzfLua live_grep<cr>', desc = 'Find word (grep project)' },
+    { '<leader>pws', '<cmd>FzfLua live_grep<cr>', desc = 'Find word (grep project)' },
     {
-      '<leader>sW',
+      '<leader>pWs',
       ':lua require"fzf-lua".live_grep({ cmd = "git grep --line-number --files-with-matches --column --color=always" })<cr>',
       desc = 'Find word (grep project)',
     },
@@ -29,22 +28,10 @@ return {
       desc = 'Find word in buffer',
     },
     { '<leader>sb', '<cmd>FzfLua lgrep_curbuf<cr>', desc = 'Find word in buffer' },
-    { '<leader>sg', '<cmd>FzfLua git_status<cr>', desc = 'Find word in buffer' },
     { '<leader>sw', '<cmd>FzfLua grep_visual<cr>', desc = 'Grep', mode = 'x' },
+
     {
-      '<leader>of',
-      ":lua require'fzf-lua'.files({ cwd='~/vaults/personal' })<CR>",
-      desc = 'Find obsidian files',
-      mode = 'n',
-    },
-    {
-      '<leader>ow',
-      ":lua require'fzf-lua'.live_grep_glob({ cwd='~/vaults/personal' })<CR>",
-      desc = 'Find obsidian words ',
-      mode = 'n',
-    },
-    {
-      '<leader>sW',
+      '<leader>sg',
       ":lua require'fzf-lua'.grep_project({ multiprocess=true })<CR>",
       desc = 'Find word (grep project)',
     },

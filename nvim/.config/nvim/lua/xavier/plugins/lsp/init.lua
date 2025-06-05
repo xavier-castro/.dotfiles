@@ -116,41 +116,60 @@ return {
       ----------------------------------
       -- Diagnostics
       ----------------------------------
-      local signs = { Error = ' ', Warn = ' ', Hint = '󰠠 ', Info = ' ' }
+      -- local signs = { Error = ' ', Warn = ' ', Hint = '󰠠 ', Info = ' ' }
+      -- vim.diagnostic.config {
+      --   -- virtual_text = {
+      --   -- 	spacing = 4,
+      --   -- 	source = "if_many",
+      --   -- 	prefix = "●",
+      --   -- },
+      --   underline = true,
+      --   virtual_lines = true,
+      --   update_in_insert = false,
+      --   document_highlight = {
+      --     enabled = true,
+      --   },
+      --   codelens = {
+      --     enabled = false,
+      --   },
+      --   severity_sort = true,
+      --   float = {
+      --     border = 'rounded',
+      --     source = 'if_many',
+      --     -- Show severity icons as prefixes.
+      --     prefix = function(diag)
+      --       local level = vim.diagnostic.severity[diag.severity]
+      --       local prefix = string.format(' %s ', signs[level])
+      --       return prefix, 'Diagnostic' .. level:gsub('^%l', string.upper)
+      --     end,
+      --   },
+      --   signs = {
+      --     text = {
+      --       [vim.diagnostic.severity.ERROR] = signs.Error,
+      --       [vim.diagnostic.severity.WARN] = signs.Warn,
+      --       [vim.diagnostic.severity.HINT] = signs.Hint,
+      --       [vim.diagnostic.severity.INFO] = signs.Info,
+      --     },
+      --   },
+      -- }
+
+      -- Minimal diagnostics configuration
       vim.diagnostic.config {
-        -- virtual_text = {
-        -- 	spacing = 4,
-        -- 	source = "if_many",
-        -- 	prefix = "●",
-        -- },
-        underline = true,
-        virtual_lines = true,
-        update_in_insert = false,
-        document_highlight = {
-          enabled = true,
+        signs = false, -- Disable sign column icons
+        virtual_text = {
+          spacing = 4,
+          prefix = '●', -- Simple dot instead of icons
+          severity = { min = vim.diagnostic.severity.WARN }, -- Only show warnings and errors
         },
-        codelens = {
-          enabled = false,
-        },
-        severity_sort = true,
         float = {
           border = 'rounded',
-          source = 'if_many',
-          -- Show severity icons as prefixes.
-          prefix = function(diag)
-            local level = vim.diagnostic.severity[diag.severity]
-            local prefix = string.format(' %s ', signs[level])
-            return prefix, 'Diagnostic' .. level:gsub('^%l', string.upper)
-          end,
+          source = 'if_many', -- Only show source if multiple sources
+          header = '',
+          prefix = '',
         },
-        signs = {
-          text = {
-            [vim.diagnostic.severity.ERROR] = signs.Error,
-            [vim.diagnostic.severity.WARN] = signs.Warn,
-            [vim.diagnostic.severity.HINT] = signs.Hint,
-            [vim.diagnostic.severity.INFO] = signs.Info,
-          },
-        },
+        underline = true,
+        update_in_insert = false,
+        severity_sort = true,
       }
     end,
   },
