@@ -23,11 +23,11 @@ return {
     statuscolumn = { enabled = false },
     zen = { enabled = true, toggles = { dim = false } },
     quickfile = { enabled = true },
-    explorer = { enabled = false, replace_netrw = false },
+    explorer = { enabled = true, replace_netrw = true },
     dashboard = { enabled = true },
     scroll = { enabled = false },
     input = { enabled = false },
-    notifier = { enabled = false },
+    notifier = { enabled = true },
     words = { enabled = false },
   },
 }

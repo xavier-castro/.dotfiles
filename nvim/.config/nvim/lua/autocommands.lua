@@ -1,6 +1,8 @@
 local autocmd = vim.api.nvim_create_autocmd
 local augroup = vim.api.nvim_create_augroup
 
+-- Declare a global function to retrieve the current directory
+
 local xavierGroup = augroup('xavier', { clear = true })
 
 -- [[ Basic Autocommands ]]
@@ -27,20 +29,6 @@ autocmd('BufReadPost', {
         vim.cmd 'normal! g`"'
       end
     end, 0)
-  end,
-})
-
--- Set colorscheme on startup
-autocmd('VimEnter', {
-  group = xavierGroup,
-  desc = 'Set custom colorscheme',
-  callback = function()
-    local ok, err = pcall(function()
-      vim.cmd.colorscheme(Custom.get_colorscheme(Custom.colorscheme.name))
-    end)
-    if not ok then
-      vim.notify('Failed to load colorscheme: ' .. err, vim.log.levels.WARN)
-    end
   end,
 })
 
