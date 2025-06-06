@@ -1,15 +1,15 @@
 function ColorMyPencils(color)
-  color = color or 'vscode'
+  color = color or "vague"
   vim.cmd.colorscheme(color)
 
-  vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
-  vim.api.nvim_set_hl(0, 'NormalFloat', { bg = 'none' })
+  vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
+  vim.api.nvim_set_hl(0, "NormalFloat", { bg = "none" })
 end
 
 return {
 
   {
-    'Mofiqul/vscode.nvim',
+    "Mofiqul/vscode.nvim",
     lazy = false,
     priority = 1000,
     config = function()
@@ -17,66 +17,66 @@ return {
     end,
   },
   {
-    'vague2k/vague.nvim',
+    "vague2k/vague.nvim",
     lazy = false,
     priority = 1000,
     config = function()
       -- NOTE: you do not need to call setup if you don't want to.
-      require('vague').setup {
+      require("vague").setup({
         transparent = true, -- don't set background
         -- disable bold/italic globally in `style`
         bold = true,
         italic = false,
         style = {
           -- "none" is the same thing as default. But "italic" and "bold" are also valid options
-          boolean = 'bold',
-          number = 'none',
-          float = 'none',
-          error = 'bold',
-          comments = 'italic',
-          conditionals = 'none',
-          functions = 'none',
-          headings = 'bold',
-          operators = 'none',
-          strings = 'italic',
-          variables = 'none',
+          boolean = "bold",
+          number = "none",
+          float = "none",
+          error = "bold",
+          comments = "italic",
+          conditionals = "none",
+          functions = "none",
+          headings = "bold",
+          operators = "none",
+          strings = "italic",
+          variables = "none",
 
           -- keywords
-          keywords = 'none',
-          keyword_return = 'italic',
-          keywords_loop = 'none',
-          keywords_label = 'none',
-          keywords_exception = 'none',
+          keywords = "none",
+          keyword_return = "italic",
+          keywords_loop = "none",
+          keywords_label = "none",
+          keywords_exception = "none",
 
           -- builtin
-          builtin_constants = 'bold',
-          builtin_functions = 'none',
-          builtin_types = 'bold',
-          builtin_variables = 'none',
+          builtin_constants = "bold",
+          builtin_functions = "none",
+          builtin_types = "bold",
+          builtin_variables = "none",
         },
         -- plugin styles where applicable
         -- make an issue/pr if you'd like to see more styling options!
         plugins = {
           cmp = {
-            match = 'bold',
-            match_fuzzy = 'bold',
+            match = "bold",
+            match_fuzzy = "bold",
           },
           dashboard = {
-            footer = 'italic',
+            footer = "italic",
           },
           lsp = {
-            diagnostic_error = 'bold',
-            diagnostic_hint = 'none',
-            diagnostic_info = 'italic',
-            diagnostic_ok = 'none',
-            diagnostic_warn = 'bold',
+            diagnostic_error = "bold",
+            diagnostic_hint = "none",
+            diagnostic_info = "italic",
+            diagnostic_ok = "none",
+            diagnostic_warn = "bold",
           },
           neotest = {
-            focused = 'bold',
-            adapter_name = 'bold',
+            focused = "bold",
+            adapter_name = "bold",
           },
           telescope = {
-            match = 'bold',
+            match = "bold",
           },
         },
 
@@ -85,34 +85,34 @@ return {
 
         -- Override colors
         colors = {
-          bg = '#141415',
-          fg = '#cdcdcd',
-          floatBorder = '#878787',
-          line = '#252530',
-          comment = '#606079',
-          builtin = '#b4d4cf',
-          func = '#c48282',
-          string = '#e8b589',
-          number = '#e0a363',
-          property = '#c3c3d5',
-          constant = '#aeaed1',
-          parameter = '#bb9dbd',
-          visual = '#333738',
-          error = '#d8647e',
-          warning = '#f3be7c',
-          hint = '#7e98e8',
-          operator = '#90a0b5',
-          keyword = '#6e94b2',
-          type = '#9bb4bc',
-          search = '#405065',
-          plus = '#7fa563',
-          delta = '#f3be7c',
+          bg = "#141415",
+          fg = "#cdcdcd",
+          floatBorder = "#878787",
+          line = "#252530",
+          comment = "#606079",
+          builtin = "#b4d4cf",
+          func = "#c48282",
+          string = "#e8b589",
+          number = "#e0a363",
+          property = "#c3c3d5",
+          constant = "#aeaed1",
+          parameter = "#bb9dbd",
+          visual = "#333738",
+          error = "#d8647e",
+          warning = "#f3be7c",
+          hint = "#7e98e8",
+          operator = "#90a0b5",
+          keyword = "#6e94b2",
+          type = "#9bb4bc",
+          search = "#405065",
+          plus = "#7fa563",
+          delta = "#f3be7c",
         },
-      }
+      })
     end,
   },
   {
-    'folke/tokyonight.nvim',
+    "folke/tokyonight.nvim",
     lazy = false,
     opts = {},
     config = function()
@@ -120,29 +120,29 @@ return {
     end,
   },
   {
-    'rose-pine/neovim',
-    name = 'rose-pine',
+    "rose-pine/neovim",
+    name = "rose-pine",
     config = function()
-      require('rose-pine').setup {
+      require("rose-pine").setup({
         disable_background = true,
         styles = {
           italic = false,
         },
-      }
+      })
 
       ColorMyPencils()
     end,
   },
   {
-    'EdenEast/nightfox.nvim',
+    "EdenEast/nightfox.nvim",
     priority = 1000, -- Make sure to load this before all the other start plugins.
     config = function()
       -- Default options
-      require('nightfox').setup {
+      require("nightfox").setup({
         options = {
           -- Compiled file's destination location
-          compile_path = vim.fn.stdpath 'cache' .. '/nightfox',
-          compile_file_suffix = '_compiled', -- Compiled file suffix
+          compile_path = vim.fn.stdpath("cache") .. "/nightfox",
+          compile_file_suffix = "_compiled", -- Compiled file suffix
           transparent = false, -- Disable setting background
           terminal_colors = true, -- Set terminal colors (vim.g.terminal_color_*) used in `:terminal`
           dim_inactive = true, -- Non focused panes set to alternative background
@@ -157,16 +157,16 @@ return {
             },
           },
           styles = { -- Style to be applied to different syntax groups
-            comments = 'NONE', -- Value is any valid attr-list value `:help attr-list`
-            conditionals = 'NONE',
-            constants = 'NONE',
-            functions = 'NONE',
-            keywords = 'NONE',
-            numbers = 'NONE',
-            operators = 'NONE',
-            strings = 'NONE',
-            types = 'NONE',
-            variables = 'NONE',
+            comments = "NONE", -- Value is any valid attr-list value `:help attr-list`
+            conditionals = "NONE",
+            constants = "NONE",
+            functions = "NONE",
+            keywords = "NONE",
+            numbers = "NONE",
+            operators = "NONE",
+            strings = "NONE",
+            types = "NONE",
+            variables = "NONE",
           },
           inverse = { -- Inverse highlight for different types
             match_paren = false,
@@ -180,7 +180,7 @@ return {
         palettes = {},
         specs = {},
         groups = {},
-      }
+      })
 
       -- setup must be called before loading
       -- vim.cmd("colorscheme nightfox")
