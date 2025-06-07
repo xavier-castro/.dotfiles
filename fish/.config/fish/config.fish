@@ -1,10 +1,53 @@
 # Unset the default fish greeting text which messes up Zellij
-set fish_greeting
+set fish_greeting ""
+set -gx TERM xterm-256color
+# theme
+set -g theme_color_scheme terminal-dark
+set -g fish_prompt_pwd_dir_length 1
+set -g theme_display_user yes
+set -g theme_hide_hostname no
+set -g theme_hostname always
 
-# Check if we're in an interactive shell
-if status is-interactive
+# aliases
+alias ls "ls -p -G"
+alias la "ls -A"
+alias ll "ls -l"
+alias lla "ll -A"
+alias npm pnpm
+alias npx pnpx
+alias g git
+alias claude="/Users/xavier/.claude/local/claude"
+alias c claude
+command -qv nvim && alias vim nvim
+
+if type -q eza
+    alias ll "eza -l -g --icons"
+    alias lla "ll -a"
 end
 
-alias claude="/Users/xavier/.claude/local/claude"
+set -gx EDITOR nvim
+set -gx PATH bin $PATH
+set -gx PATH ~/bin $PATH
+set -gx PATH ~/.local/bin $PATH
+# NodeJS
+set -gx PATH node_modules/.bin $PATH
+# Go
+set -g GOPATH $HOME/go
+set -gx PATH $GOPATH/bin $PATH
 
-export HELIX_RUNTIME=~/src/helix/runtime
+# Fzf
+set -g FZF_PREVIEW_FILE_CMD "bat --style=numbers --color=always --line-range :500"
+set -g FZF_LEGACY_KEYBINDINGS 0
+
+set LOCAL_CONFIG (dirname (status --current-filename))/config-local.fish
+if test -f $LOCAL_CONFIG
+    source $LOCAL_CONFIG
+end
+
+# pnpm
+set -gx PNPM_HOME "/Users/xavier/Library/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
+# pnpm end
+mise activate fish --shims | source
