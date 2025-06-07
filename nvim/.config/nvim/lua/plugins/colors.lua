@@ -1,5 +1,4 @@
 return {
-
   {
     "Mofiqul/vscode.nvim",
     lazy = false,
@@ -101,6 +100,7 @@ return {
           delta = "#f3be7c",
         },
       })
+      vim.cmd("colorscheme vague")
     end,
   },
   {
@@ -120,7 +120,7 @@ return {
         },
       })
 
-      vim.cmd("colorscheme rose-pine-moon")
+      -- vim.cmd("colorscheme rose-pine-moon")
     end,
   },
   {
