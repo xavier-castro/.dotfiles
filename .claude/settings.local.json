@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "mcp__context7__resolve-library-id",
+      "mcp__mcp-omnisearch__kagi_search",
+      "mcp__mcp-omnisearch__tavily_search",
+      "WebFetch(domain:github.com)"
+    ],
+    "deny": []
+  }
+}
