@@ -7,3 +7,4 @@ end
 
 alias claude="/Users/xavier/.claude/local/claude"
 
+export HELIX_RUNTIME=~/src/helix/runtime
