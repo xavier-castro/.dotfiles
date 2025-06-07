@@ -60,6 +60,7 @@ return {
       "nvim-telescope/telescope-file-browser.nvim",
     },
     keys = {
+      { "<leader>p", {}, {} },
       {
         "<leader>pf",
         require("telescope.builtin").find_files,
