@@ -1,6 +1,5 @@
 # Unset the default fish greeting text which messes up Zellij
 set fish_greeting ""
-set -gx TERM xterm-256color
 # theme
 set -g theme_color_scheme terminal-dark
 set -g fish_prompt_pwd_dir_length 1
@@ -45,9 +44,14 @@ if test -f $LOCAL_CONFIG
 end
 
 # pnpm
-set -gx PNPM_HOME "/Users/xavier/Library/pnpm"
+set -gx PNPM_HOME /Users/xavier/Library/pnpm
 if not string match -q -- $PNPM_HOME $PATH
-  set -gx PATH "$PNPM_HOME" $PATH
+    set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
 mise activate fish --shims | source
+
+# Bind Ctrl+F (denoted \cf) to call the function
+bind \cf tmux-sessionizer
+set -gx VOLTA_HOME "$HOME/.volta"
+set -gx PATH "$VOLTA_HOME/bin" $PATH
