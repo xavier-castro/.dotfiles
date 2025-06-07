@@ -52,6 +52,6 @@ end
 mise activate fish --shims | source
 
 # Bind Ctrl+F (denoted \cf) to call the function
-bind \cf tmux-sessionizer
+bind \cf ~/.local/scripts/tmux-sessionizer
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
