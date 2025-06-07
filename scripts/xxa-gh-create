@@ -1,0 +1,27 @@
+#!/usr/bin/env fish
+
+function gh-create-repo
+    set -l repo_name $argv[1]
+    set -l private_flag ""
+    
+    # Check if repo name is provided
+    if test -z "$repo_name"
+        echo "Usage: gh-create-repo <repo-name> [--private]"
+        echo "Example: gh-create-repo my-project --private"
+        return 1
+    end
+    
+    # Check for private flag
+    if contains -- --private $argv
+        set private_flag "--private"
+    end
+    
+    # Create the repository
+    gh repo create $repo_name \
+        $private_flag \
+        --source=. \
+        --remote=origin \
+        --push
+end
+
+gh-create-repo $argv

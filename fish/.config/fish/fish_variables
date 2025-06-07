@@ -1,11 +1,15 @@
 # This file contains fish universal variable definitions.
 # VERSION: 3.0
 SETUVAR __fish_initialized:3800
+SETUVAR _hydro_git_10313:main\u2022\x20
 SETUVAR _hydro_git_84217:main\u2022\x20
 SETUVAR _hydro_git_86195:main\u2022\x20
 SETUVAR _hydro_git_88395:main\u2022\x20
 SETUVAR _hydro_git_88491:main\u2022\x20
+SETUVAR _hydro_git_9023:main\u2022\x20
 SETUVAR _hydro_git_93978:main\u2022\x20
+SETUVAR _hydro_git_9557:main\u2022\x20
+SETUVAR _hydro_git_9931:main\u2022\x20
 SETUVAR fish_color_autosuggestion:brblack
 SETUVAR fish_color_cancel:\x2dr
 SETUVAR fish_color_command:normal
@@ -34,3 +38,4 @@ SETUVAR fish_pager_color_description:yellow\x1e\x2di
 SETUVAR fish_pager_color_prefix:normal\x1e\x2d\x2dbold\x1e\x2d\x2dunderline
 SETUVAR fish_pager_color_progress:brwhite\x1e\x2d\x2dbackground\x3dcyan
 SETUVAR fish_pager_color_selected_background:\x2dr
+SETUVAR fish_user_paths:/Users/xavier/\x2edotfiles/scripts

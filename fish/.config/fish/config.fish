@@ -13,4 +13,8 @@ if status is-interactive
         eval (zellij setup --generate-auto-start fish | string collect)
     end
 end
+
+# Add dotfiles scripts to PATH
+fish_add_path $HOME/.dotfiles/scripts
+
 alias claude="/Users/xavier/.claude/local/claude"
