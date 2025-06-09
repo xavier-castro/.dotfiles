@@ -114,7 +114,7 @@ return {
 				["<C-p>"] = cmp.mapping.select_prev_item(),
 				["<C-e>"] = cmp.mapping.abort(),
 				["<C-y>"] = cmp.mapping.confirm({
-					select = false,
+					select = true,
 					behavior = cmp.ConfirmBehavior.Replace,
 				}),
 				["<CR>"] = cmp.mapping.confirm({
