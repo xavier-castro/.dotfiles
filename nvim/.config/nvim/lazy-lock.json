@@ -14,6 +14,7 @@
   "golf": { "branch": "main", "commit": "abf1bc0c1c4a5482b4a4b36b950b49aaa0f39e69" },
   "grug-far.nvim": { "branch": "main", "commit": "c36f5f9b53f12a60aa53d42282e8ae78aef72178" },
   "gruvbox": { "branch": "main", "commit": "00e38a379bab3389e187b3953566d67d494dfddd" },
+  "harpoon": { "branch": "harpoon2", "commit": "ed1f853847ffd04b2b61c314865665e1dadf22c7" },
   "jai.vim": { "branch": "master", "commit": "72c09c5f803b8ab2e708a3ad2b7c3704e2b4b3d8" },
   "lazy.nvim": { "branch": "main", "commit": "6c3bda4aca61a13a9c63f1c1d1b16b9d3be90d7a" },
   "mason-lspconfig.nvim": { "branch": "main", "commit": "bef29b653ba71d442816bf56286c2a686210be04" },

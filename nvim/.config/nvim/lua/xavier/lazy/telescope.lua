@@ -8,6 +8,8 @@ return {
         },
         "nvim-telescope/telescope-file-browser.nvim",
     },
+    priority = 1000,
+    lazy = false,
     keys = {
         {
             ";f",
