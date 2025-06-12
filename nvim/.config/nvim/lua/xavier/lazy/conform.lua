@@ -27,7 +27,6 @@ return {
 			yaml = { "prettierd", "prettier" },
 			markdown = { "prettierd" },
 			graphql = { "prettierd", "prettier" },
-			["_"] = { "trim_whitespace", "trim_newlines" },
 		},
 		default_format_opts = {
 			lsp_format = "fallback",
