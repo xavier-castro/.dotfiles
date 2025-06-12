@@ -27,7 +27,6 @@ require('lazy').setup({
   require 'kickstart/plugins/conform',
   require 'kickstart/plugins/blink-cmp',
   require 'kickstart/plugins/todo-comments',
-  require 'kickstart/plugins/mini',
   require 'kickstart/plugins/treesitter',
   require 'kickstart.plugins.autopairs',
   require 'kickstart.plugins.neo-tree',
