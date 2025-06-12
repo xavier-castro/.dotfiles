@@ -8,8 +8,8 @@ vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
-vim.keymap.set("n", "<C-p>", ":Pick git_files<cr>", {desc = 'Open Pick Files'})
-vim.keymap.set("n", "-", ":Pick explorer<cr>", {desc='Open Explorer'})
+vim.keymap.set('n', '<C-p>', ':Pick git_files<cr>', { desc = 'Open Pick Files' })
+vim.keymap.set('n', '-', ':Pick explorer<cr>', { desc = 'Open Explorer' })
 
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
