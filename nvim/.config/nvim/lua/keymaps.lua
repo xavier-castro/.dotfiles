@@ -22,6 +22,25 @@ vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right win
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 
+-- Better search experience
+vim.keymap.set('n', 'n', 'nzzzv', { desc = 'Next search result centered' })
+vim.keymap.set('n', 'N', 'Nzzzv', { desc = 'Previous search result centered' })
+
+-- Buffer navigation
+vim.keymap.set('n', '<leader>bn', ':bnext<CR>', { desc = 'Next buffer' })
+vim.keymap.set('n', '<leader>bp', ':bprevious<CR>', { desc = 'Previous buffer' })
+vim.keymap.set('n', '<C-^>', '<C-6>', { desc = 'Last buffer' })
+
+-- Terminal mode navigation
+vim.keymap.set('t', '<C-h>', '<C-\\><C-n><C-w>h', { desc = 'Terminal left window' })
+vim.keymap.set('t', '<C-j>', '<C-\\><C-n><C-w>j', { desc = 'Terminal down window' })
+vim.keymap.set('t', '<C-k>', '<C-\\><C-n><C-w>k', { desc = 'Terminal up window' })
+vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w>l', { desc = 'Terminal right window' })
+
+-- Quick save/quit
+vim.keymap.set('n', '<leader>w', '<cmd>w<cr>', { desc = 'Save file' })
+vim.keymap.set('n', '<leader>x', '<cmd>x<cr>', { desc = 'Save and quit' })
+
 -- [[ Basic Autocommands ]]
 --  See `:help lua-guide-autocommands`
 
