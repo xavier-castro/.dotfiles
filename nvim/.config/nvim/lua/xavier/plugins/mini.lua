@@ -15,7 +15,6 @@ return {
     -- - sd'   - [S]urround [D]elete [']quotes
     -- - sr)'  - [S]urround [R]eplace [)] [']
     require('mini.surround').setup()
-
     require('mini.files').setup()
     require('mini.misc').setup()
     require('mini.pick').setup()
@@ -27,7 +26,6 @@ return {
     require('mini.fuzzy').setup()
     require('mini.starter').setup()
     require('mini.notify').setup()
-    -- require('mini.animate').setup()
     require('mini.basics').setup()
     require('mini.bracketed').setup()
     require('mini.comment').setup()
@@ -293,7 +291,5 @@ return {
         delay = 200,
       },
     }
-
-    vim.cmd.colorscheme 'minicyan'
   end,
 }
