@@ -3,6 +3,7 @@ return {
   version = false,
   lazy = false,
   priorirty = 1000,
+  event = 'BufEnter',
   config = function()
     require('mini.bufremove').setup()
     require('mini.align').setup()
@@ -25,7 +26,7 @@ return {
     require('mini.doc').setup()
     require('mini.fuzzy').setup()
     require('mini.starter').setup()
-    require('mini.notify').setup()
+    require('mini.notify').setup {}
     require('mini.basics').setup()
     require('mini.bracketed').setup()
     require('mini.comment').setup()

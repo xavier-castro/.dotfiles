@@ -31,7 +31,7 @@ return {
         -- Conversation management
         continue = '--continue', -- Resume the most recent conversation
         resume = '--resume', -- Display an interactive conversation picker
-
+        sudo = '--dangerously-skip-permissions',
         -- Output options
         verbose = '--verbose', -- Enable verbose logging with full turn-by-turn output
       },
@@ -43,6 +43,7 @@ return {
           variants = {
             continue = '<leader>cC', -- Normal mode keymap for Claude Code with continue flag
             verbose = '<leader>cV', -- Normal mode keymap for Claude Code with verbose flag
+            sudo = '<M-S-.>',
           },
         },
         window_navigation = true, -- Enable window navigation keymaps (<C-h/j/k/l>)
