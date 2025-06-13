@@ -3,7 +3,6 @@ vim.g.mapleader = ' '
 vim.g.maplocalleader = '\\'
 vim.g.have_nerd_font = false
 
-
 -- [[ Setting options ]]
 require 'options'
 
@@ -18,6 +17,8 @@ require 'lazy-plugins'
 
 require 'xavier.plugins.colors'
 require 'xavier.plugins.mini'
+vim.cmd.colorscheme 'randomhue'
+
 require 'xavier.plugins.claude-code'
 require 'xavier.plugins.git'
 require 'xavier.plugins.trouble'

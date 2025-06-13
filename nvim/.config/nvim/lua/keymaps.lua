@@ -5,16 +5,18 @@
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
 -- Diagnostic keymaps
-vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, {
-    desc = 'Open diagnostic [Q]uickfix list'
+vim.keymap.set('n', '<leader>qq', vim.diagnostic.setloclist, {
+  desc = 'Open diagnostic [Q]uickfix list',
 })
 
 vim.keymap.set('n', '<C-p>', ':Pick git_files<cr>', {
-    desc = 'Open Pick Files'
+  desc = 'Open Pick Files',
 })
 vim.keymap.set('n', '-', ':Pick explorer<cr>', {
-    desc = 'Open Explorer'
+  desc = 'Open Explorer',
 })
+
+vim.keymap.set('i', 'jk', '<Esc>', { desc = 'Fast Escape' })
 
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
@@ -22,60 +24,60 @@ vim.keymap.set('n', '-', ':Pick explorer<cr>', {
 -- NOTE: This won't work in all terminal emulators/tmux/etc. Try your own mapping
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', {
-    desc = 'Exit terminal mode'
+  desc = 'Exit terminal mode',
 })
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', {
-    desc = 'Move focus to the left window'
+  desc = 'Move focus to the left window',
 })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', {
-    desc = 'Move focus to the right window'
+  desc = 'Move focus to the right window',
 })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', {
-    desc = 'Move focus to the lower window'
+  desc = 'Move focus to the lower window',
 })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', {
-    desc = 'Move focus to the upper window'
+  desc = 'Move focus to the upper window',
 })
 
 -- Better search experience
 vim.keymap.set('n', 'n', 'nzzzv', {
-    desc = 'Next search result centered'
+  desc = 'Next search result centered',
 })
 vim.keymap.set('n', 'N', 'Nzzzv', {
-    desc = 'Previous search result centered'
+  desc = 'Previous search result centered',
 })
 
 -- Buffer navigation
 vim.keymap.set('n', '<leader>bn', ':bnext<CR>', {
-    desc = 'Next buffer'
+  desc = 'Next buffer',
 })
 vim.keymap.set('n', '<leader>bp', ':bprevious<CR>', {
-    desc = 'Previous buffer'
+  desc = 'Previous buffer',
 })
 vim.keymap.set('n', '<C-^>', '<C-6>', {
-    desc = 'Last buffer'
+  desc = 'Last buffer',
 })
 
 -- Terminal mode navigation
 vim.keymap.set('t', '<C-h>', '<C-\\><C-n><C-w>h', {
-    desc = 'Terminal left window'
+  desc = 'Terminal left window',
 })
 vim.keymap.set('t', '<C-j>', '<C-\\><C-n><C-w>j', {
-    desc = 'Terminal down window'
+  desc = 'Terminal down window',
 })
 vim.keymap.set('t', '<C-k>', '<C-\\><C-n><C-w>k', {
-    desc = 'Terminal up window'
+  desc = 'Terminal up window',
 })
 vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w>l', {
-    desc = 'Terminal right window'
+  desc = 'Terminal right window',
 })
 
 -- Quick save/quit
 vim.keymap.set('n', '<leader>w', '<cmd>w<cr>', {
-    desc = 'Save file'
+  desc = 'Save file',
 })
 vim.keymap.set('n', '<leader>x', '<cmd>x<cr>', {
-    desc = 'Save and quit'
+  desc = 'Save and quit',
 })
 
 -- [[ Basic Autocommands ]]
@@ -85,13 +87,13 @@ vim.keymap.set('n', '<leader>x', '<cmd>x<cr>', {
 --  Try it with `yap` in normal mode
 --  See `:help vim.hl.on_yank()`
 vim.api.nvim_create_autocmd('TextYankPost', {
-    desc = 'Highlight when yanking (copying) text',
-    group = vim.api.nvim_create_augroup('kickstart-highlight-yank', {
-        clear = true
-    }),
-    callback = function()
-        vim.hl.on_yank()
-    end
+  desc = 'Highlight when yanking (copying) text',
+  group = vim.api.nvim_create_augroup('kickstart-highlight-yank', {
+    clear = true,
+  }),
+  callback = function()
+    vim.hl.on_yank()
+  end,
 })
 
 -- vim: ts=2 sts=2 sw=2 et

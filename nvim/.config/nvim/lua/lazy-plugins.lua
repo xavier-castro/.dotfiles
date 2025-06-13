@@ -15,7 +15,6 @@ require('lazy').setup({
   require 'kickstart/plugins/telescope',
   require 'kickstart/plugins/lspconfig',
   require 'kickstart/plugins/conform',
-  require 'kickstart/plugins/blink-cmp',
   require 'kickstart/plugins/todo-comments',
   require 'kickstart/plugins/treesitter',
   require 'kickstart.plugins.autopairs',
