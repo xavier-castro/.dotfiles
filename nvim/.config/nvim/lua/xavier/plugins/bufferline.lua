@@ -1,10 +1,10 @@
 return -- buffer line
 {
   'akinsho/bufferline.nvim',
-  event = 'BufEnter',
+  event = 'VeryLazy',
   keys = {
-    { '<tab>', '<cmd>bufferlinecyclenext<cr>', desc = 'next tab' },
-    { '<s-tab>', '<cmd>bufferlinecycleprev<cr>', desc = 'prev tab' },
+    { '<Tab>', '<Cmd>BufferLineCycleNext<CR>', desc = 'Next tab' },
+    { '<S-Tab>', '<Cmd>BufferLineCyclePrev<CR>', desc = 'Prev tab' },
   },
   opts = {
     options = {

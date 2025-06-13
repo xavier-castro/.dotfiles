@@ -71,15 +71,10 @@ return {
     end, {
       desc = 'Save session (MiniSessions)',
     })
-    vim.keymap.set('n', '<leader>/', function()
+    vim.keymap.set('n', '<leader>sg', function()
       require('mini.fuzzy').fuzzy_search()
     end, {
       desc = 'Fuzzy search (MiniFuzzy)',
-    })
-    vim.keymap.set('n', '<leader>cc', function()
-      require('mini.comment').toggle_lines()
-    end, {
-      desc = 'Toggle comment (MiniComment)',
     })
     vim.keymap.set('n', '<leader>tt', function()
       require('mini.trailspace').trim()
@@ -229,7 +224,6 @@ return {
         },
         {
           mode = 'x',
-
           keys = '<Leader>',
         }, -- File explorer
         {

@@ -4,7 +4,8 @@
       "mcp__mcp-sequentialthinking-tools__sequentialthinking_tools",
       "mcp__desktop-commander__list_directory",
       "mcp__desktop-commander__read_file",
-      "mcp__desktop-commander__search_files"
+      "mcp__desktop-commander__search_files",
+      "Bash(find:*)"
     ],
     "deny": []
   }
