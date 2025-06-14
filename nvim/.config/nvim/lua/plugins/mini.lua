@@ -6,8 +6,6 @@ return {
       require('mini.basics').setup()
       require('mini.ai').setup()
       require('mini.clue').setup()
-      require('mini.surround').setup()
-      require('mini.pairs').setup()
       require('mini.keymap').setup()
       require('mini.align').setup()
       require('mini.bracketed').setup()
@@ -19,6 +17,9 @@ return {
       require('mini.indentscope').setup()
       require('mini.map').setup()
       require('mini.starter').setup()
+      require("mini.tabline").setup()
+      require('mini.hipatterns').setup()
+      require('mini.cursorword').setup()
       -- MARK: UI END
 
       -- MARK: TEXT START
@@ -34,7 +35,19 @@ return {
           gen_loader.from_lang(),
         },
 })
+      require('mini.comment').setup()
+      require('mini.surround').setup()
+      require('mini.pairs').setup()
       -- MARK: TEXT END
+      --
+
+      -- MARK: SESSIONS
+      require('mini.sessions').setup()
+      require('mini.visits').setup()
+
+      -- MARK: Docs and Fuzz
+      require('mini.doc').setup()
+      require('mini.fuzzy').setup()
     end
   }
 }

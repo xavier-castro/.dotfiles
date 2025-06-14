@@ -1,7 +1,9 @@
 return {
     "ibhagwan/fzf-lua",
+    lazy = false,
+    priority = 1000,
     dependencies = {
-        "nvim-tree/nvim-web-devicons",
+        { 'echasnovski/mini.icons', version = false },
     },
     keys = {
         {
@@ -74,7 +76,7 @@ return {
             desc = "Lists LSP incoming calls for word under the cursor",
         },
         {
-            "sf",
+            "<C-p>",
             function()
                 local current_dir = vim.fn.expand("%:p:h")
                 require("fzf-lua").files({
@@ -83,6 +85,11 @@ return {
                 })
             end,
             desc = "Open File Browser with the path of the current buffer",
+        },
+        {
+          ";l",
+          ":FzfLua<CR>",
+          desc = "Open FzfLua Menus"
         },
     },
     config = function()
