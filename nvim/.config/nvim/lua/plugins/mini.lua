@@ -1,7 +1,7 @@
 return {
   {
     'echasnovski/mini.nvim',
-    dependencies = {"https://github.com/rafamadriz/friendly-snippets"},
+    dependencies = { "https://github.com/rafamadriz/friendly-snippets" },
     config = function()
       require('mini.basics').setup()
       require('mini.ai').setup()
@@ -15,9 +15,6 @@ return {
       require('mini.colors').setup()
       require('mini.statusline').setup({ use_icons = false })
       require('mini.indentscope').setup()
-      require('mini.map').setup()
-      require('mini.starter').setup()
-      require("mini.tabline").setup()
       require('mini.hipatterns').setup()
       require('mini.cursorword').setup()
       -- MARK: UI END
@@ -34,7 +31,7 @@ return {
           -- "snippets/" subdirectories from 'runtimepath' directories.
           gen_loader.from_lang(),
         },
-})
+      })
       require('mini.comment').setup()
       require('mini.surround').setup()
       require('mini.pairs').setup()
