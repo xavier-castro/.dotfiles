@@ -31,25 +31,6 @@ vim.lsp.enable({
   'pyright',
 })
 
--- LSP logging
-vim.lsp.set_log_level("WARN")
-
--- DIAGNOSTICS
-
--- How diagnostics are displayed
-vim.diagnostic.config({
-  virtual_lines = { current_line = true },
-  severity_sort = true
-})
-
--- GENERAL OPTIONS
-vim.opt.list = true
-vim.opt.expandtab = true
-vim.opt.shiftwidth = 2
-vim.opt.signcolumn = "yes:1"
-vim.opt.cursorline = true
-vim.opt.splitright = true
-vim.opt.winborder = "rounded"
 
 -- FILETYPES
 

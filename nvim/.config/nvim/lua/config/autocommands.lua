@@ -1,46 +1,39 @@
-
 local augroup = vim.api.nvim_create_augroup
-local XavierGroup = augroup('ThePrimeagen', {})
+local XavierGroup = augroup('Xavier', {})
 
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
 
 function R(name)
-    require("plenary.reload").reload_module(name)
+  require("plenary.reload").reload_module(name)
 end
 
-vim.filetype.add({
-    extension = {
-        templ = 'templ',
-    }
-})
-
 autocmd('TextYankPost', {
-    group = yank_group,
-    pattern = '*',
-    callback = function()
-        vim.highlight.on_yank({
-            higroup = 'IncSearch',
-            timeout = 40,
-        })
-    end,
+  group = yank_group,
+  pattern = '*',
+  callback = function()
+    vim.highlight.on_yank({
+      higroup = 'IncSearch',
+      timeout = 40,
+    })
+  end,
 })
 
-autocmd({"BufWritePre"}, {
-    group = XavierGroup,
-    pattern = "*",
-    command = [[%s/\s\+$//e]],
+autocmd({ "BufWritePre" }, {
+  group = XavierGroup,
+  pattern = "*",
+  command = [[%s/\s\+$//e]],
 })
 
 autocmd('BufEnter', {
-    group = XavierGroup,
-    callback = function()
-        if vim.bo.filetype == "zig" then
-            vim.cmd.colorscheme("tokyonight-night")
-        else
-          ColorMyPencils()
-        end
+  group = XavierGroup,
+  callback = function()
+    if vim.bo.filetype == "zig" then
+      vim.cmd.colorscheme("tokyonight-night")
+    else
+      vim.cmd.colorscheme("randomhue")
     end
+  end
 })
 
 -- This file is automatically loaded by lazyvim.config.init.
@@ -169,4 +162,30 @@ vim.api.nvim_create_autocmd({ 'BufWritePre' }, {
   end,
 })
 
+-- Floating Window Vim Diagnostic
+local group = vim.api.nvim_create_augroup("OoO", {})
+local function au(typ, pattern, cmdOrFn)
+  if type(cmdOrFn) == "function" then
+    vim.api.nvim_create_autocmd(typ, { pattern = pattern, callback = cmdOrFn, group = group })
+  else
+    vim.api.nvim_create_autocmd(typ, { pattern = pattern, command = cmdOrFn, group = group })
+  end
+end
+
+au({ "CursorHold", "InsertLeave" }, nil, function()
+  local opts = {
+    focusable = false,
+    scope = "cursor",
+    close_events = { "BufLeave", "CursorMoved", "InsertEnter" },
+  }
+  vim.diagnostic.open_float(nil, opts)
+end)
+
+au("InsertEnter", nil, function()
+  vim.diagnostic.enable(false)
+end)
+
+au("InsertLeave", nil, function()
+  vim.diagnostic.enable(true)
+end)
 -- vim: ts=2 sts=2 sw=2 et
