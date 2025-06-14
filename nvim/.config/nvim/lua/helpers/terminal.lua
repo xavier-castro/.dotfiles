@@ -1,5 +1,5 @@
 
-    -- Floating terminal toggle
+   -- Floating terminal toggle
     local float_term_win = nil
     local float_term_buf = nil
 
@@ -81,7 +81,7 @@
       end
     end
 
-    vim.keymap.set('n', '<C-t>', function()
+    vim.keymap.set('n', '<leader>ft', function()
       if float_term_win and vim.api.nvim_win_is_valid(float_term_win) then
         close_floating_terminal()
       else
@@ -92,7 +92,7 @@
     })
 
     -- Also add escape key mapping for the floating terminal
-    vim.keymap.set('t', '<C-t>', function()
+    vim.keymap.set('t', '<C-x>', function()
       if float_term_win and vim.api.nvim_win_is_valid(float_term_win) then
         close_floating_terminal()
       end

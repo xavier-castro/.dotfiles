@@ -1,7 +1,6 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.g.have_transparent_bg = true
-vim.cmd.colorscheme("randomhue")
 
 
 -- PLUGIN MANAGER
@@ -20,15 +19,16 @@ vim.api.nvim_create_autocmd('LspAttach', {
   end
 })
 
-require('config.autocommands')
-require('config.remaps')
-require('config.options')
+require("config.options")
+require("config.remaps")
+require("config.autocommands")
 
 -- Control LSP support by filetype
 vim.lsp.enable({
   'javascript',
   'cds',
   'lua',
+  'pyright',
 })
 
 -- LSP logging
@@ -43,7 +43,6 @@ vim.diagnostic.config({
 })
 
 -- GENERAL OPTIONS
-
 vim.opt.list = true
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 2
@@ -55,6 +54,4 @@ vim.opt.winborder = "rounded"
 -- FILETYPES
 
 vim.filetype.add({ extension = { cds = 'cds' } })
-vim.filetype.add({extension = {mdx = 'mdx'}})
-
-
+vim.filetype.add({ extension = { mdx = 'mdx' } })

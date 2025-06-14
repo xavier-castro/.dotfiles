@@ -6,7 +6,7 @@ return {
         { 'echasnovski/mini.icons', version = false },
     },
     keys = {
-        
+
         {
             ";f",
             function()
@@ -20,10 +20,12 @@ return {
             ";r",
             function()
                 require("fzf-lua").live_grep({
-                    rg_opts = "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 --hidden",
+                    rg_opts =
+                    "--column --line-number --no-heading --color=always --smart-case --max-columns=4096 --hidden",
                 })
             end,
-            desc = "Search for a string in your current working directory and get results live as you type, respects .gitignore",
+            desc =
+            "Search for a string in your current working directory and get results live as you type, respects .gitignore",
         },
         {
             "\\\\",
@@ -79,17 +81,19 @@ return {
             desc = "Open File Browser with the path of the current buffer",
         },
         {
-          ";l",
-          ":FzfLua<CR>",
-          desc = "Open FzfLua Menus"
+            ";l",
+            ":FzfLua<CR>",
+            desc = "Open FzfLua Menus"
         },
-        {';o',
-      ":FzfLua oldfiles<CR>",
-      desc ="Open oldfiles"}
+        {
+            ';o',
+            ":FzfLua oldfiles<CR>",
+            desc = "Open oldfiles"
+        }
     },
     config = function()
         local fzf = require("fzf-lua")
-        
+
         fzf.setup({
             winopts = {
                 height = 0.85,
