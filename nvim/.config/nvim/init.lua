@@ -1,6 +1,8 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
+vim.g.have_transparent_bg = true
 vim.cmd.colorscheme("randomhue")
+
 
 -- PLUGIN MANAGER
 

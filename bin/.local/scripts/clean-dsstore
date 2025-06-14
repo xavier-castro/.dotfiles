@@ -1,0 +1,27 @@
+#!/bin/bash
+
+# Clean .DS_Store files before stowing dotfiles
+# Usage: clean-dsstore [directory]
+
+set -e
+
+DOTFILES_DIR="${1:-$HOME/.dotfiles}"
+
+if [ ! -d "$DOTFILES_DIR" ]; then
+    echo "Error: Directory $DOTFILES_DIR does not exist"
+    exit 1
+fi
+
+echo "Cleaning .DS_Store files from $DOTFILES_DIR..."
+
+# Find and delete all .DS_Store files
+find "$DOTFILES_DIR" -name ".DS_Store" -type f -delete
+
+echo "✓ All .DS_Store files removed"
+
+# Optional: Run stow if it's available and we're in the dotfiles directory
+if command -v stow >/dev/null 2>&1 && [ "$DOTFILES_DIR" = "$PWD" ] || [ "$DOTFILES_DIR" = "$HOME/.dotfiles" ]; then
+    echo "Ready for stowing!"
+else
+    echo "Navigate to your dotfiles directory to run stow"
+fi

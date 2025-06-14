@@ -6,15 +6,7 @@ return {
         { 'echasnovski/mini.icons', version = false },
     },
     keys = {
-        {
-            "<leader>fP",
-            function()
-                require("fzf-lua").files({
-                    cwd = require("lazy.core.config").options.root,
-                })
-            end,
-            desc = "Find Plugin File",
-        },
+        
         {
             ";f",
             function()
@@ -91,6 +83,9 @@ return {
           ":FzfLua<CR>",
           desc = "Open FzfLua Menus"
         },
+        {';o',
+      ":FzfLua oldfiles<CR>",
+      desc ="Open oldfiles"}
     },
     config = function()
         local fzf = require("fzf-lua")
