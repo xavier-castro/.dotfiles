@@ -2,7 +2,6 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = "\\"
 vim.g.have_transparent_bg = true
 
-
 -- PLUGIN MANAGER
 
 require("config.lazy")
