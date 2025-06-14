@@ -24,7 +24,8 @@ require("config.autocommands")
 
 -- Control LSP support by filetype
 vim.lsp.enable({
-  'javascript',
+  -- 'javascript',
+  'tsgo',
   'cds',
   'lua',
   'pyright',
