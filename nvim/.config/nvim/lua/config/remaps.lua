@@ -1,5 +1,5 @@
 vim.keymap.set('i', 'jk', '<Esc>', { desc = 'Fast Escape' })
-
+vim.keymap.set("i", "jj", "<C-c>")
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
 --
@@ -38,7 +38,6 @@ vim.keymap.set('t', '<C-l>', '<C-\\><C-n><C-w>l', {
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 
 -- General
-vim.keymap.set("i", "jk", "<C-c>")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 vim.keymap.set("n", "J", "mzJ`z")
