@@ -46,6 +46,9 @@ return {
       require('mini.doc').setup()
       require('mini.fuzzy').setup()
       require('mini.files').setup()
+
+      -- Mini.Files keybinds
+      vim.api.nvim_set_keymap('n', '<leader>e', ':lua MiniFiles.open()<CR>', { noremap = true, silent = true })
     end
   }
 }
