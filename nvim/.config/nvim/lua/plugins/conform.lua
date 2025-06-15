@@ -20,6 +20,7 @@ return {
 			javascriptreact = { "prettierd", "eslint_d" },
 			typescriptreact = { "prettierd", "eslint_d" },
 			astro = { "prettierd", "prettier" },
+			toml = { "taplo" },
 			css = { "prettierd", "prettier" },
 			html = { "prettierd", "prettier" },
 			json = { "prettierd" },

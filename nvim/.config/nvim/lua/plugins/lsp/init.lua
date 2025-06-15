@@ -132,7 +132,7 @@ return {
 				-- 	prefix = "●",
 				-- },
 				underline = true,
-				virtual_lines = true,
+				virtual_lines = false,
 				update_in_insert = false,
 				document_highlight = {
 					enabled = true,
