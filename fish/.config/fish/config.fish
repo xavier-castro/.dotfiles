@@ -24,6 +24,7 @@ set -gx PATH "$VOLTA_HOME/bin" $PATH
 set -gx PATH bin $PATH
 set -gx PATH ~/bin $PATH
 set -gx PATH ~/.local/bin $PATH
+set -gx PATH ~/.config/tmux/plugins/tmuxifier/bin $PATH
 
 # NodeJS
 set -gx PATH node_modules/.bin $PATH
@@ -84,6 +85,7 @@ alias ll "ls -l"
 alias lla "ll -A"
 alias g git
 alias c claude
+alias cd "z"
 command -qv nvim && alias vim nvim
 
 
@@ -101,6 +103,8 @@ if which direnv > /dev/null; direnv hook fish | source; end
 if which goenv > /dev/null; status --is-interactive; and source (goenv init -|psub); end
 if which rbenv > /dev/null; status --is-interactive; and source (rbenv init -|psub); end
 if which swiftenv > /dev/null; status --is-interactive; and source (swiftenv init -|psub); end
+
+eval (tmuxifier init - fish)
 
 # Private Keys
 set LOCAL_CONFIG (dirname (status --current-filename))/config-local.fish

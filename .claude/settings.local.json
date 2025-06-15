@@ -9,7 +9,10 @@
       "Bash(grep:*)",
       "Bash(ls:*)",
       "Bash(chmod:*)",
-      "Bash(./bin/.local/scripts/clean-dsstore:*)"
+      "Bash(./bin/.local/scripts/clean-dsstore:*)",
+      "mcp__context7__resolve-library-id",
+      "mcp__mcp-omnisearch__kagi_search",
+      "WebFetch(domain:github.com)"
     ],
     "deny": []
   }
