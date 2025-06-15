@@ -1,5 +1,5 @@
-vim.lsp.config('pyright', {
+return {
   cmd = { 'pyright' },
   root_markers = { '.git' },
   filetypes = { 'py' }
-})
+}

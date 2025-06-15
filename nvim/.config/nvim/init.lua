@@ -37,6 +37,8 @@ require("config.autocommands")
 vim.lsp.enable({
   -- 'javascript',
   'tsgo',
+  'cssls',
+  'tailwindcss',
   'cds',
   'lua',
   'pyright',

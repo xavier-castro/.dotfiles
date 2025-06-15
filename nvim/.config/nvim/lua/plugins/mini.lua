@@ -45,6 +45,7 @@ return {
       -- MARK: Docs and Fuzz
       require('mini.doc').setup()
       require('mini.fuzzy').setup()
+      require('mini.files').setup()
     end
   }
 }
