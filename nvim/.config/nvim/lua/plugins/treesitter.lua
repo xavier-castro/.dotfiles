@@ -1,6 +1,11 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    dependencies =
+    {
+      "windwp/nvim-ts-autotag",
+      opts = {},
+    },
     build = ":TSUpdate",
     config = function()
       local parser_configs = require 'nvim-treesitter.parsers'.get_parser_configs()
@@ -54,5 +59,5 @@ return {
         on_attach = nil, -- (fun(buf: integer): boolean) return false to disable attaching
       }
     end
-  }
+  },
 }
