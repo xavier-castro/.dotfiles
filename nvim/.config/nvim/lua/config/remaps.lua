@@ -76,3 +76,4 @@ vim.keymap.set("n", "<C-down>", "<C-w>-")
 
 -- Imports
 require("helpers.terminal")
+require("helpers.notepad")

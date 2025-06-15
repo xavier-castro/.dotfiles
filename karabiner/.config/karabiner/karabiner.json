@@ -371,12 +371,12 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Open -a 'Notion Calendar.app'",
+                                "description": "Open -a 'Fantastical.app'",
                                 "from": {
                                     "key_code": "c",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "shell_command": "open -a 'Notion Calendar.app'" }],
+                                "to": [{ "shell_command": "open -a 'Fantastical.app'" }],
                                 "type": "basic"
                             },
                             {
@@ -467,12 +467,12 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Open -a 'Terminal.app'",
+                                "description": "Open -a 'WezTerm.app'",
                                 "from": {
                                     "key_code": "t",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "shell_command": "open -a 'Terminal.app'" }],
+                                "to": [{ "shell_command": "open -a 'WezTerm.app'" }],
                                 "type": "basic"
                             },
                             {
@@ -579,12 +579,12 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Open -a 'Spotify.app'",
+                                "description": "Open -a 'Music.app'",
                                 "from": {
                                     "key_code": "p",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "shell_command": "open -a 'Spotify.app'" }],
+                                "to": [{ "shell_command": "open -a 'Music.app'" }],
                                 "type": "basic"
                             },
                             {
@@ -611,12 +611,12 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Open Texts",
+                                "description": "Open Messages",
                                 "from": {
                                     "key_code": "w",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "shell_command": "open Texts" }],
+                                "to": [{ "shell_command": "open Messages" }],
                                 "type": "basic"
                             },
                             {
@@ -735,12 +735,12 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Window: previous-display",
+                                "description": "Window: bottom-right-quarter",
                                 "from": {
-                                    "key_code": "y",
+                                    "key_code": "close_bracket",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "shell_command": "open -g raycast://extensions/raycast/window-management/previous-display" }],
+                                "to": [{ "shell_command": "open -g raycast://extensions/raycast/window-management/bottom-right-quarter" }],
                                 "type": "basic"
                             },
                             {
@@ -751,12 +751,12 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Window: next-display",
+                                "description": "Window: bottom-left-quarter",
                                 "from": {
-                                    "key_code": "o",
+                                    "key_code": "open_bracket",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "shell_command": "open -g raycast://extensions/raycast/window-management/next-display" }],
+                                "to": [{ "shell_command": "open -g raycast://extensions/raycast/window-management/bottom-left-quarter" }],
                                 "type": "basic"
                             },
                             {
@@ -767,12 +767,12 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Window: top-half",
+                                "description": "Window: top-right-quarter",
                                 "from": {
-                                    "key_code": "k",
+                                    "key_code": "hyphen",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "shell_command": "open -g raycast://extensions/raycast/window-management/top-half" }],
+                                "to": [{ "shell_command": "open -g raycast://extensions/raycast/window-management/top-right-quarter" }],
                                 "type": "basic"
                             },
                             {
@@ -783,12 +783,12 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Window: bottom-half",
+                                "description": "Window: bottom-right-quarter",
                                 "from": {
-                                    "key_code": "j",
+                                    "key_code": "equal_sign",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [{ "shell_command": "open -g raycast://extensions/raycast/window-management/bottom-half" }],
+                                "to": [{ "shell_command": "open -g raycast://extensions/raycast/window-management/bottom-right-quarter" }],
                                 "type": "basic"
                             },
                             {
@@ -805,6 +805,22 @@
                                     "modifiers": { "optional": ["any"] }
                                 },
                                 "to": [{ "shell_command": "open -g raycast://extensions/raycast/window-management/left-half" }],
+                                "type": "basic"
+                            },
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "hyper_sublayer_w",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "description": "Window: almost-maximize",
+                                "from": {
+                                    "key_code": "return_or_enter",
+                                    "modifiers": { "optional": ["any"] }
+                                },
+                                "to": [{ "shell_command": "open -g raycast://extensions/raycast/window-management/almost-maximize" }],
                                 "type": "basic"
                             },
                             {
