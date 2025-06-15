@@ -34,8 +34,8 @@ require("config.remaps")
 require("config.autocommands")
 -- Control LSP support by filetype
 vim.lsp.enable({
-  -- 'javascript',
-  'tsgo',
+  -- 'tsgo',
+  'ts_ls',
   'cssls',
   'tailwindcss',
   'cds',

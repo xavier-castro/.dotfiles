@@ -1,5 +1,5 @@
 function ColorMyPencils(color)
-  color = color or 'randomhue'
+  color = color or 'rose-pine-moon'
   vim.cmd.colorscheme(color)
 
   vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
@@ -12,8 +12,10 @@ return {
     config = function()
       require('vague').setup {
         transparent = true,
+        bold = false,
+        italic = false,
       }
-      -- vim.cmd.colorscheme 'vague'
+      vim.cmd.colorscheme 'vague'
     end,
   },
   -- Using Lazy
