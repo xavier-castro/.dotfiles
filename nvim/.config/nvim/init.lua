@@ -32,7 +32,6 @@ vim.api.nvim_create_autocmd('LspAttach', {
 require("config.options")
 require("config.remaps")
 require("config.autocommands")
-
 -- Control LSP support by filetype
 vim.lsp.enable({
   -- 'javascript',
