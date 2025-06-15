@@ -1,0 +1,75 @@
+return {
+	{ "tpope/vim-repeat", keys = { { "." }, { ";" } } },
+	--codeiumn
+	{
+		"monkoose/neocodeium",
+		-- event = "VeryLazy",
+		lazy = true,
+		opts = {
+			manual = true,
+			-- filter = function()
+			-- 	local cmp = require("blink-cmp")
+			-- 	return not cmp.is_visible()
+			-- end,
+			debounce = true,
+			server = {},
+		},
+		config = function(_, opts)
+			local neocodeium = require("neocodeium")
+			neocodeium.setup(opts)
+			--
+			vim.keymap.set("i", "<M-y>", neocodeium.accept)
+			vim.keymap.set("i", "<M-[>", function()
+				neocodeium.cycle(-1)
+			end)
+			vim.keymap.set("i", "<M-]>", function()
+				neocodeium.cycle(1)
+			end)
+			--
+			-- vim.keymap.set("i", "<a-c>", function()
+			-- 	neocodeium.cycle_or_complete()
+			-- end)
+			--
+			-- vim.keymap.set("i", "<esc>", "<c-c>")
+			-- local cmp = require("cmp")
+			-- cmp.event:on("menu_opened", function()
+			-- 	neocodeium.clear()
+			-- end)
+		end,
+	},
+
+	-- UndotreeToggle
+	{
+		"mbbill/undotree",
+		keys = {
+			{ "<leader>gu", "<cmd>UndotreeToggle<CR>", desc = "Toggle undotree" },
+		},
+	},
+
+	-- Generate documentation
+	{
+		"danymat/neogen",
+		config = true,
+		keys = {
+			{
+				"<leader>cn",
+				function()
+					require("neogen").generate({})
+				end,
+				desc = "Generate func|class|type documentation",
+			},
+		},
+	},
+
+	{
+		"andrewferrier/debugprint.nvim",
+		opts = {},
+		keys = {
+			{ "g?v", mode = { "n", "x" }, desc = "Veriable log" },
+			{ "g?V", mode = { "n", "x" }, desc = "Veriable log above" },
+			{ "g?p", mode = { "n", "x" }, desc = "Plain debug log below" },
+			{ "g?P", mode = { "n", "x" }, desc = "Plain debug log below" },
+		},
+		version = "*",
+	},
+}
