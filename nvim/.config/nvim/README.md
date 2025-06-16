@@ -1,0 +1,2 @@
+# ThePrimeagen's Neovim Config
+
