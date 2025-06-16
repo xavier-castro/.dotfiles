@@ -1,14 +1,14 @@
 # Unset the default fish greeting text which messes up Zellij
 set fish_greeting ""
 
-# Check if we're in an interactive shell
-if status is-interactive
- # Check if we are already in tmux
-    if not set -q TMUX
-        # Create session 'main' or attach to 'main' if it already exists
-        tmux new-session -A -s MAIN
-    end
-end
+# # Check if we're in an interactive shell
+# if status is-interactive
+#  # Check if we are already in tmux
+#     if not set -q TMUX
+#         # Create session 'main' or attach to 'main' if it already exists
+#         tmux new-session -A -s MAIN
+#     end
+# end
 
 # theme
 set -g theme_color_scheme terminal-dark
@@ -17,7 +17,7 @@ set -g theme_display_user yes
 set -g theme_hide_hostname no
 set -g theme_hostname always
 
-source "$HOME/.cargo/env.fish"
+
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
 
@@ -26,26 +26,7 @@ set -gx PATH ~/bin $PATH
 set -gx PATH ~/.local/bin $PATH
 set -gx PATH ~/.config/tmux/plugins/tmuxifier/bin $PATH
 
-# NodeJS
-set -gx PATH node_modules/.bin $PATH
-
-# Go
-set -g GOPATH $HOME/go
-set -gx PATH $GOPATH/bin $PATH
-
-
-set -gx COLORTERM xterm-ghostty
-set -gx EDITOR nvim
-set -gx LANG cs_CZ.UTF-8    # Adjust this to your language!
-set -gx LC_ALL cs_CZ.UTF-8  # Adjust this to your locale!
-set -gx VIRTUAL_ENV_DISABLE_PROMPT true
-set -gx GOPATH $HOME/go
-set -x PATH $GOPATH/bin $HOME/.composer/vendor/bin $HOME/Library/Python/3.7/bin $PATH
-set -gx HOMEBREW_AUTO_UPDATE_SECS 86400
-set -gx DOCKER_BUILDKIT 1
-set -gx COMPOSE_DOCKER_CLI_BUILD 1
-set -g fish_key_bindings fish_vi_key_bindings
-set -g fish_bind_mode insert
+# NodeJ
 
 # Title options
 set -g theme_title_display_process yes

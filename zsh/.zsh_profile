@@ -1,0 +1,27 @@
+# Function to prepend a directory to the PATH
+addToPathFront() {
+    # Check if the directory exists
+    if [[ -d $1 ]]; then
+        # Prepend the directory to PATH
+        export PATH="$1:$PATH"
+    fi
+}
+
+# Add directories to PATH
+addToPathFront "$HOME/.zig"
+addToPathFront "$HOME/.local/.npm-global/bin"
+addToPathFront "$HOME/.local/scripts"
+addToPathFront "$HOME/.local/bin"
+addToPathFront "$HOME/.local/n/bin"
+addToPathFront "$HOME/.local/go/bin"
+addToPathFront "$HOME/go/bin"
+addToPathFront "$HOME/personal/sumneko/bin"
+addToPathFront "$HOME/.deno/bin"
+
+# Bind Ctrl + f to execute "tmux-sessionizer"
+bindkey -s '^f' "tmux-sessionizer\n"
+
+# Source the private keys file if it exists
+if [[ -f ~/.zsh_private.zshrc ]]; then
+    source ~/.zsh_private.zshrc
+fi
