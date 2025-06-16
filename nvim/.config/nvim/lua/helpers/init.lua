@@ -1,7 +1,7 @@
 Custom = {
 	colorscheme = {
 		transparent = true,
-		name = "vague",
+		name = "rose-pine-moon",
 	},
 	explorer = {},
 }

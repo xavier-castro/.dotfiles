@@ -85,7 +85,6 @@ alias ll "ls -l"
 alias lla "ll -A"
 alias g git
 alias c claude
-alias cd "z"
 command -qv nvim && alias vim nvim
 
 
