@@ -70,7 +70,11 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git mise)
+
+if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
+  exec tmux
+fi
 
 source $ZSH/oh-my-zsh.sh
 source ~/.zsh_profile
@@ -85,6 +89,7 @@ export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.config/tmux/plugins/tmuxifier/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/go/bin:$PATH"
 export PATH="$HOME/.config/emacs/bin:$PATH"
 
 # User configuration
@@ -127,8 +132,6 @@ alias c="claude"
 # alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs -nw'
 # alias emacs-gui='open -a Emacs'
 command -v nvim &>/dev/null && alias vim="nvim"
-
-alias emacs="emacsclient -c -a 'emacs'"
 
 if command -v eza &>/dev/null; then
     alias ll="eza -l -g --icons"
