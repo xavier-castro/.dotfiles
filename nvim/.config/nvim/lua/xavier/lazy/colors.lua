@@ -7,6 +7,12 @@ function ColorMyPencils(color)
 end
 
 return {
+	-- Using Lazy
+	{
+		"webhooked/kanso.nvim",
+		lazy = false,
+		priority = 1000,
+	},
 
 	{
 		"erikbackman/brightburn.vim",
