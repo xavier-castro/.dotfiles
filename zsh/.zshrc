@@ -85,6 +85,7 @@ export PATH="$HOME/bin:$PATH"
 export PATH="$HOME/.local/bin:$PATH"
 export PATH="$HOME/.config/tmux/plugins/tmuxifier/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
+export PATH="$HOME/.config/emacs/bin:$PATH"
 
 # User configuration
 
@@ -123,7 +124,11 @@ alias ll="ls -l"
 alias lla="ll -A"
 alias g="git"
 alias c="claude"
+# alias emacs='/Applications/Emacs.app/Contents/MacOS/Emacs -nw'
+# alias emacs-gui='open -a Emacs'
 command -v nvim &>/dev/null && alias vim="nvim"
+
+alias ememacs="emacsclient -c -a 'emacs'"
 
 if command -v eza &>/dev/null; then
     alias ll="eza -l -g --icons"
@@ -151,3 +156,5 @@ if command -v swiftenv &>/dev/null && [[ $- == *i* ]]; then
 fi
 
 eval "$(tmuxifier init - zsh)"
+
+
