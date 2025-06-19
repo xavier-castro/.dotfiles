@@ -1,0 +1,7 @@
+{
+  "$schema": "http://opencode.ai/config.json"
+  "theme": "opencode",
+  "model": "anthropic/claude-sonnet-4-20250514" // format is provider/model
+  "autoshare": false,
+  "autoupdate": true,
+}

@@ -72,10 +72,6 @@ ZSH_THEME="robbyrussell"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git mise)
 
-if command -v tmux &> /dev/null && [ -n "$PS1" ] && [[ ! "$TERM" =~ screen ]] && [[ ! "$TERM" =~ tmux ]] && [ -z "$TMUX" ]; then
-  exec tmux
-fi
-
 source $ZSH/oh-my-zsh.sh
 source ~/.zsh_profile
 
@@ -157,7 +153,4 @@ fi
 if command -v swiftenv &>/dev/null && [[ $- == *i* ]]; then
     eval "$(swiftenv init -)"
 fi
-
-eval "$(tmuxifier init - zsh)"
-
 
