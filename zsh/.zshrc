@@ -128,7 +128,7 @@ alias c="claude"
 # alias emacs-gui='open -a Emacs'
 command -v nvim &>/dev/null && alias vim="nvim"
 
-alias ememacs="emacsclient -c -a 'emacs'"
+alias emacs="emacsclient -c -a 'emacs'"
 
 if command -v eza &>/dev/null; then
     alias ll="eza -l -g --icons"
