@@ -8,7 +8,7 @@ return {
 				require("oil").setup({
 					-- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
 					-- Set to false if you want some other plugin (e.g. netrw) to open when you edit directories.
-					default_file_explorer = false,
+					default_file_explorer = true,
 					-- Id is automatically added at the beginning, and name at the end
 					-- See :help oil-columns
 					columns = {
@@ -210,7 +210,7 @@ return {
 			win_size = 30,
 			open_on_startup = false,
 			use_default_keymaps = true,
-			hijack_netrw = true,
+			hijack_netrw = false,
 			show_hidden = true,
 			show_ignore = false,
 			cursorline = true,
