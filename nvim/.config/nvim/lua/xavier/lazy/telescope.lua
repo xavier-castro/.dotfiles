@@ -1,5 +1,7 @@
 return {
 	"nvim-telescope/telescope.nvim",
+	lazy = false,
+	priority = 1000,
 	dependencies = {
 		{
 			"nvim-telescope/telescope-fzf-native.nvim",
@@ -87,7 +89,7 @@ return {
 			desc = "Lists LSP incoming calls for word under the cursor",
 		},
 		{
-			"-",
+			"<leader>pv",
 			function()
 				local telescope = require("telescope")
 
@@ -137,7 +139,7 @@ return {
 			file_browser = {
 				theme = "dropdown",
 				-- disables netrw and use telescope-file-browser in its place
-				hijack_netrw = true,
+				hijack_netrw = false,
 				mappings = {
 					-- your custom insert mode mappings
 					["n"] = {

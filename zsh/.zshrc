@@ -66,7 +66,7 @@ typeset -U path
 path=(
     ~/.local/scripts                 # Personal scripts (highest priority)
     ~/.dotfiles/bin/.local/scripts   # Dotfiles scripts
-    ~/bin                           # Personal binaries  
+    ~/bin                           # Personal binaries
     ~/.local/bin                    # Local user binaries
     ~/.local/share/mise/shims       # Mise tool shims
     ~/.orbstack/bin                 # OrbStack (Docker/K8s tools)
@@ -118,6 +118,13 @@ alias tree='tree -a -I .git'
 
 # Add flags to existing aliases.
 alias ls="${aliases[ls]:-ls} -A"
+# Aliases
+alias ls="ls -p -G"
+alias la="ls -A"
+alias ll="ls -l"
+alias lla="ll -A"
+alias g="git"
+alias c="claude"
 
 # Set shell options: http://zsh.sourceforge.net/Doc/Release/Options.html.
 setopt glob_dots     # no special treatment for file names with a leading dot

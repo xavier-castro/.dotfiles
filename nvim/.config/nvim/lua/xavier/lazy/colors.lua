@@ -1,5 +1,5 @@
 function ColorMyPencils(color)
-	color = color or "rose-pine-moon"
+	color = color or "vague"
 	vim.cmd.colorscheme(color)
 
 	vim.api.nvim_set_hl(0, "Normal", { bg = "none" })
@@ -16,6 +16,53 @@ return {
 
 	{
 		"erikbackman/brightburn.vim",
+	},
+	{
+		"rebelot/kanagawa.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("kanagawa").setup({
+				transparent = vim.g.have_transparent_bg,
+			})
+			-- vim.cmd.colorscheme("kanagawa-lotus")
+		end,
+	},
+	{
+		"navarasu/onedark.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("onedark").setup({
+				style = "cool",
+				transparent = vim.g.have_transparent_bg,
+			})
+			-- vim.cmd.colorscheme("onedark")
+		end,
+	},
+	{
+		"EdenEast/nightfox.nvim",
+		lazy = false,
+		priority = 1000,
+		config = function()
+			require("nightfox").setup({
+				options = {
+					transparent = vim.g.have_transparent_bg,
+				},
+			})
+			-- vim.cmd.colorscheme("nordfox")
+		end,
+	},
+	{
+		"vague2k/vague.nvim",
+		priority = 1000,
+		lazy = false,
+		config = function()
+			require("vague").setup({
+				transparent = true,
+			})
+			-- vim.cmd.colorscheme 'vague'
+		end,
 	},
 
 	{

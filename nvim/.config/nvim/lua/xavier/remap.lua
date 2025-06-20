@@ -1,5 +1,5 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
+vim.keymap.set("n", "-", vim.cmd.Ex)
 vim.keymap.set("i", "jk", "<Esc>")
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
@@ -37,6 +37,11 @@ vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<M-o>", function()
 	vim.cmd([[ silent !tmux new-window /usr/local/bin/opencode]])
 end)
+
+vim.keymap.set("n", "<M-c>", function()
+	vim.cmd([[ silent !tmux new-window /Users/xavier/.volta/bin/claude ]])
+end)
+
 vim.keymap.set("n", "<leader>cf", function()
 	require("conform").format({ bufnr = 0 })
 end)
