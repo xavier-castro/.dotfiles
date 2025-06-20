@@ -12,7 +12,15 @@
       "Bash(./bin/.local/scripts/clean-dsstore:*)",
       "mcp__context7__resolve-library-id",
       "mcp__mcp-omnisearch__kagi_search",
-      "WebFetch(domain:github.com)"
+      "WebFetch(domain:github.com)",
+      "Bash(tree:*)",
+      "mcp__mcp-omnisearch__firecrawl_scrape_process",
+      "Bash(nvim:*)",
+      "Bash(lua:*)",
+      "Bash(command -v:*)",
+      "Bash(/usr/local/bin/nvim:*)",
+      "Bash(SHELL=/bin/zsh /usr/local/bin/nvim --version)",
+      "Bash(rm:*)"
     ],
     "deny": []
   }
