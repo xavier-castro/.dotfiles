@@ -1,5 +1,5 @@
 vim.g.mapleader = " "
-vim.keymap.set("n", "-", vim.cmd.Ex)
+vim.keymap.set("n", "-", ":Oil --float<CR>")
 vim.keymap.set("i", "jk", "<Esc>")
 
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
