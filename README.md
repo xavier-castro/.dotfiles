@@ -28,3 +28,4 @@ brew install dprint
 brew install lua-language-server
 brew install mise
 ```
+/usr/local/bin/tmux

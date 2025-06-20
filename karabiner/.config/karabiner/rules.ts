@@ -74,26 +74,26 @@ const rules: KarabinerRules[] = [
       1: app("1Password"),
       g: app("Google Chrome"),
       c: app("Fantastical"),
-      v: app("Zed"),
+      z: app("Zed"),
       d: app("Discord"),
-      s: app("Slack"),
-      e: app("Superhuman"),
-      n: app("Notion"),
-      t: app("WezTerm"),
+      // s: app("Slack"),
+      // e: app("Superhuman"),
+      // n: app("Notion"),
+      t: app("Ghostty"),
       // Open todo list managed via *H*ypersonic
       h: open(
         "notion://www.notion.so/stellatehq/7b33b924746647499d906c55f89d5026"
       ),
-      z: app("zoom.us"),
+      // z: app("zoom.us"),
       // "M"arkdown (Reflect.app)
-      m: app("Reflect"),
-      r: app("Reflect"),
+      // m: app("Reflect"),
+      // r: app("Reflect"),
       f: app("Finder"),
       // "i"Message
-      i: app("Texts"),
-      p: app("Music"),
-      a: app("iA Presenter"),
-      w: open("Messages"),
+      // i: app("Texts"),
+      i: app("Music"),
+      // a: app("iA Presenter"),
+      m: open("Messages"),
       l: open(
         "raycast://extensions/stellate/mxstbr-commands/open-mxs-is-shortlink"
       ),
@@ -114,7 +114,16 @@ const rules: KarabinerRules[] = [
     // w = "Window"
     w: {
       semicolon: {
-        description: "Window: Hide",
+        description: "Make Larger",
+        to: [
+          {
+            key_code: "h",
+            modifiers: ["right_command"],
+          },
+        ],
+      },
+      quote: {
+        description: "Make Larger",
         to: [
           {
             key_code: "h",
@@ -134,52 +143,54 @@ const rules: KarabinerRules[] = [
       return_or_enter: window("almost-maximize"),
       l: window("right-half"),
       f: window("maximize"),
-      u: {
-        description: "Window: Previous Tab",
-        to: [
-          {
-            key_code: "tab",
-            modifiers: ["right_control", "right_shift"],
-          },
-        ],
-      },
-      i: {
-        description: "Window: Next Tab",
-        to: [
-          {
-            key_code: "tab",
-            modifiers: ["right_control"],
-          },
-        ],
-      },
-      n: {
-        description: "Window: Next Window",
-        to: [
-          {
-            key_code: "grave_accent_and_tilde",
-            modifiers: ["right_command"],
-          },
-        ],
-      },
-      b: {
-        description: "Window: Back",
-        to: [
-          {
-            key_code: "open_bracket",
-            modifiers: ["right_command"],
-          },
-        ],
-      },
-      // Note: No literal connection. Both f and n are already taken.
-      m: {
-        description: "Window: Forward",
-        to: [
-          {
-            key_code: "close_bracket",
-            modifiers: ["right_command"],
-          },
-        ],
-      },
+      i: window("last-fourth"),
+      u: window("first-three-fourths"),
+      // u: {
+      //   description: "Window: Previous Tab",
+      //   to: [
+      //     {
+      //       key_code: "tab",
+      //       modifiers: ["right_control", "right_shift"],
+      //     },
+      //   ],
+      // },
+      // i: {
+      //   description: "Window: Next Tab",
+      //   to: [
+      //     {
+      //       key_code: "tab",
+      //       modifiers: ["right_control"],
+      //     },
+      //   ],
+      // },
+      // n: {
+      //   description: "Window: Next Window",
+      //   to: [
+      //     {
+      //       key_code: "grave_accent_and_tilde",
+      //       modifiers: ["right_command"],
+      //     },
+      //   ],
+      // },
+      // b: {
+      //   description: "Window: Back",
+      //   to: [
+      //     {
+      //       key_code: "open_bracket",
+      //       modifiers: ["right_command"],
+      //     },
+      //   ],
+      // },
+      // // Note: No literal connection. Both f and n are already taken.
+      // m: {
+      //   description: "Window: Forward",
+      //   to: [
+      //     {
+      //       key_code: "close_bracket",
+      //       modifiers: ["right_command"],
+      //     },
+      //   ],
+      // },
     },
 
     // s = "System"
