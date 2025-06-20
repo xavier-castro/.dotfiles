@@ -1928,8 +1928,7 @@ menu_map
 #: means to use the default system colors, a value of background means
 #: to use the background color of the currently active kitty window
 #: and finally you can use an arbitrary color, such as #12af59 or red.
-
-macos_titlebar_color system
+# macos_titlebar_color system
 
 #: The color of the kitty window's titlebar on macOS. A value of
 #: system means to use the default system color, light or dark can
@@ -2786,8 +2785,7 @@ map cmd+h hide_macos_app
 
 
 
-
 # BEGIN_KITTY_THEME
-# Adapta Nokto Maia
+# Dot Gov
 include current-theme.conf
 # END_KITTY_THEME

@@ -8,7 +8,7 @@ return {
 				require("oil").setup({
 					-- Oil will take over directory buffers (e.g. `vim .` or `:e src/`)
 					-- Set to false if you want some other plugin (e.g. netrw) to open when you edit directories.
-					default_file_explorer = true,
+					default_file_explorer = false,
 					-- Id is automatically added at the beginning, and name at the end
 					-- See :help oil-columns
 					columns = {
@@ -16,11 +16,6 @@ return {
 						-- "permissions",
 						-- "size",
 						-- "mtime",
-					},
-					-- Buffer-local options to use for oil buffers
-					buf_options = {
-						buflisted = false,
-						bufhidden = "hide",
 					},
 					-- Window-local options to use for oil buffers
 					win_options = {
@@ -36,7 +31,7 @@ return {
 					-- Send deleted files to the trash instead of permanently deleting them (:help oil-trash)
 					delete_to_trash = false,
 					-- Skip the confirmation popup for simple operations (:help oil.skip_confirm_for_simple_edits)
-					skip_confirm_for_simple_edits = false,
+					skip_confirm_for_simple_edits = true,
 					-- Selecting a new/moved/renamed file or directory will prompt you to save changes first
 					-- (:help prompt_save_on_select_new_entry)
 					prompt_save_on_select_new_entry = true,
@@ -86,7 +81,7 @@ return {
 					use_default_keymaps = true,
 					view_options = {
 						-- Show files and directories that start with "."
-						show_hidden = false,
+						show_hidden = true,
 						-- This function defines what is considered a "hidden" file
 						is_hidden_file = function(name, bufnr)
 							local m = name:match("^%.")
@@ -215,8 +210,8 @@ return {
 			win_size = 30,
 			open_on_startup = false,
 			use_default_keymaps = true,
-			hijack_netrw = false,
-			show_hidden = false,
+			hijack_netrw = true,
+			show_hidden = true,
 			show_ignore = false,
 			cursorline = true,
 			oil = "float",
