@@ -6,10 +6,10 @@ return {
 			formatters_by_ft = {
 				lua = { "stylua" },
 				go = { "goimports" }, -- "gofumpt"
-                bash = { "beautysh" },
-                sh = { "beautysh" },
-                fish = { "beautysh" },
-                zsh = { "beautysh" },
+				bash = { "beautysh" },
+				sh = { "beautysh" },
+				fish = { "beautysh" },
+				zsh = { "beautysh" },
 				javascript = { "prettierd", "prettier" },
 				typescript = { "prettierd", "eslint_d" },
 				javascriptreact = { "prettierd", "eslint_d" },
