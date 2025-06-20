@@ -2,7 +2,6 @@ require("xavier.set")
 require("xavier.remap")
 require("xavier.lazy_init")
 
-
 local augroup = vim.api.nvim_create_augroup
 local XavierGroup = augroup("Xavier", {})
 
@@ -42,7 +41,7 @@ autocmd("BufEnter", {
 		if vim.bo.filetype == "zig" then
 			vim.cmd.colorscheme("tokyonight-night")
 		else
-			vim.cmd.colorscheme("rose-pine-moon")
+			ColorMyPencils()
 		end
 	end,
 })
