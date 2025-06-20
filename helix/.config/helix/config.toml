@@ -5,6 +5,7 @@ line-number = "relative"
 mouse = false
 auto-format = true
 bufferline = "always"
+evil = true
 
 [editor.cursor-shape]
 insert = "bar"
