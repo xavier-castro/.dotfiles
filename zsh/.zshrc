@@ -102,3 +102,6 @@ source ~/.zsh_profile
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+
+# Added by Windsurf
+export PATH="/Users/xavier/.codeium/windsurf/bin:$PATH"
