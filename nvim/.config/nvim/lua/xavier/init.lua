@@ -35,16 +35,16 @@ autocmd({ "BufWritePre" }, {
 	command = [[%s/\s\+$//e]],
 })
 
-autocmd("BufEnter", {
-	group = XavierGroup,
-	callback = function()
-		if vim.bo.filetype == "zig" then
-			vim.cmd.colorscheme("tokyonight-night")
-		else
-			ColorMyPencils()
-		end
-	end,
-})
+-- autocmd("BufEnter", {
+-- 	group = XavierGroup,
+-- 	callback = function()
+-- 		if vim.bo.filetype == "zig" then
+-- 			vim.cmd.colorscheme("tokyonight-night")
+-- 		else
+--             vim.cmd.colorscheme("rose-pine")
+-- 		end
+-- 	end,
+-- })
 
 autocmd("LspAttach", {
 	group = XavierGroup,

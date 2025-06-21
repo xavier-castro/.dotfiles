@@ -2,7 +2,7 @@ return {
 	"folke/which-key.nvim",
 	event = "VeryLazy",
 	opts = {
-		preset = "modern",
+		preset = "helix",
 		delay = function(ctx)
 			return ctx.plugin and 0 or 200
 		end,
@@ -67,7 +67,7 @@ return {
 			{ "<leader>fP", desc = "Find Plugin Files" },
 			{ "<leader>pf", desc = "Find Files" },
 			{ "<leader>pv", desc = "File Browser" },
-			
+
 			{ "<leader>p", group = "Project" },
 			{ "<leader>ps", desc = "Grep String" },
 			{ "<leader>pws", desc = "Grep Word Under Cursor" },

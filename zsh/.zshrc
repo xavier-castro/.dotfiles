@@ -102,4 +102,3 @@ source ~/.zsh_profile
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
-alias tt = "tmux a || tmux new-session -A -s 'main'"
