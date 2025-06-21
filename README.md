@@ -28,4 +28,9 @@ brew install dprint
 brew install lua-language-server
 brew install mise
 ```
+
 /usr/local/bin/tmux
+
+## Claude Error to Symlink Fix
+
+`sudo ln -sf "$(which node)" /usr/local/bin/node && sudo ln -sf "$(which npx)" /usr/local/bin/npx`
