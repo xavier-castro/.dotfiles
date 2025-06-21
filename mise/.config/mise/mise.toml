@@ -1,8 +1,9 @@
 [tools]
 bun = "latest"
 ghq = "latest"
-# node = "latest"
+node = "latest"
 python = "latest"
 # ruby = "latest"
 rust = "latest"
 go = "latest"
+pnpm = "latest"
