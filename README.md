@@ -16,25 +16,14 @@
 
 `brew install mise`
 
-## Note Taking
+### Claude Code + Opencode
 
-For Note taking and bookmarking I use `nb` that is being synced in my Dropbox for ease of use and editing on the go if I have to
-`brew install xwmx/taps/nb --head`
+`npm install -g @anthropic-ai/claude-code`
+`brew install sst/tap/opencode      # macOS`
 
-## LSPs I had to manually install
+#### Claude All-in-One MCP Config
 
-```sh
-brew install marksman
-brew install dprint
-brew install lua-language-server
-brew install mise
-```
-
-## Claude Error to Symlink Fix
-
-`sudo ln -sf "$(which node)" /usr/local/bin/node && sudo ln -sf "$(which npx)" /usr/local/bin/npx`
-
-## Claude All-in-One MCP Config
+- For me, the less MCP's the ai has to decide between the better off you are. the all in one search tool is amazing
 
 ```json
 {
@@ -59,3 +48,23 @@ brew install mise
   }
 }
 ```
+
+## Note Taking
+
+For Note taking and bookmarking I use `nb` that is being synced in my Dropbox for ease of use and editing on the go if I have to
+`brew install xwmx/taps/nb --head`
+
+## LSPs I had to manually install
+
+```sh
+brew install marksman
+brew install dprint
+brew install lua-language-server
+brew install mise
+```
+
+### Random But Useful
+
+#### Claude Error to Symlink Fix
+
+`sudo ln -sf "$(which node)" /usr/local/bin/node && sudo ln -sf "$(which npx)" /usr/local/bin/npx`
