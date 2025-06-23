@@ -56,30 +56,6 @@ return {
     end,
   },
 
-  -- Indent guides
-  {
-    "lukas-reineke/indent-blankline.nvim",
-    event = "User FilePost",
-    opts = {
-      indent = { char = "│", highlight = "IblChar" },
-      scope = { char = "│", highlight = "IblScopeChar" },
-    },
-    config = function(_, opts)
-      -- Load blankline theme if base46_cache is available
-      if vim.g.base46_cache then
-        pcall(dofile, vim.g.base46_cache .. "blankline")
-      end
-
-      local hooks = require "ibl.hooks"
-      hooks.register(hooks.type.WHITESPACE, hooks.builtin.hide_first_space_indent_level)
-      require("ibl").setup(opts)
-
-      -- Load blankline theme again after setup
-      if vim.g.base46_cache then
-        pcall(dofile, vim.g.base46_cache .. "blankline")
-      end
-    end,
-  },
 
   -- Which-key for keybinding help
   {

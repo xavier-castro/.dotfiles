@@ -6,8 +6,8 @@ local M = {}
 
 -- UI Configuration
 M.ui = {
-  theme = "gruvchad", -- Default theme, can be changed via theme picker
-  theme_toggle = { "gruvchad", "one_light" },
+  theme = "ashes", -- Default theme, can be changed via theme picker
+  theme_toggle = { "ashes", "one_light" },
 
   -- Transparency settings
   transparency = false,
@@ -56,7 +56,7 @@ M.ui = {
 
 -- Base46 theme configuration
 M.base46 = {
-  theme = "gruvchad",
+  theme = "ashes",
   hl_override = {},
   hl_add = {},
   integrations = {},

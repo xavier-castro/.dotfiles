@@ -20,7 +20,8 @@
       "Bash(command -v:*)",
       "Bash(/usr/local/bin/nvim:*)",
       "Bash(SHELL=/bin/zsh /usr/local/bin/nvim --version)",
-      "Bash(rm:*)"
+      "Bash(rm:*)",
+      "Bash(rg:*)"
     ],
     "deny": []
   }
