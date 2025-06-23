@@ -7,6 +7,7 @@
 - [ ] Share what universal tooling I use to make life easier
 - [ ] Create script for said universal tooling
 - [ ] Philosophy
+- [ ] Figure out how to make your tabline and statusline cleaner without chadrc
 
 ## Software I Use
 

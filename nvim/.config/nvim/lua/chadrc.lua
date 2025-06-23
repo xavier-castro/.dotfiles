@@ -6,8 +6,8 @@ local M = {}
 
 -- UI Configuration
 M.ui = {
-  theme = "ashes", -- Default theme, can be changed via theme picker
-  theme_toggle = { "ashes", "one_light" },
+  theme = "nightfox", -- Default theme, can be changed via theme picker
+  theme_toggle = { "nightfox", "one_light" },
 
   -- Transparency settings
   transparency = false,
@@ -56,7 +56,7 @@ M.ui = {
 
 -- Base46 theme configuration
 M.base46 = {
-  theme = "ashes",
+  theme = "nightfox",
   hl_override = {},
   hl_add = {},
   integrations = {},
