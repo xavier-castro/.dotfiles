@@ -2,6 +2,7 @@
 
 ## TODO
 
+- [ ] Share Xavrr + NvChad + Kickstart + ThePrimagen + Craftzdog Setup
 - [ ] Share workflow with AI
 - [ ] Share what universal tooling I use to make life easier
 - [ ] Create script for said universal tooling
@@ -29,8 +30,32 @@ brew install lua-language-server
 brew install mise
 ```
 
-/usr/local/bin/tmux
-
 ## Claude Error to Symlink Fix
 
 `sudo ln -sf "$(which node)" /usr/local/bin/node && sudo ln -sf "$(which npx)" /usr/local/bin/npx`
+
+## Claude All-in-One MCP Config
+
+```json
+{
+  "mcpServers": {
+    "mcp-sequentialthinking-tools": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "mcp-sequentialthinking-tools"]
+    },
+    "mcp-omnisearch": {
+      "type": "stdio",
+      "command": "npx",
+      "args": ["-y", "mcp-omnisearch"],
+      "env": {
+        "TAVILY_API_KEY": "",
+        "BRAVE_API_KEY": "",
+        "KAGI_API_KEY": "",
+        "PERPLEXITY_API_KEY": "",
+        "JINA_AI_API_KEY": ""
+      }
+    }
+  }
+}
+```

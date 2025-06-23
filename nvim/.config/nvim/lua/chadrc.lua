@@ -6,7 +6,7 @@ local M = {}
 
 -- UI Configuration
 M.ui = {
-  theme = "one_light", -- Default theme, can be changed via theme picker
+  theme = "onedark", -- Default theme, can be changed via theme picker
   theme_toggle = { "onedark", "one_light" },
 
   -- Transparency settings
@@ -56,7 +56,7 @@ M.ui = {
 
 -- Base46 theme configuration
 M.base46 = {
-  theme = "one_light",
+  theme = "onedark",
   hl_override = {},
   hl_add = {},
   integrations = {},
