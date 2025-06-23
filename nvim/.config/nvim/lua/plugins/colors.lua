@@ -16,9 +16,7 @@ return {
     "folke/tokyonight.nvim",
     lazy = false,
     opts = {},
-    config = function()
-      ColorMyPencils()
-    end,
+    config = function() end,
   },
   {
     "ellisonleao/gruvbox.nvim",
@@ -82,8 +80,6 @@ return {
           italic = false,
         },
       }
-
-      ColorMyPencils()
     end,
   },
 }

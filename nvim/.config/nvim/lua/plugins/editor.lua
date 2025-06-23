@@ -56,7 +56,6 @@ return {
     end,
   },
 
-
   -- Which-key for keybinding help
   {
     "folke/which-key.nvim",

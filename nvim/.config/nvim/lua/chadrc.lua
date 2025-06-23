@@ -6,8 +6,8 @@ local M = {}
 
 -- UI Configuration
 M.ui = {
-  theme = "nightfox", -- Default theme, can be changed via theme picker
-  theme_toggle = { "nightfox", "one_light" },
+  theme = "poimandres", -- Default theme, can be changed via theme picker
+  theme_toggle = { "poimandres", "one_light" },
 
   -- Transparency settings
   transparency = false,
@@ -57,7 +57,7 @@ M.ui = {
 
 -- Base46 theme configuration
 M.base46 = {
-  theme = "nightfox",
+  theme = "poimandres",
   hl_override = {},
   hl_add = {},
   integrations = {},
