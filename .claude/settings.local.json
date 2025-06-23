@@ -28,7 +28,8 @@
       "Bash(echo \"Exit code: $?\")",
       "Bash(pbpaste)",
       "Bash(echo:*)",
-      "Bash(echo \"pbpaste: $?\")"
+      "Bash(echo \"pbpaste: $?\")",
+      "WebFetch(domain:raw.githubusercontent.com)"
     ],
     "deny": []
   }

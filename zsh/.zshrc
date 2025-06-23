@@ -89,3 +89,6 @@ alias -g lla='ll -a'
 
 source ~/.zsh_profile
 source ~/.zsh_private
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh" || true
+

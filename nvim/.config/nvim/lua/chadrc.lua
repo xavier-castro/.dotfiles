@@ -14,13 +14,14 @@ M.ui = {
 
   -- Statusline configuration
   statusline = {
+    enabled = false,
     theme = "minimal", -- default/vscode/vscode_colored/minimal
     separator_style = "block", -- default/round/block/arrow
   },
 
   -- Tabufline (buffer line) configuration
   tabufline = {
-    enabled = true,
+    enabled = false,
     lazyload = true,
     order = { "treeOffset", "buffers", "tabs", "btns" },
   },
