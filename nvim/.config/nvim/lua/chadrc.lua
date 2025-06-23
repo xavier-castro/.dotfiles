@@ -6,7 +6,7 @@ local M = {}
 
 -- UI Configuration
 M.ui = {
-  theme = "onedark", -- Default theme, can be changed via theme picker
+  theme = "one_light", -- Default theme, can be changed via theme picker
   theme_toggle = { "onedark", "one_light" },
 
   -- Transparency settings
@@ -22,7 +22,7 @@ M.ui = {
   tabufline = {
     enabled = true,
     lazyload = true,
-    -- order = { "treeOffset", "buffers", "tabs", "btns" },
+    order = { "treeOffset", "buffers", "tabs", "btns" },
   },
 
   -- nvdash (dashboard) configuration
@@ -56,7 +56,7 @@ M.ui = {
 
 -- Base46 theme configuration
 M.base46 = {
-  theme = "onedark",
+  theme = "one_light",
   hl_override = {},
   hl_add = {},
   integrations = {},
@@ -85,4 +85,3 @@ M.mappings = {}
 M.plugins = {}
 
 return M
-
