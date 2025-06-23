@@ -6,22 +6,22 @@ local M = {}
 
 -- UI Configuration
 M.ui = {
-  theme = "poimandres", -- Default theme, can be changed via theme picker
-  theme_toggle = { "poimandres", "one_light" },
+  theme = "aylin", -- Default theme, can be changed via theme picker
+  theme_toggle = { "aylin", "one_light" },
 
   -- Transparency settings
   transparency = false,
 
   -- Statusline configuration
   statusline = {
-    enabled = false,
-    theme = "minimal", -- default/vscode/vscode_colored/minimal
+    enabled = true,
+    theme = "default", -- default/vscode/vscode_colored/minimal
     separator_style = "block", -- default/round/block/arrow
   },
 
   -- Tabufline (buffer line) configuration
   tabufline = {
-    enabled = false,
+    enabled = true,
     lazyload = true,
     order = { "treeOffset", "buffers", "tabs", "btns" },
   },
@@ -57,7 +57,7 @@ M.ui = {
 
 -- Base46 theme configuration
 M.base46 = {
-  theme = "poimandres",
+  theme = "aylin",
   hl_override = {},
   hl_add = {},
   integrations = {},
