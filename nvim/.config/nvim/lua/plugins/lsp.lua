@@ -114,7 +114,7 @@ return {
               group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
               callback = function(event2)
                 vim.lsp.buf.clear_references()
-                vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event2.buf })
+                vim.api.nvim_clear_autocmds { group = "kickstart-lsp-highlight", buffer = event2.buf }
               end,
             })
           end
@@ -123,7 +123,7 @@ return {
           -- code, if the language server you are using supports them
           if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
             map("<leader>th", function()
-              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
+              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled { bufnr = event.buf })
             end, "[T]oggle Inlay [H]ints")
           end
         end,
@@ -189,9 +189,9 @@ return {
       vim.list_extend(ensure_installed, {
         "stylua", -- Used to format Lua code
       })
-      require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+      require("mason-tool-installer").setup { ensure_installed = ensure_installed }
 
-      require("mason-lspconfig").setup({
+      require("mason-lspconfig").setup {
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
@@ -202,7 +202,7 @@ return {
             require("lspconfig")[server_name].setup(server)
           end,
         },
-      })
+      }
     end,
   },
 
@@ -215,7 +215,7 @@ return {
       {
         "<leader>f",
         function()
-          require("conform").format({ async = true, lsp_fallback = true })
+          require("conform").format { async = true, lsp_fallback = true }
         end,
         mode = "",
         desc = "[F]ormat buffer",
@@ -241,6 +241,23 @@ return {
       end,
       formatters_by_ft = {
         lua = { "stylua" },
+        go = { "goimports" }, -- "gofumpt"
+        bash = { "beautysh" },
+        sh = { "beautysh" },
+        fish = { "beautysh" },
+        zsh = { "beautysh" },
+        javascript = { "prettierd", "prettier" },
+        typescript = { "prettierd", "eslint_d" },
+        javascriptreact = { "prettierd", "eslint_d" },
+        typescriptreact = { "prettierd", "eslint_d" },
+        astro = { "prettierd", "prettier" },
+        css = { "prettierd", "prettier" },
+        html = { "prettierd", "prettier" },
+        json = { "jq" },
+        jsonc = { "prettierd" },
+        yaml = { "prettierd", "prettier" },
+        markdown = { "prettierd" },
+        graphql = { "prettierd", "prettier" },
         -- Conform can also run multiple formatters sequentially
         -- python = { "isort", "black" },
         --
@@ -250,3 +267,4 @@ return {
     },
   },
 }
+

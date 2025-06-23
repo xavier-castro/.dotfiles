@@ -89,7 +89,7 @@ map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "Telescope find bu
 map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "Telescope help page" })
 map("n", "<leader>ma", "<cmd>Telescope marks<CR>", { desc = "Telescope find marks" })
 map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "Telescope find oldfiles" })
-map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "Telescope find in current buffer" })
+map("n", "<leader>fz", "<cmd>Telescope current_bffer_fuzzy_find<CR>", { desc = "Telescope find in current buffer" })
 map("n", "<leader>cm", "<cmd>Telescope git_commits<CR>", { desc = "Telescope git commits" })
 map("n", "<leader>gt", "<cmd>Telescope git_status<CR>", { desc = "Telescope git status" })
 
@@ -124,7 +124,7 @@ map("n", "<leader>h", function()
   if ok then
     nvchad_term.new { pos = "sp" }
   else
-    vim.cmd("split | terminal")
+    vim.cmd "split | terminal"
   end
 end, { desc = "Terminal new horizontal term" })
 
@@ -133,7 +133,7 @@ map("n", "<leader>v", function()
   if ok then
     nvchad_term.new { pos = "vsp" }
   else
-    vim.cmd("vsplit | terminal")
+    vim.cmd "vsplit | terminal"
   end
 end, { desc = "Terminal new vertical term" })
 
@@ -143,7 +143,7 @@ map({ "n", "t" }, "<A-v>", function()
   if ok then
     nvchad_term.toggle { pos = "vsp", id = "vtoggleTerm" }
   else
-    vim.cmd("vsplit | terminal")
+    vim.cmd "vsplit | terminal"
   end
 end, { desc = "Terminal toggleable vertical term" })
 
@@ -152,7 +152,7 @@ map({ "n", "t" }, "<A-h>", function()
   if ok then
     nvchad_term.toggle { pos = "sp", id = "htoggleTerm" }
   else
-    vim.cmd("split | terminal")
+    vim.cmd "split | terminal"
   end
 end, { desc = "Terminal toggleable horizontal term" })
 
@@ -161,7 +161,7 @@ map({ "n", "t" }, "<A-i>", function()
   if ok then
     nvchad_term.toggle { pos = "float", id = "floatTerm" }
   else
-    vim.cmd("terminal")
+    vim.cmd "terminal"
   end
 end, { desc = "Terminal toggle floating term" })
 
@@ -171,7 +171,7 @@ map("n", "<leader>th", function()
   if ok then
     nvchad_themes.open()
   else
-    print("NvChad themes not available. Use :colorscheme to change themes manually.")
+    print "NvChad themes not available. Use :colorscheme to change themes manually."
   end
 end, { desc = "Telescope nvchad themes" })
 
@@ -182,13 +182,19 @@ map("n", "<leader>wk", function()
   vim.cmd("WhichKey " .. vim.fn.input "WhichKey: ")
 end, { desc = "Whichkey query lookup" })
 
--- [[ Highlight on yank ]]
--- See `:help vim.highlight.on_yank()`
-vim.api.nvim_create_autocmd("TextYankPost", {
-  desc = "Highlight when yanking (copying) text",
-  group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
-  callback = function()
-    vim.highlight.on_yank()
-  end,
-})
+-- xavier-castro + theprimeagen settings
+map("i", "jk", "<ESC>")
 
+-- Externally run programs
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { desc = "Tmux Sessionizer" })
+
+vim.keymap.set("n", "<M-o>", function()
+  vim.cmd [[ silent !tmux new-window /usr/local/bin/opencode]]
+end, { desc = "Open Opencode" })
+
+vim.keymap.set("n", "<M-c>", function()
+  vim.cmd [[ silent !tmux new-window /Users/xavier/.volta/bin/claude ]]
+end, { desc = "Open Claude CLI" })
+
+-- MARK: Put Imported binds here
+require "scripts.floating_term"

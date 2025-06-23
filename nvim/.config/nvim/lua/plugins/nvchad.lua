@@ -10,11 +10,11 @@ return {
     priority = 1000,
     config = function()
       -- Set the cache directory for base46
-      vim.g.base46_cache = vim.fn.stdpath("cache") .. "/base46/"
-      
+      vim.g.base46_cache = vim.fn.stdpath "cache" .. "/base46/"
+
       -- Create cache directory if it doesn't exist
       vim.fn.mkdir(vim.g.base46_cache, "p")
-      
+
       -- Load all highlights with default theme
       require("base46").load_all_highlights()
     end,
@@ -28,7 +28,7 @@ return {
     dependencies = { "NvChad/base46" },
     config = function()
       -- Just load the nvchad module
-      require("nvchad")
+      require "nvchad"
     end,
   },
 
@@ -37,3 +37,4 @@ return {
   "nvzone/menu",
   { "nvzone/minty", cmd = { "Huefy", "Shades" } },
 }
+

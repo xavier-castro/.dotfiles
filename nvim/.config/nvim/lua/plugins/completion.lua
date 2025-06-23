@@ -12,7 +12,7 @@ return {
           -- Build Step is needed for regex support in snippets.
           -- This step is not supported in many windows environments.
           -- Remove the below condition to re-enable on windows.
-          if vim.fn.has("win32") == 1 or vim.fn.executable("make") == 0 then
+          if vim.fn.has "win32" == 1 or vim.fn.executable "make" == 0 then
             return
           end
           return "make install_jsregexp"
@@ -39,11 +39,11 @@ return {
     },
     config = function()
       -- See `:help cmp`
-      local cmp = require("cmp")
-      local luasnip = require("luasnip")
-      luasnip.config.setup({})
+      local cmp = require "cmp"
+      local luasnip = require "luasnip"
+      luasnip.config.setup {}
 
-      cmp.setup({
+      cmp.setup {
         snippet = {
           expand = function(args)
             luasnip.lsp_expand(args.body)
@@ -55,7 +55,7 @@ return {
         -- chosen, you will need to read `:help ins-completion`
         --
         -- No, but seriously. Please read `:help ins-completion`, it is really good!
-        mapping = cmp.mapping.preset.insert({
+        mapping = cmp.mapping.preset.insert {
           -- Select the [n]ext item
           ["<C-n>"] = cmp.mapping.select_next_item(),
           -- Select the [p]revious item
@@ -68,7 +68,7 @@ return {
           -- Accept ([y]es) the completion.
           --  This will auto-import if your LSP supports it.
           --  This will expand snippets if the LSP sent a snippet.
-          ["<C-y>"] = cmp.mapping.confirm({ select = true }),
+          ["<C-y>"] = cmp.mapping.confirm { select = true },
 
           -- If you prefer more traditional completion keymaps,
           -- you can uncomment the following lines
@@ -79,7 +79,7 @@ return {
           -- Manually trigger a completion from nvim-cmp.
           --  Generally you don't need this, because nvim-cmp will display
           --  completions whenever it has completion options available.
-          ["<C-Space>"] = cmp.mapping.complete({}),
+          ["<C-Space>"] = cmp.mapping.complete {},
 
           -- Think of <c-l> as moving to the right of your snippet expansion.
           --  So if you have a snippet that's like:
@@ -102,7 +102,7 @@ return {
 
           -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
           --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
-        }),
+        },
         sources = {
           {
             name = "lazydev",
@@ -112,6 +112,7 @@ return {
           { name = "nvim_lsp" },
           { name = "luasnip" },
           { name = "path" },
+          { name = "neorg" },
         },
         window = {
           completion = cmp.config.window.bordered(),
@@ -156,7 +157,7 @@ return {
             return vim_item
           end,
         },
-      })
+      }
     end,
   },
 
@@ -167,11 +168,12 @@ return {
     -- Optional dependency
     dependencies = { "hrsh7th/nvim-cmp" },
     config = function()
-      require("nvim-autopairs").setup({})
+      require("nvim-autopairs").setup {}
       -- If you want to automatically add `(` after selecting a function or method
-      local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-      local cmp = require("cmp")
+      local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+      local cmp = require "cmp"
       cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
     end,
   },
 }
+

@@ -8,46 +8,46 @@ local M = {}
 M.ui = {
   theme = "onedark", -- Default theme, can be changed via theme picker
   theme_toggle = { "onedark", "one_light" },
-  
+
   -- Transparency settings
   transparency = false,
-  
+
   -- Statusline configuration
   statusline = {
-    theme = "default", -- default/vscode/vscode_colored/minimal
-    separator_style = "default", -- default/round/block/arrow
+    theme = "minimal", -- default/vscode/vscode_colored/minimal
+    separator_style = "block", -- default/round/block/arrow
   },
-  
+
   -- Tabufline (buffer line) configuration
   tabufline = {
     enabled = true,
     lazyload = true,
-    order = { "treeOffset", "buffers", "tabs", "btns" },
+    -- order = { "treeOffset", "buffers", "tabs", "btns" },
   },
-  
+
   -- nvdash (dashboard) configuration
   nvdash = {
-    load_on_startup = false,
+    load_on_startup = true,
   },
-  
+
   -- cheatsheet configuration
   cheatsheet = {
     theme = "grid", -- simple/grid
   },
-  
+
   -- lsp semantic tokens
   lsp_semantic_tokens = false,
-  
+
   -- cmp theming
   cmp = {
     icons = true,
     lspkind_text = true,
     style = "default", -- default/flat_light/flat_dark/atom/atom_colored
   },
-  
+
   -- telescope style
   telescope = { style = "borderless" }, -- borderless / bordered
-  
+
   -- nvcheatsheet config
   nvcheatsheet = {
     theme = "grid", -- simple/grid
@@ -85,3 +85,4 @@ M.mappings = {}
 M.plugins = {}
 
 return M
+

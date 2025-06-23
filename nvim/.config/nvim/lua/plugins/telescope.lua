@@ -12,7 +12,7 @@ return {
         "nvim-telescope/telescope-fzf-native.nvim",
         build = "make",
         cond = function()
-          return vim.fn.executable("make") == 1
+          return vim.fn.executable "make" == 1
         end,
       },
       { "nvim-telescope/telescope-ui-select.nvim" },
@@ -21,7 +21,7 @@ return {
     config = function()
       -- [[ Configure Telescope ]]
       -- See `:help telescope` and `:help telescope.setup()`
-      require("telescope").setup({
+      require("telescope").setup {
         defaults = {
           prompt_prefix = "   ",
           selection_caret = " ",
@@ -53,14 +53,14 @@ return {
             require("telescope.themes").get_dropdown(),
           },
         },
-      })
+      }
 
       -- Enable Telescope extensions if they are installed
       pcall(require("telescope").load_extension, "fzf")
       pcall(require("telescope").load_extension, "ui-select")
 
       -- See `:help telescope.builtin`
-      local builtin = require("telescope.builtin")
+      local builtin = require "telescope.builtin"
       vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [H]elp" })
       vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [K]eymaps" })
       vim.keymap.set("n", "<leader>sf", builtin.find_files, { desc = "[S]earch [F]iles" })
@@ -75,29 +75,35 @@ return {
       -- NvChad-style mappings for compatibility
       vim.keymap.set("n", "<leader>ff", builtin.find_files, { desc = "Telescope find files" })
       vim.keymap.set("n", "<leader>fa", function()
-        builtin.find_files({ follow = true, no_ignore = true, hidden = true })
+        builtin.find_files { follow = true, no_ignore = true, hidden = true }
       end, { desc = "Telescope find all files" })
       vim.keymap.set("n", "<leader>fw", builtin.live_grep, { desc = "Telescope live grep" })
       vim.keymap.set("n", "<leader>fb", builtin.buffers, { desc = "Telescope find buffers" })
       vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Telescope help page" })
       vim.keymap.set("n", "<leader>ma", builtin.marks, { desc = "Telescope find marks" })
       vim.keymap.set("n", "<leader>fo", builtin.oldfiles, { desc = "Telescope find oldfiles" })
-      vim.keymap.set("n", "<leader>fz", builtin.current_buffer_fuzzy_find, { desc = "Telescope find in current buffer" })
+      vim.keymap.set(
+        "n",
+        "<leader>fz",
+        builtin.current_buffer_fuzzy_find,
+        { desc = "Telescope find in current buffer" }
+      )
       vim.keymap.set("n", "<leader>cm", builtin.git_commits, { desc = "Telescope git commits" })
       vim.keymap.set("n", "<leader>gt", builtin.git_status, { desc = "Telescope git status" })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set("n", "<leader>s/", function()
-        builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+        builtin.current_buffer_fuzzy_find(require("telescope.themes").get_dropdown {
           winblend = 10,
           previewer = false,
-        }))
+        })
       end, { desc = "[/] Fuzzily search in current buffer" })
 
       -- Shortcut for searching your Neovim configuration files
       vim.keymap.set("n", "<leader>sn", function()
-        builtin.find_files({ cwd = vim.fn.stdpath("config") })
+        builtin.find_files { cwd = vim.fn.stdpath "config" }
       end, { desc = "[S]earch [N]eovim files" })
     end,
   },
 }
+

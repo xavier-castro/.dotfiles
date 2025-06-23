@@ -97,7 +97,7 @@ return {
       require("which-key").setup(opts)
 
       -- Document existing key chains using new which-key v3 spec
-      require("which-key").add({
+      require("which-key").add {
         { "<leader>c", group = "[C]ode" },
         { "<leader>c_", hidden = true },
         { "<leader>d", group = "[D]ocument" },
@@ -112,7 +112,7 @@ return {
         { "<leader>t_", hidden = true },
         { "<leader>h", group = "Git [H]unk", mode = { "n", "v" } },
         { "<leader>h_", hidden = true },
-      })
+      }
     end,
   },
 
