@@ -88,3 +88,4 @@ alias -g lla='ll -a'
 
 
 source ~/.zsh_profile
+source ~/.zsh_private

@@ -1,0 +1,59 @@
+#!/bin/bash
+set -x
+# Required parameters:
+# @raycast.schemaVersion 1
+# @raycast.title Paste to Neorg with Category
+# @raycast.mode compact
+# @raycast.packageName Paste to Neorg
+
+# Get clipboard content
+clipboard_content=$(pbpaste)
+
+# Ask for tags (optional)
+read -p "Enter tags (separated by spaces, optional): " tags_input
+
+# Ask for category (optional)
+read -p "Enter category (leave blank for general): " category_input
+
+# Prepare the content to append
+neorg_content=""
+if [ -n "$tags_input" ]; then  # If tags are provided
+    neorg_tags=$(echo "$tags_input" | sed 's/\s/#/g')
+    neorg_tags="#$neorg_tags"
+    neorg_content="$neorg_tags $clipboard_content"
+else
+    neorg_content="$clipboard_content"  # No tags, just content
+fi
+
+# Target file
+selected_file="~/personal/clips/index.norg"
+
+# If a category is provided, append as a sub-bullet under that category
+if [ -n "$category_input" ]; then
+    # Construct the category heading pattern (assuming a level 1 heading like * Category Name)
+    category_heading_pattern="^\\* $category_input"
+
+    # Find the line number of the category heading
+    heading_line=$(grep -n "$category_heading_pattern" "$selected_file" | cut -d: -f1)
+
+    # Check if the heading was found
+    if [ -z "$heading_line" ]; then
+        echo "Error: Category heading \"$category_input\" not found in $selected_file"
+        exit 1
+    fi
+
+    # Prepare the content with indentation for a nested bullet point
+    # Adjust indentation as needed (e.g., "  - " for level 1 indentation)
+    content_to_append="  - $neorg_content"
+
+    # Append the content after the category heading
+    sed -i "${heading_line}a\\${content_to_append}" "$selected_file"
+
+    echo "Clipboard content with tags ($tags_input) appended to category \"$category_input\" in $selected_file"
+
+    # If no category is provided, append as a bullet point at the end of the file
+else
+    echo "- $neorg_content" >> "$selected_file"
+    echo "Clipboard content with tags ($tags_input) appended to $selected_file"
+fi
+

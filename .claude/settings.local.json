@@ -21,7 +21,14 @@
       "Bash(/usr/local/bin/nvim:*)",
       "Bash(SHELL=/bin/zsh /usr/local/bin/nvim --version)",
       "Bash(rm:*)",
-      "Bash(rg:*)"
+      "Bash(rg:*)",
+      "Bash(bash:*)",
+      "Bash(./bin/.local/scripts/xa_clip)",
+      "Bash(timeout:*)",
+      "Bash(echo \"Exit code: $?\")",
+      "Bash(pbpaste)",
+      "Bash(echo:*)",
+      "Bash(echo \"pbpaste: $?\")"
     ],
     "deny": []
   }
