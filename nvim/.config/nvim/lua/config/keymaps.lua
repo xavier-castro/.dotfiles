@@ -22,10 +22,18 @@ vim.keymap.set({ "n", "v" }, "<leader>d", '"_d')
 -- This is going to get me cancelled
 vim.keymap.set("i", "<C-c>", "<Esc>")
 vim.keymap.set("n", "Q", "<nop>")
-vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
-vim.keymap.set("n", "<leader>cf", function()
-  require("conform").format({ bufnr = 0 })
-end)
+
+-- xavier-castro + theprimeagen settings
+vim.keymap.set("i", "jk", "<ESC>")
+vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { desc = "Tmux Sessionizer" })
+vim.keymap.set("n", "<M-o>", function()
+  vim.cmd([[ silent !tmux new-window /usr/local/bin/opencode]])
+end, { desc = "Open Opencode" })
+
+vim.keymap.set("n", "<M-c>", function()
+  vim.cmd([[ silent !tmux new-window /Users/xavier/.volta/bin/claude --dangerously-skip-permissions]])
+end, { desc = "Open Claude CLI" })
+
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")

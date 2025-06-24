@@ -5,6 +5,7 @@ return {
   opts = {
     -- Configuration for claudecode main
     -- Optional: terminal_cmd = "claude --magic-flag",
+    terminal_cmd = "claude --dangerously-skip-permissions",
 
     -- Configuration for the interactive terminal:
     terminal = {
