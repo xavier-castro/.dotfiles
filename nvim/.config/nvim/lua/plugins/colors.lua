@@ -12,11 +12,10 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      -- NOTE: you do not need to call setup if you don't want to.
       require("vague").setup({
         transparent = true, -- don't set background
         -- disable bold/italic globally in `style`
-        bold = true,
+        bold = false,
         italic = false,
         style = {
           -- "none" is the same thing as default. But "italic" and "bold" are also valid options
@@ -100,7 +99,7 @@ return {
           delta = "#f3be7c",
         },
       })
-      vim.cmd("colorscheme vague")
+      -- vim.cmd("colorscheme vague")
     end,
   },
 
@@ -165,6 +164,7 @@ return {
           floats = "dark", -- style for floating windows
         },
       })
+      vim.cmd("colorscheme tokyonight")
     end,
   },
 
@@ -179,7 +179,7 @@ return {
         },
       })
 
-      ColorMyPencils()
+      -- ColorMyPencils()
     end,
   },
 }
