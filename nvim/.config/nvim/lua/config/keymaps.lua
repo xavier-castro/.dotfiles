@@ -4,7 +4,7 @@
 -- XC
 vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
-map("t", "<C-x>", "<C-\\><C-N>", { desc = "terminal escape terminal mode" })
+vim.keymap.set("t", "<C-x>", "<C-\\><C-N>", { desc = "terminal escape terminal mode" })
 vim.keymap.set("i", "jk", "<C-c>")
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
