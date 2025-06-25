@@ -1,111 +1,190 @@
-# Personal Zsh configuration file. It is strongly recommended to keep all
-# shell customization and configuration (including exported environment
-# variables such as PATH) in this file or in files sourced from it.
-#
-# Documentation: https://github.com/romkatv/zsh4humans/blob/v5/README.md.
+# Ultra-Fast ZSH Configuration
+# Minimal setup for maximum speed
 
-# Periodic auto-update on Zsh startup: 'ask' or 'no'.
-# You can manually run `z4h update` to update everything.
-zstyle ':z4h:' auto-update      'no'
-# Ask whether to auto-update this often; has no effect if auto-update is 'no'.
-zstyle ':z4h:' auto-update-days '28'
+# ============================================================================
+# PATH - Set once, export immediately
+# ============================================================================
+typeset -U path
+path=(
+/usr/local/bin
+~/bin
+~/.cargo/bin
+~/go/bin
+~/.rustup/toolchains/stable-x86_64-apple-darwin/bin
+~/.volta/bin
+$path
+)
+export PATH
 
-# Keyboard type: 'mac' or 'pc'.
-zstyle ':z4h:bindkey' keyboard  'mac'
 
-# Start tmux if not already in tmux.
-# zstyle ':z4h:' start-tmux command tmux -u new -A -D -t z4h
+# ============================================================================
+# SHELL OPTIONS - Minimal set for good UX
+# ============================================================================
+setopt auto_cd # cd by typing directory name
+setopt auto_pushd # push old directory onto stacksetopt pushd_ignore_dups     # don't duplicate directories
+setopt extended_history # timestamp in history
+setopt hist_ignore_dups # ignore duplicate commands
+setopt hist_ignore_space # ignore commands starting with space
+setopt share_history # share history between sessions
+setopt glob_dots # include dotfiles in globs
+setopt complete_in_word # complete from cursor position
+setopt prompt_subst # enable prompt expansion
 
-# Whether to move prompt to the bottom when zsh starts and on Ctrl+L.
-zstyle ':z4h:' prompt-at-bottom 'no'
+# ============================================================================
+# HISTORY
+# ============================================================================
+HISTFILE=~/.zsh_history
+HISTSIZE=10000
+SAVEHIST=10000
 
-# Mark up shell's output with semantic information.
-zstyle ':z4h:' term-shell-integration 'yes'
+# ============================================================================
+# FAST ROBBYRUSSELL PROMPT
+# ============================================================================
+# Load our custom fast prompt
+if [[ -f ~/.dotfiles/zsh/robbyrussell-fast.zsh ]]; then
+    source ~/.dotfiles/zsh/robbyrussell-fast.zsh
+else
+    # Fallback ultra-minimal prompt
+    autoload -U colors && colors
+    PROMPT='%{$fg[cyan]%}%c%{$reset_color%} %{$fg[green]%}➜%{$reset_color%} '
+fi
 
-# Right-arrow key accepts one character ('partial-accept') from
-# command autosuggestions or the whole thing ('accept')?
-zstyle ':z4h:autosuggestions' forward-char 'accept'
-
-# Recursively traverse directories when TAB-completing files.
-zstyle ':z4h:fzf-complete' recurse-dirs 'no'
-
-# Enable direnv to automatically source .envrc files.
-zstyle ':z4h:direnv'         enable 'no'
-# Show "loading" and "unloading" notifications from direnv.
-zstyle ':z4h:direnv:success' notify 'yes'
-
-# Enable ('yes') or disable ('no') automatic teleportation of z4h over
-# SSH when connecting to these hosts.
-zstyle ':z4h:ssh:example-hostname1'   enable 'no'
-zstyle ':z4h:ssh:*.example-hostname2' enable 'no'
-# The default value if none of the overrides above match the hostname.
-zstyle ':z4h:ssh:*'                   enable 'no'
-
-# Send these files over to the remote host when connecting over SSH to the
-# enabled hosts.
-zstyle ':z4h:ssh:*' send-extra-files '~/.nanorc' '~/.env.zsh'
-
-# Clone additional Git repositories from GitHub.
-#
-# This doesn't do anything apart from cloning the repository and keeping it
-# up-to-date. Cloned files can be used after `z4h init`. This is just an
-# example. If you don't plan to use Oh My Zsh, delete this line.
-z4h install ohmyzsh/ohmyzsh || return
-
-# Install or update core components (fzf, zsh-autosuggestions, etc.) and
-# initialize Zsh. After this point console I/O is unavailable until Zsh
-# is fully initialized. Everything that requires user interaction or can
-# perform network I/O must be done above. Everything else is best done below.
-z4h init || return
-
-# Extend PATH.
-path=(~/bin ~/.config/emacs/bin ~/.cargo/bin ~/go/ ~/.rustup/toolchains/stable-x86_64-apple-darwin/bin /usr/local/bin ~/.volta/bin $path)
-
-# Export environment variables.
-export GPG_TTY=$TTY
-
-# Source additional local files if they exist.
-z4h source ~/.env.zsh
-
-# Use additional Git repositories pulled in with `z4h install`.
-#
-# This is just an example that you should delete. It does nothing useful.
-z4h source ohmyzsh/ohmyzsh/lib/diagnostics.zsh  # source an individual file
-z4h load   ohmyzsh/ohmyzsh/plugins/emoji-clock  # load a plugin
-
-# Define key bindings.
-z4h bindkey undo Ctrl+/   Shift+Tab  # undo the last command line change
-z4h bindkey redo Option+/            # redo the last undone command line change
-
-z4h bindkey z4h-cd-back    Shift+Left   # cd into the previous directory
-z4h bindkey z4h-cd-forward Shift+Right  # cd into the next directory
-z4h bindkey z4h-cd-up      Shift+Up     # cd into the parent directory
-z4h bindkey z4h-cd-down    Shift+Down   # cd into a child directory
-
-# Autoload functions.
-autoload -Uz zmv
-
-# Define functions and completions.
-function md() { [[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1" }
-compdef _directories md
-
-# Define named directories: ~w <=> Windows home directory on WSL.
-[[ -z $z4h_win_home ]] || hash -d w=$z4h_win_home
-
-# Define aliases.
-alias tree='tree -a -I .git'
-
-# Add flags to existing aliases.
-alias ls="${aliases[ls]:-ls} -A"
-alias ec="emacsclient -c -a ''"
-# Set shell options: http://zsh.sourceforge.net/Doc/Release/Options.html.
+# ============================================================================
+# ESSENTIAL ALIASES
+# ============================================================================
 alias ls="ls -p -G"
 alias la="ls -A"
 alias ll="ls -l"
-alias lla="ll -A"
+alias lla="ll -A"alias lg="lazygit"
 alias tt="tmux new-session -A -s 'MAIN'"
-alias ta="tmux "
-alias lg="lazygit"
+alias ta="tmux"
 
-setopt glob_dots     # no special treatment for file names with a leading dot
-setopt no_auto_menu  # require an extra TAB press to open the completion menu
+# ============================================================================
+# UTILITY FUNCTIONS
+# ============================================================================
+md() { [[ $# == 1 ]] && mkdir -p -- "$1" && cd -- "$1" }
+
+# Todoist CLI helper functions
+function tadd() {
+    local task_content="$1"
+    local project=""
+    local label=""
+    local args=()
+
+    # Parse remaining arguments for p:Project and l:label syntax
+    shift
+    for arg in "$@"; do
+        case "$arg" in
+        p:*) project="${arg#p:}" ;;
+        l:*) label="${arg#l:}" ;;
+        *) args+=("$arg") ;;
+        esac
+    done
+
+    # Build todoist command
+    local cmd=("todoist" "add" "$task_content")
+    [[ -n "$project" ]] && cmd+=("--project" "$project")
+    [[ -n "$label" ]] && cmd+=("--label" "$label")
+
+    # Add any remaining arguments
+    cmd+=("${args[@]}")
+
+    # Execute the command
+    "${cmd[@]}"
+}
+
+function tnext() {
+    todoist list --filter "today | overdue" | fzf --preview "echo 'Task details: {}'"
+}
+
+# Quick complete function for today/overdue tasks
+function tcomplete() {
+    local selected
+    selected=$(todoist list --filter "today | overdue" | fzf --prompt="Complete task: ")
+    if [[ -n "$selected" ]]; then
+        # Extract task ID from the selected line (assuming it's the first field)
+        local task_id=$(echo "$selected" | awk '{print $1}')
+        todoist complete "$task_id"
+        echo "Completed: $selected"
+    fi
+}
+
+# ============================================================================
+# MINIMAL COMPLETION SETUP
+# ============================================================================
+# Only initialize if not already done (check for cache)
+if [[ ! -f ~/.zcompdump || ~/.zshrc -nt ~/.zcompdump ]]; then
+    autoload -Uz compinit
+    compinit -d ~/.zcompdump
+else
+    autoload -Uz compinit
+    compinit -C -d ~/.zcompdump
+fi
+
+# Basic completion settings
+zstyle ':completion:*' menu select
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
+
+# ============================================================================
+# KEY BINDINGS
+# ============================================================================
+bindkey -v # vi mode
+bindkey '^R' history-incremental-search-backward
+bindkey '^F' history-incremental-search-forward
+bindkey -s '^f' "tmux-sessionizer\n" # ctrl-f for tmux sessionizer
+
+# ============================================================================
+# NAVI - Interactive cheatsheet tool
+# ============================================================================
+_navi_call() {
+    local result="$(navi "$@" </dev/tty)"
+    printf "%s" "$result"
+}
+
+_navi_widget() {
+    local -r input="${LBUFFER}"
+    local -r last_command="$(echo "${input}" | navi fn widget::last_command)"
+    local replacement="$last_command"
+
+    if [ -z "$last_command" ]; then
+        replacement="$(_navi_call --print)"
+    elif [ "$LASTWIDGET" = "_navi_widget" ] && [ "$input" = "$previous_output" ]; then
+        replacement="$(_navi_call --print --query "$last_command")"
+    else
+        replacement="$(_navi_call --print --best-match --query "$last_command")"
+    fi
+
+    if [ -n "$replacement" ]; then
+        local -r find="${last_command}_NAVIEND"
+        previous_output="${input}_NAVIEND"
+        previous_output="${previous_output//$find/$replacement}"
+    else
+        previous_output="$input"
+    fi
+
+    zle kill-whole-line
+    LBUFFER="${previous_output}"
+    region_highlight=("P0 100 bold")
+    zle redisplay
+}
+
+zle -N _navi_widget
+bindkey '^g' _navi_widget
+
+# ============================================================================
+# CONDITIONAL LOADING - Only if files exist
+# ============================================================================
+[[ -f ~/.fzf.zsh ]] && source ~/.fzf.zsh
+[[ -f ~/.zsh_private ]] && source ~/.zsh_private
+[[ -f ~/.cargo/env ]] && source ~/.cargo/env
+
+# ============================================================================
+# BACKGROUND COMPILATION for next startup
+# ============================================================================
+{
+    # Compile this file for faster loading
+    [[ ~/.zshrc -nt ~/.zshrc.zwc ]] && zcompile ~/.zshrc
+    # Compile completion dump
+    [[ ~/.zcompdump -nt ~/.zcompdump.zwc ]] && zcompile ~/.zcompdump
+} &!
+alias j="/Users/xavier/.local/bin/jrnl-daily"

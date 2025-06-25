@@ -1,46 +1,54 @@
-# Documentation: https://github.com/romkatv/zsh4humans/blob/v5/README.md.
-#
-# Do not modify this file unless you know exactly what you are doing.
-# It is strongly recommended to keep all shell customization and configuration
-# (including exported environment variables such as PATH) in ~/.zshrc or in
-# files sourced from ~/.zshrc. If you are certain that you must export some
-# environment variables in ~/.zshenv, do it where indicated by comments below.
+# Fast ZSH Environment Configuration (.zshenv)
+# This file is sourced for all zsh invocations
+# Keep this minimal for fastest startup times
 
-if [ -n "${ZSH_VERSION-}" ]; then
-  # If you are certain that you must export some environment variables
-  # in ~/.zshenv (see comments at the top!), do it here:
-  #
-  #   export GOPATH=$HOME/go
-  #
-  # Do not change anything else in this file.
+# Skip global RC files for better control and speed
+setopt no_global_rcs
 
-  : ${ZDOTDIR:=~}
-  setopt no_global_rcs
-  [[ -o no_interactive && -z "${Z4H_BOOTSTRAPPING-}" ]] && return
-  setopt no_rcs
-  unset Z4H_BOOTSTRAPPING
-fi
-
-Z4H_URL="https://raw.githubusercontent.com/romkatv/zsh4humans/v5"
-: "${Z4H:=${XDG_CACHE_HOME:-$HOME/.cache}/zsh4humans/v5}"
-
+# Set umask for file permissions
 umask o-w
 
-if [ ! -e "$Z4H"/z4h.zsh ]; then
-  mkdir -p -- "$Z4H" || return
-  >&2 printf '\033[33mz4h\033[0m: fetching \033[4mz4h.zsh\033[0m\n'
-  if command -v curl >/dev/null 2>&1; then
-    curl -fsSL -- "$Z4H_URL"/z4h.zsh >"$Z4H"/z4h.zsh.$$ || return
-  elif command -v wget >/dev/null 2>&1; then
-    wget -O-   -- "$Z4H_URL"/z4h.zsh >"$Z4H"/z4h.zsh.$$ || return
-  else
-    >&2 printf '\033[33mz4h\033[0m: please install \033[32mcurl\033[0m or \033[32mwget\033[0m\n'
-    return 1
-  fi
-  mv -- "$Z4H"/z4h.zsh.$$ "$Z4H"/z4h.zsh || return
-fi
+# Essential environment variables that all shells need
+export ZDOTDIR=${ZDOTDIR:-$HOME}
 
-. "$Z4H"/z4h.zsh || return
+# XDG Base Directory Specification (for better organization)
+export XDG_CONFIG_HOME=${XDG_CONFIG_HOME:-$HOME/.config}
+export XDG_CACHE_HOME=${XDG_CACHE_HOME:-$HOME/.cache}
+export XDG_DATA_HOME=${XDG_DATA_HOME:-$HOME/.local/share}
 
-setopt rcs
-. "$HOME/.cargo/env"
+# Essential PATH components that need to be available to all processes
+# (GUI applications launched from desktop, scripts, etc.)
+typeset -U path
+path=(
+    $HOME/bin
+    $HOME/.local/bin
+    $HOME/.cargo/bin
+    /usr/local/bin
+    $path
+)
+
+# Export PATH for subprocesses
+export PATH
+
+# Language and locale settings
+export LANG=${LANG:-en_US.UTF-8}
+export LC_ALL=${LC_ALL:-en_US.UTF-8}
+
+# Terminal settings
+export TERM=${TERM:-xterm-256color}
+
+# Default applications
+export EDITOR=${EDITOR:-nvim}
+export VISUAL=${VISUAL:-nvim}
+export PAGER=${PAGER:-less}
+
+# Development tool settings
+export GOPATH=${GOPATH:-$HOME/go}
+export CARGO_HOME=${CARGO_HOME:-$HOME/.cargo}
+export RUSTUP_HOME=${RUSTUP_HOME:-$HOME/.rustup}
+
+# Performance: Skip some checks if we're not in an interactive shell
+[[ $- == *i* ]] || return
+
+# Only continue with interactive shell setup if needed
+[[ -o interactive ]] || return
