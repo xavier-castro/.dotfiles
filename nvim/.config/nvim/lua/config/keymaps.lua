@@ -3,6 +3,7 @@
 -- Add any additional keymaps here
 -- XC
 vim.g.mapleader = " "
+vim.g.maplocalleader = ","
 vim.keymap.set("n", "<leader>pv", vim.cmd.Ex)
 vim.keymap.set("t", "<C-x>", "<C-\\><C-N>", { desc = "terminal escape terminal mode" })
 vim.keymap.set("i", "jk", "<C-c>")
@@ -31,6 +32,10 @@ vim.keymap.set("n", "<M-o>", function()
   vim.cmd([[ silent !tmux new-window /usr/local/bin/opencode]])
 end, { desc = "Open Opencode" })
 
+vim.keymap.set("n", "<M-g>", function()
+  vim.cmd([[ silent !tmux new-window /usr/local/bin/gemini]])
+end, { desc = "Open Gemini" })
+
 vim.keymap.set("n", "<M-c>", function()
   vim.cmd([[ silent !tmux new-window /usr/local/bin/claude --dangerously-skip-permissions]])
 end, { desc = "Open Claude CLI" })
@@ -39,5 +44,3 @@ vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
-vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
