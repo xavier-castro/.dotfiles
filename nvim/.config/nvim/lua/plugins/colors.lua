@@ -104,6 +104,12 @@ return {
   },
 
   {
+    "webhooked/kanso.nvim",
+    lazy = false,
+    priority = 1000,
+  },
+
+  {
     "erikbackman/brightburn.vim",
   },
 
@@ -164,7 +170,7 @@ return {
           floats = "dark", -- style for floating windows
         },
       })
-      vim.cmd("colorscheme tokyonight")
+      -- vim.cmd("colorscheme tokyonight")
     end,
   },
 

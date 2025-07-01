@@ -89,6 +89,7 @@ return {
           mdx = "mdx",
         },
       })
+      vim.treesitter.language.register("templ", "templ")
       vim.treesitter.language.register("markdown", "mdx")
     end,
   },
