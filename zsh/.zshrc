@@ -13,18 +13,29 @@ zinit wait lucid light-mode for \
 
 
 zinit light mafredri/zsh-async  # dependency
-zinit ice pick"async.zsh" src"pure.zsh"
-zinit light sindresorhus/pure
+# zinit ice pick"async.zsh" src"pure.zsh"
+# zinit light sindresorhus/pure
+
+source ~/.dotfiles/zsh/xc_rr_fast_prompt.zsh
 
 # opencode
 export PATH=/Users/xavier/.opencode/bin:$PATH
+# personal scripts
 export PATH=/Users/xavier/.dotfiles/bin/.local/scripts:$PATH
+
+# navi (ctrl+g cheatsheet)
+eval "$(navi widget zsh)"                    # load the zsh widget
 
 # Aliases
 alias ls="ls -p -G"
 alias la="ls -A"
 alias ll="eza -l -g --icons"
 alias lla="ll -a"
+alias tt="tmux new-session -A -s 'MAIN'"
+alias tk="tmux kill-server"
+alias lg="lazygit"
+alias c="claude"
+alias g="gemini"
 
 
 bindkey -s ^f "tmux-sessionizer\n"
