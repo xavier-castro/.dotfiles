@@ -10,6 +10,10 @@ You need to install [homebrew](https://brew.sh/) and [zsh](https://github.com/ro
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh # Install rust
+```
+
 ### MacOS apps
 
 I really can't live without [raycast](https://www.raycast.com/). Complete game changer.
