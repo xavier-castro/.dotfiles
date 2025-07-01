@@ -32,7 +32,7 @@ vim.keymap.set("n", "<M-o>", function()
 end, { desc = "Open Opencode" })
 
 vim.keymap.set("n", "<M-c>", function()
-  vim.cmd([[ silent !tmux new-window /Users/xavier/.volta/bin/claude --dangerously-skip-permissions]])
+  vim.cmd([[ silent !tmux new-window /usr/local/bin/claude --dangerously-skip-permissions]])
 end, { desc = "Open Claude CLI" })
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
