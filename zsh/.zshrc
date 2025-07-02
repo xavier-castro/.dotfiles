@@ -49,6 +49,7 @@ fi
 # --- PATH additions for interactive shells only ---
 export PATH="/Users/xavier/.opencode/bin:$PATH"
 export PATH="/Users/xavier/.dotfiles/bin/.local/scripts:$PATH"
+source ~/.zsh_private.zshrc
 
 # --- Aliases ---
 alias ls="ls -p -G"
