@@ -16,6 +16,8 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh # Install rust
 
 ### MacOS apps
 
+![My Essentials Folder](./assets/images/app_essentials.png)
+
 I really can't live without [raycast](https://www.raycast.com/). Complete game changer.
 
 - Fantastical for scheduling. [App Store](https://apps.apple.com/us/app/fantastical-calendar/id975937182?mt=12)
