@@ -12,7 +12,8 @@ zinit wait lucid light-mode for \
     atload"_zsh_autosuggest_start" \
     zsh-users/zsh-autosuggestions \
     blockf atpull'zinit creinstall -q .' \
-    zsh-users/zsh-completions
+    zsh-users/zsh-completions \
+    Aloxaf/fzf-tab
 
 # zinit light mafredri/zsh-async # dependency
 # zinit ice pick"async.zsh" src"pure.zsh"
@@ -66,8 +67,6 @@ alias j="/Users/xavier/.local/bin/jrnl-daily"
 
 # --- Key bindings ---
 bindkey -v # vi mode
-bindkey '^R' history-incremental-search-backward
-bindkey '^F' history-incremental-search-forward
 bindkey -s '^f' "tmux-sessionizer\n"
 bindkey -s '\eh' "tmux-sessionizer -s 0\n"
 bindkey -s '\et' "tmux-sessionizer -s 1\n"
@@ -121,6 +120,7 @@ fi
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
-# --- navi and zoxide ---
+# --- fzf, navi and zoxide ---
+source "$(brew --prefix)/opt/fzf/shell/key-bindings.zsh"
 eval "$(navi widget zsh)"
 eval "$(zoxide init zsh)"
