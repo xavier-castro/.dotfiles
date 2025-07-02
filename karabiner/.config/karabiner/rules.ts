@@ -57,7 +57,7 @@ const rules: KarabinerRules[] = [
   },
   ...createHyperSubLayers({
     spacebar: open(
-      "raycast://extensions/stellate/mxstbr-commands/create-notion-todo",
+      "raycast://extensions/stellate/mxstbr-commands/create-notion-todo"
     ),
     // b = "B"rowse
     b: {
@@ -75,15 +75,16 @@ const rules: KarabinerRules[] = [
       b: app("Zen"),
       g: app("Ghostty"),
       c: app("Claude"),
+      v: app("Visual Studio Code - Insiders"),
       // z: app("Zed"),
       // d: app("Discord"),
       // s: app("Slack"),
       // e: app("Superhuman"),
-      // n: app("Notion"),
+      n: app("Notion"),
       t: app("Ghostty"),
       // Open todo list managed via *H*ypersonic
       h: open(
-        "notion://www.notion.so/stellatehq/7b33b924746647499d906c55f89d5026",
+        "notion://www.notion.so/stellatehq/7b33b924746647499d906c55f89d5026"
       ),
       // z: app("zoom.us"),
       // "M"arkdown (Reflect.app)
@@ -96,7 +97,7 @@ const rules: KarabinerRules[] = [
       // a: app("iA Presenter"),
       m: open("Messages"),
       l: open(
-        "raycast://extensions/stellate/mxstbr-commands/open-mxs-is-shortlink",
+        "raycast://extensions/stellate/mxstbr-commands/open-mxs-is-shortlink"
       ),
     },
     // l: {
@@ -231,11 +232,11 @@ const rules: KarabinerRules[] = [
         ],
       },
       e: open(
-        `raycast://extensions/thomas/elgato-key-light/toggle?launchType=background`,
+        `raycast://extensions/thomas/elgato-key-light/toggle?launchType=background`
       ),
       // "D"o not disturb toggle
       d: open(
-        `raycast://extensions/yakitrak/do-not-disturb/toggle?launchType=background`,
+        `raycast://extensions/yakitrak/do-not-disturb/toggle?launchType=background`
       ),
       // "T"heme
       t: open(`raycast://extensions/raycast/system/toggle-system-appearance`),
@@ -304,22 +305,22 @@ const rules: KarabinerRules[] = [
       c: open("raycast://extensions/thomas/color-picker/pick-color"),
       n: open("raycast://script-commands/dismiss-notifications"),
       l: open(
-        "raycast://extensions/stellate/mxstbr-commands/create-mxs-is-shortlink",
+        "raycast://extensions/stellate/mxstbr-commands/create-mxs-is-shortlink"
       ),
       e: open(
-        "raycast://extensions/raycast/emoji-symbols/search-emoji-symbols",
+        "raycast://extensions/raycast/emoji-symbols/search-emoji-symbols"
       ),
       p: open("raycast://extensions/raycast/raycast/confetti"),
       a: open("raycast://extensions/raycast/raycast-ai/ai-chat"),
       s: open("raycast://extensions/peduarte/silent-mention/index"),
       h: open(
-        "raycast://extensions/raycast/clipboard-history/clipboard-history",
+        "raycast://extensions/raycast/clipboard-history/clipboard-history"
       ),
       1: open(
-        "raycast://extensions/VladCuciureanu/toothpick/connect-favorite-device-1",
+        "raycast://extensions/VladCuciureanu/toothpick/connect-favorite-device-1"
       ),
       2: open(
-        "raycast://extensions/VladCuciureanu/toothpick/connect-favorite-device-2",
+        "raycast://extensions/VladCuciureanu/toothpick/connect-favorite-device-2"
       ),
     },
   }),
@@ -366,6 +367,6 @@ fs.writeFileSync(
       ],
     },
     null,
-    2,
-  ),
+    2
+  )
 );
