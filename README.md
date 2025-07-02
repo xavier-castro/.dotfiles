@@ -21,7 +21,8 @@ I really can't live without [raycast](https://www.raycast.com/). Complete game c
 - Fantastical for scheduling. [App Store](https://apps.apple.com/us/app/fantastical-calendar/id975937182?mt=12)
 - Todoist for task management. [App Store](https://apps.apple.com/us/app/todoist-to-do-list-calendar/id585829637?mt=12)
 - [1Password](https://1password.com/downloads/mac)
-- [Cursor]()
+- [Cursor](https://cursor.com/)
+- [RepoPrompt](https://repoprompt.com/)
 
 ### Aerospace
 
@@ -36,7 +37,9 @@ I really can't live without [raycast](https://www.raycast.com/). Complete game c
 ### Claude Code + Opencode + Gemini
 
 `npm install -g @anthropic-ai/claude-code`
-`npm install -g @google/gemini-cli``
+
+`npm install -g @google/gemini-cli`
+
 `brew install sst/tap/opencode # macOS`
 
 #### Claude All-in-One MCP Config
@@ -45,23 +48,20 @@ I really can't live without [raycast](https://www.raycast.com/). Complete game c
 
 ```json
 {
+  "globalShortcut": "",
   "mcpServers": {
-    "mcp-sequentialthinking-tools": {
-      "type": "stdio",
+    "desktop-commander": {
       "command": "npx",
-      "args": ["-y", "mcp-sequentialthinking-tools"]
+      "args": ["-y", "@wonderwhy-er/desktop-commander"]
     },
-    "mcp-omnisearch": {
-      "type": "stdio",
-      "command": "npx",
-      "args": ["-y", "mcp-omnisearch"],
-      "env": {
-        "TAVILY_API_KEY": "",
-        "BRAVE_API_KEY": "",
-        "KAGI_API_KEY": "",
-        "PERPLEXITY_API_KEY": "",
-        "JINA_AI_API_KEY": ""
-      }
+    "RepoPrompt": {
+      "args": [],
+      "command": "/Users/xavier/RepoPrompt/repoprompt_cli",
+      "env": {}
+    },
+    "MCP_DOCKER": {
+      "command": "docker",
+      "args": ["mcp", "gateway", "run"]
     }
   }
 }
