@@ -24,6 +24,7 @@ path=(
     $HOME/.local/bin
     $HOME/.cargo/bin
     /usr/local/bin
+    $HOME/RepoPrompt
     $path
 )
 
