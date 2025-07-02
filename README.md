@@ -21,6 +21,7 @@ I really can't live without [raycast](https://www.raycast.com/). Complete game c
 - Fantastical for scheduling. [App Store](https://apps.apple.com/us/app/fantastical-calendar/id975937182?mt=12)
 - Todoist for task management. [App Store](https://apps.apple.com/us/app/todoist-to-do-list-calendar/id585829637?mt=12)
 - [1Password](https://1password.com/downloads/mac)
+- [Cursor]()
 
 ### Aerospace
 
