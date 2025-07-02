@@ -84,21 +84,14 @@ robbyrussell_prompt() {
     fi
 
     # Build prompt
-    PROMPT="${user_host}%{$fg[cyan]%}$(short_pwd)%{$reset_color%}\$(git_prompt_info)%{$reset_color%}
-%{$fg[green]%}${prompt_char}%{$reset_color%} "
-}
-
-# Right prompt with minimal info
-robbyrussell_rprompt() {
-    # Only show exit code if non-zero
-    RPROMPT='%(?..%{$fg[red]%}%?%{$reset_color%})'
+    PROMPT="${user_host}%{$fg[cyan]%}\$(short_pwd)%{$reset_color%}\$(git_prompt_info)%{$reset_color%} %{$fg[green]%}${prompt_char}%{$reset_color%} "
 }
 
 # Initialize the prompt
 robbyrussell_init() {
     # Set up prompt
     robbyrussell_prompt
-    robbyrussell_rprompt
+    # robbyrussell_rprompt
 
     # Enable prompt substitution
     setopt prompt_subst
