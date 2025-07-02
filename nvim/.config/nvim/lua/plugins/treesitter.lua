@@ -1,38 +1,46 @@
-return {
-  { "nvim-treesitter/playground", cmd = "TSPlaygroundToggle" },
+-- [[ Treesitter Configuration ]]
+-- Highlight, edit, and navigate code
 
+return {
   {
     "nvim-treesitter/nvim-treesitter",
+    event = { "BufReadPost", "BufNewFile" },
+    cmd = { "TSInstall", "TSBufEnable", "TSBufDisable", "TSModuleInfo" },
+    build = ":TSUpdate",
     opts = {
       ensure_installed = {
-        "astro",
-        "cmake",
-        "cpp",
+        "bash",
+        "c",
+        "diff",
+        "html",
+        "lua",
+        "luadoc",
+        "markdown",
+        "markdown_inline",
+        "query",
+        "vim",
+        "vimdoc",
+        "javascript",
+        "typescript",
+        "norg",
+        "tsx",
+        "json",
+        "yaml",
+        "toml",
         "css",
-        "fish",
-        "gitignore",
-        "go",
-        "graphql",
-        "http",
-        "java",
-        "php",
+        "python",
         "rust",
-        "scss",
-        "sql",
-        "svelte",
+        "go",
       },
-
-      -- matchup = {
-      -- 	enable = true,
+      -- Autoinstall languages that are not installed
+      auto_install = true,
+      -- highlight = {
+      --   enable = true,
+      --   -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
+      --   -- If you are experiencing weird indenting issues, add the language to
+      --   -- the list of additional_vim_regex_highlighting and disabled languages for indent.
+      --   additional_vim_regex_highlighting = { "ruby" },
       -- },
-
-      -- https://github.com/nvim-treesitter/playground#query-linter
-      query_linter = {
-        enable = true,
-        use_virtual_text = true,
-        lint_events = { "BufWrite", "CursorHold" },
-      },
-
       highlight = {
         -- `false` will disable the whole extension
         enable = true,
@@ -53,44 +61,105 @@ return {
             return true
           end
         end,
-
-        -- Setting this to true will run `:h syntax` and tree-sitter at the same time.
-        -- Set this to `true` if you depend on "syntax" being enabled (like for indentation).
-        -- Using this option may slow down your editor, and you may see some duplicate highlights.
-        -- Instead of true it can also be a list of languages
-        additional_vim_regex_highlighting = { "markdown" },
       },
-
-      playground = {
+      indent = { enable = true, disable = { "ruby" } },
+      incremental_selection = {
         enable = true,
-        disable = {},
-        updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-        persist_queries = true, -- Whether the query persists across vim sessions
-        keybindings = {
-          toggle_query_editor = "o",
-          toggle_hl_groups = "i",
-          toggle_injected_languages = "t",
-          toggle_anonymous_nodes = "a",
-          toggle_language_display = "I",
-          focus_language = "f",
-          unfocus_language = "F",
-          update = "R",
-          goto_node = "<cr>",
-          show_help = "?",
+        keymaps = {
+          init_selection = "<C-space>",
+          node_incremental = "<C-space>",
+          scope_incremental = false,
+          node_decremental = "<bs>",
+        },
+      },
+      textobjects = {
+        select = {
+          enable = true,
+          lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+          keymaps = {
+            -- You can use the capture groups defined in textobjects.scm
+            ["aa"] = "@parameter.outer",
+            ["ia"] = "@parameter.inner",
+            ["af"] = "@function.outer",
+            ["if"] = "@function.inner",
+            ["ac"] = "@class.outer",
+            ["ic"] = "@class.inner",
+            ["ii"] = "@conditional.inner",
+            ["ai"] = "@conditional.outer",
+            ["il"] = "@loop.inner",
+            ["al"] = "@loop.outer",
+            ["at"] = "@comment.outer",
+          },
+        },
+        move = {
+          enable = true,
+          set_jumps = true, -- whether to set jumps in the jumplist
+          goto_next_start = {
+            ["]m"] = "@function.outer",
+            ["]]"] = "@class.outer",
+          },
+          goto_next_end = {
+            ["]M"] = "@function.outer",
+            ["]["] = "@class.outer",
+          },
+          goto_previous_start = {
+            ["[m"] = "@function.outer",
+            ["[["] = "@class.outer",
+          },
+          goto_previous_end = {
+            ["[M"] = "@function.outer",
+            ["[]"] = "@class.outer",
+          },
+        },
+        swap = {
+          enable = true,
+          swap_next = {
+            ["<leader>a"] = "@parameter.inner",
+          },
+          swap_previous = {
+            ["<leader>A"] = "@parameter.inner",
+          },
         },
       },
     },
     config = function(_, opts)
+      -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
+
       require("nvim-treesitter.configs").setup(opts)
 
-      -- MDX
-      vim.filetype.add({
-        extension = {
-          mdx = "mdx",
-        },
-      })
-      vim.treesitter.language.register("templ", "templ")
-      vim.treesitter.language.register("markdown", "mdx")
+      -- There are additional nvim-treesitter modules that you can use to interact
+      -- with nvim-treesitter. You should go explore a few and see what interests you:
+      --
+      --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
+      --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
+      --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+    end,
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    event = "VeryLazy",
+    enabled = true,
+    config = function()
+      -- When in diff mode, we want to use the default
+      -- vim text objects c & C instead of the treesitter ones.
+      local move = require("nvim-treesitter.textobjects.move") ---@type table<string,fun(...)>
+      local configs = require("nvim-treesitter.configs")
+      for name, fn in pairs(move) do
+        if name:find("goto") == 1 then
+          move[name] = function(q, ...)
+            if vim.wo.diff then
+              local config = configs.get_module("textobjects.move")[name] ---@type table<string,string>
+              for key, query in pairs(config or {}) do
+                if q == query and key:find("[%]%[][cC]") then
+                  vim.cmd("normal! " .. key)
+                  return
+                end
+              end
+            end
+            return fn(q, ...)
+          end
+        end
+      end
     end,
   },
 }
