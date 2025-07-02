@@ -10,7 +10,7 @@ return {
       mappings = {
         sidebar = nil,
         term = function(buf)
-          vim.keymap.set({ "n", "t" }, "<C-p>", function()
+          vim.keymap.set({ "n", "t" }, "<M-p>", function()
             require("floaterm.api").cycle_term_bufs("prev")
           end, { buffer = buf })
         end,

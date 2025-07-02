@@ -3,9 +3,15 @@
 
 return {
   {
+    "andrew-george/telescope-themes",
+    config = function()
+      require("telescope").load_extension("themes")
+    end,
+  },
+  {
     "nvim-telescope/telescope.nvim",
     event = "VimEnter",
-    branch = "0.1.x",
+    cmd = "Telescope",
     dependencies = {
       "nvim-lua/plenary.nvim",
       {
