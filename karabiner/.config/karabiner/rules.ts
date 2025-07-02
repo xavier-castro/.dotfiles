@@ -114,24 +114,8 @@ const rules: KarabinerRules[] = [
 
     // w = "Window"
     w: {
-      semicolon: {
-        description: "Make Larger",
-        to: [
-          {
-            key_code: "h",
-            modifiers: ["right_command"],
-          },
-        ],
-      },
-      quote: {
-        description: "Make Larger",
-        to: [
-          {
-            key_code: "h",
-            modifiers: ["right_command"],
-          },
-        ],
-      },
+      semicolon: window("make-smaller"),
+      quote: window("make-larger"),
       // y: window("previous-display"),
       // o: window("next-display"),
       // k: window("top-half"),

@@ -32,10 +32,11 @@ I really can't live without [raycast](https://www.raycast.com/). Complete game c
 
 * Traverse inside `.dotfiles/karabiner` and `yarn` followed by `yarn run build`
 
-### Claude Code + Opencode
+### Claude Code + Opencode + Gemini
 
 `npm install -g @anthropic-ai/claude-code`
-`brew install sst/tap/opencode      # macOS`
+`npm install -g @google/gemini-cli``
+`brew install sst/tap/opencode # macOS`
 
 #### Claude All-in-One MCP Config
 
@@ -78,6 +79,10 @@ brew install dprint
 brew install lua-language-server
 brew install mise
 ```
+
+## Notes on Docker
+
+Despite Docker Desktop being notoriously slow for Mac, it is still my go-to. I am aware of Orbstack but what is holding me with docker desktop is its easy MCP tooling install which I rely heavily on
 
 ## Random But Useful
 

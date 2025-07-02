@@ -522,17 +522,12 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Make Larger",
+                                "description": "Window: make-smaller",
                                 "from": {
                                     "key_code": "semicolon",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [
-                                    {
-                                        "key_code": "h",
-                                        "modifiers": ["right_command"]
-                                    }
-                                ],
+                                "to": [{ "shell_command": "open -g raycast://extensions/raycast/window-management/make-smaller" }],
                                 "type": "basic"
                             },
                             {
@@ -543,17 +538,12 @@
                                         "value": 1
                                     }
                                 ],
-                                "description": "Make Larger",
+                                "description": "Window: make-larger",
                                 "from": {
                                     "key_code": "quote",
                                     "modifiers": { "optional": ["any"] }
                                 },
-                                "to": [
-                                    {
-                                        "key_code": "h",
-                                        "modifiers": ["right_command"]
-                                    }
-                                ],
+                                "to": [{ "shell_command": "open -g raycast://extensions/raycast/window-management/make-larger" }],
                                 "type": "basic"
                             },
                             {
