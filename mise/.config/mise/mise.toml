@@ -1,9 +1,0 @@
-[tools]
-bun = "latest"
-ghq = "latest"
-python = "latest"
-# ruby = "latest"
-rust = "latest"
-go = "latest"
-pnpm = "latest"
-deno = "latest"
