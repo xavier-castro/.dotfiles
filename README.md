@@ -89,3 +89,7 @@ Despite Docker Desktop being notoriously slow for Mac, it is still my go-to. I a
 ### Claude Error to Symlink Fix
 
 `sudo ln -sf "$(which node)" /usr/local/bin/node && sudo ln -sf "$(which npx)" /usr/local/bin/npx`
+
+### tmux-sessionizer denied permissions
+
+`chmod +x ~/.dotfiles/bin/.local/scripts/tmux-sessionizer`
