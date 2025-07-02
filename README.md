@@ -93,3 +93,7 @@ Despite Docker Desktop being notoriously slow for Mac, it is still my go-to. I a
 ### tmux-sessionizer denied permissions
 
 `chmod +x ~/.dotfiles/bin/.local/scripts/tmux-sessionizer`
+
+### Aerospace and Mission Control Not Playing Along
+
+`defaults write com.apple.dock expose-group-apps -bool true && killall Dock`
