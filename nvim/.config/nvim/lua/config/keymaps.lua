@@ -51,5 +51,46 @@ vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
+local map = vim.keymap.set
+
+map("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+
+-- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
+-- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
+-- is not what someone will guess without a bit more experience.
+map("t", "<Esc><Esc>", "<C-\\><C-N>", { desc = "Exit terminal mode" })
+
+-- Keybinds to make split navigation easier.
+-- Use CTRL+<hjkl> to switch between windows
+map("n", "<C-h>", "<C-w><C-h>", { desc = "Move focus to the left window" })
+map("n", "<C-l>", "<C-w><C-l>", { desc = "Move focus to the right window" })
+map("n", "<C-j>", "<C-w><C-j>", { desc = "Move focus to the lower window" })
+map("n", "<C-k>", "<C-w><C-k>", { desc = "Move focus to the upper window" })
+
+-- Slightly advanced example of overriding default behavior and theme
+map("n", "<leader>s/", function()
+  -- You can pass additional configuration to Telescope to change the theme, layout, etc.
+  require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
+    winblend = 10,
+    previewer = false,
+  }))
+end, { desc = "[/] Fuzzily search in current buffer" })
+
+-- It's also possible to pass additional configuration options.
+map("n", "<leader>s/", function()
+  require("telescope.builtin").live_grep({
+    grep_open_files = true,
+    prompt_title = "Live Grep in Open Files",
+  })
+end, { desc = "[S]earch [/] in Open Files" })
+
+-- Shortcut for searching your Neovim configuration files
+map("n", "<leader>sn", function()
+  require("telescope.builtin").find_files({ cwd = vim.fn.stdpath("config") })
+end, { desc = "[S]earch [N]eovim files" })
+
+-- Terminal
+map("t", "<C-x>", "<C-\\><C-N>", { desc = "Terminal escape terminal mode" })
+
 -- External Keymaps
 require("scripts.floating_term")
