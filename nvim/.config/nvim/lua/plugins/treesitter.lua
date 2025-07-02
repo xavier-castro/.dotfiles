@@ -42,6 +42,7 @@ return {
       --   additional_vim_regex_highlighting = { "ruby" },
       -- },
       highlight = {
+        use_languagetree = true,
         -- `false` will disable the whole extension
         enable = true,
         disable = function(lang, buf)

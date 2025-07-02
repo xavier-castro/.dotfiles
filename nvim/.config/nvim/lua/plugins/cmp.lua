@@ -38,6 +38,18 @@ return {
       "hrsh7th/cmp-path",
     },
     config = function()
+      -- vscode format
+      require("luasnip.loaders.from_vscode").lazy_load({ exclude = vim.g.vscode_snippets_exclude or {} })
+      require("luasnip.loaders.from_vscode").lazy_load({ paths = vim.g.vscode_snippets_path or "" })
+
+      -- snipmate format
+      require("luasnip.loaders.from_snipmate").load()
+      require("luasnip.loaders.from_snipmate").lazy_load({ paths = vim.g.snipmate_snippets_path or "" })
+
+      -- lua format
+      require("luasnip.loaders.from_lua").load()
+      require("luasnip.loaders.from_lua").lazy_load({ paths = vim.g.lua_snippets_path or "" })
+
       -- See `:help cmp`
       local cmp = require("cmp")
       local luasnip = require("luasnip")
@@ -100,18 +112,35 @@ return {
             end
           end, { "i", "s" }),
 
+          ["<Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_next_item()
+            elseif require("luasnip").expand_or_jumpable() then
+              require("luasnip").expand_or_jump()
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
+
+          ["<S-Tab>"] = cmp.mapping(function(fallback)
+            if cmp.visible() then
+              cmp.select_prev_item()
+            elseif require("luasnip").jumpable(-1) then
+              require("luasnip").jump(-1)
+            else
+              fallback()
+            end
+          end, { "i", "s" }),
+
           -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
           --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
         }),
         sources = {
-          {
-            name = "lazydev",
-            -- set group index to 0 to skip loading LuaLS completions as lazydev recommends it
-            group_index = 0,
-          },
           { name = "nvim_lsp" },
           { name = "luasnip" },
-          { name = "path" },
+          { name = "buffer" },
+          { name = "nvim_lua" },
+          { name = "async_path" },
           { name = "neorg" },
         },
         window = {
