@@ -22,7 +22,6 @@ return {
         "vimdoc",
         "javascript",
         "typescript",
-        "norg",
         "tsx",
         "json",
         "yaml",
