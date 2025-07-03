@@ -63,8 +63,10 @@ return {
     config = function()
       require('vague').setup {
         transparent = true,
+        italic = false,
+        bold = false,
       }
-      -- vim.cmd.colorscheme 'vague'
+      vim.cmd.colorscheme 'vague'
     end,
   },
   -- Using Lazy
@@ -135,7 +137,7 @@ return {
         },
       }
 
-      vim.cmd.colorscheme 'rose-pine'
+      -- vim.cmd.colorscheme 'rose-pine'
     end,
   },
 }

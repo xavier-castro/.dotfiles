@@ -45,12 +45,12 @@ vim.keymap.set('n', '<M-c>', function()
   vim.cmd [[ silent !tmux new-window /Users/xavier/.volta/bin/claude  --dangerously-skip-permissions]]
 end, { desc = 'Open Claude CLI' })
 
-vim.keymap.set("n", "<leader>f", function()
-    require("conform").format({ bufnr = 0 })
+vim.keymap.set('n', '<leader>f', function()
+  require('conform').format { bufnr = 0 }
 end)
 
-vim.keymap.set("i", "<C-c>", "<Esc>")
-vim.keymap.set("n", "Q", "<nop>")
+vim.keymap.set('i', '<C-c>', '<Esc>')
+vim.keymap.set('n', 'Q', '<nop>')
 
 vim.keymap.set('n', '<M-h>', '<cmd>silent !tmux-sessionizer -s 0 --vsplit<CR>')
 vim.keymap.set('n', '<M-H>', '<cmd>silent !tmux neww tmux-sessionizer -s 0<CR>')

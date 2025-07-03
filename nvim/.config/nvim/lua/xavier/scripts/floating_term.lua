@@ -80,7 +80,7 @@ local function close_floating_terminal()
   end
 end
 
-vim.keymap.set('n', '<C-/>', function()
+vim.keymap.set('n', '<C-n>', function()
   if float_term_win and vim.api.nvim_win_is_valid(float_term_win) then
     close_floating_terminal()
   else
