@@ -56,6 +56,21 @@ vim.keymap.set('n', '<leader>j', '<cmd>lprev<CR>zz')
 --  See `:help hlsearch`
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 
+-- Goto next/prev error in qflist
+vim.keymap.set('n', '<C-j>', '<Cmd>cnext<CR>zz')
+vim.keymap.set('n', '<C-k>', '<Cmd>cprev<CR>zz')
+
+-- Toggle qflist window
+vim.keymap.set('n', '<Leader>q', function()
+  vim.cmd(vim.fn.getqflist({ winid = 0 }).winid ~= 0 and 'cclose' or 'copen')
+end)
+
+-- Add all diagnostics to the qflist
+vim.keymap.set('n', 'grq', function()
+  vim.diagnostic.setqflist { open = false }
+  pcall(vim.cmd.cc)
+end)
+
 -- Diagnostic keymaps
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 

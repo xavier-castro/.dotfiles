@@ -103,4 +103,4 @@ Despite Docker Desktop being notoriously slow for Mac, it is still my go-to. I a
 
 ## Projects I'm Scouting
 
-- [Claudia - GUI for Claude Code]
+- [Claudia - GUI for Claude Code](https://github.com/getAsterisk/claudia)

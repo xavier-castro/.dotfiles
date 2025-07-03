@@ -100,6 +100,8 @@ return {
           --  Symbols are things like variables, functions, types, etc.
           map('gO', require('telescope.builtin').lsp_document_symbols, 'Open Document Symbols')
 
+          map('gd', require('telescope.builtin').lsp_definitions { reuse_win = false }, 'Goto Definition')
+
           -- Fuzzy find all the symbols in your current workspace.
           --  Similar to document symbols, except searches over your entire project.
           map('gW', require('telescope.builtin').lsp_dynamic_workspace_symbols, 'Open Workspace Symbols')
@@ -208,10 +210,10 @@ return {
       --  - settings (table): Override the default settings passed when initializing the server.
       --        For example, to see the options for `lua_ls`, you could go to: https://luals.github.io/wiki/settings/
       local servers = {
-        -- clangd = {},
-        -- gopls = {},
-        -- pyright = {},
-        -- rust_analyzer = {},
+        clangd = {},
+        gopls = {},
+        pyright = {},
+        rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -220,18 +222,112 @@ return {
         -- But for many setups, the LSP (`ts_ls`) will work just fine
         -- ts_ls = {},
         --
-
+        cssls = {},
+        tailwindcss = {
+          root_dir = function(...)
+            return require('lspconfig.util').root_pattern '.git'(...)
+          end,
+        },
+        ts_ls = {
+          root_dir = function(...)
+            return require('lspconfig.util').root_pattern '.git'(...)
+          end,
+          single_file_support = false,
+          settings = {
+            typescript = {
+              inlayHints = {
+                includeInlayParameterNameHints = 'literal',
+                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = false,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+            },
+            javascript = {
+              inlayHints = {
+                includeInlayParameterNameHints = 'all',
+                includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+                includeInlayFunctionParameterTypeHints = true,
+                includeInlayVariableTypeHints = true,
+                includeInlayPropertyDeclarationTypeHints = true,
+                includeInlayFunctionLikeReturnTypeHints = true,
+                includeInlayEnumMemberValueHints = true,
+              },
+            },
+          },
+        },
+        html = {},
+        yamlls = {
+          settings = {
+            yaml = {
+              keyOrdering = false,
+            },
+          },
+        },
         lua_ls = {
-          -- cmd = { ... },
-          -- filetypes = { ... },
-          -- capabilities = {},
+          -- enabled = false,
+          single_file_support = true,
           settings = {
             Lua = {
-              completion = {
-                callSnippet = 'Replace',
+              workspace = {
+                checkThirdParty = false,
               },
-              -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-              -- diagnostics = { disable = { 'missing-fields' } },
+              completion = {
+                workspaceWord = true,
+                callSnippet = 'Both',
+              },
+              misc = {
+                parameters = {
+                  -- "--log-level=trace",
+                },
+              },
+              hint = {
+                enable = true,
+                setType = false,
+                paramType = true,
+                paramName = 'Disable',
+                semicolon = 'Disable',
+                arrayIndex = 'Disable',
+              },
+              doc = {
+                privateName = { '^_' },
+              },
+              type = {
+                castNumberToInteger = true,
+              },
+              diagnostics = {
+                disable = { 'incomplete-signature-doc', 'trailing-space' },
+                -- enable = false,
+                groupSeverity = {
+                  strong = 'Warning',
+                  strict = 'Warning',
+                },
+                groupFileStatus = {
+                  ['ambiguity'] = 'Opened',
+                  ['await'] = 'Opened',
+                  ['codestyle'] = 'None',
+                  ['duplicate'] = 'Opened',
+                  ['global'] = 'Opened',
+                  ['luadoc'] = 'Opened',
+                  ['redefined'] = 'Opened',
+                  ['strict'] = 'Opened',
+                  ['strong'] = 'Opened',
+                  ['type-check'] = 'Opened',
+                  ['unbalanced'] = 'Opened',
+                  ['unused'] = 'Opened',
+                },
+                unusedLocalExclude = { '_*' },
+              },
+              format = {
+                enable = false,
+                defaultConfig = {
+                  indent_style = 'space',
+                  indent_size = '2',
+                  continuation_indent_size = '2',
+                },
+              },
             },
           },
         },
@@ -253,6 +349,14 @@ return {
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
+        'stylua',
+        'selene',
+        'luacheck',
+        'shellcheck',
+        'shfmt',
+        'tailwindcss-language-server',
+        'typescript-language-server',
+        'css-lsp',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
