@@ -142,3 +142,6 @@ navi() { load_navi && navi "$@"; }
 load_zinit  # Enable for syntax highlighting and autosuggestions
 # load_fzf
 # load_zoxide
+
+# nb - Personal Knowledge Base System
+export PATH="$HOME/nb/bin:$PATH"

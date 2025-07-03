@@ -43,6 +43,9 @@ o.splitright = true
 o.timeoutlen = 400
 o.undofile = true
 
+-- Persist folds in views
+opt.viewoptions:append("folds")
+
 -- interval for writing swap file to disk, also used by gitsigns
 o.updatetime = 250
 

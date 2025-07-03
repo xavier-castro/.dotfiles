@@ -86,6 +86,37 @@ return {
     end,
   },
   {
+    "catppuccin/nvim",
+    name = "catppuccin",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("catppuccin").setup({
+        flavour = "mocha",
+        background = {
+          light = "latte",
+          dark = "mocha",
+        },
+        transparent = vim.g.have_transparent_bg,
+        integrations = {
+          cmp = true,
+          gitsigns = true,
+          telescope = true,
+          nvimtree = true,
+          notify = true,
+          mini = true,
+          -- For lazy loading
+          -- native_lsp = {
+          --   enabled = true,
+          --   undercurl = true,
+          -- },
+        },
+      })
+
+      -- vim.cmd.colorscheme("catppuccin-mocha")
+    end,
+  },
+  {
     "Mofiqul/vscode.nvim",
     config = function()
       -- vim.cmd.colorscheme 'vscode'

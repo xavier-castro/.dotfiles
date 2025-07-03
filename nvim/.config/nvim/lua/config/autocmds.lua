@@ -109,3 +109,15 @@ autocmd("BufWritePre", {
     vim.fn.mkdir(vim.fn.fnamemodify(file, ":p:h"), "p")
   end,
 })
+
+-- Persist folds with mkview and loadview
+autocmd("BufWinLeave", {
+  group = vim.api.nvim_create_augroup("view_folds", { clear = true }),
+  pattern = "*",
+  command = "silent! mkview",
+})
+autocmd("BufWinEnter", {
+  group = vim.api.nvim_create_augroup("view_folds_load", { clear = true }),
+  pattern = "*",
+  command = "silent! loadview",
+})

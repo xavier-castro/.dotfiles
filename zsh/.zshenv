@@ -18,6 +18,7 @@ path=(
     $HOME/.local/bin
     $HOME/.cargo/bin
     /usr/local/bin
+    $HOME/nb/bin
     $HOME/RepoPrompt
     $path
 )
@@ -41,3 +42,5 @@ export RUSTUP_HOME="${RUSTUP_HOME:-$HOME/.rustup}"
 # Only continue with interactive shell setup if needed
 [[ $- == *i* ]] || return
 [[ -o interactive ]] || return
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"

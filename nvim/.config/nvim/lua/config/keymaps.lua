@@ -43,8 +43,12 @@ vim.keymap.set("n", "<M-g>", function()
 end, { desc = "Open Gemini" })
 
 vim.keymap.set("n", "<M-c>", function()
-  vim.cmd([[ silent !tmux new-window /Users/xavier/.claude/local/claude --dangerously-skip-permissions]])
+  vim.cmd([[ silent !tmux new-window  --dangerously-skip-permissions]])
 end, { desc = "Open Claude CLI" })
+
+vim.keymap.set("n", "<M-m>", function()
+  vim.cmd([[ silent !tmux new-window nb]])
+end, { desc = "Open my personal notes" })
 
 vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
 vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
