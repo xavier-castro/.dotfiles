@@ -104,7 +104,7 @@ require 'lazy-bootstrap'
 require 'lazy-plugins'
 
 local augroup = vim.api.nvim_create_augroup
-local ThePrimeagenGroup = augroup('ThePrimeagen', {})
+local XavierGroup = augroup('Xavier', {})
 
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup('HighlightYank', {})
@@ -131,13 +131,13 @@ autocmd('TextYankPost', {
 })
 
 autocmd({ 'BufWritePre' }, {
-  group = ThePrimeagenGroup,
+  group = XavierGroup,
   pattern = '*',
   command = [[%s/\s\+$//e]],
 })
 
 autocmd('BufEnter', {
-  group = ThePrimeagenGroup,
+  group = XavierGroup,
   callback = function()
     if vim.bo.filetype == 'zig' then
       vim.cmd.colorscheme 'tokyonight-night'
@@ -148,7 +148,7 @@ autocmd('BufEnter', {
 })
 
 autocmd('LspAttach', {
-  group = ThePrimeagenGroup,
+  group = XavierGroup,
   callback = function(e)
     local opts = { buffer = e.buf }
     vim.keymap.set('n', 'gd', function()
