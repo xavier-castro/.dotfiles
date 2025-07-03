@@ -1,45 +1,36 @@
-# ~/.zshrc - Interactive shell configuration
+# ~/.zshrc - Optimized configuration for speed
 
-# --- Zinit plugin manager ---
-ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
-[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
-[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
-source "${ZINIT_HOME}/zinit.zsh"
+# === PERFORMANCE OPTIMIZATIONS ===
+# Skip global compinit (we'll do it once at the end)
+skip_global_compinit=1
 
-zinit wait lucid light-mode for \
-    atinit"zicompinit; zicdreplay" \
-    zdharma-continuum/fast-syntax-highlighting \
-    atload"_zsh_autosuggest_start" \
-    zsh-users/zsh-autosuggestions \
-    blockf atpull'zinit creinstall -q .' \
-    zsh-users/zsh-completions \
-    Aloxaf/fzf-tab
+# === ENVIRONMENT VARIABLES ===
+export HISTFILE=~/.zsh_history
+export HISTSIZE=10000
+export SAVEHIST=10000
 
-# zinit light mafredri/zsh-async # dependency
-# zinit ice pick"async.zsh" src"pure.zsh"
-# zinit light sindresorhus/pure
+# === SHELL OPTIONS ===
+setopt auto_cd auto_pushd pushd_ignore_dups
+setopt extended_history hist_ignore_dups hist_ignore_space share_history
+setopt glob_dots complete_in_word prompt_subst
 
-# --- Source Rust environment for interactive shells ---
-[[ -f "$HOME/.cargo/env" ]] && source "$HOME/.cargo/env"
+# === PATH SETUP ===
+# Build PATH efficiently (only if directories exist)
+typeset -U path  # Keep PATH unique
+path_additions=(
+    "$HOME/.cargo/bin"
+    "$HOME/.opencode/bin"
+    "$HOME/.dotfiles/bin/.local/scripts"
+    "$HOME/.bun/bin"
+    "/Applications/Emacs.app/Contents/MacOS/bin"
+)
 
-# --- Shell options ---
-setopt auto_cd           # cd by typing directory name
-setopt auto_pushd        # push old directory onto stack
-setopt pushd_ignore_dups # don't duplicate directories
-setopt extended_history  # timestamp in history
-setopt hist_ignore_dups  # ignore duplicate commands
-setopt hist_ignore_space # ignore commands starting with space
-setopt share_history     # share history between sessions
-setopt glob_dots         # include dotfiles in globs
-setopt complete_in_word  # complete from cursor position
-setopt prompt_subst      # enable prompt expansion
+for dir in $path_additions; do
+    [[ -d "$dir" ]] && path=("$dir" $path)
+done
 
-# --- History ---
-HISTFILE=~/.zsh_history
-HISTSIZE=10000
-SAVEHIST=10000
-
-# --- Fast RobbyRussell Prompt ---
+# === PROMPT ===
+# Fast minimal prompt (fallback if custom prompt unavailable)
 if [[ -f ~/.dotfiles/zsh/robbyrussell-fast.zsh ]]; then
     source ~/.dotfiles/zsh/robbyrussell-fast.zsh
 else
@@ -47,12 +38,7 @@ else
     PROMPT='%{$fg[cyan]%}%c%{$reset_color%} %{$fg[green]%}➜%{$reset_color%} '
 fi
 
-# --- PATH additions for interactive shells only ---
-export PATH="/Users/xavier/.opencode/bin:$PATH"
-export PATH="/Users/xavier/.dotfiles/bin/.local/scripts:$PATH"
-source ~/.zsh_private.zshrc
-
-# --- Aliases ---
+# === ALIASES ===
 alias ls="ls -p -G"
 alias la="ls -A"
 alias ll="eza -l -g --icons"
@@ -60,57 +46,61 @@ alias lla="ll -a"
 alias tt="tmux new-session -A -s 'MAIN'"
 alias tk="tmux kill-server"
 alias lg="lazygit"
-alias claude="/Users/xavier/.claude/local/claude"
+alias claude="$HOME/.claude/local/claude"
 alias c="claude"
 alias g="gemini"
-alias j="/Users/xavier/.local/bin/jrnl-daily"
-alias vpnon="tailscale up --exit-node=${TAILSCALE_EXIT_NODE} --accept-routes --exit-node-allow-lan-access"
-alias vpnoff="tailscale down"
+alias j="$HOME/.local/bin/jrnl-daily"
+alias ec="emacsclient -n -e '(make-frame)'"
 
-# --- Key bindings ---
-bindkey -v # vi mode
+# === KEY BINDINGS ===
+bindkey -v  # vi mode
 bindkey -s '^f' "tmux-sessionizer\n"
 bindkey -s '\eh' "tmux-sessionizer -s 0\n"
 bindkey -s '\et' "tmux-sessionizer -s 1\n"
 bindkey -s '\en' "tmux-sessionizer -s 2\n"
 bindkey -s '\es' "tmux-sessionizer -s 3\n"
 
-# --- Todoist CLI helper functions ---
-tadd() {
-    local task_content="$1"
-    local project=""
-    local label=""
-    local args=()
-    shift
-    for arg in "$@"; do
-        case "$arg" in
-            p:*) project="${arg#p:}" ;;
-            l:*) label="${arg#l:}" ;;
-            *) args+=("$arg") ;;
-        esac
-    done
-    local cmd=("todoist" "add" "$task_content")
-    [[ -n "$project" ]] && cmd+=("--project" "$project")
-    [[ -n "$label" ]] && cmd+=("--label" "$label")
-    cmd+=("${args[@]}")
-    "${cmd[@]}"
+# === LAZY LOADING FUNCTIONS ===
+# Only load these when actually needed
+
+# Zinit lazy loader
+load_zinit() {
+    ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+    [[ ! -d $ZINIT_HOME ]] && mkdir -p "$(dirname $ZINIT_HOME)"
+    [[ ! -d $ZINIT_HOME/.git ]] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
+    source "${ZINIT_HOME}/zinit.zsh"
+
+    # Load essential plugins only
+    zinit wait lucid light-mode for \
+        atinit"zicompinit; zicdreplay" \
+        zdharma-continuum/fast-syntax-highlighting \
+        atload"_zsh_autosuggest_start" \
+        zsh-users/zsh-autosuggestions
+
+    unfunction load_zinit
 }
 
-tnext() {
-    todoist list --filter "today | overdue" | fzf --preview "echo 'Task details: {}'"
+# FZF lazy loader
+load_fzf() {
+    [[ -f "$(brew --prefix)/opt/fzf/shell/key-bindings.zsh" ]] && \
+        source "$(brew --prefix)/opt/fzf/shell/key-bindings.zsh"
+    unfunction load_fzf
 }
 
-tcomplete() {
-    local selected
-    selected=$(todoist list --filter "today | overdue" | fzf --prompt="Complete task: ")
-    if [[ -n "$selected" ]]; then
-        local task_id=$(echo "$selected" | awk '{print $1}')
-        todoist complete "$task_id"
-        echo "Completed: $selected"
-    fi
+# Zoxide lazy loader
+load_zoxide() {
+    command -v zoxide >/dev/null && eval "$(zoxide init zsh)"
+    unfunction load_zoxide
 }
 
-# --- Completion setup ---
+# Navi lazy loader
+load_navi() {
+    command -v navi >/dev/null && eval "$(navi widget zsh)"
+    unfunction load_navi
+}
+
+# === COMPLETION SETUP ===
+# Optimized completion initialization
 if [[ ! -f ~/.zcompdump || ~/.zshrc -nt ~/.zcompdump ]]; then
     autoload -Uz compinit
     compinit -d ~/.zcompdump
@@ -119,22 +109,36 @@ else
     compinit -C -d ~/.zcompdump
 fi
 
+# Docker completions (if available)
+[[ -d ~/.docker/completions ]] && fpath=(~/.docker/completions $fpath)
+
+# Completion styles
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 
-# --- fzf, navi and zoxide ---
-source "$(brew --prefix)/opt/fzf/shell/key-bindings.zsh"
-eval "$(navi widget zsh)"
-eval "$(zoxide init zsh)"
+# === CONDITIONAL LOADING ===
+# Load tools only when needed via command hooks
 
-# bun completions
-[ -s "/Users/xavier/.bun/_bun" ] && source "/Users/xavier/.bun/_bun"
+# Auto-load zinit on first plugin-related command
+zinit() { load_zinit && zinit "$@"; }
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/xavier/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
-# End of Docker CLI completions
+# Auto-load fzf on first fzf command
+fzf() { load_fzf && fzf "$@"; }
+
+# Auto-load zoxide on first z command
+z() { load_zoxide && z "$@"; }
+
+# Auto-load navi on first navi command
+navi() { load_navi && navi "$@"; }
+
+# === EXTERNAL SOURCES ===
+# Source additional configs if they exist
+[[ -f ~/.zsh_private.zshrc ]] && source ~/.zsh_private.zshrc
+[[ -f ~/.cargo/env ]] && source ~/.cargo/env
+[[ -s ~/.bun/_bun ]] && source ~/.bun/_bun
+
+# === AUTO-LOAD ON STARTUP (Optional) ===
+# Uncomment these if you want immediate loading instead of lazy loading
+load_zinit  # Enable for syntax highlighting and autosuggestions
+# load_fzf
+# load_zoxide
