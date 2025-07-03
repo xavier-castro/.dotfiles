@@ -35,7 +35,7 @@ vim.keymap.set("n", "Q", "<nop>")
 vim.keymap.set("i", "jk", "<ESC>")
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>", { desc = "Tmux Sessionizer" })
 vim.keymap.set("n", "<M-o>", function()
-  vim.cmd([[ silent !tmux new-window /usr/local/bin/opencode]])
+  vim.cmd([[ silent !tmux new-window /Users/xavier/.opencode/bin/opencode]])
 end, { desc = "Open Opencode" })
 
 vim.keymap.set("n", "<M-g>", function()

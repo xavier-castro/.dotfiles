@@ -112,25 +112,25 @@ return {
             end
           end, { "i", "s" }),
 
-          ["<Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_next_item()
-            elseif require("luasnip").expand_or_jumpable() then
-              require("luasnip").expand_or_jump()
-            else
-              fallback()
-            end
-          end, { "i", "s" }),
-
-          ["<S-Tab>"] = cmp.mapping(function(fallback)
-            if cmp.visible() then
-              cmp.select_prev_item()
-            elseif require("luasnip").jumpable(-1) then
-              require("luasnip").jump(-1)
-            else
-              fallback()
-            end
-          end, { "i", "s" }),
+          -- ["<Tab>"] = cmp.mapping(function(fallback)
+          --   if cmp.visible() then
+          --     cmp.select_next_item()
+          --   elseif require("luasnip").expand_or_jumpable() then
+          --     require("luasnip").expand_or_jump()
+          --   else
+          --     fallback()
+          --   end
+          -- end, { "i", "s" }),
+          --
+          -- ["<S-Tab>"] = cmp.mapping(function(fallback)
+          --   if cmp.visible() then
+          --     cmp.select_prev_item()
+          --   elseif require("luasnip").jumpable(-1) then
+          --     require("luasnip").jump(-1)
+          --   else
+          --     fallback()
+          --   end
+          -- end, { "i", "s" }),
 
           -- For more advanced Luasnip keymaps (e.g. selecting choice nodes, expansion) see:
           --    https://github.com/L3MON4D3/LuaSnip?tab=readme-ov-file#keymaps
@@ -140,7 +140,7 @@ return {
           { name = "luasnip" },
           { name = "buffer" },
           { name = "nvim_lua" },
-          { name = "async_path" },
+          { name = "path" },
           { name = "neorg" },
         },
         window = {

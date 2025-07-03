@@ -64,6 +64,8 @@ alias claude="/Users/xavier/.claude/local/claude"
 alias c="claude"
 alias g="gemini"
 alias j="/Users/xavier/.local/bin/jrnl-daily"
+alias vpnon="tailscale up --exit-node=${TAILSCALE_EXIT_NODE} --accept-routes --exit-node-allow-lan-access"
+alias vpnoff="tailscale down"
 
 # --- Key bindings ---
 bindkey -v # vi mode
@@ -124,3 +126,15 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 source "$(brew --prefix)/opt/fzf/shell/key-bindings.zsh"
 eval "$(navi widget zsh)"
 eval "$(zoxide init zsh)"
+
+# bun completions
+[ -s "/Users/xavier/.bun/_bun" ] && source "/Users/xavier/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
+# The following lines have been added by Docker Desktop to enable Docker CLI completions.
+fpath=(/Users/xavier/.docker/completions $fpath)
+autoload -Uz compinit
+compinit
+# End of Docker CLI completions

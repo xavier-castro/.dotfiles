@@ -100,3 +100,7 @@ Despite Docker Desktop being notoriously slow for Mac, it is still my go-to. I a
 ### Aerospace and Mission Control Not Playing Along
 
 `defaults write com.apple.dock expose-group-apps -bool true && killall Dock`
+
+## Projects I'm Scouting
+
+- [Claudia - GUI for Claude Code](https://github.com/getAsterisk/claudia)
