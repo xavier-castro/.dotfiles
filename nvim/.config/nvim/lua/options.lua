@@ -48,3 +48,12 @@ vim.opt.isfname:append '@-@'
 vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = '80'
+
+--fold handling
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+vim.o.foldtext = "v:lua.vim.treesitter.foldtext()"
+vim.o.foldlevel = 99
+vim.o.foldlevelstart = 3
+vim.o.foldcolumn = "0"
+vim.o.foldtext = ""
