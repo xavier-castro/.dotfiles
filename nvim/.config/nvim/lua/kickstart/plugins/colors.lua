@@ -1,5 +1,5 @@
 function ColorMyPencils(color)
-  color = color or 'vague'
+  color = color or 'rose-pine'
   vim.cmd.colorscheme(color)
 
   vim.api.nvim_set_hl(0, 'Normal', { bg = 'none' })
@@ -10,7 +10,7 @@ return {
   {
     'folke/tokyonight.nvim',
     lazy = false,
-    priority = 1000, --> Higher priority over other plugins
+    -- priority = 1000, --> Higher priority over other plugins
     config = function()
       require('tokyonight').setup {
         transparent = vim.g.have_transparent_bg,
@@ -58,7 +58,7 @@ return {
   },
   {
     'vague2k/vague.nvim',
-    priority = 1000,
+    -- priority = 1000,
     lazy = false,
     config = function()
       require('vague').setup {
@@ -71,7 +71,7 @@ return {
   {
     'webhooked/kanso.nvim',
     lazy = false,
-    priority = 1000,
+    -- priority = 1000,
   },
   {
     'craftzdog/solarized-osaka.nvim',
@@ -89,7 +89,7 @@ return {
     'catppuccin/nvim',
     name = 'catppuccin',
     lazy = false,
-    priority = 1000,
+    -- priority = 1000,
     config = function()
       require('catppuccin').setup {
         flavour = 'mocha',
@@ -135,7 +135,7 @@ return {
         },
       }
 
-      vim.cmd.colorscheme 'rose-pine-moon'
+      vim.cmd.colorscheme 'rose-pine'
     end,
   },
 }
