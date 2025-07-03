@@ -1,4 +1,4 @@
-return {
+return
   {
     'nvim-telescope/telescope.nvim',
     event = 'VimEnter',
@@ -82,7 +82,7 @@ return {
         desc = 'Lists LSP incoming calls for word under the cursor',
       },
       {
-        'sf',
+        '<leader>e',
         function()
           local telescope = require 'telescope'
 
@@ -201,42 +201,4 @@ return {
       require('telescope').load_extension 'fzf'
       require('telescope').load_extension 'file_browser'
     end,
-  },
-
-  {
-    'kazhala/close-buffers.nvim',
-    event = 'VeryLazy',
-    keys = {
-      {
-        '<leader>th',
-        function()
-          require('close_buffers').delete { type = 'hidden' }
-        end,
-        'Close Hidden Buffers',
-      },
-      {
-        '<leader>tu',
-        function()
-          require('close_buffers').delete { type = 'nameless' }
-        end,
-        'Close Nameless Buffers',
-      },
-    },
-  },
-
-  {
-    'saghen/blink.cmp',
-    opts = {
-      completion = {
-        menu = {
-          winblend = vim.o.pumblend,
-        },
-      },
-      signature = {
-        window = {
-          winblend = vim.o.pumblend,
-        },
-      },
-    },
-  },
-}
+  }
