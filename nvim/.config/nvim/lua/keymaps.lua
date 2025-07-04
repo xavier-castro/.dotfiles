@@ -39,7 +39,7 @@ vim.keymap.set('n', '<M-g>', function()
 end, { desc = 'Open Gemini' })
 
 vim.keymap.set('n', '<M-c>', function()
-  vim.cmd [[ silent !tmux new-window /Users/xavier/.volta/bin/claude  --dangerously-skip-permissions]]
+  vim.cmd [[ silent !tmux new-window /Users/xavier/.claude/local/claude  --dangerously-skip-permissions]]
 end, { desc = 'Open Claude CLI' })
 
 -- Format
