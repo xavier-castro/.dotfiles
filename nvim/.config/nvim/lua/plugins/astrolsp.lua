@@ -1,89 +1,308 @@
--- AstroLSP allows you to customize the features in AstroNvim's LSP configuration engine
--- Configuration documentation can be found with `:h astrolsp`
--- NOTE: We highly recommend setting up the Lua Language Server (`:LspInstall lua_ls`)
---       as this provides autocomplete and documentation while editing
+-- Enhanced AstroLSP configuration for Next.js and Rust development
+-- Optimized for none-ls and conform.nvim integration
 
 ---@type LazySpec
 return {
   "AstroNvim/astrolsp",
   ---@type AstroLSPOpts
   opts = {
-    -- Configuration table of features provided by AstroLSP
+    -- Enhanced features for modern development
     features = {
       codelens = true, -- enable/disable codelens refresh on start
-      inlay_hints = false, -- enable/disable inlay hints on start
+      inlay_hints = true, -- enable inlay hints for better code understanding
       semantic_tokens = true, -- enable/disable semantic token highlighting
     },
-    -- customize lsp formatting options
+    
+    -- Comprehensive formatting configuration
     formatting = {
       -- control auto formatting on save
       format_on_save = {
-        enabled = true, -- enable or disable format on save globally
-        allow_filetypes = { -- enable format on save for specified filetypes only
-          -- "go",
+        enabled = true, -- enable format on save globally
+        allow_filetypes = { 
+          -- Explicitly enable for supported languages
+          "lua", "javascript", "typescript", "javascriptreact", "typescriptreact",
+          "rust", "python", "json", "yaml", "toml", "markdown", "html", "css", "scss"
         },
-        ignore_filetypes = { -- disable format on save for specified filetypes
-          -- "python",
+        ignore_filetypes = { 
+          -- Disable for problematic file types
+          "oil", -- Oil file explorer
         },
       },
-      disabled = { -- disable formatting capabilities for the listed language servers
-        -- disable lua_ls formatting capability if you want to use StyLua to format your lua code
-        -- "lua_ls",
+      
+      -- Disable LSP formatting for languages handled by none-ls/conform
+      disabled = { 
+        "lua_ls", -- Use stylua via none-ls
+        "tsserver", -- Use prettier via none-ls
+        "typescript-language-server", -- Use prettier via none-ls
+        "jsonls", -- Use prettier via none-ls
+        "yamlls", -- Use prettier via none-ls
       },
-      timeout_ms = 1000, -- default format timeout
-      -- filter = function(client) -- fully override the default formatting function
-      --   return true
-      -- end
+      
+      timeout_ms = 10000, -- 10 second timeout for formatting
+      
+      -- Custom formatter filter to prefer none-ls/conform
+      filter = function(client)
+        -- Prefer none-ls and conform formatters over LSP formatters
+        local prefer_non_lsp = {
+          "lua_ls", "tsserver", "typescript-language-server", 
+          "jsonls", "yamlls", "html", "cssls"
+        }
+        
+        -- Allow rust-analyzer for formatting if none-ls isn't available
+        if client.name == "rust_analyzer" then
+          return true
+        end
+        
+        -- For other clients, only allow if not in prefer_non_lsp list
+        return not vim.tbl_contains(prefer_non_lsp, client.name)
+      end,
     },
-    -- enable servers that you already have installed without mason
+    
+    -- Additional servers for enhanced functionality
     servers = {
-      -- "pyright"
+      -- Add any manually installed servers here
     },
-    -- customize language server configuration options passed to `lspconfig`
+    
+    -- Enhanced LSP server configurations
     ---@diagnostic disable: missing-fields
     config = {
-      -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
+      -- TypeScript/JavaScript optimizations
+      tsserver = {
+        settings = {
+          typescript = {
+            preferences = {
+              includePackageJsonAutoImports = "auto",
+              importModuleSpecifier = "relative",
+            },
+          },
+          javascript = {
+            preferences = {
+              includePackageJsonAutoImports = "auto",
+              importModuleSpecifier = "relative",
+            },
+          },
+        },
+      },
+      
+      -- Rust analyzer optimizations
+      rust_analyzer = {
+        settings = {
+          ["rust-analyzer"] = {
+            checkOnSave = {
+              command = "clippy",
+              extraArgs = { "--", "-W", "clippy::pedantic" },
+            },
+            cargo = {
+              features = "all",
+            },
+            procMacro = {
+              enable = true,
+            },
+          },
+        },
+      },
+      
+      -- Lua LSP optimizations
+      lua_ls = {
+        settings = {
+          Lua = {
+            completion = {
+              callSnippet = "Replace",
+            },
+            hint = {
+              enable = true,
+            },
+          },
+        },
+      },
     },
-    -- customize how language servers are attached
+    
+    -- Enhanced LSP server handlers
     handlers = {
-      -- a function without a key is simply the default handler, functions take two parameters, the server name and the configured options table for that server
-      -- function(server, opts) require("lspconfig")[server].setup(opts) end
-
-      -- the key is the server that is being setup with `lspconfig`
-      -- rust_analyzer = false, -- setting a handler to false will disable the set up of that language server
-      -- pyright = function(_, opts) require("lspconfig").pyright.setup(opts) end -- or a custom handler function can be passed
+      -- Default handler with enhanced capabilities
+      function(server, opts)
+        -- Add common capabilities enhancement
+        local capabilities = vim.lsp.protocol.make_client_capabilities()
+        
+        -- Enhanced completion capabilities
+        capabilities.textDocument.completion.completionItem = {
+          documentationFormat = { "markdown", "plaintext" },
+          snippetSupport = true,
+          preselectSupport = true,
+          insertReplaceSupport = true,
+          labelDetailsSupport = true,
+          deprecatedSupport = true,
+          commitCharactersSupport = true,
+          tagSupport = { valueSet = { 1 } },
+          resolveSupport = {
+            properties = { "documentation", "detail", "additionalTextEdits" },
+          },
+        }
+        
+        opts.capabilities = capabilities
+        require("lspconfig")[server].setup(opts)
+      end,
     },
-    -- Configure buffer local auto commands to add when attaching a language server
+    
+    -- Enhanced auto commands for better LSP integration
     autocmds = {
-      -- first key is the `augroup` to add the auto commands to (:h augroup)
       lsp_codelens_refresh = {
-        -- Optional condition to create/delete auto command group
-        -- can either be a string of a client capability or a function of `fun(client, bufnr): boolean`
-        -- condition will be resolved for each client on each execution and if it ever fails for all clients,
-        -- the auto commands will be deleted for that buffer
         cond = "textDocument/codeLens",
-        -- cond = function(client, bufnr) return client.name == "lua_ls" end,
-        -- list of auto commands to set
         {
-          -- events to trigger
           event = { "InsertLeave", "BufEnter" },
-          -- the rest of the autocmd options (:h nvim_create_autocmd)
           desc = "Refresh codelens (buffer)",
           callback = function(args)
-            if require("astrolsp").config.features.codelens then vim.lsp.codelens.refresh { bufnr = args.buf } end
+            if require("astrolsp").config.features.codelens then 
+              vim.lsp.codelens.refresh { bufnr = args.buf } 
+            end
+          end,
+        },
+      },
+      
+      -- Auto-highlight symbol under cursor
+      lsp_highlight_symbol = {
+        cond = "textDocument/documentHighlight",
+        {
+          event = { "CursorHold", "CursorHoldI" },
+          desc = "Highlight symbol under cursor",
+          callback = function()
+            vim.lsp.buf.document_highlight()
+          end,
+        },
+        {
+          event = { "CursorMoved", "CursorMovedI" },
+          desc = "Clear highlight symbol",
+          callback = function()
+            vim.lsp.buf.clear_references()
           end,
         },
       },
     },
-    -- mappings to be set up on attaching of a language server
+    
+    -- Comprehensive keybinding configuration
     mappings = {
       n = {
-        -- a `cond` key can provided as the string of a server capability to be required to attach, or a function with `client` and `bufnr` parameters from the `on_attach` that returns a boolean
+        -- Navigation mappings
         gD = {
           function() vim.lsp.buf.declaration() end,
           desc = "Declaration of current symbol",
           cond = "textDocument/declaration",
         },
+        gd = {
+          function() vim.lsp.buf.definition() end,
+          desc = "Show the definition of current symbol",
+          cond = "textDocument/definition",
+        },
+        gi = {
+          function() vim.lsp.buf.implementation() end,
+          desc = "Implementation of current symbol",
+          cond = "textDocument/implementation",
+        },
+        gr = {
+          function() vim.lsp.buf.references() end,
+          desc = "References of current symbol",
+          cond = "textDocument/references",
+        },
+        
+        -- Enhanced formatting mappings with fallback support
+        ["<Leader>lf"] = {
+          function() 
+            -- Try conform.nvim first, then none-ls, then LSP
+            local conform_ok, conform = pcall(require, "conform")
+            if conform_ok and conform.format then
+              conform.format({ 
+                async = false,
+                timeout_ms = 10000,
+                lsp_fallback = true,
+              })
+            else
+              vim.lsp.buf.format({ 
+                async = false,
+                timeout_ms = 10000,
+              })
+            end
+          end,
+          desc = "Format buffer",
+        },
+        
+        ["<Leader>lF"] = {
+          function() 
+            -- Async version
+            local conform_ok, conform = pcall(require, "conform")
+            if conform_ok and conform.format then
+              conform.format({ 
+                async = true,
+                timeout_ms = 10000,
+                lsp_fallback = true,
+              })
+            else
+              vim.lsp.buf.format({ 
+                async = true,
+                timeout_ms = 10000,
+              })
+            end
+          end,
+          desc = "Format buffer (async)",
+        },
+        
+        -- Code action mappings
+        ["<Leader>la"] = {
+          function() vim.lsp.buf.code_action() end,
+          desc = "LSP code action",
+          cond = "textDocument/codeAction",
+        },
+        
+        -- Symbol and workspace mappings
+        ["<Leader>ls"] = {
+          function() vim.lsp.buf.document_symbol() end,
+          desc = "Search document symbols",
+          cond = "textDocument/documentSymbol",
+        },
+        
+        ["<Leader>lS"] = {
+          function() vim.lsp.buf.workspace_symbol() end,
+          desc = "Search workspace symbols",
+          cond = "workspace/symbol",
+        },
+        
+        -- Rename mapping
+        ["<Leader>lr"] = {
+          function() vim.lsp.buf.rename() end,
+          desc = "Rename current symbol",
+          cond = "textDocument/rename",
+        },
+        
+        -- Diagnostics mappings
+        ["<Leader>ld"] = {
+          function() vim.diagnostic.open_float() end,
+          desc = "Hover diagnostics",
+        },
+        
+        ["[d"] = {
+          function() vim.diagnostic.goto_prev() end,
+          desc = "Previous diagnostic",
+        },
+        
+        ["]d"] = {
+          function() vim.diagnostic.goto_next() end,
+          desc = "Next diagnostic",
+        },
+        
+        -- Hover documentation
+        K = {
+          function() vim.lsp.buf.hover() end,
+          desc = "Hover symbol details",
+          cond = "textDocument/hover",
+        },
+        
+        -- Signature help
+        ["<Leader>lh"] = {
+          function() vim.lsp.buf.signature_help() end,
+          desc = "Signature help",
+          cond = "textDocument/signatureHelp",
+        },
+        
+        -- Toggle features
         ["<Leader>uY"] = {
           function() require("astrolsp.toggles").buffer_semantic_tokens() end,
           desc = "Toggle LSP semantic highlight (buffer)",
@@ -91,13 +310,61 @@ return {
             return client.supports_method "textDocument/semanticTokens/full" and vim.lsp.semantic_tokens ~= nil
           end,
         },
+        
+        ["<Leader>uH"] = {
+          function() require("astrolsp.toggles").buffer_inlay_hints() end,
+          desc = "Toggle LSP inlay hints (buffer)",
+          cond = function(client)
+            return client.supports_method "textDocument/inlayHint"
+          end,
+        },
+      },
+      
+      -- Insert mode mappings
+      i = {
+        ["<C-s>"] = {
+          function() vim.lsp.buf.signature_help() end,
+          desc = "Signature help",
+          cond = "textDocument/signatureHelp",
+        },
       },
     },
-    -- A custom `on_attach` function to be run after the default `on_attach` function
-    -- takes two parameters `client` and `bufnr`  (`:h lspconfig-setup`)
+    
+    -- Enhanced on_attach function for additional setup
     on_attach = function(client, bufnr)
-      -- this would disable semanticTokensProvider for all clients
-      -- client.server_capabilities.semanticTokensProvider = nil
+      -- Optimize LSP clients for better performance
+      if client.name == "tsserver" or client.name == "typescript-language-server" then
+        -- Disable formatting for TypeScript LSP (use prettier via none-ls/conform)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+      end
+      
+      if client.name == "lua_ls" then
+        -- Disable formatting for Lua LSP (use stylua via none-ls/conform)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+      end
+      
+      if client.name == "jsonls" or client.name == "yamlls" then
+        -- Disable formatting for JSON/YAML LSP (use prettier via none-ls/conform)
+        client.server_capabilities.documentFormattingProvider = false
+        client.server_capabilities.documentRangeFormattingProvider = false
+      end
+      
+      -- Enable inlay hints if supported
+      if client.supports_method("textDocument/inlayHint") then
+        vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+      end
+      
+      -- Show formatting provider info for debugging
+      vim.defer_fn(function()
+        if client.server_capabilities.documentFormattingProvider then
+          vim.notify(
+            string.format("LSP %s provides formatting", client.name),
+            vim.log.levels.DEBUG
+          )
+        end
+      end, 1000)
     end,
   },
 }
