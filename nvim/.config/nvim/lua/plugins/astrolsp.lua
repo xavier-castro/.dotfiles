@@ -1,5 +1,5 @@
 -- Enhanced AstroLSP configuration for Next.js and Rust development
--- Optimized for none-ls and conform.nvim integration
+-- Optimized for conform.nvim integration
 
 ---@type LazySpec
 return {
@@ -41,36 +41,9 @@ return {
         },
       },
 
-      -- Disable LSP formatting for languages handled by none-ls/conform
-      disabled = {
-        "lua_ls", -- Use stylua via none-ls
-        "tsserver", -- Use prettier via none-ls
-        "typescript-language-server", -- Use prettier via none-ls
-        "jsonls", -- Use prettier via none-ls
-        "yamlls", -- Use prettier via none-ls
-      },
 
       timeout_ms = 10000, -- 10 second timeout for formatting
 
-      -- Custom formatter filter to prefer none-ls/conform
-      filter = function(client)
-        -- Prefer none-ls and conform formatters over LSP formatters
-        local prefer_non_lsp = {
-          "lua_ls",
-          "tsserver",
-          "typescript-language-server",
-          "jsonls",
-          "yamlls",
-          "html",
-          "cssls",
-        }
-
-        -- Allow rust-analyzer for formatting if none-ls isn't available
-        if client.name == "rust_analyzer" then return true end
-
-        -- For other clients, only allow if not in prefer_non_lsp list
-        return not vim.tbl_contains(prefer_non_lsp, client.name)
-      end,
     },
 
     -- Additional servers for enhanced functionality
@@ -218,8 +191,7 @@ return {
         -- Enhanced formatting mappings with fallback support
         ["<Leader>lf"] = {
           function()
-            -- Try conform.nvim first, then none-ls, then LSP
-            local conform_ok, conform = pcall(require, "conform")
+             -- Try conform.nvim first, then LSP            local conform_ok, conform = pcall(require, "conform")
             if conform_ok and conform.format then
               conform.format {
                 async = true,
@@ -343,31 +315,16 @@ return {
     on_attach = function(client, bufnr)
       -- Optimize LSP clients for better performance
       if client.name == "tsserver" or client.name == "typescript-language-server" then
-        -- Disable formatting for TypeScript LSP (use prettier via none-ls/conform)
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentRangeFormattingProvider = false
-      end
+         -- Disable formatting for TypeScript LSP (use prettier via conform)
+         client.server_capabilities.documentFormattingProvider = false
+         client.server_capabilities.documentRangeFormattingProvider = false      end
 
       if client.name == "lua_ls" then
-        -- Disable formatting for Lua LSP (use stylua via none-ls/conform)
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentRangeFormattingProvider = false
-      end
+         -- Disable formatting for Lua LSP (use stylua via conform)
+         client.server_capabilities.documentFormattingProvider = false
+         client.server_capabilities.documentRangeFormattingProvider = false      end
 
-      if client.name == "jsonls" or client.name == "yamlls" then
-        -- Disable formatting for JSON/YAML LSP (use prettier via none-ls/conform)
-        client.server_capabilities.documentFormattingProvider = false
-        client.server_capabilities.documentRangeFormattingProvider = false
-      end
 
-      -- Enable inlay hints if supported
-      if client.supports_method "textDocument/inlayHint" then vim.lsp.inlay_hint.enable(true, { bufnr = bufnr }) end
-
-      -- Show formatting provider info for debugging
-      vim.defer_fn(function()
-        if client.server_capabilities.documentFormattingProvider then
-          vim.notify(string.format("LSP %s provides formatting", client.name), vim.log.levels.DEBUG)
-        end
       end, 1000)
     end,
   },
