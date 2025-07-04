@@ -76,6 +76,8 @@ return {
     -- Additional servers for enhanced functionality
     servers = {
       -- Add any manually installed servers here
+      "gopls",
+      "pyright",
     },
 
     -- Enhanced LSP server configurations
