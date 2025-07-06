@@ -19,25 +19,6 @@ return {
         vim.notify(msg, vim.log.levels.INFO, { title = "Toggle" })
       end
     end
-
-    -- Transparency toggle
-    local toggle_transparency = create_toggle(
-      "Transparency",
-      function() return vim.g.transparency_enabled or false end,
-      function()
-        vim.g.transparency_enabled = not (vim.g.transparency_enabled or false)
-        if vim.g.transparency_enabled then
-          vim.cmd "hi Normal guibg=NONE ctermbg=NONE"
-          vim.cmd "hi NonText guibg=NONE ctermbg=NONE"
-          vim.cmd "hi SignColumn guibg=NONE ctermbg=NONE"
-          vim.cmd "hi EndOfBuffer guibg=NONE ctermbg=NONE"
-        else
-          vim.cmd("colorscheme " .. vim.g.colors_name)
-        end
-      end,
-      { icon = { enabled = "👻", disabled = "🎨" } }
-    )
-
     -- Supermaven toggle with snacks-style feedback
     local toggle_supermaven = create_toggle(
       "Supermaven",
@@ -47,6 +28,5 @@ return {
     )
 
     vim.keymap.set("n", "<leader>uM", toggle_supermaven, { desc = "Toggle Supermaven" })
-    -- vim.keymap.set("n", "<leader>ut", toggle_transparency, { desc = "Toggle Transparency" })
   end,
 }
