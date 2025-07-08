@@ -44,6 +44,14 @@ I really can't live without [raycast](https://www.raycast.com/). Complete game c
 
 `brew install sst/tap/opencode # macOS`
 
+The `setup.sh` script in this repository will automatically install `gemini-cli` for you.
+
+To use `gemini-cli` with an API key, you can set the `GEMINI_API_KEY` environment variable. You can add the following line to your shell profile (e.g., `.zshrc`):
+
+```bash
+export GEMINI_API_KEY="your_api_key_here"
+```
+
 #### Claude All-in-One MCP Config
 
 - For me, the less MCP's the ai has to decide between the better off you are. the all in one search tool is amazing

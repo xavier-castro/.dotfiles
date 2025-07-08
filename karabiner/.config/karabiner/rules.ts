@@ -72,41 +72,43 @@ const rules: KarabinerRules[] = [
     // o = "Open" applications
     o: {
       1: app("1Password"),
-      b: app("Zen"),
-      g: app("Ghostty"),
-      c: app("Claude"),
-      v: app("Visual Studio Code - Insiders"),
-      // z: app("Zed"),
-      // d: app("Discord"),
-      // s: app("Slack"),
-      // e: app("Superhuman"),
+      g: app("Google Chrome"),
+      c: app("Notion Calendar"),
+      v: app("Zed"),
+      d: app("Discord"),
+      s: app("Slack"),
+      e: app("Superhuman"),
       n: app("Notion"),
       t: app("Ghostty"),
       // Open todo list managed via *H*ypersonic
       h: open(
         "notion://www.notion.so/stellatehq/7b33b924746647499d906c55f89d5026"
       ),
-      // z: app("zoom.us"),
+      z: app("zoom.us"),
       // "M"arkdown (Reflect.app)
-      // m: app("Reflect"),
-      r: app("Repo Prompt"),
-      // f: app("Finder"),
+      m: app("Reflect"),
+      r: app("Reflect"),
+      f: app("Finder"),
       // "i"Message
-      // i: app("Texts"),
-      i: app("Music"),
-      // a: app("iA Presenter"),
-      m: open("Messages"),
+      i: app("Texts"),
+      p: app("Spotify"),
+      a: app("iA Presenter"),
+      // "W"hatsApp has been replaced by Texts
+      w: open("Texts"),
       l: open(
         "raycast://extensions/stellate/mxstbr-commands/open-mxs-is-shortlink"
       ),
     },
+
+    // TODO: This doesn't quite work yet.
+    // l = "Layouts" via Raycast's custom window management
     // l: {
     //   // Coding layout
     //   c: shell`
     //     open -a "Visual Studio Code.app"
     //     sleep 0.2
     //     open -g "raycast://customWindowManagementCommand?position=topLeft&relativeWidth=0.5"
-    //
+
     //     open -a "Terminal.app"
     //     sleep 0.2
     //     open -g "raycast://customWindowManagementCommand?position=topRight&relativeWidth=0.5"
@@ -115,68 +117,68 @@ const rules: KarabinerRules[] = [
 
     // w = "Window"
     w: {
-      semicolon: window("make-smaller"),
-      quote: window("make-larger"),
-      // y: window("previous-display"),
-      // o: window("next-display"),
-      // k: window("top-half"),
-      // j: window("bottom-half"),
-      close_bracket: window("bottom-right-quarter"),
-      open_bracket: window("bottom-left-quarter"),
-      hyphen: window("top-left-quarter"),
-      equal_sign: window("top-right-quarter"),
+      semicolon: {
+        description: "Window: Hide",
+        to: [
+          {
+            key_code: "h",
+            modifiers: ["right_command"],
+          },
+        ],
+      },
+      y: window("previous-display"),
+      o: window("next-display"),
+      k: window("top-half"),
+      j: window("bottom-half"),
       h: window("left-half"),
-      return_or_enter: window("almost-maximize"),
       l: window("right-half"),
       f: window("maximize"),
-      i: window("last-fourth"),
-      u: window("first-three-fourths"),
-      // u: {
-      //   description: "Window: Previous Tab",
-      //   to: [
-      //     {
-      //       key_code: "tab",
-      //       modifiers: ["right_control", "right_shift"],
-      //     },
-      //   ],
-      // },
-      // i: {
-      //   description: "Window: Next Tab",
-      //   to: [
-      //     {
-      //       key_code: "tab",
-      //       modifiers: ["right_control"],
-      //     },
-      //   ],
-      // },
-      // n: {
-      //   description: "Window: Next Window",
-      //   to: [
-      //     {
-      //       key_code: "grave_accent_and_tilde",
-      //       modifiers: ["right_command"],
-      //     },
-      //   ],
-      // },
-      // b: {
-      //   description: "Window: Back",
-      //   to: [
-      //     {
-      //       key_code: "open_bracket",
-      //       modifiers: ["right_command"],
-      //     },
-      //   ],
-      // },
-      // // Note: No literal connection. Both f and n are already taken.
-      // m: {
-      //   description: "Window: Forward",
-      //   to: [
-      //     {
-      //       key_code: "close_bracket",
-      //       modifiers: ["right_command"],
-      //     },
-      //   ],
-      // },
+      u: {
+        description: "Window: Previous Tab",
+        to: [
+          {
+            key_code: "tab",
+            modifiers: ["right_control", "right_shift"],
+          },
+        ],
+      },
+      i: {
+        description: "Window: Next Tab",
+        to: [
+          {
+            key_code: "tab",
+            modifiers: ["right_control"],
+          },
+        ],
+      },
+      n: {
+        description: "Window: Next Window",
+        to: [
+          {
+            key_code: "grave_accent_and_tilde",
+            modifiers: ["right_command"],
+          },
+        ],
+      },
+      b: {
+        description: "Window: Back",
+        to: [
+          {
+            key_code: "open_bracket",
+            modifiers: ["right_command"],
+          },
+        ],
+      },
+      // Note: No literal connection. Both f and n are already taken.
+      m: {
+        description: "Window: Forward",
+        to: [
+          {
+            key_code: "close_bracket",
+            modifiers: ["right_command"],
+          },
+        ],
+      },
     },
 
     // s = "System"

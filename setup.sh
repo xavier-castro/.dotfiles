@@ -28,6 +28,20 @@ fi
 echo "📦 Installing dependencies from Brewfile..."
 brew bundle --file "$BREWFILE_PATH"
 
+# Check for Node.js and npm
+if ! command -v node &> /dev/null || ! command -v npm &> /dev/null; then
+    echo "🟡 Node.js or npm not found. Installing Node.js via Homebrew..."
+    brew install node
+fi
+
+# Install gemini-cli if not already installed
+if ! command -v gemini &> /dev/null; then
+    echo "🚀 Installing gemini-cli..."
+    npm install -g @google/gemini-cli
+else
+    echo "✅ gemini-cli is already installed."
+fi
+
 echo "✅ Setup complete! All CLI/TUI tools have been installed."
 echo ""
 echo "Installed tools include:"
