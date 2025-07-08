@@ -114,8 +114,9 @@ return {
     },
     opts = function(_, opts)
       require("telescope").setup({})
-
+      local fb_actions = require("telescope").extensions.file_browser.actions
       local builtin = require("telescope.builtin")
+
       vim.keymap.set("n", "<leader>pf", builtin.find_files, {})
       vim.keymap.set("n", "<C-p>", builtin.git_files, {})
       vim.keymap.set("n", "<leader>pws", function()
@@ -157,7 +158,7 @@ return {
         file_browser = {
           theme = "dropdown",
           -- disables netrw and use telescope-file-browser in its place
-          hijack_netrw = true,
+          hijack_netrw = false,
           mappings = {
             -- your custom insert mode mappings
             ["n"] = {
