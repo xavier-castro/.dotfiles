@@ -73,6 +73,7 @@ ZSH_THEME="robbyrussell"
 plugins=(git gnu-utils mise zsh-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
+source ~/.zsh_profile
 
 # User configuration
 
@@ -102,6 +103,13 @@ fi
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias tt="tmux new-session -A -s 'MAIN'"
+alias tk="tmux kill-server"
+alias ta="tmux attach"
+alias .dotfiles="nvim ~/.dotfiles/"
+alias .config="nvim ~/.config/"
+alias eds="emacs --daemon"
+alias ec="emacsclient -c -n"
 
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
