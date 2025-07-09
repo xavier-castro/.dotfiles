@@ -124,6 +124,13 @@ alias .dotfiles="nvim ~/.dotfiles/"
 alias .config="nvim ~/.config/"
 alias eds="emacs --daemon"
 alias ec="emacsclient -c -n"
+alias ls="ls -p -G"
+alias la="ls -A"
+alias ll="ls -l"
+alias lla="ll -A"
+alias lg="lazygit"
+alias ll="eza -l -g --icons"
+alias lla="ll -a"
 
 # initialise completions with ZSH's compinit
 autoload -Uz compinit && compinit
