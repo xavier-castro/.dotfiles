@@ -27,6 +27,7 @@
   "mason-nvim-dap.nvim": { "branch": "main", "commit": "4c2cdc69d69fe00c15ae8648f7e954d99e5de3ea" },
   "mason.nvim": { "branch": "main", "commit": "8024d64e1330b86044fed4c8494ef3dcd483a67c" },
   "mcphub.nvim": { "branch": "main", "commit": "68c510efc174cb9a68dca3b14a8e9ebd7ab73eef" },
+  "naysayer.nvim": { "branch": "main", "commit": "b5e04c97986d9f4041fc5c3b27fd32187ef806cf" },
   "neotest": { "branch": "master", "commit": "61d1951131e6770c815243d84a27ccd0436ec61c" },
   "neotest-golang": { "branch": "main", "commit": "9521843942423fcac9991c596ff19c1f4f500650" },
   "nightfox.nvim": { "branch": "main", "commit": "ba47d4b4c5ec308718641ba7402c143836f35aa9" },

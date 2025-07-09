@@ -94,6 +94,14 @@ return {
     end,
   },
   {
+  'RostislavArts/naysayer.nvim',
+  priority = 1000,
+  lazy = false,
+  config = function()
+    vim.cmd.colorscheme('naysayer')
+  end,
+},
+  {
     "catppuccin/nvim",
     name = "catppuccin",
     lazy = false,

@@ -53,7 +53,7 @@ autocmd("BufEnter", {
 		if vim.bo.filetype == "zig" then
 			vim.cmd.colorscheme("tokyonight-night")
 		else
-			vim.cmd.colorscheme("vague")
+			vim.cmd.colorscheme("kanso")
 		end
 	end,
 })
@@ -73,19 +73,6 @@ autocmd("BufReadPost", {
 
 -- Enable fenced code highlighting for markdown
 vim.g.markdown_fenced_languages = { "html", "javascript", "typescript", "vim", "lua", "css" }
-
--- Clear NeoCodeium suggestions when CMP menu opens
-autocmd("User", {
-	group = XavierGroup,
-	pattern = "BlinkCmpMenuOpen",
-	desc = "Clear NeoCodeium when CMP menu opens",
-	callback = function()
-		local ok, neocodeium = pcall(require, "neocodeium")
-		if ok then
-			neocodeium.clear()
-		end
-	end,
-})
 
 -- Disable auto-commenting on newline
 autocmd("FileType", {

@@ -116,7 +116,7 @@ return {
 		-- Configure diagnostics to only show undercurl on the current line and show floating window on hover
 		vim.diagnostic.config({
 			virtual_text = false, -- Disable virtual text
-			signs = false, -- Disable signs
+			signs = true, -- Disable signs
 			underline = {
 				severity = vim.diagnostic.severity.ERROR, -- Only underline errors (optional)
 			},
@@ -127,19 +127,6 @@ return {
 				source = "always",
 				focusable = false,
 			},
-		})
-
-		-- Highlight only the current line's diagnostics with undercurl
-		vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-			callback = function()
-				local bufnr = vim.api.nvim_get_current_buf()
-				local line = vim.api.nvim_win_get_cursor(0)[1] - 1
-				local diags = vim.diagnostic.get(bufnr, { lnum = line })
-				vim.diagnostic.hide(nil, bufnr)
-				if #diags > 0 then
-					vim.diagnostic.show(nil, bufnr, diags, { lnum = line })
-				end
-			end,
 		})
 
 		-- Show floating diagnostic window on CursorHold (when cursor stays on a line)
