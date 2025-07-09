@@ -1,6 +1,13 @@
 return {
   {
     "nvim-treesitter/nvim-treesitter",
+    dependencies = {
+      {
+        "pmizio/typescript-tools.nvim",
+        dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+        opts = {},
+      },
+    },
     opts = function()
       require("nvim-treesitter.configs").setup({
         -- A list of parser names, or "all"
