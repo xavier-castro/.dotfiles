@@ -1,5 +1,0 @@
-return {
-
-    "rluba/jai.vim",
-}
-
