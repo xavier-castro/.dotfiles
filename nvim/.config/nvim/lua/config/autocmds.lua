@@ -8,7 +8,7 @@
 -- e.g. vim.api.nvim_del_augroup_by_name("lazyvim_wrap_spell")
 
 local augroup = vim.api.nvim_create_augroup
-local ThePrimeagenGroup = augroup("ThePrimeagen", {})
+local XavierGroup = augroup("Xavier", {})
 
 local autocmd = vim.api.nvim_create_autocmd
 local yank_group = augroup("HighlightYank", {})
@@ -35,7 +35,7 @@ autocmd("TextYankPost", {
 })
 
 autocmd({ "BufWritePre" }, {
-  group = ThePrimeagenGroup,
+  group = XavierGroup,
   pattern = "*",
   command = [[%s/\s\+$//e]],
 })

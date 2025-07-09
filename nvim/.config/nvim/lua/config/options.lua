@@ -29,14 +29,12 @@ LazyVim.terminal.setup("zsh")
 -- Set LSP servers to be ignored when used with `util.root.detectors.lsp`
 -- for detecting the LSP root
 vim.g.root_lsp_ignore = { "copilot" }
-
 vim.opt.guicursor = ""
 
 vim.opt.nu = true
 vim.opt.relativenumber = true
 
 vim.opt.smartindent = true
-
 vim.opt.wrap = false
 
 vim.opt.swapfile = false
