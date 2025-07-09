@@ -43,7 +43,7 @@ return {
     end, { icon = { enabled = "🤖", disabled = "🚫" } })
 
     -- Register keymaps
-    vim.keymap.set("n", "<leader>um", toggle_supermaven, { desc = "Toggle Supermaven" })
+    vim.keymap.set("n", "<leader>uM", toggle_supermaven, { desc = "Toggle Supermaven" })
     vim.keymap.set("n", "<leader>uj", toggle_transparency, { desc = "Toggle Transparency" })
   end,
 }

@@ -8,12 +8,18 @@ end
 
 return {
   {
+    "felipeagc/fleet-theme-nvim",
+    config = function()
+      -- vim.cmd("colorscheme fleet")
+    end,
+  },
+  {
     "folke/tokyonight.nvim",
     lazy = false,
     -- priority = 1000, --> Higher priority over other plugins
     config = function()
       require("tokyonight").setup({
-        transparent = vim.g.have_transparent_bg,
+        transparent = true,
         styles = {
           sidebars = vim.g.have_transparent_bg and "transparent" or "dark",
           floats = vim.g.have_transparent_bg and "transparent" or "dark",
@@ -23,7 +29,7 @@ return {
           mini_starter = true,
         },
       })
-      -- vim.cmd.colorscheme("tokyonight-night")
+      vim.cmd.colorscheme("tokyonight-storm")
     end,
   },
   {
@@ -66,7 +72,7 @@ return {
         italic = false,
         bold = false,
       })
-      vim.cmd.colorscheme("vague")
+      -- vim.cmd.colorscheme("vague")
     end,
   },
   -- Using Lazy
@@ -137,7 +143,7 @@ return {
         },
       })
 
-      -- vim.cmd.colorscheme 'rose-pine'
+      -- vim.cmd.colorscheme("rose-pine")
     end,
   },
 }

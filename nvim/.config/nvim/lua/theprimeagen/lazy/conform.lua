@@ -4,7 +4,7 @@ return {
   cmd = { "ConformInfo" },
   keys = {
     {
-      "<leader>cf",
+      "<leader>f",
       function()
         require("conform").format({ lsp_fallback = true, async = true, timeout_ms = 500 })
       end,
@@ -24,7 +24,7 @@ return {
       html = { "prettierd", "prettier" },
       json = { "prettierd" },
       jsonc = { "prettierd" },
-      -- yaml = { "prettierd", "prettier" },
+      yaml = { "prettierd", "prettier" },
       markdown = { "prettierd" },
       graphql = { "prettierd", "prettier" },
       ["_"] = { "trim_whitespace", "trim_newlines" },
