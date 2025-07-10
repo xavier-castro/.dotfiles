@@ -451,7 +451,7 @@
 (use-package which-key
   :config
   (which-key-mode 1)
-  (setq which-key-idle-delay 0.8
+  (setq which-key-idle-delay 0.4
         which-key-separator " → "
         which-key-sort-order 'which-key-key-order-alpha
         which-key-sort-uppercase-first nil
