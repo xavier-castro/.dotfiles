@@ -1,3 +1,6 @@
 karabiner/.config/karabiner/node_modules
 karabiner/.config/karabiner/automatic_backups
 .idea
+emacs/.config/emacs/eln-cache/30_1-3a5927cf
+emacs/.config/emacs/elpa/alert-20250615.1845
+emacs/.config/emacs/elpa
