@@ -125,6 +125,4 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 
 
 
-require 'xavier.scripts.floating_term'
-require 'xavier.scripts.quick_fix'
 
