@@ -122,8 +122,9 @@ alias tk="tmux kill-server"
 alias ta="tmux attach"
 alias .dotfiles="nvim ~/.dotfiles/"
 alias .config="nvim ~/.config/"
-alias eds="emacs --daemon"
+alias es="emacs --daemon"
 alias ec="emacsclient -c -n"
+alias ekill="emacsclient -e '(kill-emacs)'"
 alias ls="ls -p -G"
 alias la="ls -A"
 alias ll="ls -l"
@@ -141,3 +142,6 @@ eval "$(mise activate zsh)"
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
+
+# opencode
+export PATH=/Users/xavier/.opencode/bin:$PATH
