@@ -1,0 +1,25 @@
+theme="poimandres_storm"
+
+[editor]
+line-number = "relative"
+mouse = false
+auto-format = true
+bufferline = "always"
+
+[editor.cursor-shape]
+insert = "bar"
+normal = "block"
+select = "underline"
+
+[editor.file-picker]
+hidden = false
+
+# At most one section each of 'keys.normal', 'keys.insert' and 'keys.select'
+[keys.normal]
+C-S-x = ":reset-diff-change"
+C-s = ":write" # Ctrl and 's' to write
+C-g = [":new", ":insert-output lazygit", ":buffer-close!", ":redraw"]
+
+[keys.insert]
+j = { k = "normal_mode" } # Maps `jk` to exit insert mode
+C-c = "normal_mode"

@@ -39,7 +39,7 @@ automatically-unhide-macos-hidden-apps = false
 [mode.main.binding]
 # See: https://nikitabobko.github.io/AeroSpace/goodies#open-a-new-window-with-applescript
 alt-enter = '''exec-and-forget osascript -e '
-    tell application "Ghostty.app"
+    tell application "Ghostty"
         do script
         activate
     end tell'

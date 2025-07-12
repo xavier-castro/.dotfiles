@@ -1,0 +1,11 @@
+#!/bin/zsh
+socket_file=$(~/bin/emacsserver)
+emacs=/usr/local/bin/emacs
+emacsclient=/usr/local/bin/emacsclient
+
+if [[ $socket_file == "" ]]; then
+echo "starting Emacs server..."
+$emacs --chdir $PWD --execute "(server-start)" $@ &
+else
+$emacsclient -n -nw $@ --socket-name $socket_file
+fi
