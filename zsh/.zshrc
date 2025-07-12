@@ -35,6 +35,8 @@ alias lg="lazygit"
 alias c="claude"
 alias g="gemini"
 
+# I am doing this alias in an attempt to fix Claude Desktp from saying NPX does not exist
+alias npx=/Users/xavier/.volta/bin/npx
 
 source ~/.zsh_profile
 source <(zsp --zsh)
@@ -66,5 +68,4 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}'
 # ============================================================================
 bindkey -v # vi mode
 bindkey '^R' history-incremental-search-backward
-bindkey '^F' history-incremental-search-forward
 
