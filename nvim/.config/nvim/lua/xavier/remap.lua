@@ -49,7 +49,7 @@ vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
 vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
 vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
-vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
+vim.keymap.set("n", "<leader>S", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
 vim.keymap.set("n", "<leader>ee", "oif err != nil {<CR>}<Esc>Oreturn err<Esc>")
@@ -106,4 +106,61 @@ vim.keymap.set("n", "grq", function()
 end)
 
 -- Diagnostic keymaps
-vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diagnostic [Q]uickfix list" })
+vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, { desc = "Open diaqnostic [Q]uickfix list" })
+
+-- ============================================================================
+-- BRAIN NAVIGATION KEYMAPS
+-- ============================================================================
+-- Quick access to Brain
+vim.keymap.set("n", "<leader>bb", function()
+	vim.cmd("cd ~/personal/notes")
+	vim.cmd("edit README.md")
+end, { desc = "Open Brain main page" })
+
+-- Brain sections
+vim.keymap.set("n", "<leader>bd", function()
+	local today = os.date("%Y-%m-%d")
+	local year = os.date("%Y")
+	vim.cmd("cd ~/personal/notes/daily/" .. year)
+	vim.cmd("edit " .. today .. ".md")
+end, { desc = "Open today's daily note" })
+
+vim.keymap.set("n", "<leader>bi", function()
+	vim.cmd("cd ~/personal/notes/inbox")
+	vim.cmd("Telescope find_files")
+end, { desc = "Open Brain inbox" })
+
+vim.keymap.set("n", "<leader>ba", function()
+	vim.cmd("cd ~/personal/notes/areas")
+	vim.cmd("Telescope find_files")
+end, { desc = "Browse Brain areas" })
+
+vim.keymap.set("n", "<leader>bp", function()
+	vim.cmd("cd ~/personal/notes/projects")
+	vim.cmd("Telescope find_files")
+end, { desc = "Browse Brain projects" })
+
+vim.keymap.set("n", "<leader>br", function()
+	vim.cmd("cd ~/personal/notes/resources")
+	vim.cmd("Telescope find_files")
+end, { desc = "Browse Brain resources" })
+
+vim.keymap.set("n", "<leader>bt", function()
+	vim.cmd("cd ~/personal/notes/templates")
+	vim.cmd("Telescope find_files")
+end, { desc = "Browse Brain templates" })
+
+-- Global Brain search
+vim.keymap.set("n", "<leader>bs", function()
+	vim.cmd("cd ~/personal/notes")
+	vim.cmd("Telescope live_grep")
+end, { desc = "Search across entire Brain" })
+
+-- Quick note creation
+vim.keymap.set("n", "<leader>bn", function()
+	local note_name = vim.fn.input("Note name: ")
+	if note_name ~= "" then
+		vim.cmd("cd ~/personal/notes/inbox")
+		vim.cmd("edit " .. note_name .. ".md")
+	end
+end, { desc = "Create new note in inbox" })

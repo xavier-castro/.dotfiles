@@ -94,17 +94,59 @@ return {
         local cmp_select = { behavior = cmp.SelectBehavior.Select }
 
         cmp.setup({
+            completion = {
+                keyword_length = 3,
+            },
             snippet = {
                 expand = function(args)
                     require('luasnip').lsp_expand(args.body) -- For `luasnip` users.
                 end,
             },
-            mapping = cmp.mapping.preset.insert({
-                ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-                ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-                ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-                ["<C-Space>"] = cmp.mapping.complete(),
-            }),
+            mapping = {
+                ['<Down>'] = cmp.mapping(cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
+                ['<Up>'] = cmp.mapping(cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }), {'i'}),
+                ['<C-n>'] = cmp.mapping({
+                    c = function()
+                        if cmp.visible() then
+                            cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+                        else
+                            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Down>', true, true, true), 'n', true)
+                        end
+                    end,
+                    i = function(fallback)
+                        if cmp.visible() then
+                            cmp.select_next_item({ behavior = cmp.SelectBehavior.Select })
+                        else
+                            fallback()
+                        end
+                    end
+                }),
+                ['<C-p>'] = cmp.mapping({
+                    c = function()
+                        if cmp.visible() then
+                            cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+                        else
+                            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes('<Up>', true, true, true), 'n', true)
+                        end
+                    end,
+                    i = function(fallback)
+                        if cmp.visible() then
+                            cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+                        else
+                            fallback()
+                        end
+                    end
+                }),
+                ['<C-b>'] = cmp.mapping(cmp.mapping.scroll_docs(-4), { 'i', 'c' }),
+                ['<C-f>'] = cmp.mapping(cmp.mapping.scroll_docs(4), { 'i', 'c' }),
+                ['<C-Space>'] = cmp.mapping(cmp.mapping.complete(), { 'i', 'c' }),
+                ['<C-y>'] = cmp.config.disable,
+                ['<C-e>'] = cmp.mapping({
+                    i = cmp.mapping.abort(),
+                    c = cmp.mapping.close(),
+                }),
+                ['<CR>'] = cmp.mapping.confirm({ select = true }),
+            },
             sources = cmp.config.sources({
                 { name = "copilot", group_index = 2 },
                 { name = 'nvim_lsp' },

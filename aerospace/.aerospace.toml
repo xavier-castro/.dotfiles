@@ -23,6 +23,15 @@ on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
 # Also see: https://nikitabobko.github.io/AeroSpace/goodies#disable-hide-app
 automatically-unhide-macos-hidden-apps = false
 
+# Gap settings - similar to typical Hyprland setup
+[gaps]
+inner.horizontal = 8
+inner.vertical = 8
+outer.left = 8
+outer.bottom = 8
+outer.top = 8
+outer.right = 8
+
 [workspace-to-monitor-force-assignment]
 1 = 'main'       # Monitor sequence number from left to right. 1-based indexing
 2 = 'main'       # Main monitor

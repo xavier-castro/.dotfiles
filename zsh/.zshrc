@@ -35,6 +35,27 @@ alias lg="lazygit"
 alias c="claude"
 alias g="gemini"
 
+# ============================================================================
+# BRAIN NAVIGATION ALIASES
+# ============================================================================
+# Navigate to Brain
+alias brain="cd ~/personal/notes"
+alias b="cd ~/personal/notes"
+
+# Open Brain in Neovim
+alias vbrain="cd ~/personal/notes && nvim README.md"
+alias vb="cd ~/personal/notes && nvim README.md"
+
+# Quick access to Brain sections
+alias bdaily="cd ~/personal/notes/daily/$(date +%Y) && nvim $(date +%Y-%m-%d).md"
+alias binbox="cd ~/personal/notes/inbox && nvim ."
+alias bareas="cd ~/personal/notes/areas && nvim ."
+alias bprojects="cd ~/personal/notes/projects && nvim ."
+alias bresources="cd ~/personal/notes/resources && nvim ."
+
+# Create today's daily note if it doesn't exist
+alias btoday="mkdir -p ~/personal/notes/daily/$(date +%Y) && cd ~/personal/notes/daily/$(date +%Y) && nvim $(date +%Y-%m-%d).md"
+source ~/personal/notes/shell-aliases.sh
 source ~/.zsh_profile
 source <(zsp --zsh)
 

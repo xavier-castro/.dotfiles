@@ -71,6 +71,10 @@ autocmd('LspAttach', {
         vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
         vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
         vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+        
+        -- IWE-specific keymaps
+        vim.keymap.set("n", "<leader>m", function() vim.lsp.buf.code_action() end, opts)
+        vim.keymap.set("n", "<space>c", function() vim.lsp.buf.rename() end, opts)
     end
 })
 
